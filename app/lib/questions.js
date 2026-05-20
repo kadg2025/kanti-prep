@@ -1,5 +1,9 @@
-import { questionsDeutsch } from './questions_deutsch';
-export const questionsMathe  = [
+import { questionsDeutschGMS3 } from './questions_deutsch';
+import { questionsMatheOtr } from './questions_mathe_otr';
+import { questionsMatheMtr } from './questions_mathe_mtr';
+
+
+/* export const questionsMathe  = [
 
   // ════════════════════════════════════════════════════════
   // GLEICHUNGEN – ALTE PRÜFUNGEN
@@ -717,5 +721,6 @@ c) Wie viel Wasser ist nach 5 Minuten noch drin?`,
       youtube: 'https://www.youtube.com/embed/MXV65i9g1Xg',
     },
   },
-];
-export const questions = [...questionsMathe, ...questionsDeutsch];
+]; */
+// export const questions = [...questionsMathe, ...questionsDeutsch, ...questionsMatheOtr];
+export const questions = [...questionsDeutschGMS3, ...questionsMatheOtr, ...questionsMatheMtr];

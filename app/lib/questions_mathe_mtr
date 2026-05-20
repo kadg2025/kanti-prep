@@ -1,0 +1,1873 @@
+export const questionsMatheMtr = [
+
+  // ===================== AP 2016 =====================
+
+  {
+    id: 'M_2016_B_PROZ_1a',
+    year: 2016,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `Sabine hat an ihrem Velo einen Kilometerzähler.
+a) Sie fährt eine Strecke ab, die auf der Karte im Massstab 1:25000 exakt 49 cm misst. Ihr Zähler gibt 13 km an. Um wie viel % weicht die Zählerangabe von der wirklichen Streckenlänge gemäss Karte ab?`,
+    solution: {
+      intro: `🗺️ Karte lügt, Zähler lügt – wer hat mehr gelogen? Lass uns das mit Prozent aufdecken! Detektiv-Modus an 🔍`,
+      steps: [
+        {
+          title: 'Schritt 1: Wirkliche Streckenlänge aus Karte berechnen',
+          content: `Massstab 1:25000 bedeutet: 1 cm auf der Karte = 25000 cm in der Realität.
+Kartenstrecke = 49 cm
+Wirkliche Länge = 49 × 25000 cm = 1'225'000 cm = 12.25 km`,
+        },
+        {
+          title: 'Schritt 2: Abweichung in km berechnen',
+          content: `Zählerangabe = 13 km
+Wirkliche Länge = 12.25 km
+Differenz = 13 − 12.25 = 0.75 km (der Zähler zeigt zu viel an)`,
+        },
+        {
+          title: 'Schritt 3: Abweichung in Prozent',
+          content: `Abweichung in % = (Differenz / Wirkliche Länge) × 100
+= (0.75 / 12.25) × 100
+≈ 6.12%
+
+Der Zähler weicht um ca. 6.12% von der wirklichen Streckenlänge ab.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Bei Masstab-Aufgaben immer zuerst in dieselbe Einheit umrechnen (cm → km oder umgekehrt), dann erst Prozent berechnen!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2016_B_PROZ_1b',
+    year: 2016,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Proportionen und Maßstab',
+    questionText: `b) Heute beträgt der Zählerstand 1464 km. Sie möchte so weit fahren, bis der Zähler das nächste Mal nur zwei verschiedene Ziffern zeigt.
+b1) Welche Zahl zeigt der Zähler an?
+b2) Welches ist die wirkliche Länge der heutigen Strecke gemäss Karte?
+(Wenn du a) nicht lösen konntest, nimm an, dass die Zählerangabe von der wirklichen Streckenlänge um 4,35% abweicht.)`,
+    solution: {
+      intro: `🔢 Zahlen-Rätsel! Welche vierstellige Zahl nach 1464 hat nur zwei verschiedene Ziffern? Das ist wie ein kleines Knobel-Spiel! 🧩`,
+      steps: [
+        {
+          title: 'Schritt 1: Nächste Zahl mit nur 2 verschiedenen Ziffern nach 1464 finden',
+          content: `Wir suchen die nächste Zahl > 1464, die nur aus 2 verschiedenen Ziffern besteht.
+Kandidaten prüfen:
+• 1466 → Ziffern: 1, 4, 6, 6 → drei verschiedene (1, 4, 6) ✗
+• 1477 → Ziffern: 1, 4, 7, 7 → drei verschiedene ✗
+• 1500 → Ziffern: 1, 5, 0, 0 → drei verschiedene ✗
+• 1515 → Ziffern: 1, 5 → NUR ZWEI! ✓
+
+Die nächste Zahl ist 1515 (besteht nur aus 1 und 5).`,
+        },
+        {
+          title: 'Schritt 2: Heutige Zähler-Strecke berechnen',
+          content: `Zähler-Strecke = 1515 − 1464 = 51 km`,
+        },
+        {
+          title: 'Schritt 3: Wirkliche Länge berechnen',
+          content: `Aus Aufgabe a): Der Zähler zeigt 6.12% mehr an als die Wirklichkeit.
+Also: wirkliche Länge = 51 / 1.0612 ≈ 48.06 km
+
+(Mit Abweichung 4.35%: 51 / 1.0435 ≈ 48.88 km)`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Nur 2 verschiedene Ziffern" heisst: alle 4 Stellen bestehen nur aus zwei unterschiedlichen Zahlen (z.B. 1515 → 1 und 5).`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2016_B_VOL_2a',
+    year: 2016,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Volumen und Körper',
+    questionText: `Marco wärmt sich seine gefrorene Gemüsesuppe V = 1250 cm³ in einer zylinderförmigen Pfanne auf mit d = 20 cm, h = 12 cm. (Volumenformel für Zylinder: V = π · r² · h)
+Wie hoch steht die geschmolzene Suppe? Runde das Resultat auf 2 Nachkommastellen.`,
+    solution: {
+      intro: `🍲 Suppe schmilzt – aber wie hoch steht sie dann? Mathe hilft dir, das auszurechnen, bevor sie überkocht! 😄`,
+      steps: [
+        {
+          title: 'Schritt 1: Radius der Pfanne bestimmen',
+          content: `Durchmesser d = 20 cm → Radius r = 10 cm`,
+        },
+        {
+          title: 'Schritt 2: Formel nach h umstellen',
+          content: `V = π · r² · h
+→ h = V / (π · r²)`,
+        },
+        {
+          title: 'Schritt 3: Einsetzen und berechnen',
+          content: `h = 1250 / (π · 10²)
+h = 1250 / (π · 100)
+h = 1250 / 314.159...
+h ≈ 3.98 cm
+
+Die Suppe steht ca. 3.98 cm hoch in der Pfanne.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Beim Zylinder-Volumen immer r² (nicht d²!) verwenden. Und Durchmesser ÷ 2 = Radius nicht vergessen!`,
+      youtube: 'https://www.youtube.com/embed/MRqtXL2WX2M',
+    },
+  },
+
+  {
+    id: 'M_2016_B_VOL_2b',
+    year: 2016,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Volumen und Körper',
+    questionText: `b) Jasmin möchte 900 ml Suppe einfrieren. Sie giesst diese in ein quaderförmiges Gefäss mit l = 20 cm, b = 12 cm und h = 8 cm. Sie weiss, dass sich die Suppe beim Erstarren um 9 % ausdehnt.
+Wie hoch ist der gefrorene Suppenquader? Runde auf 2 Nachkommastellen.`,
+    solution: {
+      intro: `🥶 Einfrieren macht die Suppe grösser! Physik trifft Mathe – wie hoch wächst der Eisblock? Let's go!`,
+      steps: [
+        {
+          title: 'Schritt 1: Gefrorenes Volumen berechnen',
+          content: `Flüssiges Volumen = 900 ml = 900 cm³
+Ausdehnung = 9%
+Gefrorenes Volumen = 900 × 1.09 = 981 cm³`,
+        },
+        {
+          title: 'Schritt 2: Höhe berechnen',
+          content: `V = l × b × h → h = V / (l × b)
+h = 981 / (20 × 12)
+h = 981 / 240
+h ≈ 4.09 cm`,
+        },
+      ],
+      tip: `🎯 Merksatz: +9% Ausdehnung = mit 1.09 multiplizieren. Beim Quader: V = l × b × h → nach h umstellen ergibt h = V / (l × b).`,
+      youtube: 'https://www.youtube.com/embed/MRqtXL2WX2M',
+    },
+  },
+
+  {
+    id: 'M_2016_B_VOL_2c',
+    year: 2016,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Volumen und Körper',
+    questionText: `c) Welche Menge flüssiger Suppe in Litern lässt sich in Jasmins Gefäss aus b) maximal einfrieren, damit dieses durch die Ausdehnung beim Erstarren nicht zerspringt oder ausläuft? Gib das Resultat in Liter an, runde auf 2 Nachkommastellen.`,
+    solution: {
+      intro: `🧊 Wie viel darf rein, damit das Gefäss nicht platzt? Clevere Rückwärts-Aufgabe! 🧠`,
+      steps: [
+        {
+          title: 'Schritt 1: Maximales Volumen des Gefässes berechnen',
+          content: `Maximales Volumen (gefroren) = l × b × h = 20 × 12 × 8 = 1920 cm³`,
+        },
+        {
+          title: 'Schritt 2: Rückwärts rechnen: flüssiges Volumen',
+          content: `Das gefrorene Volumen = flüssiges Volumen × 1.09
+→ flüssiges Volumen = 1920 / 1.09 ≈ 1761.47 cm³`,
+        },
+        {
+          title: 'Schritt 3: In Liter umrechnen',
+          content: `1761.47 cm³ = 1.76 Liter (da 1 Liter = 1000 cm³)
+
+Man kann maximal ca. 1.76 Liter flüssige Suppe einfrieren.`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Rückwärts rechnen" bei Ausdehnung: statt ×1.09 rechnet man ÷1.09!`,
+      youtube: 'https://www.youtube.com/embed/MRqtXL2WX2M',
+    },
+  },
+
+  {
+    id: 'M_2016_B_ALG_5',
+    year: 2016,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Algebra und Terme',
+    questionText: `Für die Berechnung der Summe aller Quadratzahlen von 1 bis n gibt es eine Formel:
+1² + 2² + 3² + ... + n² = n(n+1)(2n+1) / 6
+
+a1) Wie gross ist die Summe aller Quadratzahlen von 1 bis 50?
+a2) Wie gross ist die Summe aller Quadratzahlen von 75 bis 150?
+b) Wir haben 60 Würfel. Der erste Würfel hat Kantenlänge 1 cm, der zweite 2 cm, ... der 60. Würfel 60 cm. Berechne die gesamte Oberfläche aller Würfel zusammen.`,
+    solution: {
+      intro: `📐 Quadratzahlen summieren – klingt wild, aber mit der Formel ist das ein Klacks! Und dann noch Würfel-Oberflächen... Mathe-Allrounder gefragt! 💪`,
+      steps: [
+        {
+          title: 'Schritt 1: Summe von 1 bis 50',
+          content: `Formel: S(n) = n(n+1)(2n+1) / 6
+S(50) = 50 × 51 × 101 / 6 = 255'100 / 6... 
+= 50 × 51 = 2550; 2550 × 101 = 257'550; 257'550 / 6 = 42'925`,
+        },
+        {
+          title: 'Schritt 2: Summe von 75 bis 150',
+          content: `Trick: S(75 bis 150) = S(150) − S(74)
+S(150) = 150 × 151 × 301 / 6 = 1'136'275
+S(74) = 74 × 75 × 149 / 6 = 137'975
+Differenz = 1'136'275 − 137'975 = 998'300`,
+        },
+        {
+          title: 'Schritt 3: Oberfläche aller 60 Würfel',
+          content: `Oberfläche eines Würfels mit Kantenlänge k = 6 × k²
+Gesamte Oberfläche = 6 × (1² + 2² + ... + 60²) = 6 × S(60)
+S(60) = 60 × 61 × 121 / 6 = 73'810
+Gesamte Oberfläche = 6 × 73'810 = 442'860 cm²`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Summe von m bis n" = S(n) − S(m−1). Nie S(m) abziehen, sondern S(m−1)!`,
+      youtube: 'https://www.youtube.com/embed/aaFrAFZATKU',
+    },
+  },
+
+  // ===================== AP 2017 =====================
+
+  {
+    id: 'M_2017_B_VOL_1',
+    year: 2017,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Volumen und Körper',
+    questionText: `Im Diagramm erkennt man den Wasserstand einer zylinderförmigen Regentonne mit Durchmesser d = 65 cm und Höhe h = 125 cm.
+a) Welche Regenmenge in Kubikmetern lief am 1.7. in die Tonne?
+b) An welchem Tag wird am meisten Wasser entnommen? Bestimme die entnommene Menge und berechne diese in Litern.
+c) Am 5. Juli um 00:00 regnet es leicht (siehe Diagramm). Bis wann müsste es mit gleicher Intensität regnen, damit die ganze Tonne voll wäre?`,
+    solution: {
+      intro: `🌧️ Regentonne und Mathe – ein feuchtes Abenteuer! Mit dem Zylinder-Volumen knacken wir das. Keine Angst, du wirst nicht nass! 😄`,
+      steps: [
+        {
+          title: 'Schritt 1: Grundlagen – Radius und Grundfläche',
+          content: `Durchmesser d = 65 cm → Radius r = 32.5 cm = 0.325 m
+Grundfläche A = π × r² = π × 0.325² ≈ 0.3318 m²`,
+        },
+        {
+          title: 'Schritt 2: Teilaufgaben',
+          content: `a) Regenmenge am 1.7.: Aus dem Diagramm die Wasserstandserhöhung ablesen (Δh), dann V = A × Δh berechnen.
+b) Den Tag mit der grössten Wasserstandssenkung im Diagramm ablesen → V = A × Δh → in Liter (×1000)
+c) Fehlende Füllhöhe bis 125 cm berechnen, dann mit der Steigrate des Wasserstands dividieren → Zeit berechnen.`,
+        },
+        {
+          title: 'Hinweis',
+          content: `Diese Aufgabe ist abhängig vom Diagramm im Original-PDF. Die genauen Werte können nur mit dem Original-Bild bestimmt werden. → Siehe Lösung im PDF`,
+        },
+      ],
+      tip: `🎯 Merksatz: Volumen-Änderung im Zylinder: ΔV = π × r² × Δh. Immer Höhenänderung aus dem Diagramm ablesen!`,
+      youtube: 'https://www.youtube.com/embed/MRqtXL2WX2M',
+    },
+  },
+
+  {
+    id: 'M_2017_B_VOL_2',
+    year: 2017,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Volumen und Körper',
+    questionText: `Die Bevölkerung errichtete eine gerade Pyramide mit quadratischer Grundfläche, Grundkante a = 6 m und Seitenkante 7.4 m. Die Zwischenräume (ca. 40%) wurden mit betonähnlicher Masse gefüllt.
+a) Berechne das Volumen V der Pyramide (V = (Grundfläche × h) / 3).
+b) Berechne die Masse m des Gesteins (ohne Beton) in Tonnen, wenn Dichte ρ = 2.6 t/m³. (m = ρ × V)`,
+    solution: {
+      intro: `🏔️ Eine Pyramide aus Steinen – wie eine Mini-Cheops-Pyramide! Wir berechnen wie schwer die wirklich ist. Spoiler: sehr schwer! 😱`,
+      steps: [
+        {
+          title: 'Schritt 1: Höhe der Pyramide berechnen',
+          content: `Seitenkante s = 7.4 m, Grundkante a = 6 m
+Vom Zentrum zur Ecke der Grundfläche: e = a√2/2 = 6√2/2 ≈ 4.243 m
+Höhe: h = √(s² − e²) = √(7.4² − 4.243²) = √(54.76 − 18) = √36.76 ≈ 6.06 m`,
+        },
+        {
+          title: 'Schritt 2: Volumen der Pyramide',
+          content: `Grundfläche G = a² = 6² = 36 m²
+V = (G × h) / 3 = (36 × 6.06) / 3 ≈ 72.72 m³`,
+        },
+        {
+          title: 'Schritt 3: Masse des Gesteins',
+          content: `Gestein-Anteil = 60% (da 40% Beton)
+V_Gestein = 72.72 × 0.60 ≈ 43.63 m³
+Masse = ρ × V = 2.6 × 43.63 ≈ 113.4 Tonnen`,
+        },
+      ],
+      tip: `🎯 Merksatz: Pyramidenhöhe findest du mit dem Pythagoras: h² + e² = s² (Seitenkante = Hypotenuse). Die Hälfte der Raumdiagonale der Grundfläche = e.`,
+      youtube: 'https://www.youtube.com/embed/MRqtXL2WX2M',
+    },
+  },
+
+  {
+    id: 'M_2017_B_PROZ_4',
+    year: 2017,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `In einem neu erbauten Fussball-Stadion gibt es 32'000 Sitzplätze:
+Kategorie A: 6000 Plätze, Preis: 68 Fr.
+Kategorie B: 64% mehr Plätze als Kat. A, Preis: 53 Fr.
+Kategorie C: restliche Plätze, Preis: 29 Fr.
+
+a) Wie hoch sind die Ticket-Einnahmen für ein Spiel, wenn alle Tickets verkauft werden?
+b) Wie hoch sind die Ticket-Einnahmen für Kategorie A mindestens, wenn nur 85% aller Plätze besetzt sind und 10.5% der besetzten Kat.-A-Plätze als Freikarten verschenkt werden?`,
+    solution: {
+      intro: `⚽ Fussball-Mathe! Wir rechnen Stadion-Kasse nach – wäre cool, wenn das Geld uns gehören würde 💸 Aber erstmal die Aufgabe lösen!`,
+      steps: [
+        {
+          title: 'Schritt 1: Plätze berechnen',
+          content: `Kat. A: 6000 Plätze
+Kat. B: 6000 × 1.64 = 9840 Plätze
+Kat. C: 32000 − 6000 − 9840 = 16160 Plätze`,
+        },
+        {
+          title: 'Schritt 2: a) Einnahmen bei vollem Stadion',
+          content: `Kat. A: 6000 × 68 = 408'000 Fr.
+Kat. B: 9840 × 53 = 521'520 Fr.
+Kat. C: 16160 × 29 = 468'640 Fr.
+Total: 408'000 + 521'520 + 468'640 = 1'398'160 Fr.`,
+        },
+        {
+          title: 'Schritt 3: b) Einnahmen Kat. A bei 85% Auslastung + Freikarten',
+          content: `Besetzte Plätze total: 32000 × 0.85 = 27200
+Min. Kat.-A-Plätze besetzt (alle besetzt wenn möglich): 6000 Plätze
+→ Freikarten: 6000 × 0.105 = 630
+→ Zahlende Besucher Kat. A: 6000 − 630 = 5370
+→ Einnahmen Kat. A: 5370 × 68 = 365'160 Fr.`,
+        },
+      ],
+      tip: `🎯 Merksatz: "X% mehr als Y" bedeutet: Y × (1 + X/100). Bei Freikarten: die zahlen nichts → diese von den Gesamtplätzen abziehen!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2017_B_GESCH_5a',
+    year: 2017,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `a) Frau Meier fährt täglich mit dem Auto zum 35 km entfernten Arbeitsplatz und braucht dafür normalerweise 42 Minuten. Als sie 6 Minuten lang Eis kratzen muss, versucht sie schneller zu fahren.
+Um wie viele km/h müsste sie durchschnittlich schneller fahren, damit sie zur gewohnten Zeit an der Arbeit ist?`,
+    solution: {
+      intro: `🚗 Eisiger Morgen, Stress auf dem Weg zur Arbeit... Wie viel Gas muss Frau Meier geben? Wir berechnen's! 🧊`,
+      steps: [
+        {
+          title: 'Schritt 1: Normalgeschwindigkeit berechnen',
+          content: `Strecke = 35 km, Zeit = 42 min = 42/60 h = 0.7 h
+v_normal = 35 / 0.7 = 50 km/h`,
+        },
+        {
+          title: 'Schritt 2: Verbleibende Fahrzeit berechnen',
+          content: `Gesamtzeit = 42 min, Eisekratzen = 6 min
+Verbleibende Fahrzeit = 42 − 6 = 36 min = 36/60 h = 0.6 h`,
+        },
+        {
+          title: 'Schritt 3: Nötige Geschwindigkeit und Differenz',
+          content: `v_nötig = 35 / 0.6 ≈ 58.33 km/h
+Differenz = 58.33 − 50 ≈ 8.33 km/h
+
+Sie müsste ca. 8.33 km/h schneller fahren (also ca. 8⅓ km/h mehr als gewöhnlich).`,
+        },
+      ],
+      tip: `🎯 Merksatz: v = s/t. Wenn Zeit weniger wird aber Strecke gleich bleibt, muss Geschwindigkeit grösser werden!`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  {
+    id: 'M_2017_B_GESCH_5b',
+    year: 2017,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `b) Ein D-Zug benötigt zum Durchqueren eines Tunnels eine Zeit von 5 min 30 s, ein Güterzug eine Zeit von 8 min 30 s. Die Geschwindigkeit des D-Zuges ist um 6 m/s grösser als die des Güterzuges. Berechne die Länge des Tunnels.`,
+    solution: {
+      intro: `🚂 Zwei Züge, ein Tunnel – wer schafft's schneller? Und wie lang ist der Tunnel überhaupt? Gleichungen to the rescue! 🦸`,
+      steps: [
+        {
+          title: 'Schritt 1: Zeiten in Sekunden umrechnen',
+          content: `D-Zug: 5 min 30 s = 330 s
+Güterzug: 8 min 30 s = 510 s`,
+        },
+        {
+          title: 'Schritt 2: Gleichung aufstellen',
+          content: `Sei v_G = Geschwindigkeit Güterzug (in m/s)
+v_D = v_G + 6
+
+Tunnellänge L ist für beide gleich:
+L = v_D × 330 = v_G × 510
+
+Einsetzen: (v_G + 6) × 330 = v_G × 510`,
+        },
+        {
+          title: 'Schritt 3: Gleichung lösen',
+          content: `330 v_G + 1980 = 510 v_G
+1980 = 180 v_G
+v_G = 11 m/s
+
+L = 11 × 510 = 5610 m ≈ 5.61 km`,
+        },
+      ],
+      tip: `🎯 Merksatz: Wenn zwei Objekte die gleiche Strecke zurücklegen (Tunnel), gilt: v₁ × t₁ = v₂ × t₂ = L. Das gibt eine Gleichung mit einer Unbekannten!`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  // ===================== AP 2018 =====================
+
+  {
+    id: 'M_2018_B_PROZ_1',
+    year: 2018,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `Zwei Kaffeegeschäfte verkaufen den gleichen Kaffee mit einem Preisunterschied von Fr. 1.20 pro Kilogramm. Im günstigeren Geschäft bekommt man 450g zum Preis von Fr. 6.75.
+Wie viel bezahlt man für 1.5 kg Kaffee im teureren Geschäft? Schreibe einen Antwortsatz.`,
+    solution: {
+      intro: `☕ Kaffee-Mathe am Morgen! Wer bietet den günstigeren Preis? Und wie teuer ist das teurere Geschäft? Lass uns das herausfinden! 🕵️`,
+      steps: [
+        {
+          title: 'Schritt 1: Preis pro kg im günstigeren Geschäft',
+          content: `450 g kosten Fr. 6.75
+→ Preis pro kg = 6.75 / 0.45 = Fr. 15.00/kg`,
+        },
+        {
+          title: 'Schritt 2: Preis pro kg im teureren Geschäft',
+          content: `Preisunterschied = Fr. 1.20/kg
+→ Preis teureres Geschäft = 15.00 + 1.20 = Fr. 16.20/kg`,
+        },
+        {
+          title: 'Schritt 3: Preis für 1.5 kg',
+          content: `1.5 × 16.20 = Fr. 24.30
+
+Im teureren Geschäft bezahlt man Fr. 24.30 für 1.5 kg Kaffee.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Erst immer auf eine "Standard-Einheit" (z.B. 1 kg oder 1 Stück) umrechnen, dann mit der gewünschten Menge multiplizieren!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2018_B_STAT_2',
+    year: 2018,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Statistik und Diagramme',
+    questionText: `Das Institut für Meinungsforschung befragte Internetnutzer ab 14 Jahren zu sozialen Netzwerken.
+532 Befragte gaben Facebook an, 12% nutzen Twitter, jeder 5. nutzt Instagram am häufigsten, Youtube belegt Platz 2 mit 1/4 aller Befragten. 5% nutzen keines.
+a) Fülle die Tabelle vollständig aus (Anzahl und Prozent für jedes Netzwerk, Gesamtanzahl).
+b) Stelle die Ergebnisse in einem Säulendiagramm dar.`,
+    solution: {
+      intro: `📊 Social Media und Mathe zusammen – das ist was für echte TikTok/Insta-Fans! Wir basteln ein Diagramm aus echten Zahlen 😎`,
+      steps: [
+        {
+          title: 'Schritt 1: Gesamtanzahl berechnen',
+          content: `Facebook = 532 Befragte → wir wissen nicht direkt den %
+Wir wissen: YouTube = 25%, Instagram = 20%, Twitter = 12%, Keine = 5%
+→ Facebook % = 100% − 25% − 20% − 12% − 5% = 38%
+→ Gesamtanzahl: 532 = 38% → Gesamt = 532 / 0.38 = 1400 Personen`,
+        },
+        {
+          title: 'Schritt 2: Alle Anzahlen berechnen',
+          content: `Facebook: 532 (= 38%)
+YouTube: 1400 × 0.25 = 350 (= 25%)
+Instagram: 1400 × 0.20 = 280 (= 20%)
+Twitter: 1400 × 0.12 = 168 (= 12%)
+Keine: 1400 × 0.05 = 70 (= 5%)
+Gesamt: 1400 (= 100%)`,
+        },
+        {
+          title: 'Schritt 3: Säulendiagramm',
+          content: `X-Achse: Netzwerke (Facebook, YouTube, Instagram, Twitter, Keine)
+Y-Achse: Anzahl Personen (0 bis 600)
+Höchste Säule: Facebook (532), dann YouTube (350), Instagram (280), Twitter (168), Keine (70)`,
+        },
+      ],
+      tip: `🎯 Merksatz: Wenn du eine konkrete Zahl und ihren %-Anteil kennst, findest du den Grundwert mit: Grundwert = Zahl / (%-Anteil ÷ 100)`,
+      youtube: 'https://www.youtube.com/embed/yHJRLhxKi7M',
+    },
+  },
+
+  {
+    id: 'M_2018_B_ALG_3',
+    year: 2018,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Algebra und Terme',
+    questionText: `Ein rechteckiges Zimmer soll mit quadratischen Teppichplatten (Seitenlänge s) und rechteckigen Platten (16 dm × 12 dm) belegt werden. Man braucht entweder 9 rechteckige und 6 quadratische Platten, oder 3 rechteckige und 24 quadratische Platten. Die zweite Variante ist total Fr. 27.- teurer. Eine einzige rechteckige Platte kostet Fr. 75.-.
+a) Wie lang ist die Seitenlänge s?
+b) Wie teuer ist eine quadratische Platte?`,
+    solution: {
+      intro: `🏠 Teppich-Puzzle! Gleiche Fläche, verschiedene Kombinationen – das schreit nach einem Gleichungssystem! Und wir lösen es! 💡`,
+      steps: [
+        {
+          title: 'Schritt 1: Gleichung für Fläche aufstellen',
+          content: `Rechteckige Platte: 16 × 12 = 192 dm²
+Zimmer-Fläche ist in beiden Varianten gleich:
+9 × 192 + 6 × s² = 3 × 192 + 24 × s²
+1728 + 6s² = 576 + 24s²`,
+        },
+        {
+          title: 'Schritt 2: s berechnen',
+          content: `1728 − 576 = 24s² − 6s²
+1152 = 18s²
+s² = 64
+s = 8 dm`,
+        },
+        {
+          title: 'Schritt 3: Preis der quadratischen Platte',
+          content: `2. Variante kostet Fr. 27 mehr als 1. Variante.
+Kostengleichung: 3 × 75 + 24 × p = 9 × 75 + 6 × p + 27
+225 + 24p = 675 + 6p + 27
+18p = 477
+p = Fr. 26.50`,
+        },
+      ],
+      tip: `🎯 Merksatz: Bei Gleichungssystemen über Flächen: beide Ausdrücke für die Gesamtfläche gleichsetzen. Bei Kosten: eine Seite = andere Seite ± Unterschied.`,
+      youtube: 'https://www.youtube.com/embed/aaFrAFZATKU',
+    },
+  },
+
+  {
+    id: 'M_2018_B_PYTH_5',
+    year: 2018,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Pythagoras',
+    questionText: `Die Abbildung zeigt ein Tablet. Für die eingezeichnete Strecke s1 gilt s1 = 15 cm. Der Ständer ist in der Mitte der Höhe h angebracht. Das Seitenverhältnis von Höhe h zur Breite b beträgt 2:3. Runde auf 2 Nachkommastellen.
+a) Berechne die Höhe h des Tablets.
+b) Berechne die Länge der Diagonalen d des Tablets.`,
+    solution: {
+      intro: `📱 Dein Lieblingsgerät hat Mathe versteckt! Die Diagonale des Tablets mit Pythagoras berechnen – jetzt weisst du, warum du in Mathe aufpassen solltest 😄`,
+      steps: [
+        {
+          title: 'Schritt 1: Höhe h berechnen',
+          content: `Der Ständer ist in der Mitte der Höhe → s1 verbindet untere Ecke mit Mitte der oberen Seite.
+Dreieck mit: s1 = 15 cm (Hypotenuse), eine Kathete = b, andere Kathete = h/2
+Seitenverhältnis h:b = 2:3 → b = 3h/2
+Pythagoras: (h/2)² + b² = s1²
+(h/2)² + (3h/2)² = 15²
+h²/4 + 9h²/4 = 225
+10h²/4 = 225
+h² = 90
+h ≈ 9.49 cm`,
+        },
+        {
+          title: 'Schritt 2: Breite b und Diagonale d',
+          content: `b = 3h/2 = 3 × 9.49 / 2 ≈ 14.23 cm
+d = √(h² + b²) = √(90 + 202.5) = √292.5 ≈ 17.10 cm`,
+        },
+      ],
+      tip: `🎯 Merksatz: Seitenverhältnis h:b = 2:3 bedeutet: wenn h = 2k dann b = 3k. Pythagoras mit diesen Ausdrücken aufstellen und nach k auflösen!`,
+      youtube: 'https://www.youtube.com/embed/AA6RfgP-AHU',
+    },
+  },
+
+  {
+    id: 'M_2018_B_GESCH_6',
+    year: 2018,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `a) Zwei Schnellzüge befahren die 450 km Strecke A−B. Zug 1 fährt von A nach B mit 150 km/h, Zug 2 gleichzeitig von B nach A mit 100 km/h. Nach wie vielen Minuten begegnen sich die Züge?
+
+b) Ein Güterzug (350 m lang) fährt durch den Gotthardtunnel (15.6 km) mit 110 km/h. Wie lange dauert die vollständige Durchfahrt? Gib in Minuten und Sekunden an.
+
+c) Ein rotes Auto (5 m) überholt ein blaues Auto (4 m). Überholvorgang beginnt bei 10 m Abstand, endet wenn rotes Auto 10 m vor blauem ist. Rotes Auto: 90 km/h, blaues: 72 km/h. Wie viele Sekunden dauert der Überholvorgang?`,
+    solution: {
+      intro: `🚂🚗 Speed, distance, time – die heilige Dreifaltigkeit der Physik-Mathe! Drei verschiedene Fahr-Szenarien, alle lösbar mit v = s/t. Let's race! 🏎️`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Begegnungszeit der Züge',
+          content: `Relative Geschwindigkeit = 150 + 100 = 250 km/h (Gegenverkehr)
+Zeit = Strecke / Relativgeschwindigkeit = 450 / 250 = 1.8 h = 108 Minuten`,
+        },
+        {
+          title: 'Schritt 2: b) Güterzug im Tunnel',
+          content: `Zurückzulegende Strecke = Tunnellänge + Zuglänge = 15600 + 350 = 15950 m = 15.95 km
+Zeit = 15.95 / 110 h = 0.14500 h = 8.7 min = 8 min 42 s`,
+        },
+        {
+          title: 'Schritt 3: c) Überholmanöver',
+          content: `Zurückzulegende Strecke (relativ): rotes Auto muss von −10 m bis +10 m + Längen = 10 + 5 + 4 + 10 = 29 m überholen
+Relative Geschwindigkeit = 90 − 72 = 18 km/h = 5 m/s
+Zeit = 29 / 5 = 5.8 s`,
+        },
+      ],
+      tip: `🎯 Merksatz: Bei Gegenverkehr Geschwindigkeiten addieren. Bei gleichem Überholmanöver: Gesamtstrecke = eigene Länge + andere Länge + Anfangs- und Endabstand. Relative v = Differenz der Geschwindigkeiten.`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  // ===================== AP 2019 =====================
+
+  {
+    id: 'M_2019_B_PYTH_1',
+    year: 2019,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Pythagoras',
+    questionText: `Ein Trapez liegt in einem Rechteck (siehe Skizze). Berechne die Strecken a und b, sowie die Fläche des Trapezes. (Skizze nicht massstabsgetreu!)`,
+    solution: {
+      intro: `📐 Trapez im Rechteck – verstecktes Dreieck-Potenzial! Mit Pythagoras finden wir alle fehlenden Längen. Auf geht's, Geometrie-Held! 🦸`,
+      steps: [
+        {
+          title: 'Hinweis',
+          content: `Diese Aufgabe benötigt die genauen Masse aus der Skizze im Original-PDF. Die Strecken a und b werden über den Satz des Pythagoras im rechtwinkligen Hilfsdreick berechnet. Fläche Trapez = (a + b) / 2 × h. → Siehe Lösung im PDF`,
+        },
+      ],
+      tip: `🎯 Merksatz: Beim Trapez im Rechteck immer ein rechtwinkliges Dreieck einzeichnen, dann Pythagoras anwenden. Trapezfläche = (Summe der parallelen Seiten) / 2 × Höhe.`,
+      youtube: 'https://www.youtube.com/embed/AA6RfgP-AHU',
+    },
+  },
+
+  {
+    id: 'M_2019_B_PROZ_2',
+    year: 2019,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `Eine Schulklasse mit 20 SchülerInnen fährt mit dem Zug ins Klassenlager. Ein Weg (A nach B) kostet 25 CHF pro Person ohne Ermässigung. 20% besitzen ein GA (zahlen nichts), 2/3 des Restes haben ein Halbtax (zahlen die Hälfte).
+a) Wie hoch sind die Reisekosten der ganzen Klasse für Hin- und Rückfahrt?
+b) Mit einem Gruppenrabatt bezahlen sie nur 522.50 CHF. i) Wie viel % Rabatt? ii) Wie viel kostet die Reise für Vollzahler mit Rabatt?`,
+    solution: {
+      intro: `🎒 Klassenlager-Mathematik! Wer zahlt was? Klingt nach Chaos, aber mit Schritten wird's übersichtlich. Auf ins Lager! ⛺`,
+      steps: [
+        {
+          title: 'Schritt 1: Anzahl Schüler pro Kategorie',
+          content: `GA (zahlen nichts): 20% von 20 = 4 Schüler
+Rest: 16 Schüler
+Halbtax: 2/3 von 16 ≈ 10.67 → 10 oder 11 Schüler (genau: 2/3 × 16 = 32/3)
+Vollzahler: Rest = 16 − 32/3 = 16/3 ≈ 5.33
+
+Hinweis: Mit dem Bruch 2/3: Halbtax = 32/3 Schüler ist als Bruch gemeint → rechne in Kosten, nicht Köpfe!`,
+        },
+        {
+          title: 'Schritt 2: Kosten für einen Weg',
+          content: `GA: 4 × 0 = 0 CHF
+Halbtax: 2/3 × 16 Schüler × 25/2 CHF = 32/3 × 12.5 = 133.33 CHF
+Vollzahler: 1/3 × 16 × 25 = 16/3 × 25 = 133.33 CHF
+Total für 1 Weg: 0 + 133.33 + 133.33 = 266.67 CHF`,
+        },
+        {
+          title: 'Schritt 3: Hin- und Rückfahrt & Rabatt',
+          content: `Hin- und Rückfahrt: 266.67 × 2 = 533.33 CHF
+a) Reisekosten = 533.33 CHF
+
+b) i) Rabatt = (533.33 − 522.50) / 533.33 × 100 ≈ 2.03%
+   ii) Vollzahler-Kosten pro Person mit Rabatt: 25 × 2 × (1 − 0.0203) ≈ 48.98 CHF`,
+        },
+      ],
+      tip: `🎯 Merksatz: GA = zahlt nichts, Halbtax = zahlt 50%. Immer erst Anzahl der Personen pro Kategorie bestimmen, dann Kosten berechnen!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2019_B_GESCH_3',
+    year: 2019,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `Ein Auto und ein Lastwagen fahren von Zürich nach München (s = 310 km). Sie fahren gleichzeitig los.
+a) Wie viele Minuten früher ist der Autofahrer am Ziel? Auto: 85 km/h, LKW: 52 km/h. Runde auf ganze Minuten.
+b) Das Auto fährt 2h 30min später ab, der LKW fährt 20% schneller als in a). Wie schnell muss der Autofahrer fahren, damit er gleichzeitig in München ist?
+c) Wie viel % der Strecke hat der LKW geschafft, wenn das Auto in München ist? (gleiche Geschwindigkeiten wie in a)`,
+    solution: {
+      intro: `🚗🚛 Auto vs. LKW – welcher ist zuerst in München? Und der LKW bekommt sogar Bonusgeschwindigkeit! Spannender als Formel 1! 🏁`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Zeitvorteil Auto',
+          content: `t_Auto = 310 / 85 ≈ 3.647 h
+t_LKW = 310 / 52 ≈ 5.962 h
+Differenz = 5.962 − 3.647 ≈ 2.315 h = 138.9 min ≈ 139 Minuten`,
+        },
+        {
+          title: 'Schritt 2: b) Auto fährt später, LKW schneller',
+          content: `Neue LKW-Geschwindigkeit: 52 × 1.20 = 62.4 km/h
+LKW-Zeit für 310 km: 310 / 62.4 ≈ 4.968 h
+Auto startet 2.5 h später → Auto-Zeit = 4.968 − 2.5 = 2.468 h
+Auto-Geschwindigkeit = 310 / 2.468 ≈ 125.6 km/h → aufgerundet: 126 km/h`,
+        },
+        {
+          title: 'Schritt 3: c) LKW-Fortschritt wenn Auto ankam',
+          content: `t_Auto = 3.647 h
+Strecke LKW in dieser Zeit = 52 × 3.647 ≈ 189.6 km
+%-Anteil = 189.6 / 310 × 100 ≈ 61.2%`,
+        },
+      ],
+      tip: `🎯 Merksatz: v = s/t → t = s/v. Bei "gleichzeitig ankommen": gleiche Zeitdauer, daher: t_Auto = t_LKW → nach v_Auto auflösen.`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  {
+    id: 'M_2019_B_PROP_4',
+    year: 2019,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Proportionen und Maßstab',
+    questionText: `a) Die ISS umkreist die Erde 7.25 mal in 10h 52min 30s. Wie viele Umrundungen macht sie in 31 Tagen?
+b) Standardversorgungsgüter reichen für 6 Crew-Mitglieder für 99 Tage. Wie viele Tage würden 5 Astronauten mindestens überleben, wenn sie die Rationen halbieren?
+c) Bei der Mars Mission 2025 stranden 4 Astronauten mit Vorräten für 302 Tage. Nach 53 Tagen finden sie Vorräte für 25 Personen für 32 Tage. Für wie viele Tage reichen die Vorräte ab dem 54. Tag?`,
+    solution: {
+      intro: `🚀 Space-Mathe! ISS, Mars-Mission, Überlebensproviant im Weltraum – klingt nach einem Sci-Fi-Film, ist aber echte Prüfungsaufgabe! 🌌`,
+      steps: [
+        {
+          title: 'Schritt 1: a) ISS-Umrundungen in 31 Tagen',
+          content: `Zeit für 7.25 Umrundungen: 10h 52min 30s = 10 + 52/60 + 30/3600 h = 10.875 h
+Umrundungen pro Stunde: 7.25 / 10.875 ≈ 0.6667 /h
+31 Tage = 31 × 24 = 744 h
+Umrundungen = 0.6667 × 744 ≈ 496 Umrundungen`,
+        },
+        {
+          title: 'Schritt 2: b) Überlebenstage mit halbierten Rationen',
+          content: `Gesamtrationen: 6 × 99 = 594 Personen-Tage
+Mit halbierten Rationen verdoppelt sich die Reichweite: 594 × 2 = 1188 Personen-Tage
+5 Astronauten: 1188 / 5 = 237.6 → mindestens 237 Tage`,
+        },
+        {
+          title: 'Schritt 3: c) Mars-Mission Vorräte',
+          content: `Verbrauchte Vorräte nach 53 Tagen: 4 × 53 = 212 Personen-Tage
+Restvorräte: 4 × 302 − 212 = 1208 − 212 = 996 Personen-Tage
+Neue Vorräte: 25 × 32 = 800 Personen-Tage
+Gesamtvorräte ab Tag 54: 996 + 800 = 1796 Personen-Tage
+Für 4 Astronauten: 1796 / 4 = 449 Tage ab Tag 54`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Personen-Tage" = Personen × Tage. Das ist die Gesamtmenge an Essen. Dann durch neue Personenzahl teilen = Reichweite in Tagen!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2019_B_KOMB_5',
+    year: 2019,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Kombinatorik',
+    questionText: `Ein Würfel wird rot angemalt und dann in gleiche Würfelchen zerschnitten.
+a) Wie viele Würfelchen haben 3, 2, 1, 0 bemalte Flächen, wenn der Würfel in 27 Würfelchen zerschnitten wird?
+b) Wie viele haben 2, 1, 0 bemalte Flächen bei 125 Würfelchen?
+c) Wie viele haben 2, 1, 0 bemalte Flächen bei n³ Würfelchen (n > 2)?`,
+    solution: {
+      intro: `🎲 Ein Würfel wird zerhackt! Das klingt brutal, ist aber pures Geometrie-Denken. Kannst du dir vorstellen, wie die kleinen Würfelchen aussehen? 🔴`,
+      steps: [
+        {
+          title: 'Schritt 1: Grundprinzip verstehen',
+          content: `27 Würfelchen = 3×3×3 → n=3
+125 Würfelchen = 5×5×5 → n=5
+
+• 3 bemalte Flächen: nur Ecken des grossen Würfels → immer 8 (unabhängig von n)
+• 2 bemalte Flächen: Kanten-Würfelchen (zwischen Ecken) → 12 × (n−2)
+• 1 bemalte Fläche: Flächen-Würfelchen (Mitte der Seiten) → 6 × (n−2)²
+• 0 bemalte Flächen: innere Würfelchen → (n−2)³`,
+        },
+        {
+          title: 'Schritt 2: a) n=3 (27 Würfelchen)',
+          content: `3 Flächen: 8
+2 Flächen: 12 × (3−2) = 12 × 1 = 12
+1 Fläche: 6 × (3−2)² = 6 × 1 = 6
+0 Flächen: (3−2)³ = 1
+Check: 8+12+6+1 = 27 ✓`,
+        },
+        {
+          title: 'Schritt 3: b) n=5 (125 Würfelchen) & c) allgemein',
+          content: `b) n=5:
+2 Flächen: 12 × 3 = 36
+1 Fläche: 6 × 9 = 54
+0 Flächen: 27
+Check: 8+36+54+27 = 125 ✓
+
+c) n³ Würfelchen:
+2 Flächen: 12(n−2)
+1 Fläche: 6(n−2)²
+0 Flächen: (n−2)³`,
+        },
+      ],
+      tip: `🎯 Merksatz: Ecken=8 (immer!), Kanten=12×(n−2), Flächen=6×(n−2)², Kern=(n−2)³. Das gilt für JEDEN n×n×n-Würfel!`,
+      youtube: 'https://www.youtube.com/embed/KaFGDiXPAHc',
+    },
+  },
+
+  // ===================== AP 2020 =====================
+
+  {
+    id: 'M_2020_B_GESCH_1',
+    year: 2020,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `Bei einem «Bike & Run» Wettkampf hat ein Sportler auf dem Fahrrad 180 km mit 32 km/h zurückgelegt und sich in 4.5 Minuten umgezogen. Bestimme, wie viel Zeit er durchschnittlich pro Kilometer auf dem Marathon (42.195 km) benötigen darf, wenn er seine Bestzeit von 9h 40min um 1/10 unterbieten will. Runde auf die nächste Sekunde.`,
+    solution: {
+      intro: `🚴🏃 Bike & Run – der härteste Sport der Welt... Wir rechnen, wie schnell der Athlet beim Marathonlauf sein muss. Spoiler: sehr schnell! 💨`,
+      steps: [
+        {
+          title: 'Schritt 1: Zielzeit berechnen',
+          content: `Bestzeit = 9h 40min = 580 min
+1/10 unterbieten = Ziel: 580 × (1 − 1/10) = 580 × 0.9 = 522 min`,
+        },
+        {
+          title: 'Schritt 2: Bereits verbrauchte Zeit',
+          content: `Fahrradzeit = 180 / 32 = 5.625 h = 337.5 min
+Umziehzeit = 4.5 min
+Total bereits: 337.5 + 4.5 = 342 min`,
+        },
+        {
+          title: 'Schritt 3: Verbleibende Zeit für Marathon',
+          content: `Marathonzeit = 522 − 342 = 180 min = 10'800 s
+Zeit pro km = 10'800 / 42.195 ≈ 255.96 s ≈ 256 s = 4 min 16 s`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Um 1/10 unterbieten" bedeutet neue Zeit = alte Zeit × 0.9 (also 90% der alten Zeit). Immer zuerst alle Zeiten in dieselbe Einheit (Minuten oder Sekunden) umrechnen!`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  {
+    id: 'M_2020_B_PYTH_2',
+    year: 2020,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Pythagoras',
+    questionText: `Berechne die Weglänge (blauer Streckenzug SABCF) des Superhelden «Spiderman» S, die er zurücklegen muss, um seine Freundin F zu retten, die sich auf der Mitte des Daches befindet. Runde auf ganze Meter.`,
+    solution: {
+      intro: `🕷️ Spiderman braucht Mathe um seine Freundin zu retten! Pythagoras ist der wahre Superheld dieser Geschichte 🦸‍♂️`,
+      steps: [
+        {
+          title: 'Hinweis',
+          content: `Diese Aufgabe benötigt die genauen Masse der Gebäude aus der Skizze im Original-PDF. Der Streckenzug wird Schritt für Schritt mit dem Satz des Pythagoras berechnet (jeder Abschnitt SA, AB, BC, CF separat). → Siehe Lösung im PDF`,
+        },
+      ],
+      tip: `🎯 Merksatz: Bei Streckenzügen in 3D (Gebäude): jeden Abschnitt als rechtwinkliges Dreieck betrachten und Pythagoras anwenden. Dann alle Längen addieren!`,
+      youtube: 'https://www.youtube.com/embed/AA6RfgP-AHU',
+    },
+  },
+
+  {
+    id: 'M_2020_B_KOMB_4',
+    year: 2020,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Kombinatorik',
+    questionText: `Peter hat sein Velo mit einem Zahlenschloss gesichert (3 Ringe, je Ziffer 0–9).
+a) Er will alle Möglichkeiten ausprobieren (10 s pro Einstellung). Wie lange dauert das in Stunden, Minuten, Sekunden?
+b) Wie viele Einstellungen gibt es mit nur ungeraden Ziffern?
+c) Die erste Ziffer ist eine 5, die zweite grösser als die erste, die dritte grösser als die zweite. Schreibe alle möglichen Einstellungen auf.`,
+    solution: {
+      intro: `🔐 Vergessenes Schloss-Passwort = Mathe-Aufgabe! Wir berechnen, wie lange Peter sucht... und ob es sich lohnt 😅`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Alle Möglichkeiten und Zeit',
+          content: `3 Ringe × je 10 Ziffern = 10³ = 1000 Möglichkeiten
+Zeit = 1000 × 10 s = 10'000 s
+= 2 Stunden 46 Minuten 40 Sekunden`,
+        },
+        {
+          title: 'Schritt 2: b) Nur ungerade Ziffern',
+          content: `Ungerade Ziffern: {1, 3, 5, 7, 9} → 5 Möglichkeiten pro Ring
+Anzahl = 5³ = 125 Einstellungen`,
+        },
+        {
+          title: 'Schritt 3: c) Erste Ziffer 5, aufsteigend',
+          content: `Erste Ziffer: 5
+Zweite Ziffer: 6, 7, 8 oder 9 (grösser als 5)
+Dritte Ziffer: grösser als die zweite
+
+Alle Möglichkeiten:
+5-6-7, 5-6-8, 5-6-9
+5-7-8, 5-7-9
+5-8-9
+Total: 6 Einstellungen`,
+        },
+      ],
+      tip: `🎯 Merksatz: Bei "aufsteigend" mit festem ersten Wert: zweite Ziffer wählen, dann dritte Ziffer = alle Ziffern noch grösser. Systematisch von unten nach oben aufzählen!`,
+      youtube: 'https://www.youtube.com/embed/KaFGDiXPAHc',
+    },
+  },
+
+  {
+    id: 'M_2020_B_PROZ_5',
+    year: 2020,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `In einem Gefäss werden gemischt: 20 ml Flüssigkeit A, 70 ml B und 70 ml C.
+a) Wie gross ist der prozentuale Anteil von A im Gemisch?
+b) Welches Volumen von B muss man dazugeben, damit C einen Anteil von 40% hat?
+c) 10 ml A kosten 20 Fr. B ist 15% teurer. Das ursprüngliche Gemisch kostet total 329.80 Fr. Um wie viel % ist C billiger als A?`,
+    solution: {
+      intro: `🧪 Flüssigkeiten mischen wie ein Chemiker – aber mit Prozentrechnung! Klingt kompliziert, geht mit System total easy 🔬`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Anteil von A',
+          content: `Gesamtvolumen = 20 + 70 + 70 = 160 ml
+Anteil A = 20 / 160 × 100 = 12.5%`,
+        },
+        {
+          title: 'Schritt 2: b) Volumen B für 40% C-Anteil',
+          content: `C bleibt 70 ml = 40% des neuen Gemischs
+→ Neues Gesamtvolumen = 70 / 0.40 = 175 ml
+Ursprüngliches Volumen = 160 ml
+Zusätzliches B = 175 − 160 = 15 ml`,
+        },
+        {
+          title: 'Schritt 3: c) Preis von C',
+          content: `Preis A: 20 Fr. / 10 ml = 2 Fr./ml
+Preis B: 2 × 1.15 = 2.30 Fr./ml
+Kosten A (20 ml): 20 × 2 = 40 Fr.
+Kosten B (70 ml): 70 × 2.30 = 161 Fr.
+Kosten C: 329.80 − 40 − 161 = 128.80 Fr. für 70 ml → 1.84 Fr./ml
+Ersparnis: (2 − 1.84) / 2 × 100 = 8%
+C ist 8% billiger als A.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Mischungsaufgaben: "X soll Y% sein" → Gesamtmenge = Menge(X) / (Y/100). Der Rest ist Addieren/Subtrahieren!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  // ===================== AP 2021 =====================
+
+  {
+    id: 'M_2021_B_GESCH_1',
+    year: 2021,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `a) Max startet um 08:15 Uhr und möchte pünktlich um 08:40 Uhr ankommen. Er braucht 60 Sekunden fürs Absichern seines E-Bikes. Mit welcher Geschwindigkeit in km/h muss er die 11000 m zurücklegen?
+
+b) Wie lang muss die Strecke in km sein, damit es sich lohnt, statt Velo (18 km/h) das Auto (54 km/h) zu nehmen, wenn Auto-Vorbereitung + Parkieren 5 Minuten mehr braucht als Velo-Absicherung?`,
+    solution: {
+      intro: `🚴 E-Bike oder Auto? Das ist hier die Frage! Und Mathe hilft uns, die klügere Entscheidung zu treffen 🧠`,
+      steps: [
+        {
+          title: 'Schritt 1: a) E-Bike Geschwindigkeit',
+          content: `Gesamtzeit = 25 Minuten = 1500 s
+Fahrzeit = 1500 − 60 = 1440 s = 1440/3600 h = 0.4 h
+v = s / t = 11 km / 0.4 h = 27.5 km/h`,
+        },
+        {
+          title: 'Schritt 2: b) Break-even Strecke',
+          content: `Zeit Velo für Strecke s: s/18 h + t_velo (Absicherung)
+Zeit Auto für Strecke s: s/54 h + t_velo + 5/60 h
+
+"Lohnen" = Auto ist schneller oder gleich schnell wie Velo:
+s/54 + t + 1/12 ≤ s/18 + t
+s/54 + 1/12 ≤ s/18
+1/12 ≤ s/18 − s/54 = s(3-1)/54 = 2s/54 = s/27
+s ≥ 27/12 = 2.25 km`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Lohnt sich" = Gleichung aufstellen, bei der beide Zeiten gleich sind. Die gesuchte Strecke ist der "Kipppunkt"!`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  {
+    id: 'M_2021_B_PROZ_3',
+    year: 2021,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `Familie Müller nutzt den Geschirrspüler alle 2 Tage. Programm-Tabelle: KURZ (0.6 kWh, 10l, 42min), NORMAL (0.8 kWh, 12l, 66min), UNIVERSAL (1.2 kWh, 17l, 84min), INTENSIV (1.7 kWh, 22l, 98min). Mit Spargang: −0.2 kWh und −2l.
+a) Berechne Wasser-Einsparung (l und %) bei NORMAL statt INTENSIV über 1 Jahr (364 Tage).
+b) Stromeinsparung in % bei KURZ mit Spargang.
+c) Geldersparnis für 200 Waschgänge: INTENSIV Hochtarif ohne Spargang vs. INTENSIV Niedertarif mit Spargang. (Strom: 0.17 Fr./kWh Niedertarif, 0.23 Fr./kWh Hochtarif; Wasser: 1.18 Fr./m³; Spülmittel: 0.15 Fr./Waschgang)`,
+    solution: {
+      intro: `🍽️ Geschirrspüler und Mathe? Ja, wirklich! So findest du heraus, wie viel Geld du mit dem richtigen Programm sparst. Mama wird stolz sein! 💰`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Wassereinsparung',
+          content: `364 Tage ÷ 2 = 182 Waschgänge/Jahr
+INTENSIV: 22 l/Waschgang; NORMAL: 12 l/Waschgang
+Einsparung pro Waschgang: 22 − 12 = 10 l
+Total: 182 × 10 = 1820 l
+Einsparung in %: 10/22 × 100 ≈ 45.45%`,
+        },
+        {
+          title: 'Schritt 2: b) Stromeinsparung KURZ mit Spargang',
+          content: `KURZ normal: 0.6 kWh → mit Spargang: 0.6 − 0.2 = 0.4 kWh
+Einsparung: 0.2 kWh
+% Einsparung: 0.2 / 0.6 × 100 ≈ 33.33%`,
+        },
+        {
+          title: 'Schritt 3: c) Geldersparnis',
+          content: `INTENSIV Hochtarif ohne Spargang (pro Waschgang):
+Strom: 1.7 × 0.23 = 0.391 Fr.
+Wasser: 22 l = 0.022 m³ × 1.18 = 0.026 Fr.
+Spülmittel: 0.15 Fr.
+Total: 0.567 Fr. × 200 = 113.40 Fr.
+
+INTENSIV Niedertarif mit Spargang:
+Strom: (1.7−0.2) × 0.17 = 1.5 × 0.17 = 0.255 Fr.
+Wasser: 20 l = 0.02 m³ × 1.18 = 0.0236 Fr.
+Spülmittel: 0.15 Fr.
+Total: 0.4286 Fr. × 200 = 85.72 Fr.
+
+Ersparnis: 113.40 − 85.72 = 27.68 Fr.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Wasserkosten aufpassen: 1 Liter = 0.001 m³! Immer alle Kostenkomponenten (Strom, Wasser, Spülmittel) berücksichtigen!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2021_B_WAHR_4',
+    year: 2021,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Wahrscheinlichkeit',
+    questionText: `Frau Müller hat 2 Kirschbäume. Baum A liefert 70%, Baum B den Rest (30%). 30% von Baum-A-Kirschen sind aufgeplatzt, von Baum B nur 10%.
+a) Zeichne einen Wahrscheinlichkeitsbaum und berechne: Wie viel % aller Kirschen sind NICHT aufgeplatzt?
+b) 1 Schälchen nicht aufgeplatzter Kirschen = 1 Fr., aufgeplatzte = 0.20 Fr. Insgesamt 100 Schälchen. Berechne die Einnahmen.`,
+    solution: {
+      intro: `🍒 Kirschen und Wahrscheinlichkeit – süss wie die Früchte selbst! Baumdiagramme sind wie Landkarten für den Zufall 🗺️`,
+      steps: [
+        {
+          title: 'Schritt 1: Wahrscheinlichkeitsbaum',
+          content: `Baum A (70%): aufgeplatzt 30% → P(A ∩ auf) = 0.70 × 0.30 = 0.21
+               nicht aufgeplatzt 70% → P(A ∩ n.auf) = 0.70 × 0.70 = 0.49
+Baum B (30%): aufgeplatzt 10% → P(B ∩ auf) = 0.30 × 0.10 = 0.03
+               nicht aufgeplatzt 90% → P(B ∩ n.auf) = 0.30 × 0.90 = 0.27`,
+        },
+        {
+          title: 'Schritt 2: a) Nicht aufgeplatzter Anteil',
+          content: `P(nicht aufgeplatzt) = 0.49 + 0.27 = 0.76 = 76%`,
+        },
+        {
+          title: 'Schritt 3: b) Einnahmen',
+          content: `Aufgeplatzter Anteil = 24% → 24 Schälchen × 0.20 Fr. = 4.80 Fr.
+Nicht aufgeplatzt = 76% → 76 Schälchen × 1.00 Fr. = 76.00 Fr.
+Total-Einnahmen = 80.80 Fr.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Im Baumdiagramm: entlang eines Pfades multiplizieren, zwischen Pfaden mit gleichem Ergebnis addieren. P(A und B) = P(A) × P(B|A)!`,
+      youtube: 'https://www.youtube.com/embed/KaFGDiXPAHc',
+    },
+  },
+
+  // ===================== AP 2022 =====================
+
+  {
+    id: 'M_2022_B_GESCH_1',
+    year: 2022,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `Kurt fährt mit dem Zug nach Frankfurt. Der Zug fährt 90 km/h. Durch das Fenster sieht er einen entgegenkommenden ICE vorbeifahren.
+a) Wie viele Meter legt Kurts Zug in einer Sekunde zurück?
+b) Wie viele km/h fährt der ICE, wenn die Vorbeifahrt des 450 m langen Zuges an Kurts Fenster genau 6 Sekunden dauert?`,
+    solution: {
+      intro: `🚄 Zwei Züge, ein Fenster, 6 Sekunden – das ist wie ein Mathe-Kurzfilm! Relative Geschwindigkeit ist das Zauberwort hier ✨`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Meter pro Sekunde',
+          content: `90 km/h = 90'000 m / 3600 s = 25 m/s
+Kurts Zug legt 25 Meter pro Sekunde zurück.`,
+        },
+        {
+          title: 'Schritt 2: b) ICE-Geschwindigkeit',
+          content: `Der ICE fährt entgegen → relative Geschwindigkeit = v_Kurt + v_ICE
+In 6 Sekunden passiert der 450 m lange ICE an Kurts Fenster vorbei.
+Relative Geschwindigkeit = 450 m / 6 s = 75 m/s
+v_ICE = 75 − 25 = 50 m/s = 50 × 3.6 = 180 km/h`,
+        },
+      ],
+      tip: `🎯 Merksatz: Gegenverkehr → Geschwindigkeiten addieren! Die "Vorbeifahrtzeit" bezieht sich auf die Länge des entgegenkommenden Zuges geteilt durch relative Geschwindigkeit.`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  {
+    id: 'M_2022_B_PROZ_2',
+    year: 2022,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `Bei Wahlen im Land X: Partei A 18%, Partei B 40%, Partei C: 708'000 Stimmen, Kleinparteien/ungültig 12%.
+a) Wie viele Wahlberechtigte haben gewählt?
+b) Von Partei-C-Wählern: 52% weiblich, davon 65% unter 40. Wie viele weibliche C-Wählerinnen sind 40 Jahre oder älter?
+c) 5% der A-Wähler wählten vor 4 Jahren noch B. Wie viel % hätte B ohne diese Wechsler erhalten?`,
+    solution: {
+      intro: `🗳️ Wahlen und Prozente – das bestimmt über unser Land! Und wir können jetzt selbst ausrechnen, was die Zahlen bedeuten 💪`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Gesamtwähler',
+          content: `Partei C Anteil = 100% − 18% − 40% − 12% = 30%
+C = 708'000 = 30% → Gesamt = 708'000 / 0.30 = 2'360'000 Wähler`,
+        },
+        {
+          title: 'Schritt 2: b) Ältere weibliche C-Wählerinnen',
+          content: `C-Wähler gesamt = 708'000
+Weiblich: 52% = 708'000 × 0.52 = 368'160
+Davon unter 40: 65% = 368'160 × 0.65 = 239'304
+40 Jahre oder älter: 368'160 − 239'304 = 128'856`,
+        },
+        {
+          title: 'Schritt 3: c) B ohne Wechsler',
+          content: `A-Wähler gesamt = 18% × 2'360'000 = 424'800
+5% wechselten von B zu A: 424'800 × 0.05 = 21'240 Personen
+Hätten B gewählt → B-Stimmen = 40% + 21'240
+B% alt = (40% × 2'360'000 + 21'240) / 2'360'000
+= (944'000 + 21'240) / 2'360'000 ≈ 40.9%`,
+        },
+      ],
+      tip: `🎯 Merksatz: Wenn alle %-Anteile bekannt und eine Zahl gegeben ist: Gesamt = bekannte Zahl / bekannter %-Anteil. Dann alle anderen Zahlen ableiten!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2022_B_PYTH_3',
+    year: 2022,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Pythagoras',
+    questionText: `Die Kugel eines Gaskessels hat Radius 14 m. Streben sind ebenfalls 14 m lang und berühren die Kugel. Der tiefste Punkt der Kugel liegt 4 m über dem Erdboden. Berechne den Abstand der Punkte A1 und A2 (Bodenbefestigung der Streben). Runde auf eine Nachkommastelle.`,
+    solution: {
+      intro: `⚙️ Riesen-Gaskessel mit Streben – Industrie meets Pythagoras! Das sieht krass aus, aber mit einer Skizze und rechtem Winkel wird's lösbar 🏗️`,
+      steps: [
+        {
+          title: 'Schritt 1: Geometrie verstehen',
+          content: `Kugelmittelpunkt liegt: 4 m (Boden bis Kugel-Unterseite) + 14 m (Radius) = 18 m über dem Boden
+Die Strebe (14 m) verläuft vom Boden (A1 oder A2) und berührt die Kugel tangential.
+Der Berührpunkt liegt auf der Kugel → Abstand Mittelpunkt-Berührpunkt = 14 m (Radius)
+Streben-Endpunkt am Boden (A) → Mittelpunkt (M) = 18 m Höhe`,
+        },
+        {
+          title: 'Schritt 2: Rechtwinkliges Dreieck',
+          content: `Dreieck: Bodenpunkt A – Kugelmittelpunkt M – Berührpunkt T
+Länge AM = ? (gesuchte Strecke A zu M, wobei A am Boden, M bei Höhe 18 m)
+AT = 14 m (Strebe), MT = 14 m (Radius, senkrecht zur Tangente!)
+AM² = AT² + TM²... 
+Nein! MT ⊥ AT (Tangente senkrecht zu Radius), daher: AM² = AT² + MT²
+AM = √(14² + 14²) = √392 ≈ 19.80 m`,
+        },
+        {
+          title: 'Schritt 3: Horizontaler Abstand und Gesamtabstand A1-A2',
+          content: `Horizontalabstand A zu Achse: √(AM² − 18²) = √(392 − 324) = √68 ≈ 8.25 m
+Abstand A1 zu A2 = 2 × 8.25 = 16.5 m`,
+        },
+      ],
+      tip: `🎯 Merksatz: Eine Tangente an einem Kreis steht IMMER senkrecht auf dem Radius im Berührpunkt. Das gibt ein rechtwinkliges Dreieck → Pythagoras!`,
+      youtube: 'https://www.youtube.com/embed/AA6RfgP-AHU',
+    },
+  },
+
+  {
+    id: 'M_2022_B_WAHR_4',
+    year: 2022,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Wahrscheinlichkeit',
+    questionText: `In einem Koffer: 200 Uhren, davon 70% Originale und 30% Fälschungen. Von Originalen sind 5% defekt, von Fälschungen 30%.
+a) Wie gross ist die Wahrscheinlichkeit, eine funktionierende Fälschung zu erhalten?
+b) Wie gross ist die Wahrscheinlichkeit, eine defekte Uhr zu nehmen?`,
+    solution: {
+      intro: `⌚ Uhr-Roulette! Echt oder Fälschung, kaputt oder nicht? Wir berechnen die Chancen mit dem Baumdiagramm! 🎰`,
+      steps: [
+        {
+          title: 'Schritt 1: Baumdiagramm aufstellen',
+          content: `Original (70%): defekt 5% → P = 0.70 × 0.05 = 0.035
+                    funktioniert 95% → P = 0.70 × 0.95 = 0.665
+Fälschung (30%): defekt 30% → P = 0.30 × 0.30 = 0.090
+                  funktioniert 70% → P = 0.30 × 0.70 = 0.210`,
+        },
+        {
+          title: 'Schritt 2: a) funktionierende Fälschung',
+          content: `P(Fälschung ∩ funktioniert) = 0.30 × 0.70 = 0.21 = 21%`,
+        },
+        {
+          title: 'Schritt 3: b) defekte Uhr',
+          content: `P(defekt) = P(Original ∩ defekt) + P(Fälschung ∩ defekt)
+= 0.035 + 0.090 = 0.125 = 12.5%`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Oder" bei Wahrscheinlichkeiten (wenn die Ereignisse sich nicht überschneiden) = Addieren. "Und" bei einem Pfad = Multiplizieren!`,
+      youtube: 'https://www.youtube.com/embed/KaFGDiXPAHc',
+    },
+  },
+
+  {
+    id: 'M_2022_B_VOL_5',
+    year: 2022,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Volumen und Körper',
+    questionText: `Aus einem senkrechten Prisma wird ein Quader herausgeschnitten, dessen Volumen ein Fünftel des Prismavolumens beträgt (Prisma: Grundfläche 20×13, Höhe 30; Quader: 50×13 eingeschnitten).
+a) Berechne das Volumen des Restkörpers.
+b) Berechne den Oberflächeninhalt des herausgeschnittenen Quaders.`,
+    solution: {
+      intro: `🪚 Aus einem Körper wird ein Stück rausgeschnitten – wie beim Kuchenbacken, nur eckiger! Volumen und Oberfläche warten auf dich 🎂`,
+      steps: [
+        {
+          title: 'Schritt 1: Prismavolumen',
+          content: `Grundfläche des Prismas: 20 × 13 = 260 (Einheiten aus der Figur: 20 und 13)
+Prisma-Höhe = 30
+V_Prisma = 260 × 30 = 7800 (Einheiten)
+
+Hinweis: Die genauen Abmessungen müssen aus der Originalfigur entnommen werden.
+Aus dem Text: Prisma 20 × 13, Höhe 30 und 50. → Siehe Lösung im PDF für exakte Figur`,
+        },
+        {
+          title: 'Schritt 2: a) Quader und Restkörper',
+          content: `V_Quader = 1/5 × V_Prisma
+V_Rest = V_Prisma − V_Quader = 4/5 × V_Prisma`,
+        },
+        {
+          title: 'Schritt 3: b) Oberfläche des Quaders',
+          content: `O = 2(l×b + l×h + b×h) mit den Massen aus der Figur → Siehe Lösung im PDF`,
+        },
+      ],
+      tip: `🎯 Merksatz: Restkörper-Volumen = Ganzes − Herausgeschnittenes. Oberfläche eines Quaders: O = 2(lb + lh + bh) – alle 3 verschiedenen Rechtecke je doppelt!`,
+      youtube: 'https://www.youtube.com/embed/MRqtXL2WX2M',
+    },
+  },
+
+  // ===================== AP 2023 =====================
+
+  {
+    id: 'M_2023_B_ALG_1',
+    year: 2023,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Algebra und Terme',
+    questionText: `In den USA wird die Temperatur in Grad Fahrenheit (°F) gemessen. Formel: °C = 5/9 × (°F − 32)
+a) Berechne die gesuchten Werte: 32°F = ?°C; ?°F = 200°C; ?°F = 45°C
+b) Löse die Formel von a) nach °F auf.`,
+    solution: {
+      intro: `🌡️ °F oder °C? In den USA muss man das umrechnen – und du kannst das nach dieser Aufgabe auch! Perfekt für die nächste Amerika-Reise ✈️`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Umrechnungen',
+          content: `32°F → °C = 5/9 × (32 − 32) = 5/9 × 0 = 0°C (Gefrierpunkt!)
+
+200°C → ?°F: 200 = 5/9 × (°F − 32)
+200 × 9/5 = °F − 32 → 360 = °F − 32 → °F = 392°F
+
+45°C → ?°F: 45 = 5/9 × (°F − 32)
+45 × 9/5 = °F − 32 → 81 = °F − 32 → °F = 113°F`,
+        },
+        {
+          title: 'Schritt 2: b) Formel nach °F auflösen',
+          content: `°C = 5/9 × (°F − 32)
+°C × 9/5 = °F − 32
+°F = °C × 9/5 + 32
+
+Oder: °F = (9/5) × °C + 32`,
+        },
+      ],
+      tip: `🎯 Merksatz: °F = °C × 9/5 + 32. Eselsbrücke: "Neun Fünftel plus zweiunddreissig" = Fahrenheit. Für −40° gilt: −40°C = −40°F (der einzige Punkt der gleich ist!)`,
+      youtube: 'https://www.youtube.com/embed/aaFrAFZATKU',
+    },
+  },
+
+  {
+    id: 'M_2023_B_PROZ_2',
+    year: 2023,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `Cem findet eine Jeans in Konstanz für 69.99 Euro. Mit Ausfuhrschein bekommt er die 19% Mehrwertsteuer zurück. In Kreuzlingen kostet die gleiche Hose 75 Fr., aber mit 25% After-Christmas-Rabatt. Kurs: 1 Euro = 0.98 Fr.
+a) Wo soll Cem kaufen? Begründe rechnerisch.
+b) Wie viel Prozent spart er beim günstigeren Angebot?`,
+    solution: {
+      intro: `👖 Jeans-Shopping auf der Grenze! Konstanz vs. Kreuzlingen – wer gewinnt? Lass uns das ehrlich ausrechnen! 🛍️`,
+      steps: [
+        {
+          title: 'Schritt 1: Preis in Konstanz (ohne MwSt.)',
+          content: `Preis mit MwSt. = 69.99 Euro
+Netto (ohne 19% MwSt.) = 69.99 / 1.19 ≈ 58.82 Euro
+In Franken: 58.82 × 0.98 ≈ 57.64 Fr.`,
+        },
+        {
+          title: 'Schritt 2: Preis in Kreuzlingen (mit Rabatt)',
+          content: `Preis ohne Rabatt = 75 Fr.
+Mit 25% Rabatt: 75 × (1 − 0.25) = 75 × 0.75 = 56.25 Fr.`,
+        },
+        {
+          title: 'Schritt 3: Vergleich und %-Ersparnis',
+          content: `Konstanz: 57.64 Fr.
+Kreuzlingen: 56.25 Fr.
+→ Kreuzlingen ist günstiger! 🎉
+
+Differenz: 57.64 − 56.25 = 1.39 Fr.
+% Ersparnis = 1.39 / 57.64 × 100 ≈ 2.4%`,
+        },
+      ],
+      tip: `🎯 Merksatz: MwSt. zurückbekommen = Bruttopreis ÷ (1 + MwSt./100). Dann in andere Währung umrechnen. Immer alles in DIESELBE Währung bringen vor dem Vergleich!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2023_B_PYTH_3',
+    year: 2023,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Pythagoras',
+    questionText: `Ein Würfel mit Kantenlänge 24 cm wird durch eine Ebene geschnitten. Die Ecken der Schnittfigur (ein gleichschenkliges Trapez) haben von den Würfelecken jeweils 6 cm Abstand.
+a) Berechne alle Seitenlängen des Trapezes.
+b) Berechne die Höhe h des Trapezes.
+c) Berechne die Länge einer Diagonale d. Runde auf 2 Nachkommastellen.`,
+    solution: {
+      intro: `🎲 Ein Würfel wird aufgeschnitten und es entsteht ein Trapez! Das klingt nach Zauberei, ist aber Pythagoras pur! ✂️`,
+      steps: [
+        {
+          title: 'Schritt 1: Seitenlängen des Trapezes',
+          content: `Würfelkante = 24 cm. Ecken der Schnittfigur sind 6 cm von Würfelecken entfernt.
+Kurze parallele Seite: auf einer Kante, 6 cm von jeder Ecke → Länge = 24 − 6 − 6 = 12 cm
+Lange parallele Seite: auf einer Fläche/Kante → Länge = 24 − 6 + 6 = 24 cm (die Diagonale der Fläche)
+
+Schenkel (schräge Seite): verbindet Ende der kurzen mit Ende der langen Seite. 
+Pythagoras: c² = 6² + 6² = 72 → c = √72 = 6√2 ≈ 8.49 cm`,
+        },
+        {
+          title: 'Schritt 2: b) Höhe des Trapezes',
+          content: `Trapez: kurze Seite 12, lange Seite 24, Schenkel 6√2
+Überstand auf jeder Seite: (24 − 12)/2 = 6 cm
+h = √(Schenkel² − Überstand²) = √((6√2)² − 6²) = √(72 − 36) = √36 = 6 cm`,
+        },
+        {
+          title: 'Schritt 3: c) Diagonale',
+          content: `Diagonale verbindet eine Ecke der kurzen Seite mit der gegenüberliegenden Ecke der langen Seite.
+d² = (kurze Seite + Überstand)² + h² = (12 + 6)² + 6²... 
+Nein: d² = (Länge der Projektion auf lange Seite)² + h²
+= (12 + 6)² + 6² = 324 + 36 = 360 → d = √360 ≈ 18.97 cm`,
+        },
+      ],
+      tip: `🎯 Merksatz: Beim Trapez immer zuerst den "Überstand" rechts und links berechnen = (lange − kurze Seite) / 2. Dann mit Pythagoras die Höhe!`,
+      youtube: 'https://www.youtube.com/embed/AA6RfgP-AHU',
+    },
+  },
+
+  {
+    id: 'M_2023_B_WAHR_5',
+    year: 2023,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Wahrscheinlichkeit',
+    questionText: `In einem Behälter: 3 rote, 3 weisse und 2 blaue Kugeln. Zwei Kugeln werden OHNE Zurücklegen gezogen.
+a) Zeichne einen vollständigen Wahrscheinlichkeitsbaum.
+b) Mit welcher Wahrscheinlichkeit ist keine der Kugeln rot?
+c) Berechne die Wahrscheinlichkeit, dass mindestens eine Kugel weiss oder blau ist.
+d) Zu welchem Pfad passt die Wahrscheinlichkeit 1/28?`,
+    solution: {
+      intro: `🟥⚪🔵 Farbige Kugeln ziehen – spannend wie eine Blindbox! Aber wir BERECHNEN die Chancen, statt zu hoffen 😄`,
+      steps: [
+        {
+          title: 'Schritt 1: Wahrscheinlichkeiten im Baum (ohne Zurücklegen)',
+          content: `Gesamt: 8 Kugeln (3R, 3W, 2B)
+1. Zug: P(R) = 3/8, P(W) = 3/8, P(B) = 2/8
+2. Zug (nach roter): P(R|R) = 2/7, P(W|R) = 3/7, P(B|R) = 2/7
+2. Zug (nach weisser): P(R|W) = 3/7, P(W|W) = 2/7, P(B|W) = 2/7
+2. Zug (nach blauer): P(R|B) = 3/7, P(W|B) = 3/7, P(B|B) = 1/7`,
+        },
+        {
+          title: 'Schritt 2: b) Keine rote Kugel',
+          content: `P(keine R) = P(W,W) + P(W,B) + P(B,W) + P(B,B)
+= 3/8×2/7 + 3/8×2/7 + 2/8×3/7 + 2/8×1/7
+= 6/56 + 6/56 + 6/56 + 2/56 = 20/56 = 5/14`,
+        },
+        {
+          title: 'Schritt 3: c) & d)',
+          content: `c) Mindestens eine W oder B = 1 − P(beide rot) = 1 − 3/8×2/7 = 1 − 6/56 = 50/56 = 25/28
+
+d) 1/28 = 2/56: Pfad mit Produkt 2/56
+Möglichkeiten: P(B,B) = 2/8 × 1/7 = 2/56 = 1/28 ✓
+→ Passt zum Pfad: erste Kugel blau, zweite Kugel blau`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Ohne Zurücklegen" = nach dem ersten Zug sind es nur noch 7 Kugeln! Immer den Nenner im zweiten Zug auf n−1 setzen.`,
+      youtube: 'https://www.youtube.com/embed/KaFGDiXPAHc',
+    },
+  },
+
+  {
+    id: 'M_2023_B_GESCH_6',
+    year: 2023,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `Simon (9 km/h) und Tanja (18 km/h) starten gleichzeitig am Ort A. 13 Minuten später startet ein Rennvelofahrer (33 km/h) ebenfalls von A.
+a) Stelle einen Term für die Streckenmitte von Simon und Tanja zu Zeitpunkt t auf.
+b) Welche Strecke ist der Rennvelofahrer zum Zeitpunkt t gefahren (t nach Abfahrt der anderen)?
+c) Wie viele Minuten nach seinem Start ist der Rennvelofahrer genau in der Mitte von Simon und Tanja?`,
+    solution: {
+      intro: `🚴‍♀️🚴‍♂️ Drei Velofahrer, ein Ort – wann trifft der Schnelle genau die Mitte der anderen? Gleichungen lösen wie ein Mathe-Ninja! 🥷`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Streckenmitte Simon-Tanja',
+          content: `t in Stunden ab Start von Simon/Tanja
+Simon-Strecke: 9t km
+Tanja-Strecke: 18t km
+Mitte = (9t + 18t) / 2 = 27t/2 = 13.5t km`,
+        },
+        {
+          title: 'Schritt 2: b) Strecke des Rennfahrers',
+          content: `Rennfahrer startet 13 min = 13/60 h später.
+Wenn t die Zeit seit START von Simon/Tanja ist:
+Rennfahrer fährt seit (t − 13/60) h
+Strecke Rennfahrer = 33 × (t − 13/60) km (nur für t > 13/60)`,
+        },
+        {
+          title: 'Schritt 3: c) Gleichung lösen',
+          content: `Rennfahrer = Mitte:
+33(t − 13/60) = 13.5t
+33t − 33×13/60 = 13.5t
+19.5t = 429/60 = 7.15
+t = 7.15 / 19.5 ≈ 0.3667 h = 22 min ab Start Simon/Tanja
+→ Rennfahrer fährt seit: 22 − 13 = 9 Minuten nach SEINEM Start`,
+        },
+      ],
+      tip: `🎯 Merksatz: Strecke = v × t. "Mitte" zweier Objekte = (s1 + s2) / 2. Wenn ein Starter später anfährt, seine Zeit ist (t_gesamt − Verzögerung).`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  // ===================== AP 2024 =====================
+
+  {
+    id: 'M_2024_B_FUNK_1',
+    year: 2024,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Funktionen und Geraden',
+    questionText: `Ein quaderförmiges Schwimmbecken mit Wasserhöhe 2.5 m wird leer gepumpt. Der Wasserspiegel sinkt um 0.4 m pro Stunde.
+a) Vervollständige die Wertetabelle: x=0: y=?; x=1: y=?; x=?: y=1.1; x=?: y=0.5
+b) Zeichne die Gerade in das Koordinatensystem.
+c) Notiere die Geradengleichung.
+d) Nach wie vielen Stunden und Minuten ist das Becken leer?
+e) Die Pumpe bewegt 6 m³ Wasser/h. Wie gross ist die Grundfläche des Beckens?`,
+    solution: {
+      intro: `🏊 Das Schwimmbecken wird leer gepumpt – linear, präzise, mathematisch! Geradengleichungen im echten Leben 📉`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Wertetabelle',
+          content: `y = 2.5 − 0.4x (x = Zeit in h, y = Wasserhöhe in m)
+x=0: y = 2.5
+x=1: y = 2.1
+y=1.1: 1.1 = 2.5 − 0.4x → x = 3.5
+y=0.5: 0.5 = 2.5 − 0.4x → x = 5`,
+        },
+        {
+          title: 'Schritt 2: b) & c) Geradengleichung',
+          content: `y = −0.4x + 2.5
+Steigung m = −0.4 (pro Stunde sinkt es um 0.4 m)
+y-Achsenabschnitt b = 2.5 (Anfangshöhe)`,
+        },
+        {
+          title: 'Schritt 3: d) & e) Leerzeit und Grundfläche',
+          content: `d) Becken leer: y = 0 → 0 = −0.4x + 2.5 → x = 6.25 h = 6h 15min
+
+e) Die Pumpe entfernt 0.4 m Höhe pro Stunde = 6 m³/h
+Grundfläche = 6 m³/h ÷ 0.4 m/h = 15 m²`,
+        },
+      ],
+      tip: `🎯 Merksatz: Lineare Funktion y = mx + b. Bei Abnahme: m negativ. "Wann leer?" → y=0 setzen und nach x auflösen. Grundfläche = Volumen/Höhe!`,
+      youtube: 'https://www.youtube.com/embed/Iz0eTxlpGbU',
+    },
+  },
+
+  {
+    id: 'M_2024_B_PROZ_2a',
+    year: 2024,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Mischungsrechnung',
+    questionText: `a) Tina mischt zwei Sorten Marmelade. Erste Sorte: 30% Kirschen, zweite Sorte: 40% Kirschen. Sie mischt 500 g der ersten mit 750 g der zweiten Sorte. Wie gross ist der Prozentanteil der Kirschen im Gemisch?`,
+    solution: {
+      intro: `🍓 Marmeladen mischen ist Küchenmathe! Wir berechnen, wie "kirschig" das Endprodukt wirklich ist 😋`,
+      steps: [
+        {
+          title: 'Schritt 1: Kirschen in jeder Sorte berechnen',
+          content: `Sorte 1: 500 g × 30% = 150 g Kirschen
+Sorte 2: 750 g × 40% = 300 g Kirschen`,
+        },
+        {
+          title: 'Schritt 2: Gesamtmasse und %-Anteil',
+          content: `Gesamtmasse = 500 + 750 = 1250 g
+Gesamte Kirschen = 150 + 300 = 450 g
+%-Anteil = 450 / 1250 × 100 = 36%
+
+Das Gemisch enthält 36% Kirschen.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Bei Mischungsaufgaben: NIEMALS die %-Zahlen einfach mitteln! Immer absolute Mengen berechnen, dann erst durch die Gesamtmenge teilen!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2024_B_PROZ_2b',
+    year: 2024,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `b) 10 kg ungerösteter Kaffee kosten CHF 85.80. Beim Rösten gehen 22% des Gewichts verloren. Wie viel kosten 15 kg gerösteter Kaffee?`,
+    solution: {
+      intro: `☕ Kaffeebohnen schrumpfen beim Rösten – aber der Preis bleibt! Wir rechnen den "echten" Kilopreis nach dem Rösten 🔥`,
+      steps: [
+        {
+          title: 'Schritt 1: Preis pro kg ungeröstet',
+          content: `Preis/kg ungeröstet = 85.80 / 10 = CHF 8.58/kg`,
+        },
+        {
+          title: 'Schritt 2: Gewichtsverlust beim Rösten',
+          content: `Beim Rösten: 22% Gewichtsverlust → 1 kg ungeröstet ergibt 0.78 kg geröstet
+Preis/kg geröstet = 8.58 / 0.78 ≈ CHF 11.00/kg`,
+        },
+        {
+          title: 'Schritt 3: Preis für 15 kg geröstet',
+          content: `15 kg × 11.00 = CHF 165.00
+
+15 kg gerösteter Kaffee kosten CHF 165.-.`,
+        },
+      ],
+      tip: `🎯 Merksatz: 22% Verlust = nur 78% bleibt übrig. Preis pro kg nach Verlust = alter Preis / 0.78. Weniger Gewicht → höherer Preis pro kg!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2024_B_PYTH_4',
+    year: 2024,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Pythagoras',
+    questionText: `Am Rande eines Pools soll eine Rutschbahn aufgestellt werden (Dreieck FBS mit Stützen s1 und s2).
+a) Berechne die Fläche des Dreiecks FBS (Stoffnetz).
+b) Berechne die Breite AB des Platzes.
+c) Wie weit vom Beckenrand ist s1, und wie lang ist s1?
+d) s2 ist unter der Mitte der Rutschfläche. Wie lang muss s2 sein?
+e) Berechne das Gefälle der Rutschfläche in Prozent.`,
+    solution: {
+      intro: `🏊‍♀️ Rutschbahn-Mathe! Du berechnest, wie steil du runterrutschst. Pythagoras rettet deinen Sommerspass! ☀️`,
+      steps: [
+        {
+          title: 'Hinweis',
+          content: `Diese Aufgabe benötigt die genauen Masse aus der Skizze im Original-PDF (Höhe und Breite der Rutsche, Position der Stützen). 
+Die Berechnungen verwenden den Satz des Pythagoras für rechtwinklige Dreiecke und den trigonometrischen Zusammenhang für das Gefälle.
+Gefälle = Höhe / horizontale Strecke × 100%.
+→ Siehe Lösung im PDF für alle exakten Werte.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Gefälle in % = (Höhenunterschied / horizontale Distanz) × 100. Stütze = senkrechte Linie vom Boden zur Rutschfläche → Abstand mit Pythagoras!`,
+      youtube: 'https://www.youtube.com/embed/AA6RfgP-AHU',
+    },
+  },
+
+  {
+    id: 'M_2024_B_VOL_5',
+    year: 2024,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Volumen und Körper',
+    questionText: `Eines der Hindernisse beim 3000m-Hindernislauf ist der Wassergraben. (Masse aus Skizze)
+a) Wie viele Liter Wasser sind zum Füllen des Wassergrabens erforderlich?
+b) Welche der abgebildeten Grafiken beschreibt den Zusammenhang zwischen Wasservolumen V und Füllhöhe h beim leeren Füllen?`,
+    solution: {
+      intro: `🏃‍♂️ Der Wassergraben beim Hindernislauf – eklig zu überspringen, aber interessant zum Berechnen! Keilförmige Körper warten auf uns 🌊`,
+      steps: [
+        {
+          title: 'Hinweis zu a)',
+          content: `Der Wassergraben hat eine keilförmige/prismatische Form. Das Volumen berechnet sich als:
+V = Querschnittsfläche × Breite
+Die Querschnittsfläche ist ein Dreieck oder Trapez (aus der Skizze).
+→ Genaue Masse aus Originalskizze nötig. Ergebnis in Liter (1 m³ = 1000 l). → Siehe Lösung im PDF`,
+        },
+        {
+          title: 'Hinweis zu b)',
+          content: `Bei einem keilförmigen Graben: am Anfang (bei niedriger Füllhöhe) nimmt das Volumen langsamer zu als später (breiterer Bereich). 
+→ Die Kurve ist konvex (nach oben gewölbt, nicht linear).
+Die passende Grafik zeigt eine Kurve, die anfangs flach ist und dann steiler wird.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Prisma-Volumen = Grundfläche × Länge. Bei keilförmigen Körpern: Querschnitt (Dreieck) × Länge. Und 1 m³ = 1000 Liter – nie vergessen!`,
+      youtube: 'https://www.youtube.com/embed/MRqtXL2WX2M',
+    },
+  },
+
+  {
+    id: 'M_2024_B_WAHR_6',
+    year: 2024,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Wahrscheinlichkeit',
+    questionText: `Glücksspiel: Behälter mit 5 roten, 3 weissen und 2 schwarzen Kugeln. Spielerin zahlt Einsatz und zieht 2 Kugeln OHNE Zurücklegen.
+a) Zeichne einen Wahrscheinlichkeitsbaum.
+b) Variante A: Gewinn wenn beide gleich. Variante B: Gewinn wenn keine rot. Variante C: Gewinn wenn genau eine schwarz.
+Berechne Wahrscheinlichkeit für A, B und C. Welche Variante wählen Karin und Martin, wenn die Klasse möglichst viel Geld einnehmen will?`,
+    solution: {
+      intro: `🎰 Schulkasse macht Glücksspiel – aber die Chancen sind auf UNSERER Seite, wenn wir rechnen können! Wer verliert häufiger? 🧮`,
+      steps: [
+        {
+          title: 'Schritt 1: Grundwahrscheinlichkeiten',
+          content: `Gesamt: 10 Kugeln (5R, 3W, 2S)
+P(R) = 5/10 = 1/2; P(W) = 3/10; P(S) = 2/10 = 1/5`,
+        },
+        {
+          title: 'Schritt 2: Variante A (beide gleich)',
+          content: `P(RR) = 5/10 × 4/9 = 20/90
+P(WW) = 3/10 × 2/9 = 6/90
+P(SS) = 2/10 × 1/9 = 2/90
+P(A) = 28/90 = 14/45 ≈ 31.1%`,
+        },
+        {
+          title: 'Schritt 3: Variante B und C',
+          content: `B (keine rot):
+P(B) = P(WW) + P(WS) + P(SW) + P(SS)
+= 6/90 + 3/10×2/9 + 2/10×3/9 + 2/90
+= 6/90 + 6/90 + 6/90 + 2/90 = 20/90 = 2/9 ≈ 22.2%
+
+C (genau eine schwarz):
+P(RS) + P(SR) + P(WS) + P(SW)
+= 5/10×2/9 + 2/10×5/9 + 3/10×2/9 + 2/10×3/9
+= 10+10+6+6 / 90 = 32/90 = 16/45 ≈ 35.6%
+
+Möglichst viel Geld = Spieler soll häufig verlieren = Gewinnwahrscheinlichkeit soll KLEIN sein.
+→ Variante B (22.2%) ist am kleinsten → Karin und Martin wählen B!`,
+        },
+      ],
+      tip: `🎯 Merksatz: Klasse verdient Geld wenn Spieler verliert. Also: die Variante mit der KLEINSTEN Gewinnwahrscheinlichkeit für den Spieler ist am besten für die Klasse!`,
+      youtube: 'https://www.youtube.com/embed/KaFGDiXPAHc',
+    },
+  },
+
+  // ===================== AP 2025 =====================
+
+  {
+    id: 'M_2025_B_VOL_1',
+    year: 2025,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Volumen und Körper',
+    questionText: `Natalie erbt einen prismenförmigen Goldbarren: Länge 12 cm, Höhe 0.8 cm, obere Vorderkante 4 cm, untere Vorderkante 6 cm. Dichte Gold: 19.3 g/cm³. 1 kg Gold = 71'070 Fr.
+Wie viel ist ihr kleiner Goldbarren wert?`,
+    solution: {
+      intro: `💰 GOLD! Wie viel ist ein echter Goldbarren wert? Mit Volumen und Dichte kannst du das selbst berechnen! Schnell, das Erbe wartet! ✨`,
+      steps: [
+        {
+          title: 'Schritt 1: Querschnittsfläche (Trapez)',
+          content: `Der Querschnitt ist ein Trapez mit:
+parallele Seiten: a = 4 cm (oben) und c = 6 cm (unten)
+Höhe (des Trapezes): h = 0.8 cm
+Fläche = (a + c) / 2 × h = (4 + 6) / 2 × 0.8 = 5 × 0.8 = 4 cm²`,
+        },
+        {
+          title: 'Schritt 2: Volumen des Prismas',
+          content: `V = Querschnittsfläche × Länge = 4 × 12 = 48 cm³`,
+        },
+        {
+          title: 'Schritt 3: Masse und Wert',
+          content: `Masse = V × Dichte = 48 × 19.3 = 926.4 g = 0.9264 kg
+Wert = 0.9264 × 71'070 ≈ 65'848 Fr.
+
+Der Goldbarren ist ca. 65'848 Franken wert! 🤑`,
+        },
+      ],
+      tip: `🎯 Merksatz: Prisma-Volumen = Querschnittsfläche × Länge. Goldbarren haben oft trapezförmigen Querschnitt. Masse = Volumen × Dichte (Einheiten beachten: g/cm³ und cm³ → Ergebnis in g).`,
+      youtube: 'https://www.youtube.com/embed/MRqtXL2WX2M',
+    },
+  },
+
+  {
+    id: 'M_2025_B_FUNK_2',
+    year: 2025,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Funktionen und Geraden',
+    questionText: `Finde zu jeder Situation den am besten passenden Funktionsgraphen:
+a) Ich löse an der Talstation eine Tageskarte und kann so viel Skifahren wie ich will.
+b) Pro 2 kg gekaufte Äpfel erhalte ich jeweils ein weiteres Kilo kostenlos dazu.
+c) Auf der Stromrechnung: erst Grundgebühr, dann gleichbleibender Preis pro kWh.
+d) Während Frühlingsferien werde ich im Stundenlohn bezahlt.
+e) Formelsammlungen: bis 20 Stück zum Ladenpreis, jedes weitere 10% Rabatt.`,
+    solution: {
+      intro: `📈 Graphen im Alltag! Jede Situation hat ihre eigene Kurve. Erkennen wir sie? Das ist wie ein Detektiv-Quiz für Mathe-Nerds 🕵️`,
+      steps: [
+        {
+          title: 'Schritt 1: Situationen analysieren',
+          content: `a) Tageskarte = fixer Preis, egal wie viel gefahren → KONSTANTE Funktion (waagrechte Linie) → aber Kosten pro Fahrt sinkt. Die Gesamtkosten sind konstant = horizontale Linie.
+b) Jedes 3. kg gratis → Kosten steigen stufenweise alle 2 kg (Sprünge, dann wieder gleich) → TREPPENFUNKTION
+c) Grundgebühr + linearer Anteil → LINEAR mit y-Achsenabschnitt > 0 (beginnt höher als 0)
+d) Stundenlohn = pro Stunde gleichviel → LINEAR durch Ursprung (y = kx, b=0)
+e) Bis 20 Stück: linearer Preis, danach: günstigere Steigung → KNICK-Funktion (zwei verschiedene Steigungen)`,
+        },
+        {
+          title: 'Hinweis',
+          content: `Die genauen Grafik-Nummern (I bis VI oder ähnlich) können nur mit dem Original-PDF zugeordnet werden. → Siehe Lösung im PDF`,
+        },
+      ],
+      tip: `🎯 Merksatz: Konstant = waagrechte Linie. Linear durch Ursprung = proportional (je mehr, desto mehr, ab 0). Linear mit b>0 = Grundgebühr. Treppe = Mengenstaffel. Knick = Preiswechsel ab einem Schwellenwert!`,
+      youtube: 'https://www.youtube.com/embed/Iz0eTxlpGbU',
+    },
+  },
+
+  {
+    id: 'M_2025_B_PROZ_3',
+    year: 2025,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Prozentrechnung',
+    questionText: `In einem Sportgeschäft sind alle Artikel um 20% reduziert. Rudi kauft ein Rennrad für 460 Fr. Er weiss nicht, dass der Preis in der Woche vorher um 15% erhöht wurde.
+a) Wie viel kostete das Rad ursprünglich?
+b) Wie viel Prozent beträgt der Preisnachlass in Wirklichkeit?`,
+    solution: {
+      intro: `🚲 Preiserhöhung + Rabatt = Falle! Händler kennen diese Tricks. Wir lassen uns nicht täuschen und rechnen nach! 🧠`,
+      steps: [
+        {
+          title: 'Schritt 1: Preis vor der Jubiläums-Reduktion',
+          content: `460 Fr. = Preis nach 20% Reduktion
+Preis vor Reduktion = 460 / 0.80 = 575 Fr.`,
+        },
+        {
+          title: 'Schritt 2: Ursprünglicher Preis (vor der 15% Erhöhung)',
+          content: `575 Fr. = Preis nach 15% Erhöhung
+Ursprungspreis = 575 / 1.15 = 500 Fr.`,
+        },
+        {
+          title: 'Schritt 3: Wirklicher Preisnachlass',
+          content: `Originalpreis: 500 Fr.
+Kaufpreis: 460 Fr.
+Ersparnis: 500 − 460 = 40 Fr.
+% Nachlass = 40 / 500 × 100 = 8%
+
+In Wirklichkeit spart Rudi nur 8%, nicht 20%! Die Erhöhung um 15% frisst den grössten Teil des Rabatts auf.`,
+        },
+      ],
+      tip: `🎯 Merksatz: Erst erhöhen, dann senken = NICHT dasselbe wie einfach senken! +15% dann −20%: 1.15 × 0.80 = 0.92 → nur 8% billiger als Original!`,
+      youtube: 'https://www.youtube.com/embed/OtMv_bMcxjE',
+    },
+  },
+
+  {
+    id: 'M_2025_B_GESCH_5',
+    year: 2025,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Geschwindigkeit und Zeit',
+    questionText: `Ein Krankenwagen braucht 18 min für den direkten Weg von der Einsatzzentrale zum Krankenhaus bei 65 km/h.
+a) Wie weit ist das Krankenhaus von der Einsatzzentrale entfernt?
+Der Krankenwagen fährt zu einem Unfallort 26 km von der Zentrale.
+b) Wie lange hat der Krankenwagen (in Minuten) bis er am Unfallort ist?
+Dann fährt er mit Verletzten 36 km zum Krankenhaus. Gleichzeitig fährt ein Notarztfahrzeug (95 km/h) vom Krankenhaus entgegen.
+c) Wie lange bis sie sich treffen (in Minuten und Sekunden)?
+d) Wie weit ist der Treffpunkt vom Krankenhaus entfernt (in Metern)?`,
+    solution: {
+      intro: `🚑 Leben retten und Mathe anwenden! Der Krankenwagen ist unterwegs – und du berechnest wo er auf den Notarzt trifft. Kein Druck! 😅`,
+      steps: [
+        {
+          title: 'Schritt 1: a) Distanz Zentrale-Krankenhaus',
+          content: `t = 18 min = 18/60 h = 0.3 h
+s = v × t = 65 × 0.3 = 19.5 km`,
+        },
+        {
+          title: 'Schritt 2: b) Fahrzeit zum Unfallort',
+          content: `s = 26 km, v = 65 km/h
+t = s/v = 26/65 = 0.4 h = 24 Minuten`,
+        },
+        {
+          title: 'Schritt 3: c) Begegnungszeit',
+          content: `Krankenwagen: 65 km/h, Notarzt: 95 km/h, entgegen
+Relative Geschwindigkeit = 65 + 95 = 160 km/h
+Distanz = 36 km
+Zeit = 36/160 h = 0.225 h = 13.5 min = 13 Minuten 30 Sekunden`,
+        },
+        {
+          title: 'Schritt 4: d) Treffpunkt',
+          content: `Notarzt fährt in 13.5 min = 0.225 h:
+s_Notarzt = 95 × 0.225 = 21.375 km vom Krankenhaus entfernt
+= 21'375 Meter vom Krankenhaus`,
+        },
+      ],
+      tip: `🎯 Merksatz: Gegeneinander fahren → Geschwindigkeiten addieren. Treffpunkt vom Startort X = v_X × Treffzeit. Immer von DEMSELBEN Ausgangspunkt messen!`,
+      youtube: 'https://www.youtube.com/embed/N8HrBv4SKFY',
+    },
+  },
+
+  {
+    id: 'M_2025_B_KOMB_7',
+    year: 2025,
+    subject: 'Mathe',
+    exam: 'M2 mit TR',
+    group: 'Alte Prüfungen',
+    topic: 'Kombinatorik',
+    questionText: `Tim soll 4 Flaschen Saft einkaufen. Es gibt: T=Traubensaft, A=Apfelsaft, R=Rhabarbersaft. Wie viele Einkaufsmöglichkeiten hat er, wenn egal ist, wie viele Flaschen er von welchem Saft kauft? Liste alle Möglichkeiten auf.`,
+    solution: {
+      intro: `🧃 Safteinkauf mit Mathe! Wie viele verschiedene Kombinationen gibt es mit 4 Flaschen aus 3 Sorten? Systematisch aufzählen ist der Schlüssel! 📋`,
+      steps: [
+        {
+          title: 'Schritt 1: Systematisch auflisten (T ≥ A ≥ R)',
+          content: `Alle Kombinationen mit 4 Flaschen aus {T, A, R}:
+
+4 von einer Sorte:
+TTTT, AAAA, RRRR (3 Möglichkeiten)
+
+3 von einer, 1 von anderer:
+TTTA, TTTR, AAAT, AAAR, RRRT, RRRA (6 Möglichkeiten)
+
+2 von einer, 2 von anderer:
+TTAA, TTRR, AARR (3 Möglichkeiten)
+
+2 von einer, 1, 1:
+TTAR, AATR, RRTA (3 Möglichkeiten)
+
+Total: 3 + 6 + 3 + 3 = 15 Möglichkeiten`,
+        },
+        {
+          title: 'Schritt 2: Vollständige Liste',
+          content: `TTTT | AAAA | RRRR
+TTTA | TTTR | AAAT | AAAR | RRRA | RRRT
+TTAA | TTRR | AARR
+TTAR | TAAR | TARR`,
+        },
+      ],
+      tip: `🎯 Merksatz: "Kombination mit Wiederholung" = (n+k−1)! / (k!(n−1)!) wobei n=Sorten, k=Anzahl. Hier: (3+4−1)! / (4!×2!) = 6!/(4!×2!) = 15. Aber immer auch systematisch aufzählen können!`,
+      youtube: 'https://www.youtube.com/embed/KaFGDiXPAHc',
+    },
+  },
+
+];
