@@ -89,4 +89,9 @@ export const facts = [
     text: 'Das Wort "Müesli" ist eines der wenigen Schweizerdeutschen Wörter, das es in viele Sprachen auf der ganzen Welt geschafft hat.',
     emoji: '🥣'
   },
+    {
+    category: '❤️ Für dich',
+    text: 'Diese App wurde für jemanden Besonderes gebaut. Wer auch immer du bist — du hast es verdient, hier zu sein. Vertrau dir. ❤️',
+    emoji: '❤️'
+  },
 ];
