@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { questions } from './lib/questions';
 import { facts } from './lib/facts';
+import LinksPage from './LinksPage';
 
 // ─── BUILD TREE ───────────────────────────────────────────────────────────
 function buildTree(subject) {
@@ -44,7 +45,6 @@ function LofiPlayer() {
   const gainRef = useRef(null);
   const oscsRef = useRef([]);
   const animRef = useRef(null);
-
   const track = lofiTracks[trackIdx];
   const color = '#534AB7';
 
@@ -71,7 +71,7 @@ function LofiPlayer() {
       osc.start(); osc.stop(ctx.currentTime + 3.8);
       oscsRef.current.push(osc);
     });
-    return setTimeout(() => { if (audioRef.current) playChord(ctx, gain, freq); }, 3500);
+    setTimeout(() => { if (audioRef.current) playChord(ctx, gain, freq); }, 3500);
   }
 
   function startAudio(idx, volume) {
@@ -102,30 +102,19 @@ function LofiPlayer() {
   }
 
   useEffect(() => () => stopAudio(), []);
-
   const displayEmoji = isPlaying ? lofiEmojis[emojiIdx] : track.emoji;
 
   return (
-    <div style={{
-      padding: '10px 14px', borderBottom: '1px solid #e5e3f0',
-      display: 'flex', alignItems: 'center', gap: '8px',
-      background: isPlaying ? '#f0eeff' : '#f8f7ff',
-    }}>
+    <div style={{ padding: '10px 14px', borderBottom: '1px solid #e5e3f0', display: 'flex', alignItems: 'center', gap: '8px', background: isPlaying ? '#f0eeff' : '#f8f7ff' }}>
       <span style={{ fontSize: '16px', width: '20px', textAlign: 'center' }}>{displayEmoji}</span>
       <div style={{ flex: 1, minWidth: 0 }}>
         <p style={{ margin: 0, fontSize: '11px', fontWeight: '600', color: '#1a1a2e', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{track.name}</p>
         <p style={{ margin: 0, fontSize: '10px', color: '#999' }}>{track.vibe}</p>
       </div>
       <button onClick={() => changeTrack(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#999', fontSize: '12px', padding: '2px' }}>⏮</button>
-      <button onClick={toggle} style={{
-        width: '28px', height: '28px', borderRadius: '50%',
-        background: isPlaying ? color : '#e5e3f0',
-        border: 'none', cursor: 'pointer', color: isPlaying ? '#fff' : '#666',
-        fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-      }}>{isPlaying ? '⏸' : '▶'}</button>
+      <button onClick={toggle} style={{ width: '28px', height: '28px', borderRadius: '50%', background: isPlaying ? color : '#e5e3f0', border: 'none', cursor: 'pointer', color: isPlaying ? '#fff' : '#666', fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{isPlaying ? '⏸' : '▶'}</button>
       <button onClick={() => changeTrack(1)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#999', fontSize: '12px', padding: '2px' }}>⏭</button>
-      <input type="range" min="0" max="100" value={vol} onChange={e => changeVol(Number(e.target.value))}
-        style={{ width: '50px' }} />
+      <input type="range" min="0" max="100" value={vol} onChange={e => changeVol(Number(e.target.value))} style={{ width: '50px' }} />
     </div>
   );
 }
@@ -191,7 +180,6 @@ function PauseModal({ onClose }) {
     return () => stopDino();
   }, [screen]);
 
-  // ── DINO ──
   function startDino() {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -206,12 +194,10 @@ function PauseModal({ onClose }) {
       if (gameOver) { reset(); return; }
       if (dino.onGround) { dino.vy = -12; dino.onGround = false; }
     }
-
     function reset() {
       dino = { x: 60, y: 100, w: 22, h: 28, vy: 0, onGround: true, frame: 0 };
       obstacles = []; clouds = []; score = 0; speed = 4; frameCount = 0; gameOver = false;
     }
-
     canvas.onclick = jump;
     const onKey = e => { if (e.code === 'Space') { e.preventDefault(); jump(); } };
     document.addEventListener('keydown', onKey);
@@ -225,7 +211,6 @@ function PauseModal({ onClose }) {
       if (nightMode) { ctx.fillStyle = '#fff'; stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill(); }); }
       ctx.strokeStyle = nightMode ? '#444' : '#ccc'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(0, ground); ctx.lineTo(W, ground); ctx.stroke();
-
       if (!gameOver) {
         frameCount++; score++;
         dino.frame = Math.floor(frameCount / 8) % 2;
@@ -243,12 +228,10 @@ function PauseModal({ onClose }) {
         obstacles = obstacles.filter(o => o.x + o.w > 0);
         for (const o of obstacles) {
           if (dino.x + 3 < o.x + o.w && dino.x + dino.w - 3 > o.x && dino.y + 3 < o.y + o.h && dino.y + dino.h > o.y) {
-            gameOver = true;
-            if (score > best) best = score;
+            gameOver = true; if (score > best) best = score;
           }
         }
       }
-
       ctx.fillStyle = nightMode ? '#bbb' : '#ddd';
       clouds.forEach(c => { ctx.beginPath(); ctx.ellipse(c.x, c.y, c.w / 2, 10, 0, 0, Math.PI * 2); ctx.fill(); });
       const dc = nightMode ? '#4ade80' : '#15803d';
@@ -273,11 +256,9 @@ function PauseModal({ onClose }) {
           ctx.fillRect(o.x + (o.frame === 0 ? 0 : 4), o.y + o.h, 10, 5);
         }
       });
-
       ctx.fillStyle = nightMode ? '#aaa' : '#555';
       ctx.font = '12px system-ui'; ctx.textAlign = 'left';
       ctx.fillText(`Score: ${score}  Best: ${best}`, 8, 16);
-
       if (gameOver) {
         ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.fillRect(0, 0, W, H);
         ctx.fillStyle = '#fff'; ctx.font = '500 15px system-ui'; ctx.textAlign = 'center';
@@ -286,7 +267,6 @@ function PauseModal({ onClose }) {
       }
       dinoRef.current = requestAnimationFrame(loop);
     }
-
     dinoRef.current = requestAnimationFrame(loop);
     return () => { running = false; document.removeEventListener('keydown', onKey); };
   }
@@ -295,13 +275,11 @@ function PauseModal({ onClose }) {
     if (dinoRef.current) cancelAnimationFrame(dinoRef.current);
   }
 
-  // ── CHAT ──
   async function sendChat() {
     const text = chatInput.trim();
     if (!text || isLoading) return;
     setChatInput('');
-    const newMsg = { role: 'user', text };
-    setChatMessages(prev => [...prev, newMsg]);
+    setChatMessages(prev => [...prev, { role: 'user', text }]);
     const newHistory = [...chatHistory, { role: 'user', content: text }];
     setChatHistory(newHistory);
     setIsLoading(true);
@@ -310,12 +288,7 @@ function PauseModal({ onClose }) {
       const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 150,
-          system: personas[personaKey].system,
-          messages: newHistory,
-        }),
+        body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 150, system: personas[personaKey].system, messages: newHistory }),
       });
       const data = await res.json();
       const reply = data.content?.[0]?.text || 'Hmm, ich bin gerade offline...';
@@ -330,16 +303,8 @@ function PauseModal({ onClose }) {
   const color = '#534AB7';
 
   return (
-    <div style={{
-      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-      background: 'rgba(0,0,0,0.6)', zIndex: 1000,
-      display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem',
-    }}>
-      <div style={{
-        background: '#fff', borderRadius: '16px', border: '1px solid #e5e3f0',
-        padding: '1.5rem', width: '100%', maxWidth: '500px',
-        maxHeight: '90vh', overflowY: 'auto',
-      }}>
+    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+      <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid #e5e3f0', padding: '1.5rem', width: '100%', maxWidth: '500px', maxHeight: '90vh', overflowY: 'auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
           <p style={{ fontSize: '16px', fontWeight: '700', margin: 0, color: '#1a1a2e' }}>
             {screen === 'choice' ? 'Pause verdient! 🎉' : screen === 'dino' ? '🦕 Dino Game' : screen === 'meme' ? '😂 Meme' : screen === 'music' ? '🎧 Musik' : '🧑‍🔬 Chat'}
@@ -347,7 +312,6 @@ function PauseModal({ onClose }) {
           <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: '#999' }}>✕</button>
         </div>
 
-        {/* CHOICE */}
         {screen === 'choice' && (
           <div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '1rem' }}>
@@ -357,11 +321,7 @@ function PauseModal({ onClose }) {
                 { key: 'meme', emoji: '😂', label: 'Meme', sub: 'Lachen ist Medizin' },
                 { key: 'einstein', emoji: '🧑‍🔬', label: 'Chat', sub: 'Einstein · Yoda · mehr' },
               ].map(opt => (
-                <button key={opt.key} onClick={() => setScreen(opt.key)} style={{
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px',
-                  padding: '1.25rem 0.5rem', background: '#f8f7ff',
-                  border: '1px solid #e5e3f0', borderRadius: '12px', cursor: 'pointer',
-                }}>
+                <button key={opt.key} onClick={() => setScreen(opt.key)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', padding: '1.25rem 0.5rem', background: '#f8f7ff', border: '1px solid #e5e3f0', borderRadius: '12px', cursor: 'pointer' }}>
                   <span style={{ fontSize: '32px' }}>{opt.emoji}</span>
                   <span style={{ fontSize: '13px', fontWeight: '600', color: '#1a1a2e' }}>{opt.label}</span>
                   <span style={{ fontSize: '11px', color: '#999' }}>{opt.sub}</span>
@@ -372,20 +332,13 @@ function PauseModal({ onClose }) {
           </div>
         )}
 
-        {/* MUSIK */}
         {screen === 'music' && (
           <div>
             <p style={{ fontSize: '14px', color: '#555', margin: '0 0 1rem' }}>Wähle eine Playlist — öffnet Spotify in neuem Tab:</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '1rem' }}>
               {musicLinks.map(m => (
-                <a key={m.label} href={m.url} target="_blank" rel="noopener noreferrer" style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  padding: '12px 16px', background: '#f8f7ff', border: '1px solid #e5e3f0',
-                  borderRadius: '10px', textDecoration: 'none', color: '#1a1a2e',
-                  fontSize: '14px', fontWeight: '600',
-                }}>
-                  {m.label}
-                  <span style={{ fontSize: '12px', color: '#999' }}>↗ öffnen</span>
+                <a key={m.label} href={m.url} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: '#f8f7ff', border: '1px solid #e5e3f0', borderRadius: '10px', textDecoration: 'none', color: '#1a1a2e', fontSize: '14px', fontWeight: '600' }}>
+                  {m.label}<span style={{ fontSize: '12px', color: '#999' }}>↗ öffnen</span>
                 </a>
               ))}
             </div>
@@ -394,7 +347,6 @@ function PauseModal({ onClose }) {
           </div>
         )}
 
-        {/* DINO */}
         {screen === 'dino' && (
           <div>
             <div style={{ background: '#111', borderRadius: '12px', padding: '1rem', marginBottom: '1rem' }}>
@@ -405,7 +357,6 @@ function PauseModal({ onClose }) {
           </div>
         )}
 
-        {/* MEME */}
         {screen === 'meme' && (
           <div>
             <div style={{ background: '#f8f7ff', borderRadius: '12px', padding: '1.5rem', textAlign: 'center', marginBottom: '1rem', minHeight: '200px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -421,13 +372,10 @@ function PauseModal({ onClose }) {
           </div>
         )}
 
-        {/* EINSTEIN CHAT */}
         {screen === 'einstein' && (
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.75rem', padding: '0.75rem', background: '#f8f7ff', borderRadius: '10px' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', flexShrink: 0 }}>
-                {personas[personaKey].emoji}
-              </div>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', flexShrink: 0 }}>{personas[personaKey].emoji}</div>
               <div style={{ flex: 1 }}>
                 <p style={{ margin: 0, fontSize: '13px', fontWeight: '600', color: '#1a1a2e' }}>{personas[personaKey].name}</p>
               </div>
@@ -503,10 +451,7 @@ function Sidebar({ subject, selectedId, onSelect, onBack }) {
           </div>
         </div>
       </div>
-
-      {/* Lo-Fi Player */}
       <LofiPlayer />
-
       <nav style={{ flex: 1, padding: '8px 0' }}>
         {Object.entries(tree).map(([groupName, topics]) => (
           <div key={groupName}>
@@ -564,7 +509,6 @@ function QuestionDisplay({ question, subject }) {
   const [showPause, setShowPause] = useState(false);
   const [prevId, setPrevId] = useState(null);
   if (question && question.id !== prevId) { setShowSolution(false); setPrevId(question.id); }
-
   const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Mathe Neu': '#534AB7', 'Deutsch Neu': '#b45309' };
   const color = subjectColors[subject] || '#534AB7';
 
@@ -600,20 +544,16 @@ function QuestionDisplay({ question, subject }) {
             <span key={label} style={{ background: bg, color: c, padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>{label}</span>
           ))}
         </div>
-
         <h1 style={{ fontSize: '26px', fontWeight: '700', color: '#1a1a2e', margin: '0 0 16px' }}>{question.topic}</h1>
-
         {question.pdfUrl && (
           <a href={question.pdfUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', marginBottom: '16px', background: '#fff7ed', border: '1px solid #fdba74', borderRadius: '10px', fontSize: '14px', fontWeight: '600', color: '#c2410c', textDecoration: 'none' }}>
             📄 Originale Prüfung öffnen
           </a>
         )}
-
         <div style={{ background: '#f9f8ff', border: '1px solid #e5e3f0', borderRadius: '12px', padding: '22px', marginBottom: '16px' }}>
           <p style={{ margin: 0, fontSize: '15px', lineHeight: '1.8', color: '#333', whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}
             dangerouslySetInnerHTML={{ __html: question.questionText.replace(/__(.*?)__/g, '<u>$1</u>') }} />
         </div>
-
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '8px' }}>
           <button onClick={() => setShowSolution(v => !v)} style={{ padding: '12px 28px', background: showSolution ? '#f0eeff' : color, color: showSolution ? color : '#fff', border: showSolution ? `1px solid #c4b5fd` : 'none', borderRadius: '10px', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s' }}>
             {showSolution ? '🙈 Lösungsweg ausblenden' : '💡 Lösungsweg anzeigen'}
@@ -622,7 +562,6 @@ function QuestionDisplay({ question, subject }) {
             🎲 Pause
           </button>
         </div>
-
         {showSolution && (
           <div style={{ marginTop: '28px' }}>
             <div style={{ background: '#fffbeb', border: '1px solid #fcd34d', borderRadius: '10px', padding: '14px 18px', marginBottom: '8px', fontSize: '15px', fontWeight: '600', color: '#92400e' }}>{reaction}</div>
@@ -665,6 +604,7 @@ function LandingPage({ onSelect }) {
       setTimeout(() => setShowEgg(false), 5000);
     }
   }, [logoClicks]);
+
   const matheOhneTR = questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen').length;
   const matheMitTR = questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('mit TR') && q.group === 'Alte Prüfungen').length;
   const deutsch = questions.filter(q => q.subject === 'Deutsch' && q.group === 'Alte Prüfungen').length;
@@ -676,11 +616,18 @@ function LandingPage({ onSelect }) {
         <div onClick={() => setLogoClicks(c => c + 1)} style={{ fontSize: '52px', marginBottom: '12px', cursor: 'default', userSelect: 'none' }}>🎓</div>
         <h1 style={{ fontSize: '36px', fontWeight: '800', color: '#1a1a2e', margin: '0 0 8px' }}>KantiPrep Thurgau</h1>
         <p style={{ fontSize: '16px', color: '#777', margin: '0 0 8px' }}>Echte Prüfungen · 2020–2025 · GMS 2 & GMS 3</p>
-        <div style={{ background: '#f9f8ff', border: '1px solid #e5e3f0', borderRadius: '16px', padding: '20px 24px', marginBottom: '40px', display: 'inline-block', textAlign: 'left', maxWidth: '90%', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-          <p style={{ margin: 0, fontSize: '13px', fontWeight: '700', color: '#534AB7', textTransform: 'uppercase', letterSpacing: '0.05em' }}>🤯 Mind-Blow des Tages</p>
-          <p style={{ margin: '8px 0 0 0', fontSize: '15px', color: '#333', fontWeight: '500', lineHeight: '1.6' }}> {fact ? `${fact.emoji} ${fact.text}` : ''}
-</p>
+        <div style={{ display: 'flex', alignItems: 'stretch', gap: '12px', justifyContent: 'center', marginBottom: '40px', flexWrap: 'wrap' }}>
+          <div style={{ background: '#f9f8ff', border: '1px solid #e5e3f0', borderRadius: '16px', padding: '20px 24px', textAlign: 'left', flex: 1, minWidth: '260px', maxWidth: '600px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
+            <p style={{ margin: 0, fontSize: '13px', fontWeight: '700', color: '#534AB7', textTransform: 'uppercase', letterSpacing: '0.05em' }}>🤯 Mind-Blow des Tages</p>
+            <p style={{ margin: '8px 0 0 0', fontSize: '15px', color: '#333', fontWeight: '500', lineHeight: '1.6' }}>{fact ? `${fact.emoji} ${fact.text}` : ''}</p>
+          </div>
+          <button onClick={() => onSelect('links')} style={{ padding: '20px 24px', background: '#534AB7', border: 'none', borderRadius: '16px', fontSize: '14px', fontWeight: '600', color: '#fff', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px', boxShadow: '0 4px 12px rgba(83,74,183,0.3)', minWidth: '130px' }}>
+            <span style={{ fontSize: '28px' }}>🌐</span>
+            <span>Nützliche</span>
+            <span>Links</span>
+          </button>
         </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '32px' }}>
           <div style={{ background: '#fff', border: '2px solid #e5e3f0', borderRadius: '20px', padding: '28px', textAlign: 'left', opacity: 0.6 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
@@ -718,6 +665,7 @@ function LandingPage({ onSelect }) {
             ))}
           </div>
         </div>
+
         <div style={{ background: 'linear-gradient(135deg, #534AB7, #0f766e)', borderRadius: '16px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
           <div style={{ color: '#fff' }}>
             <p style={{ margin: 0, fontSize: '16px', fontWeight: '700' }}>✨ Neue Übungsaufgaben</p>
@@ -728,6 +676,7 @@ function LandingPage({ onSelect }) {
             <button onClick={() => onSelect('Deutsch Neu')} style={{ padding: '8px 18px', background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '8px', color: '#fff', fontSize: '13px', fontWeight: '600', cursor: 'pointer' }}>📝 Deutsch</button>
           </div>
         </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '24px' }}>
           {[
             { num: questions.filter(q => q.group === 'Alte Prüfungen').length, label: 'Echte Prüfungsaufgaben', emoji: '📄' },
@@ -741,11 +690,12 @@ function LandingPage({ onSelect }) {
             </div>
           ))}
         </div>
+
         <p style={{ fontSize: '12px', color: '#ccc' }}>Made with ❤️ in Thurgau by Deli · Für Zerya und alle Schüler:innen 🌟</p>
 
         {showEgg && (
           <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.7)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-            <div style={{ background: '#fff', borderRadius: '20px', padding: '2.5rem', textAlign: 'center', maxWidth: '380px', animation: 'fadeIn 0.3s ease' }}>
+            <div style={{ background: '#fff', borderRadius: '20px', padding: '2.5rem', textAlign: 'center', maxWidth: '380px' }}>
               <div style={{ fontSize: '52px', marginBottom: '1rem' }}>❤️</div>
               <p style={{ fontSize: '18px', fontWeight: '700', color: '#1a1a2e', margin: '0 0 0.75rem', lineHeight: '1.5' }}>Schön dass Du meine Tochter bist...</p>
               <p style={{ fontSize: '16px', color: '#534AB7', margin: 0, fontWeight: '500' }}>Wenn Du willst, du wirst es schaffen ❤️</p>
@@ -762,7 +712,17 @@ function LandingPage({ onSelect }) {
 export default function Home() {
   const [subject, setSubject] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
-  if (!subject) return <LandingPage onSelect={s => { setSubject(s); setSelectedId(null); }} />;
+  const [showLinks, setShowLinks] = useState(false);
+
+  if (showLinks) return <LinksPage onBack={() => setShowLinks(false)} />;
+
+  if (!subject) return (
+    <LandingPage onSelect={s => {
+      if (s === 'links') { setShowLinks(true); return; }
+      setSubject(s); setSelectedId(null);
+    }} />
+  );
+
   const selectedQuestion = questions.find(q => q.id === selectedId) || null;
   return (
     <div style={{ display: 'flex', height: '100vh', fontFamily: 'system-ui, sans-serif' }}>
