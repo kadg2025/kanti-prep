@@ -58,12 +58,22 @@ function useStreak() {
 function useDarkMode() {
   const [dark, setDark] = useState(false);
   useEffect(() => {
-    try { setDark(localStorage.getItem('kp_dark') === 'true'); } catch {}
+    try {
+      const saved = localStorage.getItem('kp_dark');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = saved !== null ? saved === 'true' : prefersDark;
+      setDark(isDark);
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    } catch {}
   }, []);
   const toggleDark = useCallback(() => {
     setDark(d => {
-      try { localStorage.setItem('kp_dark', String(!d)); } catch {}
-      return !d;
+      const next = !d;
+      try {
+        localStorage.setItem('kp_dark', String(next));
+        document.documentElement.setAttribute('data-theme', next ? 'dark' : 'light');
+      } catch {}
+      return next;
     });
   }, []);
   return { dark, toggleDark };
@@ -116,7 +126,7 @@ function buildTree(subject) {
   const filtered = questions.filter(q => {
     if (subject === 'Mathe ohne TR') return q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR');
     if (subject === 'Mathe mit TR') return q.subject === 'Mathe' && q.exam && q.exam.includes('mit TR');
-    if (subject === 'Deutsch') return q.subject === 'Deutsch' && q.id.startsWith('D3_');
+    if (subject === 'Deutsch') return q.subject === 'Deutsch' && (q.id.startsWith('D3_') || q.id.startsWith('D_'));
     if (subject === 'Deutsch GMS2') return q.subject === 'Deutsch' && q.id.startsWith('D2_');
     if (subject === 'Mathe Neu') return q.subject === 'Mathe' && q.exam === 'Neue Aufgabe';
     if (subject === 'Deutsch Neu') return q.subject === 'Deutsch' && q.group === 'Neue Übungsaufgaben';
@@ -479,7 +489,7 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
   const totalCount = questions.filter(q => {
     if (subject === 'Mathe ohne TR') return q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR');
     if (subject === 'Mathe mit TR') return q.subject === 'Mathe' && q.exam && q.exam.includes('mit TR');
-    if (subject === 'Deutsch') return q.subject === 'Deutsch' && q.id.startsWith('D3_');
+    if (subject === 'Deutsch') return q.subject === 'Deutsch' && (q.id.startsWith('D3_') || q.id.startsWith('D_'));
     if (subject === 'Deutsch GMS2') return q.subject === 'Deutsch' && q.id.startsWith('D2_');
     return false;
   }).length;
@@ -777,7 +787,7 @@ function LandingPage({ onSelect, streak = 0 }) {
           </button>
         </div>
 
-        <p style={{ fontSize: '11px', color: '#ccc', margin: 0 }}>Made with ❤️ in Thurgau by Deli · Für Zerya und alle Schüler:innen 🌟</p>
+        <p style={{ fontSize: '11px', color: '#ccc', margin: 0 }}>Made with ❤️ in Thurgau by Deli · Für meine Tochter und alle Schüler:innen 🌟</p>
 
         {showEgg && (
           <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.7)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
@@ -807,8 +817,14 @@ export default function Home() {
 
   const handleSolved = useCallback((id) => { markSolved(id); bumpStreak(); }, [markSolved, bumpStreak]);
 
-  const dm = dark ? { bg: '#0f0f1a', bg2: '#1a1a2e', bg3: '#16213e', text: '#e2e8f0', text2: '#94a3b8', border: '#2d3748' }
-    : { bg: '#fff', bg2: '#f8f7ff', bg3: '#f0eeff', text: '#1a1a2e', text2: '#666', border: '#e5e3f0' };
+ const dm = {
+  bg:      'var(--bg)',
+  bg2:     'var(--bg2)',
+  bg3:     'var(--bg3)',
+  text:    'var(--text)',
+  text2:   'var(--text2)',
+  border:  'var(--border)',
+};
 
   if (showLinks) return <LinksPage onBack={() => setShowLinks(false)} />;
   if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } setSubject(s); setSelectedId(null); }} streak={streak} />;

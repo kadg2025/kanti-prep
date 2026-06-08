@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ─── KantiPrep Dark Mode CSS Variables ─────────────────────────────── */
+
+:root {
+  --bg:         #ffffff;
+  --bg2:        #f8f7ff;
+  --bg3:        #f0eeff;
+  --bg4:        #f9f8ff;
+  --text:       #1a1a2e;
+  --text2:      #555555;
+  --text3:      #999999;
+  --border:     #e5e3f0;
+  --border2:    #d0cce8;
+  --hover:      #f0eeff;
+  --selected:   #ede9fc;
+  --solved:     #f0fdf4;
+  --code-bg:    #f9f8ff;
+  --tip-bg:     #f0fdf4;
+  --tip-border: #86efac;
+  --tip-text:   #166534;
+  --input-bg:   #ffffff;
+  --modal-bg:   #ffffff;
+  --overlay:    rgba(0,0,0,0.55);
+}
+
+[data-theme="dark"] {
+  --bg:         #0f0f1a;
+  --bg2:        #1a1a2e;
+  --bg3:        #16213e;
+  --bg4:        #1e1e32;
+  --text:       #e2e8f0;
+  --text2:      #94a3b8;
+  --text3:      #64748b;
+  --border:     #2d3748;
+  --border2:    #3d4a5e;
+  --hover:      #252542;
+  --selected:   #2d2b4e;
+  --solved:     #142a1f;
+  --code-bg:    #12122a;
+  --tip-bg:     #0d2218;
+  --tip-border: #166534;
+  --tip-text:   #86efac;
+  --input-bg:   #1e1e32;
+  --modal-bg:   #1a1a2e;
+  --overlay:    rgba(0,0,0,0.75);
+}
+
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.1s ease;
+}
+button, a {
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+              color 0.1s ease, transform 0.15s ease;
+}
+[data-theme="dark"] ::-webkit-scrollbar { width: 6px; }
+[data-theme="dark"] ::-webkit-scrollbar-track { background: var(--bg2); }
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+[data-theme="dark"] select { color-scheme: dark; }
