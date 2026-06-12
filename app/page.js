@@ -4,6 +4,9 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { questions } from './lib/questions';
 import { facts } from './lib/facts';
 import LinksPage from './LinksPage';
+import FeedbackButton from './components/FeedbackButton';
+
+
 
 // ─── PROGRESS (localStorage) ──────────────────────────────────────────────
 function useSolved() {
@@ -687,6 +690,9 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
             )}
           </div>
         )}
+        
+        <FeedbackButton questionId={question.id} />   {/* ← NEU: diese Zeile einfügen */}
+
       </div>
     </main>
   );
@@ -799,6 +805,31 @@ function LandingPage({ onSelect, streak = 0 }) {
             </div>
           </div>
         )}
+
+        <div style={{ marginTop: '40px', textAlign: 'center', paddingBottom: '30px' }}>
+        <p style={{ fontSize: '14px', color: '#666', marginBottom: '8px', fontWeight: '600' }}>
+          🗣️ Deine Meinung zählt!
+        </p>
+        <div style={{
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        zIndex: 1000,
+        background: '#fff',
+        border: '1px solid #e5e3f0',
+        borderRadius: '14px',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+        padding: '10px 14px',
+        maxWidth: 'min(90vw, 380px)',
+      }}>
+          <FeedbackButton
+            questionId="ALLGEMEIN_STARTSEITE"
+            label="💬 Sag's uns"
+            placeholder="Was ist gut? Was nervt? Was fehlt? Raus damit 🙂"
+          />
+        </div>
+      </div>
+
       </div>
     </main>
   );
