@@ -1,3 +1,4 @@
+
 export const questions2018_oTR = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -16,7 +17,7 @@ export const questions2018_oTR = [
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106448/AP18%20GMS3%20M1_oTR.pdf?fp=1#page=1',
 
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
 
     questionText: `Aufgabe 1: Terme vereinfachen & Gleichung lösen
 
@@ -128,7 +129,7 @@ x = -3/4
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106448/AP18%20GMS3%20M1_oTR.pdf?fp=1#page=2',
 
-    topic: 'Arithmetik',
+    topic: 'Zahlen & Teilbarkeit',
 
     questionText: `Aufgabe 2: Zahlenfolgen
 
@@ -386,7 +387,7 @@ Tage = 1728 / (20 · 9) = 1728 / 180 = 9.6
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106448/AP18%20GMS3%20M1_oTR.pdf?fp=1#page=4',
 
-    topic: 'Algebra',
+    topic: 'Zahlen & Teilbarkeit',
 
     questionText: `Aufgabe 4: Beweise / Gegenbeispiele
 
@@ -492,7 +493,7 @@ b) Zeige mit einem Gegenbeispiel, dass diese Behauptung FALSCH ist:
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106448/AP18%20GMS3%20M1_oTR.pdf?fp=1#page=5',
 
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
 
     questionText: `Aufgabe 5: Urne mit Kugeln
 
@@ -618,7 +619,7 @@ Total = 4/100 + 9/100 + 25/100 = 38/100 = 19/50`,
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106448/AP18%20GMS3%20M1_oTR.pdf?fp=1#page=7',
 
-    topic: 'Geometrie',
+    topic: 'Körper & Netze',
 
     questionText: `Aufgabe 6: Pyramide
 
@@ -719,3 +720,5 @@ Total:
   },
 
 ];
+
+

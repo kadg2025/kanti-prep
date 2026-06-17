@@ -53,7 +53,7 @@ export default function FeedbackButton({ questionId, label, placeholder }) {
         </button>
       ) : sent ? (
         <p style={{ color: '#16a34a', fontSize: 14, fontWeight: 600 }}>
-          ✅ Danke für eEin Feedback!
+          ✅ Danke für Dein Feedback!
         </p>
       ) : (
         <div>

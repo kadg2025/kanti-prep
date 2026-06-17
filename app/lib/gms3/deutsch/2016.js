@@ -1,10 +1,7 @@
 // app/lib/gms3/deutsch/2016.js
-// Aufnahmeprüfung 2016 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
-// Grundlage: Alfred Andersch, «Tochter» (Textauszug)
+// Aufnahmeprüfung 2016 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2016 = [
-
-  // ── AUFGABE 1 ─────────────────────────────────────────────
 
   {
     id: 'D3_2016_TEXTVERST_1',
@@ -82,8 +79,6 @@ Welche Kombination stimmt?`,
     },
   },
 
-  // ── AUFGABE 2 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_WORTSCHATZ_1',
     year: 2016,
@@ -135,8 +130,6 @@ Was bedeutet das sinngemäss?`,
 3️⃣  Akzeptierte Antworten: «redete pausenlos», «ohne Punkt und Komma», «wie ein Wasserfall»`,
     },
   },
-
-  // ── AUFGABE 3 ─────────────────────────────────────────────
 
   {
     id: 'D3_2016_WORTSCHATZ_2',
@@ -205,8 +198,6 @@ Welche Kombination ist korrekt?`,
     },
   },
 
-  // ── AUFGABE 4 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_WORTSCHATZ_3',
     year: 2016,
@@ -269,8 +260,6 @@ Welche Antwort ist korrekt?`,
     },
   },
 
-  // ── AUFGABE 5 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_PRAEPOSITIONAL_1',
     year: 2016,
@@ -278,7 +267,7 @@ Welche Antwort ist korrekt?`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Präpositionen',
 
     questionText: `Aufgabe 5 (2,5 Punkte): Präpositionalgefüge bestimmen.
 
@@ -345,8 +334,6 @@ Eselsbrücke:
     },
   },
 
-  // ── AUFGABE 6 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_PARTIKELN_1',
     year: 2016,
@@ -354,7 +341,7 @@ Eselsbrücke:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 6 (3 Punkte): Partikeln zuordnen.
 
@@ -431,8 +418,6 @@ Weder Präpositionen noch Konjunktionen (= Adverbien/Partikeln):
     },
   },
 
-  // ── AUFGABE 7 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_VERBALKETTE_1',
     year: 2016,
@@ -440,7 +425,7 @@ Weder Präpositionen noch Konjunktionen (= Adverbien/Partikeln):
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 7 (2 Punkte): Verbale Wortketten herausschreiben.
 
@@ -500,8 +485,6 @@ Satz 2: «Thérèse liess sich durch die Landschaft draussen von dem Thema ihres
     },
   },
 
-  // ── AUFGABE 8 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_INDIREKTE_REDE_1',
     year: 2016,
@@ -509,7 +492,7 @@ Satz 2: «Thérèse liess sich durch die Landschaft draussen von dem Thema ihres
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Direkte / Indirekte Rede',
 
     questionText: `Aufgabe 8 (2 Punkte): Indirekte Rede.
 
@@ -575,8 +558,6 @@ Ob sie ihr Haus blöd finde (fände), fragte Wenger. Es sei (wäre) doch auch ei
     },
   },
 
-  // ── AUFGABE 9 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_ZEITFORM_1',
     year: 2016,
@@ -584,7 +565,7 @@ Ob sie ihr Haus blöd finde (fände), fragte Wenger. Es sei (wäre) doch auch ei
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 9 (1 Punkt): Zeitform bestimmen.
 
@@ -630,8 +611,6 @@ Hier: «war … genommen worden» = Plusquamperfekt Passiv ✅`,
     },
   },
 
-  // ── AUFGABE 10 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_PRONOMEN_1',
     year: 2016,
@@ -639,7 +618,7 @@ Hier: «war … genommen worden» = Plusquamperfekt Passiv ✅`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 10 (3 Punkte): Pronomen näher bestimmen.
 
@@ -711,8 +690,6 @@ Bestimmter Artikel: der, die, das (vor einem Nomen stehend, nicht allein).`,
     },
   },
 
-  // ── AUFGABE 11 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_TEXTVERST_CHRONOLOGIE_1',
     year: 2016,
@@ -782,8 +759,6 @@ Welche Reihenfolge stimmt?`,
     },
   },
 
-  // ── AUFGABE 12 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_VERBEN_1',
     year: 2016,
@@ -791,7 +766,7 @@ Welche Reihenfolge stimmt?`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 12 (4 Punkte): Verben bestimmen.
 
@@ -863,8 +838,6 @@ kann:
     },
   },
 
-  // ── AUFGABE 13 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_SATZBAU_1',
     year: 2016,
@@ -872,7 +845,7 @@ kann:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 13 (2 Punkte): Satzbaumuster bestimmen.
 
@@ -937,8 +910,6 @@ Erkennungsmerkmale NS:
     },
   },
 
-  // ── AUFGABE 14 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_PASSIV_1',
     year: 2016,
@@ -946,7 +917,7 @@ Erkennungsmerkmale NS:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Aktiv / Passiv',
 
     questionText: `Aufgabe 14 (2 Punkte): Aktiv → Passiv (mit Täter).
 
@@ -1010,8 +981,6 @@ Er würde von ihnen für einen dieser amerikanisierten Deutschen gehalten werden
     },
   },
 
-  // ── AUFGABE 15 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_PRAETERITUM_1',
     year: 2016,
@@ -1019,7 +988,7 @@ Er würde von ihnen für einen dieser amerikanisierten Deutschen gehalten werden
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 15 (2 Punkte): Plusquamperfekt → Präteritum.
 
@@ -1084,8 +1053,6 @@ Er legte sich, ohne das Licht anzuzünden und so leise wie möglich, auf eine de
     },
   },
 
-  // ── AUFGABE 16 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_SUBJEKT_1',
     year: 2016,
@@ -1093,7 +1060,7 @@ Er legte sich, ohne das Licht anzuzünden und so leise wie möglich, auf eine de
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 16 (1 Punkt): Subjekt bestimmen.
 
@@ -1136,8 +1103,6 @@ Schreibe das Subjekt heraus und gib den Fall an.`,
     },
   },
 
-  // ── AUFGABE 17 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_STELLVERTRETER_1',
     year: 2016,
@@ -1145,7 +1110,7 @@ Schreibe das Subjekt heraus und gib den Fall an.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 17 (1 Punkt): Stellvertreter herausschreiben.
 
@@ -1187,8 +1152,6 @@ Im Satz «Sie war begeistert von den handtuchschmalen Häusern, die vorbeirausch
     },
   },
 
-  // ── AUFGABE 18 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_OBJEKTE_1',
     year: 2016,
@@ -1196,7 +1159,7 @@ Im Satz «Sie war begeistert von den handtuchschmalen Häusern, die vorbeirausch
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 18 (4 Punkte): Objekte bestimmen.
 
@@ -1265,8 +1228,6 @@ Genitivobjekte: keine`,
     },
   },
 
-  // ── AUFGABE 19 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_WORTARTEN_1',
     year: 2016,
@@ -1274,7 +1235,7 @@ Genitivobjekte: keine`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 19 (3 Punkte): Wortarten bestimmen (nur nach den fünf Grundwortarten).
 
@@ -1333,8 +1294,6 @@ während → Partikel (Konjunktion/Präposition, unveränderlich) ✅`,
     },
   },
 
-  // ── AUFGABE 20 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_NOMEN_KATEGORIEN_1',
     year: 2016,
@@ -1342,7 +1301,7 @@ während → Partikel (Konjunktion/Präposition, unveränderlich) ✅`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 20 (3 Punkte): Nomen nach Kategorien zuordnen.
 
@@ -1399,8 +1358,6 @@ Gedachtes (abstrakte Begriffe, nicht greifbar):
     },
   },
 
-  // ── AUFGABE 21 ─────────────────────────────────────────────
-
   {
     id: 'D3_2016_GRAMMATIK_KONJUGIERBAR_DEKLINIERBAR_1',
     year: 2016,
@@ -1408,7 +1365,7 @@ Gedachtes (abstrakte Begriffe, nicht greifbar):
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 21 (3 Punkte): Konjugierbare und deklinierbare Wörter.
 
@@ -1461,8 +1418,6 @@ Deklinierbar = Nomen, Adjektive, Pronomen, Artikel: werden nach Fall, Zahl, Gesc
 4️⃣  «sich» = Reflexivpronomen → deklinierbar!`,
     },
   },
-
-  // ── AUFGABE 22 ─────────────────────────────────────────────
 
   {
     id: 'D3_2016_WORTSCHATZ_4',

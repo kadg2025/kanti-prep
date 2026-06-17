@@ -1,3 +1,5 @@
+
+
 export const questions2024 = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
@@ -7,7 +9,7 @@ export const questions2024 = [
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164190/AP24_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Algebra', // NEU
+    topic: 'Funktionen', // NEU
     questionText: `Aufgabe 1: Das Schwimmbecken
 Ein quaderförmiges Schwimmbecken mit einer Wasserhöhe von 2,5 m soll leer gepumpt werden. Dabei sinkt der Wasserspiegel pro Stunde um 0,4 m.
 a) Vervollständige die Wertetabelle.
@@ -276,7 +278,7 @@ Gefälle = (2.5 / 5.45) * 100 ≈ 45.87%
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164190/AP24_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
     questionText: `Aufgabe 5: Der Wassergraben
 Ein Wassergraben (siehe Skizze) soll gefüllt werden. Er ist ein Prisma mit einer trapezförmigen Grundfläche.
 a) Wie viele Liter Wasser sind zum Füllen erforderlich?
@@ -341,7 +343,7 @@ Der Graph muss also am Anfang steil sein und dann immer flacher werden. Er besch
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164190/AP24_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Stochastik', // NEU
+    topic: 'Wahrscheinlichkeit', // NEU
     questionText: `Aufgabe 6: Glücksspiel
 Ein Behälter enthält 5 rote, 3 weisse und 2 schwarze Kugeln (total 10). Man zieht zwei Kugeln ohne Zurücklegen.
 a) Zeichne einen Wahrscheinlichkeitsbaum.
@@ -408,3 +410,5 @@ Die Wahrscheinlichkeit zu gewinnen ist bei Variante B am kleinsten.
     },
   },
 ];
+
+

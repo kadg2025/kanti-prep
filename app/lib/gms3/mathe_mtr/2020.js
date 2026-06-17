@@ -1,3 +1,4 @@
+
 export const questions2020 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -8,7 +9,7 @@ export const questions2020 = [
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106465/AP20_GMS3_M1_mTr_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Geschwindigkeit & Zeit',
+    topic: 'Bewegung & Geschwindigkeit',
     questionText: `Aufgabe 1: Bike & Run
 
 Ein Athlet will einen Bike&Run in 10% besserer Zeit als sein bisheriges Resultat von 9h 40min absolvieren.
@@ -80,7 +81,7 @@ Laufzeit = 522 − 337.5 − 4.5 = 180 min
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106465/AP20_GMS3_M1_mTr_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: '3D-Pythagoras',
+    topic: 'Körper & Netze',
     questionText: `Aufgabe 2: Spiderman
 
 Spiderman S muss seinen Weg SABCF zurücklegen, um seine Freundin F auf der Mitte des Daches zu retten.
@@ -132,7 +133,7 @@ Tipp: Koordinatensystem aufstellen!`,
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106465/AP20_GMS3_M1_mTr_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Geometrie & Körper',
+    topic: 'Körper & Netze',
     questionText: `Aufgabe 3: Pyramide – Netz und Oberfläche
 
 Eine Pyramide mit quadratischer Grundfläche. Zeichne das Netz und berechne die Oberfläche.
@@ -177,7 +178,7 @@ Netz: Ein Quadrat in der Mitte + 4 gleichschenklige Dreiecke drumherum.`,
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106465/AP20_GMS3_M1_mTr_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Kombinatorik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 4: Zahlenschloss
 
 Ein Zahlenschloss hat 3 Räder mit je den Ziffern 0–9.
@@ -255,7 +256,7 @@ c) Ziffern > 4 aufzählen, alle 3er-Gruppen auflisten`,
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106465/AP20_GMS3_M1_mTr_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Prozent & Gemische',
+    topic: 'Prozent & Zins',
     questionText: `Aufgabe 5: Flüssigkeiten mischen
 
 Ein Behälter enthält 20 ml Flüssigkeit A, 70 ml B und 70 ml C.
@@ -332,3 +333,5 @@ c) Kosten pro Flüssigkeit addieren → Verkaufspreis − Einkauf → Gewinn%`,
   },
 
 ];
+
+

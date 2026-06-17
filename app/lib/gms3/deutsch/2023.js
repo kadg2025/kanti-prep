@@ -1,6 +1,5 @@
 // app/lib/gms3/deutsch/2023.js
-// Aufnahmeprüfung 2023 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
-// Grundlage: «Die Wanderung»
+// Aufnahmeprüfung 2023 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2023 = [
 
@@ -276,7 +275,7 @@ obwohl / weil / bevor`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 5 (3 Punkte): Wortarten nach den 5 Wortarten.
 
@@ -342,7 +341,7 @@ weiten / keinen / auf / den / sich / konnte`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 6 (3 Punkte): Wie viele Wortarten kommen vor?
 
@@ -405,7 +404,7 @@ Gib in Zahlen an, wie viele Wortarten jeweils in den Sätzen vorkommen. Untersch
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 7 (5 Punkte): Partikeln und Konjunktionen.
 
@@ -468,7 +467,7 @@ Zu den Konjunktionen gehören davon genauer: «aber», «und», «wenn».`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 8 (2 Punkte): Satzglieder bestimmen.
 
@@ -536,7 +535,7 @@ Bestimme die unterstrichenen Satzglieder:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 9 (3 Punkte): Setze die Sätze ins Plusquamperfekt.
 
@@ -600,7 +599,7 @@ Die korrekte Lösung lautet:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 10 (2 Punkte): Subjekte herausschreiben.
 
@@ -665,7 +664,7 @@ Richtige Reihenfolge: er, der Wald, die ersten Tropfen, die drückende Hitze.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 11 (8 Punkte): Kreuze alles Zutreffende an.
 
@@ -733,7 +732,7 @@ verschwunden / war / wurde / zugeben / musste / hätte / mitnehmen / sollen`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 12 (3 Punkte): Verben in der Infinitivform.
 
@@ -788,7 +787,7 @@ Die richtige Reihenfolge lautet also: nachlassen, spüren, verderben.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 13 (1 Punkt): Wie viele verschiedene Zeitformen kommen vor?
 
@@ -842,7 +841,7 @@ Darum kommen insgesamt 2 verschiedene Zeitformen vor: Plusquamperfekt und Präte
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 14 (2 Punkte): Kreuze alles Zutreffende an.
 
@@ -902,7 +901,7 @@ Mögliche Kategorien: Aktiv / Passiv / Indikativ / Konjunktiv / Perfekt / Plusqu
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Präpositionen',
 
     questionText: `Aufgabe 15 (4 Punkte): Präpositionalgefüge herausschreiben.
 
@@ -968,7 +967,7 @@ Diese vier Gruppen müssen in der richtigen Reihenfolge notiert werden.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=10',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 16 (2 Punkte): Fälle bestimmen.
 
@@ -1030,7 +1029,7 @@ Hund / Richtung / Holzpflock / Wiese`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=10',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 17 (5 Punkte): Ordne die Satzgliedschemen A, B, C oder D zu.
 
@@ -1099,3 +1098,9 @@ Ordne zu:
   },
 
 ];
+
+
+// app/lib/gms3/deutsch/2024.js
+// Aufnahmeprüfung 2024 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
+// Sprachprüfung: Textauszug «Als ich jung war» (Hochzeitsfotograf, Schlossrestaurant)
+// Schreibaufgabe: Textauszug «Die Abschiedsparty» (nach John Green, «Eine wie Alaska»)

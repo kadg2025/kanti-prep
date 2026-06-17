@@ -1,6 +1,5 @@
 // app/lib/gms3/deutsch/2020.js
-// Aufnahmeprüfung 2020 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
-// Grundlage: Thomas Hürlimann, «Das Innere des Himmels» (Textauszug: Die Fahrt in die Klosterschule)
+// Aufnahmeprüfung 2020 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2020 = [
 
@@ -434,7 +433,7 @@ Merke: Es ist eine zusammenfassende Aussage, keine Häufigkeitsaussage!`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=5',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 8 (1 Punkt): Adjektive in Vergleichsform.
 
@@ -482,7 +481,7 @@ Schreibe alle Adjektive, die in einer Vergleichsform stehen, heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=6',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 9 (4 Punkte): Satzglieder herausschreiben und bestimmen.
 
@@ -542,7 +541,7 @@ Schreibe alle Satzglieder der Reihe nach heraus und bestimme sie.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=6',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 10 (1 Punkt): Satzbaumuster bestimmen.
 
@@ -602,7 +601,7 @@ C) Hauptsatz – Hauptsatz – Hauptsatz`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=7',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 11 (1 Punkt): Modus bestimmen.
 
@@ -656,7 +655,7 @@ Der Kontext ist indirekte Rede: Der Erzähler gibt die Aussage seiner Mutter wie
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=7',
-    topic: 'Grammatik',
+    topic: 'Direkte / Indirekte Rede',
 
     questionText: `Aufgabe 12 (1 Punkt): Indirekte Rede → direkte Rede.
 
@@ -706,7 +705,7 @@ Die Mutter sagte: «___________________________________.»`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=7',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 13 (5 Punkte): Wortart + nähere Bestimmung.
 
@@ -782,7 +781,7 @@ Klosters → Nomen / nähere Bestimmung: — ✅`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=8',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 14 (3 Punkte): Wie viele Wortarten kommen vor? (5 Grundwortarten)
 
@@ -864,7 +863,7 @@ Satz C: «Einige gingen auf den Trottoirs in Gruppen.»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=8',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 15 (1 Punkt): Hauptsatz herausschreiben.
 
@@ -914,7 +913,7 @@ Hauptsatz: «Nur die Frau Luthiger … begann über die Katholischen zu schimpfe
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=8',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 16 (3 Punkte): Akkusativobjekte herausschreiben.
 
@@ -975,7 +974,7 @@ Schreibe alle Akkusativobjekte der Reihe nach heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=9',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 17 (4 Punkte): Verben näher bestimmen.
 
@@ -1037,7 +1036,7 @@ herum → Verbzusatz ✅ (Präfix von «herumstehen», abgetrennt am Satzende)
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=9',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 18 (2 Punkte): Akkusativ- und Dativobjekte herausschreiben.
 
@@ -1099,7 +1098,7 @@ Satz 3: «Ich gab ihm den Abschiedskuss.»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=10',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 19 (1 Punkt): Plusquamperfekt → Futur I.
 
@@ -1150,7 +1149,7 @@ Plusquamperfekt: «hatte … bestanden» → Hilfsverb weg, Partizip → Infinit
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=10',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 20 (3 Punkte): Pronomen näher bestimmen.
 
@@ -1214,7 +1213,7 @@ Plusquamperfekt: «hatte … bestanden» → Hilfsverb weg, Partizip → Infinit
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=10',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 21 (3 Punkte): Konjunktionen und Präpositionen herausschreiben.
 
@@ -1276,7 +1275,7 @@ Präpositionen: stehen vor Nomengruppen und bestimmen den Fall.
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=10',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 22 (2 Punkte): Verbalen Teil bestimmen.
 
@@ -1344,7 +1343,7 @@ Genus verbi:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=11',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 23 (2 Punkte): Alle Verben in der Infinitivform.
 
@@ -1389,3 +1388,8 @@ Schreibe alle Verben der Reihe nach in der Infinitivform auf.`,
   },
 
 ];
+
+
+// app/lib/gms3/deutsch/2021.js
+// Aufnahmeprüfung 2021 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
+// Grundlage: Robert Seethaler, «Der Trafikant» (Textauszug: Das Gewitter am Attersee)

@@ -1,3 +1,4 @@
+
 export const questions2021 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -16,7 +17,7 @@ export const questions2021 = [
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119957/AP21_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=2',
 
-    topic: 'Algebra', // NEU
+    topic: 'Bewegung & Geschwindigkeit', // NEU
 
     questionText: `Aufgabe 1: E-Bike
 
@@ -314,7 +315,7 @@ c) Kosten pro Wäsche = (kWh×Tarif) + (l/1000 × Wasserpreis) + 0.15. Dann für
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119957/AP21_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=5',
 
-    topic: 'Stochastik', // NEU
+    topic: 'Wahrscheinlichkeit', // NEU
 
     questionText: `Aufgabe 4: Kirschen
 Frau Müller hat 2 Kirschbäume. Baum A liefert 70%, Baum B den Rest der Kirschen.

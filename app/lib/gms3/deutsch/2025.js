@@ -1,7 +1,5 @@
 // app/lib/gms3/deutsch/2025.js
-// Aufnahmeprüfung 2025 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
-// Sprachprüfung: Textauszug «Der Spaziergang» (Carl, Eltern wollen auswandern)
-// Schreibaufgabe: Textauszug «Die Neue» (Ich-Erzähler, neue Mitschülerin)
+// Aufnahmeprüfung 2025 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2025 = [
 
@@ -229,7 +227,7 @@ Finde für das unterstrichene Wort «gewissenhaft» einen Begriff mit gegensätz
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=2',
 
     questionText: `Aufgabe 4 (2 Punkte): Wie viele verschiedene Wortarten kommen vor? (5 Grundwortarten)
@@ -302,7 +300,7 @@ Satz B: «Carl wusste nicht mehr, wer den Vorschlag gemacht hatte.»
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=3',
 
     questionText: `Aufgabe 5 (3 Punkte): Wortart bestimmen (nur nach den 5 Wortarten).
@@ -442,7 +440,7 @@ Flucht → Fluchten ✅ (-en: Femininum)
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=3',
 
     questionText: `Aufgabe 7 (2.5 Punkte): Fälle bestimmen.
@@ -513,7 +511,7 @@ Bestimme die Fälle der unterstrichenen Wörter:
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=4',
 
     questionText: `Aufgabe 8 (2.5 Punkte): Alle Verben in der Infinitivform.
@@ -570,7 +568,7 @@ Schreibe alle Verben aus dem obigen Satz der Reihe nach in der Infinitivform auf
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=4',
 
     questionText: `Aufgabe 9 (3 Punkte): Zeitformen zählen.
@@ -631,7 +629,7 @@ D) 4`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Aktiv / Passiv',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=4',
 
     questionText: `Aufgabe 10 (4 Punkte): Verbalen Teil näher bestimmen.
@@ -709,7 +707,7 @@ Aktiv | Passiv | Indikativ | Konjunktiv | Präsens | Präteritum | Plusquamperfe
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=5',
 
     questionText: `Aufgabe 11 (2 Punkte): Plusquamperfekt bilden.
@@ -772,7 +770,7 @@ Satz 2: «das machte sein Vater» → Aktiv Präteritum
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Präpositionen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=5',
 
     questionText: `Aufgabe 12 (3 Punkte): Präpositionen herausschreiben.
@@ -826,7 +824,7 @@ Schreibe alle Präpositionen der Reihe nach heraus.`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=5',
 
     questionText: `Aufgabe 13 (3 Punkte): Partikeln herausschreiben.
@@ -880,7 +878,7 @@ Schreibe alle Partikeln der Reihe nach heraus.`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Rechtschreibung',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=5',
 
     questionText: `Aufgabe 14 (2 Punkte): Nominalisierung.
@@ -954,7 +952,7 @@ Nominalisiere das angegebene Adjektiv und füge den bestimmten Artikel hinzu.
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=6',
 
     questionText: `Aufgabe 15 (3 Punkte): Alle Pronomen herausschreiben.
@@ -1007,7 +1005,7 @@ Schreibe aus dem obigen Satz alle Pronomen der Reihe nach heraus.`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=6',
 
     questionText: `Aufgabe 16 (2 Punkte): Satzglieder bestimmen.
@@ -1073,7 +1071,7 @@ Bestimme die unterstrichenen Satzglieder:
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=6',
 
     questionText: `Aufgabe 17 (3 Punkte): Satzglieder herausschreiben und bestimmen.
@@ -1135,7 +1133,7 @@ Schreibe die Satzglieder heraus und bestimme sie.`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=7',
 
     questionText: `Aufgabe 18 (5 Punkte): Satzgliedschema zuordnen.
@@ -1231,7 +1229,7 @@ E = Präpositionalgefüge – Prädikat – Präpositionalgefüge – Subjekt
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Schreibaufgabe',
+    topic: 'Schreibaufgaben',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179272/AP25_GMS3_D_Schreibaufgabe.pdf?fp=1',
 
     questionText: `Schreibaufgabe 1 (Erzählung aus Figuren-Perspektive):
@@ -1327,7 +1325,7 @@ Schluss: «Das Unheil. Ja. Es ist passiert. Nur nicht so, wie ich gedacht hatte.
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Schreibaufgabe',
+    topic: 'Schreibaufgaben',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179272/AP25_GMS3_D_Schreibaufgabe.pdf?fp=1',
 
     questionText: `Schreibaufgabe 2 (Zwei Tagebucheinträge aus Figurenperspektive):
@@ -1430,7 +1428,7 @@ Schluss: «Ich werde sehen. Vielleicht wird es doch okay. Vielleicht.»`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Schreibaufgabe',
+    topic: 'Schreibaufgaben',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179272/AP25_GMS3_D_Schreibaufgabe.pdf?fp=1',
 
     questionText: `Schreibaufgabe 3 (Erörterung / Reflexion):

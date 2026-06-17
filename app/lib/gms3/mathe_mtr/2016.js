@@ -155,7 +155,7 @@ Wirkliche Strecke = 47 ÷ (1 + 0.061224)
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106441/AP16_M_GMS3_Teil_2_Pruefung.pdf?fp=1#page=3',
 
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
 
     questionText: `Aufgabe 2: Marco wärmt sich Suppe auf.
 a) Marco wärmt sich seine gefrorene Gemüsesuppe (V = 1250 cm³) in einer zylinderförmigen Pfanne auf (d = 20 cm, h = 12 cm).
@@ -394,7 +394,7 @@ Halbdiagonale = 12.65 ÷ 2 ≈ 6.32 cm
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106441/AP16_M_GMS3_Teil_2_Pruefung.pdf?fp=1#page=5',
 
-    topic: 'Algebra', // NEU
+    topic: 'Terme & Klammern', // NEU
 
     questionText: `Aufgabe 4: Terme mit dem Taschenrechner berechnen
 Berechne folgende Terme mit dem Taschenrechner und runde das Resultat gegebenenfalls auf 4 Nachkommastellen.
@@ -538,7 +538,7 @@ Resultat: 22.889 ÷ 24.625 ≈ 0.9295`,
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106441/AP16_M_GMS3_Teil_2_Pruefung.pdf?fp=1#page=6',
 
-    topic: 'Algebra', // NEU
+    topic: 'Zahlen & Teilbarkeit', // NEU
 
     questionText: `Aufgabe 5: Summe der Quadratzahlen
 Für die Berechnung der Summe aller Quadratzahlen von 1 bis n gilt die Formel:
@@ -664,7 +664,7 @@ Gesamtoberfläche = 6 · 73 810 = 442 860 cm²
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106441/AP16_M_GMS3_Teil_2_Pruefung.pdf?fp=1#page=7',
 
-    topic: 'Algebra', // NEU
+    topic: 'Zahlen & Teilbarkeit', // NEU
 
     questionText: `Aufgabe 6: Brüche als Differenz
 Die Zahl 8/77 soll als Differenz zweier positiver Brüche geschrieben werden:
@@ -771,3 +771,4 @@ Nur a = 2, b = 2 funktioniert.`,
   },
 
 ];
+

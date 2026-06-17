@@ -1,10 +1,7 @@
 // app/lib/gms3/deutsch/2019.js
-// Aufnahmeprüfung 2019 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
-// Grundlage: Raymond Chandler, «The Big Sleep» (Textauszug, dt.)
+// Aufnahmeprüfung 2019 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2019 = [
-
-  // ── AUFGABE 1 ─────────────────────────────────────────────
 
   {
     id: 'D3_2019_TEXTVERST_1',
@@ -89,8 +86,6 @@ Welche Kombination stimmt?`,
     },
   },
 
-  // ── AUFGABE 2 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_WORTSCHATZ_1',
     year: 2019,
@@ -151,8 +146,6 @@ Welche Kombination ist korrekt?`,
     },
   },
 
-  // ── AUFGABE 3 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_WORTSCHATZ_2',
     year: 2019,
@@ -211,8 +204,6 @@ Antonyme (Gegenteil):
 3️⃣  Antonym-Test: «matte Zähne» vs. «schimmernde Zähne» → passt!`,
     },
   },
-
-  // ── AUFGABE 4 ─────────────────────────────────────────────
 
   {
     id: 'D3_2019_WORTSCHATZ_3',
@@ -276,8 +267,6 @@ D) nicht zu einem Ende kommen können`,
     },
   },
 
-  // ── AUFGABE 5 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_SATZGLIEDER_1',
     year: 2019,
@@ -285,7 +274,7 @@ D) nicht zu einem Ende kommen können`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=3',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 5 (4 Punkte): Satzglieder herausschreiben und bezeichnen.
 
@@ -339,8 +328,6 @@ Satz 2: «Er hatte heisse, harte, kohlschwarze Augen.»
     },
   },
 
-  // ── AUFGABE 6 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_WORTARTEN_ZAEHLEN_1',
     year: 2019,
@@ -348,7 +335,7 @@ Satz 2: «Er hatte heisse, harte, kohlschwarze Augen.»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=3',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 6 (3 Punkte): Wie viele verschiedene Wortarten kommen vor? (Nur 5 Grundwortarten)
 
@@ -413,8 +400,6 @@ Satz C: «Sie sahen nicht so aus, als ob schon je einer drauf gesessen hätte.»
     },
   },
 
-  // ── AUFGABE 7 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_PRAESENS_1',
     year: 2019,
@@ -422,7 +407,7 @@ Satz C: «Sie sahen nicht so aus, als ob schon je einer drauf gesessen hätte.»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=3',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 7 (2 Punkte): Präteritum → Präsens.
 
@@ -472,8 +457,6 @@ Setze den Satz ins Präsens:
     },
   },
 
-  // ── AUFGABE 8 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_WORTARTEN_1',
     year: 2019,
@@ -481,7 +464,7 @@ Setze den Satz ins Präsens:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=4',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 8 (4 Punkte): Wortarten bestimmen (5 Grundwortarten).
 
@@ -533,8 +516,6 @@ gesund → Adjektiv ✅ (Eigenschaft, prädikativ verwendet)`,
 5️⃣  Alles Unveränderliche → Partikel (inkl. «und», «nicht», «sehr»)`,
     },
   },
-
-  // ── AUFGABE 9 ─────────────────────────────────────────────
 
   {
     id: 'D3_2019_TEXTVERST_CHRONOLOGIE_1',
@@ -594,8 +575,6 @@ Bringe die Ereignisse in die richtige zeitliche Reihenfolge (1 = frühestes, 5 =
     },
   },
 
-  // ── AUFGABE 10 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_MODUS_GENUS_1',
     year: 2019,
@@ -603,7 +582,7 @@ Bringe die Ereignisse in die richtige zeitliche Reihenfolge (1 = frühestes, 5 =
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=4',
-    topic: 'Grammatik',
+    topic: 'Aktiv / Passiv',
 
     questionText: `Aufgabe 10 (1 Punkt): Modus und Genus verbi bestimmen.
 
@@ -652,8 +631,6 @@ Genus verbi:
     },
   },
 
-  // ── AUFGABE 11 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_VERBEN_1',
     year: 2019,
@@ -661,7 +638,7 @@ Genus verbi:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=5',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 11 (6 Punkte): Verben bestimmen.
 
@@ -726,8 +703,6 @@ streckte → Vollverb ✅ + Personalform ✅ (konjugiert: ich streckte = Prät.)
     },
   },
 
-  // ── AUFGABE 12 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_WORTSCHATZ_4',
     year: 2019,
@@ -786,8 +761,6 @@ Suche ein Wort, das dieser Wendung entspricht.`,
     },
   },
 
-  // ── AUFGABE 13 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_AKTIV_1',
     year: 2019,
@@ -795,7 +768,7 @@ Suche ein Wort, das dieser Wendung entspricht.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=5',
-    topic: 'Grammatik',
+    topic: 'Aktiv / Passiv',
 
     questionText: `Aufgabe 13 (2 Punkte): Passiv → Aktiv.
 
@@ -838,8 +811,6 @@ Schritte:
     },
   },
 
-  // ── AUFGABE 14 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_KONJUNKTIONEN_1',
     year: 2019,
@@ -847,7 +818,7 @@ Schritte:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=6',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 14 (3 Punkte): Alle Konjunktionen herausschreiben.
 
@@ -900,8 +871,6 @@ Schreibe alle Konjunktionen der Reihe nach heraus.`,
     },
   },
 
-  // ── AUFGABE 15 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_PERSONALFORM_1',
     year: 2019,
@@ -909,7 +878,7 @@ Schreibe alle Konjunktionen der Reihe nach heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=6',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 15 (1 Punkt): Personalform des Hauptsatzes herausschreiben.
 
@@ -951,8 +920,6 @@ Personalform des Hauptsatzes: «war» (in «war … zu sehen»)`,
     },
   },
 
-  // ── AUFGABE 16 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_AKKUSATIV_1',
     year: 2019,
@@ -960,7 +927,7 @@ Personalform des Hauptsatzes: «war» (in «war … zu sehen»)`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=6',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 16 (2 Punkte): Akkusativobjekte herausschreiben.
 
@@ -1010,8 +977,6 @@ Schreibe alle Akkusativobjekte der Reihe nach heraus.`,
     },
   },
 
-  // ── AUFGABE 17 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_PRAEPOSITIONEN_1',
     year: 2019,
@@ -1019,7 +984,7 @@ Schreibe alle Akkusativobjekte der Reihe nach heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=7',
-    topic: 'Grammatik',
+    topic: 'Präpositionen',
 
     questionText: `Aufgabe 17 (2 Punkte): Alle Präpositionen herausschreiben.
 
@@ -1058,8 +1023,6 @@ Schreibe alle Akkusativobjekte der Reihe nach heraus.`,
     },
   },
 
-  // ── AUFGABE 18 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_PRAEPOSITIONAL_1',
     year: 2019,
@@ -1067,7 +1030,7 @@ Schreibe alle Akkusativobjekte der Reihe nach heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=7',
-    topic: 'Grammatik',
+    topic: 'Präpositionen',
 
     questionText: `Aufgabe 18 (1 Punkt): Präpositionalgefüge herausschreiben.
 
@@ -1107,8 +1070,6 @@ Schreibe die Präpositionalgefüge heraus.`,
     },
   },
 
-  // ── AUFGABE 19 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_INFINITIVE_ZEITFORMEN_1',
     year: 2019,
@@ -1116,7 +1077,7 @@ Schreibe die Präpositionalgefüge heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=7',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 19 (4 Punkte): Infinitive und Zeitformen.
 
@@ -1175,8 +1136,6 @@ b) Wie viele verschiedene Zeitformen kommen im Satz vor?`,
     },
   },
 
-  // ── AUFGABE 20 ─────────────────────────────────────────────
-
   {
     id: 'D3_2019_GRAMMATIK_PRONOMEN_1',
     year: 2019,
@@ -1184,7 +1143,7 @@ b) Wie viele verschiedene Zeitformen kommen im Satz vor?`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=8',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 20 (3 Punkte): Pronomen näher bestimmen.
 

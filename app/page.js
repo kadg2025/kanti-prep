@@ -251,9 +251,10 @@ function PauseModal({ onClose, dm = makePalette(false) }) {
   useEffect(() => { chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [chatMessages]);
 
   useEffect(() => {
-    if (screen === 'dino') startDino();
+    let cleanupDino;
+    if (screen === 'dino') cleanupDino = startDino();
     else stopDino();
-    return () => stopDino();
+    return () => { if (cleanupDino) cleanupDino(); stopDino(); };
   }, [screen]);
 
   function startDino() {

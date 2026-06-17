@@ -1,7 +1,5 @@
 // app/lib/gms3/deutsch/2024.js
-// Aufnahmeprüfung 2024 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
-// Sprachprüfung: Textauszug «Als ich jung war» (Hochzeitsfotograf, Schlossrestaurant)
-// Schreibaufgabe: Textauszug «Die Abschiedsparty» (nach John Green, «Eine wie Alaska»)
+// Aufnahmeprüfung 2024 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2024 = [
 
@@ -353,7 +351,7 @@ D) wenngleich`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=3',
 
     questionText: `Aufgabe 6 (3 Punkte): Wortart bestimmen (nur nach den 5 Wortarten).
@@ -418,7 +416,7 @@ geführt → Verb ✅ (Partizip II von «führen»; im 5-WA-System zählt es als
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=4',
 
     questionText: `Aufgabe 7 (2 Punkte): Wie viele verschiedene Wortarten kommen vor? (5 Grundwortarten)
@@ -489,7 +487,7 @@ Satz B: «Und dann begann es auch schon mit den Hochzeiten.»
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=4',
 
     questionText: `Aufgabe 8 (5 Punkte): Partikeln und Konjunktionen herausschreiben.
@@ -559,7 +557,7 @@ b) Konjunktionen in «Und weil er … anbieten»:
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=4',
 
     questionText: `Aufgabe 9 (2 Punkte): Satzglieder bestimmen.
@@ -630,7 +628,7 @@ Bestimme die unterstrichenen Satzglieder:
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=5',
 
     questionText: `Aufgabe 10 (3 Punkte): Plusquamperfekt bilden.
@@ -697,7 +695,7 @@ Nebensatz: «um nach dem Rechten zu sehen»
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=5',
 
     questionText: `Aufgabe 11 (2 Punkte): Alle Verben in der Infinitivform.
@@ -752,7 +750,7 @@ Schreibe alle Verben aus dem obigen Satz der Reihe nach in der Infinitivform auf
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=5',
 
     questionText: `Aufgabe 12 (2 Punkte): Zeitformen zählen.
@@ -810,7 +808,7 @@ D) 4`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=6',
 
     questionText: `Aufgabe 13 (8 Punkte): Verbale Teile näher bestimmen.
@@ -889,7 +887,7 @@ getan → Vollverb ✅ + Partizip II ✅
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Aktiv / Passiv',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=6',
 
     questionText: `Aufgabe 14 (3 Punkte): Verbalen Teil näher bestimmen.
@@ -962,7 +960,7 @@ Aktiv | Passiv | Indikativ | Konjunktiv | Präteritum | Plusquamperfekt
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Präpositionen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=7',
 
     questionText: `Aufgabe 15 (4 Punkte): Präpositionalgefüge herausschreiben.
@@ -1028,7 +1026,7 @@ Schreibe aus dem obigen Satz alle Präpositionalgefüge untereinander der Reihe 
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=7',
 
     questionText: `Aufgabe 16 (2 Punkte): Fälle bestimmen.
@@ -1098,7 +1096,7 @@ Bestimme die Fälle der unterstrichenen Wörter:
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=8',
 
     questionText: `Aufgabe 17 (4 Punkte): Satzgliedschema zuordnen.
@@ -1183,7 +1181,7 @@ D = Subjekt – Prädikat – Akkusativobjekt
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Schreibaufgabe',
+    topic: 'Schreibaufgaben',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164519/AP24_GMS3_D_Schreibaufgabe.pdf?fp=1',
 
     questionText: `Schreibaufgabe 1 (Erzählung aus Figuren-Perspektive):
@@ -1276,7 +1274,7 @@ Für den Schluss: «Zwei Personen. Ich hätte mir keine bessere Bestätigung daf
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Schreibaufgabe',
+    topic: 'Schreibaufgaben',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164519/AP24_GMS3_D_Schreibaufgabe.pdf?fp=1',
 
     questionText: `Schreibaufgabe 2 (Erörterung / Stellungnahme):
@@ -1362,7 +1360,7 @@ SCHLUSS (Fazit + eigene Meinung):
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Schreibaufgabe',
+    topic: 'Schreibaufgaben',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164519/AP24_GMS3_D_Schreibaufgabe.pdf?fp=1',
 
     questionText: `Schreibaufgabe 3 (Tagebucheintrag aus Figurenperspektive):
@@ -1456,3 +1454,9 @@ Schluss: «Morgen früh fährt er. Ich wünsche mir, dass Culver Creek ihm geben
   },
 
 ];
+
+
+// app/lib/gms3/deutsch/2025.js
+// Aufnahmeprüfung 2025 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
+// Sprachprüfung: Textauszug «Der Spaziergang» (Carl, Eltern wollen auswandern)
+// Schreibaufgabe: Textauszug «Die Neue» (Ich-Erzähler, neue Mitschülerin)

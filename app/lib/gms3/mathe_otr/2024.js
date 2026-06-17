@@ -1,3 +1,5 @@
+
+
 export const questions2024_oTR = [
   {
     id: 'M1_2024_OTR_EQ_1a',
@@ -47,7 +49,7 @@ x = 23
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164189/AP24_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 2a: Vereinfache so weit wie möglich.
 
 8a - 3(3 - a) · 3 - (a^4 · a^5)`,
@@ -388,7 +390,7 @@ Erst Hilfslängen bestimmen, dann Teilflächen addieren.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164189/AP24_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Zahlentheorie',
+    topic: 'Zahlen & Teilbarkeit',
     questionText: `Aufgabe 6a: Drei Holzstäbe von 90 cm, 144 cm und 270 cm Länge sollen in gleich lange, aber möglichst grosse Stücke zersägt werden, so dass kein Reststück übrigbleibt. Welches ist die Länge eines solchen Stücks? Wie oft muss man insgesamt sägen, wenn jeder Holzstab einzeln bearbeitet wird?`,
     options: [
       { label: '18 cm, insgesamt 24 Schnitte', correct: true },
@@ -436,7 +438,7 @@ Total = 4 + 7 + 14 = 25
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164189/AP24_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Zahlentheorie',
+    topic: 'Zahlen & Teilbarkeit',
     questionText: `Aufgabe 6b: Es soll wieder so gesägt werden, dass gleich lange, aber möglichst grosse Stücke entstehen. Nun darf aber bei einem der drei Holzstäbe ein Reststück von 9 cm übrigbleiben. Wie lang sind die Stücke dann? Bei welchem Stab bleibt der Rest?`,
     options: [
       { label: 'Länge 27 cm, Rest beim 144-cm-Stab', correct: true },
@@ -465,3 +467,4 @@ Wenn ein Rest erlaubt ist, prüfe die grösstmögliche Stücklänge, die bei gen
     },
   },
 ];
+

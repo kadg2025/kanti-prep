@@ -1,3 +1,4 @@
+
 export const questions2017_oTR = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -16,7 +17,7 @@ export const questions2017_oTR = [
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106610/AP17_M1_GMS3_Pr%C3%BCfung.pdf?fp=1#page=1',
 
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
 
     questionText: `Aufgabe 1: Bergbahn
 
@@ -150,7 +151,7 @@ b2) Mindestens voll: (Gesamtpersonen - (Anzahl Gondeln * 3)) -> Das Ergebnis ist
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106610/AP17_M1_GMS3_Pr%C3%BCfung.pdf?fp=1#page=2',
 
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
 
     questionText: `Aufgabe 2: Spielshow
 
@@ -280,7 +281,7 @@ Die am nächsten liegende Antwort ist 58.
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106610/AP17_M1_GMS3_Pr%C3%BCfung.pdf?fp=1#page=3',
 
-    topic: 'Arithmetik', // NEU
+    topic: 'Zahlen & Teilbarkeit', // NEU
 
     questionText: `Aufgabe 3: Zahlen ordnen
 
@@ -386,7 +387,7 @@ Wurzeln abschätzen: Finde die nächstgelegenen bekannten Quadratzahlen. z.B. �
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106610/AP17_M1_GMS3_Pr%C3%BCfung.pdf?fp=1#page=3',
 
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
 
     questionText: `Aufgabe 4: Term vereinfachen
 
@@ -482,7 +483,7 @@ Wert = 3 * 4 = 12.
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106610/AP17_M1_GMS3_Pr%C3%BCfung.pdf?fp=1#page=4',
 
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
 
     questionText: `Aufgabe 5: Formeln umstellen
 
@@ -803,3 +804,4 @@ Der gesuchte Mittelpunkt M ist also der Schnittpunkt der Geraden aus (1) und der
   },
 
 ];
+

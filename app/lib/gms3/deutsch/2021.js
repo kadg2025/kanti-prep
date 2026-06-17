@@ -1,6 +1,5 @@
 // app/lib/gms3/deutsch/2021.js
-// Aufnahmeprüfung 2021 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
-// Grundlage: Robert Seethaler, «Der Trafikant» (Textauszug: Das Gewitter am Attersee)
+// Aufnahmeprüfung 2021 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2021 = [
 
@@ -283,7 +282,7 @@ D) Kurzzeitig`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 5 (4 Punkte): Konjunktionen und Präpositionen herausschreiben.
 
@@ -351,7 +350,7 @@ Präpositionen (stehen vor Nomengruppen, regieren Fall):
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 6 (2 Punkte): Pronomen näher bestimmen.
 
@@ -422,7 +421,7 @@ Bestimme die unterstrichenen Pronomen näher:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 7 (3 Punkte): Wie viele Wortarten kommen vor? (5 Grundwortarten)
 
@@ -497,7 +496,7 @@ Satz C: «Ihr Kopf fühlte sich zart an.»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 8 (5 Punkte): Wortart + nähere Bestimmung.
 
@@ -568,7 +567,7 @@ sich → Pronomen / nähere Bestimmung: Reflexivpronomen ✅
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 9 (4 Punkte): Objekte herausschreiben und bestimmen.
 
@@ -632,7 +631,7 @@ Schreibe aus dem obigen Satz die Objekte untereinander der Reihe nach heraus und
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 10 (2 Punkte): Subjekte herausschreiben.
 
@@ -685,7 +684,7 @@ Schreibe der Reihe nach alle Subjekte heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 11 (3 Punkte): Satzglieder herausschreiben und bestimmen.
 
@@ -751,7 +750,7 @@ Schreibe aus dem obigen Satz die Satzglieder untereinander der Reihe nach heraus
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Direkte / Indirekte Rede',
 
     questionText: `Aufgabe 12 (1 Punkt): Direkte Rede → indirekte Rede.
 
@@ -805,7 +804,7 @@ Satzrahmen: «sagte sie leise» wird zum Begleitsatz (Verbum dicendi)`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 13 (2 Punkte): Futur I bilden.
 
@@ -869,7 +868,7 @@ Teilsatz 2: «ihre Schultern bebten»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 14 (1 Punkt): Zeitformen zählen.
 
@@ -924,7 +923,7 @@ Relativsatz: «das er und seine Mutter … bewohnten»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 15 (2 Punkte): Alle Verben in der Infinitivform.
 
@@ -974,7 +973,7 @@ Schreibe alle Verben aus dem obigen Satz der Reihe nach untereinander in der Inf
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 16 (8 Punkte): Verbale Teile näher bestimmen.
 
@@ -1054,7 +1053,7 @@ wurden → Hilfsverb ✅ | Personalform ✅
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 17 (2 Punkte): Zusammengezogene Nebensätze vollständig aufschreiben.
 
@@ -1119,7 +1118,7 @@ Vollständig ausgeschrieben:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=10',
-    topic: 'Grammatik',
+    topic: 'Zeichensetzung',
 
     questionText: `Aufgabe 18 (3 Punkte): Kommas setzen.
 

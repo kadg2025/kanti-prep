@@ -1,3 +1,4 @@
+
 export const questions2019 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -244,7 +245,7 @@ Mit 5% Rabatt: 50 × 0.95 = Fr. 47.50
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106599/AP19_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=4',
 
-    topic: 'Algebra', // NEU
+    topic: 'Bewegung & Geschwindigkeit', // NEU
 
     questionText: `Aufgabe 3: Auto und Lastwagen nach München (310 km)
 a) Wie viele Minuten früher ist der Autofahrer am Ziel? Auto: 85 km/h, LKW: 52 km/h. (Runde auf ganze Minuten)
@@ -357,7 +358,7 @@ c) % = (v_LKW × t_Auto) ÷ Strecke × 100`,
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106599/AP19_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=5',
 
-    topic: 'Prozent & Zins', // NEU
+    topic: 'Proportionalität', // NEU
 
     questionText: `Aufgabe 4: Raumstation ISS und Mars
 a) Die ISS umkreist die Erde 7.25 mal in 10 h 52 min 30 s. Wie viele Umrundungen macht sie in 31 Tagen?
@@ -473,7 +474,7 @@ c) Personentage: (Rest_original + Neue) / Personen`,
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106599/AP19_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=6',
 
-    topic: 'Stochastik', // NEU
+    topic: 'Körper & Netze', // NEU
 
     questionText: `Aufgabe 5: Würfel anmalen und zerschneiden
 Ein Würfel wird rot angemalt und dann in gleiche Würfelchen zerschnitten.
@@ -647,3 +648,5 @@ Vorgehen:
   },
 
 ];
+
+

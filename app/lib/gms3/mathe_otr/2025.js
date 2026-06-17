@@ -1,3 +1,4 @@
+
 export const questions2025_oTR = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
@@ -7,7 +8,7 @@ export const questions2025_oTR = [
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 1: Multipliziere die folgenden Terme aus und vereinfache danach so weit wie möglich.
 
 a) [Term aus PDF einsetzen]
@@ -86,7 +87,7 @@ Ordnung ist alles: erst vereinfachen, dann umformen, dann lösen.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Arithmetik',
+    topic: 'Proportionalität',
     questionText: `Aufgabe 3a: Zerlege die Zahl 63 in zwei Summanden, die sich zueinander verhalten wie 3 : 4.`,
     options: [
       { label: '27 und 36', correct: true },
@@ -129,7 +130,7 @@ Zweiter Summand: 4 · 9 = 36
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 3b: Welcher Term hat den grösseren Wert? Begründe rechnerisch.
 
 Term A: [aus PDF einsetzen]
@@ -162,7 +163,7 @@ Nie raten — immer beide Terme vollständig berechnen und erst dann vergleichen
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 4a: In einer Urne liegen 3 rote und 2 schwarze Kugeln. Es werden drei Kugeln nacheinander mit Zurücklegen gezogen und jeweils die Farbe notiert.
 
 Erstelle eine Baumdarstellung. Du musst keine Wahrscheinlichkeiten eintragen.`,
@@ -206,7 +207,7 @@ Bei drei Ziehungen braucht der Baum immer genau drei Ebenen.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 4b1: Wie gross ist die Wahrscheinlichkeit, dass drei rote Kugeln gezogen werden?`,
     options: [
       { label: '27/125', correct: true },
@@ -243,7 +244,7 @@ Bei drei Ziehungen braucht der Baum immer genau drei Ebenen.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 4b2: Wie gross ist die Wahrscheinlichkeit, dass genau zwei rote Kugeln dabei sind?`,
     options: [
       { label: '54/125', correct: true },
@@ -283,7 +284,7 @@ Bei „genau zwei rot“ zuerst alle passenden Farbfolgen sammeln.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 4b3: Wie gross ist die Wahrscheinlichkeit, dass lauter gleichfarbige Kugeln gezogen werden?`,
     options: [
       { label: '7/25', correct: true },
@@ -324,7 +325,7 @@ Bei „ODER“ addierst du die passenden Fälle.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 4c1: Nun werden die Kugeln jeweils durchnummeriert und man zieht nacheinander zwei Kugeln mit Zurücklegen. Wie gross ist die Wahrscheinlichkeit, dass die erste gezogene Kugel die Nummer 1 und die zweite gezogene Kugel die Nummer 3 besitzt?`,
     options: [
       { label: '1/25', correct: true },
@@ -364,7 +365,7 @@ Bei festen Nummern einfach Einzelwahrscheinlichkeiten multiplizieren.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 4c2: Wie gross ist die Wahrscheinlichkeit, dass die Summe der beiden gezogenen Kugeln fünf beträgt?`,
     options: [
       { label: '4/25', correct: true },
@@ -406,7 +407,7 @@ Bei Nummern-Aufgaben zuerst alle passenden geordneten Paare auflisten.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Prozent',
+    topic: 'Prozent & Zins',
     questionText: `Aufgabe 5a(1): Bauer Josten baut auf 40% der Fläche Gerste, auf 25% Weizen und auf der restlichen Fläche Mais an. Wie gross sind die Flächen, wenn er insgesamt 25 ha bewirtschaftet?`,
     options: [
       { label: 'Gerste 10 ha, Weizen 6.25 ha, Mais 8.75 ha', correct: true },
@@ -449,7 +450,7 @@ Prozent immer erst in Dezimalzahl umwandeln, dann mit dem Ganzen multiplizieren.
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Prozent',
+    topic: 'Prozent & Zins',
     questionText: `Aufgabe 5a(2): Zeichne eine mögliche Einteilung des Rechtecks für Gerste, Weizen und Mais ein.`,
     options: [
       { label: 'Jede Einteilung mit 40%, 25% und 35% ist möglich', correct: true },
@@ -487,7 +488,7 @@ Wenn Zeichnen verlangt ist, hilft ein Rechteck mit gleich grossen Teilstreifen.`
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Prozent',
+    topic: 'Prozent & Zins',
     questionText: `Aufgabe 5b: Im Vergleich zum Vorjahr ist der Ertrag an Mais von 300 Tonnen auf 360 Tonnen gestiegen. Berechne den prozentualen Ertragszuwachs.`,
     options: [
       { label: '20%', correct: true },
@@ -524,7 +525,7 @@ Prozentuale Veränderung immer durch den alten Wert teilen.`,
     group: 'Alte Prüfungen',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Prozent',
+    topic: 'Prozent & Zins',
     questionText: `Aufgabe 5c: Leider ist der Ertrag von Weizen im Vergleich zum Vorjahr um 30% auf 105 Tonnen gefallen. Berechne, wie gross der Ertrag im Vorjahr war.`,
     options: [
       { label: '150 Tonnen', correct: true },

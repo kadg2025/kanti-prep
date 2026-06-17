@@ -1,3 +1,4 @@
+
 export const questions2017 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -14,7 +15,7 @@ export const questions2017 = [
 
     group: 'Alte Prüfungen',
 
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106612/AP17_M2_GMS3_Pr%C3%BCfung.pdf?fp=1#page=1',
 
@@ -152,7 +153,7 @@ Start: 5.7. um 00:00 + 8 Tage 12h = 13.7. um 12:00 Uhr.
 
     group: 'Alte Prüfungen',
 
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106612/AP17_M2_GMS3_Pr%C3%BCfung.pdf?fp=1#page=3',
 
@@ -599,7 +600,7 @@ Schritt 4: Einnahmen
 
     group: 'Alte Prüfungen',
 
-    topic: 'Algebra', // NEU
+    topic: 'Bewegung & Geschwindigkeit', // NEU
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106612/AP17_M2_GMS3_Pr%C3%BCfung.pdf?fp=1#page=7',
 
@@ -710,3 +711,5 @@ L = 11 · 510 = 5610 m
   },
 
 ];
+
+

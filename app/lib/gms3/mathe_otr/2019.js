@@ -1,3 +1,4 @@
+
 export const questionsMatheOtr2019 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -16,7 +17,7 @@ export const questionsMatheOtr2019 = [
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106598/AP19_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
 
-    topic: 'Geometrie & Körper',
+    topic: 'Körper & Netze',
 
     questionText: `Aufgabe 1: Würfelabwicklung
 
@@ -280,7 +281,7 @@ x = 18/11
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106598/AP19_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
 
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
 
     questionText: `Aufgabe 3: Terme vereinfachen
 
@@ -400,7 +401,7 @@ Alternativ falls Aufgabe (3y²)² gemeint:
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106598/AP19_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
 
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
 
     questionText: `Aufgabe 4: Text als Term
 
@@ -658,7 +659,7 @@ Hinweis: Ohne genaue Abbildung des Rades — falls A = 2/3 des Rades:
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106598/AP19_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
 
-    topic: 'Statistik',
+    topic: 'Statistik & Diagramme',
 
     questionText: `Aufgabe 6: Lieblingsfächer
 
@@ -803,3 +804,4 @@ Prozent: 2/10 × 100 = 20%
   },
 
 ];
+

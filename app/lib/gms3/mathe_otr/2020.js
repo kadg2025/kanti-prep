@@ -1,3 +1,4 @@
+
 export const questions2020_oTR = [
   // ── AUFGABE 1a ────────────────────────────────────────────
   {
@@ -7,7 +8,7 @@ export const questions2020_oTR = [
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Arithmetik',
+    topic: 'Zahlen & Teilbarkeit',
     questionText: `Aufgabe 1a: ggT und kgV
 Bestimme je den ggT (grösster gemeinsamer Teiler) und das kgV (kleinstes gemeinsames Vielfaches).
 
@@ -62,7 +63,7 @@ Alle Faktoren mit höchsten Potenzen: 2 · 3 · 5 · 11
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Arithmetik',
+    topic: 'Zahlen & Teilbarkeit',
     questionText: `Aufgabe 1b: ggT und kgV mit Termen
 Bestimme je den ggT und das kgV.
 
@@ -207,7 +208,7 @@ Hinweis: Die Lösungsdatei zeigt x = 17/7. Bitte mit der offiziellen Lösung ver
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 2a: Glücksbeutel – Wörter
 In einem Glücksbeutel sind 4 Kugeln:
 - 1× Buchstabe N
@@ -264,7 +265,7 @@ Total: JNAA, JANA, JAAN, NJAA, NAJA, NAAJ, AANJ, AAJN, ANAJ, ANJA, AJAN, AJNA
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 2b: Wahrscheinlichkeit J-A-N-A
 In einem Glücksbeutel sind 4 Kugeln: 1× N, 1× J, 2× A.
 Es werden alle 4 Kugeln ohne Zurücklegen gezogen.
@@ -317,7 +318,7 @@ P = 1/4 · 2/3 · 1/2 · 1 = 2/24 = 1/12 ✅`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 2c: J ersetzt durch N
 In einem Glücksbeutel sind 4 Kugeln: 1× N, 1× J, 2× A.
 Die Kugel mit J wird durch eine Kugel mit N ersetzt.
@@ -364,7 +365,7 @@ Hier: 4! / (2! · 2!) = 6`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Stochastik',
+    topic: 'Wahrscheinlichkeit',
     questionText: `Aufgabe 2d: Michael und Robin – gleiches Spiel?
 Im Glücksbeutel befinden sich 3× A und 1× N.
 Es werden 2 Kugeln ohne Zurücklegen gezogen.
@@ -793,7 +794,7 @@ Probe: 15 + 30 = 45 ✅
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Arithmetik',
+    topic: 'Zahlen & Teilbarkeit',
     questionText: `Aufgabe 5b: Grösste Primzahl
 Welches ist die grösste Primzahl, die mit ihren drei nachfolgenden ganzen Zahlen summiert kleiner als 100 ist?`,
     options: [
@@ -845,7 +846,7 @@ Nächste Primzahl 29: 29 + 30 + 31 + 32 = 122 ≥ 100 ✗
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 6a: Bruch vereinfachen
 Fasse zu einem einzigen, möglichst einfachen Bruch zusammen:
 
@@ -891,7 +892,7 @@ Summe: 2a/3 + a/3 = 3a/3 = a
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 6b: Bruch vereinfachen
 Fasse zu einem einzigen, möglichst einfachen Bruch zusammen:
 
@@ -940,7 +941,7 @@ Jetzt multiplizieren:
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 6c: Bruch vereinfachen
 Fasse zu einem einzigen, möglichst einfachen Bruch zusammen:
 
@@ -986,3 +987,4 @@ Bitte mit der Schullösung vergleichen!`,
     },
   },
 ];
+

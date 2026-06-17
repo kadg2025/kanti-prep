@@ -1,3 +1,5 @@
+
+
 export const questions2023_oTR = [
   {
     id: 'M1_2023_OTR_EQ_1a',
@@ -103,7 +105,7 @@ x = 9/28`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 2a: Vereinfache so weit wie möglich.
 
 4(a - 1) - 3(a - 1) + 5(a - 1) - 2a`,
@@ -149,7 +151,7 @@ x = 9/28`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 2b: Multipliziere aus.
 
 2xy( -3x + 2y )`,
@@ -187,7 +189,7 @@ Bei Potenzen gleiche Buchstaben → Exponenten addieren.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 2c: Vereinfache und klammere so weit wie möglich aus.
 
 4x²y - 6xy² + 3xy - 2x²y`,
@@ -232,7 +234,7 @@ Damit:
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 3a: Berechne und vereinfache so weit wie möglich.
 
 T1 = a·b·c
@@ -274,7 +276,7 @@ Bei Potenzen gleicher Basis Exponenten addieren.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 3b: Berechne und vereinfache so weit wie möglich.
 
 T3 · T4`,
@@ -311,7 +313,7 @@ Gleiche Basis → Exponenten addieren.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 3c: Berechne und vereinfache so weit wie möglich.
 
 T3 : T4`,
@@ -504,7 +506,7 @@ Die Stumpenkerze soll doppelt so lang sein wie die Stabkerze → Gleichung aufst
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Statistik',
+    topic: 'Statistik & Diagramme',
     questionText: `Aufgabe 5a: Berechne die absoluten Häufigkeiten.
 
 Insgesamt wurden 720 SchülerInnen befragt.
@@ -549,7 +551,7 @@ Ausschliesslich Fernunterricht: 720 - 252 - 288 - 72 = 108
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Statistik',
+    topic: 'Statistik & Diagramme',
     questionText: `Aufgabe 5b: Welches Säulendiagramm passt zur Umfrage?`,
     options: [
       { label: 'Diagramm rechts oben', correct: true },
@@ -656,3 +658,5 @@ s = 7
     },
   },
 ];
+
+

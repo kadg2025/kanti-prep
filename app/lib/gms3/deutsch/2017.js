@@ -1,10 +1,7 @@
 // app/lib/gms3/deutsch/2017.js
-// Aufnahmeprüfung 2017 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
-// Grundlage: Heinrich Böll, «Mein trauriges Gesicht» (Textauszug)
+// Aufnahmeprüfung 2017 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2017 = [
-
-  // ── AUFGABE 1 ─────────────────────────────────────────────
 
   {
     id: 'D3_2017_TEXTVERST_1',
@@ -88,8 +85,6 @@ Welche Kombination stimmt?`,
     },
   },
 
-  // ── AUFGABE 2 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_TEXTVERST_CHRONOLOGIE_1',
     year: 2017,
@@ -150,8 +145,6 @@ Welche Reihenfolge stimmt?`,
 3️⃣  Verhaftung und Fluchtversuch: logische Handlungsreihenfolge im Text → 3, dann 4`,
     },
   },
-
-  // ── AUFGABE 3 ─────────────────────────────────────────────
 
   {
     id: 'D3_2017_WORTSCHATZ_1',
@@ -215,8 +208,6 @@ Welche stimmen, welche nicht?`,
     },
   },
 
-  // ── AUFGABE 4 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_VERBEN_1',
     year: 2017,
@@ -224,7 +215,7 @@ Welche stimmen, welche nicht?`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 4 (4 Punkte): Verben bestimmen.
 
@@ -296,8 +287,6 @@ würden → Hilfsverb ✅ + Konjunktiv II ✅ (bildet Konjunktiv II von «zuflie
     },
   },
 
-  // ── AUFGABE 5 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_WORTSCHATZ_2',
     year: 2017,
@@ -358,8 +347,6 @@ Welche Kombination ist korrekt?`,
     },
   },
 
-  // ── AUFGABE 6 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_PASSIV_ZEITFORM_1',
     year: 2017,
@@ -367,7 +354,7 @@ Welche Kombination ist korrekt?`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Aktiv / Passiv',
 
     questionText: `Aufgabe 6 (2 Punkte): Handlungsrichtung und Zeitform bestimmen.
 
@@ -413,8 +400,6 @@ Zeitform:
     },
   },
 
-  // ── AUFGABE 7 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_OBJEKT_1',
     year: 2017,
@@ -422,7 +407,7 @@ Zeitform:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 7 (1 Punkt): Satzglied bestimmen.
 
@@ -461,8 +446,6 @@ Was ist «mich» für ein Satzglied?`,
     },
   },
 
-  // ── AUFGABE 8 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_ZEITFORM_2',
     year: 2017,
@@ -470,7 +453,7 @@ Was ist «mich» für ein Satzglied?`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 8 (2 Punkte): Zeitformen bestimmen.
 
@@ -524,8 +507,6 @@ Teilsatz 2: «hat verlassen müssen»
     },
   },
 
-  // ── AUFGABE 9 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_INDIREKTE_REDE_1',
     year: 2017,
@@ -533,7 +514,7 @@ Teilsatz 2: «hat verlassen müssen»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Direkte / Indirekte Rede',
 
     questionText: `Aufgabe 9 (2 Punkte): Indirekte Rede (Konjunktiv I).
 
@@ -597,8 +578,6 @@ Alternativen (alle akzeptiert):
     },
   },
 
-  // ── AUFGABE 10 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_WORTARTEN_1',
     year: 2017,
@@ -606,7 +585,7 @@ Alternativen (alle akzeptiert):
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 10 (4 Punkte): Wortarten bestimmen (5 Grundwortarten).
 
@@ -668,8 +647,6 @@ wieder → Partikel (Temporaladverb, unveränderlich) ✅`,
     },
   },
 
-  // ── AUFGABE 11 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_PARTIKELN_1',
     year: 2017,
@@ -677,7 +654,7 @@ wieder → Partikel (Temporaladverb, unveränderlich) ✅`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 11 (3 Punkte): Partikeln zuordnen.
 
@@ -748,8 +725,6 @@ Sonstige:
     },
   },
 
-  // ── AUFGABE 12 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_SUBJEKT_VERB_1',
     year: 2017,
@@ -757,7 +732,7 @@ Sonstige:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 12 (2 Punkte): Subjekt und Verb herausschreiben.
 
@@ -811,8 +786,6 @@ Verbale Teile:
     },
   },
 
-  // ── AUFGABE 13 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_FRAGESATZ_1',
     year: 2017,
@@ -820,7 +793,7 @@ Verbale Teile:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 13 (1 Punkt): Aussagesatz → Fragesatz im Präsens.
 
@@ -874,8 +847,6 @@ Aussagesatz: Viele Jahre schon war jede Verbindung …
     },
   },
 
-  // ── AUFGABE 14 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_PRONOMEN_1',
     year: 2017,
@@ -883,7 +854,7 @@ Aussagesatz: Viele Jahre schon war jede Verbindung …
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 14 (4 Punkte): Pronomen in Spalten einordnen.
 
@@ -952,8 +923,6 @@ der (2. «der in diesem Viertel die Runde») → Relativpronomen ✅ (Wiederholu
     },
   },
 
-  // ── AUFGABE 15 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_HAUPTSATZ_1',
     year: 2017,
@@ -961,7 +930,7 @@ der (2. «der in diesem Viertel die Runde») → Relativpronomen ✅ (Wiederholu
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 15 (1 Punkt): Hauptsatz herausschreiben.
 
@@ -1011,8 +980,6 @@ Analyse:
     },
   },
 
-  // ── AUFGABE 16 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_PRAEPOSITIONAL_1',
     year: 2017,
@@ -1020,7 +987,7 @@ Analyse:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Präpositionen',
 
     questionText: `Aufgabe 16 (4 Punkte): Präpositionalgefüge herausschreiben.
 
@@ -1070,8 +1037,6 @@ Schreibe alle Präpositionalgefüge heraus.`,
     },
   },
 
-  // ── AUFGABE 17 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_OBJEKTE_1',
     year: 2017,
@@ -1079,7 +1044,7 @@ Schreibe alle Präpositionalgefüge heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 17 (3 Punkte): Objekte bestimmen.
 
@@ -1134,8 +1099,6 @@ Ordne die Objekte ein:
     },
   },
 
-  // ── AUFGABE 18 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_NEBENSATZ_1',
     year: 2017,
@@ -1143,7 +1106,7 @@ Ordne die Objekte ein:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 18 (2 Punkte): Nebensätze herausschreiben.
 
@@ -1196,8 +1159,6 @@ Schreibe alle Nebensätze heraus.`,
     },
   },
 
-  // ── AUFGABE 19 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_HAUPTSAETZE_1',
     year: 2017,
@@ -1205,7 +1166,7 @@ Schreibe alle Nebensätze heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 19 (2 Punkte): Wie viele Hauptsätze?
 
@@ -1251,8 +1212,6 @@ HS 3: «jetzt erst begriff ich» ✅
     },
   },
 
-  // ── AUFGABE 20 ─────────────────────────────────────────────
-
   {
     id: 'D3_2017_GRAMMATIK_KONJUNKTION_1',
     year: 2017,
@@ -1260,7 +1219,7 @@ HS 3: «jetzt erst begriff ich» ✅
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 20 (1 Punkt): Definition vervollständigen.
 
@@ -1298,8 +1257,6 @@ Unterordnend = subordinierend = bringt das Verb ans Ende → leitet Nebensatz ei
 Merke: WEIL, DASS, OBWOHL, ALS, WENN → immer Nebensatz → Verb am Ende!`,
     },
   },
-
-  // ── AUFGABE 21 ─────────────────────────────────────────────
 
   {
     id: 'D3_2017_WORTSCHATZ_3',

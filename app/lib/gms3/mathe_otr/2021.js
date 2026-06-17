@@ -1,3 +1,4 @@
+
 export const questions2021_oTR = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
@@ -7,7 +8,7 @@ export const questions2021_oTR = [
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 1: Potenzen
 Womit muss man y⁶ multiplizieren, damit man folgendes erhält?
 
@@ -72,7 +73,7 @@ y⁶ · 64 = 64y⁶
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 2a: Terme ordnen
 Gegeben sind drei Terme:
 A = (2/3)x² + 1
@@ -117,7 +118,7 @@ Reihenfolge: –2 < 10/3 < 7
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 2b: Terme ordnen
 Gegeben sind drei Terme:
 A = (2/3)x² + 1
@@ -160,7 +161,7 @@ Achtung bei 8/x: Wenn x = 1/2 → 8 ÷ (1/2) = 8 · 2 = 16!`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 2c: Terme ordnen
 Gegeben sind drei Terme:
 A = (2/3)x² + 1
@@ -309,7 +310,7 @@ Probe: 8/3 + 7/3 = 15/3 = 5 ✅
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 4a: Ausklammern
 Klammere soweit wie möglich aus:
 
@@ -368,7 +369,7 @@ Probe: 14b · 1 = 14b ✅ | 14b · 3ab = 42ab² ✅`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 4b: Klammern auflösen
 
 b₁) z(7xz² + 8bz)
@@ -415,7 +416,7 @@ Variablen: Exponenten addieren (xᵃ · xᵇ = xᵃ⁺ᵇ).`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Geometrie',
+    topic: 'Körper & Netze',
     questionText: `Aufgabe 5a: Würfelnetz beschriften
 Gegeben ist ein Würfel mit Ecken A, B, C, D (unten) und E, F, G, H (oben).
 Beschrifte das Würfelnetz vollständig und schraffiere die gesuchte Fläche (Fläche B-C).`,
@@ -462,7 +463,7 @@ Da es sich um eine Zeichnungsaufgabe handelt, empfehlen wir die offizielle Schul
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Geometrie',
+    topic: 'Körper & Netze',
     questionText: `Aufgabe 5b: Punkt P ins Würfelnetz übertragen
 Gegeben ist ein Würfel mit Punkt P auf der Kante HG.
 Übertrage P und alle Würfelecken ins Netz. Schraffiere im Raumbild die entsprechende Fläche.`,
@@ -503,7 +504,7 @@ Es gibt zwei mögliche Lösungen je nach Aufklapprichtung (nach aussen oder nach
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Statistik',
+    topic: 'Statistik & Diagramme',
     questionText: `Aufgabe 6a: Tischkicker – richtiges Diagramm
 Susi gewinnt 2×, Moritz 3×, Giuliano 10×.
 Giuliano möchte seine vielen Siege mit einem Balkendiagramm darstellen.
@@ -555,7 +556,7 @@ Diagramm E: Skala 0–12, aber falsche Balkenlängen ✗
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Statistik',
+    topic: 'Statistik & Diagramme',
     questionText: `Aufgabe 6b: Kreisdiagramm
 Susi gewinnt 2×, Moritz 3×, Giuliano 10×.
 Stelle die Gewinnsituation in einem Kreisdiagramm dar.
@@ -598,3 +599,7 @@ Probe: 48° + 72° + 240° = 360° ✅
     },
   },
 ];
+
+
+
+

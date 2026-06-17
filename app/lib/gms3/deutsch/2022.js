@@ -1,3 +1,6 @@
+// app/lib/gms3/deutsch/2022.js
+// Aufnahmeprüfung 2022 – Deutsch GMS 3 (Kanti Frauenfeld)
+
 export const questions2022 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -287,7 +290,7 @@ D) Sofern`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 5 (6 Punkte): Wortart + nähere Bestimmung.
 
@@ -359,7 +362,7 @@ parallel → Adjektiv / nähere Bestimmung: — ✅
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 6 (3 Punkte): Wie viele verschiedene Wortarten kommen vor? (5 Grundwortarten)
 
@@ -436,7 +439,7 @@ Satz C: «Er sagte ihren Namen.»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 7 (2 Punkte): Satzglieder bestimmen.
 
@@ -506,7 +509,7 @@ Bestimme die folgenden Satzglieder:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 8 (2 Punkte): Subjekte herausschreiben.
 
@@ -555,7 +558,7 @@ Satz 2: «Er schob den Hebel … und versuchte es erneut.»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 9 (4 Punkte): Partikeln herausschreiben und Konjunktionen unterstreichen.
 
@@ -623,7 +626,7 @@ Konjunktionen zum Unterstreichen: und | oder | während
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 10 (6 Punkte): Verbale Teile näher bestimmen.
 
@@ -696,7 +699,7 @@ verschwunden → Vollverb ✅ | Partizip II ✅
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 11 (1 Punkt): Futur I bilden.
 
@@ -760,7 +763,7 @@ Beide Verben mit «wird» im Futur I:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 12 (2 Punkte): Alle Verben in der Infinitivform.
 
@@ -817,7 +820,7 @@ Schreibe alle Verben aus dem obigen Satz der Reihe nach untereinander in der Inf
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Aktiv / Passiv',
 
     questionText: `Aufgabe 13 (2 Punkte): Verbalen Teil näher bestimmen.
 
@@ -886,7 +889,7 @@ Zeitform:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 14 (1 Punkt): Zeitformen zählen.
 
@@ -945,7 +948,7 @@ D) 4`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Präpositionen',
 
     questionText: `Aufgabe 15 (3 Punkte): Präpositionalgefüge herausschreiben.
 
@@ -1011,7 +1014,7 @@ Schreibe aus dem obigen Satz alle Präpositionalgefüge untereinander der Reihe 
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 16 (4 Punkte): Pronomen näher bestimmen.
 
@@ -1075,7 +1078,7 @@ Bestimme die folgenden Pronomen näher:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 17 (3 Punkte): Adjektive im Komparativ und Superlativ.
 
@@ -1142,7 +1145,7 @@ c) «nah»:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Grammatik',
+    topic: 'Zeichensetzung',
 
     questionText: `Aufgabe 18 (3 Punkte): Kommas setzen.
 
@@ -1204,3 +1207,8 @@ Komma 5 + 6: «während Amber[,] die er kaum sehen konnte[,]»
   },
 
 ];
+
+
+// app/lib/gms3/deutsch/2023.js
+// Aufnahmeprüfung 2023 – Deutsch GMS 3 (Pädagogische Maturitätsschule Kreuzlingen)
+// Grundlage: «Die Wanderung»

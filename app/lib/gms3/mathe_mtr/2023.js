@@ -1,3 +1,4 @@
+
 export const questions2023 = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
@@ -7,7 +8,7 @@ export const questions2023 = [
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147189/AP23_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Algebra', // NEU
+    topic: 'Terme & Klammern', // NEU
     questionText: `Aufgabe 1: Temperatur-Formel
 In den USA wird die Temperatur in Grad Fahrenheit (°F) gemessen, bei uns in Grad Celsius (°C).
 a) Berechne die gesuchten Werte in der Tabelle mit dieser Formel: °C = 5/9 * (°F - 32)
@@ -140,7 +141,7 @@ Ersparnis = 100% - 97.57% = 2.43%
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147189/AP23_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
     questionText: `Aufgabe 3: Trapez im Würfel
 Ein Würfel mit Kantenlänge 24cm wird geschnitten. Die Schnittfigur ist ein gleichschenkliges Trapez. Die Ecken des Trapezes haben von den Würfelecken einen Abstand von 6cm (siehe Skizze).
 a) Berechne alle Seitenlängen des Trapezes.
@@ -292,7 +293,7 @@ Die Seite BC muss senkrecht zur Seite AB stehen.
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147189/AP23_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Stochastik', // NEU
+    topic: 'Wahrscheinlichkeit', // NEU
     questionText: `Aufgabe 5: Kugeln ziehen
 In einem Behälter sind 3 rote, 3 weisse und 2 blaue Kugeln (total 8). Es werden nacheinander zwei Kugeln OHNE Zurücklegen gezogen.
 a) Zeichne einen vollständigen Wahrscheinlichkeitsbaum.
@@ -385,7 +386,7 @@ P(b,b) = 2/8 * 1/7 = 2/56 = 1/28
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147189/AP23_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Algebra', // NEU
+    topic: 'Bewegung & Geschwindigkeit', // NEU
     questionText: `Aufgabe 6: Velofahrer
 Simon (9 km/h) und Tanja (18 km/h) starten gleichzeitig an Ort A. 13 Minuten später startet ein Rennvelofahrer (33 km/h) ebenfalls in A.
 a) Stelle einen Term auf für die Streckenmitte von Simon und Tanja zum Zeitpunkt t.
@@ -465,3 +466,5 @@ Der Rennfahrer startete 13 Minuten später, also ist seine Fahrzeit:
     },
   },
 ];
+
+

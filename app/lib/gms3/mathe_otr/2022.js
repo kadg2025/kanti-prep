@@ -1,3 +1,4 @@
+
 export const questions2022_oTR = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -9,7 +10,7 @@ export const questions2022_oTR = [
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 1: Term berechnen
 
 Berechne den Wert des Terms \`(2x³) / (x² - 2)\` für folgende Werte von x:
@@ -155,7 +156,7 @@ x = -2
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Algebra',
+    topic: 'Terme & Klammern',
     questionText: `Aufgabe 3: Terme vereinfachen
 
 a) Vereinfache:
@@ -237,7 +238,7 @@ aˣ = a⁸
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Sachaufgaben',
+    topic: 'Proportionalität',
     questionText: `Aufgabe 4: Sachaufgaben
 
 a) Für 5 Tage kostet eine Klassenfahrt 250 Fr pro Person. Wie viel kostet sie pro Person für 7 Tage?
@@ -306,7 +307,7 @@ Kürzeres Stück:
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Prozentrechnen',
+    topic: 'Prozent & Zins',
     questionText: `Aufgabe 5: Weihnachtssocken
 
 Ein Duo-Pack mit 2 Paar Socken kostet 3.80 Fr.
@@ -422,7 +423,7 @@ In der Figur sind Längen und Winkel nicht massstabsgetreu.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Geometrie',
+    topic: 'Körper & Netze',
     questionText: `Aufgabe 7: Würfel mit Mustern
 
 Ein Würfel hat auf jeder Fläche ein anderes Muster. Zwei Ansichten sind gegeben.
@@ -460,3 +461,4 @@ b) Ergänze das Würfelnetz mit den korrekten Mustern.`,
   },
 
 ];
+

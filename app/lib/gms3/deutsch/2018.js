@@ -1,10 +1,7 @@
 // app/lib/gms3/deutsch/2018.js
-// Aufnahmeprüfung 2018 – Deutsch GMS 3
-// Grundlage: Kurbjuweit, «Zweier ohne» (Textauszug)
+// Aufnahmeprüfung 2018 – Deutsch GMS 3 (Kanti Frauenfeld)
 
 export const questions2018 = [
-
-  // ── AUFGABE 1 ─────────────────────────────────────────────
 
   {
     id: 'D3_2018_TEXTVERST_1',
@@ -85,8 +82,6 @@ Schon ein kleines falsches Detail macht die ganze Aussage falsch. Genau das ist 
     },
   },
 
-  // ── AUFGABE 2 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_TEXTVERST_CHRONOLOGIE_1',
     year: 2018,
@@ -164,8 +159,6 @@ Solche Hinweise zeigen dir, was früher und was später passiert.`,
     },
   },
 
-  // ── AUFGABE 3 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_WORTSCHATZ_1',
     year: 2018,
@@ -241,8 +234,6 @@ Teil B:
 4️⃣ Nur dann ist es ein passendes Synonym`,
     },
   },
-
-  // ── AUFGABE 4 ─────────────────────────────────────────────
 
   {
     id: 'D3_2018_WORTSCHATZ_2',
@@ -320,8 +311,6 @@ Unpassend wären Wörter, die eher «sagen», «erklären» oder «denken» bede
     },
   },
 
-  // ── AUFGABE 5 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_ZEITFORM_1',
     year: 2018,
@@ -329,7 +318,7 @@ Unpassend wären Wörter, die eher «sagen», «erklären» oder «denken» bede
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 5 (2 Punkte): Zeitformen umformen.
 
@@ -396,8 +385,6 @@ Ich wusste auch nicht, wie hoch die Brücke war, ich kannte keine genaue Zahl, o
     },
   },
 
-  // ── AUFGABE 6 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_PARTIKELN_1',
     year: 2018,
@@ -405,7 +392,7 @@ Ich wusste auch nicht, wie hoch die Brücke war, ich kannte keine genaue Zahl, o
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 6 (2 Punkte): Verbzusatz oder Präposition?
 
@@ -475,8 +462,6 @@ Präpositionen: von, zu, bis`,
     },
   },
 
-  // ── AUFGABE 7 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_VERBEN_1',
     year: 2018,
@@ -484,7 +469,7 @@ Präpositionen: von, zu, bis`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=3',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 7 (4 Punkte): Verben bestimmen.
 
@@ -564,8 +549,6 @@ Genau so steht es auch in der Lösungstabelle.`,
     },
   },
 
-  // ── AUFGABE 8 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_PASSIV_1',
     year: 2018,
@@ -573,7 +556,7 @@ Genau so steht es auch in der Lösungstabelle.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Aktiv / Passiv',
 
     questionText: `Aufgabe 8 (2 Punkte): Aktiv ins Passiv setzen.
 
@@ -648,8 +631,6 @@ Zwei Wochen zuvor war Ludwig (von mir) zum ersten Mal gesehen worden.`,
     },
   },
 
-  // ── AUFGABE 9 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_PRONOMEN_1',
     year: 2018,
@@ -657,7 +638,7 @@ Zwei Wochen zuvor war Ludwig (von mir) zum ersten Mal gesehen worden.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 9 (4 Punkte): Pronomen zuordnen.
 
@@ -730,8 +711,6 @@ Relativpronomen: die`,
     },
   },
 
-  // ── AUFGABE 10 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_SATZBAU_1',
     year: 2018,
@@ -739,7 +718,7 @@ Relativpronomen: die`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=4',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 10 (2 Punkte): Satzbaumuster prüfen.
 
@@ -808,8 +787,6 @@ Nebensatz:
     },
   },
 
-  // ── AUFGABE 11 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_SATZART_1',
     year: 2018,
@@ -817,7 +794,7 @@ Nebensatz:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 11 (2 Punkte): Einfachen Satz herausschreiben.
 
@@ -885,8 +862,6 @@ Darum ist der erste einfache Satz:
     },
   },
 
-  // ── AUFGABE 12 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_KONJUNKTIONEN_1',
     year: 2018,
@@ -894,7 +869,7 @@ Darum ist der erste einfache Satz:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Satzbau',
 
     questionText: `Aufgabe 12 (3 Punkte): Konjunktionen zuordnen.
 
@@ -958,8 +933,6 @@ Das ist genau die Lösung aus dem offiziellen Blatt.`,
     },
   },
 
-  // ── AUFGABE 13 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_WORTARTEN_1',
     year: 2018,
@@ -967,7 +940,7 @@ Das ist genau die Lösung aus dem offiziellen Blatt.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=5',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 13 (3 Punkte): Wortarten bestimmen.
 
@@ -1030,8 +1003,6 @@ Genau so steht es in der offiziellen Lösung.`,
     },
   },
 
-  // ── AUFGABE 14 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_WORTARTEN_2',
     year: 2018,
@@ -1039,7 +1010,7 @@ Genau so steht es in der offiziellen Lösung.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Wortarten',
 
     questionText: `Aufgabe 14 (4 Punkte): Wie viele Wortarten kommen vor?
 
@@ -1110,8 +1081,6 @@ Satz B:
     },
   },
 
-  // ── AUFGABE 15 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_KONJUNKTIV_1',
     year: 2018,
@@ -1119,7 +1088,7 @@ Satz B:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=6',
-    topic: 'Grammatik',
+    topic: 'Zeitformen',
 
     questionText: `Aufgabe 15 (1 Punkt): Konjunktiv II bilden.
 
@@ -1186,8 +1155,6 @@ Die Standardlösung ist aber klar:
 3️⃣ Ergebnis: wäre gewesen`,
     },
   },
-
-  // ── AUFGABE 16 ─────────────────────────────────────────────
 
   {
     id: 'D3_2018_WORTSCHATZ_3',
@@ -1259,8 +1226,6 @@ Himmel, Mount Everest, Regen, Wind
     },
   },
 
-  // ── AUFGABE 17 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_WORTSCHATZ_4',
     year: 2018,
@@ -1327,8 +1292,6 @@ Denn die Redewendung meint allgemein helfen, nicht erziehen oder Sport machen.`,
     },
   },
 
-  // ── AUFGABE 18 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_SATZGLIEDER_1',
     year: 2018,
@@ -1336,7 +1299,7 @@ Denn die Redewendung meint allgemein helfen, nicht erziehen oder Sport machen.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 18 (3 Punkte): Satzglieder bestimmen.
 
@@ -1403,8 +1366,6 @@ zu Ludwig nach Hause
     },
   },
 
-  // ── AUFGABE 19 ─────────────────────────────────────────────
-
   {
     id: 'D3_2018_GRAMMATIK_SUBJEKT_OBJEKT_1',
     year: 2018,
@@ -1412,7 +1373,7 @@ zu Ludwig nach Hause
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=7',
-    topic: 'Grammatik',
+    topic: 'Satzglieder',
 
     questionText: `Aufgabe 19 (6 Punkte): Subjekte und Akkusativobjekte bestimmen.
 

@@ -1,3 +1,4 @@
+
 export const questions2025 = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
@@ -7,7 +8,7 @@ export const questions2025 = [
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179275/AP25_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
     questionText: `Aufgabe 1: Der Goldbarren
 Natalie erbt einen prismenförmigen Goldbarren (Länge 12 cm, Höhe 0.8 cm, obere Vorderkante 4 cm, untere Vorderkante 6 cm). Die Dichte von Gold beträgt 19.3 g/cm³. 1 kg Gold ist derzeit 71'070 Fr. wert. Wieviel Wert hat ihr kleiner Goldbarren?`,
     solution: {
@@ -62,7 +63,7 @@ Jetzt berechnen wir den Wert unseres Barrens.
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179275/AP25_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Algebra', // NEU
+    topic: 'Funktionen', // NEU
     questionText: `Aufgabe 2: Funktionsgraphen zuordnen
 Finde zu jeder Situation den am besten passenden Funktionsgraphen.`,
     solution: {
@@ -170,7 +171,7 @@ Um den prozentualen Nachlass zu finden, beziehen wir die Differenz auf den Origi
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179275/AP25_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
     questionText: `Aufgabe 4: Das Puzzleteil
 Welches der Teile a bis f passt genau in die Aussparung des Körpers, der auf der linken Bildseite dargestellt ist?`,
     solution: {
@@ -213,7 +214,7 @@ Wenn man Teil b gedanklich in die Lücke schiebt, füllt sein unterer Teil die L
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179275/AP25_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Algebra', // NEU
+    topic: 'Bewegung & Geschwindigkeit', // NEU
     questionText: `Aufgabe 5: Der Krankenwagen
 Ein Krankenwagen fährt mit 65 km/h.
 a) Er braucht 18 min von der Zentrale zum Krankenhaus. Wie weit ist das?
@@ -325,7 +326,7 @@ Die Lösungen sind die Schnittpunkte der Ortslinie A mit den Ortslinien B1 und B
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179275/AP25_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Stochastik', // NEU
+    topic: 'Wahrscheinlichkeit', // NEU
     questionText: `Aufgabe 7: Saft einkaufen
 Tim soll 4 Flaschen Saft einkaufen. Es gibt die Sorten Traubensaft (T), Apfelsaft (A) und Rhabarbersaft (R). Wie viele Einkaufsmöglichkeiten hat er? Liste alle auf.`,
     solution: {

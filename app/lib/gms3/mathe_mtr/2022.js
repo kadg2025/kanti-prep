@@ -1,3 +1,5 @@
+
+
 export const questions2022 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -16,7 +18,7 @@ export const questions2022 = [
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132685/AP22_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=2',
 
-    topic: 'Algebra', // NEU
+    topic: 'Bewegung & Geschwindigkeit', // NEU
 
     questionText: `Aufgabe 1: Kurts Zugreise
 
@@ -193,7 +195,7 @@ Anteil = (Teil ÷ Ganzes) × 100 = (965'240 ÷ 2'360'000) × 100 ≈ 40.9%
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132685/AP22_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=4',
 
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
 
     questionText: `Aufgabe 3: Gaskessel-Kugel
 
@@ -280,7 +282,7 @@ Abstand A₁A₂ = 2 × d = 2 × 8.25 ≈ 16.5 m
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132685/AP22_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=5',
 
-    topic: 'Stochastik', // NEU
+    topic: 'Wahrscheinlichkeit', // NEU
 
     questionText: `Aufgabe 4: Uhren im Koffer
 
@@ -366,7 +368,7 @@ Jetzt beide Wege addieren (Summen-Regel):
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132685/AP22_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=6',
 
-    topic: 'Geometrie', // NEU
+    topic: 'Körper & Netze', // NEU
 
     questionText: `Aufgabe 5: Prisma mit Quader
 

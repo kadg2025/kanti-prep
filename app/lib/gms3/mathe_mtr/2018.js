@@ -1,3 +1,4 @@
+
 export const questions2018 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -123,7 +124,7 @@ Preis teurer = 15.00 + 1.20 = Fr. 16.20 pro kg`,
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106449/AP18%20GMS3%20M2_mTR.pdf?fp=1#page=2',
 
-    topic: 'Prozent & Zins', // NEU
+    topic: 'Statistik & Diagramme', // NEU
 
     questionText: `Aufgabe 2: Soziale Netzwerke
 Eine Umfrage: Welches soziale Netzwerk nutzen Internetnutzer am häufigsten?
@@ -250,7 +251,7 @@ Gesamt:   1400 Personen | 100% ✅`,
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106449/AP18%20GMS3%20M2_mTR.pdf?fp=1#page=3',
 
-    topic: 'Algebra', // NEU
+    topic: 'Gleichungen', // NEU
 
     questionText: `Aufgabe 3: Teppichplatten
 Ein rechteckiges Zimmer wird mit quadratischen Platten (Seitenlänge s) und rechteckigen Platten (16 dm × 12 dm) belegt.
@@ -588,7 +589,7 @@ d ≈ 54.08 cm
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106449/AP18%20GMS3%20M2_mTR.pdf?fp=1#page=6',
 
-    topic: 'Algebra', // NEU
+    topic: 'Bewegung & Geschwindigkeit', // NEU
 
     questionText: `Aufgabe 6: Züge und Autos
 a) Zwei Schnellzüge befahren die 450 km Strecke zwischen Städten A und B auf parallelen Gleisen. Zug 1 von A→B mit 150 km/h. Zug 2 gleichzeitig von B→A mit 100 km/h. Nach wie vielen Minuten begegnen sie sich?
@@ -685,3 +686,5 @@ c) Überholen: Relativg. = Diff. → Strecke = 10+L_blau+L_rot+10 → ÷ Relativ
   },
 
 ];
+
+

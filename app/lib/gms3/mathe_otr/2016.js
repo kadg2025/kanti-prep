@@ -16,7 +16,7 @@ export const questions2016_oTR = [
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=1',
 
-    topic: 'Arithmetik', // NEU
+    topic: 'Zahlen & Teilbarkeit', // NEU
 
     questionText: `Aufgabe 1: ggT und kgV
 
@@ -129,7 +129,7 @@ kgV (grössere Potenzen): a³ · b² · x³
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=2',
 
-    topic: 'Arithmetik', // NEU
+    topic: 'Zahlen & Teilbarkeit', // NEU
 
     questionText: `Aufgabe 2: Strassenbahnen
 An einem Knotenpunkt fahren zur gleichen Zeit Strassenbahnen der Linien 1, 2 und 3 ab.
@@ -222,7 +222,7 @@ kgV = 2⁴ · 3² = 16 · 9 = 144
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=2',
 
-    topic: 'Algebra', // NEU
+    topic: 'Terme & Klammern', // NEU
 
     questionText: `Aufgabe 3: Klammern setzen
 Setze Klammern auf der linken Seite so, dass wahre Aussagen entstehen.
@@ -331,7 +331,7 @@ Versuch: 4a – 5b – (6a – 7b)
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=3',
 
-    topic: 'Arithmetik', // NEU
+    topic: 'Terme & Klammern', // NEU
 
     questionText: `Aufgabe 4: Vereinfachen
 Vereinfache die folgende Rechnung soweit wie möglich:
@@ -432,7 +432,7 @@ Zuletzt die Strichrechnung:
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=3',
 
-    topic: 'Algebra', // NEU
+    topic: 'Gleichungen', // NEU
 
     questionText: `Aufgabe 5a: Gleichung lösen
 Wenn man von der Hälfte einer Zahl 7 abzieht, erhält man das 4-fache der Zahl.
@@ -518,7 +518,7 @@ Probe: Hälfte von -2 ist -1. Davon 7 abziehen: -1 - 7 = -8. Das 4-fache von -2 
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=4',
 
-    topic: 'Algebra', // NEU
+    topic: 'Gleichungen', // NEU
 
     questionText: `Aufgabe 5b: Bruchgleichung
 Für welches x gibt die folgende Rechnung 1?
@@ -618,7 +618,7 @@ x = 2/7
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=5',
 
-    topic: 'Algebra', // NEU
+    topic: 'Gleichungen', // NEU
 
     questionText: `Aufgabe 5c: Dreieck
 In einem Dreieck ist eine Höhe um 4 cm grösser als die zugehörige Seite.
@@ -916,3 +916,5 @@ Winkelsumme im Dreieck = 180°:
     },
   },
 ];
+
+
