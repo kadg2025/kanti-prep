@@ -541,6 +541,117 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
   );
 }
 
+// ─── ÜBUNGSLEITER (Practice Ladder) ───────────────────────────────────────
+// Statische, selbst geschriebene Übungsaufgaben pro Frage – gestuft von
+// einfach bis Kanti-Niveau. Die Lösung wird NICHT gezeigt: das Kind tippt die
+// Antwort in eine Box (grün = richtig, rot = falsch) und kann einen Tipp öffnen.
+// Datenformat am Frage-Objekt:
+//   practice: [ { level: 'einfach'|'mittel'|'schwer'|'kanti', q: '...', answer: '...', tip: '...' }, ... ]
+const PRACTICE_LEVELS = [
+  { key: 'einfach', label: 'Einfach — Grundkonzept', color: '#22c55e' },
+  { key: 'mittel',  label: 'Mittel',                 color: '#3b82f6' },
+  { key: 'schwer',  label: 'Schwer',                 color: '#f59e0b' },
+  { key: 'kanti',   label: 'Kanti-Niveau',           color: '#ef4444' },
+];
+
+// Antwort normalisieren: Leerzeichen weg, alle Minus-Varianten (–, —, −) → -, Komma → Punkt
+function normAnswer(s) {
+  return String(s ?? '').trim().replace(/\s+/g, '').replace(/[–—−]/g, '-').replace(',', '.').toLowerCase();
+}
+// Lineare Terme (z.B. 4a-5b+3) in einen Vergleichs-Schlüssel umwandeln, damit die
+// Reihenfolge egal ist: "2b-2a" zählt gleich wie "-2a+2b". Gibt null zurück, wenn
+// es kein einfacher Term ist (dann wird Text direkt verglichen).
+function termKey(s) {
+  const t = normAnswer(s);
+  if (t === '' || !/^[-+]?[0-9a-z.]+([-+][0-9a-z.]+)*$/.test(t)) return null;
+  const parts = t.match(/[+-]?[^+-]+/g);
+  if (!parts) return null;
+  const map = {};
+  for (let raw of parts) {
+    let sign = 1, p = raw;
+    if (p[0] === '+') p = p.slice(1);
+    else if (p[0] === '-') { sign = -1; p = p.slice(1); }
+    const m = p.match(/^([0-9]*\.?[0-9]*)([a-z]*)$/);
+    if (!m) return null;
+    let coeff = m[1] === '' ? 1 : parseFloat(m[1]);
+    if (Number.isNaN(coeff)) return null;
+    const v = m[2] || '_const';
+    map[v] = (map[v] || 0) + sign * coeff;
+  }
+  const keys = Object.keys(map).filter((k) => Math.abs(map[k]) > 1e-9).sort();
+  return keys.length ? keys.map((k) => `${map[k]}${k === '_const' ? '' : k}`).join('+') : '0';
+}
+function answerIsCorrect(input, answer) {
+  const a = normAnswer(input), b = normAnswer(answer);
+  if (a === '') return false;
+  const na = Number(a), nb = Number(b);
+  if (a !== '' && b !== '' && !Number.isNaN(na) && !Number.isNaN(nb)) return na === nb; // reine Zahlen
+  const ka = termKey(input), kb = termKey(answer);
+  if (ka !== null && kb !== null) return ka === kb; // Terme (Reihenfolge egal)
+  return a === b; // sonst exakter Text
+}
+
+function PracticeLadder({ practice, dm, dark }) {
+  const [open, setOpen] = useState(false);
+  const [inputs, setInputs] = useState({});
+  const [status, setStatus] = useState({}); // i -> 'correct' | 'wrong' | undefined
+  const [tips, setTips] = useState({});
+  if (!Array.isArray(practice) || practice.length === 0) return null;
+
+  const setVal = (i, v) => { setInputs((p) => ({ ...p, [i]: v })); setStatus((s) => ({ ...s, [i]: undefined })); };
+  const check = (i, ans) => setStatus((s) => ({ ...s, [i]: answerIsCorrect(inputs[i], ans) ? 'correct' : 'wrong' }));
+
+  return (
+    <div style={{ marginTop: '32px' }}>
+      <button onClick={() => setOpen((o) => !o)} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', background: open ? dm.bg3 : 'linear-gradient(135deg, #534AB7, #0f766e)', color: open ? dm.text : '#fff', border: open ? `1px solid ${dm.border}` : 'none', borderRadius: '12px', fontSize: '15px', fontWeight: '700', cursor: 'pointer' }}>
+        <span>🎯 {practice.length} Übungsaufgaben — selbst lösen, Antwort prüfen</span>
+        <span style={{ fontSize: '12px' }}>{open ? '▲' : '▼'}</span>
+      </button>
+      {open && (
+        <div style={{ marginTop: '8px' }}>
+          {PRACTICE_LEVELS.map((lvl) => {
+            const items = practice.map((p, i) => ({ ...p, i })).filter((p) => (p.level || 'mittel') === lvl.key);
+            if (items.length === 0) return null;
+            return (
+              <div key={lvl.key} style={{ marginTop: '18px' }}>
+                <div style={{ display: 'inline-block', background: lvl.color, color: '#fff', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.06em', padding: '3px 12px', borderRadius: '20px', marginBottom: '10px' }}>{lvl.label}</div>
+                {items.map((p, n) => {
+                  const st = status[p.i];
+                  const borderCol = st === 'correct' ? '#22c55e' : st === 'wrong' ? '#ef4444' : dm.border;
+                  return (
+                    <div key={p.i} style={{ background: dm.card, border: `1px solid ${dm.border}`, borderLeft: `3px solid ${lvl.color}`, borderRadius: '10px', padding: '12px 16px', marginBottom: '8px' }}>
+                      <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                        <span style={{ color: lvl.color, fontWeight: '700', fontSize: '14px', minWidth: '20px' }}>{n + 1}.</span>
+                        <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.7', color: dm.text, whiteSpace: 'pre-wrap', flex: 1 }}>{p.q}</p>
+                      </div>
+                      <div style={{ marginLeft: '30px', marginTop: '10px', display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <input
+                          value={inputs[p.i] || ''}
+                          onChange={(e) => setVal(p.i, e.target.value)}
+                          onKeyDown={(e) => e.key === 'Enter' && check(p.i, p.answer)}
+                          placeholder="Antwort…"
+                          style={{ width: '130px', padding: '8px 10px', borderRadius: '8px', border: `2px solid ${borderCol}`, background: dm.bg2, color: dm.text, fontSize: '14px', outline: 'none' }}
+                        />
+                        <button onClick={() => check(p.i, p.answer)} style={{ padding: '8px 16px', background: lvl.color, color: '#fff', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: '600', cursor: 'pointer' }}>Prüfen</button>
+                        {p.tip && <button onClick={() => setTips((t) => ({ ...t, [p.i]: !t[p.i] }))} style={{ padding: '8px 12px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', fontSize: '13px', fontWeight: '600', color: dm.text2, cursor: 'pointer' }}>💡 Tipp</button>}
+                        {st === 'correct' && <span style={{ color: '#22c55e', fontWeight: '700', fontSize: '13px' }}>✓ Richtig! 🎉</span>}
+                        {st === 'wrong' && <span style={{ color: '#ef4444', fontWeight: '600', fontSize: '13px' }}>✗ Nochmal versuchen</span>}
+                      </div>
+                      {tips[p.i] && p.tip && (
+                        <div style={{ marginLeft: '30px', marginTop: '8px', padding: '10px 14px', background: dark ? '#2a2719' : '#fef9c3', border: `1px solid ${dark ? '#5a4d1a' : '#fde047'}`, borderRadius: '8px', fontSize: '13px', color: dark ? '#d4b85a' : '#854d0e', lineHeight: '1.7', whiteSpace: 'pre-wrap' }}>💡 {p.tip}</div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── QUESTION DISPLAY ─────────────────────────────────────────────────────
 function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new Set(), dark = false, dm = makePalette(false), onKonfetti = () => {}, buildTree: bt }) {
   const isMobile = useIsMobile();
@@ -572,9 +683,9 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
     <main style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '64px 16px 40px' : '40px', background: dm.bg }}>
       <div style={{ maxWidth: '700px', margin: '0 auto' }}>
         <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
-          {[[question.year, dm.accentBg, color], [question.exam, dm.accentBg, color],
-            [question.group === 'Alte Prüfungen' ? '📄 Alte Prüfung' : '✨ Neue Aufgabe', question.group === 'Alte Prüfungen' ? (dark ? '#3a2f12' : '#fef3c7') : (dark ? '#16291d' : '#dcfce7'), question.group === 'Alte Prüfungen' ? (dark ? '#fcd34d' : '#92400e') : (dark ? '#86efac' : '#166534')]
-          ].map(([label, bg, c]) => (<span key={label} style={{ background: bg, color: c, padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>{label}</span>))}
+          {question.verified
+            ? <span style={{ background: dark ? '#16291d' : '#dcfce7', color: dark ? '#86efac' : '#166534', padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '700' }}>✅ Lösung geprüft</span>
+            : <span style={{ background: dark ? '#2a2719' : '#fef9c3', color: dark ? '#d4b85a' : '#854d0e', padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>⏳ Lösung nicht geprüft</span>}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px', flexWrap: 'wrap' }}>
           <h1 style={{ fontSize: isMobile ? '22px' : '26px', fontWeight: '700', color: dm.text, margin: 0 }}>{question.topic}</h1>
@@ -641,6 +752,8 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
         )}
 
         <FeedbackButton questionId={question.id} />
+
+        <PracticeLadder practice={question.practice} dm={dm} dark={dark} />
 
       </div>
     </main>

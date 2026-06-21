@@ -206,215 +206,199 @@ kgV = 2⁴ · 3² = 16 · 9 = 144
 
   },
 
-  // ── AUFGABE 3 ─────────────────────────────────────────────
 
-  {
+ // ── AUFGABE 3 ─────────────────────────────────────────────
+  {
+    id: 'M3_2016_OTR_KLAMMER_3',
+    year: 2016,
+    subject: 'Mathe',
+    exam: 'Mathe ohne TR',
+    group: 'Alte Prüfungen',
+    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=2',
+    topic: 'Terme & Klammern',
 
-    id: 'M3_2016_OTR_KLAMMER_3',
+    verified: true,
 
-    year: 2016,
-
-    subject: 'Mathe',
-
-    exam: 'Mathe ohne TR',
-
-    group: 'Alte Prüfungen',
-
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=2',
-
-    topic: 'Terme & Klammern', // NEU
-
-    questionText: `Aufgabe 3: Klammern setzen
+    questionText: `Aufgabe 3: Klammern setzen
 Setze Klammern auf der linken Seite so, dass wahre Aussagen entstehen.
 a) 4a – 5b – 6a – 7b = 10a – 12b
 b) 4a – 5b – 6a – 7b = 10a + 2b
 c) 4a – 5b – 6a – 7b = –2a + 2b`,
 
-    options: [
+    options: [
+      { label: 'a) 4a–(5b–6a)–7b | b) 4a–(5b–6a–7b) | c) 4a–5b–(6a–7b)', correct: true },
+      { label: 'a) (4a–5b)–6a–7b | b) 4a–5b–(6a–7b) | c) 4a–(5b–6a)–7b', correct: false },
+      { label: 'a) 4a–5b–(6a–7b) | b) (4a–5b–6a)–7b | c) 4a–(5b–6a+7b)', correct: false },
+    ],
 
-      { label: 'a) 4a–(5b–6a)–7b | b) 4a–(5b–6a–7b) | c) 4a–5b–(6a–7b)', correct: true },
-
-      { label: 'a) (4a–5b)–6a–7b | b) 4a–5b–(6a–7b) | c) 4a–(5b–6a)–7b', correct: false },
-
-      { label: 'a) 4a–5b–(6a–7b) | b) (4a–5b–6a)–7b | c) 4a–(5b–6a+7b)', correct: false },
-
-    ],
-
-    solution: {
-
-      intro: '',
-
-      steps: [
-
-        {
-
-          title: '📖 Begriffe',
-
-          content: `🔑 Die Minusklammer-Regel:
+    solution: {
+      intro: '',
+      steps: [
+        {
+          title: '📖 Begriffe',
+          content: `🔑 Die Minusklammer-Regel:
 Ein Minus vor einer Klammer ist der entscheidende Trick. Es dreht ALLE Vorzeichen IN der Klammer um.
 → -(a – b) wird zu –a + b
 → -(a + b) wird zu –a – b
 💡 Strategie: Rechne zuerst aus, was ohne Klammern rauskommt. Vergleiche es mit dem Ziel und überlege, welche Vorzeichen du "umpolen" musst.`,
-
-        },
-
-        {
-
-          title: 'a) Ziel: 10a – 12b',
-
-          content: `Ohne Klammern: 4a – 6a = –2a. Wir brauchen aber 10a.
+        },
+        {
+          title: 'a) Ziel: 10a – 12b',
+          content: `Ohne Klammern: 4a – 6a = –2a. Wir brauchen aber 10a.
 Wie wird aus –6a ein +6a? Indem wir ein Minus davor setzen: –(–6a).
 Versuch: 4a – (5b – 6a) – 7b
 = 4a – 5b + 6a – 7b
 = 10a – 12b ✅`,
-
-        },
-
-        {
-
-          title: 'b) Ziel: 10a + 2b',
-
-          content: `Wir brauchen wieder +6a. Und aus –5b und –7b soll +2b werden. Das geht nur, wenn aus –7b ein +7b wird.
+        },
+        {
+          title: 'b) Ziel: 10a + 2b',
+          content: `Wir brauchen wieder +6a. Und aus –5b und –7b soll +2b werden. Das geht nur, wenn aus –7b ein +7b wird.
 Also müssen –6a und –7b in eine Minusklammer.
 Versuch: 4a – (5b – 6a – 7b)
 = 4a – 5b + 6a + 7b
 = 10a + 2b ✅`,
-
-        },
-
-        {
-
-          title: 'c) Ziel: –2a + 2b',
-
-          content: `Der a-Teil (4a-6a = -2a) stimmt schon. Wir müssen nur den b-Teil korrigieren. Aus –5b und –7b soll +2b werden. Das geht, wenn aus –7b ein +7b wird.
+        },
+        {
+          title: 'c) Ziel: –2a + 2b',
+          content: `Der a-Teil (4a-6a = -2a) stimmt schon. Wir müssen nur den b-Teil korrigieren. Aus –5b und –7b soll +2b werden. Das geht, wenn aus –7b ein +7b wird.
 Versuch: 4a – 5b – (6a – 7b)
 = 4a – 5b – 6a + 7b
 = –2a + 2b ✅`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
+        },
+      ],
+      tip: `🍳 Kochrezept:
+1️⃣  Rechne das Ergebnis ohne Klammern aus.
+2️⃣  Vergleiche mit dem Ziel: Welche Terme haben das falsche Vorzeichen?
+3️⃣  Setze eine Minusklammer so, dass genau diese Terme ihr Vorzeichen ändern.
+4️⃣  Probe: Klammern auflösen und prüfen.`,
+    },
 
-        },
+    // ── ÜBUNGEN: aufbauend zur Minusklammer-Regel. Antwort eintippen (Reihenfolge egal).
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Fasse zusammen: 4a – 6a', answer: '-2a', tip: 'Gleiche Variablen zusammenzählen — achte gut auf die Vorzeichen.' },
+      { level: 'einfach', q: 'Löse die Klammer auf: a – (b – c)', answer: 'a-b+c', tip: 'Ein Minus vor der Klammer dreht jedes Vorzeichen darin um.' },
+      { level: 'einfach', q: 'Löse die Klammer auf: –(2x – 3y)', answer: '-2x+3y', tip: 'Das Minus vor der Klammer kehrt jedes Vorzeichen innen um.' },
 
-        {
+      { level: 'mittel', q: 'Löse auf und fasse zusammen: 5a – (2a – b)', answer: '3a+b', tip: 'Erst die Minusklammer auflösen (Vorzeichen drehen), dann gleiche Terme zusammenfassen.' },
+      { level: 'mittel', q: 'Löse auf und fasse zusammen: 4a – 5b – (6a – 7b)', answer: '-2a+2b', tip: 'Nur die Klammer dreht ihre Vorzeichen — danach gleiche Terme sortieren.' },
+      { level: 'mittel', q: 'Löse auf und fasse zusammen: 4a – (5b – 6a) – 7b', answer: '10a-12b', tip: 'Die eine Minusklammer dreht ihre Vorzeichen, der Rest bleibt unverändert.' },
 
-          title: '📄 Offizielle Schullösung',
+      { level: 'schwer', q: 'Löse auf und fasse zusammen: 4a – (5b – 6a – 7b)', answer: '10a+2b', tip: 'Die Minusklammer dreht ALLE Vorzeichen innen um — auch das letzte.' },
+      { level: 'schwer', q: 'Löse auf und fasse zusammen: 3x – (x – (2x – 4))', answer: '4x-4', tip: 'Von innen nach aussen: zuerst die innere Klammer, dann die äussere. Jedes Minus dreht die Vorzeichen.' },
 
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
+      { level: 'kanti', q: 'Löse auf und fasse zusammen: 2a – (3a – (4a – 5a))', answer: '-2a', tip: 'Arbeite von der innersten Klammer nach aussen; jedes Minus dreht die Vorzeichen.' },
+      { level: 'kanti', q: 'Löse auf und fasse zusammen: a – (b – c) – (a – b)', answer: 'c', tip: 'Zwei Minusklammern — jede dreht ihre eigenen Vorzeichen. Danach kürzt sich vieles weg.' },
+    ],
+  },
 
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
+// ── AUFGABE 4 ─────────────────────────────────────────────
+// ── AUFGABE 4 ─────────────────────────────────────────────
+  {
+    id: 'M3_2016_OTR_RECHNEN_4',
+    year: 2016,
+    subject: 'Mathe',
+    exam: 'Mathe ohne TR',
+    group: 'Alte Prüfungen',
+    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=3',
+    topic: 'Terme & Klammern',
 
-        },
+    verified: true,
 
-      ],
-
-      tip: `🍳 Kochrezept:
-1️⃣  Rechne das Ergebnis ohne Klammern aus.
-2️⃣  Vergleiche mit dem Ziel: Welche Terme haben das falsche Vorzeichen?
-3️⃣  Setze eine Minusklammer so, dass genau diese Terme ihr Vorzeichen ändern.
-4️⃣  Probe: Klammern auflösen und prüfen.`,
-
-    },
-
-  },
-
-  // ── AUFGABE 4 ─────────────────────────────────────────────
-
-  {
-
-    id: 'M3_2016_OTR_RECHNEN_4',
-
-    year: 2016,
-
-    subject: 'Mathe',
-
-    exam: 'Mathe ohne TR',
-
-    group: 'Alte Prüfungen',
-
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=3',
-
-    topic: 'Terme & Klammern', // NEU
-
-    questionText: `Aufgabe 4: Vereinfachen
+    questionText: `Aufgabe 4: Vereinfachen
 Vereinfache die folgende Rechnung soweit wie möglich:
 \[–10 · (–10) – (–10)\] · (–10) + (–10) =`,
 
-    options: [
+    options: [
+      { label: '–1110', correct: true },
+      { label: '–900', correct: false },
+      { label: '1090', correct: false },
+    ],
 
-      { label: '–1110', correct: true },
+    solution: {
+      intro: 'Diese Aufgabe übt zwei Dinge zusammen: die Vorzeichen-Regeln (plus/minus) und die richtige Reihenfolge beim Rechnen. Wir gehen es ganz langsam Schritt für Schritt durch.',
+      steps: [
+        {
+          title: '🧩 Zuerst verstehen: –10, (–10) und –(10)',
+          content: `Diese drei Schreibweisen bedeuten alle DASSELBE: die Zahl "minus zehn".
+• –10   → die Zahl minus zehn.
+• (–10) → genau dieselbe Zahl. Die Klammer ändert nichts am Wert – sie macht nur klar, dass das Minus zur Zahl gehört, z.B. bei  7 · (–10).
+• –(10) → "das Negative von 10", also auch –10.
 
-      { label: '–900', correct: false },
+👉 Merke: Die Klammer ändert den Wert NICHT. Sie hilft nur, das Vorzeichen sauber zu sehen.
 
-      { label: '1090', correct: false },
+Aufpassen, wenn ein Minus DAVOR steht:
+– (–10) heisst "minus mal minus" → das wird zu  +10.`,
+        },
+        {
+          title: '📖 Die Vorzeichen-Regeln (mit 10er-Reihe)',
+          content: `(–) · (–) = +     z.B.  –10 · (–10) = +100
+(–) · (+) = –     z.B.  –10 · 10   = –100
+(+) · (–) = –     z.B.  100 · (–10) = –1000
+– (–x) = +x       z.B.  – (–10) = +10
++ (–x) = –x       z.B.  + (–10) = –10`,
+        },
+        {
+          title: '🔢 Wo anfangen, wenn es mehrere Klammern gibt?',
+          content: `Immer von INNEN nach AUSSEN – ein Schritt nach dem anderen:
+1. Zuerst die INNERSTE Klammer ausrechnen.
+2. Darin gilt: Punkt vor Strich (· und : kommen vor + und –).
+3. Dann das Ergebnis der Klammer mit dem multiplizieren, was draussen daneben steht.
+4. GANZ zum Schluss: plus und minus.
 
-    ],
+So kann man sich nie verheddern.`,
+        },
+        {
+          title: 'Schritt 1: Innere Klammer [ ] auflösen',
+          content: `\[–10 · (–10) – (–10)\]
+Punkt vor Strich:  –10 · (–10) = +100
+Dann das Minus-Minus:  – (–10) = +10
+Die Klammer wird zu:  \[100 + 10\] = 110`,
+        },
+        {
+          title: 'Schritt 2: Weiterrechnen',
+          content: `Jetzt steht da:  110 · (–10) + (–10)
+Punkt vor Strich:  110 · (–10) = –1100
+Zum Schluss die Strichrechnung:  –1100 + (–10) = –1100 – 10 = –1110
+✅ Ergebnis: –1110`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
+        },
+      ],
+      tip: `🍳 Kochrezept:
+1️⃣ Innerste Klammer zuerst berechnen.
+2️⃣ Darin "Punkt vor Strich" beachten.
+3️⃣ Das Klammer-Ergebnis mit dem nächsten Faktor multiplizieren.
+4️⃣ Ganz am Ende addieren/subtrahieren.`,
+    },
 
-    solution: {
+    // ── ÜBUNGEN: Kind tippt die Antwort, grün = richtig, rot = falsch, Tipp möglich ──
+    // Tipps sind bewusst HIGH-LEVEL: sie nennen nur das Konzept/die Regel,
+    // niemals Zahlen oder die Lösung selbst.
+    practice: [
+      { level: 'einfach', q: 'Berechne: –10 · (–10)', answer: '100', tip: 'Denk an die Vorzeichen-Regel: was ergibt minus mal minus?' },
+      { level: 'einfach', q: 'Berechne: –10 · 10', answer: '-100', tip: 'Ein negatives und ein positives Vorzeichen multipliziert — welches Vorzeichen kommt heraus?' },
+      { level: 'einfach', q: 'Berechne: – (–10)', answer: '10', tip: 'Was passiert, wenn vor einer negativen Zahl noch ein Minus steht? Zwei Minus heben sich auf.' },
 
-      intro: '',
+      { level: 'mittel', q: 'Berechne: –10 · (–10) + 10', answer: '110', tip: 'Punkt vor Strich: rechne zuerst die Multiplikation, erst danach die Addition.' },
+      { level: 'mittel', q: 'Berechne: 100 · (–10)', answer: '-1000', tip: 'Positiv mal negativ — denk an die Vorzeichen-Regel.' },
+      { level: 'mittel', q: 'Berechne: –1000 + (–10)', answer: '-1010', tip: 'Plus eine negative Zahl ist dasselbe wie abziehen.' },
 
-      steps: [
+      { level: 'schwer', q: 'Berechne: [–10 · (–10) – 10] · (–1)', answer: '-90', tip: 'Zuerst die eckige Klammer ausrechnen (Punkt vor Strich), dann mit dem Faktor draussen multiplizieren.' },
+      { level: 'schwer', q: 'Berechne: [–10 – (–10)] · (–10)', answer: '0', tip: 'Rechne die Klammer ganz genau aus, bevor du weitermachst — schau, was dabei herauskommt.' },
 
-        {
-
-          title: '📖 Regeln',
-
-          content: `🔢 Vorzeichen-Regeln:
-(–) · (–) = +
-(–) · (+) = –
-– (–x) = +x
-📐 Reihenfolge (Klammer vor Punkt vor Strich):
-1. Rechne aus, was in den innersten eckigen Klammern \[ \] steht.
-2. Multipliziere das Ergebnis mit der nächsten Zahl.
-3. Addiere/Subtrahiere ganz zum Schluss.`,
-
-        },
-
-        {
-
-          title: 'Schritt 1: Innere Klammer auflösen',
-
-          content: `\[–10 · (–10) – (–10)\]
-Innerhalb der Klammer gilt "Punkt vor Strich":
-–10 · (–10) = +100
-– (–10) = +10
-Die Klammer wird zu: \[100 + 10\] = 110`,
-
-        },
-
-        {
-
-          title: 'Schritt 2: Weiterrechnen',
-
-          content: `Jetzt sieht der Term so aus:
-110 · (–10) + (–10)
-Wieder "Punkt vor Strich":
-110 · (–10) = –1100
-Zuletzt die Strichrechnung:
-–1100 + (–10) = –1100 – 10 = –1110
-✅ Das Ergebnis ist –1110.`,
-
-        },
-
-        {
-
-          title: '📄 Offizielle Schullösung',
-
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
-
-        },
-
-      ],
-
-      tip: `🍳 Kochrezept:
-1️⃣  Innerste Klammer zuerst berechnen.
-2️⃣  Darin die "Punkt vor Strich"-Regel beachten.
-3️⃣  Das Ergebnis der Klammer mit dem nächsten Faktor multiplizieren.
-4️⃣  Ganz am Ende addieren/subtrahieren.`,
-
-    },
-
-  },
+      { level: 'kanti', q: 'Vereinfache: [–10 · (–10) + (–10)] · (–10)', answer: '-900', tip: 'Von innen nach aussen: innerste Klammer zuerst, dann multiplizieren, ganz am Schluss das Vorzeichen prüfen.' },
+      { level: 'kanti', q: 'Vereinfache: [10 · (–10) – (–10)] · (–10) + (–10)', answer: '890', tip: 'Schritt für Schritt von innen nach aussen: eckige Klammer, multiplizieren, zuletzt die Strichrechnung.' },
+    ],
+  },
 
   // ── AUFGABE 5a ────────────────────────────────────────────
 
