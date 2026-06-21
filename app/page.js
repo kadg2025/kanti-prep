@@ -656,6 +656,7 @@ function PracticeLadder({ practice, dm, dark }) {
 function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new Set(), dark = false, dm = makePalette(false), onKonfetti = () => {}, buildTree: bt }) {
   const isMobile = useIsMobile();
   const [showSolution, setShowSolution] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
   const [prevId, setPrevId] = useState(null);
   const [solvedCount, setSolvedCount] = useState(0);
   if (question && question.id !== prevId) { setShowSolution(false); setPrevId(question.id); }
@@ -694,6 +695,19 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
               📄 Originale Prüfung
             </a>
           )}
+          <button
+            onClick={() => {
+              try {
+                const link = `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(question.id)}`;
+                navigator.clipboard.writeText(link);
+                setLinkCopied(true);
+                setTimeout(() => setLinkCopied(false), 1800);
+              } catch {}
+            }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '7px 14px', background: linkCopied ? (dark ? '#16291d' : '#dcfce7') : dm.bg3, border: `1px solid ${linkCopied ? '#22c55e' : dm.border}`, borderRadius: '10px', fontSize: '13px', fontWeight: '600', color: linkCopied ? '#22c55e' : dm.text2, cursor: 'pointer', whiteSpace: 'nowrap' }}
+          >
+            {linkCopied ? '✓ Link kopiert!' : '🔗 Link teilen'}
+          </button>
         </div>
         <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', marginBottom: '16px' }}>
           <p style={{ margin: 0, fontSize: '15px', lineHeight: '1.8', color: dm.text, whiteSpace: 'pre-wrap', fontFamily: 'inherit' }} dangerouslySetInnerHTML={{ __html: question.questionText.replace(/__(.*?)__/g, '<u>$1</u>') }} />
@@ -946,12 +960,23 @@ function MiniPlayer({ dm }) {
 }
 
 // ─── HOME ─────────────────────────────────────────────────────────────────
+// Leitet aus einer Frage das App-Fach ab (für teilbare Links ?id=…)
+function subjectKeyOf(q) {
+  if (!q) return null;
+  if (q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR')) return 'Mathe ohne TR';
+  if (q.subject === 'Mathe' && q.exam && q.exam.includes('mit TR')) return 'Mathe mit TR';
+  if (q.subject === 'Deutsch' && q.id.startsWith('D2_')) return 'Deutsch GMS2';
+  if (q.subject === 'Deutsch') return 'Deutsch';
+  return null;
+}
+
 export default function Home() {
   const isMobile = useIsMobile();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [subject, setSubject] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [showLinks, setShowLinks] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { solved, markSolved, clearSolved } = useSolved();
   const { dark, toggleDark } = useDarkMode();
   const { streak, bumpStreak } = useStreak();
@@ -961,6 +986,27 @@ export default function Home() {
   const handleSolved = useCallback((id) => { markSolved(id); bumpStreak(); }, [markSolved, bumpStreak]);
 
   const dm = makePalette(dark);
+
+  // Beim Laden: ?id=… aus der URL lesen und direkt zur Aufgabe springen
+  useEffect(() => {
+    try {
+      const qid = new URLSearchParams(window.location.search).get('id');
+      if (qid) {
+        const q = questions.find((x) => x.id === qid);
+        if (q) { setSubject(subjectKeyOf(q)); setSelectedId(qid); }
+      }
+    } catch {}
+    setMounted(true);
+  }, []);
+
+  // Zustand → URL spiegeln (ohne Reload), damit jede Aufgabe einen eigenen Link hat
+  useEffect(() => {
+    if (!mounted) return;
+    try {
+      const base = window.location.pathname;
+      window.history.replaceState(null, '', selectedId ? `${base}?id=${encodeURIComponent(selectedId)}` : base);
+    } catch {}
+  }, [mounted, subject, selectedId]);
 
   if (showLinks) return <LinksPage onBack={() => setShowLinks(false)} />;
   if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } setSubject(s); setSelectedId(null); setSidebarOpen(true); }} streak={streak} />;
