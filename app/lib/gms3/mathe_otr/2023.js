@@ -1,4 +1,5 @@
 
+import { frac } from '../../mathFormat';
 
 export const questions2023_oTR = [
   {
@@ -99,37 +100,61 @@ x = 9/28`,
   },
 
   {
-    id: 'M1_2023_OTR_TERM_2a',
+    id: 'M1_2023_OTR_TERM_2',
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
     topic: 'Terme & Klammern',
-    questionText: `Aufgabe 2a: Vereinfache so weit wie möglich.
+    verified: true,
+    questionText: `Aufgabe 2: Terme vereinfachen
 
-4(a - 1) - 3(a - 1) + 5(a - 1) - 2a`,
+a) Vereinfache so weit wie möglich:
+4(a − 1) + 3(a − 1) − 5(a − 1)
+
+b) Multipliziere aus:
+−2xy²(x² + 3x)
+
+c) Vereinfache und klammere so weit wie möglich aus:
+−2x⁴y³ + 6x³y³ − 3x³y² + 2x⁴y³`,
     options: [
-      { label: '4a - 1', correct: true },
-      { label: '2a - 1', correct: false },
-      { label: 'a - 1', correct: false },
+      { label: 'a) 2a−2 | b) −2x³y²−6x²y² | c) 3x³y²(2y−1)', correct: true },
+      { label: 'a) 2a−2 | b) −2x³y²−6x²y² | c) 3x³y²(2y+1)', correct: false },
+      { label: 'a) 12a−12 | b) 2x³y²+6x²y² | c) 3x³y²(2y−1)', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Diese Aufgabe war in einer früheren Version dieser App komplett anders (und falsch) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
       steps: [
         {
-          title: 'Gleichartige Klammern zusammenfassen',
-          content: `4(a - 1) - 3(a - 1) + 5(a - 1) - 2a
-= (4 - 3 + 5)(a - 1) - 2a
-= 6(a - 1) - 2a`,
+          title: 'a) Gleichartige Klammern zusammenfassen',
+          content: `4(a − 1) + 3(a − 1) − 5(a − 1)
+= (4 + 3 − 5)(a − 1)
+= 2(a − 1)
+= 2a − 2
+
+✅ Ergebnis: 2a − 2`,
         },
         {
-          title: 'Ausmultiplizieren',
-          content: `6(a - 1) - 2a
-= 6a - 6 - 2a
-= 4a - 6
+          title: 'b) Ausmultiplizieren',
+          content: `−2xy² · x² = −2x³y²
+−2xy² · 3x = −6x²y²
 
-✅ Ergebnis: 4a - 6`,
+✅ Ergebnis: −2x³y² − 6x²y²`,
+        },
+        {
+          title: 'c) Zusammenfassen und ausklammern',
+          content: `Gleichartige Terme zusammenfassen:
+−2x⁴y³ + 2x⁴y³ = 0
+Es bleibt: 6x³y³ − 3x³y²
+
+Gemeinsamen Faktor ausklammern:
+ggT der Zahlen: ggT(6, 3) = 3
+Gemeinsame Variablen (kleinster Exponent): x³y²
+
+6x³y³ − 3x³y² = 3x³y²(2y − 1)
+
+✅ Ergebnis: 3x³y²(2y − 1)`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -138,125 +163,88 @@ x = 9/28`,
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣ Gleiche Klammern sammeln.
-2️⃣ Koeffizienten addieren oder subtrahieren.
-3️⃣ Am Schluss vereinfachen.`,
+1️⃣ Gleiche Klammern zuerst zusammenfassen (Vorfaktoren addieren/subtrahieren).
+2️⃣ Beim Ausmultiplizieren: Zahlen multiplizieren, Exponenten gleicher Buchstaben addieren.
+3️⃣ Vor dem Ausklammern erst gleichartige Terme zusammenfassen.
+4️⃣ ggT der Zahlen und gemeinsame Variablen (kleinster Exponent) ausklammern.`,
     },
-  },
 
-  {
-    id: 'M1_2023_OTR_TERM_2b',
-    year: 2023,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Terme & Klammern',
-    questionText: `Aufgabe 2b: Multipliziere aus.
+    // ── ÜBUNGEN a): gleiche Klammern zusammenfassen.
+    // ── ÜBUNGEN b): Klammer mit Variablen ausmultiplizieren.
+    // ── ÜBUNGEN c): zusammenfassen und ausklammern.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Fasse zusammen: 4+3−5', answer: '2', tip: 'Addiere und subtrahiere der Reihe nach.' },
+      { level: 'einfach', q: 'Multipliziere aus: x · x². Welchen Exponenten hat das Ergebnis?', answer: '3', tip: 'Bei gleicher Basis werden Exponenten addiert.' },
+      { level: 'einfach', q: 'Multipliziere aus: −2x · 3x. Wie lautet der Vorfaktor (die Zahl) im Ergebnis?', answer: '-6', tip: 'Multipliziere zuerst nur die Zahlen.' },
 
-2xy( -3x + 2y )`,
-    options: [
-      { label: '-6x²y + 4xy²', correct: true },
-      { label: '-6xy + 4y²', correct: false },
-      { label: '6x²y - 4xy²', correct: false },
+      { level: 'mittel', q: 'Vereinfache: 2(a−1)', answer: '2a-2', tip: 'Multipliziere jeden Term in der Klammer mit der 2.' },
+      { level: 'mittel', q: 'Fasse zusammen: 4(k−1) + 3(k−1) − 5(k−1)', answer: '2k-2', tip: 'Fasse zuerst die Vorfaktoren der gleichen Klammer zusammen.' },
+      { level: 'mittel', q: 'Multipliziere aus: −2m(n + 3n)', answer: '-8mn', tip: 'Fasse zuerst n+3n zusammen, dann mit −2m multiplizieren.' },
+
+      { level: 'schwer', q: 'Multipliziere aus: −2xy²(x² + 3x). Wie lautet der Vorfaktor (die Zahl) des zweiten Terms im Ergebnis?', answer: '-6', tip: 'Multipliziere −2 mit 3, und addiere die Exponenten von x.' },
+      { level: 'schwer', q: 'Fasse zusammen: −2c⁴ + 2c⁴', answer: '0', tip: 'Zwei entgegengesetzt gleiche Terme heben sich auf.' },
+
+      { level: 'kanti', q: 'Fasse zusammen: 6c − 3c', answer: '3c', tip: 'Nur die Vorfaktoren werden subtrahiert.' },
+      { level: 'kanti', q: 'Klammere aus: 6xy − 3x. Was bleibt in der Klammer stehen, wenn du 3x ausklammerst?', answer: '2y-1', tip: 'Teile jeden Term durch den ausgeklammerten Faktor 3x.' },
     ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Ausmultiplizieren',
-          content: `2xy · (-3x) = -6x²y
-2xy · 2y = 4xy²
-
-✅ Ergebnis: -6x²y + 4xy²`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164497/AP23_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Jeden Term in der Klammer mit dem äusseren Faktor multiplizieren.
-Bei Potenzen gleiche Buchstaben → Exponenten addieren.`,
-    },
   },
 
   {
-    id: 'M1_2023_OTR_TERM_2c',
-    year: 2023,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Terme & Klammern',
-    questionText: `Aufgabe 2c: Vereinfache und klammere so weit wie möglich aus.
-
-4x²y - 6xy² + 3xy - 2x²y`,
-    options: [
-      { label: 'xy(2x - 6y + 3 - 2x)', correct: true },
-      { label: 'xy(2x - 6y + 3)', correct: false },
-      { label: 'x(2xy - 6y² + 3y - 2xy)', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Gleichartige Terme zusammenfassen',
-          content: `4x²y - 2x²y = 2x²y
-Damit:
-2x²y - 6xy² + 3xy`,
-        },
-        {
-          title: 'Gemeinsamen Faktor ausklammern',
-          content: `2x²y - 6xy² + 3xy
-= xy(2x - 6y + 3)
-
-✅ Ergebnis: xy(2x - 6y + 3)`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164497/AP23_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣ Gleichartige Terme zuerst zusammenfassen.
-2️⃣ Gemeinsamen Faktor finden.
-3️⃣ Ausklammern.`,
-    },
-  },
-
-  {
-    id: 'M1_2023_OTR_TERM_3a',
+    id: 'M1_2023_OTR_TERM_3',
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
     topic: 'Terme & Klammern',
-    questionText: `Aufgabe 3a: Berechne und vereinfache so weit wie möglich.
+    verified: true,
+    questionText: `Aufgabe 3: Terme berechnen
 
+Gegeben sind folgende vier Terme:
 T1 = a·b·c
-T2 = a²·b·c
-T3 = a·b²·c
-T4 = a·b·c²
+T2 = ${frac('1', 'a·b·c')}
+T3 = ${frac('a·b', 'c')}
+T4 = ${frac('a', 'b·c')}
 
-Berechne: T1 · T2`,
+Berechne und vereinfache so weit wie möglich:
+
+a) T1 · T2
+
+b) T3 · T4
+
+c) T3 : T4`,
     options: [
-      { label: 'a³b²c²', correct: true },
-      { label: 'a²b²c²', correct: false },
-      { label: 'ab²c', correct: false },
+      { label: 'a) 1 | b) a²/c² | c) b²', correct: true },
+      { label: 'a) 1 | b) a/c | c) b', correct: false },
+      { label: 'a) abc | b) a²/c² | c) b²', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Diese Aufgabe war in einer früheren Version dieser App komplett anders (und falsch) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
       steps: [
         {
-          title: 'Terme multiplizieren',
-          content: `T1 · T2 = (a·b·c) · (a²·b·c)
-= a³b²c²
+          title: 'a) T1 · T2',
+          content: `T1 · T2 = a·b·c · 1/(a·b·c) = (a·b·c)/(a·b·c) = 1
 
-✅ Ergebnis: a³b²c²`,
+✅ Ergebnis: 1`,
+        },
+        {
+          title: 'b) T3 · T4',
+          content: `T3 · T4 = (a·b)/c · a/(b·c)
+= (a·b·a) / (c·b·c)
+= a²b / (b·c²)
+= a²/c²   (b kürzt sich weg)
+
+✅ Ergebnis: a²/c²`,
+        },
+        {
+          title: 'c) T3 : T4',
+          content: `T3 : T4 = (a·b)/c ÷ a/(b·c)
+= (a·b)/c · (b·c)/a
+= (a·b·b·c) / (c·a)
+= b²   (a und c kürzen sich weg)
+
+✅ Ergebnis: b²`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -265,82 +253,28 @@ Berechne: T1 · T2`,
         },
       ],
       tip: `🍳 Kochrezept:
-Bei Potenzen gleicher Basis Exponenten addieren.`,
+1️⃣ Division durch einen Bruch = Multiplikation mit dessen Kehrwert.
+2️⃣ Zähler mit Zähler, Nenner mit Nenner multiplizieren.
+3️⃣ Gemeinsame Faktoren in Zähler und Nenner kürzen.`,
     },
-  },
 
-  {
-    id: 'M1_2023_OTR_TERM_3b',
-    year: 2023,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Terme & Klammern',
-    questionText: `Aufgabe 3b: Berechne und vereinfache so weit wie möglich.
+    // ── ÜBUNGEN: aufbauend zu Bruch-Multiplikation/Division mit Variablen und Kürzen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Kürze: (a·b·c)/(a·b·c)', answer: '1', tip: 'Zähler und Nenner sind identisch — was bleibt übrig?' },
+      { level: 'einfach', q: 'Vereinfache: (x·y)/x', answer: 'y', tip: 'Kürze den gemeinsamen Faktor x.' },
+      { level: 'einfach', q: 'Vereinfache: x/(y·x)', answer: '1/y', tip: 'Kürze den gemeinsamen Faktor x.' },
 
-T3 · T4`,
-    options: [
-      { label: 'a²b³c³', correct: true },
-      { label: 'a²bc²', correct: false },
-      { label: 'ab³c³', correct: false },
+      { level: 'mittel', q: 'Setze x=2, y=3, z=1 in (x·y)/z · x/(y·z) ein und berechne den Wert.', answer: '4', tip: 'Setze die Werte direkt in beide Brüche ein, dann multiplizieren.' },
+      { level: 'mittel', q: 'Setze x=2, y=3, z=1 in (x·y)/z ÷ x/(y·z) ein und berechne den Wert.', answer: '9', tip: 'Division durch einen Bruch = Multiplikation mit dem Kehrwert.' },
+      { level: 'mittel', q: 'Vereinfache: (m·n)/(m·n)', answer: '1', tip: 'Zähler und Nenner sind gleich.' },
+
+      { level: 'schwer', q: 'Vereinfache: (a·b)/c · a/(b·c). Welche Variable kürzt sich komplett weg?', answer: 'b', tip: 'b steht einmal im Zähler und einmal im Nenner — beide Male mit Exponent 1.' },
+      { level: 'schwer', q: 'Vereinfache: (a·b)/c ÷ a/(b·c). Welchen Exponenten hat b im Ergebnis?', answer: '2', tip: 'b steht sowohl im ersten als auch im zweiten Bruch im Zähler.' },
+
+      { level: 'kanti', q: 'Vereinfache: T1 · T2, wobei T1=a·b·c und T2=1/(a·b·c).', answer: '1', tip: 'Zähler und Nenner sind identisch.' },
+      { level: 'kanti', q: 'Vereinfache: T3 : T4, wobei T3=(a·b)/c und T4=a/(b·c). Welchen Exponenten hat b im Ergebnis?', answer: '2', tip: 'Division durch einen Bruch = Multiplikation mit dem Kehrwert, dann kürzen.' },
     ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Multiplizieren',
-          content: `T3 · T4 = (a·b²·c) · (a·b·c²)
-= a²b³c³
-
-✅ Ergebnis: a²b³c³`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164497/AP23_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Gleiche Basis → Exponenten addieren.`,
-    },
-  },
-
-  {
-    id: 'M1_2023_OTR_TERM_3c',
-    year: 2023,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Terme & Klammern',
-    questionText: `Aufgabe 3c: Berechne und vereinfache so weit wie möglich.
-
-T3 : T4`,
-    options: [
-      { label: 'b/c', correct: false },
-      { label: 'c', correct: false },
-      { label: 'a/c', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Division vereinfachen',
-          content: `T3 : T4 = (a·b²·c) : (a·b·c²)
-= b / c
-
-✅ Ergebnis: b/c`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164497/AP23_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Bei Division gleiche Faktoren kürzen.`,
-    },
   },
 
   {

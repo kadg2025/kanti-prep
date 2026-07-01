@@ -1,4 +1,6 @@
 
+import { frac, sqrt } from '../../mathFormat';
+
 export const questions2022_oTR = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -11,14 +13,15 @@ export const questions2022_oTR = [
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
     topic: 'Terme & Klammern',
+    verified: true,
     questionText: `Aufgabe 1: Term berechnen
 
-Berechne den Wert des Terms \`(2x³) / (x² - 2)\` für folgende Werte von x:
+Berechne den Wert des Terms ${frac('2x³', 'x² − 2')} für folgende Werte von x:
 
 a) x = 2
 b) x = 0
 c) x = -1
-d) x = 1/2`,
+d) x = ${frac('1', '2')}`,
     options: [
       { label: 'a) 8, b) 0, c) 2, d) -1/7', correct: true },
       { label: 'a) 4, b) 0, c) -2, d) 1/7', correct: false },
@@ -75,6 +78,24 @@ d) x = 1/2`,
 3️⃣ Erst am Schluss dividieren.
 4️⃣ Bei Brüchen immer vollständig kürzen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu "Wert einsetzen", Vorzeichen-Regeln und Bruch-Division.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Berechne: 2 · 2³', answer: '16', tip: 'Erst die Potenz, dann multiplizieren.' },
+      { level: 'einfach', q: 'Berechne: 2² − 2', answer: '2', tip: 'Erst quadrieren, dann subtrahieren.' },
+      { level: 'einfach', q: 'Berechne: 16 / 2', answer: '8', tip: 'Teile den Zähler durch den Nenner.' },
+
+      { level: 'mittel', q: 'Berechne: 2 · 0³', answer: '0', tip: 'Null hoch irgendetwas bleibt null.' },
+      { level: 'mittel', q: 'Berechne: 2 · (−1)³', answer: '-2', tip: 'Eine negative Zahl hoch 3 bleibt negativ.' },
+      { level: 'mittel', q: 'Berechne: (−1)² − 2', answer: '-1', tip: 'Eine negative Zahl im Quadrat wird positiv.' },
+
+      { level: 'schwer', q: 'Berechne: (−2) / (−1)', answer: '2', tip: 'Minus geteilt durch Minus ergibt Plus.' },
+      { level: 'schwer', q: 'Berechne: 2 · (1/2)³', answer: '1/4', tip: 'Bruch hoch 3: Zähler und Nenner einzeln hoch 3 nehmen.' },
+
+      { level: 'kanti', q: 'Berechne: (1/2)² − 2', answer: '-7/4', tip: 'Erst quadrieren, dann von 2 den Bruch abziehen — gemeinsamen Nenner suchen.' },
+      { level: 'kanti', q: 'Berechne: (1/4) / (−7/4)', answer: '-1/7', tip: 'Division von Brüchen: mit dem Kehrwert multiplizieren.' },
+    ],
   },
 
   // ── AUFGABE 2 ─────────────────────────────────────────────
@@ -157,27 +178,28 @@ x = -2
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
     topic: 'Terme & Klammern',
+    verified: true,
     questionText: `Aufgabe 3: Terme vereinfachen
 
-a) Vereinfache:
-((3p + 9q) / (p + 3q)) · ((2p + 6q) / 12)
+a) Vereinfache so weit wie möglich und gib das Resultat ohne Klammern an (Bruch fertig gekürzt):
+${frac('3p + 9q', 'p + 3q')} · ${frac('2p + 6q', '12')}
 
-b) Fasse zusammen:
-(3/5) · √(a/3) · (1/4) · √(4a/3) · √49
+b) Fasse so weit wie möglich zusammen:
+${frac('3', '5')} · ${sqrt(frac('a', '3'))} · ${frac('1', '4')} · ${sqrt(frac('4a', '3'))} · ${sqrt('49')}
 
-c) Bestimme x:
+c) Bestimme die Lösung für x:
 a¹² : a⁴ = aˣ`,
     options: [
-      { label: 'a) (p+3q)/2, b) 7a/10, c) x = 8', correct: true },
-      { label: 'a) (p+3q)/4, b) 7a/5, c) x = 3', correct: false },
-      { label: 'a) (p+3q)/2, b) 7a/10, c) x = 16', correct: false },
+      { label: 'a) 1/2p+3/2q, b) 7a/10, c) x = 8', correct: true },
+      { label: 'a) 1/4p+3/4q, b) 7a/5, c) x = 3', correct: false },
+      { label: 'a) 1/2p+3/2q, b) 7a/20, c) x = 16', correct: false },
     ],
     solution: {
       intro: `Hier arbeiten wir mit Kürzen, Wurzelregeln und Potenzregeln. Alles Schritt für Schritt.`,
       steps: [
         {
           title: 'a) Bruchterm vereinfachen',
-          content: `((3p + 9q) / (p + 3q)) · ((2p + 6q) / 12)
+          content: `(3p + 9q) / (p + 3q) · (2p + 6q) / 12
 
 3p + 9q = 3(p + 3q)
 2p + 6q = 2(p + 3q)
@@ -186,12 +208,13 @@ a¹² : a⁴ = aˣ`,
 = 3 · (2(p+3q) / 12)
 = 6(p+3q) / 12
 = (p+3q)/2
+= 1/2 p + 3/2 q
 
-✅ Ergebnis: (p + 3q)/2`,
+✅ Ergebnis: 1/2 p + 3/2 q`,
         },
         {
           title: 'b) Wurzelterm vereinfachen',
-          content: `(3/5) · √(a/3) · (1/4) · √(4a/3) · √49
+          content: `3/5 · √(a/3) · 1/4 · √(4a/3) · √49
 
 Zuerst √49 = 7
 
@@ -199,7 +222,7 @@ Dann:
 √(a/3) · √(4a/3) = √((a/3)·(4a/3)) = √(4a²/9) = 2a/3
 
 Also:
-(3/5) · (1/4) · 7 · (2a/3)
+3/5 · 1/4 · 7 · (2a/3)
 = 21/20 · 2a/3
 = 42a/60
 = 7a/10
@@ -227,6 +250,24 @@ aˣ = a⁸
 2️⃣ Bei Wurzeln: √a · √b = √(ab).
 3️⃣ Bei Potenzen: aᵐ : aⁿ = aᵐ⁻ⁿ.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Faktorisieren/Kürzen, Wurzeln und Potenzregeln.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Faktorisiere: 3p+9q. Was ist der gemeinsame Faktor?', answer: '3', tip: 'ggT der beiden Zahlen vor p und q.' },
+      { level: 'einfach', q: 'Berechne: √49', answer: '7', tip: 'Welche Zahl mal sich selbst ergibt 49?' },
+      { level: 'einfach', q: 'Bestimme x: a⁵ : a² = aˣ', answer: '3', tip: 'Bei Division mit gleicher Basis: Exponenten subtrahieren.' },
+
+      { level: 'mittel', q: 'Vereinfache: (3p+9q)/(p+3q)', answer: '3', tip: 'Klammere im Zähler 3 aus — dann kürzt sich (p+3q) weg.' },
+      { level: 'mittel', q: 'Berechne: 3/5 · 1/4', answer: '3/20', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+      { level: 'mittel', q: 'Bestimme x: a¹⁰ : a³ = aˣ', answer: '7', tip: 'Exponenten subtrahieren.' },
+
+      { level: 'schwer', q: 'Vereinfache: (2p+6q)/12', answer: '(p+3q)/6', tip: 'Klammere im Zähler 2 aus, dann kürze mit dem Nenner.' },
+      { level: 'schwer', q: 'Berechne: 3/20 · 7', answer: '21/20', tip: 'Multipliziere den Bruch mit der ganzen Zahl.' },
+
+      { level: 'kanti', q: 'Vereinfache: (3p+9q)/(p+3q) · (2p+6q)/12', answer: '1/2p+3/2q', tip: 'Beide Brüche einzeln kürzen, dann multiplizieren.' },
+      { level: 'kanti', q: 'Bestimme x: a¹² : a⁴ = aˣ', answer: '8', tip: 'Exponenten subtrahieren — genau wie im Original.' },
+    ],
   },
 
   // ── AUFGABE 4 ─────────────────────────────────────────────

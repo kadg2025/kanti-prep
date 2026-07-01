@@ -1,4 +1,6 @@
 
+import { frac } from '../../mathFormat';
+
 export const questions2025_oTR = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
@@ -9,35 +11,102 @@ export const questions2025_oTR = [
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
     topic: 'Terme & Klammern',
-    questionText: `Aufgabe 1: Multipliziere die folgenden Terme aus und vereinfache danach so weit wie möglich.
+    verified: true,
+    questionText: `Aufgabe 1: Terme multiplizieren
 
-a) [Term aus PDF einsetzen]
-b) [Term aus PDF einsetzen]
-c) [Term aus PDF einsetzen]
-d) [Term aus PDF einsetzen]`,
+Multipliziere die folgenden Terme mit 5a² und vereinfache danach so weit wie möglich:
+
+a) 2b · 3ab³
+
+b) (5a)²
+
+c) 2b + 3ab³
+
+d) ${frac('2a', '5a³ + 10a²b')}`,
     options: [
-      { label: 'Bitte PDF-Ausschnitt von Aufgabe 1 ergänzen', correct: true },
-      { label: 'Platzhalter', correct: false },
-      { label: 'Platzhalter', correct: false },
+      { label: 'a) 30a³b⁴ | b) 125a⁴ | c) 10a²b+15a³b³ | d) 2a/(a+2b)', correct: true },
+      { label: 'a) 30a³b⁴ | b) 25a⁴ | c) 10a²b+15a³b³ | d) 2a/(a+2b)', correct: false },
+      { label: 'a) 6a³b⁴ | b) 125a⁴ | c) 10a²b+15ab³ | d) 2/(a+2b)', correct: false },
     ],
     solution: {
-      intro: `Die genaue Termdarstellung ist im vorliegenden PDF-Textauszug nicht lesbar genug.`,
+      intro: `Bei jedem Teil gibt es zwei Schritte: erst den gegebenen Term selbst vereinfachen, dann das Ergebnis mit 5a² multiplizieren.`,
       steps: [
         {
-          title: '📖 Vorgehen',
-          content: `1️⃣ Klammern sauber ausmultiplizieren.
-2️⃣ Vorzeichen beachten.
-3️⃣ Gleiche Variablen-Terme zusammenfassen.
-4️⃣ Potenzen mit gleicher Basis vereinfachen.`,
+          title: '📖 Deine Werkzeuge',
+          content: `Bei einer Summe (wie in c) musst du 5a² mit JEDEM Summanden einzeln multiplizieren.
+Bei einem Bruch (wie in d) multiplizierst du nur den Zähler mit 5a² — der Nenner bleibt stehen.`,
         },
         {
-          title: '⚠️ Noch ergänzen',
-          content: `Sobald du mir einen Screenshot von Seite 2 schickst, fülle ich Aufgabe 1 exakt und vollständig aus.`,
+          title: 'a) 2b · 3ab³',
+          content: `Erst das Produkt: 2b · 3ab³ = 6ab⁴
+
+Dann mit 5a² multiplizieren:
+6ab⁴ · 5a² = 30a³b⁴
+
+✅ Ergebnis: 30a³b⁴`,
+        },
+        {
+          title: 'b) (5a)²',
+          content: `Erst die Potenz: (5a)² = 5² · a² = 25a²
+
+Dann mit 5a² multiplizieren:
+25a² · 5a² = 125a⁴
+
+✅ Ergebnis: 125a⁴`,
+        },
+        {
+          title: 'c) 2b + 3ab³',
+          content: `Hier ist keine Vereinfachung der Summe möglich (2b und 3ab³ sind keine gleichartigen Terme).
+
+Also direkt mit 5a² multiplizieren — jeden Summanden einzeln:
+5a² · 2b = 10a²b
+5a² · 3ab³ = 15a³b³
+
+✅ Ergebnis: 10a²b + 15a³b³`,
+        },
+        {
+          title: 'd) 2a / (5a³ + 10a²b)',
+          content: `Zähler mit 5a² multiplizieren:
+2a · 5a² = 10a³
+
+Term: 10a³ / (5a³ + 10a²b)
+
+Nenner faktorisieren: 5a³ + 10a²b = 5a²(a + 2b)
+
+= 10a³ / (5a²(a + 2b))
+
+Kürzen mit 5a²:
+10a³ / 5a² = 2a
+
+= 2a / (a + 2b)
+
+✅ Ergebnis: 2a/(a+2b)`,
         },
       ],
       tip: `🍳 Kochrezept:
-Immer zuerst ausmultiplizieren, dann ordnen, dann zusammenfassen.`,
+1️⃣ Zuerst den gegebenen Term für sich vereinfachen (multiplizieren, potenzieren, addieren oder faktorisieren).
+2️⃣ Erst danach mit 5a² multiplizieren.
+3️⃣ Bei einer Summe: jeden Summanden einzeln mit 5a² multiplizieren.
+4️⃣ Bei einem Bruch: nur den Zähler mit 5a² multiplizieren, dann wenn möglich kürzen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Produkt/Potenz/Summe/Bruch mit 5a² multiplizieren.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Berechne: 2 · 3', answer: '6', tip: 'Multipliziere zuerst nur die Zahlen.' },
+      { level: 'einfach', q: 'Berechne: 5²', answer: '25', tip: 'Quadrieren heisst: die Zahl mit sich selbst multiplizieren.' },
+      { level: 'einfach', q: 'Multipliziere aus: b · b³. Welchen Exponenten hat das Ergebnis?', answer: '4', tip: 'Bei gleicher Basis werden Exponenten addiert.' },
+
+      { level: 'mittel', q: 'Multipliziere aus: 2k · 5k. Wie lautet der Vorfaktor (die Zahl) im Ergebnis?', answer: '10', tip: 'Multipliziere zuerst nur die Zahlen.' },
+      { level: 'mittel', q: 'Multipliziere aus: 5 · (2m + 3n)', answer: '10m+15n', tip: 'Multipliziere die 5 mit JEDEM Summanden einzeln.' },
+      { level: 'mittel', q: 'Faktorisiere: 5a³ + 10a²b. Was ist der gemeinsame Zahlenfaktor?', answer: '5', tip: 'ggT von 5 und 10.' },
+
+      { level: 'schwer', q: 'Kürze: 10a³ / 5a²', answer: '2a', tip: 'Kürze zuerst die Zahlen, dann die Potenzen von a.' },
+      { level: 'schwer', q: 'Multipliziere aus: 6ab⁴ · 5a². Welchen Exponenten hat a im Ergebnis?', answer: '3', tip: 'Exponenten der gleichen Basis addieren.' },
+
+      { level: 'kanti', q: 'Multipliziere 2b·3ab³ zuerst aus, dann mit 5a². Welchen Exponenten hat b im Endergebnis?', answer: '4', tip: 'Der Exponent von b ändert sich bei der Multiplikation mit 5a² nicht mehr.' },
+      { level: 'kanti', q: 'Vereinfache 2a/(5a³+10a²b), nachdem du mit 5a² multipliziert hast. Was ist der Nenner im gekürzten Ergebnis?', answer: 'a+2b', tip: 'Faktorisiere zuerst den Nenner: 5a³+10a²b = 5a²(a+2b), dann kürze.' },
+    ],
   },
 
   // ── AUFGABE 2 ─────────────────────────────────────────────
@@ -79,80 +148,102 @@ Ordnung ist alles: erst vereinfachen, dann umformen, dann lösen.`,
     },
   },
 
-  // ── AUFGABE 3a ────────────────────────────────────────────
+  // ── AUFGABE 3 ─────────────────────────────────────────────
   {
-    id: 'M1_2025_OTR_VERHALTNIS_3a',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
-    topic: 'Proportionalität',
-    questionText: `Aufgabe 3a: Zerlege die Zahl 63 in zwei Summanden, die sich zueinander verhalten wie 3 : 4.`,
-    options: [
-      { label: '27 und 36', correct: true },
-      { label: '21 und 42', correct: false },
-      { label: '18 und 45', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Verhältnis verstehen',
-          content: `Das Verhältnis 3 : 4 bedeutet:
-Insgesamt haben wir 3 + 4 = 7 gleich grosse Teile.`,
-        },
-        {
-          title: 'Einen Teil berechnen',
-          content: `63 : 7 = 9
-Ein Teil ist also 9.`,
-        },
-        {
-          title: 'Beide Summanden berechnen',
-          content: `Erster Summand: 3 · 9 = 27
-Zweiter Summand: 4 · 9 = 36
-
-✅ Ergebnis: 27 und 36`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣ Verhältnis-Zahlen addieren.
-2️⃣ Gesamtzahl durch diese Summe teilen.
-3️⃣ Mit 3 und 4 multiplizieren.`,
-    },
-  },
-
-  // ── AUFGABE 3b ────────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_TERMVERGL_3b',
+    id: 'M1_2025_OTR_VERHALTNIS_3',
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=4',
     topic: 'Terme & Klammern',
-    questionText: `Aufgabe 3b: Welcher Term hat den grösseren Wert? Begründe rechnerisch.
+    verified: true,
+    questionText: `Aufgabe 3: Verhältnisse und Terme vergleichen
 
-Term A: [aus PDF einsetzen]
-Term B: [aus PDF einsetzen]`,
+a) Zerlege die Zahl 63 in zwei Summanden, die sich zueinander verhalten wie 3 : 4.
+
+b) Welcher Term hat den grösseren Wert? Begründe rechnerisch.
+
+Term A: ${frac('25', '8')} : ${frac('31', '8')}
+
+Term B: ${frac('13', '3')} : ${frac('31', '6')}`,
     options: [
-      { label: 'Bitte Term A und Term B aus dem PDF ergänzen', correct: true },
-      { label: 'Platzhalter', correct: false },
-      { label: 'Platzhalter', correct: false },
+      { label: 'a) 27 und 36 | b) Term B ist grösser (26/31 > 25/31)', correct: true },
+      { label: 'a) 21 und 42 | b) Term A ist grösser', correct: false },
+      { label: 'a) 27 und 36 | b) Term A ist grösser', correct: false },
     ],
     solution: {
-      intro: `Die beiden Terme sind im Textauszug nicht sichtbar.`,
+      intro: '',
       steps: [
         {
-          title: '📖 Vorgehen',
-          content: `1️⃣ Beide Terme getrennt ausrechnen.
-2️⃣ Ergebnisse vergleichen.
-3️⃣ Mit einer klaren Rechnung begründen, welcher grösser ist.`,
+          title: 'a) Verhältnis verstehen',
+          content: `Das Verhältnis 3 : 4 bedeutet:
+Insgesamt haben wir 3 + 4 = 7 gleich grosse Teile.`,
+        },
+        {
+          title: 'a) Einen Teil berechnen',
+          content: `63 : 7 = 9
+Ein Teil ist also 9.`,
+        },
+        {
+          title: 'a) Beide Summanden berechnen',
+          content: `Erster Summand: 3 · 9 = 27
+Zweiter Summand: 4 · 9 = 36
+
+✅ Ergebnis: 27 und 36`,
+        },
+        {
+          title: 'b) Term A berechnen',
+          content: `Term A = 25/8 : 31/8
+= 25/8 · 8/31     (Division = Multiplikation mit dem Kehrwert)
+= 25/31
+
+✅ Term A = 25/31`,
+        },
+        {
+          title: 'b) Term B berechnen',
+          content: `Term B = 13/3 : 31/6
+= 13/3 · 6/31
+= 78/93
+= 26/31     (kürzen mit 3)
+
+✅ Term B = 26/31`,
+        },
+        {
+          title: 'b) Vergleichen',
+          content: `Term A = 25/31
+Term B = 26/31
+
+Gleicher Nenner → vergleiche die Zähler:
+26 > 25
+
+✅ Term B hat den grösseren Wert.`,
         },
       ],
       tip: `🍳 Kochrezept:
-Nie raten — immer beide Terme vollständig berechnen und erst dann vergleichen.`,
+1️⃣ Verhältnis-Zahlen addieren, Gesamtzahl durch diese Summe teilen, dann mit den Verhältniszahlen multiplizieren.
+2️⃣ Division durch einen Bruch = Multiplikation mit dem Kehrwert.
+3️⃣ Beim Vergleich zweier Brüche: auf einen gemeinsamen Nenner bringen, dann die Zähler vergleichen.`,
     },
+
+    // ── ÜBUNGEN a): Zahl im gegebenen Verhältnis zerlegen.
+    // ── ÜBUNGEN b): Bruch-Division und Brüche vergleichen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Berechne: 3+4', answer: '7', tip: 'Addiere die beiden Verhältniszahlen.' },
+      { level: 'einfach', q: 'Berechne: 63 : 7', answer: '9', tip: 'Teile die Gesamtzahl durch die Summe der Verhältniszahlen.' },
+      { level: 'einfach', q: 'Berechne: 25/8 · 8/31', answer: '25/31', tip: 'Kürze die 8, dann bleibt der Bruch übrig.' },
+
+      { level: 'mittel', q: 'Zerlege 40 in zwei Summanden im Verhältnis 2:3. Wie gross ist der kleinere Summand?', answer: '16', tip: 'Teile 40 durch die Summe der Verhältniszahlen (2+3=5), dann mit 2 multiplizieren.' },
+      { level: 'mittel', q: 'Berechne: 13/3 · 6/31', answer: '26/31', tip: 'Kürze wo möglich, dann multipliziere Zähler mal Zähler und Nenner mal Nenner.' },
+      { level: 'mittel', q: 'Vergleiche: 7/12 und 8/12 — welcher Bruch ist grösser?', answer: '8/12', tip: 'Bei gleichem Nenner ist der Bruch mit dem grösseren Zähler grösser.' },
+
+      { level: 'schwer', q: 'Kürze: 78/93 (mit 3)', answer: '26/31', tip: 'Teile Zähler und Nenner durch 3.' },
+      { level: 'schwer', q: 'Berechne: 10/3 : 31/6', answer: '20/31', tip: 'Division durch einen Bruch = Multiplikation mit dem Kehrwert, dann kürzen.' },
+
+      { level: 'kanti', q: 'Berechne: 25/8 : 31/8', answer: '25/31', tip: 'Gleicher Nenner bei Division — er kürzt sich weg.' },
+      { level: 'kanti', q: 'Berechne: 13/3 : 31/6, und vergleiche mit 25/31. Welcher Bruch ist grösser?', answer: '26/31', tip: 'Berechne zuerst den Bruch, dann vergleiche die Zähler bei gleichem Nenner.' },
+    ],
   },
 
   // ── AUFGABE 4a ────────────────────────────────────────────

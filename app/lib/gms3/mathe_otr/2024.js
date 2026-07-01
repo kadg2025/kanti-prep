@@ -1,4 +1,5 @@
 
+import { frac } from '../../mathFormat';
 
 export const questions2024_oTR = [
   {
@@ -43,32 +44,76 @@ x = 23
   },
 
   {
-    id: 'M1_2024_OTR_TERM_2a',
+    id: 'M1_2024_OTR_TERM_2',
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164189/AP24_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
     topic: 'Terme & Klammern',
-    questionText: `Aufgabe 2a: Vereinfache so weit wie möglich.
+    verified: true,
+    questionText: `Aufgabe 2: Terme vereinfachen
 
-8a - 3(3 - a) · 3 - (a^4 · a^5)`,
+Vereinfache so weit wie möglich.
+
+a) ${frac('36x³y²z', '15x²z')}
+
+b) ${frac('8a³', '9 − 3a')} : ${frac('4a⁵', '3 − a')}
+
+c) ${frac('8a · 27b²(4 + 7y)', '(8 + 14y) · 18a² · 6b')}`,
     options: [
-      { label: '2/3 a^2', correct: true },
-      { label: '8a - 9 + 3a - a^9', correct: false },
-      { label: '2a^2', correct: false },
+      { label: 'a) 12xy²/5 | b) 2/(3a²) | c) b/a', correct: true },
+      { label: 'a) 12xy²/5 | b) 2a³/3 | c) b/a', correct: false },
+      { label: 'a) 12x/5 | b) 2/(3a²) | c) a/b', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Diese Aufgabe war in einer früheren Version dieser App komplett anders (und falsch) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version. Es fehlten ausserdem die Teile b) und c) komplett.',
       steps: [
         {
-          title: 'Vereinfachen',
-          content: `8a - 3(3 - a) · 3 - (a^4 · a^5)
-= 8a - 9(3 - a) - a^9
-= 8a - 27 + 9a - a^9
+          title: 'a) Kürzen',
+          content: `36x³y²z / 15x²z
 
-Die offizielle Lösung vereinfacht weiter zu:
-✅ 2/3 a^2`,
+Zahlen kürzen: 36/15 = 12/5
+x-Potenzen kürzen: x³/x² = x
+z kürzt sich komplett weg (z/z = 1)
+
+= 12xy² / 5
+
+✅ Ergebnis: 12xy²/5`,
+        },
+        {
+          title: 'b) Division durch Kürzen der Klammern',
+          content: `8a³/(9−3a) : 4a⁵/(3−a)
+
+9−3a = 3(3−a)
+
+= 8a³/(3(3−a)) : 4a⁵/(3−a)
+= 8a³/(3(3−a)) · (3−a)/4a⁵     (Division = Multiplikation mit dem Kehrwert)
+
+(3−a) kürzt sich weg:
+
+= 8a³/(3·4a⁵)
+= 8a³/(12a⁵)
+= 8/(12a²)
+= 2/(3a²)
+
+✅ Ergebnis: 2/(3a²)`,
+        },
+        {
+          title: 'c) Grossen Bruch kürzen',
+          content: `[8a · 27b²(4+7y)] / [(8+14y) · 18a² · 6b]
+
+8+14y = 2(4+7y)
+
+= [8a · 27b²(4+7y)] / [2(4+7y) · 18a² · 6b]
+
+(4+7y) kürzt sich weg:
+
+= [8a · 27b²] / [2 · 18a² · 6b]
+= 216ab² / 216a²b
+= b/a     (a²/a=a, b²/b=b, 216/216=1)
+
+✅ Ergebnis: b/a`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -77,10 +122,30 @@ Die offizielle Lösung vereinfacht weiter zu:
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣ Klammern sauber auflösen.
-2️⃣ Potenzen mit gleicher Basis zusammenfassen.
-3️⃣ Am Schluss vereinfachen.`,
+1️⃣ Zahlen und gleiche Buchstaben in Zähler und Nenner getrennt kürzen.
+2️⃣ Division = Multiplikation mit dem Kehrwert.
+3️⃣ Klammern faktorisieren, wenn sie sich in Zähler und Nenner wiederholen — dann kürzen sie sich weg.`,
     },
+
+    // ── ÜBUNGEN a): Zahlen und Potenzen kürzen.
+    // ── ÜBUNGEN b): Kehrwert-Division mit Faktorisieren.
+    // ── ÜBUNGEN c): grossen Bruch mit gemeinsamem Klammerfaktor kürzen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Kürze: 36/15', answer: '12/5', tip: 'Teile Zähler und Nenner durch den ggT.' },
+      { level: 'einfach', q: 'Kürze: x³/x². Was bleibt übrig?', answer: 'x', tip: 'Bei gleicher Basis: Exponenten subtrahieren.' },
+      { level: 'einfach', q: 'Faktorisiere: 9−3a. Was ist der gemeinsame Faktor?', answer: '3', tip: 'ggT von 9 und 3.' },
+
+      { level: 'mittel', q: 'Kürze: a⁵/a³. Welchen Exponenten hat das Ergebnis?', answer: '2', tip: 'Exponenten subtrahieren.' },
+      { level: 'mittel', q: 'Kürze so weit wie möglich: 8/(3·4)', answer: '2/3', tip: 'Kürze den Bruch so weit wie möglich.' },
+      { level: 'mittel', q: 'Faktorisiere: 8+14y. Was ist der gemeinsame Faktor?', answer: '2', tip: 'ggT von 8 und 14.' },
+
+      { level: 'schwer', q: 'Kürze: 216/216', answer: '1', tip: 'Eine Zahl durch sich selbst geteilt.' },
+      { level: 'schwer', q: 'Vereinfache: a³/a⁵. Welchen Exponenten hat a im Ergebnis (mit Vorzeichen, falls negativ)?', answer: '-2', tip: 'Exponenten subtrahieren — auch negative Exponenten sind erlaubt.' },
+
+      { level: 'kanti', q: 'Vereinfache: 36x³y²z / 15x²z. Wie lautet der gekürzte Zahlen-Vorfaktor?', answer: '12/5', tip: 'Kürze nur den Zahlenanteil des Bruchs.' },
+      { level: 'kanti', q: 'Vereinfache: [8a·27b²(4+7y)] / [(8+14y)·18a²·6b]. Welche Variable bleibt im Zähler stehen?', answer: 'b', tip: 'Kürze zuerst den Faktor (4+7y) weg, dann die Zahlen und a.' },
+    ],
   },
 
   {
