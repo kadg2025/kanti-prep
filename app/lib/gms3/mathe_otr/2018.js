@@ -1,6 +1,5 @@
 
-// Stellt einen Bruch als echten Zähler/Nenner-Stapel dar (wie in der gedruckten Prüfung), statt "1/3".
-const frac = (num, den) => `<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 2px;font-size:0.95em;"><span style="border-bottom:1.5px solid currentColor;padding:0 3px 1px;">${num}</span><span style="padding:1px 3px 0;">${den}</span></span>`;
+import { frac } from '../../mathFormat';
 
 export const questions2018_oTR = [
 

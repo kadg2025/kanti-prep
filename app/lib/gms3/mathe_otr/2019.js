@@ -1,4 +1,6 @@
 
+import { sqrt } from '../../mathFormat';
+
 export const questionsMatheOtr2019 = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -283,27 +285,29 @@ x = 18/11
 
     topic: 'Terme & Klammern',
 
+    verified: true,
+
     questionText: `Aufgabe 3: Terme vereinfachen
 
 Vereinfache so weit wie möglich:
 
-a) √(a⁴ + 8a⁴)
+a) ${sqrt('a² + 8a²')}
 
-b) √((3y)⁴ – 5y⁴)`,
+b) ${sqrt('(3y)² − 5y²')}`,
 
     options: [
 
-      { label: 'a) 3a² | b) 2y²', correct: true },
+      { label: 'a) 3a | b) 2y', correct: true },
 
-      { label: 'a) 3a² | b) y²√4', correct: false },
+      { label: 'a) 3a² | b) 2y²', correct: false },
 
-      { label: 'a) a²√9 | b) 2y²', correct: false },
+      { label: 'a) 9a | b) 4y', correct: false },
 
     ],
 
     solution: {
 
-      intro: '',
+      intro: 'Der Aufgabentext war in einer früheren Version dieser App fehlerhaft (a⁴ statt a² durch einen Erfassungsfehler) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
 
       steps: [
 
@@ -315,49 +319,35 @@ b) √((3y)⁴ – 5y⁴)`,
 
 √(a²) = |a| = a  (für a ≥ 0)
 
-√(a · b) = √a · √b
+Innerhalb der Wurzel zuerst zusammenfassen (gleiche Variablenteile addieren/subtrahieren), erst danach die Wurzel ziehen.
 
-💡 Strategie: Zuerst unter der Wurzel zusammenfassen, dann vereinfachen.`,
-
-        },
-
-        {
-
-          title: 'a) √(a⁴ + 8a⁴)',
-
-          content: `= √(9a⁴)
-
-= √9 · √(a⁴)
-
-= 3 · a²
-
-✅ 3a²`,
+(3y)² bedeutet: die GANZE Klammer wird quadriert → (3y)² = 9y².`,
 
         },
 
         {
 
-          title: 'b) √((3y)⁴ – 5y⁴)',
+          title: 'a) √(a² + 8a²)',
 
-          content: `(3y)⁴ = 3⁴ · y⁴ = 81y⁴
+          content: `a² + 8a² = 9a²
 
-= √(81y⁴ – 5y⁴)
+√(9a²) = √9 · √(a²) = 3 · a
 
-= √(76y⁴)
+✅ 3a`,
 
-Hmm, 76 = 4 · 19:
+        },
 
-= √(4 · 19 · y⁴)
+        {
 
-= 2y² · √19
+          title: 'b) √((3y)² − 5y²)',
 
-Alternativ falls Aufgabe (3y²)² gemeint:
+          content: `(3y)² = 9y²
 
-(3y²)² = 9y⁴
+9y² − 5y² = 4y²
 
-→ √(9y⁴ – 5y⁴) = √(4y⁴) = 2y²
+√(4y²) = √4 · √(y²) = 2 · y
 
-✅ 2y² (wenn (3y)⁴ als 9y⁴ interpretiert)`,
+✅ 2y`,
 
         },
 
@@ -375,13 +365,31 @@ Alternativ falls Aufgabe (3y²)² gemeint:
 
       tip: `🍳 Kochrezept:
 
-1️⃣  Terme unter der Wurzel zusammenfassen (gleiche Variablen addieren)
+1️⃣  Erst innerhalb der Wurzel alles zusammenfassen.
 
-2️⃣  Quadratzahl ausklammern
+2️⃣  (n·x)² separat ausrechnen, bevor du weiterrechnest.
 
-3️⃣  √(n²·a) = n·√a`,
+3️⃣  √(n²·x²) = n·x (für n, x ≥ 0).`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zu "unter der Wurzel zusammenfassen" und Quadratzahlen erkennen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Fasse zusammen: a + 8a', answer: '9a', tip: 'Addiere die Vorfaktoren, die Variable bleibt gleich.' },
+      { level: 'einfach', q: 'Berechne: √9', answer: '3', tip: 'Welche Zahl mal sich selbst ergibt 9?' },
+      { level: 'einfach', q: 'Berechne: 3²', answer: '9', tip: 'Quadrieren heisst: die Zahl mit sich selbst multiplizieren.' },
+
+      { level: 'mittel', q: 'Fasse zusammen: 9y − 5y', answer: '4y', tip: 'Nur die Vorfaktoren werden subtrahiert, die Variable bleibt gleich.' },
+      { level: 'mittel', q: 'Vereinfache: √(9k²)', answer: '3k', tip: 'Ziehe die Wurzel aus der Zahl und aus der Variable einzeln.' },
+      { level: 'mittel', q: 'Vereinfache: √(4m²)', answer: '2m', tip: 'Gleiches Prinzip: Wurzel aus Zahl und Variable getrennt ziehen.' },
+
+      { level: 'schwer', q: 'Vereinfache: √(a² + 8a²)', answer: '3a', tip: 'Erst unter der Wurzel zusammenfassen, dann die Wurzel ziehen.' },
+      { level: 'schwer', q: 'Vereinfache: √((3y)² − 5y²)', answer: '2y', tip: '(3y)² zuerst ausrechnen, dann zusammenfassen, dann die Wurzel ziehen.' },
+
+      { level: 'kanti', q: 'Vereinfache: √(a² + 3a²)', answer: '2a', tip: 'Gleiches Vorgehen wie bei den vorherigen Aufgaben, nur mit anderen Zahlen.' },
+      { level: 'kanti', q: 'Vereinfache: √((2y)² + 5y²)', answer: '3y', tip: 'Erst die Klammer quadrieren, dann zusammenfassen, dann die Wurzel ziehen.' },
+    ],
 
   },
 
@@ -403,29 +411,31 @@ Alternativ falls Aufgabe (3y²)² gemeint:
 
     topic: 'Terme & Klammern',
 
+    verified: true,
+
     questionText: `Aufgabe 4: Text als Term
 
 Schreibe den Text als Term und vereinfache soweit wie möglich (ohne Klammern):
 
-a) Halbiere das Quadrat von (6a – 3a)
+a) Halbiere das Quadrat von 6a.
 
-b) Ziehe die Wurzel aus dem Produkt von 4ab und 2ab
+b) Quadriere das Produkt von 3a³ und 4ab.
 
-c) Subtrahiere 5b von 6`,
+c) Multipliziere das Dreifache der Summe von 2ab und 5b² mit 6.`,
 
     options: [
 
-      { label: 'a) 9a²/2 | b) 2ab√2 | c) 6–5b', correct: true },
+      { label: 'a) 18a² | b) 144a⁸b² | c) 36ab + 90b²', correct: true },
 
-      { label: 'a) 4.5a² | b) 4ab | c) 6–5b', correct: false },
+      { label: 'a) 9a² | b) 144a⁸b² | c) 36ab + 90b²', correct: false },
 
-      { label: 'a) 9a | b) 2ab | c) 5b–6', correct: false },
+      { label: 'a) 18a² | b) 12a⁴b | c) 30ab + 90b²', correct: false },
 
     ],
 
     solution: {
 
-      intro: '',
+      intro: 'Der Aufgabentext war in einer früheren Version dieser App komplett anders (und falsch) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
 
       steps: [
 
@@ -435,51 +445,55 @@ c) Subtrahiere 5b von 6`,
 
           content: `📝 Texte in Terme übersetzen:
 
-"Halbiere x" → x/2
+"Halbiere x" → x : 2
 
-"Quadrat von x" → x²
+"Quadriere x" → x²
 
-"Ziehe Wurzel aus x" → √x
+"Produkt von a und b" → a · b
 
-"Produkt von a und b" → a·b
+"Summe von a und b" → a + b
 
-"Subtrahiere b von a" → a–b (Achtung Reihenfolge!)`,
+"Das n-fache von x" → n · x
 
-        },
-
-        {
-
-          title: 'a) Halbiere das Quadrat von (6a–3a)',
-
-          content: `6a – 3a = 3a
-
-Quadrat: (3a)² = 9a²
-
-Halbiere: 9a²/2
-
-✅ 9a²/2`,
+Reihenfolge: Erst die innere Operation (Produkt/Summe) bilden, DANN die äussere (halbieren/quadrieren/malnehmen) anwenden.`,
 
         },
 
         {
 
-          title: 'b) Wurzel aus Produkt 4ab · 2ab',
+          title: 'a) Halbiere das Quadrat von 6a',
 
-          content: `Produkt: 4ab · 2ab = 8a²b²
+          content: `Quadrat von 6a: (6a)² = 36a²
 
-Wurzel: √(8a²b²) = √8 · ab = 2√2 · ab
+Halbieren: 36a² : 2 = 18a²
 
-✅ 2ab√2`,
+✅ 18a²`,
 
         },
 
         {
 
-          title: 'c) Subtrahiere 5b von 6',
+          title: 'b) Quadriere das Produkt von 3a³ und 4ab',
 
-          content: `"von 6 subtrahiere 5b" → 6 – 5b
+          content: `Produkt: 3a³ · 4ab = 12a⁴b
 
-✅ 6 – 5b`,
+Quadrieren: (12a⁴b)² = 144a⁸b²
+
+✅ 144a⁸b²`,
+
+        },
+
+        {
+
+          title: 'c) Multipliziere das Dreifache der Summe von 2ab und 5b² mit 6',
+
+          content: `Summe: 2ab + 5b²
+
+Dreifache der Summe: 3 · (2ab + 5b²) = 6ab + 15b²
+
+Mit 6 multiplizieren: 6 · (6ab + 15b²) = 36ab + 90b²
+
+✅ 36ab + 90b²`,
 
         },
 
@@ -497,13 +511,31 @@ Wurzel: √(8a²b²) = √8 · ab = 2√2 · ab
 
       tip: `🍳 Kochrezept:
 
-1️⃣  Schlüsselwörter erkennen: halbiere, Quadrat, Wurzel, Produkt, subtrahiere
+1️⃣  Schlüsselwörter erkennen: halbiere, Quadrat, Produkt, Summe, das n-fache
 
-2️⃣  "von x subtrahiere y" = x – y (x kommt zuerst!)
+2️⃣  Von innen nach aussen übersetzen — erst Produkt/Summe bilden, dann die äussere Operation anwenden
 
-3️⃣  Vereinfachen: zuerst zusammenfassen, dann Term aufschreiben`,
+3️⃣  Potenzgesetz beim Quadrieren beachten: (n·a^k)² = n²·a^(2k)`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zu "Text in Term übersetzen" und Potenzen/Klammern ausmultiplizieren.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Berechne: 6²', answer: '36', tip: 'Quadrieren heisst: die Zahl mit sich selbst multiplizieren.' },
+      { level: 'einfach', q: 'Berechne: 36 : 2', answer: '18', tip: 'Teile 36 durch 2.' },
+      { level: 'einfach', q: 'Berechne: 3 · 4', answer: '12', tip: 'Die Zahlen vor den Variablen werden zuerst multipliziert.' },
+
+      { level: 'mittel', q: 'Multipliziere aus: 3a · 4b', answer: '12ab', tip: 'Zahlen multiplizieren, Variablen einfach nebeneinander schreiben.' },
+      { level: 'mittel', q: 'Vereinfache: 3 · (2ab + 5c)', answer: '6ab+15c', tip: 'Multipliziere die 3 mit JEDEM Summanden einzeln.' },
+      { level: 'mittel', q: 'Vereinfache: 6 · (6ab + 15c)', answer: '36ab+90c', tip: 'Genau wie zuvor — multipliziere mit jedem Summanden einzeln.' },
+
+      { level: 'schwer', q: 'Vereinfache: 3 · (2ab + 5c) · 4', answer: '24ab+60c', tip: 'Erst die Klammer ausmultiplizieren, dann das Ergebnis mit der zweiten Zahl multiplizieren.' },
+      { level: 'schwer', q: 'Multipliziere aus: 2a · 3b · 4c', answer: '24abc', tip: 'Alle Zahlen zusammen multiplizieren, alle Variablen nebeneinander schreiben.' },
+
+      { level: 'kanti', q: 'Halbiere das Quadrat von 4a. Wie lautet der Vorfaktor (die Zahl) vor a² im Ergebnis?', answer: '8', tip: 'Erst quadrieren (4² = 16), dann halbieren.' },
+      { level: 'kanti', q: 'Quadriere das Produkt von 2a² und 3ab. Wie lautet der Vorfaktor (die Zahl) im Ergebnis?', answer: '36', tip: 'Erst das Produkt bilden, dann alles quadrieren: (n·Term)² = n² · Term².' },
+    ],
 
   },
 
