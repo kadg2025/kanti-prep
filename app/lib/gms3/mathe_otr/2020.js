@@ -840,9 +840,9 @@ Nächste Primzahl 29: 29 + 30 + 31 + 32 = 122 ≥ 100 ✗
     },
   },
 
-  // ── AUFGABE 6a ────────────────────────────────────────────
+  // ── AUFGABE 6 ─────────────────────────────────────────────
   {
-    id: 'M1_2020_OTR_BRUCH_6a',
+    id: 'M1_2020_OTR_BRUCH_6',
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -850,20 +850,24 @@ Nächste Primzahl 29: 29 + 30 + 31 + 32 = 122 ≥ 100 ✗
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=6',
     topic: 'Terme & Klammern',
     verified: true,
-    questionText: `Aufgabe 6a: Bruch vereinfachen
-Fasse zu einem einzigen, möglichst einfachen Bruch zusammen:
+    questionText: `Aufgabe 6: Bruch vereinfachen
+Fasse jeweils zu einem einzigen, möglichst einfachen Bruch zusammen:
 
-${frac('4', '3')} · ${frac('a', '2')} + ${frac('a', '2')} ÷ ${frac('3', '2')}`,
+a) ${frac('4', '3')} · ${frac('a', '2')} + ${frac('a', '2')} ÷ ${frac('3', '2')}
+
+b) (${frac('1', '2')} · ${frac('b²', '2')} − ${frac('b²', '2')}) · ${frac('2', 'b')}
+
+c) ${frac('c', '2')} ÷ ${frac('c²', '4')} + ${frac('c', '2')} · 3 − c`,
     options: [
-      { label: 'a', correct: true },
-      { label: '2a/3', correct: false },
-      { label: '4a/3', correct: false },
+      { label: 'a) a | b) −b/2 | c) (4+c²)/(2c)', correct: true },
+      { label: 'a) 2a/3 | b) −b/2 | c) (4+c²)/(2c)', correct: false },
+      { label: 'a) a | b) b/2 | c) (4−c²)/(2c)', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Teil c) war in einer früheren Version dieser App leicht falsch geklammert ("· (3–c)" statt "· 3 − c"), wodurch die Herleitung nicht zum offiziellen Ergebnis passte. Hier die korrekte, gegen die offizielle Prüfung geprüfte Version aller drei Teile.',
       steps: [
         {
-          title: 'Schritt für Schritt',
+          title: 'a) Schritt für Schritt',
           content: `4/3 · a/2 + a/2 ÷ 3/2
 
 Teil 1: 4/3 · a/2 = 4a/6 = 2a/3
@@ -875,60 +879,7 @@ Summe: 2a/3 + a/3 = 3a/3 = a
 ✅ Ergebnis: a`,
         },
         {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119941/AP20_GMS3_M1_oTr_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣  Division durch Bruch = Multiplikation mit dem Kehrwert.
-2️⃣  Jeden Teil einzeln vereinfachen.
-3️⃣  Auf gemeinsamen Nenner bringen und addieren.`,
-    },
-
-    // ── ÜBUNGEN: aufbauend zu Bruchmultiplikation, Kehrwert-Division und Addition gleichnamiger Brüche.
-    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
-    practice: [
-      { level: 'einfach', q: 'Berechne: 4/3 · 1/2', answer: '2/3', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
-      { level: 'einfach', q: 'Berechne: 1/2 ÷ 3/2', answer: '1/3', tip: 'Division durch einen Bruch = Multiplikation mit dem Kehrwert.' },
-      { level: 'einfach', q: 'Fasse zusammen: 2/3 + 1/3', answer: '1', tip: 'Gleicher Nenner — einfach die Zähler addieren.' },
-
-      { level: 'mittel', q: 'Berechne: 4/3 · a/2', answer: '2a/3', tip: 'Zahl mal Zahl, die Variable bleibt im Zähler stehen.' },
-      { level: 'mittel', q: 'Berechne: a/2 ÷ 3/2', answer: 'a/3', tip: 'Mit dem Kehrwert von 3/2 multiplizieren, also mit 2/3.' },
-      { level: 'mittel', q: 'Fasse zusammen: 2a/3 + a/3', answer: 'a', tip: 'Gleicher Nenner — Zähler addieren, dann kürzen falls möglich.' },
-
-      { level: 'schwer', q: 'Vereinfache: 4/3 · a/2 + a/2 ÷ 3/2', answer: 'a', tip: 'Berechne beide Teile getrennt, dann addiere sie.' },
-      { level: 'schwer', q: 'Berechne: 5/4 ÷ 5/2', answer: '1/2', tip: 'Kehrwert des zweiten Bruchs nehmen, dann kürzen.' },
-
-      { level: 'kanti', q: 'Vereinfache: 2/5 · a/4 + a/4 ÷ 5/2', answer: 'a/5', tip: 'Gleiches Vorgehen wie beim Original — nur mit anderen Zahlen.' },
-      { level: 'kanti', q: 'Vereinfache: 3/2 · a/3 + a/3 ÷ 2/3', answer: 'a', tip: 'Gleiche Struktur wie die Originalaufgabe.' },
-    ],
-  },
-
-  // ── AUFGABE 6b ────────────────────────────────────────────
-  {
-    id: 'M1_2020_OTR_BRUCH_6b',
-    year: 2020,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Terme & Klammern',
-    verified: true,
-    questionText: `Aufgabe 6b: Bruch vereinfachen
-Fasse zu einem einzigen, möglichst einfachen Bruch zusammen:
-
-(${frac('1', '2')} · ${frac('b²', '2')} − ${frac('b²', '2')}) · ${frac('2', 'b')}`,
-    options: [
-      { label: '–b/2', correct: true },
-      { label: 'b/2', correct: false },
-      { label: '–b²/2', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Schritt für Schritt',
+          title: 'b) Schritt für Schritt',
           content: `(1/2 · b²/2 – b²/2) · 2/b
 
 Klammer auflösen:
@@ -943,60 +894,7 @@ Jetzt multiplizieren:
 ✅ Ergebnis: –b/2`,
         },
         {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119941/AP20_GMS3_M1_oTr_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣  Zuerst die Klammer vereinfachen (auf gleichen Nenner bringen).
-2️⃣  Dann mit dem äusseren Bruch multiplizieren.
-3️⃣  Kürzen nicht vergessen!`,
-    },
-
-    // ── ÜBUNGEN: aufbauend zu Klammer-mit-Brüchen vereinfachen und mit einem Bruch multiplizieren.
-    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
-    practice: [
-      { level: 'einfach', q: 'Berechne: 1/2 · 1/2', answer: '1/4', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
-      { level: 'einfach', q: 'Fasse zusammen: 1/4 − 1/2', answer: '-1/4', tip: 'Bringe beide Brüche auf den Nenner 4.' },
-      { level: 'einfach', q: 'Berechne: 1/4 · 2', answer: '1/2', tip: 'Multipliziere den Zähler mit der 2, kürze wenn möglich.' },
-
-      { level: 'mittel', q: 'Berechne: 1/2 · b/2', answer: 'b/4', tip: 'Zahl mal Zahl, die Variable bleibt im Zähler.' },
-      { level: 'mittel', q: 'Fasse zusammen: b/4 − b/2', answer: '-b/4', tip: 'Bringe beide Brüche auf den Nenner 4, dann subtrahiere.' },
-      { level: 'mittel', q: 'Vereinfache: (-b/4) · 2', answer: '-b/2', tip: 'Kürze die 4 mit der 2.' },
-
-      { level: 'schwer', q: 'Vereinfache: (1/2 · b/2 − b/2) · 2', answer: '-b/2', tip: 'Erst die Klammer vereinfachen, dann mit der Zahl davor multiplizieren.' },
-      { level: 'schwer', q: 'Vereinfache: (1/2 · k/2 − k/2) · 2/k', answer: '-1/2', tip: 'Erst die Klammer vereinfachen, dann mit dem äusseren Bruch multiplizieren und kürzen.' },
-
-      { level: 'kanti', q: 'Vereinfache: (1/2 · b²/2 − b²/2) · 2/b', answer: '-b/2', tip: 'Gleiches Vorgehen wie im Kochrezept — die Potenz kürzt sich am Schluss weg.' },
-      { level: 'kanti', q: 'Vereinfache: (1/3 · b²/2 − b²/2) · 2/b', answer: '-2b/3', tip: 'Gleiche Struktur, andere Zahl — sorgfältig durchrechnen.' },
-    ],
-  },
-
-  // ── AUFGABE 6c ────────────────────────────────────────────
-  {
-    id: 'M1_2020_OTR_BRUCH_6c',
-    year: 2020,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Terme & Klammern',
-    verified: true,
-    questionText: `Aufgabe 6c: Bruch vereinfachen
-Fasse zu einem einzigen, möglichst einfachen Bruch zusammen:
-
-${frac('c', '2')} ÷ ${frac('c²', '4')} + ${frac('c', '2')} · 3 − c`,
-    options: [
-      { label: '(4+c²)/(2c)', correct: true },
-      { label: 'c/2 + 2/c (nicht zusammengefasst)', correct: false },
-      { label: '(4−c²)/(2c)', correct: false },
-    ],
-    solution: {
-      intro: 'Der Aufgabentext war in einer früheren Version dieser App leicht falsch geklammert ("· (3–c)" statt "· 3 − c"), wodurch die Herleitung nicht zum offiziellen Ergebnis passte. Hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
-      steps: [
-        {
-          title: 'Schritt für Schritt',
+          title: 'c) Schritt für Schritt',
           content: `c/2 ÷ c²/4 + c/2 · 3 − c
 
 Teil 1: c/2 ÷ c²/4 = c/2 · 4/c² = 4c/(2c²) = 2/c
@@ -1024,25 +922,48 @@ Summe: 4/(2c) + c²/(2c) = (4 + c²)/(2c)
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Division = Multiplikation mit dem Kehrwert.
-2️⃣  Jeden Term (÷, ·, einzelne Zahl) getrennt auswerten — Punkt vor Strich beachten.
-3️⃣  Erst ganz am Schluss auf den gemeinsamen Nenner bringen und addieren.`,
+1️⃣  Division durch einen Bruch = Multiplikation mit dessen Kehrwert.
+2️⃣  Klammern zuerst auf einen gemeinsamen Nenner bringen, dann vereinfachen.
+3️⃣  Jeden Teil (Summand) einzeln berechnen, bevor du zusammenfasst.
+4️⃣  Erst ganz am Schluss auf den gemeinsamen Nenner bringen, addieren und kürzen.`,
     },
 
-    // ── ÜBUNGEN: aufbauend zu Kehrwert-Division mit Potenzen und ungleichnamige Brüche addieren.
+    // ── ÜBUNGEN a): Bruchmultiplikation, Kehrwert-Division, Addition gleichnamiger Brüche.
+    // ── ÜBUNGEN b): Klammer-mit-Brüchen vereinfachen und mit einem Bruch multiplizieren.
+    // ── ÜBUNGEN c): Kehrwert-Division mit Potenzen, ungleichnamige Brüche addieren.
     //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
     practice: [
+      { level: 'einfach', q: 'Berechne: 4/3 · 1/2', answer: '2/3', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+      { level: 'einfach', q: 'Berechne: 1/2 ÷ 3/2', answer: '1/3', tip: 'Division durch einen Bruch = Multiplikation mit dem Kehrwert.' },
+      { level: 'einfach', q: 'Fasse zusammen: 2/3 + 1/3', answer: '1', tip: 'Gleicher Nenner — einfach die Zähler addieren.' },
+      { level: 'einfach', q: 'Berechne: 1/2 · 1/2', answer: '1/4', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+      { level: 'einfach', q: 'Fasse zusammen: 1/4 − 1/2', answer: '-1/4', tip: 'Bringe beide Brüche auf den Nenner 4.' },
+      { level: 'einfach', q: 'Berechne: 1/4 · 2', answer: '1/2', tip: 'Multipliziere den Zähler mit der 2, kürze wenn möglich.' },
       { level: 'einfach', q: 'Berechne: 1/2 ÷ 1/4', answer: '2', tip: 'Division durch einen Bruch = Multiplikation mit dem Kehrwert.' },
       { level: 'einfach', q: 'Berechne: 1/2 · 3', answer: '3/2', tip: 'Multipliziere den Zähler mit der Zahl.' },
       { level: 'einfach', q: 'Fasse zusammen: 3/2 − 1', answer: '1/2', tip: 'Schreibe die 1 als 2/2, dann subtrahiere.' },
 
+      { level: 'mittel', q: 'Berechne: 4/3 · a/2', answer: '2a/3', tip: 'Zahl mal Zahl, die Variable bleibt im Zähler stehen.' },
+      { level: 'mittel', q: 'Berechne: a/2 ÷ 3/2', answer: 'a/3', tip: 'Mit dem Kehrwert von 3/2 multiplizieren, also mit 2/3.' },
+      { level: 'mittel', q: 'Fasse zusammen: 2a/3 + a/3', answer: 'a', tip: 'Gleicher Nenner — Zähler addieren, dann kürzen falls möglich.' },
+      { level: 'mittel', q: 'Berechne: 1/2 · b/2', answer: 'b/4', tip: 'Zahl mal Zahl, die Variable bleibt im Zähler.' },
+      { level: 'mittel', q: 'Fasse zusammen: b/4 − b/2', answer: '-b/4', tip: 'Bringe beide Brüche auf den Nenner 4, dann subtrahiere.' },
+      { level: 'mittel', q: 'Vereinfache: (-b/4) · 2', answer: '-b/2', tip: 'Kürze die 4 mit der 2.' },
       { level: 'mittel', q: 'Berechne: c/2 ÷ c/4', answer: '2', tip: 'Kehrwert des zweiten Bruchs nehmen — die c kürzen sich weg.' },
       { level: 'mittel', q: 'Berechne: c/2 · 3', answer: '3c/2', tip: 'Multipliziere den Zähler mit der 3.' },
       { level: 'mittel', q: 'Fasse zusammen: 3c/2 − c', answer: 'c/2', tip: 'Schreibe c als 2c/2, dann subtrahiere.' },
 
+      { level: 'schwer', q: 'Vereinfache: 4/3 · a/2 + a/2 ÷ 3/2', answer: 'a', tip: 'Berechne beide Teile getrennt, dann addiere sie.' },
+      { level: 'schwer', q: 'Berechne: 5/4 ÷ 5/2', answer: '1/2', tip: 'Kehrwert des zweiten Bruchs nehmen, dann kürzen.' },
+      { level: 'schwer', q: 'Vereinfache: (1/2 · b/2 − b/2) · 2', answer: '-b/2', tip: 'Erst die Klammer vereinfachen, dann mit der Zahl davor multiplizieren.' },
+      { level: 'schwer', q: 'Vereinfache: (1/2 · k/2 − k/2) · 2/k', answer: '-1/2', tip: 'Erst die Klammer vereinfachen, dann mit dem äusseren Bruch multiplizieren und kürzen.' },
       { level: 'schwer', q: 'Bringe 2/c auf den Nenner 2c. Wie lautet der neue Zähler?', answer: '4', tip: 'Erweitere den Bruch: womit musst du Zähler und Nenner multiplizieren, damit aus c der Nenner 2c wird?' },
       { level: 'schwer', q: 'Berechne: c/2 ÷ c²/4', answer: '2/c', tip: 'Mit dem Kehrwert multiplizieren, dann kürzen.' },
 
+      { level: 'kanti', q: 'Vereinfache: 2/5 · a/4 + a/4 ÷ 5/2', answer: 'a/5', tip: 'Gleiches Vorgehen wie beim Original — nur mit anderen Zahlen.' },
+      { level: 'kanti', q: 'Vereinfache: 3/2 · a/3 + a/3 ÷ 2/3', answer: 'a', tip: 'Gleiche Struktur wie die Originalaufgabe.' },
+      { level: 'kanti', q: 'Vereinfache: (1/2 · b²/2 − b²/2) · 2/b', answer: '-b/2', tip: 'Gleiches Vorgehen wie im Kochrezept — die Potenz kürzt sich am Schluss weg.' },
+      { level: 'kanti', q: 'Vereinfache: (1/3 · b²/2 − b²/2) · 2/b', answer: '-2b/3', tip: 'Gleiche Struktur, andere Zahl — sorgfältig durchrechnen.' },
       { level: 'kanti', q: 'Vereinfache: c/2 ÷ c²/4 + c/2 · 3 − c, und berechne den Wert für c=2.', answer: '2', tip: 'Setze c=2 direkt in die Ausgangsaufgabe ein und rechne Schritt für Schritt.' },
       { level: 'kanti', q: 'Fasse zusammen: 3/c + c/3, und berechne den Wert für c=3.', answer: '2', tip: 'Setze c=3 direkt in die Ausgangsterme ein.' },
     ],
