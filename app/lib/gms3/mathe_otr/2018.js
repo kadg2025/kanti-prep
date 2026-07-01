@@ -1,4 +1,7 @@
 
+// Stellt einen Bruch als echten Zähler/Nenner-Stapel dar (wie in der gedruckten Prüfung), statt "1/3".
+const frac = (num, den) => `<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 2px;font-size:0.95em;"><span style="border-bottom:1.5px solid currentColor;padding:0 3px 1px;">${num}</span><span style="padding:1px 3px 0;">${den}</span></span>`;
+
 export const questions2018_oTR = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -19,15 +22,17 @@ export const questions2018_oTR = [
 
     topic: 'Terme & Klammern',
 
+    verified: true,
+
     questionText: `Aufgabe 1: Terme vereinfachen & Gleichung lösen
 
 a) Schreibe ohne Klammern und möglichst einfach:
 
-(1/3) · (a + 0.5·a - 0.5·3²)
+${frac('1', '3')} · (a + 0.5·a − 0.5·3²)
 
 b) Bestimme x in der folgenden Gleichung:
 
-(1/2) · (x - (1/3)·x + 2·0.5²) = 0`,
+${frac('1', '2')} · (x − ${frac('1', '3')}·x + 2·0.5²) = 0`,
 
     options: [
 
@@ -41,51 +46,71 @@ b) Bestimme x in der folgenden Gleichung:
 
     solution: {
 
-      intro: '',
+      intro: 'Der Trick bei beiden Teilaufgaben: Erst alles INNERHALB der Klammer fertig ausrechnen (Potenzen, Punktrechnung), dann erst den Bruch davor ausmultiplizieren.',
 
       steps: [
 
         {
 
-          title: 'a) Term vereinfachen',
+          title: '📖 Deine Werkzeuge',
 
-          content: `(1/3)(a + 0.5a - 0.5·3²)
+          content: `Ausklammern eines Bruchs: 1/3 · (A + B) heisst, der Bruch wird mit JEDEM Term in der Klammer einzeln multipliziert: 1/3·A + 1/3·B.
 
-= (1/3)(a + 0.5a - 0.5·9)
+Reihenfolge: Potenz zuerst (3² = 9), dann Punktrechnung (0.5 · 9), erst danach die Klammer ausmultiplizieren.
 
-= (1/3)(1.5a - 4.5)
-
-= 0.5a - 1.5
-
-= a/2 - 3/2
-
-✅ Ergebnis: a/2 - 3/2`,
+Brüche zusammenfassen: Nur Brüche mit dem GLEICHEN Nenner darfst du addieren/subtrahieren. Bringe sie zuerst auf einen gemeinsamen Nenner.`,
 
         },
 
         {
 
-          title: 'b) Gleichung lösen',
+          title: 'a) Klammer berechnen',
 
-          content: `(1/2)(x - (1/3)x + 2·0.5²) = 0
+          content: `0.5 · 3² = 0.5 · 9 = 4.5
+Die Klammer wird zu: (a + 0.5a − 4.5)`,
 
-= (1/2)(x - (1/3)x + 2·0.25)
+        },
 
-= (1/2)(x - (1/3)x + 0.5)
+        {
 
-x - (1/3)x = (2/3)x
+          title: 'a) Ausmultiplizieren und zusammenfassen',
 
-Also:
+          content: `1/3 · (a + 0.5a − 4.5)
+= 1/3·a + 1/6·a − 1/6·9
+= 2/6·a + 1/6·a − 9/6
+= 3/6·a − 9/6
+= a/2 − 3/2
+✅ Ergebnis: a/2 − 3/2`,
 
-(1/2)((2/3)x + 0.5) = 0
+        },
 
-(1/3)x + 1/4 = 0
+        {
 
-(1/3)x = -1/4
+          title: 'b) Klammer berechnen',
 
-x = -3/4
+          content: `2 · 0.5² = 2 · 0.25 = 0.5
+Die Klammer wird zu: (x − 1/3·x + 0.5)`,
 
-✅ Ergebnis: x = -3/4`,
+        },
+
+        {
+
+          title: 'b) Ausmultiplizieren',
+
+          content: `1/2 · (x − 1/3·x + 0.5) = 0
+= 1/2·x − 1/6·x + 1/4 = 0`,
+
+        },
+
+        {
+
+          title: 'b) x isolieren',
+
+          content: `1/2·x − 1/6·x = 3/6·x − 1/6·x = 2/6·x = 1/3·x
+1/3·x + 1/4 = 0   | −1/4
+1/3·x = −1/4    | ·3
+x = −3/4
+✅ Ergebnis: x = −3/4`,
 
         },
 
@@ -102,14 +127,30 @@ x = -3/4
       ],
 
       tip: `🍳 Kochrezept:
-
-1️⃣ Zuerst Zahlen in der Klammer berechnen.
-
-2️⃣ Dann mit dem äusseren Faktor multiplizieren.
-
-3️⃣ Bei Gleichungen Brüche sauber zusammenfassen.`,
+1️⃣ Potenzen und Punktrechnung IN der Klammer zuerst berechnen.
+2️⃣ Den äusseren Bruch mit JEDEM Term einzeln ausmultiplizieren.
+3️⃣ Gleichnamige Brüche zusammenfassen (gemeinsamer Nenner).
+4️⃣ Bei Gleichungen: x-Terme auf eine Seite, Zahlen auf die andere.`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zu Klammern-mit-Bruch-ausmultiplizieren und Brüche zusammenfassen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Berechne: 0.5 · 3²', answer: '4.5', tip: 'Zuerst die Potenz berechnen, dann multiplizieren (Punkt vor Strich).' },
+      { level: 'einfach', q: 'Berechne: 2 · 0.5²', answer: '0.5', tip: 'Erst quadrieren, dann multiplizieren.' },
+      { level: 'einfach', q: 'Fasse zusammen: 1/3 + 1/6', answer: '1/2', tip: 'Bringe beide Brüche zuerst auf denselben Nenner.' },
+
+      { level: 'mittel', q: 'Multipliziere aus: 1/3 · (a + 3)', answer: 'a/3+1', tip: 'Multipliziere den Bruch mit JEDEM Term einzeln.' },
+      { level: 'mittel', q: 'Fasse zusammen: 1/2 − 1/6', answer: '1/3', tip: 'Bringe beide Brüche auf den Nenner 6.' },
+      { level: 'mittel', q: 'Löse: 1/3·x + 1/4 = 0', answer: 'x=-3/4', tip: 'Bringe die Zahl auf die andere Seite, dann mit dem Kehrwert des Bruchs multiplizieren.' },
+
+      { level: 'schwer', q: 'Multipliziere aus und fasse zusammen: 1/3 · (a + 0.5a)', answer: 'a/2', tip: 'Erst die Klammer zusammenfassen (a+0.5a), dann mit dem Bruch multiplizieren.' },
+      { level: 'schwer', q: 'Fasse zusammen: x − 1/3·x', answer: '2x/3', tip: 'Bringe x auf den Nenner 3 (x = 3/3·x), dann subtrahieren.' },
+
+      { level: 'kanti', q: 'Vereinfache: 1/3 · (a + 0.5·a − 0.5·3²)', answer: 'a/2-3/2', tip: 'Erst Potenz und Punktrechnung in der Klammer, dann den Bruch ausmultiplizieren und zusammenfassen.' },
+      { level: 'kanti', q: 'Löse nach x auf: 1/2 · (x − 1/3·x + 2·0.5²) = 0', answer: 'x=-3/4', tip: 'Genau wie bei den einfacheren Übungen — nur mit mehr Zwischenschritten.' },
+    ],
 
   },
 
