@@ -271,6 +271,8 @@ Die am nächsten liegende Antwort ist 58.
 
     id: 'M1_2017_OTR_ORD_1',
 
+    verified: true,
+
     year: 2017,
 
     subject: 'Mathe',
@@ -367,7 +369,26 @@ Wurzeln abschätzen: Finde die nächstgelegenen bekannten Quadratzahlen. z.B. �
 
 3. Schreibe die ursprünglichen Zahlen in der Reihenfolge ihrer Dezimalwerte auf.`,
 
+
     },
+
+    // ── ÜBUNGEN: aufbauend zu Dezimalzahlen, Wurzeln abschätzen und Zahlen ordnen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Wandle in eine Dezimalzahl um: 1/4', answer: '0.25', tip: 'Teile den Zähler durch den Nenner.' },
+      { level: 'einfach', q: 'Berechne: √25', answer: '5', tip: 'Welche Zahl mal sich selbst ergibt 25?' },
+      { level: 'einfach', q: 'Berechne: 3²', answer: '9', tip: 'Quadrieren heisst: die Zahl mit sich selbst multiplizieren.' },
+
+      { level: 'mittel', q: 'Zwischen welchen zwei ganzen Zahlen liegt √30? (Antwort: die kleinere Zahl)', answer: '5', tip: '√25=5 und √36=6 — wo liegt 30 dazwischen?' },
+      { level: 'mittel', q: 'Wandle in eine Dezimalzahl um: 7/2', answer: '3.5', tip: 'Teile Zähler durch Nenner.' },
+      { level: 'mittel', q: 'Ordne der Grösse nach (kleinste zuerst): 1/2, 3/4, 1/4 — schreibe die Dezimalwerte, getrennt durch <', answer: '0.25<0.5<0.75', tip: 'Wandle alle in Dezimalzahlen um und vergleiche.' },
+
+      { level: 'schwer', q: 'Schätze ab: Zwischen welchen zwei ganzen Zahlen liegt √70? (Antwort: die kleinere Zahl)', answer: '8', tip: '√64=8 und √81=9.' },
+      { level: 'schwer', q: 'Runde √31 auf eine Dezimalstelle.', answer: '5.6', tip: '√25=5 und √36=6 — 31 liegt näher bei 25 oder 36?' },
+
+      { level: 'kanti', q: 'Wandle in eine Dezimalzahl um: 13/5', answer: '2.6', tip: 'Teile Zähler durch Nenner — genau wie im Original.' },
+      { level: 'kanti', q: 'Runde √50 auf eine Dezimalstelle.', answer: '7.1', tip: '√49=7 — √50 ist nur ein kleines bisschen mehr.' },
+    ],
 
   },
 

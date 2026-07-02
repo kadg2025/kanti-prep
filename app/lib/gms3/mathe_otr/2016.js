@@ -6,6 +6,8 @@ export const questions2016_oTR = [
 
     id: 'M3_2016_OTR_GGT_1',
 
+    verified: true,
+
     year: 2016,
 
     subject: 'Mathe',
@@ -111,6 +113,25 @@ kgV (grössere Potenzen): a³ · b² · x³
 
     },
 
+    // ── ÜBUNGEN: aufbauend zu ggT/kgV mit Zahlen und mit Variablen-Potenzen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Primfaktorzerlegung: 12 = 2 · 2 · ?', answer: '3', tip: 'Welche Primzahl fehlt noch, damit 2·2·? = 12 ist?' },
+      { level: 'einfach', q: 'Bestimme den ggT von 8 und 12.', answer: '4', tip: 'Primfaktorzerlegung: 8=2³, 12=2²·3 — nimm die kleinere Potenz von 2.' },
+      { level: 'einfach', q: 'Bestimme das kgV von 4 und 6.', answer: '12', tip: 'Primfaktorzerlegung: 4=2², 6=2·3 — nimm die grössere Potenz von jedem Faktor.' },
+
+      { level: 'mittel', q: 'Bestimme den ggT von 26 und 39.', answer: '13', tip: 'Primfaktorzerlegung beider Zahlen, dann den gemeinsamen Faktor finden.' },
+      { level: 'mittel', q: 'Bestimme das kgV von 26 und 39.', answer: '78', tip: 'Alle Primfaktoren mit ihrer höchsten Potenz multiplizieren.' },
+      { level: 'mittel', q: 'Bestimme den ggT von a³ und a⁵. Welchen Exponenten hat das Ergebnis?', answer: '3', tip: 'ggT: die kleinere der beiden Potenzen.' },
+
+      { level: 'schwer', q: 'Bestimme das kgV von a³ und a⁵. Welchen Exponenten hat das Ergebnis?', answer: '5', tip: 'kgV: die grössere der beiden Potenzen.' },
+      { level: 'schwer', q: 'Bestimme den ggT von a²b und ab³.', answer: 'ab', tip: 'Nimm von jeder Variable die kleinere Potenz.' },
+
+      { level: 'kanti', q: 'Bestimme den ggT von a²·b·x³ und a³·b²·x.', answer: 'a²bx', tip: 'Von jeder Variable die kleinere Potenz nehmen — genau wie im Original.' },
+      { level: 'kanti', q: 'Bestimme das kgV von a²·b·x³ und a³·b²·x.', answer: 'a³b²x³', tip: 'Von jeder Variable die grössere Potenz nehmen — genau wie im Original.' },
+    ],
+
+
   },
 
   // ── AUFGABE 2 ─────────────────────────────────────────────
@@ -118,6 +139,8 @@ kgV (grössere Potenzen): a³ · b² · x³
   {
 
     id: 'M3_2016_OTR_KGV_2',
+
+    verified: true,
 
     year: 2016,
 
@@ -203,6 +226,25 @@ kgV = 2⁴ · 3² = 16 · 9 = 144
 3️⃣  kgV = Produkt aller Primfaktoren mit ihrer jeweils HÖCHSTEN Potenz.`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zu kgV mit mehreren Zahlen (Takt-/Treffzeiten).
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Primfaktorzerlegung: 8 = 2 · 2 · ?', answer: '2', tip: 'Welcher Faktor fehlt, damit 2·2·?=8 ist?' },
+      { level: 'einfach', q: 'Bestimme das kgV von 4 und 10.', answer: '20', tip: 'Primfaktorzerlegung: 4=2², 10=2·5 — grössere Potenzen nehmen.' },
+      { level: 'einfach', q: 'Bestimme das kgV von 6 und 9.', answer: '18', tip: '6=2·3, 9=3² — grössere Potenzen nehmen.' },
+
+      { level: 'mittel', q: 'Bestimme das kgV von 12 und 18.', answer: '36', tip: '12=2²·3, 18=2·3² — von jedem Faktor die grössere Potenz.' },
+      { level: 'mittel', q: 'Bestimme das kgV von 12 und 16.', answer: '48', tip: '12=2²·3, 16=2⁴ — von jedem Faktor die grössere Potenz.' },
+      { level: 'mittel', q: 'Bestimme das kgV von 18 und 16.', answer: '144', tip: '18=2·3², 16=2⁴ — von jedem Faktor die grössere Potenz.' },
+
+      { level: 'schwer', q: 'Bestimme das kgV von 12, 18 und 16 (alle drei zusammen).', answer: '144', tip: 'Primfaktorzerlegung aller drei Zahlen, dann von jedem Faktor die höchste Potenz.' },
+      { level: 'schwer', q: 'Zwei Busse fahren im Takt von 15 und 20 Minuten los. Nach wie vielen Minuten treffen sie sich wieder gleichzeitig?', answer: '60', tip: 'Gesucht ist das kgV der beiden Taktzeiten.' },
+
+      { level: 'kanti', q: 'Drei Ampeln schalten im Takt von 12, 16 und 24 Sekunden auf Grün. Nach wie vielen Sekunden sind alle drei gleichzeitig grün?', answer: '48', tip: 'kgV aller drei Taktzeiten berechnen.' },
+      { level: 'kanti', q: 'Drei Linien fahren im Takt von 10, 15 und 25 Minuten. Nach wie vielen Minuten treffen sich alle drei wieder?', answer: '150', tip: 'kgV aller drei Taktzeiten berechnen.' },
+    ],
+
 
   },
 

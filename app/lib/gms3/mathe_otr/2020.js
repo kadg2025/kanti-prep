@@ -2,23 +2,26 @@
 import { frac } from '../../mathFormat';
 
 export const questions2020_oTR = [
-  // ── AUFGABE 1a ────────────────────────────────────────────
+  // ── AUFGABE 1 ─────────────────────────────────────────────
   {
-    id: 'M1_2020_OTR_GGT_1a',
+    id: 'M1_2020_OTR_GGT_1',
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=1',
     topic: 'Zahlen & Teilbarkeit',
-    questionText: `Aufgabe 1a: ggT und kgV
+    verified: true,
+    questionText: `Aufgabe 1: ggT und kgV
 Bestimme je den ggT (grösster gemeinsamer Teiler) und das kgV (kleinstes gemeinsames Vielfaches).
 
-165 und 30`,
+a) 165 und 30
+
+b) p³·m·s⁴  und  p²·m³·s²`,
     options: [
-      { label: 'ggT = 15, kgV = 330', correct: true },
-      { label: 'ggT = 5, kgV = 330', correct: false },
-      { label: 'ggT = 15, kgV = 660', correct: false },
+      { label: 'a) ggT=15, kgV=330 | b) ggT=p²ms², kgV=p³m³s⁴', correct: true },
+      { label: 'a) ggT=5, kgV=330 | b) ggT=p²ms², kgV=p³m³s⁴', correct: false },
+      { label: 'a) ggT=15, kgV=330 | b) ggT=p³m³s⁴, kgV=p²ms²', correct: false },
     ],
     solution: {
       intro: '',
@@ -32,7 +35,7 @@ Regel: Nimm von jedem gemeinsamen Primfaktor die KLEINERE Potenz.
 Regel: Nimm von jedem vorkommenden Primfaktor die GRÖSSERE Potenz.`,
         },
         {
-          title: 'Primfaktorzerlegung',
+          title: 'a) Primfaktorzerlegung',
           content: `165 = 3 · 5 · 11
 30  = 2 · 3 · 5
 
@@ -45,41 +48,7 @@ Alle Faktoren mit höchsten Potenzen: 2 · 3 · 5 · 11
 ✅ ggT = 15 | kgV = 330`,
         },
         {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119941/AP20_GMS3_M1_oTr_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣  Primfaktorzerlegung beider Zahlen.
-2️⃣  ggT: Gemeinsame Faktoren mit KLEINERER Potenz.
-3️⃣  kgV: Alle Faktoren mit GRÖSSERER Potenz.`,
-    },
-  },
-
-  // ── AUFGABE 1b ────────────────────────────────────────────
-  {
-    id: 'M1_2020_OTR_GGT_1b',
-    year: 2020,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Zahlen & Teilbarkeit',
-    questionText: `Aufgabe 1b: ggT und kgV mit Termen
-Bestimme je den ggT und das kgV.
-
-p³·m·s⁴  und  p²·m³·s²`,
-    options: [
-      { label: 'ggT = p²·m·s², kgV = p³·m³·s⁴', correct: true },
-      { label: 'ggT = p²·m·s², kgV = p³·m·s⁴', correct: false },
-      { label: 'ggT = p³·m³·s⁴, kgV = p²·m·s²', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Faktoren vergleichen',
+          title: 'b) Faktoren vergleichen',
           content: `         p³ · m¹ · s⁴
          p² · m³ · s²
 
@@ -98,10 +67,28 @@ kgV (grössere Potenzen): p³ · m³ · s⁴
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Jeden Faktor (p, m, s) einzeln anschauen.
-2️⃣  ggT: KLEINERE Potenz nehmen.
-3️⃣  kgV: GRÖSSERE Potenz nehmen.`,
+1️⃣  Primfaktorzerlegung / Faktoren beider Zahlen bzw. Terme vergleichen.
+2️⃣  ggT: Gemeinsame Faktoren mit KLEINERER Potenz.
+3️⃣  kgV: Alle Faktoren mit GRÖSSERER Potenz.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu ggT/kgV mit Zahlen und mit Variablen-Potenzen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Primfaktorzerlegung: 30 = 2 · 3 · ?', answer: '5', tip: 'Welcher Primfaktor fehlt noch?' },
+      { level: 'einfach', q: 'Bestimme den ggT von 10 und 15.', answer: '5', tip: '10=2·5, 15=3·5 — gemeinsamer Faktor?' },
+      { level: 'einfach', q: 'Bestimme das kgV von 6 und 10.', answer: '30', tip: '6=2·3, 10=2·5 — alle Faktoren mit höchster Potenz.' },
+
+      { level: 'mittel', q: 'Bestimme den ggT von 165 und 30.', answer: '15', tip: 'Primfaktorzerlegung beider Zahlen, dann gemeinsame Faktoren finden.' },
+      { level: 'mittel', q: 'Bestimme das kgV von 165 und 30.', answer: '330', tip: 'Alle Primfaktoren mit ihrer höchsten Potenz multiplizieren.' },
+      { level: 'mittel', q: 'Bestimme den ggT von p² und p⁵. Welchen Exponenten hat das Ergebnis?', answer: '2', tip: 'ggT: die kleinere der beiden Potenzen.' },
+
+      { level: 'schwer', q: 'Bestimme das kgV von p² und p⁵. Welchen Exponenten hat das Ergebnis?', answer: '5', tip: 'kgV: die grössere der beiden Potenzen.' },
+      { level: 'schwer', q: 'Bestimme den ggT von m·s³ und m²·s.', answer: 'ms', tip: 'Von jeder Variable die kleinere Potenz nehmen.' },
+
+      { level: 'kanti', q: 'Bestimme den ggT von p³·m·s⁴ und p²·m³·s².', answer: 'p²ms²', tip: 'Von jeder Variable die kleinere Potenz nehmen — genau wie im Original.' },
+      { level: 'kanti', q: 'Bestimme das kgV von p³·m·s⁴ und p²·m³·s².', answer: 'p³m³s⁴', tip: 'Von jeder Variable die grössere Potenz nehmen — genau wie im Original.' },
+    ],
   },
 
   // ── AUFGABE 1c ────────────────────────────────────────────
@@ -745,27 +732,31 @@ Paris:   5 + 7 = 12 Euro ✅ Paris ist günstiger.
     },
   },
 
-  // ── AUFGABE 5a ────────────────────────────────────────────
+  // ── AUFGABE 5 ─────────────────────────────────────────────
   {
-    id: 'M1_2020_OTR_GLEI_5a',
+    id: 'M1_2020_OTR_GLEI_5',
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Gleichungen',
-    questionText: `Aufgabe 5a: Gesuchte Zahl
-Welche Zahl ergibt mit ihrem Doppelten summiert 45?`,
+    topic: 'Zahlen & Teilbarkeit',
+    verified: true,
+    questionText: `Aufgabe 5: Gesuchte Zahl
+
+a) Welche Zahl ergibt mit ihrem Doppelten summiert 45?
+
+b) Welches ist die grösste Primzahl, die mit ihren drei nachfolgenden ganzen Zahlen summiert kleiner als 100 ist?`,
     options: [
-      { label: 'x = 15', correct: true },
-      { label: 'x = 22.5', correct: false },
-      { label: 'x = 30', correct: false },
+      { label: 'a) x=15 | b) 23', correct: true },
+      { label: 'a) x=22.5 | b) 19', correct: false },
+      { label: 'a) x=30 | b) 29', correct: false },
     ],
     solution: {
       intro: '',
       steps: [
         {
-          title: 'Gleichung aufstellen und lösen',
+          title: 'a) Gleichung aufstellen und lösen',
           content: `"Eine Zahl plus ihr Doppeltes ergibt 45"
 x + 2x = 45
 3x = 45    | ÷3
@@ -776,45 +767,13 @@ Probe: 15 + 30 = 45 ✅
 ✅ Die gesuchte Zahl ist 15.`,
         },
         {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119941/AP20_GMS3_M1_oTr_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣  Die gesuchte Zahl = x.
-2️⃣  "Doppeltes" = 2x.
-3️⃣  Gleichung aufstellen und lösen.`,
-    },
-  },
-
-  // ── AUFGABE 5b ────────────────────────────────────────────
-  {
-    id: 'M1_2020_OTR_GLEI_5b',
-    year: 2020,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Zahlen & Teilbarkeit',
-    questionText: `Aufgabe 5b: Grösste Primzahl
-Welches ist die grösste Primzahl, die mit ihren drei nachfolgenden ganzen Zahlen summiert kleiner als 100 ist?`,
-    options: [
-      { label: '23', correct: true },
-      { label: '19', correct: false },
-      { label: '29', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: '📖 Strategie',
+          title: 'b) 📖 Strategie',
           content: `Sei p die Primzahl. Ihre drei nachfolgenden ganzen Zahlen sind p+1, p+2, p+3.
 Summe = p + (p+1) + (p+2) + (p+3) = 4p + 6
 Bedingung: 4p + 6 < 100`,
         },
         {
-          title: 'Ungleichung lösen',
+          title: 'b) Ungleichung lösen',
           content: `4p + 6 < 100   | –6
 4p < 94        | ÷4
 p < 23.5
@@ -834,10 +793,29 @@ Nächste Primzahl 29: 29 + 30 + 31 + 32 = 122 ≥ 100 ✗
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Summe als Formel ausdrücken: 4p + 6.
-2️⃣  Ungleichung lösen: 4p + 6 < 100 → p < 23.5.
-3️⃣  Grösste Primzahl unter 23.5 suchen → 23.`,
+1️⃣  Textaufgabe: die gesuchte Zahl/Primzahl = Variable setzen, dann Gleichung bzw. Ungleichung aufstellen.
+2️⃣  "Doppeltes" = 2x, "nachfolgende Zahlen" = p+1, p+2, ...
+3️⃣  Gleichung/Ungleichung lösen und Probe machen.`,
     },
+
+    // ── ÜBUNGEN a): einfache Textgleichung.
+    // ── ÜBUNGEN b): Primzahlen und Ungleichungen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Welche Zahl ergibt mit ihrem Dreifachen summiert 20?', answer: '5', tip: 'Stelle die Gleichung x + 3x = ... auf.' },
+      { level: 'einfach', q: 'Ist 17 eine Primzahl?', answer: 'ja', tip: 'Ist 17 durch eine andere Zahl ausser 1 und sich selbst teilbar?' },
+      { level: 'einfach', q: 'Ist 21 eine Primzahl?', answer: 'nein', tip: '21 lässt sich als Produkt zweier kleinerer Zahlen schreiben.' },
+
+      { level: 'mittel', q: 'Welche Zahl ergibt mit ihrem Doppelten summiert 27?', answer: '9', tip: 'Stelle die Gleichung x + 2x = ... auf, dann durch 3 teilen.' },
+      { level: 'mittel', q: 'Berechne: 4·10 + 6', answer: '46', tip: 'Punkt vor Strich.' },
+      { level: 'mittel', q: 'Löse die Ungleichung: 4p < 40', answer: 'p<10', tip: 'Teile beide Seiten durch 4.' },
+
+      { level: 'schwer', q: 'Was ist die grösste Primzahl unter 20?', answer: '19', tip: 'Prüfe von 19 abwärts, ob die Zahl prim ist.' },
+      { level: 'schwer', q: 'Löse die Ungleichung: 4p + 6 < 50', answer: 'p<11', tip: 'Erst 6 subtrahieren, dann durch 4 teilen.' },
+
+      { level: 'kanti', q: 'Welche Zahl ergibt mit ihrem Doppelten summiert 45?', answer: '15', tip: 'Gleiche Struktur wie im Original — nur andere Zahl.' },
+      { level: 'kanti', q: 'Welches ist die grösste Primzahl, die mit ihren drei nachfolgenden ganzen Zahlen summiert kleiner als 100 ist?', answer: '23', tip: 'Summe als 4p+6 ausdrücken, dann die Ungleichung 4p+6<100 lösen.' },
+    ],
   },
 
   // ── AUFGABE 6 ─────────────────────────────────────────────

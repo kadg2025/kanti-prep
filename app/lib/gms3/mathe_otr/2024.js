@@ -449,24 +449,31 @@ Erst Hilfslängen bestimmen, dann Teilflächen addieren.`,
   },
 
   {
-    id: 'M1_2024_OTR_HOLZ_6a',
+    id: 'M1_2024_OTR_HOLZ_6',
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164189/AP24_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=9',
     topic: 'Zahlen & Teilbarkeit',
-    questionText: `Aufgabe 6a: Drei Holzstäbe von 90 cm, 144 cm und 270 cm Länge sollen in gleich lange, aber möglichst grosse Stücke zersägt werden, so dass kein Reststück übrigbleibt. Welches ist die Länge eines solchen Stücks? Wie oft muss man insgesamt sägen, wenn jeder Holzstab einzeln bearbeitet wird?`,
+    verified: true,
+    questionText: `Aufgabe 6: Holzstäbe zersägen
+
+Drei Holzstäbe von 90 cm, 144 cm und 270 cm Länge sollen in gleich lange, aber möglichst grosse Stücke zersägt werden, so dass kein Reststück übrigbleibt.
+
+a) Welches ist die Länge eines solchen Stücks? Wie oft muss man insgesamt sägen, wenn jeder Holzstab einzeln bearbeitet wird?
+
+b) Es soll wieder so gesägt werden, dass gleich lange, aber möglichst grosse Stücke entstehen. Nun darf aber bei einem der drei Holzstäbe ein Reststück von 9 cm übrigbleiben. Wie lang sind die Stücke dann? Bei welchem Stab bleibt der Rest?`,
     options: [
-      { label: '18 cm, insgesamt 24 Schnitte', correct: true },
-      { label: '15 cm, insgesamt 20 Schnitte', correct: false },
-      { label: '30 cm, insgesamt 15 Schnitte', correct: false },
+      { label: 'a) 18 cm, 25 Schnitte | b) 45 cm, Rest beim 144-cm-Stab', correct: true },
+      { label: 'a) 18 cm, 24 Schnitte | b) 45 cm, Rest beim 144-cm-Stab', correct: false },
+      { label: 'a) 18 cm, 25 Schnitte | b) 27 cm, Rest beim 144-cm-Stab', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Teil b) war in einer früheren Version dieser App falsch berechnet (27 cm statt 45 cm) und Teil a) hatte einen Tippfehler in der Antwortoption (24 statt 25 Schnitte) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
       steps: [
         {
-          title: 'Länge bestimmen',
+          title: 'a) Länge bestimmen',
           content: `ggT(90, 144, 270) = 18
 
 Anzahl Stücke:
@@ -484,52 +491,53 @@ Total = 4 + 7 + 14 = 25
 ✅ Ergebnis: 18 cm, 25 Schnitte`,
         },
         {
+          title: 'b) Länge mit Reststück bestimmen',
+          content: `Der Rest von 9 cm darf bei GENAU EINEM der drei Stäbe entstehen. Wir probieren beim 144-cm-Stab: 144 − 9 = 135 cm ist dann die "nutzbare" Länge dieses Stabs.
+
+Primfaktorzerlegung:
+90 = 2 · 3² · 5
+135 = 3³ · 5     (= 144 − 9)
+270 = 2 · 3³ · 5
+
+ggT(90, 135, 270): von jedem Primfaktor die kleinste Potenz
+→ 3² · 5 = 45     (2 fällt weg, da 135 keinen Faktor 2 hat)
+
+Probe: 144 = 3 · 45 + 9 ✅ (3 volle Stücke plus 9 cm Rest)
+
+✅ Stücklänge: 45 cm
+✅ Der Rest von 9 cm bleibt beim 144-cm-Stab.`,
+        },
+        {
           title: '📄 Offizielle Schullösung',
           content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179312/AP24_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣ grössten gemeinsamen Teiler bestimmen.
-2️⃣ Stückzahl pro Stab berechnen.
-3️⃣ Pro Stab: Anzahl Stücke minus 1 = Schnitte.`,
+1️⃣  ggT bestimmen: von jedem gemeinsamen Primfaktor die kleinste Potenz.
+2️⃣  Anzahl Stücke pro Stab = Stablänge ÷ Stücklänge; Schnitte = Stücke − 1.
+3️⃣  Bei erlaubtem Reststück: probiere, bei welchem Stab (Länge − Rest) den grössten ggT mit den anderen Stäben ergibt.`,
     },
-  },
 
-  {
-    id: 'M1_2024_OTR_HOLZ_6b',
-    year: 2024,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164189/AP24_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Zahlen & Teilbarkeit',
-    questionText: `Aufgabe 6b: Es soll wieder so gesägt werden, dass gleich lange, aber möglichst grosse Stücke entstehen. Nun darf aber bei einem der drei Holzstäbe ein Reststück von 9 cm übrigbleiben. Wie lang sind die Stücke dann? Bei welchem Stab bleibt der Rest?`,
-    options: [
-      { label: 'Länge 27 cm, Rest beim 144-cm-Stab', correct: true },
-      { label: 'Länge 18 cm, Rest beim 90-cm-Stab', correct: false },
-      { label: 'Länge 30 cm, Rest beim 270-cm-Stab', correct: false },
+    // ── ÜBUNGEN a): ggT dreier Zahlen und Schnitte zählen.
+    // ── ÜBUNGEN b): ggT mit angepasster (Länge−Rest)-Zahl.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Primfaktorzerlegung: 18 = 2 · 3 · ?', answer: '3', tip: 'Welcher Faktor fehlt, damit 2·3·?=18 ist?' },
+      { level: 'einfach', q: 'Bestimme den ggT von 12 und 18.', answer: '6', tip: '12=2²·3, 18=2·3² — gemeinsame Faktoren mit kleinerer Potenz.' },
+      { level: 'einfach', q: 'Berechne: 90/18', answer: '5', tip: 'Wie oft passt 18 in 90?' },
+
+      { level: 'mittel', q: 'Bestimme den ggT von 90, 144 und 270.', answer: '18', tip: 'Primfaktorzerlegung aller drei Zahlen, dann von jedem Faktor die kleinste Potenz.' },
+      { level: 'mittel', q: 'Berechne: 8−1', answer: '7', tip: 'Bei n Stücken braucht es n−1 Schnitte.' },
+      { level: 'mittel', q: 'Ein 60cm-Stab wird in 15cm-Stücke gesägt. Wie viele Schnitte braucht es?', answer: '3', tip: 'Erst die Anzahl Stücke berechnen, dann 1 abziehen.' },
+
+      { level: 'schwer', q: 'Bestimme den ggT von 90 und 135.', answer: '45', tip: '90=2·3²·5, 135=3³·5 — gemeinsame Faktoren mit kleinerer Potenz.' },
+      { level: 'schwer', q: 'Berechne: 144 − 9', answer: '135', tip: 'Ziehe den Rest von der Stablänge ab.' },
+
+      { level: 'kanti', q: 'Bestimme den ggT von 90, 144 und 270. Wie oft muss der 270cm-Stab gesägt werden (Schnitte)?', answer: '14', tip: 'Erst die Anzahl Stücke berechnen (270 durch die Stücklänge), dann 1 abziehen.' },
+      { level: 'kanti', q: 'Bestimme den ggT von 90, 135 (=144−9) und 270.', answer: '45', tip: 'Von jedem Primfaktor die kleinste Potenz nehmen — genau wie im Original.' },
     ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Länge bestimmen',
-          content: `Gesucht sind möglichst grosse gleich lange Stücke mit einem Rest von 9 cm bei genau einem Stab.
-Die offizielle Lösung ergibt:
-
-✅ Stücklänge: 27 cm
-✅ Rest beim 144-cm-Stab`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179312/AP24_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Wenn ein Rest erlaubt ist, prüfe die grösstmögliche Stücklänge, die bei genau einem Stab 9 cm Rest lässt.`,
-    },
   },
+
 ];
 

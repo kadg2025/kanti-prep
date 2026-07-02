@@ -159,6 +159,8 @@ x = −3/4
 
     id: 'M3_2018_OTR_FOLGE_2',
 
+    verified: true,
+
     year: 2018,
 
     subject: 'Mathe',
@@ -273,7 +275,26 @@ d) 1, 3, 7, 15, 31, 63, …`,
 
 3️⃣ Prüfen, ob zwei Vorgänger addiert werden.`,
 
+
     },
+
+    // ── ÜBUNGEN: aufbauend zu arithmetischen, geometrischen und rekursiven Zahlenfolgen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Setze fort: 2, 5, 8, 11, ? (arithmetische Folge)', answer: '14', tip: 'Finde die konstante Differenz zwischen den Zahlen.' },
+      { level: 'einfach', q: 'Setze fort: 1, 2, 4, 8, ? (geometrische Folge)', answer: '16', tip: 'Finde den konstanten Faktor zwischen den Zahlen.' },
+      { level: 'einfach', q: 'Berechne: 1 + 2', answer: '3', tip: 'Addiere die beiden Zahlen.' },
+
+      { level: 'mittel', q: 'Setze fort: 5, 8, 11, 14, ?', answer: '17', tip: 'Ist die Differenz konstant? Addiere sie erneut.' },
+      { level: 'mittel', q: 'Setze fort: 2, 6, 18, 54, ?', answer: '162', tip: 'Ist der Faktor konstant? Multipliziere erneut.' },
+      { level: 'mittel', q: 'Setze fort (Fibonacci-artig): 2, 3, 5, 8, 13, ?', answer: '21', tip: 'Addiere die letzten zwei Zahlen.' },
+
+      { level: 'schwer', q: 'Setze fort: 1, 3, 7, 15, ? (verdoppeln und +1)', answer: '31', tip: 'Verdopple die letzte Zahl und addiere 1.' },
+      { level: 'schwer', q: 'Setze fort: 0.5, 1.5, 4.5, 13.5, ? (mal 3)', answer: '40.5', tip: 'Multipliziere die letzte Zahl mit 3.' },
+
+      { level: 'kanti', q: 'Setze die Folge fort: 7, 11, 15, 19, 23, ... Wie lautet das nächste Glied?', answer: '27', tip: 'Finde zuerst die konstante Differenz — genau wie im Original.' },
+      { level: 'kanti', q: 'Setze die Folge fort: 1, 3, 7, 15, 31, 63, ... Wie lautet das nächste Glied?', answer: '127', tip: 'Verdopple die letzte Zahl und addiere 1 — genau wie im Original.' },
+    ],
 
   },
 
@@ -417,6 +438,8 @@ Tage = 1728 / (20 · 9) = 1728 / 180 = 9.6
 
     id: 'M3_2018_OTR_BEWEISE_4',
 
+    verified: true,
+
     year: 2018,
 
     subject: 'Mathe',
@@ -513,7 +536,26 @@ b) Zeige mit einem Gegenbeispiel, dass diese Behauptung FALSCH ist:
 
 2️⃣ Für ein Gegenbeispiel reicht ein einziges falsches Beispiel.`,
 
+
     },
+
+    // ── ÜBUNGEN: aufbauend zu Summenformeln, Ausklammern und Gegenbeispielen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Berechne: 1+2+3', answer: '6', tip: 'Addiere der Reihe nach.' },
+      { level: 'einfach', q: 'Ist 15 durch 3 teilbar?', answer: 'ja', tip: 'Teile 15 durch 3 — geht es ohne Rest?' },
+      { level: 'einfach', q: 'Ist 20 durch 6 teilbar?', answer: 'nein', tip: 'Teile 20 durch 6 — bleibt ein Rest?' },
+
+      { level: 'mittel', q: 'Berechne: 1+2+3+4+5', answer: '15', tip: 'Addiere der Reihe nach.' },
+      { level: 'mittel', q: 'Vereinfache: n + (n+1) + (n+2)', answer: '3n+3', tip: 'Fasse alle n zusammen, dann die Zahlen.' },
+      { level: 'mittel', q: 'Klammere aus: 3n+3', answer: '3(n+1)', tip: 'ggT von 3 und 3 vor die Klammer ziehen.' },
+
+      { level: 'schwer', q: 'Vereinfache: n + (n+1) + (n+2) + (n+3) + (n+4)', answer: '5n+10', tip: 'Fasse alle n zusammen, dann alle Zahlen.' },
+      { level: 'schwer', q: 'Klammere aus: 5n+10. Ist das Ergebnis für jedes n durch 5 teilbar?', answer: 'ja', tip: 'Klammere 5 aus: 5(n+2) — ist das immer durch 5 teilbar?' },
+
+      { level: 'kanti', q: 'Vereinfache: n + (n+1) + (n+2) + (n+3) + (n+4) + (n+5) + (n+6)', answer: '7n+21', tip: 'Addiere alle n (7 Stück) und alle Zahlen von 0 bis 6 — genau wie im Original.' },
+      { level: 'kanti', q: 'Finde ein Gegenbeispiel: Berechne 1+2+3+4+5+6.', answer: '21', tip: 'Einfach ausrechnen — ist das Ergebnis durch 6 teilbar?' },
+    ],
 
   },
 
