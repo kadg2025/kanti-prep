@@ -102,6 +102,7 @@ d) x = ${frac('1', '2')}`,
 
   {
     id: 'M1_2022_OTR_GLEI_2',
+    verified: true,
     year: 2022,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -114,7 +115,7 @@ Löse die folgenden Gleichungen nach x auf:
 
 a) x - 5 - (5 - x) = 0
 b) -3(x + 7) = 7(x - 3)
-c) (3/4)(x - 4) + x/2 = 3(x + 1/6)`,
+c) ${frac('3', '4')}(x - 4) + ${frac('x', '2')} = 3(x + ${frac('1', '6')})`,
     options: [
       { label: 'a) x = 5, b) x = 0, c) x = -2', correct: true },
       { label: 'a) x = -5, b) x = 0, c) x = 2', correct: false },
@@ -166,6 +167,24 @@ x = -2
 3️⃣ Alle x-Terme auf eine Seite bringen.
 4️⃣ Zum Schluss durch den Koeffizienten teilen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Klammern auflösen und Bruchgleichungen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Löse: x - 3 - (3 - x) = 0', answer: '3', tip: 'Minus vor der Klammer dreht alle Vorzeichen darin um.' },
+      { level: 'einfach', q: 'Löse: -2(x + 4) = 4(x - 2)', answer: '0', tip: 'Beide Klammern ausmultiplizieren, dann x-Terme zusammenfassen.' },
+      { level: 'einfach', q: 'Löse: 2(x - 1) = x + 3', answer: '5', tip: 'Klammer auflösen, dann x auf eine Seite.' },
+
+      { level: 'mittel', q: 'Löse: x - 4 - (4 - x) = 0', answer: '4', tip: 'Gleiches Muster wie a) im Original.' },
+      { level: 'mittel', q: 'Löse: -2(x + 5) = 5(x - 2)', answer: '0', tip: 'Gleiches Muster wie b) im Original.' },
+      { level: 'mittel', q: 'Löse: x/2 + x/4 = 3(x - 1). Gib die Lösung als gekürzten Bruch an.', answer: '4/3', tip: 'Erst die Brüche auf der linken Seite mit dem kgV zusammenfassen, dann Klammer rechts auflösen.' },
+
+      { level: 'schwer', q: 'Löse: (1/2)(x - 4) + x/4 = x - 1', answer: '-4', tip: 'Klammern auflösen, Brüche mit dem kgV (4) zusammenfassen.' },
+      { level: 'schwer', q: 'Löse: (2/3)(x - 3) + x/6 = x - 1', answer: '-6', tip: 'Klammern auflösen, mit dem kgV (6) multiplizieren.' },
+
+      { level: 'kanti', q: 'Löse: x - 5 - (5 - x) = 0', answer: '5', tip: 'Minus vor der Klammer verteilen, dann x isolieren — wie im Original a).' },
+      { level: 'kanti', q: 'Löse: (3/4)(x - 4) + x/2 = 3(x + 1/6)', answer: '-2', tip: 'Klammern auflösen, Brüche zusammenfassen (kgV=4), dann mit 4 multiplizieren.' },
+    ],
   },
 
   // ── AUFGABE 3 ─────────────────────────────────────────────

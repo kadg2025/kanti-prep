@@ -112,6 +112,7 @@ Kürzen mit 5a²:
   // ── AUFGABE 2 ─────────────────────────────────────────────
   {
     id: 'M1_2025_OTR_GLEICH_2',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -120,32 +121,79 @@ Kürzen mit 5a²:
     topic: 'Gleichungen',
     questionText: `Aufgabe 2: Löse folgende Gleichungen.
 
-a) [Gleichung aus PDF einsetzen]
-b) [Gleichung aus PDF einsetzen]`,
+a) ${frac('2', '3')} – 7x = –2x + ${frac('7', '3')} – ${frac('10', '6')}
+
+b) 6 · (2 · (x + ${frac('1', '4')})) = 9 · (4x – 1)`,
     options: [
-      { label: 'Bitte PDF-Ausschnitt von Aufgabe 2 ergänzen', correct: true },
-      { label: 'Platzhalter', correct: false },
-      { label: 'Platzhalter', correct: false },
+      { label: 'a) x = 0 | b) x = 0.5', correct: true },
+      { label: 'a) x = 1 | b) x = 1', correct: false },
+      { label: 'a) x = -2/5 | b) x = 1/12', correct: false },
     ],
     solution: {
-      intro: `Die beiden Gleichungen sind im PDF-Textauszug nicht lesbar genug.`,
+      intro: '',
       steps: [
         {
-          title: '📖 Vorgehen',
-          content: `1️⃣ Klammern auflösen.
-2️⃣ Brüche oder Dezimalzahlen vereinfachen.
-3️⃣ Alle x-Terme auf eine Seite bringen.
-4️⃣ Zahlen auf die andere Seite bringen.
-5️⃣ Durch den Koeffizienten teilen.`,
+          title: 'a) Rechte Seite vereinfachen',
+          content: `2/3 – 7x = –2x + 7/3 – 10/6
+
+Zuerst 7/3 – 10/6 zusammenfassen (gemeinsamer Nenner 6):
+7/3 = 14/6, also 14/6 – 10/6 = 4/6 = 2/3
+
+2/3 – 7x = –2x + 2/3`,
         },
         {
-          title: '⚠️ Noch ergänzen',
-          content: `Sobald du mir Seite 3 als Screenshot schickst, trage ich die Lösungen direkt ein.`,
+          title: 'a) Nach x auflösen',
+          content: `2/3 – 7x = –2x + 2/3     | –2/3
+–7x = –2x     | +2x
+–5x = 0
+x = 0
+
+✅ x = 0`,
+        },
+        {
+          title: 'b) Klammern auflösen',
+          content: `6 · (2 · (x + 1/4)) = 9 · (4x – 1)
+12 · (x + 1/4) = 36x – 9
+12x + 3 = 36x – 9`,
+        },
+        {
+          title: 'b) Nach x auflösen',
+          content: `12x + 3 = 36x – 9     | –12x, +9
+12 = 24x
+x = 12/24 = 1/2
+
+✅ x = 0.5`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
         },
       ],
       tip: `🍳 Kochrezept:
-Ordnung ist alles: erst vereinfachen, dann umformen, dann lösen.`,
+1️⃣ Brüche mit gemeinsamem Nenner zusammenfassen.
+2️⃣ Verschachtelte Klammern von innen nach aussen auflösen.
+3️⃣ Alle x-Terme auf eine Seite, Zahlen auf die andere.
+4️⃣ Durch den Koeffizienten teilen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Bruchgleichungen und verschachtelten Klammern.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Löse: 1/2 - 3x = -2x + 1/2', answer: '0', tip: 'x-Terme auf eine Seite, Zahlen auf die andere.' },
+      { level: 'einfach', q: 'Löse: 2(x + 3) = 4(x + 1)', answer: '1', tip: 'Beide Klammern auflösen, dann x isolieren.' },
+      { level: 'einfach', q: 'Berechne: 5/3 - 4/6 (als gekürzter Bruch)', answer: '1', tip: 'Gemeinsamen Nenner finden, dann Zähler subtrahieren.' },
+
+      { level: 'mittel', q: 'Löse: 3/4 - 5x = -4x + 5/4 - 3/2', answer: '1', tip: 'Rechte Seite zuerst zusammenfassen (gemeinsamer Nenner 4), dann x auf eine Seite.' },
+      { level: 'mittel', q: 'Löse: 4 · (2 · (x + 1/2)) = 6 · (2x - 1)', answer: '5/2', tip: 'Innere Klammer zuerst mit dem äusseren Faktor multiplizieren.' },
+      { level: 'mittel', q: 'Löse: 2/5 - 3x = -2x + 4/5 - 1/5', answer: '-1/5', tip: 'Rechte Seite zusammenfassen, dann x-Terme auf eine Seite.' },
+
+      { level: 'schwer', q: 'Löse: 3 · (2 · (x - 1/3)) = 5 · (2x + 1)', answer: '-7/4', tip: 'Verschachtelte Klammer von innen nach aussen auflösen, dann x isolieren.' },
+      { level: 'schwer', q: 'Löse: 5/6 - 4x = -3x + 5/2 - 5/3', answer: '0', tip: 'Rechte Seite mit gemeinsamem Nenner 6 zusammenfassen.' },
+
+      { level: 'kanti', q: 'Löse: 2/3 - 7x = -2x + 7/3 - 10/6', answer: '0', tip: 'Genau wie im Original a): rechte Seite zusammenfassen, dann x-Terme auf eine Seite.' },
+      { level: 'kanti', q: 'Löse: 6 · (2 · (x + 1/4)) = 9 · (4x - 1)', answer: '0.5', tip: 'Genau wie im Original b): verschachtelte Klammer auflösen, dann nach x auflösen.' },
+    ],
   },
 
   // ── AUFGABE 3 ─────────────────────────────────────────────

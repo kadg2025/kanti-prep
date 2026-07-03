@@ -1,5 +1,5 @@
 
-import { sqrt } from '../../mathFormat';
+import { sqrt, frac } from '../../mathFormat';
 
 export const questionsMatheOtr2019 = [
 
@@ -97,6 +97,8 @@ Ein Würfel hat 6 Flächen. Beim Falten muss jede Fläche genau einmal vorkommen
 
     id: 'M3_2019_OTR_GL_2',
 
+    verified: true,
+
     year: 2019,
 
     subject: 'Mathe',
@@ -119,11 +121,12 @@ b) 5x – 3(x – 1) = 2(x – 1) – 2
 
 c) 5(x – 3) – 2x = –17 – 2(x – 1)
 
-d) Das um 6 verkleinerte Neunfache einer Zahl, dividiert durch das um 6 vergrösserte Siebenfache derselben Zahl, ergibt den Quotienten 1/2.`,
+d) Das um 6 verkleinerte Neunfache einer Zahl, dividiert durch das um 6 vergrösserte Siebenfache derselben Zahl, ergibt den Quotienten 3/2:
+${frac('9x – 6', '7x + 6')} = ${frac('3', '2')}`,
 
     options: [
 
-      { label: 'a) x=5 | b) keine Lösung (0=−5) | c) alle x (0=0) | d) x=3', correct: true },
+      { label: 'a) x=2 | b) keine Lösung (3=−4) | c) x=0 | d) x=−10', correct: true },
 
       { label: 'a) x=3 | b) x=2 | c) x=1 | d) x=6', correct: false },
 
@@ -201,13 +204,7 @@ Widerspruch! → Keine Lösung
 
           content: `5x – 15 – 2x = –17 – 2x + 2
 
-3x – 15 = –15 – 2x
-
-5x = 0... 
-
-nochmals:
-
-3x – 15 = –2x – 15
+3x – 15 = –2x – 15 | +2x, +15
 
 5x = 0
 
@@ -225,19 +222,19 @@ x = 0
 
 "Siebenfaches um 6 vergrössert" = 7x + 6
 
-Gleichung: (9x – 6) / (7x + 6) = 1/2
+Gleichung: (9x – 6) / (7x + 6) = 3/2
 
 Kreuzweise multiplizieren:
 
-2(9x – 6) = 1(7x + 6)
+2(9x – 6) = 3(7x + 6)
 
-18x – 12 = 7x + 6
+18x – 12 = 21x + 18
 
-11x = 18
+–30 = 3x
 
-x = 18/11
+x = –10
 
-✅ x = 18/11`,
+✅ x = –10`,
 
         },
 
@@ -264,6 +261,24 @@ x = 18/11
 4️⃣  Textaufgabe: in Formel übersetzen, kreuzweise multiplizieren`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zu Klammern/binomischen Formeln, Sonderfällen und Textgleichungen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Löse: 3x + 2 = 2x + 9', answer: '7', tip: 'x auf eine Seite, Zahlen auf die andere.' },
+      { level: 'einfach', q: 'Löse: 4(x-1) = 2x + 6', answer: '5', tip: 'Zuerst die Klammer ausmultiplizieren.' },
+      { level: 'einfach', q: 'Löse: 5x - 2 = 5x + 3. Wie lautet die Lösungsmenge? (Antwort: "keine Lösung" oder eine Zahl)', answer: 'keine Lösung', tip: 'Bringe alle x auf eine Seite — was bleibt übrig?' },
+
+      { level: 'mittel', q: 'Wende die binomische Formel an: (x-3)² = x² + ax + 9. Wie lautet a (der Koeffizient von x)?', answer: '-6', tip: '(a-b)² = a² - 2ab + b² mit a=x, b=3 — der mittlere Term ist -2ab.' },
+      { level: 'mittel', q: 'Löse: (x+2)² = x² + 4x + 20', answer: '4', tip: 'Binomische Formel links anwenden, dann x² auf beiden Seiten kürzen.' },
+      { level: 'mittel', q: 'Löse: 3(x-2) - x = 2(x-1) - 2', answer: 'keine Lösung', tip: 'Klammern auflösen, x auf eine Seite bringen — was passiert mit dem x?' },
+
+      { level: 'schwer', q: 'Löse: (x-4)² = (x+2)(x-6) + 10', answer: '0', tip: 'Beide Seiten ausmultiplizieren, x² hebt sich weg.' },
+      { level: 'schwer', q: 'Löse: 4x - 12 - x = -12 - 3x', answer: '0', tip: 'Klammern auflösen, alle x auf eine Seite — welcher Sonderfall tritt ein?' },
+
+      { level: 'kanti', q: 'Löse: (9-2x)² = (4x-1)(5+x) - 24', answer: '2', tip: 'Beide Seiten ausmultiplizieren (binomische Formel links, Klammer rechts), dann x² kürzen und nach x auflösen.' },
+      { level: 'kanti', q: 'Das um 6 verkleinerte Neunfache einer Zahl, dividiert durch das um 6 vergrösserte Siebenfache derselben Zahl, ergibt den Quotienten 3/2. Wie lautet x?', answer: '-10', tip: 'Gleichung: (9x-6)/(7x+6) = 3/2, dann kreuzweise multiplizieren.' },
+    ],
 
   },
 

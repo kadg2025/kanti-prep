@@ -186,20 +186,23 @@ Reihenfolge: –46/3 < 7/6 < 8/3
 
   // ── AUFGABE 3 ─────────────────────────────────────────────
   {
-    id: 'M1_2021_OTR_BRUCH_3a',
+    id: 'M1_2021_OTR_BRUCH_3',
+    verified: true,
     year: 2021,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=1',
     topic: 'Gleichungen',
-    questionText: `Aufgabe 3a: Bruchgleichung lösen
+    questionText: `Aufgabe 3: Bruchgleichungen lösen
 
-3x/8 – 6x/2 = 3x/4 + 9/5`,
+a) ${frac('3x', '8')} – ${frac('6x', '2')} = ${frac('3x', '4')} + ${frac('9', '5')}
+
+b) ${frac('8', 'x')} + ${frac('7', 'x')} = 5`,
     options: [
-      { label: 'x = –8/15', correct: true },
-      { label: 'x = 8/15', correct: false },
-      { label: 'x = –15/8', correct: false },
+      { label: 'a) x = –8/15 | b) x = 3', correct: true },
+      { label: 'a) x = 8/15 | b) x = 5', correct: false },
+      { label: 'a) x = –15/8 | b) x = 15', correct: false },
     ],
     solution: {
       intro: '',
@@ -209,7 +212,7 @@ Reihenfolge: –46/3 < 7/6 < 8/3
           content: `Bei Bruchgleichungen: Alle Nenner bestimmen → kgV berechnen → beide Seiten mit kgV multiplizieren → Nenner verschwinden.`,
         },
         {
-          title: 'kgV der Nenner bestimmen',
+          title: 'a) kgV der Nenner bestimmen',
           content: `Nenner: 8, 2, 4, 5
 kgV(8, 2, 4, 5) = 40
 
@@ -218,7 +221,7 @@ Beide Seiten mit 40 multiplizieren:
 15x – 120x = 30x + 72`,
         },
         {
-          title: 'Gleichung lösen',
+          title: 'a) Gleichung lösen',
           content: `15x – 120x = 30x + 72
 –105x = 30x + 72     | –30x
 –135x = 72           | ÷(–135)
@@ -227,44 +230,12 @@ x = 72/(–135) = –72/135 = –8/15
 ✅ x = –8/15`,
         },
         {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132706/AP21_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣ kgV aller Nenner berechnen.
-2️⃣ Beide Seiten mit kgV multiplizieren.
-3️⃣ Brüche verschwinden → normale Gleichung lösen.`,
-    },
-  },
-
-  {
-    id: 'M1_2021_OTR_BRUCH_3b',
-    year: 2021,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Gleichungen',
-    questionText: `Aufgabe 3b: Bruchgleichung lösen
-
-8/x + 7/x = 5`,
-    options: [
-      { label: 'x = 3', correct: true },
-      { label: 'x = 5', correct: false },
-      { label: 'x = 15', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Linke Seite zusammenfassen',
+          title: 'b) Linke Seite zusammenfassen',
           content: `8/x + 7/x = 15/x
 (gleicher Nenner → Zähler addieren)`,
         },
         {
-          title: 'Gleichung lösen',
+          title: 'b) Gleichung lösen',
           content: `15/x = 5     | · x
 15 = 5x      | ÷5
 x = 3
@@ -280,10 +251,28 @@ Probe: 8/3 + 7/3 = 15/3 = 5 ✅
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣ Brüche mit gleichem Nenner zusammenfassen.
-2️⃣ Beide Seiten mit x multiplizieren.
-3️⃣ Nach x auflösen.`,
+1️⃣ kgV aller Nenner berechnen (oder: bei gleichem Nenner direkt Zähler zusammenfassen).
+2️⃣ Beide Seiten mit dem kgV bzw. mit x multiplizieren.
+3️⃣ Brüche verschwinden → normale Gleichung lösen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Bruchgleichungen mit kgV und mit x im Nenner.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Löse: x/2 + x/4 = 6', answer: '8', tip: 'kgV von 2 und 4 ist 4 — damit multiplizieren.' },
+      { level: 'einfach', q: 'Löse: 6/x = 3', answer: '2', tip: 'Beide Seiten mit x multiplizieren.' },
+      { level: 'einfach', q: 'Löse: 4/x + 1/x = 5', answer: '1', tip: 'Gleicher Nenner → Zähler addieren.' },
+
+      { level: 'mittel', q: 'Löse: x/3 - x/6 = 2', answer: '12', tip: 'kgV von 3 und 6 ist 6.' },
+      { level: 'mittel', q: 'Löse: 10/x - 4/x = 3', answer: '2', tip: 'Gleicher Nenner → Zähler subtrahieren.' },
+      { level: 'mittel', q: 'Löse: 2x/5 + x/2 = 9', answer: '10', tip: 'kgV von 5 und 2 ist 10.' },
+
+      { level: 'schwer', q: 'Löse: x/2 - 2x/3 = x/6 - 5', answer: '15', tip: 'kgV von 2, 3 und 6 ist 6 — damit multiplizieren, dann alle x auf eine Seite.' },
+      { level: 'schwer', q: 'Löse: 12/x + 3/x = 5', answer: '3', tip: 'Gleicher Nenner → Zähler addieren, dann mit x multiplizieren.' },
+
+      { level: 'kanti', q: 'Löse: 3x/8 - 6x/2 = 3x/4 + 9/5. Gib die Lösung als gekürzten Bruch an.', answer: '-8/15', tip: 'kgV von 8, 2, 4, 5 ist 40 — genau wie im Original.' },
+      { level: 'kanti', q: 'Löse: 8/x + 7/x = 5', answer: '3', tip: 'Gleicher Nenner → Zähler addieren, dann mit x multiplizieren und nach x auflösen.' },
+    ],
   },
 
   // ── AUFGABE 4 ─────────────────────────────────────────────

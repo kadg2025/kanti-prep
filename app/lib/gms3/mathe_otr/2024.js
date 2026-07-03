@@ -3,32 +3,73 @@ import { frac } from '../../mathFormat';
 
 export const questions2024_oTR = [
   {
-    id: 'M1_2024_OTR_EQ_1a',
+    id: 'M1_2024_OTR_EQ_1',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164189/AP24_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
     topic: 'Gleichungen',
-    questionText: `Aufgabe 1a: Löse folgende Gleichung.
+    questionText: `Aufgabe 1: Löse folgende Gleichungen.
 
-6x - 22 = 4x + 24`,
+a) ${frac('15', '7')}x – ${frac('3', '7')}x = ${frac('1', '2')}x + 3
+
+b) ${frac('5', '2')}x + 0.5 = ${frac('15', '2')} – 7
+
+c) 3(4x + 5) = 4(3x + 5)
+
+d) Löse mit Hilfe einer Gleichung: Von welcher Zahl ist das Sechsfache verkleinert um 22 ebenso viel, wie das Vierfache vergrössert um 24?`,
     options: [
-      { label: 'x = 23', correct: true },
-      { label: 'x = 11', correct: false },
-      { label: 'x = -23', correct: false },
+      { label: 'a) x = 42/17 | b) x = 0 | c) keine Lösung | d) x = 23', correct: true },
+      { label: 'a) x = 17/42 | b) x = 2 | c) x = 0 | d) x = 11', correct: false },
+      { label: 'a) x = 3 | b) x = -0.5 | c) x = 15 | d) x = -23', correct: false },
     ],
     solution: {
       intro: '',
       steps: [
         {
-          title: 'Gleichung lösen',
-          content: `6x - 22 = 4x + 24
-2x - 22 = 24
+          title: 'a) Brüche zusammenfassen',
+          content: `15/7 x – 3/7 x = 1/2 x + 3
+12/7 x = 1/2 x + 3     | ×14
+24x = 7x + 42
+17x = 42
+x = 42/17
+
+✅ x = 42/17`,
+        },
+        {
+          title: 'b) Nach x auflösen',
+          content: `5/2 x + 0.5 = 15/2 – 7
+5/2 x + 0.5 = 0.5     | –0.5
+5/2 x = 0
+x = 0
+
+✅ x = 0`,
+        },
+        {
+          title: 'c) Klammern auflösen',
+          content: `3(4x + 5) = 4(3x + 5)
+12x + 15 = 12x + 20     | –12x
+15 = 20
+
+Das ist falsch (15 ≠ 20) — die Gleichung hat keine Lösung.
+
+✅ keine Lösung`,
+        },
+        {
+          title: 'd) Text in Gleichung übersetzen',
+          content: `"Eine Zahl" = x
+"Das Sechsfache verkleinert um 22" = 6x – 22
+"Das Vierfache vergrössert um 24" = 4x + 24
+"ebenso viel wie" = Gleichheitszeichen
+
+6x – 22 = 4x + 24
+2x – 22 = 24
 2x = 46
 x = 23
 
-✅ Ergebnis: x = 23`,
+✅ x = 23`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -37,10 +78,29 @@ x = 23
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣ x-Terme auf eine Seite.
-2️⃣ Zahlen auf die andere Seite.
-3️⃣ Durch den Koeffizienten teilen.`,
+1️⃣ Brüche/Dezimalzahlen mit dem kgV bzw. direkt zusammenfassen.
+2️⃣ Klammern auflösen.
+3️⃣ Alle x-Terme auf eine Seite bringen — bleibt keine Variable übrig und die Aussage ist falsch, gibt es keine Lösung.
+4️⃣ Textaufgabe: Wörter Schritt für Schritt in eine Gleichung übersetzen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Bruchgleichungen, Klammern und Textgleichungen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Löse: 3/2 x - 1/2 x = 4', answer: '4', tip: 'Erst die Brüche mit gleichem Nenner zusammenfassen.' },
+      { level: 'einfach', q: 'Löse: 2x + 0.5 = 4.5', answer: '2', tip: 'Zuerst 0.5 auf die andere Seite bringen.' },
+      { level: 'einfach', q: 'Löse: 2(x + 3) = 2(x + 1) + 4', answer: 'alle x', tip: 'Klammern auflösen und schauen, was von den x-Termen übrig bleibt.' },
+
+      { level: 'mittel', q: 'Löse: 10/3 x - 1/3 x = 1/2 x + 5,5. Gib die Lösung als gekürzten Bruch an.', answer: '11/5', tip: 'Brüche zusammenfassen, dann mit dem kgV multiplizieren.' },
+      { level: 'mittel', q: 'Löse: 3/2 x + 1.5 = 9/2 - 2', answer: '2/3', tip: 'Rechte Seite zuerst vereinfachen, dann x isolieren.' },
+      { level: 'mittel', q: 'Löse: 2(3x + 4) = 3(2x + 4)', answer: 'keine Lösung', tip: 'Klammern auflösen — was passiert mit den x-Termen?' },
+
+      { level: 'schwer', q: 'Löse: 20/9 x - 2/9 x = 1/3 x + 3. Gib die Lösung als gekürzten Bruch an.', answer: '9/5', tip: 'Brüche zusammenfassen (gemeinsamer Nenner 9), dann mit dem kgV multiplizieren.' },
+      { level: 'schwer', q: 'Löse mit Hilfe einer Gleichung: Von welcher Zahl ist das Fünffache verkleinert um 10 ebenso viel wie das Dreifache vergrössert um 20?', answer: '15', tip: '"Verkleinert um" = minus, "vergrössert um" = plus. Gleichung aufstellen und lösen.' },
+
+      { level: 'kanti', q: 'Löse: 15/7 x - 3/7 x = 1/2 x + 3. Gib die Lösung als gekürzten Bruch an.', answer: '42/17', tip: 'Genau wie im Original a): Brüche zusammenfassen, dann mit 14 multiplizieren.' },
+      { level: 'kanti', q: 'Löse: 3(4x + 5) = 4(3x + 5). Antwort: "keine Lösung" falls zutreffend.', answer: 'keine Lösung', tip: 'Klammern auflösen — die x-Terme heben sich auf. Was bedeutet das für die Zahlen, die übrig bleiben?' },
+    ],
   },
 
   {

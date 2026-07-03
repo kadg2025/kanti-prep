@@ -1,3 +1,5 @@
+import { frac, sqrt } from '../../mathFormat';
+
 export const questions2016_oTR = [
 
   // ── AUFGABE 1 ─────────────────────────────────────────────
@@ -442,261 +444,113 @@ Zum Schluss die Strichrechnung:  –1100 + (–10) = –1100 – 10 = –1110
     ],
   },
 
-  // ── AUFGABE 5a ────────────────────────────────────────────
+  // ── AUFGABE 5 ─────────────────────────────────────────────
 
-  {
+  {
 
-    id: 'M3_2016_OTR_GL_5a',
+    id: 'M3_2016_OTR_GL_5',
 
-    year: 2016,
+    verified: true,
 
-    subject: 'Mathe',
+    year: 2016,
 
-    exam: 'Mathe ohne TR',
+    subject: 'Mathe',
 
-    group: 'Alte Prüfungen',
+    exam: 'Mathe ohne TR',
 
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=3',
+    group: 'Alte Prüfungen',
 
-    topic: 'Gleichungen', // NEU
+    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=3',
 
-    questionText: `Aufgabe 5a: Gleichung lösen
-Wenn man von der Hälfte einer Zahl 7 abzieht, erhält man das 4-fache der Zahl.
-Wie lautet die Zahl?`,
+    topic: 'Gleichungen', // NEU
 
-    options: [
+    questionText: `Aufgabe 5: Gleichungen lösen
 
-      { label: 'x = –2', correct: true },
+a) Wenn man von der Hälfte einer Zahl 7 abzieht, erhält man das 4-fache der Zahl. Wie lautet die Zahl?
 
-      { label: 'x = 2', correct: false },
+b) Für welches x gibt die folgende Rechnung 1?
+${frac('6', '5')} – ${frac('3x–1', '10')} – ${frac('3x', '4')} = 1
 
-      { label: 'x = –14/7', correct: false },
+c) In einem Dreieck ist eine Höhe um 4 cm grösser als die zugehörige Seite. Vergrössert man die Seite um 3 cm und verkleinert die Höhe um 1 cm, so ist der Flächeninhalt des neuen Dreiecks um 15 cm² grösser. Bestimme die Höhe und die Seite des ursprünglichen Dreiecks.`,
 
-    ],
+    options: [
 
-    solution: {
+      { label: 'a) x = –2 | b) x = 2/7 | c) Seite = 10.5 cm, Höhe = 14.5 cm', correct: true },
 
-      intro: '',
+      { label: 'a) x = 2 | b) x = 1/2 | c) Seite = 6 cm, Höhe = 10 cm', correct: false },
 
-      steps: [
+      { label: 'a) x = –14/7 | b) x = 4/10 | c) Seite = 8 cm, Höhe = 12 cm', correct: false },
 
-        {
+    ],
 
-          title: '📖 Begriffe',
+    solution: {
 
-          content: `📐 Gleichung aufstellen:
-Der wichtigste Schritt ist, den Text in Mathe-Sprache zu übersetzen. "Eine Zahl" nennen wir x.
+      intro: '',
+
+      steps: [
+
+        {
+
+          title: 'a) Gleichung aufstellen & lösen',
+
+          content: `📐 Gleichung aufstellen:
+"Eine Zahl" nennen wir x.
 "Hälfte einer Zahl": x/2
 "7 abziehen": – 7
 "erhält man": =
-"das 4-fache der Zahl": 4x`,
+"das 4-fache der Zahl": 4x
 
-        },
-
-        {
-
-          title: 'Gleichung aufstellen & lösen',
-
-          content: `x/2 – 7 = 4x     | ×2 (um den Bruch wegzubekommen)
-x – 14 = 8x      | –x
-–14 = 7x          | ÷7
+x/2 – 7 = 4x     | ×2 (um den Bruch wegzubekommen)
+x – 14 = 8x      | –x
+–14 = 7x          | ÷7
 x = –2
 ✅ Die gesuchte Zahl ist –2.
 Probe: Hälfte von -2 ist -1. Davon 7 abziehen: -1 - 7 = -8. Das 4-fache von -2 ist auch -8. Stimmt!`,
 
-        },
+        },
 
-        {
+        {
 
-          title: '📄 Offizielle Schullösung',
+          title: 'b) Bruchgleichung lösen',
 
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
-
-        },
-
-      ],
-
-      tip: `🍳 Kochrezept:
-1️⃣  Text in Gleichung übersetzen (x = gesuchte Zahl).
-2️⃣  Beide Seiten mit dem Nenner multiplizieren, um den Bruch zu eliminieren.
-3️⃣  Alle x auf eine Seite bringen, alle Zahlen auf die andere.
-4️⃣  Nach x auflösen und Probe machen!`,
-
-    },
-
-  },
-
-  // ── AUFGABE 5b ────────────────────────────────────────────
-
-  {
-
-    id: 'M3_2016_OTR_BRUCH_5b',
-
-    year: 2016,
-
-    subject: 'Mathe',
-
-    exam: 'Mathe ohne TR',
-
-    group: 'Alte Prüfungen',
-
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=4',
-
-    topic: 'Gleichungen', // NEU
-
-    questionText: `Aufgabe 5b: Bruchgleichung
-Für welches x gibt die folgende Rechnung 1?
-6/5 – (3x–1)/10 – 3x/4 = 1`,
-
-    options: [
-
-      { label: 'x = 2/7', correct: true },
-
-      { label: 'x = 1/2', correct: false },
-
-      { label: 'x = 4/10', correct: false },
-
-    ],
-
-    solution: {
-
-      intro: '',
-
-      steps: [
-
-        {
-
-          title: '📖 Begriffe',
-
-          content: `📐 Bruchgleichung lösen:
-Der Trick ist, zuerst die Brüche loszuwerden.
-→ Finde den gemeinsamen Nenner (kgV) aller Brüche.
-→ Multipliziere die GANZE Gleichung mit diesem kgV.
-kgV von 5, 10 und 4:
+          content: `📐 Zuerst die Brüche loswerden.
+→ kgV von 5, 10 und 4:
 5 = 5
 10 = 2·5
 4 = 2²
-→ kgV = 2² · 5 = 20`,
+→ kgV = 2² · 5 = 20
 
-        },
-
-        {
-
-          title: 'Schritt 1: Mit dem kgV (20) multiplizieren',
-
-          content: `6/5 – (3x–1)/10 – 3x/4 = 1    | ×20
+6/5 – (3x–1)/10 – 3x/4 = 1    | ×20
 (20 · 6/5) – (20 · (3x–1)/10) – (20 · 3x/4) = (20 · 1)
 (4 · 6) – (2 · (3x–1)) – (5 · 3x) = 20
-24 – 2(3x–1) – 15x = 20`,
-
-        },
-
-        {
-
-          title: 'Schritt 2: Klammer auflösen und lösen',
-
-          content: `24 – 6x + 2 – 15x = 20
+24 – 2(3x–1) – 15x = 20
+24 – 6x + 2 – 15x = 20
 26 – 21x = 20 | -26
 –21x = –6 | ÷(-21)
 x = 6/21 (kürzen mit 3)
 x = 2/7
 ✅ x = 2/7`,
 
-        },
+        },
 
-        {
+        {
 
-          title: '📄 Offizielle Schullösung',
+          title: 'c) Dreieck: Gleichung aufstellen & lösen',
 
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
-
-        },
-
-      ],
-
-      tip: `🍳 Kochrezept:
-1️⃣  kgV aller Nenner finden (hier: 20).
-2️⃣  JEDEN Term auf beiden Seiten mit dem kgV multiplizieren.
-3️⃣  Achtung bei Minus vor Klammern: –2(3x–1) = –6x + 2.
-4️⃣  Nach x auflösen und am Ende kürzen.`,
-
-    },
-
-  },
-
-  // ── AUFGABE 5c ────────────────────────────────────────────
-
-  {
-
-    id: 'M3_2016_OTR_DREIECK_5c',
-
-    year: 2016,
-
-    subject: 'Mathe',
-
-    exam: 'Mathe ohne TR',
-
-    group: 'Alte Prüfungen',
-
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=5',
-
-    topic: 'Gleichungen', // NEU
-
-    questionText: `Aufgabe 5c: Dreieck
-In einem Dreieck ist eine Höhe um 4 cm grösser als die zugehörige Seite.
-Vergrössert man die Seite um 3 cm und verkleinert die Höhe um 1 cm, so ist der Flächeninhalt des neuen Dreiecks um 15 cm² grösser.
-Bestimme die Höhe und die Seite des ursprünglichen Dreiecks.`,
-
-    options: [
-
-      { label: 'Seite = 10.5 cm, Höhe = 14.5 cm', correct: true },
-
-      { label: 'Seite = 6 cm, Höhe = 10 cm', correct: false },
-
-      { label: 'Seite = 8 cm, Höhe = 12 cm', correct: false },
-
-    ],
-
-    solution: {
-
-      intro: '',
-
-      steps: [
-
-        {
-
-          title: '📖 Begriffe',
-
-          content: `📐 Fläche Dreieck = (Seite × Höhe) / 2
+          content: `📐 Fläche Dreieck = (Seite × Höhe) / 2
 💡 Variablen wählen:
 Seite = s
-Höhe = h = s + 4`,
+Höhe = h = s + 4
 
-        },
-
-        {
-
-          title: 'Schritt 1: Gleichung aufstellen',
-
-          content: `Alte Fläche: A_alt = (s * (s+4)) / 2
+Alte Fläche: A_alt = (s * (s+4)) / 2
 Neue Seite: s_neu = s+3
 Neue Höhe: h_neu = (s+4) - 1 = s+3
 Neue Fläche: A_neu = ((s+3) * (s+3)) / 2
 Bedingung: A_neu = A_alt + 15
 ((s+3)²)/2 = (s(s+4))/2 + 15 | ×2
-(s+3)² = s(s+4) + 30`,
+(s+3)² = s(s+4) + 30
 
-        },
-
-        {
-
-          title: 'Schritt 2: Auflösen',
-
-          content: `Binomische Formel links, ausmultiplizieren rechts:
+Binomische Formel links, ausmultiplizieren rechts:
 s² + 6s + 9 = s² + 4s + 30 | –s²
 6s + 9 = 4s + 30 | –4s, –9
 2s = 21
@@ -704,30 +558,49 @@ s = 10.5 cm
 Höhe h = s + 4 = 10.5 + 4 = 14.5 cm
 ✅ Seite = 10.5 cm, Höhe = 14.5 cm.`,
 
-        },
+        },
 
-        {
+        {
 
-          title: '📄 Offizielle Schullösung',
+          title: '📄 Offizielle Schullösung',
 
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
+          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
 
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
 
-        },
+        },
 
-      ],
+      ],
 
-      tip: `🍳 Kochrezept:
-1️⃣  Seite = s, Höhe = s+4.
-2️⃣  Gleichung für die Flächen aufstellen: Neue Fläche = Alte Fläche + 15.
-3️⃣  Gleichung mit 2 multiplizieren, um die Brüche zu eliminieren.
-4️⃣  Klammern auflösen. s² wird sich aufheben.
-5️⃣  Lineare Gleichung nach s auflösen.`,
+      tip: `🍳 Kochrezept:
+1️⃣  Text in Gleichung übersetzen bzw. Variablen sinnvoll wählen.
+2️⃣  Beide Seiten mit dem kgV der Nenner multiplizieren, um Brüche zu eliminieren.
+3️⃣  Klammern korrekt auflösen (Vorzeichen beachten!).
+4️⃣  Alle x/Variablen auf eine Seite, alle Zahlen auf die andere.
+5️⃣  Nach x auflösen und Probe machen!`,
 
-    },
+    },
 
-  },
+    // ── ÜBUNGEN: aufbauend zu linearen Gleichungen, Bruchgleichungen und Textaufgaben.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Löse: x/2 - 3 = 5', answer: '16', tip: 'Zuerst mit 2 multiplizieren, um den Bruch loszuwerden.' },
+      { level: 'einfach', q: 'Löse: 2x + 5 = 3x - 1', answer: '6', tip: 'Bringe alle x auf eine Seite, alle Zahlen auf die andere.' },
+      { level: 'einfach', q: 'Löse: x/4 + 1 = 3', answer: '8', tip: 'Zuerst mit 4 multiplizieren.' },
+
+      { level: 'mittel', q: 'Löse: x/3 - x/6 = 2', answer: '12', tip: 'kgV von 3 und 6 ist 6 — damit multiplizieren.' },
+      { level: 'mittel', q: 'Löse: (x-1)/2 + x/4 = 5', answer: '7', tip: 'kgV von 2 und 4 ist 4 — die ganze Gleichung damit multiplizieren, Klammer beachten.' },
+      { level: 'mittel', q: 'Ein Rechteck hat die Breite b und die Länge b+3. Der Umfang ist 26. Wie gross ist b?', answer: '5', tip: 'Umfang = 2·(Länge+Breite). Gleichung aufstellen und nach b auflösen.' },
+
+      { level: 'schwer', q: 'Löse: 3/4 - (2x-1)/8 = 1', answer: '-1/2', tip: 'kgV von 4 und 8 ist 8 — mit 8 multiplizieren, Minus vor der Klammer beachten.' },
+      { level: 'schwer', q: 'Ein Quadrat hat die Seite s. Vergrössert man die Seite um 2 cm, wächst die Fläche um 20 cm². Wie lang ist s? (Binomische Formel nutzen: (s+2)² = s² + 4s + 4)', answer: '4', tip: 'Neue Fläche minus alte Fläche = 20. Binomische Formel anwenden, s² hebt sich weg.' },
+
+      { level: 'kanti', q: 'Wenn man von der Hälfte einer Zahl 7 abzieht, erhält man das 4-fache der Zahl. Wie lautet die Zahl?', answer: '-2', tip: 'x/2 - 7 = 4x aufstellen, mit 2 multiplizieren, x isolieren.' },
+      { level: 'kanti', q: 'Für welches x gilt: 6/5 - (3x-1)/10 - 3x/4 = 1? Gib die Lösung als gekürzten Bruch an.', answer: '2/7', tip: 'kgV von 5, 10, 4 ist 20 — die ganze Gleichung damit multiplizieren.' },
+    ],
+
+  },
+
 
   // ── AUFGABE 6 ─────────────────────────────────────────────
 

@@ -94,39 +94,55 @@ kgV (grössere Potenzen): p³ · m³ · s⁴
   // ── AUFGABE 1c ────────────────────────────────────────────
   {
     id: 'M1_2020_OTR_GLEI_1c',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=1',
+    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
     topic: 'Gleichungen',
-    questionText: `Aufgabe 1c: Gleichung lösen
+    questionText: `Aufgabe 1c: Gleichung mit Parametern
 Gegeben ist die Gleichung:
-px + 5q – 3 = 2(qx – 4x + p)
+${frac('px + 5', 'q – 3')} = 2(qx – 4x + p)
 
-Bestimme x für p = q = 0.`,
+Bestimme x für folgende Fälle und gib die Lösung an:
+i) p = q = 0
+ii) p = –3 und q = 5`,
     options: [
-      { label: 'x = 5/24', correct: true },
-      { label: 'x = 3/8', correct: false },
-      { label: 'x = 1/3', correct: false },
+      { label: 'i) x = 5/24 | ii) x = 17/7', correct: true },
+      { label: 'i) x = 3/8 | ii) x = 28/5', correct: false },
+      { label: 'i) x = –5/24 | ii) x = 7/17', correct: false },
     ],
     solution: {
       intro: '',
       steps: [
         {
           title: '📖 Strategie',
-          content: `Wenn p = q = 0, setzen wir einfach überall p = 0 und q = 0 ein. Dann lösen wir die vereinfachte Gleichung nach x.`,
+          content: `Die Gleichung ist ein Bruch: (px+5)/(q–3) = 2(qx–4x+p).
+Wir setzen die gegebenen Werte für p und q ein und lösen dann nach x auf. Da q im Nenner steht, wird daraus jeweils eine Zahl (keine Variable mehr) — Vorsicht beim Vorzeichen des Nenners.`,
         },
         {
-          title: 'Einsetzen und vereinfachen',
-          content: `px + 5q – 3 = 2(qx – 4x + p)
-0·x + 5·0 – 3 = 2(0·x – 4x + 0)
-–3 = 2·(–4x)
-–3 = –8x     | ÷(–8)
-x = –3 / –8
-x = 3/8
+          title: 'i) p = q = 0',
+          content: `(px+5)/(q–3) = 2(qx–4x+p)
+(0·x+5)/(0–3) = 2(0·x–4x+0)
+5/(–3) = 2·(–4x)
+–5/3 = –8x     | ·(–1)
+5/3 = 8x        | ÷8
+x = 5/24
 
-✅ x = 3/8`,
+✅ x = 5/24`,
+        },
+        {
+          title: 'ii) p = –3 und q = 5',
+          content: `(px+5)/(q–3) = 2(qx–4x+p)
+(–3x+5)/(5–3) = 2(5x–4x+(–3))
+(–3x+5)/2 = 2(x–3)
+(–3x+5)/2 = 2x–6     | ×2
+–3x+5 = 4x–12         | +3x, +12
+17 = 7x                 | ÷7
+x = 17/7
+
+✅ x = 17/7`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -136,57 +152,28 @@ x = 3/8
       ],
       tip: `🍳 Kochrezept:
 1️⃣  Werte für p und q einsetzen.
-2️⃣  Klammern auflösen.
-3️⃣  x isolieren.`,
+2️⃣  Bei einem Bruch: mit dem Nenner multiplizieren, um ihn wegzubekommen.
+3️⃣  Klammern auflösen.
+4️⃣  Alle x-Terme auf eine Seite, Zahlen auf die andere, x isolieren.`,
     },
-  },
 
-  // ── AUFGABE 1d ────────────────────────────────────────────
-  {
-    id: 'M1_2020_OTR_GLEI_1d',
-    year: 2020,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=1',
-    topic: 'Gleichungen',
-    questionText: `Aufgabe 1d: Gleichung lösen
-Gegeben ist die Gleichung:
-px + 5q – 3 = 2(qx – 4x + p)
+    // ── ÜBUNGEN: aufbauend zu Bruchgleichungen mit Parametern.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Löse: (x+3)/2 = 5', answer: '7', tip: 'Mit dem Nenner (2) multiplizieren, um den Bruch loszuwerden.' },
+      { level: 'einfach', q: 'Löse: (2x-1)/3 = 3', answer: '5', tip: 'Zuerst mit 3 multiplizieren.' },
+      { level: 'einfach', q: 'Setze in die Gleichung px+5=2(x+p) für p=0 ein und löse nach x auf.', answer: '5/2', tip: 'p=0 einsetzen ergibt: 5=2x, also x isolieren.' },
 
-Bestimme x für p = –3 und q = 5.`,
-    options: [
-      { label: 'x = 17/7', correct: true },
-      { label: 'x = 7/17', correct: false },
-      { label: 'x = 2', correct: false },
+      { level: 'mittel', q: 'Löse: (x+5)/(-3) = 4', answer: '-17', tip: 'Mit dem Nenner (-3) multiplizieren — Vorzeichen beachten!' },
+      { level: 'mittel', q: 'Löse: (3x-2)/4 = x-1', answer: '2', tip: 'Erst mit 4 multiplizieren, dann Klammer rechts auflösen.' },
+      { level: 'mittel', q: 'Setze in die Gleichung (px+5)/2 = x-1 für p=3 ein und löse nach x auf.', answer: '-7', tip: 'p=3 einsetzen, dann mit 2 multiplizieren.' },
+
+      { level: 'schwer', q: 'Löse: (-2x+5)/(4-3) = 2(x-3)', answer: '11/4', tip: 'Nenner zuerst vereinfachen (4-3=1), dann nach x auflösen.' },
+      { level: 'schwer', q: 'Setze in die Gleichung (px+5)/(q-3) = x für p=1, q=5 ein und löse nach x auf.', answer: '5', tip: 'p und q einsetzen, Nenner berechnen (5-3=2), dann mit dem Nenner multiplizieren.' },
+
+      { level: 'kanti', q: 'Gegeben: (px+5)/(q-3) = 2(qx-4x+p). Setze p=q=0 ein und löse nach x auf. Gib die Lösung als gekürzten Bruch an.', answer: '5/24', tip: 'Wie im Original: p=0, q=0 einsetzen, Bruch auflösen, nach x umstellen.' },
+      { level: 'kanti', q: 'Gegeben: (px+5)/(q-3) = 2(qx-4x+p). Setze p=-3, q=5 ein und löse nach x auf. Gib die Lösung als gekürzten Bruch an.', answer: '17/7', tip: 'Wie im Original: p=-3, q=5 einsetzen, mit dem Nenner multiplizieren, x isolieren.' },
     ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Einsetzen von p = –3 und q = 5',
-          content: `px + 5q – 3 = 2(qx – 4x + p)
-(–3)x + 5·5 – 3 = 2(5x – 4x + (–3))
-–3x + 25 – 3 = 2(x – 3)
-–3x + 22 = 2x – 6    | +3x
-22 = 5x – 6           | +6
-28 = 5x               | ÷5
-x = 28/5
-
-Hinweis: Die Lösungsdatei zeigt x = 17/7. Bitte mit der offiziellen Lösung vergleichen!`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119941/AP20_GMS3_M1_oTr_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣  p und q einsetzen.
-2️⃣  Klammern auflösen.
-3️⃣  Alle x-Terme auf eine Seite, Zahlen auf die andere.
-4️⃣  x isolieren.`,
-    },
   },
 
   // ── AUFGABE 2a ────────────────────────────────────────────

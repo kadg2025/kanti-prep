@@ -3,40 +3,50 @@ import { frac } from '../../mathFormat';
 
 export const questions2023_oTR = [
   {
-    id: 'M1_2023_OTR_EQ_1a',
+    id: 'M1_2023_OTR_EQ_1',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
     topic: 'Gleichungen',
-    questionText: `Aufgabe 1a: Gleichung lösen
+    questionText: `Aufgabe 1: Gleichungen lösen
 
-x/14 + x/8 + x/4 = x/2 + 1/8`,
+a) ${frac('1', '2')}x + ${frac('1', '4')}x + ${frac('1', '8')}x = 14
+
+b) ${frac('6', '11')}(x – 3) + 2 = 1 – ${frac('1', '22')}(10x + 3)`,
     options: [
-      { label: 'x = 16', correct: true },
-      { label: 'x = 8', correct: false },
-      { label: 'x = 1/16', correct: false },
+      { label: 'a) x = 16 | b) x = 0.5', correct: true },
+      { label: 'a) x = 8 | b) x = 2', correct: false },
+      { label: 'a) x = 112/7 | b) x = 9/28', correct: false },
     ],
     solution: {
       intro: '',
       steps: [
         {
-          title: 'kgV bestimmen',
-          content: `Nenner: 14, 8, 4, 2, 8
-kgV = 56
+          title: 'a) Mit dem kgV multiplizieren',
+          content: `1/2 x + 1/4 x + 1/8 x = 14     | ×8
+4x + 2x + x = 112
+7x = 112
+x = 16
 
-Beide Seiten mit 56 multiplizieren:
-4x + 7x + 14x = 28x + 7
-25x = 28x + 7`,
+✅ x = 16`,
         },
         {
-          title: 'Nach x auflösen',
-          content: `25x = 28x + 7
--3x = 7
-x = -7/3
+          title: 'b) Klammern auflösen',
+          content: `6/11(x–3) + 2 = 1 – 1/22(10x+3)     | ×22
+22 · 6/11(x–3) + 22·2 = 22·1 – 22 · 1/22(10x+3)
+12(x–3) + 44 = 22 – (10x+3)
+12x – 36 + 44 = 22 – 10x – 3`,
+        },
+        {
+          title: 'b) Nach x auflösen',
+          content: `12x + 8 = 19 – 10x     | +10x, –8
+22x = 11
+x = 11/22 = 1/2
 
-Hinweis: Die exakte Gleichung aus der PDF ist in der Prüfung anders gesetzt; laut offizieller Lösung ergibt sich x = 16 [page:2].`,
+✅ x = 0.5`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -45,58 +55,29 @@ Hinweis: Die exakte Gleichung aus der PDF ist in der Prüfung anders gesetzt; la
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣ Nenner wegmultiplizieren.
-2️⃣ Alle x-Terme auf eine Seite.
-3️⃣ Am Schluss durch den Koeffizienten teilen.`,
+1️⃣ Nenner mit dem kgV wegmultiplizieren.
+2️⃣ Klammern sauber auflösen (Vorzeichen beachten!).
+3️⃣ Alle x-Terme auf eine Seite, Zahlen auf die andere.
+4️⃣ Am Schluss durch den Koeffizienten teilen.`,
     },
-  },
 
-  {
-    id: 'M1_2023_OTR_EQ_1b',
-    year: 2023,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Gleichungen',
-    questionText: `Aufgabe 1b: Gleichung lösen
+    // ── ÜBUNGEN: aufbauend zu Bruchgleichungen mit kgV und Klammern.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Löse: x/2 + x/4 = 12', answer: '16', tip: 'kgV von 2 und 4 ist 4 — damit multiplizieren.' },
+      { level: 'einfach', q: 'Löse: x/3 + x/6 = 9', answer: '18', tip: 'kgV von 3 und 6 ist 6.' },
+      { level: 'einfach', q: 'Löse: 2(x - 1) + 3 = 1 - x', answer: '0', tip: 'Klammer auflösen, dann x auf eine Seite bringen.' },
 
-(1/6)(x - 3) + (1/2)(10x - 3) = (11/22)x - 1/2`,
-    options: [
-      { label: 'x = 1/2', correct: true },
-      { label: 'x = 2', correct: false },
-      { label: 'x = 1/4', correct: false },
+      { level: 'mittel', q: 'Löse: 1/2 x + 1/4 x = 21', answer: '28', tip: 'kgV von 2 und 4 ist 4.' },
+      { level: 'mittel', q: 'Löse: 1/3(x - 3) + 2 = 1 - 1/6(2x + 3)', answer: '-3/4', tip: 'kgV von 3 und 6 ist 6 — die ganze Gleichung damit multiplizieren.' },
+      { level: 'mittel', q: 'Löse: 1/2 x + 1/4 x + 1/4 x = 10', answer: '10', tip: 'kgV von 2 und 4 ist 4 — alle Brüche damit wegmultiplizieren.' },
+
+      { level: 'schwer', q: 'Löse: 2/5(x - 2) + 1 = 1 - 1/10(4x + 1)', answer: '7/8', tip: 'kgV von 5 und 10 ist 10 — die ganze Gleichung damit multiplizieren.' },
+      { level: 'schwer', q: 'Löse: 3/11(x - 2) + 1 = 2 - 1/22(5x + 1)', answer: '3', tip: 'kgV von 11 und 22 ist 22 — genau wie im Original mit b).' },
+
+      { level: 'kanti', q: 'Löse: 1/2 x + 1/4 x + 1/8 x = 14', answer: '16', tip: 'kgV von 2, 4, 8 ist 8 — genau wie im Original a).' },
+      { level: 'kanti', q: 'Löse: 6/11(x - 3) + 2 = 1 - 1/22(10x + 3). Gib die Lösung als Dezimalzahl an.', answer: '0.5', tip: 'kgV von 11 und 22 ist 22 — genau wie im Original b).' },
     ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Klammern auflösen',
-          content: `(1/6)(x - 3) + (1/2)(10x - 3) = (11/22)x - 1/2
-
-x/6 - 1/2 + 5x - 3/2 = x/2 - 1/2`,
-        },
-        {
-          title: 'Zusammenfassen',
-          content: `x/6 + 5x - 2 = x/2 - 1/2
-(31/6)x - 2 = x/2 - 1/2
-
-Mit 6 multiplizieren:
-31x - 12 = 3x - 3
-28x = 9
-x = 9/28`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164497/AP23_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣ Klammern sauber auflösen.
-2️⃣ Brüche zusammenfassen.
-3️⃣ Mit dem kgV multiplizieren.`,
-    },
   },
 
   {
