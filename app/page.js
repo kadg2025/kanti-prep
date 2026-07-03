@@ -767,7 +767,7 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
 
         <FeedbackButton questionId={question.id} />
 
-        <PracticeLadder practice={question.practice} dm={dm} dark={dark} />
+        <PracticeLadder key={question.id} practice={question.practice} dm={dm} dark={dark} />
 
       </div>
     </main>
