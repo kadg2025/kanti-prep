@@ -369,6 +369,7 @@ Kürzeres Stück:
 
   {
     id: 'M1_2022_OTR_PROZ_5',
+    verified: true,
     year: 2022,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -389,8 +390,14 @@ Wie viel Prozent billiger ist jetzt ein Paar Socken?`,
       { label: 'a) Meier: 14.00 Fr, Bühler: 17.10 Fr, b) 20%', correct: false },
     ],
     solution: {
-      intro: `Hier rechnen wir zuerst den Preis pro Paar aus und dann mit Prozenten.`,
+      intro: '',
       steps: [
+        {
+          title: '📖 Begriffe',
+          content: `📐 Grundpreis bestimmen: Bei einem Mehrerpack immer zuerst den Preis pro Stück ausrechnen (Gesamtpreis ÷ Anzahl).
+🔑 Prozentuale Veränderung: Differenz zwischen altem und neuem Wert bilden, dann durch den ALTEN Wert teilen.
+Prozentsatz = (alter Wert − neuer Wert) / alter Wert · 100`,
+        },
         {
           title: 'a) Preis pro Paar und Familienkosten',
           content: `Duo-Pack: 2 Paar kosten 3.80 Fr
@@ -430,6 +437,24 @@ Prozentuale Verbilligung:
 2️⃣ Differenz zwischen altem und neuem Preis bilden.
 3️⃣ Prozent = Differenz / alter Preis · 100.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Grundpreis und prozentualer Veränderung.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein 4er-Pack kostet 6 Fr. Wie viel kostet 1 Stück?', answer: '1.5', tip: 'Gesamtpreis durch Anzahl teilen.' },
+      { level: 'einfach', q: 'Ein Stück kostet 1.50 Fr. Wie viel kosten 5 Stück?', answer: '7.5', tip: 'Preis pro Stück mal Anzahl.' },
+      { level: 'einfach', q: 'Ein Preis sinkt von 2 Fr auf 1.50 Fr. Wie gross ist die Differenz?', answer: '0.5', tip: 'Alter Preis minus neuer Preis.' },
+
+      { level: 'mittel', q: 'Ein 3er-Pack kostet 4.50 Fr. Wie viel kostet 1 Stück?', answer: '1.5', tip: 'Gesamtpreis durch Anzahl teilen.' },
+      { level: 'mittel', q: 'Ein Preis sinkt von 2 Fr auf 1.50 Fr. Um wie viel Prozent ist das billiger?', answer: '25', tip: 'Differenz durch den ALTEN Preis teilen, dann mal 100.' },
+      { level: 'mittel', q: 'Ein 6er-Pack kostet 9 Fr. Zwei Familien kaufen zusammen 10 Stück. Wie viel bezahlen sie total?', answer: '15', tip: 'Erst Preis pro Stück, dann mit der Gesamtmenge multiplizieren.' },
+
+      { level: 'schwer', q: 'Ein 2er-Pack kostet 3 Fr, ein 5er-Pack (neu) kostet 6 Fr. Um wie viel Prozent ist der Preis pro Stück gesunken?', answer: '20', tip: 'Beide Preise pro Stück berechnen, dann Differenz durch den alten Preis teilen.' },
+      { level: 'schwer', q: 'Ein Preis pro Stück sinkt von 1.90 Fr auf 1.52 Fr. Um wie viel Prozent ist das billiger?', answer: '20', tip: 'Differenz (0.38) durch den alten Preis (1.90) teilen, dann mal 100.' },
+
+      { level: 'kanti', q: 'Ein Duo-Pack (2 Stück) kostet 3.80 Fr. Wie teuer sind 7 Stück?', answer: '13.3', tip: 'Genau wie im Original: erst Preis pro Stück, dann mit 7 multiplizieren.' },
+      { level: 'kanti', q: 'Der Preis pro Stück sinkt von 1.90 Fr auf 1.52 Fr. Um wie viel Prozent ist das billiger?', answer: '20', tip: 'Genau wie im Original: (1.90-1.52)/1.90 · 100.' },
+    ],
   },
 
   // ── AUFGABE 6 ─────────────────────────────────────────────

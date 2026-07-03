@@ -620,6 +620,8 @@ Höhe h = s + 4 = 10.5 + 4 = 14.5 cm
 
     id: 'M3_2016_OTR_FARBE_6',
 
+    verified: true,
+
     year: 2016,
 
     subject: 'Mathe',
@@ -693,7 +695,8 @@ Diese 7L werden aus Eimer 2 genommen.
 Rote Farbe in Eimer 1 am Schluss:
 Eigene rote Farbe + übertragene rote Farbe
 1 L + 1.75 L = 2.75 L.
-(Hinweis: Die offizielle Lösung hat ein anderes Resultat, 1.875L. Dies würde sich ergeben, wenn Eimer 1 nur 5L Volumen hätte. Mit 8L Volumen ist 2.75L korrekt.)`,
+
+✅ Ergebnis: 2.75 Liter rote Farbe`,
 
         },
 
@@ -717,6 +720,24 @@ Eigene rote Farbe + übertragene rote Farbe
 5️⃣  Addiere dies zum roten Rest in Eimer 1.`,
 
     },
+    // ── ÜBUNGEN: aufbauend zu Mischungsrechnung und Konzentration.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Eimer fasst 10 Liter. Er enthält 4 Liter rote Farbe. Wie viele Liter fehlen bis er voll ist?', answer: '6', tip: 'Gesamtvolumen minus vorhandene Menge.' },
+      { level: 'einfach', q: 'In einem Gemisch sind 3 Liter Rot auf 12 Liter Gesamtmenge. Wie gross ist der Anteil Rot (als gekürzter Bruch)?', answer: '1/4', tip: 'Anteil = Menge Rot / Gesamtmenge, dann kürzen.' },
+      { level: 'einfach', q: 'Ein Anteil von 1/4 entspricht wie viel Prozent?', answer: '25', tip: 'Bruch mit 100 erweitern bzw. multiplizieren.' },
+
+      { level: 'mittel', q: 'Ein 10-Liter-Eimer enthält 4 Liter Gelb. Wie viele Liter Rot braucht es, damit er voll ist?', answer: '6', tip: 'Gesamtvolumen minus vorhandene Farbe.' },
+      { level: 'mittel', q: 'Nach dem Auffüllen sind in einem 10-Liter-Eimer 6 Liter Rot. Wie gross ist die Konzentration Rot (als gekürzter Bruch)?', answer: '3/5', tip: 'Menge Rot durch Gesamtmenge, dann kürzen.' },
+      { level: 'mittel', q: 'Ein Eimer mit 1 Liter eigener roter Farbe braucht noch 5 Liter aus einem Gemisch mit Konzentration 3/5 Rot. Wie viel Rot kommt dazu?', answer: '3', tip: 'Übertragene Menge × Konzentration.' },
+
+      { level: 'schwer', q: 'Ein 8-Liter-Eimer hat 2 Liter Blau. Wie viel fehlt bis er voll ist, und welche Konzentration Blau hat das volle Gemisch (als gekürzter Bruch)?', answer: '1/4', tip: 'Erst die fehlende Menge, dann Menge Blau durch neues Gesamtvolumen.' },
+      { level: 'schwer', q: 'Ein Eimer mit 2 Liter eigener Farbe braucht noch 6 Liter aus einem Gemisch mit Konzentration 1/3. Wie viel Liter der gesuchten Farbe sind am Schluss im Eimer?', answer: '4', tip: 'Eigene Menge plus (übertragene Menge × Konzentration).' },
+
+      { level: 'kanti', q: 'Eimer 2 (8L) enthält 5L Gelb. Wie viele Liter Rot müssen aus Eimer 1 dazu, bis Eimer 2 voll ist, und wie gross ist danach die Konzentration Rot (als gekürzter Bruch)?', answer: '3/8', tip: 'Fehlende Menge = 8 - 5 = 3L Rot, dann Konzentration = 3/8.' },
+      { level: 'kanti', q: 'Wie im Original: Eimer 1 hat nach dem Umfüllen noch 1L eigene rote Farbe übrig und bekommt 7L aus einem Gemisch mit Konzentration 1/4 Rot zurück. Wie viel Rot ist am Schluss in Eimer 1?', answer: '2.75', tip: 'Eigene Menge (1L) plus übertragene Menge × Konzentration (7 × 1/4).' },
+    ],
+
 
   },
 

@@ -544,165 +544,100 @@ Bei Nummern-Aufgaben zuerst alle passenden geordneten Paare auflisten.`,
     },
   },
 
-  // ── AUFGABE 5a1 ───────────────────────────────────────────
+  // ── AUFGABE 5 ─────────────────────────────────────────────
   {
-    id: 'M1_2025_OTR_ACKER_5a1',
+    id: 'M1_2025_OTR_ACKER_5',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
     topic: 'Prozent & Zins',
-    questionText: `Aufgabe 5a(1): Bauer Josten baut auf 40% der Fläche Gerste, auf 25% Weizen und auf der restlichen Fläche Mais an. Wie gross sind die Flächen, wenn er insgesamt 25 ha bewirtschaftet?`,
+    questionText: `Aufgabe 5: Getreideanbau
+
+a) Bauer Josten baut auf seinem Ackerland verschiedene Getreidearten an. In diesem Jahr baut er auf 40% der Fläche Gerste, auf 25% Weizen und auf der restlichen Fläche Mais an. Wie gross sind die Flächen, auf denen die verschiedenen Getreidesorten angebaut werden, wenn Herr Josten insgesamt 25 ha bewirtschaftet? (Zusätzlich: Zeichne eine mögliche Einteilung eines Rechtecks für die drei Flächen ein.)
+
+b) Im Vergleich zum Vorjahr ist der Ertrag an Mais von 300 Tonnen auf 360 Tonnen gestiegen. Berechne den prozentualen Ertragszuwachs.
+
+c) Leider ist der Ertrag von Weizen im Vergleich zum Vorjahr um 30% auf 105 Tonnen gefallen. Berechne, wie gross der Ertrag von Weizen im Vorjahr war.`,
     options: [
-      { label: 'Gerste 10 ha, Weizen 6.25 ha, Mais 8.75 ha', correct: true },
-      { label: 'Gerste 8 ha, Weizen 5 ha, Mais 12 ha', correct: false },
-      { label: 'Gerste 10 ha, Weizen 5 ha, Mais 10 ha', correct: false },
+      { label: 'a) Gerste 10 ha, Weizen 6.25 ha, Mais 8.75 ha | b) 20% | c) 150 Tonnen', correct: true },
+      { label: 'a) Gerste 8 ha, Weizen 5 ha, Mais 12 ha | b) 16.7% | c) 135 Tonnen', correct: false },
+      { label: 'a) Gerste 10 ha, Weizen 6.25 ha, Mais 8.75 ha | b) 60% | c) 75 Tonnen', correct: false },
     ],
     solution: {
       intro: '',
       steps: [
         {
-          title: 'Gerste',
-          content: `40% von 25 ha = 0.4 · 25 = 10 ha`,
+          title: '📖 Begriffe',
+          content: `📐 Prozent vom Ganzen: Prozentsatz zuerst in eine Dezimalzahl umwandeln (÷100), dann mit dem Ganzen multiplizieren.
+🔑 Prozentuale Zunahme: Zuwachs = neuer Wert − alter Wert. Prozentsatz = Zuwachs / ALTER Wert · 100.
+🔑 Prozentuale Abnahme rückwärts rechnen: Ist ein Wert um p% GEFALLEN, bleiben (100−p)% des ursprünglichen Werts übrig. Der neue Wert entspricht also (100−p)% vom alten Wert — daraus lässt sich der alte Wert zurückrechnen.`,
         },
         {
-          title: 'Weizen',
-          content: `25% von 25 ha = 0.25 · 25 = 6.25 ha`,
+          title: 'a) Flächen berechnen',
+          content: `Gesamtfläche: 25 ha
+
+Gerste (40%): 0.4 · 25 = 10 ha
+Weizen (25%): 0.25 · 25 = 6.25 ha
+Mais (Rest): 100% − 40% − 25% = 35% → 0.35 · 25 = 8.75 ha
+
+✅ Gerste: 10 ha | Weizen: 6.25 ha | Mais: 8.75 ha
+
+Für die Skizze: Ein Rechteck z.B. in 20 gleich breite Streifen teilen — 8 Streifen Gerste (40%), 5 Streifen Weizen (25%), 7 Streifen Mais (35%).`,
         },
         {
-          title: 'Mais',
-          content: `Rest = 100% - 40% - 25% = 35%
-35% von 25 ha = 0.35 · 25 = 8.75 ha`,
+          title: 'b) Prozentualer Ertragszuwachs (Mais)',
+          content: `Zuwachs: 360 − 300 = 60 Tonnen
+
+Auf den ALTEN Wert (300) beziehen:
+60 / 300 = 0.2 = 20%
+
+✅ Der Ertragszuwachs beträgt 20%.`,
         },
         {
-          title: 'Ergebnis',
-          content: `✅ Gerste: 10 ha
-✅ Weizen: 6.25 ha
-✅ Mais: 8.75 ha`,
+          title: 'c) Ursprünglicher Ertrag (Weizen)',
+          content: `Der Ertrag ist um 30% GEFALLEN → es bleiben 100% − 30% = 70% des ursprünglichen Werts übrig.
+Diese 70% entsprechen den heutigen 105 Tonnen:
+
+0.7 · x = 105     | ÷0.7
+x = 105 / 0.7 = 150
+
+✅ Der Weizenertrag im Vorjahr betrug 150 Tonnen.`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen (aktuell nur die Prüfung verfügbar, offizielle Lösung noch nicht veröffentlicht).`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
         },
       ],
       tip: `🍳 Kochrezept:
-Prozent immer erst in Dezimalzahl umwandeln, dann mit dem Ganzen multiplizieren.`,
+1️⃣ Prozent vom Ganzen: Prozentsatz ÷100, dann mit dem Ganzen multiplizieren.
+2️⃣ Prozentuale Zunahme: Differenz durch den ALTEN Wert teilen, dann ·100.
+3️⃣ Rückwärts rechnen bei einer Abnahme: (100−p)% · ursprünglicher Wert = neuer Wert — nach dem ursprünglichen Wert auflösen.`,
     },
-  },
 
-  // ── AUFGABE 5a2 ───────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_ACKER_5a2',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Prozent & Zins',
-    questionText: `Aufgabe 5a(2): Zeichne eine mögliche Einteilung des Rechtecks für Gerste, Weizen und Mais ein.`,
-    options: [
-      { label: 'Jede Einteilung mit 40%, 25% und 35% ist möglich', correct: true },
-      { label: 'Nur eine einzige Einteilung ist richtig', correct: false },
-      { label: 'Gerste und Weizen müssen gleich gross sein', correct: false },
+    // ── ÜBUNGEN: aufbauend zu Prozent vom Ganzen, Zunahme und Rückwärtsrechnen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Berechne 40% von 25.', answer: '10', tip: 'Prozentsatz ÷100, dann mit der Zahl multiplizieren.' },
+      { level: 'einfach', q: 'Berechne 25% von 25.', answer: '6.25', tip: 'Prozentsatz ÷100, dann mit der Zahl multiplizieren.' },
+      { level: 'einfach', q: 'Wenn 40% und 25% schon vergeben sind, wie viel Prozent bleiben vom Ganzen übrig?', answer: '35', tip: '100% minus die bereits vergebenen Prozente.' },
+
+      { level: 'mittel', q: 'Ein Ertrag steigt von 200 auf 240. Um wie viel Prozent ist er gestiegen?', answer: '20', tip: 'Zuwachs durch den ALTEN Wert teilen, dann mal 100.' },
+      { level: 'mittel', q: 'Ein Ertrag steigt von 50 auf 60. Um wie viel Prozent ist er gestiegen?', answer: '20', tip: 'Zuwachs durch den ALTEN Wert teilen, dann mal 100.' },
+      { level: 'mittel', q: 'Ein Wert ist um 20% gefallen und beträgt jetzt 80. Wie viel Prozent des ursprünglichen Werts sind das?', answer: '80', tip: '100% minus die Abnahme in Prozent.' },
+
+      { level: 'schwer', q: 'Ein Wert fällt um 30% auf 70. Wie gross war der ursprüngliche Wert?', answer: '100', tip: 'Der neue Wert entspricht 70% des ursprünglichen Werts — Gleichung aufstellen und nach dem alten Wert auflösen.' },
+      { level: 'schwer', q: 'Ein Wert fällt um 10% auf 90. Wie gross war der ursprüngliche Wert?', answer: '100', tip: 'Der neue Wert entspricht 90% des ursprünglichen Werts.' },
+
+      { level: 'kanti', q: 'Ein Ertrag steigt von 300 auf 360. Um wie viel Prozent ist er gestiegen?', answer: '20', tip: 'Genau wie im Original b): Zuwachs (60) durch den alten Wert (300) teilen.' },
+      { level: 'kanti', q: 'Ein Ertrag fällt um 30% auf 105. Wie gross war der Ertrag davor?', answer: '150', tip: 'Genau wie im Original c): 105 entspricht 70% vom ursprünglichen Wert — 0.7·x=105 nach x auflösen.' },
     ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Was ist wichtig?',
-          content: `Nicht die genaue Form ist entscheidend, sondern die richtigen Flächenanteile:
-- Gerste 40%
-- Weizen 25%
-- Mais 35%`,
-        },
-        {
-          title: 'Mögliche Einteilung',
-          content: `Zum Beispiel kann man ein Rechteck in 20 gleich breite Streifen teilen:
-- 8 Streifen Gerste
-- 5 Streifen Weizen
-- 7 Streifen Mais`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Wenn Zeichnen verlangt ist, hilft ein Rechteck mit gleich grossen Teilstreifen.`,
-    },
   },
 
-  // ── AUFGABE 5b ────────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_PROZ_5b',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Prozent & Zins',
-    questionText: `Aufgabe 5b: Im Vergleich zum Vorjahr ist der Ertrag an Mais von 300 Tonnen auf 360 Tonnen gestiegen. Berechne den prozentualen Ertragszuwachs.`,
-    options: [
-      { label: '20%', correct: true },
-      { label: '16.7%', correct: false },
-      { label: '60%', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Zuwachs berechnen',
-          content: `360 - 300 = 60 Tonnen`,
-        },
-        {
-          title: 'Auf den Anfangswert beziehen',
-          content: `60 / 300 = 0.2 = 20%`,
-        },
-        {
-          title: 'Ergebnis',
-          content: `✅ Der Ertragszuwachs beträgt 20%.`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Prozentuale Veränderung immer durch den alten Wert teilen.`,
-    },
-  },
-
-  // ── AUFGABE 5c ────────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_PROZ_5c',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Prozent & Zins',
-    questionText: `Aufgabe 5c: Leider ist der Ertrag von Weizen im Vergleich zum Vorjahr um 30% auf 105 Tonnen gefallen. Berechne, wie gross der Ertrag im Vorjahr war.`,
-    options: [
-      { label: '150 Tonnen', correct: true },
-      { label: '135 Tonnen', correct: false },
-      { label: '75 Tonnen', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Bedeutung von 30% gefallen',
-          content: `Wenn etwas um 30% fällt, bleiben 70% des ursprünglichen Werts übrig.`,
-        },
-        {
-          title: 'Gleichung aufstellen',
-          content: `0.7 · x = 105`,
-        },
-        {
-          title: 'Lösen',
-          content: `x = 105 / 0.7 = 150`,
-        },
-        {
-          title: 'Ergebnis',
-          content: `✅ Der Weizenertrag im Vorjahr betrug 150 Tonnen.`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Bei einer Abnahme auf den neuen Wert nie 30% direkt addieren — erst den Restprozentsatz bestimmen.`,
-    },
-  },
-
-  // ── AUFGABE 6 ─────────────────────────────────────────────
+// ── AUFGABE 6 ─────────────────────────────────────────────
   {
     id: 'M1_2025_OTR_FLAECHE_6',
     year: 2025,
