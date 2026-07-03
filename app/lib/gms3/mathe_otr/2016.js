@@ -491,6 +491,18 @@ c) In einem Dreieck ist eine Höhe um 4 cm grösser als die zugehörige Seite. V
 
         {
 
+          title: '📖 Begriffe',
+
+          content: `📐 Gleichungen lösen: Ziel ist immer, x auf einer Seite allein stehen zu haben.
+🔑 Grundregeln beim Umformen: Was auf einer Seite gemacht wird (× ÷ + –), muss auch auf der anderen Seite gemacht werden.
+🔑 Textaufgabe: Wörter Schritt für Schritt in eine Gleichung übersetzen (z.B. "Hälfte" → ÷2, "abziehen" → –, "erhält man" → =).
+🔑 Bruchgleichung: Mit dem kgV aller Nenner multiplizieren, damit die Brüche verschwinden.
+🔑 Textaufgabe mit Fläche: Variablen sinnvoll wählen (z.B. Seite = s, Höhe = s+4), dann die Bedingung als Gleichung aufstellen.`,
+
+        },
+
+        {
+
           title: 'a) Gleichung aufstellen & lösen',
 
           content: `📐 Gleichung aufstellen:

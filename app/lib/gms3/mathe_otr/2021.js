@@ -208,8 +208,10 @@ b) ${frac('8', 'x')} + ${frac('7', 'x')} = 5`,
       intro: '',
       steps: [
         {
-          title: '📖 Strategie',
-          content: `Bei Bruchgleichungen: Alle Nenner bestimmen → kgV berechnen → beide Seiten mit kgV multiplizieren → Nenner verschwinden.`,
+          title: '📖 Begriffe',
+          content: `📐 Bruchgleichung: Eine Gleichung, in der x auch im Nenner eines Bruchs vorkommen kann (z.B. 8/x).
+🔑 Vorgehen: Alle Nenner bestimmen → kgV berechnen → beide Seiten mit dem kgV multiplizieren → Nenner verschwinden.
+🔑 Sonderfall gleicher Nenner: Stehen zwei Brüche mit demselben Nenner da (z.B. 8/x + 7/x), einfach die Zähler zusammenfassen.`,
         },
         {
           title: 'a) kgV der Nenner bestimmen',

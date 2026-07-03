@@ -25,6 +25,12 @@ b) ${frac('6', '11')}(x – 3) + 2 = 1 – ${frac('1', '22')}(10x + 3)`,
       intro: '',
       steps: [
         {
+          title: '📖 Begriffe',
+          content: `📐 Gleichungen lösen: Ziel ist immer, x auf einer Seite allein stehen zu haben.
+🔑 Bruchgleichung: Mit dem kgV aller Nenner multiplizieren, damit die Brüche verschwinden.
+🔑 Klammer mit Faktor: Jeden Term in der Klammer einzeln mit dem Faktor davor multiplizieren (Vorzeichen beachten!).`,
+        },
+        {
           title: 'a) Mit dem kgV multiplizieren',
           content: `1/2 x + 1/4 x + 1/8 x = 14     | ×8
 4x + 2x + x = 112

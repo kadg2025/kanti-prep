@@ -133,6 +133,12 @@ b) 6 · (2 · (x + ${frac('1', '4')})) = 9 · (4x – 1)`,
       intro: '',
       steps: [
         {
+          title: '📖 Begriffe',
+          content: `📐 Gleichungen lösen: Ziel ist immer, x auf einer Seite allein stehen zu haben.
+🔑 Brüche mit gleichem Nenner: erst Zähler zusammenfassen, dann weiterrechnen.
+🔑 Verschachtelte Klammern: von innen nach aussen auflösen — zuerst die innerste Klammer.`,
+        },
+        {
           title: 'a) Rechte Seite vereinfachen',
           content: `2/3 – 7x = –2x + 7/3 – 10/6
 

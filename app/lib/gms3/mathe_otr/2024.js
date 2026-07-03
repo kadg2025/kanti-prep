@@ -29,6 +29,13 @@ d) Löse mit Hilfe einer Gleichung: Von welcher Zahl ist das Sechsfache verklein
       intro: '',
       steps: [
         {
+          title: '📖 Begriffe',
+          content: `📐 Gleichungen lösen: Ziel ist immer, x auf einer Seite allein stehen zu haben.
+🔑 Klammern auflösen, dann gleichartige Terme zusammenfassen.
+🔑 Sonderfall: Heben sich alle x-Terme auf und bleibt eine falsche Aussage übrig (z.B. 15=20), gibt es keine Lösung.
+🔑 Textaufgabe: Wörter Schritt für Schritt in eine Gleichung übersetzen (z.B. "verkleinert um" → –, "vergrössert um" → +, "ebenso viel wie" → =).`,
+        },
+        {
           title: 'a) Brüche zusammenfassen',
           content: `15/7 x – 3/7 x = 1/2 x + 3
 12/7 x = 1/2 x + 3     | ×14

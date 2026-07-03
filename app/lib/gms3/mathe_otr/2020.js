@@ -117,8 +117,9 @@ ii) p = –3 und q = 5`,
       intro: '',
       steps: [
         {
-          title: '📖 Strategie',
-          content: `Die Gleichung ist ein Bruch: (px+5)/(q–3) = 2(qx–4x+p).
+          title: '📖 Begriffe',
+          content: `📐 Gleichung mit Parametern: p und q sind hier keine Unbekannten, sondern feste Werte, die wir einsetzen — danach ist es eine ganz normale Gleichung.
+🔑 Die Gleichung ist ein Bruch: (px+5)/(q–3) = 2(qx–4x+p).
 Wir setzen die gegebenen Werte für p und q ein und lösen dann nach x auf. Da q im Nenner steht, wird daraus jeweils eine Zahl (keine Variable mehr) — Vorsicht beim Vorzeichen des Nenners.`,
         },
         {

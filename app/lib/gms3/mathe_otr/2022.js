@@ -122,8 +122,15 @@ c) ${frac('3', '4')}(x - 4) + ${frac('x', '2')} = 3(x + ${frac('1', '6')})`,
       { label: 'a) x = 5, b) x = 3, c) x = -2', correct: false },
     ],
     solution: {
-      intro: `Wir lösen jede Gleichung Schritt für Schritt durch Klammern auflösen und Umformen.`,
+      intro: '',
       steps: [
+        {
+          title: '📖 Begriffe',
+          content: `📐 Gleichungen lösen: Ziel ist immer, x auf einer Seite allein stehen zu haben.
+🔑 Minusklammer-Regel: Ein Minus vor einer Klammer dreht ALLE Vorzeichen darin um.
+🔑 Klammer mit Faktor: Jeden Term in der Klammer einzeln mit dem Faktor davor multiplizieren.
+🔑 Bruchgleichung: Mit dem kgV aller Nenner multiplizieren, damit die Brüche verschwinden.`,
+        },
         {
           title: 'a) x - 5 - (5 - x) = 0',
           content: `x - 5 - 5 + x = 0
