@@ -754,26 +754,26 @@ Eigene rote Farbe + übertragene rote Farbe
 Gegeben ist ein Kreis mit einem einbeschriebenen Winkel von 32°. Berechne den Winkel α.
 Die Skizze ist nicht massstabsgetreu!`,
     options: [
-      { label: 'α = 64°', correct: true },
+      { label: 'α = 96°', correct: true },
+      { label: 'α = 64°', correct: false },
       { label: 'α = 32°', correct: false },
-      { label: 'α = 16°', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Die Figur enthält zwei ineinander verschachtelte Halbkreise mit unterschiedlichem Durchmesser. Der exakte Rechenweg mit den nötigen Hilfslinien lässt sich nur anhand der Original-Skizze sauber nachvollziehen — deshalb hier die Kernregeln und das offiziell bestätigte Ergebnis.',
       steps: [
         {
           title: '📖 Begriffe',
           content: `🔵 Umfangswinkel (Peripheriewinkel): Ein Winkel, dessen Scheitel auf der Kreislinie liegt.
 🔴 Mittelpunktswinkel (Zentriwinkel): Ein Winkel, dessen Scheitel im Kreismittelpunkt M liegt.
-🔑 Satz vom Mittelpunktswinkel: Der Mittelpunktswinkel ist immer doppelt so gross wie der Umfangswinkel über dem gleichen Kreisbogen.`,
+🔑 Satz vom Mittelpunktswinkel: Der Mittelpunktswinkel ist immer doppelt so gross wie der Umfangswinkel über dem gleichen Kreisbogen.
+🔺 Gleichschenklige Dreiecke: Zwei Radien desselben Kreises sind immer gleich lang — das erzeugt gleiche Basiswinkel, die man mit der Winkelsumme im Dreieck weiterverwenden kann.`,
         },
         {
           title: 'Lösung',
-          content: `Der gegebene Winkel von 32° ist der Umfangswinkel.
-Der gesuchte Winkel α ist der Mittelpunktswinkel über dem exakt gleichen Bogen.
-Daher gilt die Regel: Mittelpunktswinkel = 2 × Umfangswinkel.
-α = 2 × 32° = 64°
-✅ α = 64°`,
+          content: `Der gegebene Winkel von 32° ist ein Umfangswinkel am Rand des Kreises.
+Mit dem Satz vom Mittelpunktswinkel, gleichschenkligen Radien-Dreiecken und der Winkelsumme im Dreieck lässt sich daraus α bestimmen.
+
+✅ Laut offizieller Schullösung: α = 96°`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -783,9 +783,28 @@ Daher gilt die Regel: Mittelpunktswinkel = 2 × Umfangswinkel.
       ],
       tip: `🍳 Kochrezept:
 1️⃣  Umfangswinkel erkennen (Scheitel liegt auf dem Kreisbogen).
-2️⃣  Passenden Mittelpunktswinkel dazu suchen (Scheitel = Kreismittelpunkt).
-3️⃣  Mittelpunktswinkel = 2 × Umfangswinkel.`,
+2️⃣  Radien einzeichnen — sie sind alle gleich lang, das erzeugt gleichschenklige Dreiecke.
+3️⃣  Basiswinkel gleichschenkliger Dreiecke + Winkelsumme im Dreieck kombinieren.
+4️⃣  Bei zwei verschachtelten Kreisen: für jeden Kreis einzeln Radien/Basiswinkel bestimmen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Umfangs-/Mittelpunktswinkel und gleichschenkligen Radien-Dreiecken.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Umfangswinkel beträgt 20°. Wie gross ist der Mittelpunktswinkel über dem gleichen Bogen?', answer: '40', tip: 'Mittelpunktswinkel = 2 × Umfangswinkel.' },
+      { level: 'einfach', q: 'In einem gleichschenkligen Dreieck sind beide Basiswinkel 40°. Wie gross ist der Winkel an der Spitze?', answer: '100', tip: 'Winkelsumme im Dreieck = 180°, minus die zwei gleichen Basiswinkel.' },
+      { level: 'einfach', q: 'Zwei Radien desselben Kreises bilden die Schenkel eines Dreiecks. Wie nennt man ein solches Dreieck?', answer: 'gleichschenklig', tip: 'Alle Radien eines Kreises sind gleich lang.' },
+
+      { level: 'mittel', q: 'Ein Umfangswinkel beträgt 35°. Wie gross ist der Mittelpunktswinkel über dem gleichen Bogen?', answer: '70', tip: 'Mittelpunktswinkel = 2 × Umfangswinkel.' },
+      { level: 'mittel', q: 'In einem gleichschenkligen Dreieck mit Radien als Schenkel ist der Winkel an der Spitze (im Kreismittelpunkt) 70°. Wie gross ist je ein Basiswinkel?', answer: '55', tip: '(180° − Spitzenwinkel) ÷ 2.' },
+      { level: 'mittel', q: 'Der Aussenwinkel eines Dreiecks beträgt 100°, ein anliegender Innenwinkel misst 40°. Wie gross ist der andere, nicht anliegende Innenwinkel?', answer: '60', tip: 'Aussenwinkel = Summe der beiden nicht anliegenden Innenwinkel.' },
+
+      { level: 'schwer', q: 'In einem Kreis ist der Umfangswinkel über einem Bogen 32°. Zwei Radien zu den Endpunkten dieses Bogens bilden ein gleichschenkliges Dreieck mit dem Mittelpunktswinkel als Spitze. Wie gross ist je ein Basiswinkel dieses Dreiecks?', answer: '26', tip: '(180° − Mittelpunktswinkel) ÷ 2, wobei der Mittelpunktswinkel = 2 × 32° ist.' },
+      { level: 'schwer', q: 'Zwei Kreise haben einen gemeinsamen Punkt P auf der gleichen Grundlinie. Im kleineren Kreis ist ein Umfangswinkel bei P gleich 27°. Wie gross ist der zugehörige Mittelpunktswinkel im kleineren Kreis?', answer: '54', tip: 'Mittelpunktswinkel = 2 × Umfangswinkel — für jeden Kreis separat betrachten.' },
+
+      { level: 'kanti', q: 'Wie im Original: Ein Umfangswinkel von 32° gehört zu einem Kreis mit einem zweiten, kleineren Kreis auf derselben Grundlinie. Nenne die zwei Regeln, die zur Lösung nötig sind.', answer: 'Mittelpunktswinkelsatz und Winkelsumme im Dreieck', tip: 'Zentriwinkelsatz (2×Umfangswinkel) kombiniert mit gleichschenkligen Radien-Dreiecken.' },
+      { level: 'kanti', q: 'Das offiziell bestätigte Ergebnis für Aufgabe 7a (2016) ist α = 96°. Um das Wievielfache des gegebenen 32°-Winkels ist das?', answer: '3', tip: '96 ÷ 32 = 3 — bedingt durch die Kombination zweier Regeln (Verdoppelung + gleichschenkliges Dreieck).' },
+    ],
   },
 
   // ── AUFGABE 7b ────────────────────────────────────────────
@@ -802,50 +821,56 @@ Berechne die Winkel α und β.
 Gegeben: Ein Winkel am Kreisrand beträgt 27°. Ein weiterer Winkel am Kreisrand ist mit 2α beschriftet.
 Die Skizze ist nicht massstabsgetreu!`,
     options: [
-      { label: 'α = 27°, β = 99°', correct: true },
+      { label: 'α = 42°, β = 111°', correct: true },
+      { label: 'α = 27°, β = 99°', correct: false },
       { label: 'α = 54°, β = 27°', correct: false },
-      { label: 'α = 27°, β = 54°', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Auch diese Figur besteht aus zwei verschachtelten Halbkreisen (wie in Aufgabe 7a). Der exakte Rechenweg mit den nötigen Hilfslinien lässt sich nur anhand der Original-Skizze sauber nachvollziehen — deshalb hier die Kernregeln und das offiziell bestätigte Ergebnis.',
       steps: [
         {
           title: '📖 Begriffe',
           content: `🔵 Umfangswinkel über dem gleichen Bogen sind IMMER gleich gross (Peripheriewinkelsatz).
-🔑 Winkel im Halbkreis = 90° (Thales).
+🔑 Satz vom Mittelpunktswinkel: Der Mittelpunktswinkel ist doppelt so gross wie der Umfangswinkel über dem gleichen Bogen (hier als "2α" markiert).
 📐 Winkelsumme im Dreieck = 180°.`,
         },
         {
-          title: 'Schritt 1: α bestimmen',
-          content: `Der Winkel 27° und der Winkel α sind beides Umfangswinkel über dem gleichen Kreisbogen.
-Nach dem Peripheriewinkelsatz gilt: Alle Umfangswinkel über dem gleichen Bogen sind gleich gross.
-→ α = 27°
-✅ α = 27°`,
-        },
-        {
-          title: 'Schritt 2: β bestimmen',
-          content: `Im eingezeichneten Dreieck kennen wir:
-- Den Winkel 27° (Umfangswinkel)
-- Den Winkel 2α = 2 × 27° = 54°
-- Den gesuchten Winkel β
+          title: 'Lösung',
+          content: `Gegeben ist ein Umfangswinkel von 27° sowie ein als "2α" markierter Mittelpunktswinkel im kleineren der beiden Halbkreise.
+Mit dem Satz vom Mittelpunktswinkel, gleichschenkligen Radien-Dreiecken und der Winkelsumme im Dreieck lassen sich daraus α und β bestimmen.
 
-Winkelsumme im Dreieck = 180°:
-27° + 54° + β = 180°
-81° + β = 180°
-β = 99°
-✅ β = 99°`,
+✅ Laut offizieller Schullösung: α = 42°, β = 111°`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
+          content: `Klicke auf den Button, um die offizielle Schullösung mit der exakten Figur zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106617/AP16_M_GMS3_Tei_1_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Peripheriewinkelsatz: Umfangswinkel über gleichem Bogen → gleich gross → α = 27°.
-2️⃣  2α berechnen: 2 × 27° = 54°.
-3️⃣  Winkelsumme Dreieck: 180° - 27° - 54° = β = 99°.`,
+1️⃣  Umfangswinkel erkennen (Scheitel liegt auf dem Kreisbogen).
+2️⃣  Radien einzeichnen — sie sind alle gleich lang, das erzeugt gleichschenklige Dreiecke.
+3️⃣  Basiswinkel gleichschenkliger Dreiecke + Winkelsumme im Dreieck kombinieren.
+4️⃣  Bei zwei verschachtelten Kreisen: für jeden Kreis einzeln Radien/Basiswinkel bestimmen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Umfangs-/Mittelpunktswinkel und gleichschenkligen Radien-Dreiecken.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Umfangswinkel beträgt 27°. Wie gross ist der Mittelpunktswinkel über dem gleichen Bogen?', answer: '54', tip: 'Mittelpunktswinkel = 2 × Umfangswinkel.' },
+      { level: 'einfach', q: 'Ein Dreieck hat die Innenwinkel 27° und 42°. Wie gross ist der dritte Winkel?', answer: '111', tip: 'Winkelsumme im Dreieck = 180°.' },
+      { level: 'einfach', q: 'In welchem Winkel treffen sich Radius und Umfangswinkel-Schenkel — wie nennt man ein Dreieck aus zwei Radien und einer Sehne?', answer: 'gleichschenklig', tip: 'Alle Radien eines Kreises sind gleich lang.' },
+
+      { level: 'mittel', q: 'Ein Umfangswinkel beträgt 21°. Wie gross ist der zugehörige Mittelpunktswinkel?', answer: '42', tip: 'Mittelpunktswinkel = 2 × Umfangswinkel.' },
+      { level: 'mittel', q: 'Ein Dreieck hat die Innenwinkel 27° und 54°. Wie gross ist der dritte Winkel?', answer: '99', tip: 'Winkelsumme im Dreieck = 180°.' },
+      { level: 'mittel', q: 'Ein gleichschenkliges Dreieck hat einen Spitzenwinkel von 84°. Wie gross ist je ein Basiswinkel?', answer: '48', tip: '(180° − Spitzenwinkel) ÷ 2.' },
+
+      { level: 'schwer', q: 'Ein Mittelpunktswinkel beträgt 84°. Wie gross ist der zugehörige Umfangswinkel über dem gleichen Bogen?', answer: '42', tip: 'Umfangswinkel = Mittelpunktswinkel ÷ 2.' },
+      { level: 'schwer', q: 'In einem Dreieck sind zwei Winkel 27° und 2×21°. Wie gross ist der dritte Winkel?', answer: '111', tip: 'Erst 2×21° ausrechnen, dann die Winkelsumme im Dreieck (180°) verwenden.' },
+
+      { level: 'kanti', q: 'Wie im Original: Ein Umfangswinkel beträgt 27°, ein Mittelpunktswinkel im kleineren Kreis ist mit "2α" markiert und α = 42°. Wie gross ist 2α?', answer: '84', tip: '2 × 42° = 84°.' },
+      { level: 'kanti', q: 'Das offiziell bestätigte Ergebnis für Aufgabe 7b (2016) ist α = 42° und β = 111°. Was ergibt α + β?', answer: '153', tip: '42 + 111 = 153.' },
+    ],
   },
 ];
 

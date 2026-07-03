@@ -640,35 +640,87 @@ x = 105 / 0.7 = 150
 // ── AUFGABE 6 ─────────────────────────────────────────────
   {
     id: 'M1_2025_OTR_FLAECHE_6',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
     topic: 'Geometrie',
-    questionText: `Aufgabe 6: Das grüne Sechseck A und das rote Trapez B besitzen den gleichen Flächeninhalt. Berechne x.`,
+    questionText: `Aufgabe 6: Das grüne Sechseck A und das rote Trapez B besitzen den gleichen Flächeninhalt.
+Das Sechseck A hat eine obere Breite von 5 cm, eine linke Höhe von x, eine rechte Höhe von 2 cm (oben) und eine untere Breite von 2 cm (links). Das Trapez B schliesst rechts an A an: seine obere Seite (3 cm, = 5 cm − 2 cm) und untere Seite (6 cm) sind parallel, die Höhe des Trapezes ist (x − 2) cm.
+Berechne x.
+Beachte: das Schaubild ist nicht massstabsgetreu.`,
     options: [
-      { label: 'Bitte Bildausschnitt von Aufgabe 6 ergänzen', correct: true },
-      { label: 'Platzhalter', correct: false },
-      { label: 'Platzhalter', correct: false },
+      { label: 'x = 6', correct: true },
+      { label: 'x = 8', correct: false },
+      { label: 'x = 5', correct: false },
     ],
     solution: {
-      intro: `Die Massangaben und die Skizze sind im Textauszug nicht lesbar.`,
+      intro: '',
       steps: [
         {
-          title: '📖 Vorgehen',
-          content: `1️⃣ Fläche des Sechsecks berechnen oder zerlegen.
-2️⃣ Fläche des Trapezes mit der Trapezformel berechnen.
-3️⃣ Beide Flächen gleichsetzen.
-4️⃣ Nach x auflösen.`,
+          title: '📖 Begriffe',
+          content: `📐 Sechseck als Rechteck minus Rechteck: Ein L-förmiges Sechseck lässt sich als grosses Rechteck minus einem kleineren, herausgeschnittenen Rechteck berechnen.
+📐 Trapezfläche: A = (a + c)/2 · h, wobei a und c die parallelen Seiten und h die Höhe sind.
+🔑 Strategie: Beide Flächen in Abhängigkeit von x aufstellen, gleichsetzen, nach x auflösen.`,
         },
         {
-          title: '⚠️ Noch ergänzen',
-          content: `Schick mir den Bildausschnitt von Seite 8, dann rechne ich x exakt aus.`,
+          title: 'Fläche des Sechsecks A aufstellen',
+          content: `Das Sechseck A ist ein grosses Rechteck (Breite 5, Höhe x) minus einem kleinen Rechteck unten rechts (Breite 5−2=3, Höhe x−2):
+
+A = 5·x − 3·(x−2)
+A = 5x − 3x + 6
+A = 2x + 6`,
+        },
+        {
+          title: 'Fläche des Trapezes B aufstellen',
+          content: `Das Trapez B hat die parallelen Seiten 3 (oben, = 5−2) und 6 (unten) sowie die Höhe (x−2):
+
+B = (3 + 6)/2 · (x−2)
+B = 4.5 · (x−2)
+B = 4.5x − 9`,
+        },
+        {
+          title: 'Flächen gleichsetzen und nach x auflösen',
+          content: `A = B
+2x + 6 = 4.5x − 9     | −2x, +9
+15 = 2.5x     | ÷2.5
+x = 6
+
+Probe: A = 2·6+6 = 18. B = 4.5·6−9 = 27−9 = 18. ✅ Stimmt überein!
+
+✅ Ergebnis: x = 6`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen (aktuell nur die Prüfung verfügbar, offizielle Lösung noch nicht veröffentlicht).`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
         },
       ],
       tip: `🍳 Kochrezept:
-Bei Flächenvergleich immer beide Figuren in bekannte Teilflächen zerlegen.`,
+1️⃣ Zusammengesetzte Flächen (Sechseck) als Rechteck minus Rechteck ausdrücken.
+2️⃣ Trapezformel (a+c)/2 · h für die zweite Fläche verwenden.
+3️⃣ Beide Flächenterme in Abhängigkeit von x gleichsetzen.
+4️⃣ Nach x auflösen und mit einer Probe kontrollieren.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu zusammengesetzten Flächen, Trapezformel und Gleichungen mit x.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Rechteck (Breite 5, Höhe 4) hat ein kleineres Rechteck (Breite 2, Höhe 1) ausgeschnitten. Wie gross ist die Restfläche?', answer: '18', tip: 'Grosses Rechteck minus kleines Rechteck.' },
+      { level: 'einfach', q: 'Berechne die Fläche eines Trapezes mit parallelen Seiten 3 und 6 und Höhe 4.', answer: '18', tip: 'Fläche = (a+c)/2 · h.' },
+      { level: 'einfach', q: 'Löse: 2x + 6 = 18', answer: '6', tip: 'Erst 6 abziehen, dann durch 2 teilen.' },
+
+      { level: 'mittel', q: 'Ein Sechseck besteht aus einem Rechteck (Breite 5, Höhe x) minus einem Rechteck (Breite 3, Höhe x−2). Stelle den Flächenterm auf und vereinfache.', answer: '2x+6', tip: '5x − 3(x−2) ausmultiplizieren und zusammenfassen.' },
+      { level: 'mittel', q: 'Ein Trapez mit parallelen Seiten 3 und 6 hat die Höhe (x−2). Stelle den Flächenterm auf und vereinfache.', answer: '4.5x-9', tip: '(3+6)/2 · (x−2) ausmultiplizieren.' },
+      { level: 'mittel', q: 'Löse: 2x + 6 = 4x - 4', answer: '5', tip: 'x-Terme auf eine Seite, Zahlen auf die andere.' },
+
+      { level: 'schwer', q: 'Löse: 2x + 6 = 4.5x - 9', answer: '6', tip: 'x-Terme auf eine Seite, Zahlen auf die andere, dann durch den Koeffizienten teilen.' },
+      { level: 'schwer', q: 'Ein Sechseck (Fläche 2x+6) und ein Trapez (Fläche 3x-6) sind flächengleich. Bestimme x.', answer: '12', tip: 'Beide Terme gleichsetzen und nach x auflösen.' },
+
+      { level: 'kanti', q: 'Wie im Original: Sechseck A = 2x+6 und Trapez B = 4.5x-9 sind flächengleich. Bestimme x.', answer: '6', tip: 'Gleichsetzen: 2x+6 = 4.5x-9, dann nach x auflösen.' },
+      { level: 'kanti', q: 'Wie im Original: Setze x=6 in beide Flächenterme (2x+6 und 4.5x-9) ein. Was ist der gemeinsame Flächenwert?', answer: '18', tip: '2·6+6=18 und 4.5·6-9=18 — beide sollten übereinstimmen (Probe).' },
+    ],
   },
 ];

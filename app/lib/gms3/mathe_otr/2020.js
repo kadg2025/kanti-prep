@@ -444,6 +444,24 @@ Da die genaue Figur aus dem PDF benötigt wird, empfehlen wir die offizielle Sch
 2️⃣  Passende Winkelregel anwenden (Dreieck, Parallelen, Scheitelwinkel).
 3️⃣  Schritt für Schritt die unbekannten Winkel berechnen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Winkelsumme, Scheitel-, Stufen- und Wechselwinkeln.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Dreieck hat die Winkel 90° und 51°. Wie gross ist der dritte Winkel?', answer: '39', tip: 'Winkelsumme im Dreieck = 180°.' },
+      { level: 'einfach', q: 'Zwei Geraden schneiden sich. Ein Winkel beträgt 78°. Wie gross ist der Scheitelwinkel?', answer: '78', tip: 'Scheitelwinkel sind immer gleich gross.' },
+      { level: 'einfach', q: 'An zwei parallelen Geraden entsteht ein Stufenwinkel von 51°. Wie gross ist der zugehörige Stufenwinkel an der anderen Geraden?', answer: '51', tip: 'Stufenwinkel an Parallelen sind gleich gross.' },
+
+      { level: 'mittel', q: 'Ein Dreieck hat die Winkel 78° und 51°. Wie gross ist der dritte Winkel?', answer: '51', tip: 'Winkelsumme im Dreieck = 180°.' },
+      { level: 'mittel', q: 'Ein Winkel und sein Nebenwinkel — was ergeben sie zusammen immer?', answer: '180', tip: 'Nebenwinkel ergänzen sich zu einem gestreckten Winkel.' },
+      { level: 'mittel', q: 'Ein Winkel beträgt 27°, sein Nebenwinkel also?', answer: '153', tip: '180° minus den gegebenen Winkel.' },
+
+      { level: 'schwer', q: 'In einem Dreieck sind zwei Winkel durch Wechselwinkel an Parallelen bekannt: 78° und 51°. Wie gross ist der dritte Winkel?', answer: '51', tip: 'Winkelsumme im Dreieck = 180°, die anderen zwei über die Parallelenregeln bestimmen.' },
+      { level: 'schwer', q: 'Ein Aussenwinkel eines Dreiecks beträgt 129°. Die beiden nicht anliegenden Innenwinkel sind gleich gross. Wie gross ist jeder?', answer: '64.5', tip: 'Aussenwinkel = Summe der zwei nicht anliegenden Innenwinkel.' },
+
+      { level: 'kanti', q: 'Wie im Original 3a: Mit Winkelsumme im Dreieck, Scheitel-, Stufen- und Wechselwinkeln ergeben sich α, β, γ. Wenn α=78° und γ=27°, wie gross ist β (im gleichen Dreieck)?', answer: '75', tip: 'Winkelsumme im Dreieck = 180° − α − γ.' },
+      { level: 'kanti', q: 'Wie im Original 3b: Nenne die wichtigste Regel, um einen unbekannten Winkel über eine Hilfslinie (Parallele) zu bestimmen.', answer: 'Stufen- oder Wechselwinkel an Parallelen sind gleich gross', tip: 'Hilfslinie als Parallele einzeichnen, dann Stufen-/Wechselwinkel nutzen.' },
+    ],
   },
 
   // ── AUFGABE 3b ────────────────────────────────────────────
@@ -486,6 +504,24 @@ Da die genaue Figur aus dem PDF benötigt wird, empfehlen wir die offizielle Sch
 2️⃣  Bekannte Winkel nutzen.
 3️⃣  Winkelsummen im Dreieck oder an Geraden ausnutzen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Hilfslinien, Winkelsumme und Nebenwinkeln.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Dreieck hat die Winkel 90° und 48°. Wie gross ist der dritte Winkel?', answer: '42', tip: 'Winkelsumme im Dreieck = 180°.' },
+      { level: 'einfach', q: 'Ein Winkel beträgt 138°. Wie gross ist sein Nebenwinkel?', answer: '42', tip: 'Nebenwinkel ergänzen sich zu 180°.' },
+      { level: 'einfach', q: 'Zwei Geraden schneiden sich. Ein Winkel beträgt 42°. Wie gross ist der Scheitelwinkel?', answer: '42', tip: 'Scheitelwinkel sind immer gleich gross.' },
+
+      { level: 'mittel', q: 'Ein Dreieck hat die Winkel 55° und 83°. Wie gross ist der dritte Winkel?', answer: '42', tip: 'Winkelsumme im Dreieck = 180°.' },
+      { level: 'mittel', q: 'Warum hilft eine eingezeichnete Parallele oft beim Bestimmen eines unbekannten Winkels?', answer: 'weil dadurch Stufen- oder Wechselwinkel entstehen, die gleich gross sind', tip: 'Parallelen erzeugen gleich grosse Winkelpaare an der Schnittgeraden.' },
+      { level: 'mittel', q: 'Ein Winkel entsteht als Summe zweier bekannter Winkel 18° und 24°. Wie gross ist er?', answer: '42', tip: 'Einfach addieren, wenn die Winkel aneinanderliegen.' },
+
+      { level: 'schwer', q: 'In einem Dreieck ist ein Winkel doppelt so gross wie ein anderer, der dritte ist 42°. Die beiden anderen summieren sich auf wie viel Grad?', answer: '138', tip: '180° minus den bekannten Winkel.' },
+      { level: 'schwer', q: 'Ein Aussenwinkel eines Dreiecks beträgt 138°. Wie gross ist der anliegende Innenwinkel?', answer: '42', tip: 'Aussenwinkel und anliegender Innenwinkel sind Nebenwinkel (Summe 180°).' },
+
+      { level: 'kanti', q: 'Wie im Original: Mit Hilfslinien (Parallele einzeichnen), bekannten Winkeln und der Winkelsumme im Dreieck ergibt sich α = 42°. Was ist der erste Schritt bei einer solchen Aufgabe ohne offensichtliche Parallele?', answer: 'eine Hilfslinie parallel zu einer gegebenen Geraden einzeichnen', tip: 'Hilfslinien machen versteckte Stufen-/Wechselwinkel sichtbar.' },
+      { level: 'kanti', q: 'Warum kann man bei "nicht massstabsgetreuen" Figuren nicht einfach mit dem Geodreieck messen?', answer: 'weil die Zeichnung nicht winkeltreu ist, nur die Rechnung zählt', tip: 'Die Aufgabe verlangt eine rechnerische Lösung über Winkelregeln, nicht das Abmessen.' },
+    ],
   },
 
   // ── AUFGABE 4a ────────────────────────────────────────────

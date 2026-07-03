@@ -504,6 +504,24 @@ In der Figur sind Längen und Winkel nicht massstabsgetreu.`,
 3️⃣ Winkelsumme im Dreieck = 180°.
 4️⃣ Bei Parallelen: Z-, F- und Wechselwinkel prüfen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Nebenwinkel, Scheitelwinkel und Winkelsumme im Dreieck.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Winkel beträgt 112.5°. Wie gross ist sein Nebenwinkel?', answer: '67.5', tip: 'Nebenwinkel ergänzen sich zu 180°.' },
+      { level: 'einfach', q: 'Zwei Geraden schneiden sich. Ein Winkel beträgt 45°. Wie gross ist der Scheitelwinkel?', answer: '45', tip: 'Scheitelwinkel sind immer gleich gross.' },
+      { level: 'einfach', q: 'Ein Dreieck hat die Winkel 90° und 45°. Wie gross ist der dritte Winkel?', answer: '45', tip: 'Winkelsumme im Dreieck = 180°.' },
+
+      { level: 'mittel', q: 'Ein Dreieck hat die Winkel 67.5° und 45°. Wie gross ist der dritte Winkel?', answer: '67.5', tip: 'Winkelsumme im Dreieck = 180°.' },
+      { level: 'mittel', q: 'Ein Winkel beträgt 78.75°. Wie gross ist sein Nebenwinkel?', answer: '101.25', tip: '180° minus den gegebenen Winkel.' },
+      { level: 'mittel', q: 'An zwei parallelen Geraden ist ein Wechselwinkel 67.5°. Wie gross ist der zugehörige Wechselwinkel an der anderen Geraden?', answer: '67.5', tip: 'Wechselwinkel an Parallelen sind gleich gross.' },
+
+      { level: 'schwer', q: 'In einem Dreieck sind zwei Winkel über Scheitel- und Nebenwinkel bekannt: 67.5° und 45°. Wie gross ist der dritte Winkel?', answer: '67.5', tip: 'Winkelsumme im Dreieck = 180° minus die beiden anderen Winkel.' },
+      { level: 'schwer', q: 'Ein Aussenwinkel eines Dreiecks beträgt 112.5°. Ein nicht anliegender Innenwinkel ist 45°. Wie gross ist der andere nicht anliegende Innenwinkel?', answer: '67.5', tip: 'Aussenwinkel = Summe der zwei nicht anliegenden Innenwinkel.' },
+
+      { level: 'kanti', q: 'Wie im Original: α = 67.5°, β = 45°. Wie gross ist γ, wenn α, β und γ Innenwinkel desselben Dreiecks sind?', answer: '67.5', tip: '180° − α − β.' },
+      { level: 'kanti', q: 'Wie im Original: Wenn γ = 78.75° durch Nebenwinkel zu einem 101.25°-Winkel entsteht, stimmt das? Prüfe: 78.75+101.25=?', answer: '180', tip: 'Nebenwinkel ergänzen sich immer zu 180°.' },
+    ],
   },
 
   // ── AUFGABE 7 ─────────────────────────────────────────────

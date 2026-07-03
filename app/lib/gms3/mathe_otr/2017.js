@@ -687,6 +687,8 @@ d = √(D² - 4A/π)`,
 
     id: 'M1_2017_OTR_SPIEG_1',
 
+    verified: true,
+
     year: 2017,
 
     subject: 'Mathe',
@@ -787,6 +789,24 @@ y-Weg: Von 3.5 zu 1.5 ist –2. Nochmal –2 dazu: 1.5 - 2 = -0.5.
 
     },
 
+    // ── ÜBUNGEN: aufbauend zu Geradenspiegelung (y=x) und Punktspiegelung.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Spiegle den Punkt (2|5) an der Geraden y=x. Wie lauten die neuen Koordinaten?', answer: '(5|2)', tip: 'Bei Spiegelung an y=x werden x- und y-Koordinate vertauscht.' },
+      { level: 'einfach', q: 'Spiegle den Punkt (3|3) an der Geraden y=x. Wie lauten die neuen Koordinaten?', answer: '(3|3)', tip: 'Punkte auf der Spiegelachse ändern sich nicht.' },
+      { level: 'einfach', q: 'Spiegle den Punkt (1|1) am Punkt (1|1) selbst. Wie lauten die neuen Koordinaten?', answer: '(1|1)', tip: 'Das Spiegelzentrum bleibt bei einer Punktspiegelung immer an seinem Ort.' },
+
+      { level: 'mittel', q: 'Spiegle den Punkt (0|4) am Punkt Z(2|2). Wie lauten die neuen Koordinaten?', answer: '(4|0)', tip: 'Gehe vom Punkt zum Zentrum und denselben Weg nochmals weiter.' },
+      { level: 'mittel', q: 'Spiegle den Punkt (6|2) am Punkt Z(4|1.5). Wie lauten die neuen Koordinaten?', answer: '(2|1)', tip: 'x-Weg und y-Weg getrennt verdoppeln.' },
+      { level: 'mittel', q: 'Spiegle den Punkt (2|6) an der Geraden y=x. Wie lauten die neuen Koordinaten?', answer: '(6|2)', tip: 'x- und y-Koordinate vertauschen.' },
+
+      { level: 'schwer', q: 'Spiegle den Punkt (5|3.5) am Punkt Z(4|1.5). Wie lauten die neuen Koordinaten?', answer: '(3|-0.5)', tip: 'x-Weg: 5→4 ist -1, nochmal -1 dazu. y-Weg: 3.5→1.5 ist -2, nochmal -2 dazu.' },
+      { level: 'schwer', q: 'Ein Dreieck mit Ecke A(1.5|1.5) wird an der Geraden durch (0|0) und A gespiegelt. Wie lautet A\' ?', answer: '(1.5|1.5)', tip: 'A liegt auf der Spiegelachse selbst — was passiert dann?' },
+
+      { level: 'kanti', q: 'Wie im Original: Spiegle B(4|1.5) an der Geraden y=x. Wie lautet B\'?', answer: '(1.5|4)', tip: 'x- und y-Koordinate vertauschen — genau wie im Original a).' },
+      { level: 'kanti', q: 'Wie im Original: Spiegle C(4.5|3.5) am Punkt B(4|1.5). Wie lautet C\'\'?', answer: '(3.5|-0.5)', tip: 'x-Weg: 4.5→4 ist -0.5, nochmal -0.5 dazu. y-Weg: 3.5→1.5 ist -2, nochmal -2 dazu — genau wie im Original b).' },
+    ],
+
   },
 
   // ── AUFGABE 7 ─────────────────────────────────────────────
@@ -794,6 +814,8 @@ y-Weg: Von 3.5 zu 1.5 ist –2. Nochmal –2 dazu: 1.5 - 2 = -0.5.
   {
 
     id: 'M1_2017_OTR_KONSTR_1',
+
+    verified: true,
 
     year: 2017,
 
@@ -880,6 +902,24 @@ Der gesuchte Mittelpunkt M ist also der Schnittpunkt der Geraden aus (1) und der
 4. Der Schnittpunkt der Geraden aus (1) und der Winkelhalbierenden aus (3) ist der gesuchte Mittelpunkt.`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zu Kreis-Tangenten, Berührbedingungen und Winkelhalbierenden.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Wie steht der Radius eines Kreises zur Tangente im Berührpunkt? (senkrecht/parallel)', answer: 'senkrecht', tip: 'Das ist die Grundeigenschaft jeder Kreistangente.' },
+      { level: 'einfach', q: 'Wenn sich zwei Kreise in einem Punkt berühren, liegen ihre Mittelpunkte und der Berührpunkt auf einer... (Gerade/Kurve)', answer: 'Gerade', tip: 'Die Verbindungslinie der Mittelpunkte geht durch den Berührpunkt.' },
+      { level: 'einfach', q: 'Wie heisst die Menge aller Punkte, die von zwei sich schneidenden Geraden gleich weit entfernt sind?', answer: 'Winkelhalbierende', tip: 'Sie halbiert den Winkel zwischen den beiden Geraden.' },
+
+      { level: 'mittel', q: 'Ein Kreis soll eine Gerade g berühren. Auf welcher Linie muss sein Mittelpunkt liegen, damit der Abstand zu g gleich dem Radius ist? (allgemein beschreiben)', answer: 'Parallele zu g im Abstand r', tip: 'Der Radius zum Berührpunkt steht senkrecht auf g.' },
+      { level: 'mittel', q: 'Warum kann man die Tangente an einen Kreis in einem gegebenen Punkt P konstruieren, wenn man den Mittelpunkt kennt?', answer: 'Senkrechte zum Radius in P', tip: 'Tangente = Senkrechte zum Radius im Berührpunkt.' },
+      { level: 'mittel', q: 'Zwei Kreise berühren sich von aussen in P. Was gilt für M1, P und M2?', answer: 'liegen auf einer Geraden', tip: 'Die Mittelpunkte und der Berührpunkt sind kollinear.' },
+
+      { level: 'schwer', q: 'Warum ist der gesuchte Mittelpunkt M eines Kreises, der sowohl g als auch k1 in P berührt, gleich weit von g wie von der Tangente t an k1 in P entfernt?', answer: 'weil beide Abstände dem Radius des neuen Kreises entsprechen', tip: 'Der Radius zum Berührpunkt mit k1 UND der Abstand zu g sind beide gleich r.' },
+      { level: 'schwer', q: 'Welche zwei Bedingungen legen den gesuchten Mittelpunkt M eindeutig fest?', answer: 'Gerade durch M1 und P, und Winkelhalbierende zwischen g und der Tangente t', tip: 'M muss beide Bedingungen gleichzeitig erfüllen — der Schnittpunkt ist eindeutig.' },
+
+      { level: 'kanti', q: 'Wie im Original: Nenne die vier Konstruktionsschritte, um den Kreis zu finden, der g berührt und k1 in P berührt.', answer: 'Gerade M1-P, Tangente in P, Winkelhalbierende, Schnittpunkt', tip: 'Gerade durch M1/P → Tangente konstruieren → Winkelhalbierende zu g und t → Schnittpunkt = M.' },
+      { level: 'kanti', q: 'Warum reicht es nicht, M einfach auf die Senkrechte zu g durch P zu legen?', answer: 'weil M zusätzlich auf der Geraden durch M1 und P liegen muss', tip: 'Es gibt zwei Bedingungen gleichzeitig — nur der Schnittpunkt beider erfüllt sie.' },
+    ],
 
   },
 

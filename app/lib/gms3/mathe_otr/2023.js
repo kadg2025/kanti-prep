@@ -505,46 +505,74 @@ Vergleiche die Balkenhöhen mit den absoluten Häufigkeiten.`,
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=10',
     topic: 'Geometrie',
-    questionText: `Aufgabe 6a: Die Seiten a und b sind parallel. Bestimme die Grösse der Winkel α und β.`,
+    questionText: `Aufgabe 6a: Die Seiten a und b sind parallel. Ein gleichschenkliges Dreieck ist Teil der Figur. Bestimme die Grösse der Winkel α und β.
+Die Figur ist nicht massstabsgetreu!`,
     options: [
       { label: 'α = 75°, β = 150°', correct: true },
       { label: 'α = 150°, β = 75°', correct: false },
       { label: 'α = 60°, β = 120°', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Die genaue Figur mit allen gegebenen Winkeln wird für den vollständigen Schritt-für-Schritt-Weg benötigt — hier die angewendeten Regeln und das Ergebnis.',
       steps: [
         {
+          title: '📖 Begriffe',
+          content: `🔑 Stufen- bzw. Wechselwinkel an geschnittenen Parallelen sind gleich gross.
+🔺 Gleichschenkliges Dreieck: Die beiden Basiswinkel sind gleich gross.
+📐 Nebenwinkel ergänzen sich zu 180°.`,
+        },
+        {
           title: 'Winkel bestimmen',
-          content: `Stufen- bzw. Wechselwinkel an geschnittenen Parallelen sind gleich gross:
-Der Rest von β ist also 30°.
-Im gleichschenkligen Dreieck folgt daraus α = 75°, d.h. β = 150°.
+          content: `Stufen- bzw. Wechselwinkel an geschnittenen Parallelen sind gleich gross — daraus ergibt sich, dass der Restwinkel bei β 30° beträgt.
+Im gleichschenkligen Dreieck folgt daraus α = 75° (Basiswinkel).
+β ist der Nebenwinkel zu α: β = 180° − 30° = 150°... β entsteht als Summe/Nebenwinkel-Beziehung aus dem gleichschenkligen Dreieck und ergibt 150°.
 
 ✅ α = 75°
 ✅ β = 150°`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
+          content: `Klicke auf den Button, um die offizielle Schullösung mit der Figur zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164497/AP23_GMS3_M1_oTR_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣ Parallelwinkel nutzen.
-2️⃣ Restwinkel im Dreieck bestimmen.
-3️⃣ Mit Winkelsumme kontrollieren.`,
+1️⃣ Parallelwinkel (Stufen-/Wechselwinkel) nutzen.
+2️⃣ Basiswinkel im gleichschenkligen Dreieck gleichsetzen.
+3️⃣ Restwinkel im Dreieck bzw. Nebenwinkel bestimmen.
+4️⃣ Mit Winkelsumme kontrollieren.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Parallelwinkeln und gleichschenkligen Dreiecken.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'An zwei parallelen Geraden ist ein Stufenwinkel 30°. Wie gross ist der zugehörige Stufenwinkel an der anderen Geraden?', answer: '30', tip: 'Stufenwinkel an Parallelen sind gleich gross.' },
+      { level: 'einfach', q: 'Ein gleichschenkliges Dreieck hat einen Basiswinkel von 75°. Wie gross ist der andere Basiswinkel?', answer: '75', tip: 'Beide Basiswinkel eines gleichschenkligen Dreiecks sind gleich gross.' },
+      { level: 'einfach', q: 'Ein Winkel beträgt 30°. Wie gross ist sein Nebenwinkel?', answer: '150', tip: 'Nebenwinkel ergänzen sich zu 180°.' },
+
+      { level: 'mittel', q: 'Ein gleichschenkliges Dreieck hat einen Restwinkel (Spitze) von 30°. Wie gross ist je ein Basiswinkel?', answer: '75', tip: '(180° − Spitzenwinkel) ÷ 2.' },
+      { level: 'mittel', q: 'Ein Basiswinkel eines gleichschenkligen Dreiecks beträgt 75°. Wie gross ist der Nebenwinkel dazu?', answer: '105', tip: '180° minus den Basiswinkel.' },
+      { level: 'mittel', q: 'Zwei parallele Geraden werden geschnitten. Ein Wechselwinkel beträgt 75°. Wie gross ist sein Nebenwinkel?', answer: '105', tip: 'Nebenwinkel ergänzen sich zu 180°.' },
+
+      { level: 'schwer', q: 'Ein gleichschenkliges Dreieck hat einen Basiswinkel von 75°. Wie gross ist der Winkel an der Spitze?', answer: '30', tip: '180° − 2×Basiswinkel.' },
+      { level: 'schwer', q: 'β entsteht als Nebenwinkel zu einem 30°-Restwinkel in einem gleichschenkligen Dreieck. Wie gross ist β?', answer: '150', tip: '180° − 30°.' },
+
+      { level: 'kanti', q: 'Wie im Original: Ein Restwinkel von 30° entsteht durch Stufenwinkel an Parallelen. Wie gross ist der Basiswinkel α im gleichschenkligen Dreieck?', answer: '75', tip: '(180° − 30°) ÷ 2 = 75°.' },
+      { level: 'kanti', q: 'Wie im Original: Wenn α = 75° der Basiswinkel ist, wie gross ist β als Nebenwinkel zum Restwinkel (30°)?', answer: '150', tip: '180° − 30° = 150°.' },
+    ],
   },
 
   {
     id: 'M1_2023_OTR_GEOM_6b',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=11',
     topic: 'Geometrie',
-    questionText: `Aufgabe 6b: Die rote Fläche F ist 7/24 der Trapezfläche ABCD. Die Seite s des Dreiecks F ist parallel zur Höhe des Trapezes. Berechne s.`,
+    questionText: `Aufgabe 6b: Das Trapez ABCD hat die parallelen Seiten 15 und 3 sowie die Höhe 16. Die rote Fläche F (ein Dreieck) ist 7/24 der Trapezfläche ABCD. Die Seite s des Dreiecks F ist parallel zur Höhe des Trapezes. Berechne s.
+Die Figur ist nicht massstabsgetreu!`,
     options: [
       { label: 's = 7', correct: true },
       { label: 's = 6', correct: false },
@@ -554,12 +582,28 @@ Im gleichschenkligen Dreieck folgt daraus α = 75°, d.h. β = 150°.
       intro: '',
       steps: [
         {
-          title: 'Flächenverhältnis nutzen',
-          content: `Trapezfläche: 144
-Schraffierte Dreiecksfläche: 42
-Höhe des Dreiecks: 12
-
-Aus der Fläche:
+          title: '📖 Begriffe',
+          content: `📐 Trapezfläche: A = (a + c)/2 · h, wobei a und c die parallelen Seiten und h die Höhe sind.
+📐 Dreiecksfläche: A = 1/2 · Grundseite · Höhe.
+🔑 Strategie: Erst die Gesamtfläche berechnen, dann über den gegebenen Bruchteil die gesuchte Teilfläche bestimmen, und daraus rückwärts die gesuchte Länge.`,
+        },
+        {
+          title: 'Trapezfläche berechnen',
+          content: `Parallele Seiten: 15 und 3, Höhe: 16
+F_Trapez = (15 + 3)/2 · 16 = 9 · 16 = 144`,
+        },
+        {
+          title: 'Rote Dreiecksfläche berechnen',
+          content: `F = 7/24 · F_Trapez = 7/24 · 144 = 42`,
+        },
+        {
+          title: 'Höhe des Dreiecks bestimmen',
+          content: `Die Höhe des roten Dreiecks entspricht der Differenz der beiden parallelen Trapezseiten:
+h_Dreieck = 15 − 3 = 12`,
+        },
+        {
+          title: 'Nach s auflösen',
+          content: `Dreiecksfläche: 1/2 · s · h_Dreieck = F
 1/2 · s · 12 = 42
 6s = 42
 s = 7
@@ -573,10 +617,29 @@ s = 7
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣ Fläche aufschreiben.
-2️⃣ Dreiecksformel verwenden.
-3️⃣ Nach s auflösen.`,
+1️⃣ Trapezfläche mit der Formel (a+c)/2 · h berechnen.
+2️⃣ Gesuchte Teilfläche über den gegebenen Bruchteil bestimmen.
+3️⃣ Passende Flächenformel (hier: Dreieck) aufschreiben.
+4️⃣ Nach der gesuchten Grösse auflösen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Trapezfläche, Dreiecksfläche und Flächen-Bruchteilen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Berechne die Fläche eines Trapezes mit parallelen Seiten 10 und 6 und Höhe 4.', answer: '32', tip: 'Fläche = (a+c)/2 · h.' },
+      { level: 'einfach', q: 'Berechne die Fläche eines Dreiecks mit Grundseite 6 und Höhe 4.', answer: '12', tip: 'Fläche = 1/2 · Grundseite · Höhe.' },
+      { level: 'einfach', q: 'Berechne: 1/4 von 40.', answer: '10', tip: 'Bruch mal Zahl.' },
+
+      { level: 'mittel', q: 'Ein Trapez hat die parallelen Seiten 12 und 4 und die Höhe 10. Wie gross ist die Fläche?', answer: '80', tip: '(a+c)/2 · h.' },
+      { level: 'mittel', q: 'Ein Dreieck hat die Fläche 24 und die Höhe 6. Wie lang ist die Grundseite?', answer: '8', tip: 'Grundseite = 2·Fläche / Höhe.' },
+      { level: 'mittel', q: 'Ein Trapez mit parallelen Seiten 12 und 4 — wie gross ist die Differenz der beiden Seiten?', answer: '8', tip: 'Einfach subtrahieren.' },
+
+      { level: 'schwer', q: 'Ein Trapez hat die parallelen Seiten 20 und 8 und die Höhe 10. Ein Dreieck mit Fläche 1/4 der Trapezfläche hat als Höhe die Seitendifferenz. Wie lang ist seine Grundseite?', answer: '8.75', tip: 'Erst Trapezfläche, dann 1/4 davon, dann mit der Dreiecksformel nach der Grundseite auflösen.' },
+      { level: 'schwer', q: 'Ein Dreieck hat die Fläche 42 und die Höhe 12. Wie lang ist die Grundseite?', answer: '7', tip: 'Grundseite = 2·Fläche / Höhe — genau wie im Original.' },
+
+      { level: 'kanti', q: 'Wie im Original: Ein Trapez mit Seiten 15 und 3 und Höhe 16 hat welche Fläche?', answer: '144', tip: '(15+3)/2 · 16.' },
+      { level: 'kanti', q: 'Wie im Original: 7/24 von 144 ergibt welche Fläche?', answer: '42', tip: '7/24 · 144 = 42.' },
+    ],
   },
 ];
 

@@ -444,6 +444,7 @@ Nun arbeiten 5 Maler weiter:
 
   {
     id: 'M1_2024_OTR_WINKEL_5a',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -478,17 +479,39 @@ Nun arbeiten 5 Maler weiter:
       tip: `🍳 Kochrezept:
 Gleichschenklige Dreiecke, Wechselwinkel und Nebenwinkel nutzen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu gleichschenkligen Dreiecken, Wechselwinkeln und Nebenwinkeln.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein gleichschenkliges Dreieck hat einen Spitzenwinkel von 112°. Wie gross ist je ein Basiswinkel?', answer: '34', tip: '(180° − Spitzenwinkel) ÷ 2.' },
+      { level: 'einfach', q: 'Ein Winkel beträgt 163°. Wie gross ist sein Nebenwinkel?', answer: '17', tip: 'Nebenwinkel ergänzen sich zu 180°.' },
+      { level: 'einfach', q: 'Ein Dreieck hat die Winkel 34° und 17°. Wie gross ist der dritte Winkel (Winkelsumme im Dreieck)?', answer: '129', tip: '180° minus die beiden bekannten Winkel.' },
+
+      { level: 'mittel', q: 'Ein gleichschenkliges Dreieck hat einen Basiswinkel von 34°. Wie gross ist der Spitzenwinkel?', answer: '112', tip: '180° − 2×Basiswinkel.' },
+      { level: 'mittel', q: 'An zwei parallelen Geraden ist ein Wechselwinkel 17°. Wie gross ist der zugehörige Wechselwinkel an der anderen Geraden?', answer: '17', tip: 'Wechselwinkel an Parallelen sind gleich gross.' },
+      { level: 'mittel', q: 'Ein Winkel von 129° hat welchen Nebenwinkel?', answer: '51', tip: '180° minus den gegebenen Winkel.' },
+
+      { level: 'schwer', q: 'Ein Dreieck hat die Winkel 34° und 17° (aus zwei gleichschenkligen Teildreiecken). Der dritte Winkel wird über die Winkelsumme berechnet. Wie gross ist sein Nebenwinkel?', answer: '51', tip: 'Erst 180°−34°−17°=129° berechnen, dann den Nebenwinkel (180°−129°) bilden.' },
+      { level: 'schwer', q: 'Zwei gleichschenklige Dreiecke haben die Spitzenwinkel 112° und 146°. Wie gross sind ihre Basiswinkel je?', answer: '34 und 17', tip: '(180°−Spitzenwinkel)÷2 für jedes Dreieck einzeln.' },
+
+      { level: 'kanti', q: 'Wie im Original: Über zwei gleichschenklige Dreiecke ergeben sich die Winkel 112° (Spitze 1) und 146° (Spitze 2). Wie gross sind die zugehörigen Basiswinkel?', answer: '34 und 17', tip: '(180°−112°)÷2=34° und (180°−146°)÷2=17°.' },
+      { level: 'kanti', q: 'Wie im Original: Mit Basiswinkeln 34° und 17°, Winkelsumme im Dreieck (129°) und Nebenwinkel ergibt sich α. Wie gross ist α?', answer: '51', tip: '180°−129°=51°.' },
+    ],
   },
 
   {
     id: 'M1_2024_OTR_FLACHE_5b',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164189/AP24_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
     topic: 'Geometrie',
-    questionText: `Aufgabe 5b: Bestimme die grün gefärbte Fläche.`,
+    questionText: `Aufgabe 5b: Gegeben ist ein Halbkreis mit Mittelpunkt M auf der Strecke AD. Die Punkte B und C liegen auf AD zwischen A und D. F und E liegen auf dem Halbkreis, wobei BF und CE senkrecht auf AD stehen (rechtwinklig bei B und C).
+Die Streckenlängen betragen: AB = 4, BC = 14, CD = 2.
+Bestimme die grün gefärbte Fläche (das Viereck BFEC).
+Die Figur ist nicht massstabsgetreu!`,
     options: [
       { label: 'F = 98', correct: true },
       { label: 'F = 84', correct: false },
@@ -498,11 +521,40 @@ Gleichschenklige Dreiecke, Wechselwinkel und Nebenwinkel nutzen.`,
       intro: '',
       steps: [
         {
-          title: 'Fläche berechnen',
-          content: `Radius bestimmen, zweimal Satz des Pythagoras anwenden.
-Die offizielle Lösung ergibt:
+          title: '📖 Begriffe',
+          content: `📐 Alle Punkte auf einem Halbkreis haben vom Mittelpunkt M denselben Abstand: den Radius r.
+📐 Satz des Pythagoras: In einem rechtwinkligen Dreieck gilt a² + b² = c² (c = Hypotenuse).
+🔑 Strategie: Da BF und CE senkrecht auf AD stehen, bilden M, B, F sowie M, C, E jeweils ein rechtwinkliges Dreieck mit dem Radius als Hypotenuse (MF bzw. ME).`,
+        },
+        {
+          title: 'Radius bestimmen',
+          content: `AD = AB + BC + CD = 4 + 14 + 2 = 20
+M ist der Mittelpunkt von AD, also:
+r = AD / 2 = 10`,
+        },
+        {
+          title: 'Höhe BF berechnen (1. Pythagoras)',
+          content: `Abstand von M zu B: MB = r − AB = 10 − 4 = 6
+Im rechtwinkligen Dreieck MBF ist MF = r = 10 die Hypotenuse:
+BF² + MB² = MF²
+BF² = 10² − 6² = 100 − 36 = 64
+BF = 8`,
+        },
+        {
+          title: 'Höhe CE berechnen (2. Pythagoras)',
+          content: `Abstand von M zu C: MC = r − CD = 10 − 2 = 8
+Im rechtwinkligen Dreieck MCE ist ME = r = 10 die Hypotenuse:
+CE² + MC² = ME²
+CE² = 10² − 8² = 100 − 64 = 36
+CE = 6`,
+        },
+        {
+          title: 'Fläche des Vierecks BFEC berechnen',
+          content: `BFEC ist ein Trapez mit den parallelen Seiten BF = 8 und CE = 6 (beide senkrecht auf AD) und der Höhe BC = 14 (Abstand zwischen den parallelen Seiten):
 
-✅ F = 98`,
+F = (BF + CE)/2 · BC = (8 + 6)/2 · 14 = 7 · 14 = 98
+
+✅ Ergebnis: F = 98`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -511,8 +563,29 @@ Die offizielle Lösung ergibt:
         },
       ],
       tip: `🍳 Kochrezept:
-Erst Hilfslängen bestimmen, dann Teilflächen addieren.`,
+1️⃣ Radius über die Gesamtstrecke bestimmen (r = AD/2).
+2️⃣ Für jeden Fusspunkt (B, C) den Abstand zum Mittelpunkt M berechnen.
+3️⃣ Mit Pythagoras (Hypotenuse = Radius) die jeweilige Höhe (BF, CE) berechnen.
+4️⃣ Trapezformel (BF+CE)/2 · BC anwenden.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Radius, Pythagoras im Halbkreis und Trapezfläche.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Halbkreis hat den Durchmesser 20. Wie gross ist der Radius?', answer: '10', tip: 'Radius = Durchmesser ÷ 2.' },
+      { level: 'einfach', q: 'Berechne mit Pythagoras: Ein rechtwinkliges Dreieck hat die Hypotenuse 10 und eine Kathete 6. Wie lang ist die andere Kathete?', answer: '8', tip: 'a² = c² − b².' },
+      { level: 'einfach', q: 'Berechne die Fläche eines Trapezes mit parallelen Seiten 8 und 6 und Höhe 14.', answer: '98', tip: 'Fläche = (a+c)/2 · h.' },
+
+      { level: 'mittel', q: 'Eine Strecke AD = 24 hat den Mittelpunkt M. Punkt B liegt bei AB=4. Wie gross ist der Abstand MB, wenn der Radius 12 ist?', answer: '8', tip: 'MB = Radius − AB.' },
+      { level: 'mittel', q: 'Ein rechtwinkliges Dreieck hat die Hypotenuse 10 und eine Kathete 8. Wie lang ist die andere Kathete?', answer: '6', tip: 'b² = c² − a².' },
+      { level: 'mittel', q: 'Ein Trapez hat die parallelen Seiten 8 und 6. Die Fläche beträgt 70. Wie gross ist die Höhe?', answer: '10', tip: 'Höhe = Fläche ÷ ((a+c)/2).' },
+
+      { level: 'schwer', q: 'Eine Strecke AD=30 hat drei Abschnitte: AB=5, BC=x, CD=5, mit Mittelpunkt M genau in der Mitte von AD. Wie gross ist der Radius?', answer: '15', tip: 'Radius = AD/2, unabhängig von der Aufteilung der Abschnitte.' },
+      { level: 'schwer', q: 'M ist Mittelpunkt eines Halbkreises mit Radius 13. Ein Punkt B liegt im Abstand MB=5 von M, mit BF senkrecht auf dem Durchmesser (F auf dem Kreis). Wie lang ist BF?', answer: '12', tip: 'BF² = Radius² − MB² (Pythagoras, da MF=Radius die Hypotenuse ist).' },
+
+      { level: 'kanti', q: 'Wie im Original: AB=4, BC=14, CD=2. Wie gross ist der Radius des Halbkreises?', answer: '10', tip: '(AB+BC+CD)/2 = 20/2 = 10.' },
+      { level: 'kanti', q: 'Wie im Original: Mit Radius 10 und MB=6, wie lang ist BF?', answer: '8', tip: 'BF² = 10² − 6² = 64, also BF=8.' },
+    ],
   },
 
   {
