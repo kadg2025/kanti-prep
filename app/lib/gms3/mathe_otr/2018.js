@@ -565,6 +565,8 @@ b) Zeige mit einem Gegenbeispiel, dass diese Behauptung FALSCH ist:
 
     id: 'M3_2018_OTR_WAHR_5',
 
+    verified: true,
+
     year: 2018,
 
     subject: 'Mathe',
@@ -608,6 +610,16 @@ e) Die zweite Kugel ist rot oder schwarz.`,
       intro: '',
 
       steps: [
+
+        {
+
+          title: '📖 Begriffe',
+
+          content: `📐 Mit Zurücklegen: Nach dem ersten Zug wird die Kugel zurückgelegt — die Wahrscheinlichkeiten bleiben beim zweiten Zug also gleich.
+🔑 UND-Regel (Pfadregel): Wahrscheinlichkeiten entlang eines Pfades werden multipliziert.
+🔑 ODER-Regel: Wahrscheinlichkeiten sich ausschliessender Ereignisse werden addiert.`,
+
+        },
 
         {
 
@@ -682,6 +694,24 @@ Total = 4/100 + 9/100 + 25/100 = 38/100 = 19/50`,
 3️⃣ ODER = addieren.`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zu Grundwahrscheinlichkeiten, UND- und ODER-Regel (mit Zurücklegen).
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Eine Urne hat 4 rote und 6 blaue Kugeln. Wie gross ist P(rot)?', answer: '2/5', tip: 'Anzahl rote Kugeln durch Gesamtzahl, dann kürzen.' },
+      { level: 'einfach', q: 'Mit Zurücklegen werden zwei Kugeln gezogen. P(rot)=1/2 beim ersten Zug. Wie gross ist P(rot) beim zweiten Zug?', answer: '1/2', tip: 'Mit Zurücklegen ändert sich die Wahrscheinlichkeit nicht.' },
+      { level: 'einfach', q: 'Berechne: 1/2 · 1/2', answer: '1/4', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+
+      { level: 'mittel', q: 'Eine Urne hat 3 rote und 7 gelbe Kugeln (10 total, mit Zurücklegen). Wie gross ist P(beide gelb)?', answer: '49/100', tip: 'P(gelb) beim ersten Zug hoch 2.' },
+      { level: 'mittel', q: 'Gleiche Urne (3 rot, 7 gelb, mit Zurücklegen): Wie gross ist P(erste rot, zweite gelb)?', answer: '21/100', tip: 'P(rot) · P(gelb).' },
+      { level: 'mittel', q: 'Gleiche Urne: Wie gross ist P(beide gleichfarbig)?', answer: '29/50', tip: 'P(rot,rot) + P(gelb,gelb) addieren.' },
+
+      { level: 'schwer', q: 'Eine Urne hat 2 rote, 3 grüne, 5 blaue Kugeln (mit Zurücklegen). Wie gross ist P(beide blau)?', answer: '1/4', tip: 'P(blau) = 5/10 = 1/2, dann quadrieren.' },
+      { level: 'schwer', q: 'Gleiche Urne: Wie gross ist P(zweite Kugel ist rot oder grün)?', answer: '1/2', tip: 'P(rot) + P(grün), da sich die Ereignisse ausschliessen.' },
+
+      { level: 'kanti', q: 'Wie im Original: Urne mit 2 rot, 3 schwarz, 5 gelb (mit Zurücklegen). Wie gross ist P(beide gelb)?', answer: '1/4', tip: 'P(gelb) = 5/10 = 1/2, dann quadrieren — genau wie im Original b).' },
+      { level: 'kanti', q: 'Wie im Original: Gleiche Urne. Wie gross ist P(erste rot, zweite schwarz)?', answer: '3/50', tip: 'P(rot) · P(schwarz) = 1/5 · 3/10 — genau wie im Original d).' },
+    ],
 
   },
 

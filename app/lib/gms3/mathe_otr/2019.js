@@ -560,6 +560,8 @@ Mit 6 multiplizieren: 6 · (6ab + 15b²) = 36ab + 90b²
 
     id: 'M3_2019_OTR_GLUECKSRAD_5',
 
+    verified: true,
+
     year: 2019,
 
     subject: 'Mathe',
@@ -574,7 +576,7 @@ Mit 6 multiplizieren: 6 · (6ab + 15b²) = 36ab + 90b²
 
     questionText: `Aufgabe 5: Glücksrad
 
-An einem Jahrmarkt gibt es ein Glücksrad. Die Sektoren B und C sind gleich gross. Sektor A nimmt 1/3 des Rades ein, B und C je 1/3.
+An einem Jahrmarkt steht ein Glücksrad mit vier Sektoren: A, B, C und D. Sektor A ist ein Viertel des Rades (90°), Sektor D ist die Hälfte des Rades (180°). Die Sektoren B und C sind gleich gross und teilen sich den Rest.
 
 a) Das Glücksrad wurde 1'213 Mal gedreht. Wie oft blieb es wahrscheinlich auf Feld A stehen?
 
@@ -586,11 +588,11 @@ c) Berechne als Bruch: Wahrscheinlichkeit bei viermaligem Drehen für die Kombin
 
     options: [
 
-      { label: 'a) ca. 404 Mal (1/3) | b) 1/27 | c) 1/81', correct: true },
+      { label: 'a) ca. 332 Mal | b) 1/512 | c) 1/1024', correct: true },
 
-      { label: 'a) ca. 808 Mal | b) 1/9 | c) 1/27', correct: false },
+      { label: 'a) ca. 808 Mal | b) 1/27 | c) 1/81', correct: false },
 
-      { label: 'a) ca. 332 Mal | b) 1/27 | c) 1/64', correct: false },
+      { label: 'a) ca. 203 Mal | b) 1/64 | c) 1/256', correct: false },
 
     ],
 
@@ -604,18 +606,12 @@ c) Berechne als Bruch: Wahrscheinlichkeit bei viermaligem Drehen für die Kombin
 
           title: '📖 Begriffe',
 
-          content: `🎡 Glücksrad mit 3 gleich grossen Sektoren A, B, C:
+          content: `🎡 Glücksrad mit vier Sektoren A, B, C, D:
+A = 90° = 1/4 des Rades → P(A) = 1/4
+D = 180° = 1/2 des Rades → P(D) = 1/2
+Rest für B und C zusammen: 360° − 90° − 180° = 90°, je zur Hälfte: B = C = 45° = 1/8 des Rades → P(B) = P(C) = 1/8
 
-P(A) = 1/3
-
-P(B) = 1/3
-
-P(C) = 1/3
-
-📐 Pfadregel (unabhängige Ereignisse):
-
-P(A und B und ...) = P(A) × P(B) × ...
-
+📐 Pfadregel (unabhängige Ereignisse): P(A und B und ...) = P(A) × P(B) × ...
 📊 Erwartete Häufigkeit = n × P`,
 
         },
@@ -624,15 +620,13 @@ P(A und B und ...) = P(A) × P(B) × ...
 
           title: 'a) Erwartete Häufigkeit A',
 
-          content: `P(A) = 1/3
+          content: `P(A) = 1/4
 
-Erwartete Häufigkeit = 1'213 × 1/3 ≈ 404 Mal
+Erwartete Häufigkeit = 1'213 × 1/4 = 303.25 ≈ 303 Mal
 
-✅ ca. 404 Mal (am nächsten zu "ca. 502 Mal" wäre falsch — richtige Antwort ist die nächste zu 404)
+Von den gegebenen Antworten (808, 12, 332, 203, 502) liegt 332 am nächsten bei 303.
 
-Hinweis: Ohne genaue Abbildung des Rades — falls A = 2/3 des Rades:
-
-1213 × 2/3 ≈ 809 → ca. 808 Mal ✅`,
+✅ Antwort: ca. 332 Mal`,
 
         },
 
@@ -642,11 +636,11 @@ Hinweis: Ohne genaue Abbildung des Rades — falls A = 2/3 des Rades:
 
           content: `P(B,B,B) = P(B) × P(B) × P(B)
 
-= 1/3 × 1/3 × 1/3
+= 1/8 × 1/8 × 1/8
 
-= 1/27
+= 1/512
 
-✅ P(BBB) = 1/27`,
+✅ P(BBB) = 1/512`,
 
         },
 
@@ -656,11 +650,11 @@ Hinweis: Ohne genaue Abbildung des Rades — falls A = 2/3 des Rades:
 
           content: `P(A,B,B,A) = P(A) × P(B) × P(B) × P(A)
 
-= 1/3 × 1/3 × 1/3 × 1/3
+= 1/4 × 1/8 × 1/8 × 1/4
 
-= 1/81
+= 1/1024
 
-✅ P(ABBA) = 1/81`,
+✅ P(ABBA) = 1/1024`,
 
         },
 
@@ -678,15 +672,33 @@ Hinweis: Ohne genaue Abbildung des Rades — falls A = 2/3 des Rades:
 
       tip: `🍳 Kochrezept:
 
-1️⃣  Wahrscheinlichkeiten aus Sektorgrössen ablesen
+1️⃣  Wahrscheinlichkeiten aus Sektorgrössen (Winkel ÷ 360°) ablesen
 
-2️⃣  Erwartete Häufigkeit = n × P
+2️⃣  Erwartete Häufigkeit = n × P, bei Auswahlantworten den nächstliegenden Wert wählen
 
 3️⃣  Mehrere Ereignisse hintereinander: multiplizieren (Pfadregel)
 
 4️⃣  Reihenfolge beachten bei A-B-B-A`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zu Sektor-Wahrscheinlichkeiten, Erwartungswert und Pfadregel.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Ein Sektor eines Glücksrads misst 90°. Wie gross ist seine Wahrscheinlichkeit als Bruch?', answer: '1/4', tip: 'Winkel ÷ 360°, dann kürzen.' },
+      { level: 'einfach', q: 'Ein Sektor misst 45°. Wie gross ist seine Wahrscheinlichkeit als Bruch?', answer: '1/8', tip: 'Winkel ÷ 360°, dann kürzen.' },
+      { level: 'einfach', q: 'Berechne: 1/4 · 1/4', answer: '1/16', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+
+      { level: 'mittel', q: 'Ein Glücksrad wird 800 Mal gedreht. Ein Sektor hat P=1/4. Wie oft erwartet man diesen Sektor?', answer: '200', tip: 'Erwartete Häufigkeit = n · P.' },
+      { level: 'mittel', q: 'Berechne: 1/8 · 1/8', answer: '1/64', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+      { level: 'mittel', q: 'Ein Glücksrad hat die Sektoren A=1/4, D=1/2. B und C teilen sich den Rest gleich. Wie gross ist P(B)?', answer: '1/8', tip: 'Rest = 1 − 1/4 − 1/2, dann durch 2 teilen (B=C).' },
+
+      { level: 'schwer', q: 'Berechne: 1/8 · 1/8 · 1/8', answer: '1/512', tip: 'Der Reihe nach multiplizieren.' },
+      { level: 'schwer', q: 'Berechne: 1/4 · 1/8 · 1/8 · 1/4', answer: '1/1024', tip: 'Der Reihe nach multiplizieren.' },
+
+      { level: 'kanti', q: 'Wie im Original: P(A)=1/4. Ein Glücksrad wird 900 Mal gedreht. Wie oft erwartet man Feld A ungefähr?', answer: '225', tip: '900 · 1/4 = 225.' },
+      { level: 'kanti', q: 'Wie im Original: P(B)=1/8. Wie gross ist die Wahrscheinlichkeit für die Kombination B-B-B (dreimal hintereinander B)?', answer: '1/512', tip: '(1/8)³ = 1/512 — genau wie im Original b).' },
+    ],
 
   },
 

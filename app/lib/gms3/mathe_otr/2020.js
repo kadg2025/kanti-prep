@@ -177,206 +177,89 @@ x = 17/7
     ],
   },
 
-  // ── AUFGABE 2a ────────────────────────────────────────────
+  // ── AUFGABE 2 ─────────────────────────────────────────────
   {
-    id: 'M1_2020_OTR_WAHR_2a',
+    id: 'M1_2020_OTR_WAHR_2',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
     topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 2a: Glücksbeutel – Wörter
-In einem Glücksbeutel sind 4 Kugeln:
-- 1× Buchstabe N
-- 1× Buchstabe J
-- 2× Buchstabe A
+    questionText: `Aufgabe 2: Glücksbeutel
 
-Es werden alle 4 Kugeln ohne Zurücklegen gezogen.
-Notiere sämtliche möglichen „Wörter", die entstehen können.`,
+In einem Glücksbeutel sind 4 Kugeln: 1× N, 1× J, 2× A. Es werden ohne Zurücklegen alle 4 Kugeln gezogen.
+
+a) Notiere sämtliche möglichen "Wörter", die bei einer Ziehung entstehen können.
+
+b) Wie gross ist die Wahrscheinlichkeit, dass die vier Buchstaben in der Reihenfolge J-A-N-A gezogen werden?
+
+c) Die Kugel mit J wird durch eine Kugel mit N ersetzt (nun: 2× N, 2× A). Wie viele Wörter können nun entstehen?
+
+Im Glücksbeutel befinden sich nun 3× A und 1× N. Es werden 2 Kugeln ohne Zurücklegen gezogen. Michael gewinnt, wenn beide Kugeln A zeigen. Robin gewinnt, wenn die beiden Kugeln verschiedene Buchstaben zeigen.
+
+d) Zeichne einen Wahrscheinlichkeitsbaum und begründe, warum beide die gleichen Gewinnchancen haben.`,
     options: [
-      { label: '12 verschiedene Wörter (z.B. JNAA, JANA, JAAN, NJAA...)', correct: true },
-      { label: '24 verschiedene Wörter', correct: false },
-      { label: '6 verschiedene Wörter', correct: false },
+      { label: 'a) 12 Wörter | b) 1/12 | c) 6 Wörter | d) P(Michael)=P(Robin)=1/2', correct: true },
+      { label: 'a) 24 Wörter | b) 1/24 | c) 12 Wörter | d) P(Michael)=1/4, P(Robin)=3/4', correct: false },
+      { label: 'a) 6 Wörter | b) 1/6 | c) 4 Wörter | d) P(Michael)=2/3, P(Robin)=1/3', correct: false },
     ],
     solution: {
       intro: '',
       steps: [
         {
-          title: '📖 Strategie',
-          content: `Wir haben 4 Buchstaben: J, N, A, A.
-Da die zwei A's gleich sind, gibt es nicht 4! = 24, sondern 4!/2! = 12 verschiedene Anordnungen.`,
+          title: '📖 Begriffe',
+          content: `🔑 Anordnungen mit gleichen Elementen: n! / (k₁! · k₂! · ...), wobei k₁, k₂, ... die Anzahl gleicher Buchstaben sind.
+📐 Pfadregel (ohne Zurücklegen): An jedem Zug ändert sich die Gesamtzahl der Kugeln UND die Zusammensetzung im Beutel — die Wahrscheinlichkeiten für den nächsten Zug hängen vom vorigen Ergebnis ab.
+🔑 Faires Spiel: Zwei Spieler haben die gleichen Gewinnchancen, wenn ihre Gewinnwahrscheinlichkeiten gleich gross sind.`,
         },
         {
-          title: 'Alle 12 Wörter',
-          content: `Mit J am Anfang (4):
-JNAA, JANA, JAAN, JAAN → JNAA, JANA, JAAN
+          title: 'a) Alle möglichen Wörter',
+          content: `Wir haben 4 Buchstaben: J, N, A, A.
+Da die zwei A's gleich sind, gibt es nicht 4! = 24, sondern 4!/2! = 12 verschiedene Anordnungen.
 
-Mit N am Anfang (4 – aber A doppelt):
-NJAA, NAJA, NAAJ
+Mit J am Anfang: JNAA, JANA, JAAN
+Mit N am Anfang: NJAA, NAJA, NAAJ
+Mit A am Anfang: AANJ, AAJN, ANAJ, ANJA, AJAN, AJNA
 
-Mit A am Anfang (6):
-AANJ, AAJN, ANAJ, ANJA, AJAN, AJNA
-
-Total: JNAA, JANA, JAAN, NJAA, NAJA, NAAJ, AANJ, AAJN, ANAJ, ANJA, AJAN, AJNA
 ✅ 12 verschiedene Wörter`,
         },
         {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119941/AP20_GMS3_M1_oTr_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣  Formel: n! / (Anzahl gleicher Buchstaben)!
-2️⃣  4! / 2! = 24 / 2 = 12.
-3️⃣  Systematisch auflisten: nach erstem Buchstaben gruppieren.`,
-    },
-  },
-
-  // ── AUFGABE 2b ────────────────────────────────────────────
-  {
-    id: 'M1_2020_OTR_WAHR_2b',
-    year: 2020,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 2b: Wahrscheinlichkeit J-A-N-A
-In einem Glücksbeutel sind 4 Kugeln: 1× N, 1× J, 2× A.
-Es werden alle 4 Kugeln ohne Zurücklegen gezogen.
-
-Wie gross ist die Wahrscheinlichkeit, dass die Reihenfolge J-A-N-A entsteht?`,
-    options: [
-      { label: 'P = 1/12', correct: true },
-      { label: 'P = 1/24', correct: false },
-      { label: 'P = 1/6', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Berechnung',
-          content: `Es gibt 12 gleich wahrscheinliche Anordnungen (aus Aufgabe 2a).
-Davon ist genau 1 die Reihenfolge J-A-N-A.
-
+          title: 'b) Wahrscheinlichkeit für J-A-N-A',
+          content: `Es gibt 12 gleich wahrscheinliche Anordnungen (aus Teil a). Davon ist genau 1 die Reihenfolge J-A-N-A.
 P(J-A-N-A) = 1/12
+
+Alternativ mit der Pfadregel:
+1. Zug: P(J) = 1/4
+2. Zug: P(A) = 2/3  (noch 3 Kugeln: N, A, A)
+3. Zug: P(N) = 1/2  (noch 2 Kugeln: N, A)
+4. Zug: P(A) = 1  (nur noch A übrig)
+P = 1/4 · 2/3 · 1/2 · 1 = 2/24 = 1/12
 
 ✅ Die Wahrscheinlichkeit beträgt 1/12.`,
         },
         {
-          title: 'Alternativ mit Pfadregel',
-          content: `1. Zug: P(J) = 1/4
-2. Zug: P(A) = 2/3  (noch 3 Kugeln: N, A, A)
-3. Zug: P(N) = 1/2  (noch 2 Kugeln: N, A)
-4. Zug: P(A) = 1/1  (nur noch A übrig)
-
-P = 1/4 · 2/3 · 1/2 · 1 = 2/24 = 1/12 ✅`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119941/AP20_GMS3_M1_oTr_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣  Gesamtanzahl möglicher Anordnungen bestimmen (hier 12).
-2️⃣  Günstige Fälle zählen (hier 1).
-3️⃣  P = günstige Fälle / alle Fälle.`,
-    },
-  },
-
-  // ── AUFGABE 2c ────────────────────────────────────────────
-  {
-    id: 'M1_2020_OTR_WAHR_2c',
-    year: 2020,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 2c: J ersetzt durch N
-In einem Glücksbeutel sind 4 Kugeln: 1× N, 1× J, 2× A.
-Die Kugel mit J wird durch eine Kugel mit N ersetzt.
-Nun sind es: 2× N, 2× A.
-
-Wie viele verschiedene Wörter können nun entstehen?`,
-    options: [
-      { label: '6 verschiedene Wörter', correct: true },
-      { label: '12 verschiedene Wörter', correct: false },
-      { label: '4 verschiedene Wörter', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Berechnung',
-          content: `Wir haben 4 Buchstaben: N, N, A, A.
-Zwei gleiche N's und zwei gleiche A's.
-
+          title: 'c) J durch N ersetzt',
+          content: `Wir haben jetzt 4 Buchstaben: N, N, A, A. Zwei gleiche N's und zwei gleiche A's.
 Anzahl Anordnungen = 4! / (2! · 2!) = 24 / 4 = 6
 
-Die 6 Wörter:
-AANN, ANAN, ANNA, NNAA, NANA, NAAN
+Die 6 Wörter: AANN, ANAN, ANNA, NNAA, NANA, NAAN
 
 ✅ Es gibt 6 verschiedene Wörter.`,
         },
         {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119941/AP20_GMS3_M1_oTr_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Formel bei gleichen Buchstaben: n! / (k₁! · k₂!)
-Hier: 4! / (2! · 2!) = 6`,
-    },
-  },
-
-  // ── AUFGABE 2d ────────────────────────────────────────────
-  {
-    id: 'M1_2020_OTR_WAHR_2d',
-    year: 2020,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=2',
-    topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 2d: Michael und Robin – gleiches Spiel?
-Im Glücksbeutel befinden sich 3× A und 1× N.
-Es werden 2 Kugeln ohne Zurücklegen gezogen.
-
-Michael gewinnt, wenn beide Kugeln A zeigen.
-Robin gewinnt, wenn die beiden Kugeln verschiedene Buchstaben zeigen.
-
-Zeichne einen Wahrscheinlichkeitsbaum und begründe, warum beide die gleichen Gewinnchancen haben.`,
-    options: [
-      { label: 'P(Michael) = P(Robin) = 1/2', correct: true },
-      { label: 'P(Michael) = 1/4, P(Robin) = 3/4', correct: false },
-      { label: 'P(Michael) = 2/3, P(Robin) = 1/3', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: '📖 Wahrscheinlichkeitsbaum',
+          title: 'd) Wahrscheinlichkeitsbaum: Michael vs. Robin',
           content: `Beutel: A, A, A, N (4 Kugeln total)
 
 1. Zug A (P = 3/4):
-   └─ 2. Zug A (P = 2/3): → AA  → P = 3/4 · 2/3 = 6/12 = 1/2  (Michael gewinnt)
-   └─ 2. Zug N (P = 1/3): → AN  → P = 3/4 · 1/3 = 3/12 = 1/4  (Robin gewinnt)
-
+   └─ 2. Zug A (P = 2/3): → AA → P = 3/4 · 2/3 = 1/2  (Michael gewinnt)
+   └─ 2. Zug N (P = 1/3): → AN → P = 3/4 · 1/3 = 1/4  (Robin gewinnt)
 1. Zug N (P = 1/4):
-   └─ 2. Zug A (P = 1):   → NA  → P = 1/4 · 1 = 1/4            (Robin gewinnt)`,
-        },
-        {
-          title: 'Vergleich der Gewinnchancen',
-          content: `P(Michael gewinnt) = P(AA) = 3/4 · 2/3 = 1/2
+   └─ 2. Zug A (P = 1):   → NA → P = 1/4 · 1 = 1/4    (Robin gewinnt)
 
-P(Robin gewinnt) = P(AN) + P(NA)
-= 3/4 · 1/3 + 1/4 · 1
-= 1/4 + 1/4 = 1/2
+P(Michael) = P(AA) = 3/4 · 2/3 = 1/2
+P(Robin) = P(AN) + P(NA) = 1/4 + 1/4 = 1/2
 
 ✅ Beide haben P = 1/2 → das Spiel ist fair!`,
         },
@@ -387,10 +270,29 @@ P(Robin gewinnt) = P(AN) + P(NA)
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Wahrscheinlichkeitsbaum zeichnen (ohne Zurücklegen = Nenner wird kleiner).
-2️⃣  Pfadregel: P(Pfad) = Produkt aller Äste.
-3️⃣  Summenregel: Alle Pfade zum gleichen Ergebnis addieren.`,
+1️⃣  Anordnungen mit gleichen Buchstaben: n! / (k₁! · k₂! · ...).
+2️⃣  Für eine bestimmte Reihenfolge: günstige Fälle / alle Fälle, oder Pfadregel zug für Zug.
+3️⃣  Ohne Zurücklegen: Nenner wird bei jedem Zug kleiner.
+4️⃣  Faires Spiel prüfen: alle Gewinnpfade pro Spieler addieren und vergleichen.`,
     },
+
+    // ── ÜBUNGEN: aufbauend zu Anordnungen mit gleichen Elementen und Pfadregel ohne Zurücklegen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Wie viele Anordnungen gibt es für die 3 verschiedenen Buchstaben A, B, C?', answer: '6', tip: '3! = 3·2·1.' },
+      { level: 'einfach', q: 'Ein Beutel hat 3 Kugeln: A, A, B. Nach dem Ziehen von A (ohne Zurücklegen) — wie viele Kugeln sind noch im Beutel?', answer: '2', tip: 'Eine Kugel weniger als vorher.' },
+      { level: 'einfach', q: 'Berechne: 1/2 · 1/2', answer: '1/4', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+
+      { level: 'mittel', q: 'Wie viele Anordnungen gibt es für die Buchstaben M, M, A, T (M kommt doppelt vor)?', answer: '12', tip: '4!/2!.' },
+      { level: 'mittel', q: 'Ein Beutel hat 4 Kugeln: 2× rot, 2× blau. Wie viele verschiedene Ziehreihenfolgen (alle 4 ohne Zurücklegen) gibt es?', answer: '6', tip: '4!/(2!·2!).' },
+      { level: 'mittel', q: 'Ein Beutel hat 5 Kugeln: 3× A, 2× B. Wie viele verschiedene Wörter (alle 5 gezogen) gibt es?', answer: '10', tip: '5!/(3!·2!).' },
+
+      { level: 'schwer', q: 'Ein Beutel hat 3× A, 1× N (4 Kugeln). Es werden 2 ohne Zurücklegen gezogen. Wie gross ist P(erste A, zweite N)?', answer: '1/4', tip: 'P(A)=3/4, dann P(N|A gezogen)=1/3 aus den verbleibenden 3 Kugeln.' },
+      { level: 'schwer', q: 'Gleicher Beutel (3×A, 1×N): Wie gross ist P(beide Kugeln A)?', answer: '1/2', tip: 'P(A)=3/4, dann P(A|A gezogen)=2/3 aus den verbleibenden 3 Kugeln.' },
+
+      { level: 'kanti', q: 'Wie im Original: Beutel mit 1×N, 1×J, 2×A (4 Kugeln, ohne Zurücklegen alle gezogen). Wie viele verschiedene Wörter gibt es?', answer: '12', tip: '4!/2! = 12 — genau wie im Original a).' },
+      { level: 'kanti', q: 'Wie im Original: Bei 12 gleich wahrscheinlichen Wörtern — wie gross ist die Wahrscheinlichkeit für genau ein bestimmtes Wort (z.B. J-A-N-A)?', answer: '1/12', tip: 'Nur 1 von 12 gleich wahrscheinlichen Möglichkeiten passt.' },
+    ],
   },
 
   // ── AUFGABE 3a ────────────────────────────────────────────

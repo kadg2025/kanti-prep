@@ -300,248 +300,118 @@ Gleicher Nenner → vergleiche die Zähler:
     ],
   },
 
-  // ── AUFGABE 4a ────────────────────────────────────────────
+  // ── AUFGABE 4 ─────────────────────────────────────────────
   {
-    id: 'M1_2025_OTR_URNE_4a',
+    id: 'M1_2025_OTR_URNE_4',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
     topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 4a: In einer Urne liegen 3 rote und 2 schwarze Kugeln. Es werden drei Kugeln nacheinander mit Zurücklegen gezogen und jeweils die Farbe notiert.
+    questionText: `Aufgabe 4: Urne mit Kugeln
 
-Erstelle eine Baumdarstellung. Du musst keine Wahrscheinlichkeiten eintragen.`,
+In einer Urne liegen 3 rote und 2 schwarze Kugeln. Es werden drei Kugeln nacheinander mit Zurücklegen gezogen und jeweils die Farbe notiert.
+
+a) Erstelle eine Baumdarstellung. Du musst keine Wahrscheinlichkeiten eintragen.
+
+Wie gross ist die Wahrscheinlichkeit, dass...
+b1) ...drei rote Kugeln gezogen werden?
+b2) ...genau zwei rote Kugeln dabei sind?
+b3) ...lauter gleichfarbige Kugeln gezogen werden?
+
+Nun werden die Kugeln jeweils durchnummeriert (1 bis 5) und man zieht nacheinander zwei Kugeln mit Zurücklegen.
+
+c1) Wie gross ist die Wahrscheinlichkeit, dass die erste gezogene Kugel die Nummer 1 und die zweite gezogene Kugel die Nummer 3 besitzt?
+c2) Wie gross ist die Wahrscheinlichkeit, dass die Summe der beiden gezogenen Kugeln fünf beträgt?`,
     options: [
-      { label: 'Start → R/S, dann von jedem Ast wieder R/S, dann nochmals R/S', correct: true },
-      { label: 'Nur zwei Stufen zeichnen', correct: false },
-      { label: 'Ohne Zurücklegen zeichnen', correct: false },
+      { label: 'b1) 27/125 | b2) 54/125 | b3) 7/25 | c1) 1/25 | c2) 4/25', correct: true },
+      { label: 'b1) 9/25 | b2) 27/125 | b3) 35/125 | c1) 2/25 | c2) 5/25', correct: false },
+      { label: 'b1) 3/5 | b2) 72/125 | b3) 27/125 | c1) 1/5 | c2) 2/5', correct: false },
     ],
     solution: {
       intro: '',
       steps: [
         {
-          title: 'Baumstruktur',
-          content: `Da dreimal gezogen wird, hat der Baum 3 Stufen.
-Auf jeder Stufe gibt es 2 Möglichkeiten:
-- R (rot)
-- S (schwarz)`,
+          title: '📖 Begriffe',
+          content: `📐 Mit Zurücklegen: Die Urne bleibt nach jedem Zug gleich zusammengesetzt — die Wahrscheinlichkeiten ändern sich nicht.
+🔑 UND-Regel (Pfadregel): Wahrscheinlichkeiten entlang eines Pfades werden multipliziert.
+🔑 ODER-Regel: Wahrscheinlichkeiten sich ausschliessender Fälle (z.B. mehrere passende Reihenfolgen) werden addiert.`,
         },
         {
-          title: 'Warum immer gleich?',
-          content: `Es wird mit Zurücklegen gezogen.
-Deshalb bleibt die Urne jedes Mal gleich zusammengesetzt:
-3 rote, 2 schwarze Kugeln.`,
+          title: 'a) Baumdarstellung',
+          content: `Da dreimal gezogen wird, hat der Baum 3 Stufen. Auf jeder Stufe gibt es 2 Möglichkeiten: R (rot) oder S (schwarz).
+Da mit Zurücklegen gezogen wird, bleibt die Urne jedes Mal gleich (3 rote, 2 schwarze Kugeln) — die Äste sehen auf jeder Stufe gleich aus.
+
+Die möglichen Farbfolgen (Endpfade): RRR, RRS, RSR, RSS, SRR, SRS, SSR, SSS`,
         },
         {
-          title: 'Endpfade',
-          content: `Die möglichen Farbfolgen sind:
-RRR, RRS, RSR, RSS, SRR, SRS, SSR, SSS`,
+          title: 'b1) Drei rote Kugeln',
+          content: `P(Rot) = 3/5 (bleibt bei jedem Zug gleich)
+P(RRR) = 3/5 · 3/5 · 3/5 = 27/125
+
+✅ Ergebnis: 27/125`,
+        },
+        {
+          title: 'b2) Genau zwei rote Kugeln',
+          content: `Genau zwei rote Kugeln bedeutet: RRS, RSR oder SRR (3 Möglichkeiten).
+Jede einzelne: P(RRS) = 3/5 · 3/5 · 2/5 = 18/125
+Alle 3 Möglichkeiten addieren: 3 · 18/125 = 54/125
+
+✅ Ergebnis: 54/125`,
+        },
+        {
+          title: 'b3) Lauter gleichfarbige Kugeln',
+          content: `Es gibt nur zwei passende Fälle: alle rot oder alle schwarz.
+P(RRR) = 3/5 · 3/5 · 3/5 = 27/125
+P(SSS) = 2/5 · 2/5 · 2/5 = 8/125
+Addieren: 27/125 + 8/125 = 35/125 = 7/25
+
+✅ Ergebnis: 7/25`,
+        },
+        {
+          title: 'c1) Erste Kugel Nr. 1, zweite Kugel Nr. 3',
+          content: `Es gibt insgesamt 5 durchnummerierte Kugeln. Mit Zurücklegen sind die beiden Ziehungen unabhängig:
+P(erste = 1) = 1/5
+P(zweite = 3) = 1/5
+P = 1/5 · 1/5 = 1/25
+
+✅ Ergebnis: 1/25`,
+        },
+        {
+          title: 'c2) Summe der beiden Kugeln ist fünf',
+          content: `Es werden zweimal mit Zurücklegen aus 5 nummerierten Kugeln gezogen: 5 · 5 = 25 gleich wahrscheinliche geordnete Fälle.
+Mit den Nummern 1 bis 5 ergibt die Summe 5 bei: (1,4), (2,3), (3,2), (4,1) — das sind 4 günstige Fälle.
+P = 4/25
+
+✅ Ergebnis: 4/25`,
         },
       ],
       tip: `🍳 Kochrezept:
-Bei drei Ziehungen braucht der Baum immer genau drei Ebenen.`,
+1️⃣ Mit Zurücklegen: Wahrscheinlichkeiten bleiben bei jedem Zug gleich.
+2️⃣ "UND" (ein bestimmter Pfad) → multiplizieren.
+3️⃣ "ODER" (mehrere passende Pfade) → addieren.
+4️⃣ Bei Nummern-Aufgaben: alle passenden geordneten Paare auflisten, dann durch die Gesamtzahl aller Fälle teilen.`,
     },
-  },
 
-  // ── AUFGABE 4b1 ───────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_URNE_4b1',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 4b1: Wie gross ist die Wahrscheinlichkeit, dass drei rote Kugeln gezogen werden?`,
-    options: [
-      { label: '27/125', correct: true },
-      { label: '9/25', correct: false },
-      { label: '3/5', correct: false },
+    // ── ÜBUNGEN: aufbauend zu Pfadregel, Summenregel und Ziehungen mit Zurücklegen.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Eine Urne hat 4 rote und 6 gelbe Kugeln. Wie gross ist P(rot)?', answer: '2/5', tip: 'Anzahl rot durch Gesamtzahl, dann kürzen.' },
+      { level: 'einfach', q: 'Mit Zurücklegen: P(rot)=2/5 beim ersten Zug. Wie gross ist P(rot) beim dritten Zug?', answer: '2/5', tip: 'Mit Zurücklegen ändert sich die Wahrscheinlichkeit nicht.' },
+      { level: 'einfach', q: 'Berechne: 2/5 · 2/5', answer: '4/25', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+
+      { level: 'mittel', q: 'Urne mit P(rot)=2/5, P(gelb)=3/5 (mit Zurücklegen, 3 Züge). Wie gross ist P(RRR)?', answer: '8/125', tip: '(2/5)³.' },
+      { level: 'mittel', q: 'Gleiche Urne: Wie viele verschiedene Reihenfolgen gibt es für "genau eine rote Kugel bei 3 Zügen"?', answer: '3', tip: 'RGG, GRG, GGR — die rote Kugel kann an 3 Stellen stehen.' },
+      { level: 'mittel', q: 'Gleiche Urne: Wie gross ist P(RGG) (eine bestimmte Reihenfolge)?', answer: '18/125', tip: '2/5 · 3/5 · 3/5.' },
+
+      { level: 'schwer', q: 'Gleiche Urne (P(rot)=2/5, P(gelb)=3/5, 3 Züge): Wie gross ist P(genau eine rot)?', answer: '54/125', tip: '3 · P(RGG) = 3 · 18/125.' },
+      { level: 'schwer', q: '6 nummerierte Kugeln (1-6), zweimal mit Zurücklegen gezogen. Wie viele geordnete Paare gibt es total?', answer: '36', tip: '6 · 6.' },
+
+      { level: 'kanti', q: 'Wie im Original: 3 rote, 2 schwarze Kugeln (mit Zurücklegen, 3 Züge). Wie gross ist P(lauter gleichfarbig)?', answer: '7/25', tip: 'P(RRR)+P(SSS) = 27/125+8/125 = 35/125 = 7/25 — genau wie im Original b3).' },
+      { level: 'kanti', q: 'Wie im Original: 5 nummerierte Kugeln, zweimal mit Zurücklegen. Wie viele der 25 geordneten Paare ergeben die Summe 5?', answer: '4', tip: '(1,4),(2,3),(3,2),(4,1) — genau wie im Original c2).' },
     ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Wahrscheinlichkeit für Rot',
-          content: `P(Rot) = 3/5`,
-        },
-        {
-          title: 'Dreimal rot',
-          content: `P(RRR) = 3/5 · 3/5 · 3/5
-= 27/125`,
-        },
-        {
-          title: 'Ergebnis',
-          content: `✅ Die Wahrscheinlichkeit beträgt 27/125.`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-„UND“ bedeutet multiplizieren.`,
-    },
-  },
-
-  // ── AUFGABE 4b2 ───────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_URNE_4b2',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 4b2: Wie gross ist die Wahrscheinlichkeit, dass genau zwei rote Kugeln dabei sind?`,
-    options: [
-      { label: '54/125', correct: true },
-      { label: '27/125', correct: false },
-      { label: '72/125', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Mögliche Reihenfolgen',
-          content: `Genau zwei rote Kugeln bedeuten:
-RRS, RSR oder SRR
-Das sind 3 Möglichkeiten.`,
-        },
-        {
-          title: 'Eine Möglichkeit berechnen',
-          content: `P(RRS) = 3/5 · 3/5 · 2/5 = 18/125`,
-        },
-        {
-          title: 'Alle Möglichkeiten addieren',
-          content: `3 · 18/125 = 54/125
-
-✅ Die Wahrscheinlichkeit beträgt 54/125.`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Bei „genau zwei rot“ zuerst alle passenden Farbfolgen sammeln.`,
-    },
-  },
-
-  // ── AUFGABE 4b3 ───────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_URNE_4b3',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 4b3: Wie gross ist die Wahrscheinlichkeit, dass lauter gleichfarbige Kugeln gezogen werden?`,
-    options: [
-      { label: '7/25', correct: true },
-      { label: '35/125', correct: false },
-      { label: '27/125', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Gleiche Farbe',
-          content: `Es gibt nur zwei Möglichkeiten:
-- alle rot
-- alle schwarz`,
-        },
-        {
-          title: 'Beide Fälle berechnen',
-          content: `P(RRR) = 3/5 · 3/5 · 3/5 = 27/125
-P(SSS) = 2/5 · 2/5 · 2/5 = 8/125`,
-        },
-        {
-          title: 'Addieren',
-          content: `27/125 + 8/125 = 35/125 = 7/25
-
-✅ Die Wahrscheinlichkeit beträgt 7/25.`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Bei „ODER“ addierst du die passenden Fälle.`,
-    },
-  },
-
-  // ── AUFGABE 4c1 ───────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_URNE_4c1',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 4c1: Nun werden die Kugeln jeweils durchnummeriert und man zieht nacheinander zwei Kugeln mit Zurücklegen. Wie gross ist die Wahrscheinlichkeit, dass die erste gezogene Kugel die Nummer 1 und die zweite gezogene Kugel die Nummer 3 besitzt?`,
-    options: [
-      { label: '1/25', correct: true },
-      { label: '2/25', correct: false },
-      { label: '1/5', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Einzelwahrscheinlichkeiten',
-          content: `Es gibt insgesamt 5 durchnummerierte Kugeln.
-P(erste Kugel = 1) = 1/5
-P(zweite Kugel = 3) = 1/5`,
-        },
-        {
-          title: 'Mit Zurücklegen',
-          content: `Die Ziehungen sind unabhängig.
-Darum:
-1/5 · 1/5 = 1/25`,
-        },
-        {
-          title: 'Ergebnis',
-          content: `✅ Die Wahrscheinlichkeit beträgt 1/25.`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Bei festen Nummern einfach Einzelwahrscheinlichkeiten multiplizieren.`,
-    },
-  },
-
-  // ── AUFGABE 4c2 ───────────────────────────────────────────
-  {
-    id: 'M1_2025_OTR_URNE_4c2',
-    year: 2025,
-    subject: 'Mathe',
-    exam: 'Mathe ohne TR',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Wahrscheinlichkeit',
-    questionText: `Aufgabe 4c2: Wie gross ist die Wahrscheinlichkeit, dass die Summe der beiden gezogenen Kugeln fünf beträgt?`,
-    options: [
-      { label: '4/25', correct: true },
-      { label: '5/25', correct: false },
-      { label: '2/5', correct: false },
-    ],
-    solution: {
-      intro: '',
-      steps: [
-        {
-          title: 'Mögliche Zahlenpaare',
-          content: `Mit den Nummern 1 bis 5 ergibt die Summe 5 bei:
-(1,4), (2,3), (3,2), (4,1)
-
-Das sind 4 günstige Fälle.`,
-        },
-        {
-          title: 'Alle möglichen Fälle',
-          content: `Es werden zweimal mit Zurücklegen 5 nummerierte Kugeln gezogen.
-Also gibt es 5 · 5 = 25 gleich wahrscheinliche geordnete Fälle.`,
-        },
-        {
-          title: 'Wahrscheinlichkeit',
-          content: `4 von 25 Fällen sind günstig.
-
-✅ Die Wahrscheinlichkeit beträgt 4/25.`,
-        },
-      ],
-      tip: `🍳 Kochrezept:
-Bei Nummern-Aufgaben zuerst alle passenden geordneten Paare auflisten.`,
-    },
   },
 
   // ── AUFGABE 5 ─────────────────────────────────────────────

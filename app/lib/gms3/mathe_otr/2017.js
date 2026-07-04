@@ -7,6 +7,8 @@ export const questions2017_oTR = [
 
     id: 'M1_2017_OTR_KOMB_1',
 
+    verified: true,
+
     year: 2017,
 
     subject: 'Mathe',
@@ -133,6 +135,24 @@ b2) Mindestens voll: (Gesamtpersonen - (Anzahl Gondeln * 3)) -> Das Ergebnis ist
 
     },
 
+    // ── ÜBUNGEN: aufbauend zu systematischem Auflisten und Division mit Rest.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Wie viele Permutationen (Anordnungen) gibt es für die drei verschiedenen Zahlen 4, 3, 2?', answer: '6', tip: '3! = 3·2·1.' },
+      { level: 'einfach', q: 'Wie viele Permutationen gibt es für 5, 5, 5 (alle gleich)?', answer: '1', tip: 'Sind alle Zahlen gleich, gibt es nur eine Anordnung.' },
+      { level: 'einfach', q: 'Berechne: 100 : 4 (mit Rest)', answer: '25 Rest 0', tip: 'Ganzzahlige Division.' },
+
+      { level: 'mittel', q: 'Wie viele Permutationen gibt es für 6, 6, 1 (zwei gleich, eine anders)?', answer: '3', tip: 'Bei zwei gleichen Zahlen gibt es 3 verschiedene Positionen für die andere Zahl.' },
+      { level: 'mittel', q: 'Berechne: 50 : 4 (mit Rest)', answer: '12 Rest 2', tip: 'Ganzzahlige Division mit Rest.' },
+      { level: 'mittel', q: '10 Gondeln sollen mit mindestens 3 Personen besetzt werden, total 35 Personen. Wie viele Personen bleiben nach der Basisverteilung (3 pro Gondel) übrig?', answer: '5', tip: '35 − (10·3).' },
+
+      { level: 'schwer', q: 'Finde alle Zerlegungen von 7 in drei Zahlen zwischen 1 und 4 (Reihenfolge egal). Wie viele verschiedene Zahlen-Kombinationen (Multimengen) gibt es?', answer: '3', tip: 'z.B. (4,2,1), (3,3,1), (3,2,2) — systematisch mit der grössten Zahl beginnen.' },
+      { level: 'schwer', q: 'Alle 15 Sekunden verlässt eine Gondel die Station. Wie viele Gondeln fahren in einer Stunde?', answer: '240', tip: '3600 Sekunden ÷ 15 Sekunden.' },
+
+      { level: 'kanti', q: 'Wie im Original: Finde alle Zerlegungen von 9 in drei Zahlen zwischen 1 und 4 (Reihenfolge egal) und zähle alle Permutationen zusammen.', answer: '10', tip: '(4,4,1)→3 Anordnungen, (4,3,2)→6 Anordnungen, (3,3,3)→1 Anordnung, macht 3+6+1=10.' },
+      { level: 'kanti', q: 'Wie im Original: 987 Personen auf Gondeln mit alle 12 Sekunden Abfahrt in einer Stunde. Wie viele Gondeln waren mindestens voll (4 Personen), wenn man mit 3 Personen pro Gondel startet?', answer: '87', tip: '300 Gondeln × 3 = 900, Rest 987−900=87 Personen füllen 87 Gondeln auf 4 Personen auf.' },
+    ],
+
   },
 
   // ── AUFGABE 2 ─────────────────────────────────────────────
@@ -165,17 +185,17 @@ c) Nach einer Saison mit 168 Kandidaten, welche Antwort ist am wahrscheinlichste
 
     options: [
 
-      { label: 'a) 1/2 | b) 1/12 | c) 28 → am nächsten: 28', correct: true },
+      { label: 'a) 1/2 | b) 1/24 | c) 12 (am nächsten zu 14)', correct: true },
 
-      { label: 'a) 1/3 | b) 1/12 | c) 28', correct: false },
+      { label: 'a) 1/2 | b) 1/12 | c) 28', correct: false },
 
-      { label: 'a) 1/2 | b) 1/24 | c) 14', correct: false },
+      { label: 'a) 1/3 | b) 1/8 | c) 58', correct: false },
 
     ],
 
     solution: {
 
-      intro: ``,
+      intro: 'Der Grundriss (3×3-Raster mit Türen) ist für den exakten Pfadverlauf entscheidend — hier die angewendete Regel und das offiziell bestätigte Ergebnis.',
 
       steps: [
 
@@ -205,17 +225,11 @@ Die Wahrscheinlichkeit, diese Tür zu wählen, ist 1 von 2.
 
           title: 'b) Weg zum Ziel',
 
-          content: `Es gibt nur einen erfolgreichen Pfad zum Ziel. Wir multiplizieren die Wahrscheinlichkeiten an jeder Kreuzung auf diesem Weg:
+          content: `Laut offizieller Lösung führt der Weg zum Ziel über vier Abzweigungen mit 2, 2, 3 und wieder 2 Türen:
 
-- Erste Abzweigung (2 Türen): P = 1/2
+P(Ziel) = 1/2 · 1/2 · 1/3 · 1/2 = 1/24
 
-- Zweite Abzweigung (2 Türen): P = 1/2
-
-- Dritte Abzweigung (2 Türen): P = 1/2
-
-P(Ziel) = (1/2) * (1/2) * (1/2) = 1/8.
-
-(Hinweis: Die offizielle Lösung scheint einen anderen Plan zu haben, der zu 1/12 führt. Unser Plan ergibt 1/8).`,
+✅ Die Wahrscheinlichkeit beträgt 1/24.`,
 
         },
 
@@ -223,19 +237,16 @@ P(Ziel) = (1/2) * (1/2) * (1/2) = 1/8.
 
           title: 'c) Kandidaten in der Schlammgrube',
 
-          content: `Wir berechnen die Wahrscheinlichkeit für jeden Pfad, der in der Grube G endet, und addieren sie.
+          content: `Die Schlammgrube G wird an der dritten Abzweigung (3 Türen) direkt erreicht, ohne die vierte Abzweigung zu durchlaufen:
 
-Pfad 1 (oben): (1/2) * (1/2) * (1/2) = 1/8
+P(G) = 1/2 · 1/2 · 1/3 = 1/12
 
-Pfad 2 (unten): (1/2) * (1/2) = 1/4
+Erwartete Anzahl von 168 Kandidaten:
+168 · 1/12 = 14
 
-P(Grube) = 1/8 + 1/4 = 1/8 + 2/8 = 3/8.
+Von den gegebenen Antwortmöglichkeiten (12, 20, 28, 35, 58, 178) liegt 12 am nächsten bei 14.
 
-Erwartete Anzahl = Gesamtzahl * P(Grube) = 168 * (3/8) = (168/8) * 3 = 21 * 3 = 63.
-
-Die am nächsten liegende Antwort ist 58.
-
-(Hinweis: Auch hier weicht unsere Lesart des Plans von der offiziellen Lösung ab, die zu P(Grube)=1/6 und damit 28 Kandidaten führt.)`,
+✅ Antwort: 12`,
 
         },
 
@@ -243,7 +254,7 @@ Die am nächsten liegende Antwort ist 58.
 
           title: '📄 Offizielle Schullösung',
 
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen, die einen anderen Pfadverlauf interpretiert.`,
+          content: `Klicke auf den Button, um die offizielle Schullösung mit dem genauen Grundriss zu öffnen.`,
 
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106609/AP17_M1_GMS3_L%C3%B6sung.pdf?fp=1',
 
@@ -253,15 +264,33 @@ Die am nächsten liegende Antwort ist 58.
 
       tip: `🍳 Dein Gameplan:
 
-1. Verfolge den Weg auf der Karte.
+1. Verfolge den Weg auf dem Grundriss von Tür zu Tür.
 
 2. An jeder Kreuzung: Wahrscheinlichkeit ist 1 geteilt durch die Anzahl der Türen.
 
-3. Für einen ganzen Pfad: Multipliziere die Wahrscheinlichkeiten.
+3. Für einen ganzen Pfad: Multipliziere die Wahrscheinlichkeiten aller Kreuzungen auf diesem Weg.
 
-4. Erwartungswert: Multipliziere die Wahrscheinlichkeit mit der Gesamtzahl der Versuche.`,
+4. Erwartungswert: Wahrscheinlichkeit mal Gesamtzahl der Versuche — bei Auswahlantworten den nächstliegenden Wert wählen.`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zur Pfadregel bei mehrstufigen Zufallsexperimenten.
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'An einer Kreuzung gibt es 2 Türen. Wie gross ist die Wahrscheinlichkeit für eine bestimmte Tür?', answer: '1/2', tip: '1 geteilt durch die Anzahl der Türen.' },
+      { level: 'einfach', q: 'An einer Kreuzung gibt es 3 Türen. Wie gross ist die Wahrscheinlichkeit für eine bestimmte Tür?', answer: '1/3', tip: '1 geteilt durch die Anzahl der Türen.' },
+      { level: 'einfach', q: 'Berechne: 1/2 · 1/2', answer: '1/4', tip: 'Zähler mal Zähler, Nenner mal Nenner.' },
+
+      { level: 'mittel', q: 'Ein Pfad führt über zwei Kreuzungen mit je 2 Türen. Wie gross ist die Wahrscheinlichkeit für genau diesen Pfad?', answer: '1/4', tip: 'Pfadregel: Wahrscheinlichkeiten multiplizieren.' },
+      { level: 'mittel', q: 'Ein Pfad führt über eine Kreuzung mit 2 Türen und eine mit 3 Türen. Wie gross ist die Wahrscheinlichkeit für genau diesen Pfad?', answer: '1/6', tip: '1/2 · 1/3.' },
+      { level: 'mittel', q: 'Berechne: 1/2 · 1/2 · 1/3', answer: '1/12', tip: 'Der Reihe nach multiplizieren.' },
+
+      { level: 'schwer', q: 'Berechne: 1/2 · 1/2 · 1/3 · 1/2', answer: '1/24', tip: 'Der Reihe nach multiplizieren, am Ende kürzen.' },
+      { level: 'schwer', q: 'Bei 120 Versuchen mit Wahrscheinlichkeit 1/12 pro Versuch — wie viele Treffer erwartet man im Schnitt?', answer: '10', tip: 'Erwartungswert = Wahrscheinlichkeit × Anzahl Versuche.' },
+
+      { level: 'kanti', q: 'Wie im Original: Ein Pfad zum Ziel führt über vier Kreuzungen mit 2, 2, 3 und 2 Türen. Wie gross ist die Wahrscheinlichkeit für diesen Pfad?', answer: '1/24', tip: '1/2 · 1/2 · 1/3 · 1/2 = 1/24.' },
+      { level: 'kanti', q: 'Wie im Original: Bei 168 Versuchen und Wahrscheinlichkeit 1/12 — welche der Zahlen 12, 20, 28, 35, 58, 178 liegt am nächsten beim Erwartungswert?', answer: '12', tip: '168 · 1/12 = 14 — welche Antwortmöglichkeit ist am nächsten bei 14?' },
+    ],
 
   },
 
