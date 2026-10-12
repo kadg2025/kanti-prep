@@ -1,0 +1,17 @@
+name: Supabase Keepalive
+
+on:
+  schedule:
+    - cron: "0 6 */2 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Datenbank anfragen
+        run: |
+          curl --fail -s -o /dev/null -w "HTTP %{http_code}\n" \
+            "https://coucmiqafhdijfhxupxs.supabase.co/rest/v1/feedback?select=*&limit=1" \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvdWNtaXFhZmhkaWpmaHh1cHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NjQ3NTcsImV4cCI6MjA5NDM0MDc1N30.EAFe7YKsjdhJvk0lAg98P_szNYOjHUYoW7rbptVldrA" \
+            -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvdWNtaXFhZmhkaWpmaHh1cHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NjQ3NTcsImV4cCI6MjA5NDM0MDc1N30.EAFe7YKsjdhJvk0lAg98P_szNYOjHUYoW7rbptVldrA"
