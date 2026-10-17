@@ -170,11 +170,6 @@ x = 12/24 = 1/2
 
 ✅ x = 0.5`,
         },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
-        },
       ],
       tip: `🍳 Kochrezept:
 1️⃣ Brüche mit gemeinsamem Nenner zusammenfassen.
@@ -321,23 +316,24 @@ b1) ...drei rote Kugeln gezogen werden?
 b2) ...genau zwei rote Kugeln dabei sind?
 b3) ...lauter gleichfarbige Kugeln gezogen werden?
 
-Nun werden die Kugeln jeweils durchnummeriert (1 bis 5) und man zieht nacheinander zwei Kugeln mit Zurücklegen.
+Nun werden die Kugeln pro Farbe durchnummeriert (rote Kugeln: 1, 2, 3 — schwarze Kugeln: 1, 2) und man zieht nacheinander zwei Kugeln mit Zurücklegen.
 
 c1) Wie gross ist die Wahrscheinlichkeit, dass die erste gezogene Kugel die Nummer 1 und die zweite gezogene Kugel die Nummer 3 besitzt?
 c2) Wie gross ist die Wahrscheinlichkeit, dass die Summe der beiden gezogenen Kugeln fünf beträgt?`,
     options: [
-      { label: 'b1) 27/125 | b2) 54/125 | b3) 7/25 | c1) 1/25 | c2) 4/25', correct: true },
-      { label: 'b1) 9/25 | b2) 27/125 | b3) 35/125 | c1) 2/25 | c2) 5/25', correct: false },
+      { label: 'b1) 27/125 | b2) 54/125 | b3) 7/25 | c1) 2/25 | c2) 4/25', correct: true },
+      { label: 'b1) 9/25 | b2) 27/125 | b3) 35/125 | c1) 1/25 | c2) 5/25', correct: false },
       { label: 'b1) 3/5 | b2) 72/125 | b3) 27/125 | c1) 1/5 | c2) 2/5', correct: false },
     ],
     solution: {
-      intro: '',
+      intro: 'Teil c1) war in einer früheren Version dieser App falsch (ging von 5 eindeutig nummerierten Kugeln aus) — tatsächlich wird jede Farbe FÜR SICH nummeriert (rot: 1,2,3 | schwarz: 1,2), siehe die Originalgrafik der Prüfung. Hier die korrigierte, gegen die offizielle Lösung geprüfte Version (c1=2/25, c2 bleibt bei 4/25, nur der Rechenweg ist jetzt richtig).',
       steps: [
         {
           title: '📖 Begriffe',
           content: `📐 Mit Zurücklegen: Die Urne bleibt nach jedem Zug gleich zusammengesetzt — die Wahrscheinlichkeiten ändern sich nicht.
 🔑 UND-Regel (Pfadregel): Wahrscheinlichkeiten entlang eines Pfades werden multipliziert.
-🔑 ODER-Regel: Wahrscheinlichkeiten sich ausschliessender Fälle (z.B. mehrere passende Reihenfolgen) werden addiert.`,
+🔑 ODER-Regel: Wahrscheinlichkeiten sich ausschliessender Fälle (z.B. mehrere passende Reihenfolgen) werden addiert.
+⚠️ Achtung bei den Nummern (Teil c): Jede Farbe wird FÜR SICH nummeriert — rot: 1, 2, 3 und schwarz: 1, 2. Die Nummer 1 und die Nummer 2 kommen also je ZWEIMAL vor (einmal rot, einmal schwarz), nur die Nummer 3 gibt es nur einmal!`,
         },
         {
           title: 'a) Baumdarstellung',
@@ -372,17 +368,26 @@ Addieren: 27/125 + 8/125 = 35/125 = 7/25
         },
         {
           title: 'c1) Erste Kugel Nr. 1, zweite Kugel Nr. 3',
-          content: `Es gibt insgesamt 5 durchnummerierte Kugeln. Mit Zurücklegen sind die beiden Ziehungen unabhängig:
-P(erste = 1) = 1/5
-P(zweite = 3) = 1/5
-P = 1/5 · 1/5 = 1/25
+          content: `Achtung: Die Nummer 1 gibt es ZWEIMAL (eine rote, eine schwarze Kugel), die Nummer 3 nur EINMAL (nur bei rot, da schwarz nur bis 2 nummeriert ist).
 
-✅ Ergebnis: 1/25`,
+P(erste Kugel = Nr. 1) = 2/5     (2 von 5 Kugeln tragen die 1)
+P(zweite Kugel = Nr. 3) = 1/5     (nur 1 von 5 Kugeln trägt die 3)
+
+Mit Zurücklegen sind die beiden Ziehungen unabhängig:
+P = 2/5 · 1/5 = 2/25
+
+✅ Ergebnis: 2/25`,
         },
         {
           title: 'c2) Summe der beiden Kugeln ist fünf',
-          content: `Es werden zweimal mit Zurücklegen aus 5 nummerierten Kugeln gezogen: 5 · 5 = 25 gleich wahrscheinliche geordnete Fälle.
-Mit den Nummern 1 bis 5 ergibt die Summe 5 bei: (1,4), (2,3), (3,2), (4,1) — das sind 4 günstige Fälle.
+          content: `Es werden zweimal mit Zurücklegen gezogen: 5 · 5 = 25 gleich wahrscheinliche geordnete Kugel-Paare.
+
+Die vorkommenden Nummern sind 1, 1, 2, 2, 3 (die 1 und die 2 je zweimal, die 3 nur einmal). Die höchste Nummer ist 3 — als Summe 5 sind daher nur die Wertepaare (2,3) und (3,2) möglich:
+
+(2,3): erste Kugel zeigt 2 → 2 Möglichkeiten (rot-2 oder schwarz-2), zweite Kugel zeigt 3 → 1 Möglichkeit → 2·1 = 2 Kugel-Paare
+(3,2): erste Kugel zeigt 3 → 1 Möglichkeit, zweite Kugel zeigt 2 → 2 Möglichkeiten → 1·2 = 2 Kugel-Paare
+
+Total: 2 + 2 = 4 günstige Kugel-Paare von 25
 P = 4/25
 
 ✅ Ergebnis: 4/25`,
@@ -410,7 +415,7 @@ P = 4/25
       { level: 'schwer', q: '6 nummerierte Kugeln (1-6), zweimal mit Zurücklegen gezogen. Wie viele geordnete Paare gibt es total?', answer: '36', tip: '6 · 6.' },
 
       { level: 'kanti', q: 'Wie im Original: 3 rote, 2 schwarze Kugeln (mit Zurücklegen, 3 Züge). Wie gross ist P(lauter gleichfarbig)?', answer: '7/25', tip: 'P(RRR)+P(SSS) = 27/125+8/125 = 35/125 = 7/25 — genau wie im Original b3).' },
-      { level: 'kanti', q: 'Wie im Original: 5 nummerierte Kugeln, zweimal mit Zurücklegen. Wie viele der 25 geordneten Paare ergeben die Summe 5?', answer: '4', tip: '(1,4),(2,3),(3,2),(4,1) — genau wie im Original c2).' },
+      { level: 'kanti', q: 'Wie im Original: Nummern 1,1,2,2,3 (rot 1-3, schwarz 1-2), zweimal mit Zurücklegen. Wie viele der 25 geordneten Kugel-Paare ergeben die Summe 5?', answer: '4', tip: 'Nur die Wertepaare (2,3) und (3,2) ergeben 5 — je 2 Kugel-Paare, macht 4 — genau wie im Original c2).' },
     ],
   },
 
@@ -475,11 +480,6 @@ Diese 70% entsprechen den heutigen 105 Tonnen:
 x = 105 / 0.7 = 150
 
 ✅ Der Weizenertrag im Vorjahr betrug 150 Tonnen.`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen (aktuell nur die Prüfung verfügbar, offizielle Lösung noch nicht veröffentlicht).`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
         },
       ],
       tip: `🍳 Kochrezept:
@@ -561,11 +561,6 @@ x = 6
 Probe: A = 2·6+6 = 18. B = 4.5·6−9 = 27−9 = 18. ✅ Stimmt überein!
 
 ✅ Ergebnis: x = 6`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button, um die offizielle Schullösung zu öffnen (aktuell nur die Prüfung verfügbar, offizielle Lösung noch nicht veröffentlicht).`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
         },
       ],
       tip: `🍳 Kochrezept:
