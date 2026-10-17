@@ -217,6 +217,7 @@ z kürzt sich komplett weg (z/z = 1)
 
   {
     id: 'M1_2024_OTR_ROLL_3a',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -252,6 +253,7 @@ Bei gleichmässiger Bewegung zuerst auf 1 Minute umrechnen.`,
 
   {
     id: 'M1_2024_OTR_ROLL_3b',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -294,6 +296,7 @@ Bei gleichmässiger Bewegung zuerst auf 1 Minute umrechnen.`,
 
   {
     id: 'M1_2024_OTR_ROLL_3c',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -326,6 +329,7 @@ Graphen immer mit den gegebenen Punkten und der Steigung einzeichnen.`,
 
   {
     id: 'M1_2024_OTR_RATE_4a',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -365,6 +369,7 @@ Nach 5 h:
 
   {
     id: 'M1_2024_OTR_RATE_4b',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -400,6 +405,7 @@ Mehr Personen = weniger Zeit, also umgekehrt proportional.`,
 
   {
     id: 'M1_2024_OTR_RATE_4c',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
