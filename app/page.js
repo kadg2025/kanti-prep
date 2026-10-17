@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { questions } from './lib/questions';
 import { facts } from './lib/facts';
 import LinksPage from './LinksPage';
@@ -142,6 +142,30 @@ function useLernplan() {
   const daysLeft = pruefungsDatum ? Math.ceil((new Date(pruefungsDatum) - new Date()) / 86400000) : null;
   const aufgabenProTag = daysLeft > 0 ? Math.ceil(questions.length / daysLeft) : null;
   return { pruefungsDatum, saveDatum, daysLeft, aufgabenProTag };
+}
+
+// ─── FEHLER-KISTE (localStorage) ──────────────────────────────────────────
+// Sammelt IDs falsch beantworteter Aufgaben für eine spätere "Fehler-Kiste"
+// (gezieltes Wiederholen der Aufgaben, bei denen man falsch lag).
+function recordFehler(id) {
+  try {
+    const arr = JSON.parse(localStorage.getItem('kp_fehler') || '[]');
+    if (!arr.includes(id)) {
+      arr.push(id);
+      localStorage.setItem('kp_fehler', JSON.stringify(arr));
+    }
+  } catch {}
+}
+
+// Fisher-Yates — mischt die Multiple-Choice-Antworten, damit die richtige
+// nicht immer an derselben Stelle steht.
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 // ─── KONFETTI ─────────────────────────────────────────────────────────────
@@ -658,8 +682,24 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
   const [showSolution, setShowSolution] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [prevId, setPrevId] = useState(null);
-  const [solvedCount, setSolvedCount] = useState(0);
-  if (question && question.id !== prevId) { setShowSolution(false); setPrevId(question.id); }
+  // Erst versuchen, dann Lösung: Multiple-Choice-Zustand pro Aufgabe.
+  const [selectedOpt, setSelectedOpt] = useState(null);
+  const [wrongOpts, setWrongOpts] = useState(() => new Set());
+  const [answered, setAnswered] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const shuffledOptions = useMemo(() => {
+    if (!question || !Array.isArray(question.options)) return [];
+    return shuffleArray(question.options);
+  }, [question?.id]);
+  if (question && question.id !== prevId) {
+    setShowSolution(false);
+    setPrevId(question.id);
+    setWrongOpts(new Set());
+    const already = solved.has(question.id);
+    setAnswered(already);
+    setIsCorrect(already);
+    setSelectedOpt(already ? shuffledOptions.find(o => o.correct) || null : null);
+  }
   const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309', 'Mathe Neu': '#534AB7', 'Deutsch Neu': '#b45309' };
   const color = subjectColors[subject] || '#534AB7';
 
@@ -679,6 +719,40 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
   }
 
   const s = question.solution;
+
+  // Zählt die Aufgabe als gelöst (nur bei richtiger Antwort) + Streak +
+  // Konfetti, wenn damit das ganze Thema fertig ist.
+  function markCorrect() {
+    if (!solved.has(question.id)) {
+      onSolved(question.id);
+      if (bt) {
+        const tree = bt(subject);
+        const topicItems = tree[question.group]?.[question.topic] || [];
+        const allSolved = topicItems.every(q => q.id === question.id || solved.has(q.id));
+        if (allSolved && topicItems.length > 1) onKonfetti();
+      }
+    }
+  }
+
+  function handleTapOption(opt) {
+    if (isCorrect || wrongOpts.has(opt)) return;
+    setAnswered(true);
+    setSelectedOpt(opt);
+    if (opt.correct) {
+      setIsCorrect(true);
+      markCorrect();
+    } else {
+      setWrongOpts(prev => new Set(prev).add(opt));
+      recordFehler(question.id);
+    }
+  }
+
+  function handleIchHabsRichtig() {
+    if (isCorrect) return;
+    setAnswered(true);
+    setIsCorrect(true);
+    markCorrect();
+  }
 
   return (
     <main style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '64px 16px 40px' : '40px', background: dm.bg }}>
@@ -712,20 +786,49 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
         <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', marginBottom: '16px' }}>
           <p style={{ margin: 0, fontSize: '15px', lineHeight: '1.8', color: dm.text, whiteSpace: 'pre-wrap', fontFamily: 'inherit' }} dangerouslySetInnerHTML={{ __html: question.questionText.replace(/__(.*?)__/g, '<u>$1</u>') }} />
         </div>
+        {/* Erst versuchen: Multiple-Choice (falls vorhanden) oder Selbst-Check-Button */}
+        <div style={{ marginBottom: '20px' }}>
+          {shuffledOptions.length > 0 ? (
+            <div>
+              <p style={{ fontSize: '13px', fontWeight: '700', color: dm.text2, margin: '0 0 10px' }}>👉 Wähle die richtige Antwort:</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {shuffledOptions.map((opt, i) => {
+                  const isWrongTap = wrongOpts.has(opt);
+                  const isRevealedCorrect = isCorrect && opt.correct;
+                  const disabled = isCorrect || isWrongTap;
+                  const bg = isRevealedCorrect ? dm.okTint : isWrongTap ? (dark ? '#2a1515' : '#fef2f2') : dm.card;
+                  const border = isRevealedCorrect ? '#22c55e' : isWrongTap ? '#ef4444' : dm.border;
+                  const textColor = isRevealedCorrect ? dm.okText : isWrongTap ? '#ef4444' : dm.text;
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => handleTapOption(opt)}
+                      disabled={disabled}
+                      style={{ textAlign: 'left', padding: '13px 16px', borderRadius: '10px', border: `2px solid ${border}`, background: bg, color: textColor, fontSize: '14px', lineHeight: '1.6', fontWeight: isRevealedCorrect ? '700' : '500', cursor: disabled ? 'default' : 'pointer', transition: 'all 0.15s', whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}
+                    >
+                      {isRevealedCorrect ? '✓ ' : isWrongTap ? '✗ ' : ''}{opt.label}
+                    </button>
+                  );
+                })}
+              </div>
+              {isCorrect && <p style={{ color: '#22c55e', fontWeight: '700', fontSize: '14px', margin: '10px 0 0' }}>✓ Richtig! 🎉</p>}
+              {answered && !isCorrect && <p style={{ color: '#ef4444', fontWeight: '600', fontSize: '13px', margin: '10px 0 0' }}>✗ Nochmal versuchen — die richtige Antwort ist noch dabei.</p>}
+            </div>
+          ) : (
+            <div>
+              <button
+                onClick={handleIchHabsRichtig}
+                disabled={isCorrect}
+                style={{ padding: '12px 24px', background: isCorrect ? dm.okTint : '#22c55e', color: isCorrect ? dm.okText : '#fff', border: isCorrect ? `1px solid ${dm.okBorder}` : 'none', borderRadius: '10px', fontSize: '14px', fontWeight: '700', cursor: isCorrect ? 'default' : 'pointer' }}
+              >
+                {isCorrect ? '✓ Als richtig markiert 🎉' : "✅ Ich hab's richtig"}
+              </button>
+            </div>
+          )}
+        </div>
+
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <button onClick={() => {
-              if (!showSolution && question) {
-                onSolved(question.id);
-                setSolvedCount(c => c + 1);
-                if (bt) {
-                  const tree = bt(subject);
-                  const topicItems = tree[question.group]?.[question.topic] || [];
-                  const allSolved = topicItems.every(q => q.id === question.id || solved.has(q.id));
-                  if (allSolved && topicItems.length > 1) onKonfetti();
-                }
-              }
-              setShowSolution(v => !v);
-            }} style={{ padding: '12px 28px', background: showSolution ? dm.accentBg : color, color: showSolution ? (dark ? '#c4b5fd' : color) : '#fff', border: showSolution ? `1px solid ${dark ? '#4c3f8f' : '#c4b5fd'}` : 'none', borderRadius: '10px', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s' }}>
+          <button onClick={() => setShowSolution(v => !v)} style={{ padding: '12px 28px', background: showSolution ? dm.accentBg : color, color: showSolution ? (dark ? '#c4b5fd' : color) : '#fff', border: showSolution ? `1px solid ${dark ? '#4c3f8f' : '#c4b5fd'}` : 'none', borderRadius: '10px', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s' }}>
             {showSolution ? '🙈 Lösungsweg ausblenden' : '💡 Lösungsweg anzeigen'}
           </button>
         </div>
