@@ -326,7 +326,7 @@ c2) Wie gross ist die Wahrscheinlichkeit, dass die Summe der beiden gezogenen Ku
       { label: 'b1) 3/5 | b2) 72/125 | b3) 27/125 | c1) 1/5 | c2) 2/5', correct: false },
     ],
     solution: {
-      intro: 'Teil c1) war in einer früheren Version dieser App falsch (ging von 5 eindeutig nummerierten Kugeln aus) — tatsächlich wird jede Farbe FÜR SICH nummeriert (rot: 1,2,3 | schwarz: 1,2), siehe die Originalgrafik der Prüfung. Hier die korrigierte, gegen die offizielle Lösung geprüfte Version (c1=2/25, c2 bleibt bei 4/25, nur der Rechenweg ist jetzt richtig).',
+      intro: '',
       steps: [
         {
           title: '📖 Begriffe',
