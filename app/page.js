@@ -806,13 +806,13 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
                       disabled={disabled}
                       style={{ textAlign: 'left', padding: '13px 16px', borderRadius: '10px', border: `2px solid ${border}`, background: bg, color: textColor, fontSize: '14px', lineHeight: '1.6', fontWeight: isRevealedCorrect ? '700' : '500', cursor: disabled ? 'default' : 'pointer', transition: 'all 0.15s', whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}
                     >
-                      {isRevealedCorrect ? '✓ ' : isWrongTap ? '✗ ' : ''}{opt.label}
+                      {isRevealedCorrect ? '✓ ' : isWrongTap ? '❌ ' : ''}{opt.label}
                     </button>
                   );
                 })}
               </div>
               {isCorrect && <p style={{ color: '#22c55e', fontWeight: '700', fontSize: '14px', margin: '10px 0 0' }}>✓ Richtig! 🎉</p>}
-              {answered && !isCorrect && <p style={{ color: '#ef4444', fontWeight: '600', fontSize: '13px', margin: '10px 0 0' }}>✗ Nochmal versuchen — die richtige Antwort ist noch dabei.</p>}
+              {answered && !isCorrect && <p style={{ color: '#ef4444', fontWeight: '600', fontSize: '13px', margin: '10px 0 0' }}>❌ Nochmal versuchen — die richtige Antwort ist noch dabei.</p>}
             </div>
           ) : (
             <div>
