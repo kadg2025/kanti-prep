@@ -470,6 +470,7 @@ Es gibt zwei mögliche Lösungen je nach Aufklapprichtung (nach aussen oder nach
   // ── AUFGABE 6a ────────────────────────────────────────────
   {
     id: 'M1_2021_OTR_STAT_6a',
+    verified: true,
     year: 2021,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -522,6 +523,7 @@ Diagramm E: Skala 0–12, aber falsche Balkenlängen ✗
   // ── AUFGABE 6b ────────────────────────────────────────────
   {
     id: 'M1_2021_OTR_STAT_6b',
+    verified: true,
     year: 2021,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',

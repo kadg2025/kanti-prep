@@ -300,6 +300,7 @@ aˣ = a⁸
 
   {
     id: 'M1_2022_OTR_TEXT_4',
+    verified: true,
     year: 2022,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',

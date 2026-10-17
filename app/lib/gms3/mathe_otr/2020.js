@@ -429,6 +429,7 @@ Da die genaue Figur aus dem PDF benötigt wird, empfehlen wir die offizielle Sch
   // ── AUFGABE 4a ────────────────────────────────────────────
   {
     id: 'M1_2020_OTR_FUNK_4a',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -471,6 +472,7 @@ Preis pro km = Steigung der Geraden.`,
   // ── AUFGABE 4b ────────────────────────────────────────────
   {
     id: 'M1_2020_OTR_FUNK_4b',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -515,6 +517,7 @@ b = Grundgebühr (y-Achsenabschnitt)`,
   // ── AUFGABE 4c ────────────────────────────────────────────
   {
     id: 'M1_2020_OTR_FUNK_4c',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -562,6 +565,7 @@ x = 55
   // ── AUFGABE 4d ────────────────────────────────────────────
   {
     id: 'M1_2020_OTR_FUNK_4d',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -605,6 +609,7 @@ Wie hoch ist die Grundgebühr in Paris und wie viel zahlt man dort pro Kilometer
   // ── AUFGABE 4e ────────────────────────────────────────────
   {
     id: 'M1_2020_OTR_FUNK_4e',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
