@@ -266,6 +266,7 @@ c) T3 : T4`,
 
   {
     id: 'M1_2023_OTR_KERZE_4a',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -303,6 +304,7 @@ y-Achsenabschnitt zuerst erkennen, dann Steigung ablesen.`,
 
   {
     id: 'M1_2023_OTR_KERZE_4b',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -339,6 +341,7 @@ Die Kerze ist weg, wenn y = 0 ist.`,
 
   {
     id: 'M1_2023_OTR_KERZE_4d',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -378,6 +381,7 @@ Gleich lang = beide Funktionswerte gleichsetzen.`,
 
   {
     id: 'M1_2023_OTR_KERZE_4e',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
@@ -422,6 +426,7 @@ Die Stumpenkerze soll doppelt so lang sein wie die Stabkerze → Gleichung aufst
 
   {
     id: 'M1_2023_OTR_STAT_5a',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',

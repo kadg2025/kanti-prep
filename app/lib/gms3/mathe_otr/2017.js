@@ -161,6 +161,8 @@ b2) Mindestens voll: (Gesamtpersonen - (Anzahl Gondeln * 3)) -> Das Ergebnis ist
 
     id: 'M1_2017_OTR_WAHR_1',
 
+    verified: true,
+
     year: 2017,
 
     subject: 'Mathe',

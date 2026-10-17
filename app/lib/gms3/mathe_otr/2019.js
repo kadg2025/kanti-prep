@@ -708,6 +708,8 @@ Von den gegebenen Antworten (808, 12, 332, 203, 502) liegt 332 am nächsten bei 
 
     id: 'M3_2019_OTR_STATISTIK_6',
 
+    verified: true,
+
     year: 2019,
 
     subject: 'Mathe',
@@ -744,7 +746,7 @@ d) Wie viel Prozent der Mädchen haben eine Sprache als Lieblingsfach?`,
 
     options: [
 
-      { label: 'a) F:3, E:2, M:5, S:6, K:4 | b) F:3/20=15% | c) 54° | d) 50%', correct: true },
+      { label: 'a) F:3, E:2, M:5, S:6, K:4 | b) F:3/20=15% | c) 54° | d) 20%', correct: true },
 
       { label: 'a) F:3, E:2, M:5, S:6, K:4 | b) F:15% | c) 60° | d) 40%', correct: false },
 
@@ -754,7 +756,7 @@ d) Wie viel Prozent der Mädchen haben eine Sprache als Lieblingsfach?`,
 
     solution: {
 
-      intro: '',
+      intro: 'Teil d) war in einer früheren Version dieser App als Antwortoption falsch angegeben (50% statt 20%) — die Lösung selbst hat immer schon korrekt 20% vorgerechnet, aber diese 20% fehlten unter den Multiple-Choice-Antworten. Jetzt korrigiert und gegen die offizielle Lösung geprüft.',
 
       steps: [
 

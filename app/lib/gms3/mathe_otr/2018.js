@@ -721,6 +721,8 @@ Total = 4/100 + 9/100 + 25/100 = 38/100 = 19/50`,
 
     id: 'M3_2018_OTR_PYRAMIDE_6',
 
+    verified: true,
+
     year: 2018,
 
     subject: 'Mathe',
@@ -747,9 +749,9 @@ c) Berechne den Oberflächeninhalt dieser Pyramide.`,
 
     options: [
 
-      { label: 'O ≈ 46.3 cm²', correct: true },
+      { label: 'O = 48 cm²', correct: true },
 
-      { label: 'O = 48 cm²', correct: false },
+      { label: 'O ≈ 46.3 cm²', correct: false },
 
       { label: 'O = 52 cm²', correct: false },
 
@@ -757,9 +759,19 @@ c) Berechne den Oberflächeninhalt dieser Pyramide.`,
 
     solution: {
 
-      intro: '',
+      intro: 'Die Oberflächenberechnung war in einer früheren Version dieser App falsch (46.3 cm² statt 48 cm²) — hier die korrigierte, gegen die offizielle Lösung geprüfte Version. Der Fehler lag darin, die beiden fernen Seitenflächen fälschlich als gleichschenklige Dreiecke (5/5/4) statt als rechtwinklige Dreiecke (5/4, rechter Winkel) zu behandeln.',
 
       steps: [
+
+        {
+
+          title: '📖 Begriffe',
+
+          content: `📐 Die Pyramidenspitze steht senkrecht über einer Quadratecke A — nicht über der Mitte! Dadurch ist diese Pyramide "schief": die vier Seitendreiecke sind NICHT alle gleich geformt.
+🔑 An der Ecke A selbst (wo die Spitze direkt darüber steht) treffen die senkrechte Höhe (3 cm) und die waagrechte Grundkante (4 cm) im rechten Winkel aufeinander — das ergibt zwei rechtwinklige Dreiecke mit Katheten 3 und 4.
+🔑 An den beiden Nachbarecken (B und D) steht die bereits gefundene Kante (5 cm) ihrerseits rechtwinklig auf der Grundkante (4 cm) — auch das sind rechtwinklige Dreiecke, aber mit Katheten 5 und 4 (nicht gleichschenklig!).`,
+
+        },
 
         {
 
@@ -773,37 +785,34 @@ Seitenlänge = √16 = 4 cm`,
 
         {
 
-          title: 'Schräge Kanten',
+          title: 'Schräge Kanten mit Pythagoras',
 
-          content: `Mit Pythagoras:
+          content: `An der Ecke A (unter der Spitze) bilden die Höhe (3 cm) und die Grundkante (4 cm) ein rechtwinkliges Dreieck:
+√(3² + 4²) = √25 = 5 cm
 
-√(3² + 4²) = √25 = 5
+Das ist die Länge der beiden Kanten von der Spitze zu den Nachbarecken B und D.
 
-Fehlende Seiten im Netz: 4 cm und 5 cm`,
+Fehlende Seiten im Netz: 5 cm (zweimal, zu B und zu D) und zusätzlich die weit entfernte Kante zur gegenüberliegenden Ecke C (siehe nächster Schritt).`,
 
         },
 
         {
 
-          title: 'Oberfläche berechnen',
+          title: 'Oberfläche berechnen — zwei Dreieckspaare',
 
-          content: `Grundfläche = 16
+          content: `Grundfläche = 16 cm²
 
-Zwei rechtwinklige Seitendreiecke:
+Paar 1 — an der Ecke A (rechter Winkel dort, Katheten 3 und 4):
+2 · (4·3)/2 = 12 cm²
 
-2 · (4·3)/2 = 12
-
-Zwei gleichschenklige Dreiecke:
-
-Höhe = √(5² - 2²) = √21
-
-Fläche zusammen = 2 · (4·√21)/2 = 4√21 ≈ 18.33
+Paar 2 — an den Ecken B und D (rechter Winkel dort, Katheten 5 und 4 — NICHT gleichschenklig!):
+Die Kante von der Spitze zur Ecke B steht rechtwinklig auf der Grundkante BC (genauso bei D und DC), weil die Höhe BF ja über dem rechten Winkel bei A/B aufgebaut ist.
+2 · (5·4)/2 = 20 cm²
 
 Total:
+16 + 12 + 20 = 48 cm²
 
-16 + 12 + 4√21 ≈ 46.3 cm²
-
-✅ Ergebnis: O ≈ 46.3 cm²`,
+✅ Ergebnis: O = 48 cm²`,
 
         },
 
@@ -823,11 +832,33 @@ Total:
 
 1️⃣ Aus der Grundfläche die Seitenlänge holen.
 
-2️⃣ Mit Pythagoras die schrägen Seiten berechnen.
+2️⃣ Mit Pythagoras die Kante von der Spitze zu den direkten Nachbarecken berechnen (Katheten = Höhe und Grundkante).
 
-3️⃣ Flächen aller Dreiecke plus Quadrat addieren.`,
+3️⃣ Achtung: Die beiden fernen Seitendreiecke sind rechtwinklig (Katheten = diese Kante und die Grundkante), NICHT gleichschenklig!
+
+4️⃣ Alle vier Dreiecksflächen plus die quadratische Grundfläche addieren.`,
 
     },
+
+    // ── ÜBUNGEN: aufbauend zur schiefen Pyramide (Spitze über einer Ecke) —
+    //    Grundfläche, Pythagoras für die Kanten, und die beiden unterschiedlichen
+    //    Dreieckspaare (rechtwinklig an A, rechtwinklig an B/D).
+    //    Tipps sind high-level: nur Konzept, keine Zahlen, keine Lösung.
+    practice: [
+      { level: 'einfach', q: 'Eine quadratische Grundfläche hat den Flächeninhalt 25 cm². Wie lang ist eine Seite?', answer: '5', tip: 'Seite = √Flächeninhalt.' },
+      { level: 'einfach', q: 'Berechne mit Pythagoras die Hypotenuse eines rechtwinkligen Dreiecks mit Katheten 3 und 4.', answer: '5', tip: '√(3²+4²).' },
+      { level: 'einfach', q: 'Berechne die Fläche eines rechtwinkligen Dreiecks mit Katheten 3 und 4.', answer: '6', tip: 'Fläche = 1/2 · Kathete1 · Kathete2.' },
+
+      { level: 'mittel', q: 'Eine Pyramidenspitze steht 6 cm senkrecht über einer Ecke eines Quadrats mit Seite 8 cm. Wie lang ist die Kante von der Spitze zu einer direkten Nachbarecke?', answer: '10', tip: '√(Höhe² + Seitenlänge²), wie bei den Katheten 3 und 4.' },
+      { level: 'mittel', q: 'Berechne die Fläche eines rechtwinkligen Dreiecks mit Katheten 5 und 4.', answer: '10', tip: 'Fläche = 1/2 · Kathete1 · Kathete2.' },
+      { level: 'mittel', q: 'Ein Quadrat mit Seite 4 cm bildet die Grundfläche einer Pyramide. Wie gross ist die Grundfläche?', answer: '16', tip: 'Seite · Seite.' },
+
+      { level: 'schwer', q: 'Bei der Original-Pyramide (Grundseite 4, Höhe 3 über einer Ecke): Wie viele der vier Seitendreiecke sind rechtwinklig mit Katheten 3 und 4 (statt 5 und 4)?', answer: '2', tip: 'Nur die beiden Dreiecke an der Ecke direkt unter der Spitze.' },
+      { level: 'schwer', q: 'Addiere die beiden Dreieckspaare: 2·(4·3)/2 + 2·(5·4)/2. Was ergibt das (ohne Grundfläche)?', answer: '32', tip: '12 + 20.' },
+
+      { level: 'kanti', q: 'Wie im Original: Grundfläche 16 cm², Spitze 3 cm über einer Ecke. Wie gross ist die Gesamtoberfläche?', answer: '48', tip: 'Grundfläche (16) + zwei Dreiecke mit Katheten 3,4 (12) + zwei Dreiecke mit Katheten 5,4 (20) = 48.' },
+      { level: 'kanti', q: 'Warum sind die beiden fernen Seitendreiecke NICHT gleichschenklig mit Seiten 5/5/4, sondern rechtwinklig mit Katheten 5/4?', answer: 'weil die 5cm-Kante rechtwinklig auf der Grundkante steht', tip: 'Der rechte Winkel entsteht, weil die Höhe der Pyramide senkrecht über der Ecke A steht — das pflanzt sich als rechter Winkel zu den Nachbarecken fort.' },
+    ],
 
   },
 
