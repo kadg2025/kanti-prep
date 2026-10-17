@@ -146,8 +146,9 @@ function useLernplan() {
 
 // ─── FEHLER-KISTE (localStorage) ──────────────────────────────────────────
 // Sammelt IDs falsch beantworteter Aufgaben für die Fehler-Kiste (gezieltes
-// Wiederholen). Wird eine Aufgabe später richtig gelöst, fliegt sie dort
-// automatisch wieder raus (siehe handleSolved in Home).
+// Wiederholen). Fliegt eine Aufgabe nur raus, wenn sie beim allerersten
+// Versuch richtig gelöst wird (siehe markCorrect in QuestionDisplay) —
+// erst falsch, dann richtig tippen bleibt bewusst in der Kiste.
 function useFehlerKiste() {
   const [fehler, setFehler] = useState([]);
   useEffect(() => {
@@ -697,9 +698,10 @@ function PracticeLadder({ practice, dm, dark }) {
 }
 
 // ─── QUESTION DISPLAY ─────────────────────────────────────────────────────
-function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = () => {}, solved = new Set(), dark = false, dm = makePalette(false), onKonfetti = () => {}, buildTree: bt }) {
+function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = () => {}, onRemoveFehler = () => {}, solved = new Set(), dark = false, dm = makePalette(false), onKonfetti = () => {}, buildTree: bt }) {
   const isMobile = useIsMobile();
   const [showSolution, setShowSolution] = useState(false);
+  const [solutionViewed, setSolutionViewed] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [prevId, setPrevId] = useState(null);
   // Erst versuchen, dann Lösung: Multiple-Choice-Zustand pro Aufgabe.
@@ -707,17 +709,22 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
   const [wrongOpts, setWrongOpts] = useState(() => new Set());
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  // War die (einzige) richtige Antwort der allererste Versuch? Nur dann
+  // zählt die Aufgabe als "gelöst" — durchprobieren bringt kein Häkchen.
+  const [firstTry, setFirstTry] = useState(false);
   const shuffledOptions = useMemo(() => {
     if (!question || !Array.isArray(question.options)) return [];
     return shuffleArray(question.options);
   }, [question?.id]);
   if (question && question.id !== prevId) {
     setShowSolution(false);
+    setSolutionViewed(false);
     setPrevId(question.id);
     setWrongOpts(new Set());
     const already = solved.has(question.id);
     setAnswered(already);
     setIsCorrect(already);
+    setFirstTry(already);
     setSelectedOpt(already ? shuffledOptions.find(o => o.correct) || null : null);
   }
   const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309', 'Mathe Neu': '#534AB7', 'Deutsch Neu': '#b45309' };
@@ -740,11 +747,12 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
 
   const s = question.solution;
 
-  // Zählt die Aufgabe als gelöst (nur bei richtiger Antwort) + Streak +
-  // Konfetti, wenn damit das ganze Thema fertig ist.
+  // Zählt die Aufgabe als gelöst (nur beim allerersten, richtigen Versuch)
+  // + Streak + Konfetti + raus aus der Fehler-Kiste.
   function markCorrect() {
     if (!solved.has(question.id)) {
       onSolved(question.id);
+      onRemoveFehler(question.id);
       if (bt) {
         const tree = bt(subject);
         const topicItems = tree[question.group]?.[question.topic] || [];
@@ -760,7 +768,14 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     setSelectedOpt(opt);
     if (opt.correct) {
       setIsCorrect(true);
-      markCorrect();
+      if (wrongOpts.size === 0) {
+        // Erster Tap war schon richtig -> zählt als gelöst.
+        setFirstTry(true);
+        markCorrect();
+      } else {
+        // Erst falsch, dann richtig: Feedback ja, "gelöst" nein — bleibt in der Fehler-Kiste.
+        setFirstTry(false);
+      }
     } else {
       setWrongOpts(prev => new Set(prev).add(opt));
       onFehler(question.id);
@@ -768,9 +783,10 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
   }
 
   function handleIchHabsRichtig() {
-    if (isCorrect) return;
+    if (isCorrect || solutionViewed) return;
     setAnswered(true);
     setIsCorrect(true);
+    setFirstTry(true);
     markCorrect();
   }
 
@@ -831,24 +847,29 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
                   );
                 })}
               </div>
-              {isCorrect && <p style={{ color: '#22c55e', fontWeight: '700', fontSize: '14px', margin: '10px 0 0' }}>✓ Richtig! 🎉</p>}
+              {isCorrect && (
+                <p style={{ color: '#22c55e', fontWeight: '700', fontSize: '14px', margin: '10px 0 0' }}>
+                  {firstTry ? '✓ Richtig! 🎉' : '✓ Richtig – beim nächsten Mal auf Anhieb! 💪'}
+                </p>
+              )}
               {answered && !isCorrect && <p style={{ color: '#ef4444', fontWeight: '600', fontSize: '13px', margin: '10px 0 0' }}>❌ Nochmal versuchen — die richtige Antwort ist noch dabei.</p>}
             </div>
           ) : (
             <div>
               <button
                 onClick={handleIchHabsRichtig}
-                disabled={isCorrect}
-                style={{ padding: '12px 24px', background: isCorrect ? dm.okTint : '#22c55e', color: isCorrect ? dm.okText : '#fff', border: isCorrect ? `1px solid ${dm.okBorder}` : 'none', borderRadius: '10px', fontSize: '14px', fontWeight: '700', cursor: isCorrect ? 'default' : 'pointer' }}
+                disabled={isCorrect || solutionViewed}
+                style={{ padding: '12px 24px', background: isCorrect ? dm.okTint : solutionViewed ? dm.bg3 : '#22c55e', color: isCorrect ? dm.okText : solutionViewed ? dm.text3 : '#fff', border: isCorrect ? `1px solid ${dm.okBorder}` : solutionViewed ? `1px solid ${dm.border}` : 'none', borderRadius: '10px', fontSize: '14px', fontWeight: '700', cursor: (isCorrect || solutionViewed) ? 'default' : 'pointer' }}
               >
-                {isCorrect ? '✓ Als richtig markiert 🎉' : "✅ Ich hab's richtig"}
+                {isCorrect ? '✓ Als richtig markiert 🎉' : solutionViewed ? '🔒 Lösung schon angeschaut' : "✅ Ich hab's richtig"}
               </button>
+              {solutionViewed && !isCorrect && <p style={{ fontSize: '12px', color: dm.text3, margin: '8px 0 0' }}>Lösung schon angeschaut – probier es später nochmal 🙂</p>}
             </div>
           )}
         </div>
 
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <button onClick={() => setShowSolution(v => !v)} style={{ padding: '12px 28px', background: showSolution ? dm.accentBg : color, color: showSolution ? (dark ? '#c4b5fd' : color) : '#fff', border: showSolution ? `1px solid ${dark ? '#4c3f8f' : '#c4b5fd'}` : 'none', borderRadius: '10px', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s' }}>
+          <button onClick={() => { setSolutionViewed(true); setShowSolution(v => !v); }} style={{ padding: '12px 28px', background: showSolution ? dm.accentBg : color, color: showSolution ? (dark ? '#c4b5fd' : color) : '#fff', border: showSolution ? `1px solid ${dark ? '#4c3f8f' : '#c4b5fd'}` : 'none', borderRadius: '10px', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s' }}>
             {showSolution ? '🙈 Lösungsweg ausblenden' : '💡 Lösungsweg anzeigen'}
           </button>
         </div>
@@ -1043,9 +1064,9 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
 
 // ─── FEHLER-KISTE PAGE ─────────────────────────────────────────────────────
 // Liste aller falsch beantworteten Aufgaben (über alle Fächer hinweg),
-// gruppiert nach Fach — mit Direktsprung zurück zur Aufgabe. Wird eine
-// Aufgabe richtig gelöst, verschwindet sie automatisch wieder von hier
-// (siehe handleSolved in Home).
+// gruppiert nach Fach — mit Direktsprung zurück zur Aufgabe. Verschwindet
+// eine Aufgabe von hier nur automatisch, wenn sie beim nächsten Besuch im
+// allerersten Versuch richtig gelöst wird.
 function FehlerKistePage({ fehlerIds, dm, onBack, onRemove, onClearAll, onJump }) {
   const isMobile = useIsMobile();
   const items = fehlerIds.map(id => questions.find(q => q.id === id)).filter(Boolean);
@@ -1170,7 +1191,7 @@ export default function Home() {
   const { fehler, addFehler, removeFehler, clearFehler } = useFehlerKiste();
   const [konfetti, setKonfetti] = useState(false);
 
-  const handleSolved = useCallback((id) => { markSolved(id); bumpStreak(); removeFehler(id); }, [markSolved, bumpStreak, removeFehler]);
+  const handleSolved = useCallback((id) => { markSolved(id); bumpStreak(); }, [markSolved, bumpStreak]);
 
   const dm = makePalette(dark);
 
@@ -1240,7 +1261,7 @@ export default function Home() {
         </button>
       )}
 
-      <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
+      <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} onRemoveFehler={removeFehler} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
 
       <MiniPlayer dm={dm} />
     </div>
