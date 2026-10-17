@@ -145,16 +145,35 @@ function useLernplan() {
 }
 
 // ─── FEHLER-KISTE (localStorage) ──────────────────────────────────────────
-// Sammelt IDs falsch beantworteter Aufgaben für eine spätere "Fehler-Kiste"
-// (gezieltes Wiederholen der Aufgaben, bei denen man falsch lag).
-function recordFehler(id) {
-  try {
-    const arr = JSON.parse(localStorage.getItem('kp_fehler') || '[]');
-    if (!arr.includes(id)) {
-      arr.push(id);
-      localStorage.setItem('kp_fehler', JSON.stringify(arr));
-    }
-  } catch {}
+// Sammelt IDs falsch beantworteter Aufgaben für die Fehler-Kiste (gezieltes
+// Wiederholen). Wird eine Aufgabe später richtig gelöst, fliegt sie dort
+// automatisch wieder raus (siehe handleSolved in Home).
+function useFehlerKiste() {
+  const [fehler, setFehler] = useState([]);
+  useEffect(() => {
+    try { setFehler(JSON.parse(localStorage.getItem('kp_fehler') || '[]')); } catch {}
+  }, []);
+  const addFehler = useCallback((id) => {
+    setFehler(prev => {
+      if (prev.includes(id)) return prev;
+      const next = [...prev, id];
+      try { localStorage.setItem('kp_fehler', JSON.stringify(next)); } catch {}
+      return next;
+    });
+  }, []);
+  const removeFehler = useCallback((id) => {
+    setFehler(prev => {
+      if (!prev.includes(id)) return prev;
+      const next = prev.filter(x => x !== id);
+      try { localStorage.setItem('kp_fehler', JSON.stringify(next)); } catch {}
+      return next;
+    });
+  }, []);
+  const clearFehler = useCallback(() => {
+    setFehler([]);
+    try { localStorage.removeItem('kp_fehler'); } catch {}
+  }, []);
+  return { fehler, addFehler, removeFehler, clearFehler };
 }
 
 // Fisher-Yates — mischt die Multiple-Choice-Antworten, damit die richtige
@@ -450,7 +469,7 @@ function PauseModal({ onClose, dm = makePalette(false) }) {
 }
 
 // ─── SIDEBAR ──────────────────────────────────────────────────────────────
-function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), clearSolved, dark = false, toggleDark = () => {}, streak = 0, dm = makePalette(false), mobile = false, onClose = () => {} }) {
+function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), clearSolved, dark = false, toggleDark = () => {}, streak = 0, dm = makePalette(false), mobile = false, onClose = () => {}, onShowFehlerKiste = () => {}, fehlerCount = 0 }) {
   const tree = buildTree(subject);
   const [openGroups, setOpenGroups] = useState(() => { const s = {}; Object.keys(tree).forEach(g => { s[g] = true; }); return s; });
   const [openTopics, setOpenTopics] = useState({});
@@ -558,6 +577,7 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
       </nav>
       <div style={{ padding: '14px 16px', borderTop: `1px solid ${dm.border}` }}>
         <button onClick={() => setShowPause(true)} style={{ width: '100%', padding: '10px', background: 'linear-gradient(135deg, #534AB7, #0f766e)', color: '#fff', border: 'none', borderRadius: '10px', cursor: 'pointer', fontSize: '13px', fontWeight: '700', marginBottom: '8px' }}>☕ Pause machen</button>
+        <button onClick={onShowFehlerKiste} style={{ width: '100%', padding: '9px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '13px', marginBottom: '6px' }}>📦 Fehler-Kiste{fehlerCount > 0 ? ` (${fehlerCount})` : ''}</button>
         <button onClick={onBack} style={{ width: '100%', padding: '9px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '13px', marginBottom: '6px' }}>← Zurück zur Übersicht</button>
         <button onClick={() => { if (confirm('Fortschritt zurücksetzen?')) clearSolved(); }} style={{ width: '100%', padding: '7px', background: 'none', border: '1px solid #fca5a5', borderRadius: '8px', cursor: 'pointer', color: '#ef4444', fontSize: '12px' }}>🗑️ Fortschritt zurücksetzen</button>
       </div>
@@ -677,7 +697,7 @@ function PracticeLadder({ practice, dm, dark }) {
 }
 
 // ─── QUESTION DISPLAY ─────────────────────────────────────────────────────
-function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new Set(), dark = false, dm = makePalette(false), onKonfetti = () => {}, buildTree: bt }) {
+function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = () => {}, solved = new Set(), dark = false, dm = makePalette(false), onKonfetti = () => {}, buildTree: bt }) {
   const isMobile = useIsMobile();
   const [showSolution, setShowSolution] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
@@ -743,7 +763,7 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
       markCorrect();
     } else {
       setWrongOpts(prev => new Set(prev).add(opt));
-      recordFehler(question.id);
+      onFehler(question.id);
     }
   }
 
@@ -878,7 +898,7 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, solved = new 
 }
 
 // ─── LANDING PAGE ─────────────────────────────────────────────────────────
-function LandingPage({ onSelect, streak = 0 }) {
+function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
   const isMobile = useIsMobile();
   const [fact, setFact] = useState(null);
   const [logoClicks, setLogoClicks] = useState(0);
@@ -967,6 +987,10 @@ function LandingPage({ onSelect, streak = 0 }) {
             <p style={{ margin: '0 0 6px', fontSize: '11px', fontWeight: '700', color: '#534AB7', textTransform: 'uppercase', letterSpacing: '0.05em' }}>🤯 Mind-Blow des Tages</p>
             <p style={{ margin: 0, fontSize: '14px', color: '#444', lineHeight: '1.6' }}>{fact ? `${fact.emoji} ${fact.text}` : ''}</p>
           </div>
+          <button onClick={() => onSelect('fehlerkiste')} style={{ padding: '16px 20px', background: '#534AB7', border: 'none', borderRadius: '14px', fontSize: '13px', fontWeight: '600', color: '#fff', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '6px', minWidth: '110px' }}>
+            <span style={{ fontSize: '24px' }}>📦</span>
+            <span>Fehler-Kiste{fehlerCount > 0 ? ` (${fehlerCount})` : ''}</span>
+          </button>
           <button onClick={() => onSelect('links')} style={{ padding: '16px 20px', background: '#534AB7', border: 'none', borderRadius: '14px', fontSize: '13px', fontWeight: '600', color: '#fff', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '6px', minWidth: '110px' }}>
             <span style={{ fontSize: '24px' }}>🌐</span>
             <span>Links</span>
@@ -1012,6 +1036,64 @@ function LandingPage({ onSelect, streak = 0 }) {
           />
         </div>
 
+      </div>
+    </main>
+  );
+}
+
+// ─── FEHLER-KISTE PAGE ─────────────────────────────────────────────────────
+// Liste aller falsch beantworteten Aufgaben (über alle Fächer hinweg),
+// gruppiert nach Fach — mit Direktsprung zurück zur Aufgabe. Wird eine
+// Aufgabe richtig gelöst, verschwindet sie automatisch wieder von hier
+// (siehe handleSolved in Home).
+function FehlerKistePage({ fehlerIds, dm, onBack, onRemove, onClearAll, onJump }) {
+  const isMobile = useIsMobile();
+  const items = fehlerIds.map(id => questions.find(q => q.id === id)).filter(Boolean);
+  const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309' };
+  const subjectEmojis = { 'Mathe ohne TR': '📐', 'Mathe mit TR': '🔢', 'Deutsch': '📝', 'Deutsch GMS2': '📝' };
+  const grouped = {};
+  items.forEach(q => {
+    const key = subjectKeyOf(q) || 'Sonstiges';
+    (grouped[key] = grouped[key] || []).push(q);
+  });
+
+  return (
+    <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '20px 16px 60px' : '40px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+      <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+        <button onClick={onBack} style={{ padding: '9px 16px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '13px', marginBottom: '20px' }}>← Zurück</button>
+        <h1 style={{ fontSize: isMobile ? '24px' : '28px', fontWeight: '800', color: dm.text, margin: '0 0 6px' }}>📦 Fehler-Kiste</h1>
+        <p style={{ fontSize: '14px', color: dm.text3, margin: '0 0 24px', lineHeight: '1.6' }}>Aufgaben, bei denen du zuletzt danebenlagst. Löst du sie richtig, fliegen sie automatisch wieder raus.</p>
+
+        {items.length === 0 ? (
+          <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '14px', padding: '32px 20px', textAlign: 'center' }}>
+            <div style={{ fontSize: '40px', marginBottom: '10px' }}>🎉</div>
+            <p style={{ fontSize: '15px', fontWeight: '700', color: dm.text, margin: '0 0 4px' }}>Leer — stark!</p>
+            <p style={{ fontSize: '13px', color: dm.text3, margin: 0 }}>Du hast bisher keine Aufgabe falsch beantwortet (oder schon alle korrigiert).</p>
+          </div>
+        ) : (
+          <>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '14px' }}>
+              <button onClick={() => { if (confirm(`Fehler-Kiste wirklich leeren (${items.length} Aufgaben)?`)) onClearAll(); }} style={{ padding: '7px 14px', background: 'none', border: '1px solid #fca5a5', borderRadius: '8px', cursor: 'pointer', color: '#ef4444', fontSize: '12px' }}>🗑️ Alle entfernen</button>
+            </div>
+            {Object.entries(grouped).map(([subj, qs]) => (
+              <div key={subj} style={{ marginBottom: '22px' }}>
+                <p style={{ fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em', color: subjectColors[subj] || dm.text2, margin: '0 0 8px' }}>
+                  {subjectEmojis[subj] || '📚'} {subj} ({qs.length})
+                </p>
+                {qs.map(q => (
+                  <div key={q.id} style={{ display: 'flex', alignItems: 'center', gap: '10px', background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '10px', padding: '12px 14px', marginBottom: '8px' }}>
+                    <div onClick={() => onJump(q)} style={{ flex: 1, minWidth: 0, cursor: 'pointer' }}>
+                      <p style={{ margin: '0 0 2px', fontSize: '14px', fontWeight: '600', color: dm.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{q.topic}</p>
+                      <p style={{ margin: 0, fontSize: '11px', color: dm.text3 }}>{q.year}</p>
+                    </div>
+                    <button onClick={() => onJump(q)} style={{ padding: '8px 14px', background: subjectColors[subj] || '#534AB7', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '12px', fontWeight: '600', cursor: 'pointer', whiteSpace: 'nowrap' }}>↻ Nochmal</button>
+                    <button onClick={() => onRemove(q.id)} title="Aus der Fehler-Kiste entfernen" style={{ padding: '8px 10px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text3, fontSize: '12px' }}>✕</button>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </main>
   );
@@ -1079,14 +1161,16 @@ export default function Home() {
   const [subject, setSubject] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [showLinks, setShowLinks] = useState(false);
+  const [showFehlerKiste, setShowFehlerKiste] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { solved, markSolved, clearSolved } = useSolved();
   const { dark, toggleDark } = useDarkMode();
   const { streak, bumpStreak } = useStreak();
   const { pruefungsDatum, saveDatum, daysLeft, aufgabenProTag } = useLernplan();
+  const { fehler, addFehler, removeFehler, clearFehler } = useFehlerKiste();
   const [konfetti, setKonfetti] = useState(false);
 
-  const handleSolved = useCallback((id) => { markSolved(id); bumpStreak(); }, [markSolved, bumpStreak]);
+  const handleSolved = useCallback((id) => { markSolved(id); bumpStreak(); removeFehler(id); }, [markSolved, bumpStreak, removeFehler]);
 
   const dm = makePalette(dark);
 
@@ -1112,7 +1196,17 @@ export default function Home() {
   }, [mounted, subject, selectedId]);
 
   if (showLinks) return <LinksPage onBack={() => setShowLinks(false)} />;
-  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } setSubject(s); setSelectedId(null); setSidebarOpen(true); }} streak={streak} />;
+  if (showFehlerKiste) return (
+    <FehlerKistePage
+      fehlerIds={fehler}
+      dm={dm}
+      onBack={() => setShowFehlerKiste(false)}
+      onRemove={removeFehler}
+      onClearAll={clearFehler}
+      onJump={(q) => { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setShowFehlerKiste(false); }}
+    />
+  );
+  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } setSubject(s); setSelectedId(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} />;
 
   const selectedQuestion = questions.find(q => q.id === selectedId) || null;
   return (
@@ -1134,6 +1228,8 @@ export default function Home() {
             dm={dm}
             mobile={isMobile}
             onClose={() => setSidebarOpen(false)}
+            onShowFehlerKiste={() => setShowFehlerKiste(true)}
+            fehlerCount={fehler.length}
           />
         </div>
       )}
@@ -1144,7 +1240,7 @@ export default function Home() {
         </button>
       )}
 
-      <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
+      <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
 
       <MiniPlayer dm={dm} />
     </div>
