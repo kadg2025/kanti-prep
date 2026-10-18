@@ -262,9 +262,9 @@ Term B: ${frac('13', '3')} : ${frac('31', '6')}`,
         { label: '15.75 und 21', correct: false },
       ] },
       { letter: 'b', options: [
-        { label: 'Term B ist grösser (26/31 > 25/31)', correct: true },
+        { label: 'Term B ist grösser', correct: true },
         { label: 'Term A ist grösser', correct: false },
-        { label: 'Beide Terme sind gleich groß', correct: false },
+        { label: 'Beide Terme sind gleich gross', correct: false },
       ] },
     ],
     solution: {
