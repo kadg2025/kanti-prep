@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { questions } from './lib/questions';
 import { facts } from './lib/facts';
+import { pruefungenModusA, pruefungenModusB } from './lib/gms3/mathe_otr/pruefung';
 import LinksPage from './LinksPage';
 import FeedbackButton from './components/FeedbackButton';
 
@@ -206,99 +207,129 @@ function addDays(dateStr, n) {
 }
 const WDH_STAGES = [1, 3, 7, 21]; // Tage: falsch → Stufe 0 (morgen), richtig → eine Stufe weiter
 
+// Gruppiert zusammengehörige Teilaufgaben (z.B. KERZE_4a/4b/4d/4e) zu einer
+// "ganzen Aufgabe" — IDs, die sich nur im letzten Kleinbuchstaben
+// unterscheiden (…_4a, …_4b, …), teilen denselben Gruppenschlüssel.
+function groupKeyOf(id) {
+  return id.replace(/[a-z]$/, '');
+}
+function needsFigureButMissing(q) {
+  const text = q.questionText || '';
+  const mentionsFigure = /massstabsgetreu|siehe (Figur|Abbildung|Zeichnung|Skizze)|nebenstehend|abgebildet|Abbildung|Netz|Würfelbild/i.test(text);
+  return mentionsFigure && !q.figureUrl;
+}
+// Baut "ganze Aufgaben" (Gruppen) aus dem flachen Fragen-Pool — für "Heute
+// üben" zählt eine Gruppe als EIN Slot, nie eine einzelne Teilaufgabe.
+function buildAufgabenGruppen(pool) {
+  const usable = pool.filter(q => !needsFigureButMissing(q));
+  const byKey = {};
+  usable.forEach(q => { (byKey[groupKeyOf(q.id)] = byKey[groupKeyOf(q.id)] || []).push(q); });
+  return Object.entries(byKey).map(([groupKey, items]) => ({
+    groupKey,
+    topic: items[0].topic,
+    year: items[0].year,
+    items,
+    verified: items.every(q => q.verified),
+    textLength: items.reduce((s, q) => s + q.questionText.length, 0),
+  }));
+}
+
 // Wählt die 5 Aufgaben für "Heute üben" nach dem Nacht-Auftrag-Rezept:
 // 1 leicht zum Einstieg, 1 aus der Fehler-Kiste, 1 aus dem schwächsten Thema
 // (Annäherung: Thema mit den meisten aktuellen Fehler-Kiste-Einträgen, da wir
 // keine Trefferquote pro Thema speichern), 1 nie gesehene, 1 fällige
 // Wiederholung — kein Thema doppelt, letzte Aufgabe eher leicht.
+// Wählt 5 GANZE Aufgaben (Gruppen, siehe buildAufgabenGruppen) — nie
+// einzelne Teilaufgaben. Eine Gruppe gilt als "gelöst", wenn ALLE ihre
+// Teile gelöst sind; als "in der Fehler-Kiste", wenn MINDESTENS ein Teil
+// dort steht.
 function pickHeuteUeben({ pool, solved, fehler, wdh, date }) {
+  const gruppen = buildAufgabenGruppen(pool);
   const rnd = mulberry32(hashStr(date) >>> 0);
-  const pick = (arr) => arr[Math.floor(rnd() * arr.length)];
   const topicFreq = {};
-  pool.forEach(q => { topicFreq[q.topic] = (topicFreq[q.topic] || 0) + 1; });
+  gruppen.forEach(g => { topicFreq[g.topic] = (topicFreq[g.topic] || 0) + 1; });
   const weightedPick = (arr) => {
     if (arr.length === 0) return null;
-    const total = arr.reduce((s, q) => s + (topicFreq[q.topic] || 1), 0);
+    const total = arr.reduce((s, g) => s + (topicFreq[g.topic] || 1), 0);
     let r = rnd() * total;
-    for (const q of arr) { r -= (topicFreq[q.topic] || 1); if (r <= 0) return q; }
+    for (const g of arr) { r -= (topicFreq[g.topic] || 1); if (r <= 0) return g; }
     return arr[arr.length - 1];
   };
   const used = new Set();
   const result = [];
-  const byTopicFree = (arr) => arr.filter(q => !used.has(q.topic));
-  const take = (q) => { if (q) { used.add(q.topic); result.push(q); } return q; };
-  // Geprüfte Aufgaben (verified:true) klar bevorzugen — ungeprüfte nur als Rückfalloption,
-  // wenn sonst nichts zum Thema/Slot passt.
+  const byTopicFree = (arr) => arr.filter(g => !used.has(g.topic));
+  const take = (g) => { if (g) { used.add(g.topic); result.push(g); } return g; };
   const preferVerified = (arr) => {
-    const verified = arr.filter(q => q.verified);
+    const verified = arr.filter(g => g.verified);
     return verified.length > 0 ? verified : arr;
   };
 
-  const everSolved = pool.filter(q => solved.has(q.id));
+  const everSolvedG = gruppen.filter(g => g.items.every(q => solved.has(q.id)));
   const everSeen = new Set([...solved, ...fehler]);
-  const fehlerQs = fehler.map(id => pool.find(q => q.id === id)).filter(Boolean);
+  const fehlerG = gruppen.filter(g => g.items.some(q => fehler.includes(q.id)));
 
-  // Ohne jeden Verlauf: 5 verschiedene Themen, eher leicht (kurze Fragen zuerst), geprüfte zuerst.
-  if (everSolved.length === 0 && fehlerQs.length === 0) {
-    const sorted = [...pool].sort((a, b) => {
+  // Ohne jeden Verlauf: 5 verschiedene Themen, eher leicht (kurzer Text zuerst), geprüfte zuerst.
+  if (everSolvedG.length === 0 && fehlerG.length === 0) {
+    const sorted = [...gruppen].sort((a, b) => {
       if (!!b.verified !== !!a.verified) return (b.verified ? 1 : 0) - (a.verified ? 1 : 0);
-      return a.questionText.length - b.questionText.length;
+      return a.textLength - b.textLength;
     });
-    for (const q of sorted) {
+    for (const g of sorted) {
       if (result.length >= 5) break;
-      if (!used.has(q.topic)) take(q);
+      if (!used.has(g.topic)) take(g);
     }
     return result;
   }
 
   // 1) Leicht zum Einstieg: bevorzugt schon Gelöstes (vertraut = fühlt sich leicht an).
-  take(weightedPick(preferVerified(byTopicFree(everSolved))) || weightedPick(preferVerified(byTopicFree(pool))));
+  take(weightedPick(preferVerified(byTopicFree(everSolvedG))) || weightedPick(preferVerified(byTopicFree(gruppen))));
 
   // 2) Aus der Fehler-Kiste.
-  take(weightedPick(preferVerified(byTopicFree(fehlerQs))) || weightedPick(preferVerified(byTopicFree(pool.filter(q => !everSeen.has(q.id))))));
+  take(weightedPick(preferVerified(byTopicFree(fehlerG))) || weightedPick(preferVerified(byTopicFree(gruppen.filter(g => !g.items.some(q => everSeen.has(q.id)))))));
 
   // 3) Schwächstes Thema (die meisten offenen Fehler-Kiste-Einträge).
   const topicWrongCount = {};
-  fehlerQs.forEach(q => { topicWrongCount[q.topic] = (topicWrongCount[q.topic] || 0) + 1; });
+  fehler.forEach(id => { const q = pool.find(x => x.id === id); if (q) topicWrongCount[q.topic] = (topicWrongCount[q.topic] || 0) + 1; });
   const weakTopics = Object.keys(topicWrongCount).filter(t => !used.has(t)).sort((a, b) => topicWrongCount[b] - topicWrongCount[a]);
   if (weakTopics.length > 0) {
-    take(weightedPick(preferVerified(pool.filter(q => q.topic === weakTopics[0]))));
+    take(weightedPick(gruppen.filter(g => g.topic === weakTopics[0])));
   } else {
-    take(weightedPick(preferVerified(byTopicFree(pool))));
+    take(weightedPick(preferVerified(byTopicFree(gruppen))));
   }
 
   // 4) Brandneu, nie gesehen.
-  const neverSeen = byTopicFree(pool.filter(q => !everSeen.has(q.id)));
-  take(weightedPick(preferVerified(neverSeen)) || weightedPick(preferVerified(byTopicFree(pool))));
+  const neverSeen = byTopicFree(gruppen.filter(g => !g.items.some(q => everSeen.has(q.id))));
+  take(weightedPick(preferVerified(neverSeen)) || weightedPick(preferVerified(byTopicFree(gruppen))));
 
   // 5) Fällige Wiederholung, sonst irgendeine gelöste — eher leicht (kurzer Text zuerst), geprüfte zuerst.
-  const due = byTopicFree(everSolved).filter(q => !wdh[q.id] || wdh[q.id].due <= date);
-  const dueSorted = [...preferVerified(due)].sort((a, b) => a.questionText.length - b.questionText.length);
-  take(dueSorted[0] || weightedPick(preferVerified(byTopicFree(everSolved))) || weightedPick(preferVerified(byTopicFree(pool))));
+  const due = byTopicFree(everSolvedG).filter(g => g.items.every(q => !wdh[q.id] || wdh[q.id].due <= date));
+  const dueSorted = [...preferVerified(due)].sort((a, b) => a.textLength - b.textLength);
+  take(dueSorted[0] || weightedPick(preferVerified(byTopicFree(everSolvedG))) || weightedPick(preferVerified(byTopicFree(gruppen))));
 
   return result.filter(Boolean).slice(0, 5);
 }
 
 function useHeuteUeben(matheOhneTRPool, solved, fehler) {
   const [wdh, setWdh] = useState({});
-  const [heute, setHeute] = useState(null); // { date, ids }
+  const [heute, setHeute] = useState(null); // { date, idGroups: string[][] }
   useEffect(() => {
     try { setWdh(JSON.parse(localStorage.getItem('kp_wdh') || '{}')); } catch {}
     try {
       const cached = JSON.parse(localStorage.getItem('kp_heute') || 'null');
-      if (cached && cached.date === todayStr()) setHeute(cached);
+      if (cached && cached.date === todayStr() && Array.isArray(cached.idGroups)) setHeute(cached);
     } catch {}
   }, []);
 
+  // Gibt 5 Gruppen von IDs zurück (eine ganze Aufgabe pro Gruppe).
   const ensureToday = useCallback(() => {
     const date = todayStr();
-    if (heute && heute.date === date) return heute.ids;
+    if (heute && heute.date === date) return heute.idGroups;
     const picked = pickHeuteUeben({ pool: matheOhneTRPool, solved, fehler, wdh, date });
-    const ids = picked.map(q => q.id);
-    const next = { date, ids };
+    const idGroups = picked.map(g => g.items.map(q => q.id));
+    const next = { date, idGroups };
     setHeute(next);
     try { localStorage.setItem('kp_heute', JSON.stringify(next)); } catch {}
-    return ids;
+    return idGroups;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [heute]);
 
@@ -615,7 +646,7 @@ function PauseModal({ onClose, dm = makePalette(false) }) {
 }
 
 // ─── SIDEBAR ──────────────────────────────────────────────────────────────
-function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), clearSolved, dark = false, toggleDark = () => {}, streak = 0, dm = makePalette(false), mobile = false, onClose = () => {}, onShowFehlerKiste = () => {}, fehlerCount = 0 }) {
+function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), clearSolved, dark = false, toggleDark = () => {}, streak = 0, dm = makePalette(false), mobile = false, onClose = () => {}, onShowFehlerKiste = () => {}, fehlerCount = 0, onShowHeuteUeben = () => {}, onShowPruefung = () => {} }) {
   const tree = buildTree(subject);
   const [openGroups, setOpenGroups] = useState(() => { const s = {}; Object.keys(tree).forEach(g => { s[g] = true; }); return s; });
   const [openTopics, setOpenTopics] = useState({});
@@ -680,6 +711,18 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
           </div>
         );
       })()}
+      {subject === 'Mathe ohne TR' && (
+        <div style={{ display: 'flex', gap: '8px', padding: '10px 16px', borderBottom: `1px solid ${dm.border}` }}>
+          <button onClick={onShowHeuteUeben} style={{ flex: 1, padding: '10px 8px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', border: 'none', borderRadius: '10px', cursor: 'pointer', color: '#fff', textAlign: 'left' }}>
+            <span style={{ display: 'block', fontSize: '12px', fontWeight: '700' }}>🎯 Heute üben</span>
+            <span style={{ display: 'block', fontSize: '10px', opacity: 0.85 }}>5 Aufgaben</span>
+          </button>
+          <button onClick={onShowPruefung} style={{ flex: 1, padding: '10px 8px', background: 'none', border: `2px solid ${color}`, borderRadius: '10px', cursor: 'pointer', color: color, textAlign: 'left' }}>
+            <span style={{ display: 'block', fontSize: '12px', fontWeight: '700' }}>📝 Probeprüfung</span>
+            <span style={{ display: 'block', fontSize: '10px', opacity: 0.85 }}>45 Min</span>
+          </button>
+        </div>
+      )}
       <nav style={{ flex: 1, padding: '8px 0' }}>
         {Object.entries(tree).map(([groupName, topics]) => (
           <div key={groupName}>
@@ -1155,22 +1198,6 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
           </div>
         </div>
 
-        {/* Heute üben — eigener grosser Knopf */}
-        <button onClick={() => onSelect('heuteueben')} style={{ width: '100%', padding: '16px 20px', marginBottom: '12px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', border: 'none', borderRadius: '18px', fontSize: '16px', fontWeight: '800', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', boxShadow: '0 4px 20px rgba(83,74,183,0.25)' }}>
-          <span style={{ fontSize: '26px' }}>🎯</span>
-          <span style={{ textAlign: 'left' }}>
-            <span style={{ display: 'block' }}>Heute üben</span>
-            <span style={{ display: 'block', fontSize: '11px', fontWeight: '500', opacity: 0.85 }}>5 Aufgaben · ca. 10 Min</span>
-          </span>
-        </button>
-        <button onClick={() => onSelect('probepruefung')} style={{ width: '100%', padding: '12px 20px', marginBottom: '18px', background: '#fff', border: '2px solid #534AB7', borderRadius: '18px', fontSize: '14px', fontWeight: '700', color: '#534AB7', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '20px' }}>📝</span>
-          <span style={{ textAlign: 'left' }}>
-            <span style={{ display: 'block' }}>Probeprüfung</span>
-            <span style={{ display: 'block', fontSize: '11px', fontWeight: '500', opacity: 0.75 }}>45 Min · wie echt</span>
-          </span>
-        </button>
-
         {/* Mind-Blow + Links — DANACH */}
         <div style={{ display: 'flex', alignItems: 'stretch', gap: '12px', justifyContent: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
           <div style={{ background: '#f9f8ff', border: '1px solid #e5e3f0', borderRadius: '14px', padding: '16px 20px', textAlign: 'left', flex: 1, minWidth: '240px', maxWidth: '580px' }}>
@@ -1305,25 +1332,27 @@ function FehlerKistePage({ fehlerIds, dm, onBack, onRemove, onClearAll, onJump }
 }
 
 // ─── HEUTE ÜBEN (Session-Ansicht) ─────────────────────────────────────────
+// Zeigt pro Slot eine GANZE Aufgabe (alle Teile zusammen, z.B. 4a+4b+4d+4e),
+// nie eine einzelne Teilaufgabe — siehe buildAufgabenGruppen/pickHeuteUeben.
 function HeuteUebenPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onKonfetti, onBack, heuteUeben, streak, fehlerCount }) {
   const isMobile = useIsMobile();
   const matheOhneTRPool = useMemo(() => questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen'), []);
-  const [ids, setIds] = useState(null);
+  const [idGroups, setIdGroups] = useState(null);
   const [idx, setIdx] = useState(0);
-  const [outcomes, setOutcomes] = useState({});
+  const [outcomes, setOutcomes] = useState({}); // groupKey -> 'first' | 'retry'
   const [wrongSeen, setWrongSeen] = useState(() => new Set());
   const [finished, setFinished] = useState(false);
 
   useEffect(() => {
     void matheOhneTRPool; // sicherstellen, dass der Pool vor der Auswahl vorliegt
-    setIds(heuteUeben.ensureToday());
+    setIdGroups(heuteUeben.ensureToday());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!ids) return <div style={{ minHeight: '100vh', background: dm.bg }} />;
-  const qs = ids.map(id => questions.find(q => q.id === id)).filter(Boolean);
+  if (!idGroups) return <div style={{ minHeight: '100vh', background: dm.bg }} />;
+  const groups = idGroups.map(ids => ids.map(id => questions.find(q => q.id === id)).filter(Boolean)).filter(g => g.length > 0);
 
-  if (qs.length === 0) {
+  if (groups.length === 0) {
     return (
       <main style={{ minHeight: '100vh', background: dm.bg, padding: '40px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
         <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
@@ -1334,7 +1363,8 @@ function HeuteUebenPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onKonf
     );
   }
 
-  const current = qs[idx];
+  const currentGroup = groups[idx];
+  const currentKey = groupKeyOf(currentGroup[0].id);
 
   const handleFehlerWrap = (id) => {
     setWrongSeen(prev => new Set(prev).add(id));
@@ -1344,11 +1374,12 @@ function HeuteUebenPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onKonf
   const handleSolvedWrap = (id) => {
     onSolved(id);
     heuteUeben.recordOutcome(id, false);
-    setOutcomes(prev => ({ ...prev, [id]: wrongSeen.has(id) ? 'retry' : 'first' }));
   };
 
   const goNext = () => {
-    if (idx + 1 >= qs.length) setFinished(true);
+    const allFirstTry = currentGroup.every(q => !wrongSeen.has(q.id));
+    setOutcomes(prev => ({ ...prev, [currentKey]: allFirstTry ? 'first' : 'retry' }));
+    if (idx + 1 >= groups.length) setFinished(true);
     else setIdx(idx + 1);
   };
 
@@ -1357,8 +1388,8 @@ function HeuteUebenPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onKonf
     return (
       <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '40px 16px' : '60px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ maxWidth: '420px', width: '100%', textAlign: 'center', background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '18px', padding: '32px 24px' }}>
-          <div style={{ fontSize: '48px', marginBottom: '12px' }}>{correctFirst === 5 ? '🏆' : correctFirst >= 3 ? '🎉' : '💪'}</div>
-          <h2 style={{ fontSize: '22px', fontWeight: '800', color: dm.text, margin: '0 0 6px' }}>{correctFirst} von 5 auf Anhieb</h2>
+          <div style={{ fontSize: '48px', marginBottom: '12px' }}>{correctFirst === groups.length ? '🏆' : correctFirst >= Math.ceil(groups.length / 2) ? '🎉' : '💪'}</div>
+          <h2 style={{ fontSize: '22px', fontWeight: '800', color: dm.text, margin: '0 0 6px' }}>{correctFirst} von {groups.length} auf Anhieb</h2>
           <p style={{ fontSize: '14px', color: dm.text3, margin: '0 0 20px' }}>Geschafft für heute — komm morgen wieder für den nächsten Mix!</p>
           {streak > 0 && (
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '20px', padding: '4px 14px', marginBottom: '16px', fontSize: '13px', fontWeight: '600', color: '#c2410c' }}>
@@ -1377,89 +1408,81 @@ function HeuteUebenPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onKonf
       <div style={{ padding: isMobile ? '14px 16px 0' : '20px 40px 0', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
           <button onClick={onBack} style={{ padding: '7px 12px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '12px' }}>← Abbrechen</button>
-          <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text2 }}>🎯 Heute üben · {idx + 1} / 5</span>
+          <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text2 }}>🎯 Heute üben · {idx + 1} / {groups.length}</span>
         </div>
         <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
-          {qs.map((q, i) => (
-            <div key={q.id} style={{ flex: 1, height: '6px', borderRadius: '3px', background: i < idx ? (outcomes[q.id] === 'first' ? '#22c55e' : '#f59e0b') : i === idx ? '#534AB7' : dm.border }} />
+          {groups.map((g, i) => (
+            <div key={groupKeyOf(g[0].id)} style={{ flex: 1, height: '6px', borderRadius: '3px', background: i < idx ? (outcomes[groupKeyOf(g[0].id)] === 'first' ? '#22c55e' : '#f59e0b') : i === idx ? '#534AB7' : dm.border }} />
           ))}
         </div>
       </div>
-      <QuestionDisplay question={current} subject={subjectKeyOf(current)} onSolved={handleSolvedWrap} onFehler={handleFehlerWrap} onRemoveFehler={onRemoveFehler} solved={solved} dark={false} dm={dm} onKonfetti={onKonfetti} />
+      {currentGroup.map((q, i) => (
+        <div key={q.id} style={i > 0 ? { marginTop: '-8px' } : undefined}>
+          <QuestionDisplay question={q} subject={subjectKeyOf(q)} onSolved={handleSolvedWrap} onFehler={handleFehlerWrap} onRemoveFehler={onRemoveFehler} solved={solved} dark={false} dm={dm} onKonfetti={onKonfetti} />
+        </div>
+      ))}
       <div style={{ padding: isMobile ? '0 16px 24px' : '0 40px 32px', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
         <button onClick={goNext} style={{ width: '100%', padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>
-          {idx + 1 >= qs.length ? 'Fertig ✓' : 'Weiter →'}
+          {idx + 1 >= groups.length ? 'Fertig ✓' : 'Weiter →'}
         </button>
       </div>
     </div>
   );
 }
 
-// ─── PROBEPRÜFUNG (Mathe ohne TR) ─────────────────────────────────────────
-// Bauplan (Schritt 5): Durchschnittlich ~8 Aufgaben/Jahr (6–12), Themen quer
-// durch Terme & Klammern, Geometrie, Funktionen, Gleichungen, Zahlen &
-// Teilbarkeit am häufigsten — siehe NACHT_BERICHT.md für die volle Analyse.
-// 45 Minuten laut Deckblatt jeder Original-Prüfung ("Zur Verfügung stehende
-// Zeit: 45 Minuten").
+// ─── PROBEPRÜFUNG v2 (Mathe ohne TR) ──────────────────────────────────────
+// Kompletter Neuaufbau: echter Prüfungsaufbau (eine Aufgabe = eine Seite mit
+// allen Teilaufgaben zusammen), 4-Optionen-MC pro Teilaufgabe mit echten
+// Punkten aus dem PDF, kein Lösungsweg während der Prüfung, Musterlösung erst
+// in der Auswertung. Siehe pruefungsmuster.md für die Analyse und
+// app/lib/gms3/mathe_otr/pruefung/ für die Daten (Modus A = Originalprüfungen,
+// Modus B = neu erstellte Prüfungen).
 const PROBE_DAUER_MIN = 45;
-const PROBE_ANZAHL = 8;
-const PROBE_THEMEN_REIHENFOLGE = ['Zahlen & Teilbarkeit', 'Terme & Klammern', 'Gleichungen', 'Prozent & Zins', 'Proportionalität', 'Wahrscheinlichkeit', 'Statistik & Diagramme', 'Funktionen', 'Geometrie', 'Körper & Netze'];
 
-function pickProbepruefung(pool, recentIds) {
-  const avoid = new Set(recentIds);
-  const fresh = pool.filter(q => !avoid.has(q.id));
-  const usePool = fresh.length >= PROBE_ANZAHL ? fresh : pool;
-  const byTopic = {};
-  usePool.forEach(q => { (byTopic[q.topic] = byTopic[q.topic] || []).push(q); });
-  const result = [];
-  const usedIds = new Set();
-  // Reihenfolge der Themen pro Session mischen, sonst kämen bei
-  // PROBE_ANZAHL < Themenzahl die letzten Themen nie an die Reihe.
-  for (const topic of shuffleArray(PROBE_THEMEN_REIHENFOLGE)) {
-    if (result.length >= PROBE_ANZAHL) break;
-    const cands = (byTopic[topic] || []).filter(q => !usedIds.has(q.id));
-    if (cands.length === 0) continue;
-    const q = cands[Math.floor(Math.random() * cands.length)];
-    usedIds.add(q.id);
-    result.push(q);
-  }
-  // Auffüllen, falls weniger als PROBE_ANZAHL Themen Treffer hatten.
-  if (result.length < PROBE_ANZAHL) {
-    const rest = usePool.filter(q => !usedIds.has(q.id));
-    while (result.length < PROBE_ANZAHL && rest.length > 0) {
-      const i = Math.floor(Math.random() * rest.length);
-      const q = rest.splice(i, 1)[0];
-      usedIds.add(q.id);
-      result.push(q);
-    }
-  }
-  return result;
+function renderHtmlText(text, style) {
+  return <p style={style} dangerouslySetInnerHTML={{ __html: text }} />;
 }
 
-function useProbeHistory() {
-  const [history, setHistory] = useState([]);
-  useEffect(() => { try { setHistory(JSON.parse(localStorage.getItem('kp_probe_history') || '[]')); } catch {} }, []);
-  const pushSession = useCallback((ids) => {
-    setHistory(prev => {
-      const next = [...prev, { date: todayStr(), ids }].slice(-2);
-      try { localStorage.setItem('kp_probe_history', JSON.stringify(next)); } catch {}
-      return next;
-    });
-  }, []);
-  const recentIds = history.flatMap(h => h.ids);
-  return { recentIds, pushSession };
+// Eine Teilaufgabe während der Prüfung: Text + 4 Optionen, KEINE
+// Richtig/Falsch-Rückmeldung (das gibt es erst in der Auswertung).
+function ExamTeilaufgabe({ teil, dm, selected, onSelect, isMobile }) {
+  return (
+    <div style={{ marginBottom: '18px' }}>
+      {renderHtmlText(teil.text, { margin: '0 0 4px', fontSize: '14px', lineHeight: '1.7', color: dm.text, fontWeight: '600' })}
+      <span style={{ fontSize: '11px', color: dm.text3 }}>{teil.points} {teil.points === 1 ? 'Punkt' : 'Punkte'}</span>
+      {teil.figureUrl && (
+        <div style={{ margin: '10px 0' }}>
+          <img src={teil.figureUrl} alt="Figur" style={{ maxWidth: '100%', borderRadius: '8px', border: `1px solid ${dm.border}`, background: '#fff' }} />
+        </div>
+      )}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px' }}>
+        {teil.options.map((opt, i) => {
+          const isSel = selected === i;
+          return (
+            <button key={i} onClick={() => onSelect(i)} style={{
+              textAlign: 'left', padding: '11px 14px', borderRadius: '10px',
+              border: `2px solid ${isSel ? '#534AB7' : dm.border}`,
+              background: isSel ? (dm.accentBg || '#f0eeff') : dm.card,
+              color: isSel ? '#534AB7' : dm.text, fontSize: '13px', fontWeight: isSel ? '700' : '500',
+              cursor: 'pointer', fontFamily: 'inherit',
+            }}>
+              <span dangerouslySetInnerHTML={{ __html: opt.label }} />
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-function ProbepruefungPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onBack }) {
+function PruefungV2Page({ dm, onSolved, onFehler, onRemoveFehler, onBack }) {
   const isMobile = useIsMobile();
-  const matheOhneTRPool = useMemo(() => questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen'), []);
-  const probeHistory = useProbeHistory();
-  const [qs, setQs] = useState(null);
-  const [idx, setIdx] = useState(0);
-  const [phase, setPhase] = useState('intro'); // intro | exam | review | done
-  const [notes, setNotes] = useState({});
-  const [grades, setGrades] = useState({}); // id -> true/false (selbstbewertet)
+  const [phase, setPhase] = useState('intro'); // intro | exam | done
+  const [exam, setExam] = useState(null); // { year, aufgaben, isNew?, label? }
+  const [aufgabeIdx, setAufgabeIdx] = useState(0);
+  const [answers, setAnswers] = useState({}); // `${nr}-${letter}` -> option index
   const [secondsLeft, setSecondsLeft] = useState(PROBE_DAUER_MIN * 60);
+  const [openSolutionFor, setOpenSolutionFor] = useState({}); // nr -> bool
 
   useEffect(() => {
     if (phase !== 'exam') return;
@@ -1468,139 +1491,150 @@ function ProbepruefungPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onB
     return () => clearInterval(t);
   }, [phase, secondsLeft]);
 
-  const start = () => {
-    const picked = pickProbepruefung(matheOhneTRPool, probeHistory.recentIds);
-    setQs(picked);
-    probeHistory.pushSession(picked.map(q => q.id));
-    setIdx(0);
-    setNotes({});
-    setGrades({});
+  const start = (chosenExam) => {
+    setExam(chosenExam);
+    setAufgabeIdx(0);
+    setAnswers({});
+    setOpenSolutionFor({});
     setSecondsLeft(PROBE_DAUER_MIN * 60);
     setPhase('exam');
-  };
-
-  const finishExam = () => { setIdx(0); setPhase('review'); };
-
-  const gradeAndNext = (id, correct) => {
-    setGrades(prev => ({ ...prev, [id]: correct }));
-    if (correct) { onSolved(id); onRemoveFehler(id); } else { onFehler(id); }
-    if (idx + 1 >= qs.length) setPhase('done');
-    else setIdx(idx + 1);
   };
 
   const fmtTime = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 
   if (phase === 'intro') {
     return (
-      <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '40px 16px' : '60px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ maxWidth: '440px', width: '100%', textAlign: 'center', background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '18px', padding: '32px 24px' }}>
-          <div style={{ fontSize: '48px', marginBottom: '12px' }}>📝</div>
-          <h2 style={{ fontSize: '22px', fontWeight: '800', color: dm.text, margin: '0 0 10px' }}>Probeprüfung Mathe ohne TR</h2>
-          <p style={{ fontSize: '14px', color: dm.text3, margin: '0 0 6px', lineHeight: '1.6' }}>{PROBE_ANZAHL} Aufgaben · {PROBE_DAUER_MIN} Minuten · wie die echte Prüfung</p>
-          <p style={{ fontSize: '13px', color: dm.text3, margin: '0 0 20px', lineHeight: '1.6' }}>Kein Multiple Choice, kein Lösungsweg während der Prüfung. Am Ende vergleichst du selbst mit der Lösung und bewertest dich.</p>
-          <button onClick={onBack} style={{ padding: '10px 16px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '13px', marginBottom: '12px' }}>← Zurück</button>
-          <button onClick={start} style={{ width: '100%', padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>Jetzt starten</button>
+      <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '40px 16px' : '60px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+        <div style={{ maxWidth: '520px', margin: '0 auto' }}>
+          <button onClick={onBack} style={{ padding: '9px 16px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '13px', marginBottom: '20px' }}>← Zurück</button>
+          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+            <div style={{ fontSize: '44px', marginBottom: '8px' }}>📝</div>
+            <h2 style={{ fontSize: '22px', fontWeight: '800', color: dm.text, margin: '0 0 8px' }}>Probeprüfung Mathe ohne TR</h2>
+            <p style={{ fontSize: '13px', color: dm.text3, margin: 0, lineHeight: '1.6' }}>{PROBE_DAUER_MIN} Minuten, echter Prüfungsaufbau. Kein Lösungsweg während der Prüfung — die Musterlösung gibt's am Ende, aufklappbar pro Aufgabe.</p>
+          </div>
+
+          <p style={{ fontSize: '13px', fontWeight: '700', color: dm.text2, margin: '0 0 10px' }}>📖 Modus A — Originalprüfung</p>
+          {pruefungenModusA.length === 0 ? (
+            <p style={{ fontSize: '12px', color: dm.text3, marginBottom: '20px' }}>Noch kein Jahr verfügbar.</p>
+          ) : (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
+              {pruefungenModusA.map(p => (
+                <button key={p.year} onClick={() => start(p)} style={{ padding: '12px 18px', background: dm.card, border: `2px solid ${dm.border}`, borderRadius: '10px', cursor: 'pointer', color: dm.text, fontSize: '14px', fontWeight: '700' }}>
+                  {p.year}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <p style={{ fontSize: '13px', fontWeight: '700', color: dm.text2, margin: '0 0 10px' }}>✨ Modus B — Neue Prüfung</p>
+          {pruefungenModusB.length === 0 ? (
+            <p style={{ fontSize: '12px', color: dm.text3 }}>Noch keine neue Prüfung verfügbar.</p>
+          ) : (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {pruefungenModusB.map(p => (
+                <button key={p.year} onClick={() => start(p)} style={{ padding: '12px 18px', background: '#f0eeff', border: '2px solid #534AB7', borderRadius: '10px', cursor: 'pointer', color: '#534AB7', fontSize: '14px', fontWeight: '700' }}>
+                  {p.label || 'Neue Prüfung'}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </main>
     );
   }
 
-  if (!qs) return null;
+  if (!exam) return null;
+  const aufgaben = exam.aufgaben;
 
   if (phase === 'exam') {
-    const q = qs[idx];
+    const auf = aufgaben[aufgabeIdx];
     const timeUp = secondsLeft <= 0;
     return (
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: dm.bg, fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
         <div style={{ padding: isMobile ? '14px 16px 0' : '20px 40px 0', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-            <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text2 }}>📝 Aufgabe {idx + 1} / {qs.length}</span>
+            <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text2 }}>📝 Aufgabe {aufgabeIdx + 1} / {aufgaben.length}</span>
             <span style={{ fontSize: '15px', fontWeight: '800', color: timeUp ? '#ef4444' : dm.text }}>{timeUp ? '⏰ Zeit um!' : `⏱️ ${fmtTime(secondsLeft)}`}</span>
           </div>
           <div style={{ display: 'flex', gap: '6px', marginBottom: '14px' }}>
-            {qs.map((qq, i) => <div key={qq.id} style={{ flex: 1, height: '6px', borderRadius: '3px', background: i < idx ? '#534AB7' : i === idx ? '#a89ee8' : dm.border }} />)}
+            {aufgaben.map((a, i) => <div key={a.nr} style={{ flex: 1, height: '6px', borderRadius: '3px', background: i < aufgabeIdx ? '#534AB7' : i === aufgabeIdx ? '#a89ee8' : dm.border }} />)}
           </div>
           <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', marginBottom: '16px' }}>
-            {q.isNew && <span style={{ display: 'inline-block', marginBottom: '10px', background: '#f0eeff', color: '#534AB7', padding: '3px 10px', borderRadius: '20px', fontSize: '11px', fontWeight: '700' }}>✨ Neu im Kanti-Stil</span>}
-            <p style={{ margin: 0, fontSize: '15px', lineHeight: '1.8', color: dm.text, whiteSpace: 'pre-wrap' }}>{q.questionText}</p>
-            {q.figureUrl && (
-              <div style={{ marginTop: '16px' }}>
-                <img src={q.figureUrl} alt={q.figureCaption || 'Figur'} style={{ maxWidth: '100%', borderRadius: '8px', border: `1px solid ${dm.border}`, background: '#fff' }} />
-                {q.figureCaption && <p style={{ margin: '6px 0 0', fontSize: '11px', color: dm.text2, fontStyle: 'italic' }}>{q.figureCaption}</p>}
+            {exam.isNew && <span style={{ display: 'inline-block', marginBottom: '10px', background: '#f0eeff', color: '#534AB7', padding: '3px 10px', borderRadius: '20px', fontSize: '11px', fontWeight: '700' }}>✨ Neu im Kanti-Stil</span>}
+            {renderHtmlText(auf.intro, { margin: '0 0 14px', fontSize: '15px', lineHeight: '1.8', color: dm.text, whiteSpace: 'pre-wrap' })}
+            {auf.figureUrl && (
+              <div style={{ marginBottom: '14px' }}>
+                <img src={auf.figureUrl} alt={auf.figureCaption || 'Figur'} style={{ maxWidth: '100%', borderRadius: '8px', border: `1px solid ${dm.border}`, background: '#fff' }} />
+                {auf.figureCaption && <p style={{ margin: '6px 0 0', fontSize: '11px', color: dm.text2, fontStyle: 'italic' }}>{auf.figureCaption}</p>}
               </div>
             )}
+            {auf.teile.map(teil => {
+              const key = `${auf.nr}-${teil.letter}`;
+              return (
+                <ExamTeilaufgabe
+                  key={key}
+                  teil={teil}
+                  dm={dm}
+                  isMobile={isMobile}
+                  selected={answers[key]}
+                  onSelect={(i) => setAnswers(prev => ({ ...prev, [key]: i }))}
+                />
+              );
+            })}
           </div>
-          <textarea
-            value={notes[q.id] || ''}
-            onChange={e => setNotes(prev => ({ ...prev, [q.id]: e.target.value }))}
-            placeholder="Deine Lösung / Notizen (optional, wird am Ende mit der Musterlösung verglichen)…"
-            style={{ width: '100%', minHeight: '100px', padding: '12px', borderRadius: '10px', border: `1px solid ${dm.border}`, background: dm.bg, color: dm.text, fontSize: '14px', fontFamily: 'inherit', boxSizing: 'border-box', marginBottom: '16px' }}
-          />
         </div>
         <div style={{ padding: isMobile ? '0 16px 24px' : '0 40px 32px', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box', display: 'flex', gap: '10px' }}>
           <button onClick={onBack} style={{ padding: '14px 18px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '12px', cursor: 'pointer', color: dm.text2, fontSize: '13px' }}>Abbrechen</button>
-          <button onClick={() => (idx + 1 >= qs.length ? finishExam() : setIdx(idx + 1))} style={{ flex: 1, padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>
-            {idx + 1 >= qs.length ? 'Prüfung abgeben →' : 'Weiter →'}
+          <button onClick={() => (aufgabeIdx + 1 >= aufgaben.length ? setPhase('done') : setAufgabeIdx(aufgabeIdx + 1))} style={{ flex: 1, padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>
+            {aufgabeIdx + 1 >= aufgaben.length ? 'Prüfung abgeben →' : 'Weiter →'}
           </button>
         </div>
       </div>
     );
   }
 
-  if (phase === 'review') {
-    const q = qs[idx];
-    const s = q.solution;
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: dm.bg, fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
-        <div style={{ padding: isMobile ? '14px 16px 0' : '20px 40px 0', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
-          <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text2 }}>✅ Auswertung · Aufgabe {idx + 1} / {qs.length}</span>
-          <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', margin: '12px 0' }}>
-            {q.isNew && <span style={{ display: 'inline-block', marginBottom: '10px', background: '#f0eeff', color: '#534AB7', padding: '3px 10px', borderRadius: '20px', fontSize: '11px', fontWeight: '700' }}>✨ Neu im Kanti-Stil</span>}
-            <p style={{ margin: '0 0 10px', fontSize: '15px', lineHeight: '1.7', color: dm.text, whiteSpace: 'pre-wrap' }}>{q.questionText}</p>
-            {notes[q.id] && (
-              <div style={{ background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: '8px', padding: '10px 14px', fontSize: '13px', color: dm.text2, whiteSpace: 'pre-wrap', marginBottom: '10px' }}>
-                <strong>Deine Notiz:</strong><br />{notes[q.id]}
-              </div>
-            )}
-            <div style={{ background: dm.okBg, border: `1px solid ${dm.okBorder}`, borderRadius: '10px', padding: '12px 14px' }}>
-              {s.intro && <p style={{ margin: '0 0 8px', fontSize: '13px', color: dm.okText }}>{s.intro}</p>}
-              {s.steps.filter(st => !st.solutionUrl).map((st, i) => (
-                <div key={i} style={{ marginBottom: '8px' }}>
-                  <p style={{ margin: '0 0 2px', fontSize: '12px', fontWeight: '700', color: dm.okText }}>{st.title}</p>
-                  <p style={{ margin: 0, fontSize: '13px', color: dm.okText, whiteSpace: 'pre-wrap' }}>{st.content}</p>
-                </div>
-              ))}
-              {q.options && <p style={{ margin: '6px 0 0', fontSize: '13px', fontWeight: '700', color: dm.okText }}>✅ {q.options.find(o => o.correct)?.label}</p>}
-            </div>
-          </div>
-          <p style={{ fontSize: '13px', color: dm.text2, margin: '0 0 12px', textAlign: 'center' }}>Hattest du das richtig?</p>
-          <div style={{ display: 'flex', gap: '10px', marginBottom: '24px' }}>
-            <button onClick={() => gradeAndNext(q.id, false)} style={{ flex: 1, padding: '14px', background: 'none', border: '2px solid #ef4444', color: '#ef4444', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>✗ Falsch</button>
-            <button onClick={() => gradeAndNext(q.id, true)} style={{ flex: 1, padding: '14px', background: '#22c55e', border: 'none', color: '#fff', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>✓ Richtig</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // phase === 'done'
-  const total = qs.length;
-  const correct = qs.filter(q => grades[q.id]).length;
-  const note = Math.min(6, Math.max(1, Math.round((1 + 5 * (correct / total)) * 2) / 2));
+  // phase === 'done': auswerten
+  let totalPoints = 0, maxPoints = 0;
   const byTopic = {};
-  qs.forEach(q => {
-    byTopic[q.topic] = byTopic[q.topic] || { total: 0, correct: 0 };
-    byTopic[q.topic].total++;
-    if (grades[q.id]) byTopic[q.topic].correct++;
+  const rows = []; // { nr, letter, text, points, correct, correctLabel, selectedLabel }
+  aufgaben.forEach(auf => {
+    auf.teile.forEach(teil => {
+      const key = `${auf.nr}-${teil.letter}`;
+      const selIdx = answers[key];
+      const correctIdx = teil.options.findIndex(o => o.correct);
+      const isRight = selIdx === correctIdx;
+      maxPoints += teil.points;
+      if (isRight) totalPoints += teil.points;
+      byTopic[auf.topic] = byTopic[auf.topic] || { total: 0, correct: 0 };
+      byTopic[auf.topic].total++;
+      if (isRight) byTopic[auf.topic].correct++;
+      rows.push({
+        nr: auf.nr, letter: teil.letter, text: teil.text, points: teil.points, isRight,
+        correctLabel: teil.options[correctIdx]?.label, selectedLabel: selIdx != null ? teil.options[selIdx]?.label : null,
+      });
+      // Fehler-Kiste: nur wenn eine passende Übungsaufgabe im normalen Pool existiert.
+      if (!isRight && auf.linkedQuestionId && questions.some(q => q.id === auf.linkedQuestionId)) {
+        onFehler(auf.linkedQuestionId);
+      } else if (isRight && auf.linkedQuestionId && questions.some(q => q.id === auf.linkedQuestionId)) {
+        onSolved(auf.linkedQuestionId);
+        onRemoveFehler(auf.linkedQuestionId);
+      }
+    });
   });
+  const pct = maxPoints > 0 ? totalPoints / maxPoints : 0;
+  const note = Math.min(6, Math.max(1, Math.round((1 + 5 * pct) * 2) / 2));
+
   return (
-    <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '40px 16px' : '60px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
-      <div style={{ maxWidth: '480px', margin: '0 auto', textAlign: 'center' }}>
-        <div style={{ fontSize: '48px', marginBottom: '12px' }}>{correct === total ? '🏆' : correct / total >= 0.5 ? '🎉' : '💪'}</div>
-        <h2 style={{ fontSize: '24px', fontWeight: '800', color: dm.text, margin: '0 0 6px' }}>{correct} von {total} richtig</h2>
-        <p style={{ fontSize: '14px', color: dm.text3, margin: '0 0 6px' }}>Geschätzte Note: <strong style={{ color: dm.text }}>{note.toFixed(1)}</strong></p>
-        <p style={{ fontSize: '11px', color: dm.text3, margin: '0 0 24px' }}>(Annahme: linear von Note 1 bei 0% bis Note 6 bei 100% — kein offizieller Notenschlüssel bekannt)</p>
-        <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '14px', padding: '18px', textAlign: 'left', marginBottom: '20px' }}>
+    <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '32px 16px' : '50px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+      <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+          <div style={{ fontSize: '44px', marginBottom: '8px' }}>{pct === 1 ? '🏆' : pct >= 0.5 ? '🎉' : '💪'}</div>
+          <h2 style={{ fontSize: '22px', fontWeight: '800', color: dm.text, margin: '0 0 6px' }}>{totalPoints} / {maxPoints} Punkte</h2>
+          <p style={{ fontSize: '14px', color: dm.text3, margin: '0 0 4px' }}>Ungefähre Note: <strong style={{ color: dm.text }}>{note.toFixed(1)}</strong></p>
+          <p style={{ fontSize: '11px', color: dm.text3, margin: 0 }}>(Annahme: linear von Note 1 bei 0% bis Note 6 bei 100% — kein offizieller Notenschlüssel bekannt)</p>
+        </div>
+
+        <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '14px', padding: '16px', marginBottom: '20px' }}>
           <p style={{ margin: '0 0 10px', fontSize: '13px', fontWeight: '700', color: dm.text2 }}>Auswertung pro Thema</p>
           {Object.entries(byTopic).map(([t, v]) => (
             <div key={t} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: dm.text, padding: '4px 0' }}>
@@ -1608,7 +1642,39 @@ function ProbepruefungPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onB
             </div>
           ))}
         </div>
-        <button onClick={onBack} style={{ width: '100%', padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>Fertig</button>
+
+        {aufgaben.map(auf => {
+          const open = !!openSolutionFor[auf.nr];
+          const aufRows = rows.filter(r => r.nr === auf.nr);
+          return (
+            <div key={auf.nr} style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', marginBottom: '10px', overflow: 'hidden' }}>
+              <div style={{ padding: '12px 16px' }}>
+                <p style={{ margin: '0 0 8px', fontSize: '13px', fontWeight: '700', color: dm.text2 }}>Aufgabe {auf.nr} · {auf.topic}</p>
+                {aufRows.map(r => (
+                  <div key={r.nr + '-' + r.letter} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', padding: '5px 0', fontSize: '13px', color: dm.text }}>
+                    <span>{r.isRight ? '✅' : '❌'}</span>
+                    <span style={{ flex: 1 }}>{r.letter ? `${r.letter}) ` : ''}{r.points} {r.points === 1 ? 'Punkt' : 'Punkte'}</span>
+                  </div>
+                ))}
+                <button onClick={() => setOpenSolutionFor(prev => ({ ...prev, [auf.nr]: !open }))} style={{ marginTop: '8px', padding: '7px 12px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '12px' }}>
+                  {open ? '▾ Musterlösung ausblenden' : '▸ Musterlösung anzeigen'}
+                </button>
+              </div>
+              {open && (
+                <div style={{ background: dm.okBg, borderTop: `1px solid ${dm.okBorder}`, padding: '12px 16px' }}>
+                  {auf.teile.map(teil => (
+                    <div key={teil.letter} style={{ marginBottom: '8px' }}>
+                      <p style={{ margin: '0 0 2px', fontSize: '12px', fontWeight: '700', color: dm.okText }}>{teil.letter ? `${teil.letter}) ` : ''}✅ {teil.options.find(o => o.correct)?.label}</p>
+                      <p style={{ margin: 0, fontSize: '12px', color: dm.okText, whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: teil.solution }} />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        <button onClick={onBack} style={{ width: '100%', padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer', marginTop: '10px' }}>Fertig</button>
       </div>
     </main>
   );
@@ -1730,9 +1796,8 @@ export default function Home() {
     />
   );
   if (showProbepruefung) return (
-    <ProbepruefungPage
+    <PruefungV2Page
       dm={dm}
-      solved={solved}
       onSolved={handleSolved}
       onFehler={addFehler}
       onRemoveFehler={removeFehler}
@@ -1773,6 +1838,8 @@ export default function Home() {
             onClose={() => setSidebarOpen(false)}
             onShowFehlerKiste={() => setShowFehlerKiste(true)}
             fehlerCount={fehler.length}
+            onShowHeuteUeben={() => setShowHeuteUeben(true)}
+            onShowPruefung={() => setShowProbepruefung(true)}
           />
         </div>
       )}
