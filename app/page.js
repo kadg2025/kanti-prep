@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { questions } from './lib/questions';
 import { facts } from './lib/facts';
+import { lernkarten } from './lib/lernkarten';
 import { pruefungenModusA, pruefungenModusB } from './lib/gms3/mathe_otr/pruefung';
 import LinksPage from './LinksPage';
 import FeedbackButton from './components/FeedbackButton';
@@ -915,6 +916,10 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
   const [teilAnswered, setTeilAnswered] = useState([]);
   const [teilWrongOptsArr, setTeilWrongOptsArr] = useState([]);
   const [teilFirstTryOverall, setTeilFirstTryOverall] = useState(true);
+  // Lernkarte: reine Erklärung zum Thema, ohne Einfluss auf Wertung/Fehler-Kiste.
+  const lernkarte = question ? lernkarten[question.topic] : null;
+  const [lernkarteOpen, setLernkarteOpen] = useState(false);
+  const [uebungOpenSet, setUebungOpenSet] = useState(() => new Set());
   if (question && question.id !== prevId) {
     setShowSolution(false);
     setSolutionViewed(false);
@@ -930,6 +935,8 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
       setTeilWrongOptsArr(shuffledTeile.map(() => new Set()));
       setTeilFirstTryOverall(true);
     }
+    setLernkarteOpen(false);
+    setUebungOpenSet(new Set());
   }
   const allTeileDone = hasTeile && teilAnswered.length === shuffledTeile.length && teilAnswered.every(Boolean);
   const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309', 'Mathe Neu': '#534AB7', 'Deutsch Neu': '#b45309' };
@@ -1011,6 +1018,14 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     markCorrect();
   }
 
+  function toggleUebung(i) {
+    setUebungOpenSet(prev => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i); else next.add(i);
+      return next;
+    });
+  }
+
   return (
     <main style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '64px 16px 40px' : '40px', background: dm.bg }}>
       <div style={{ maxWidth: '700px', margin: '0 auto' }}>
@@ -1051,6 +1066,59 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
             </div>
           )}
         </div>
+        {lernkarte && (
+          <div style={{ marginBottom: '16px' }}>
+            <button
+              onClick={() => setLernkarteOpen(v => !v)}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '9px 16px', background: lernkarteOpen ? dm.accentBg : dm.bg3, border: `1px solid ${lernkarteOpen ? (dark ? '#4c3f8f' : '#c4b5fd') : dm.border}`, borderRadius: '10px', fontSize: '13px', fontWeight: '600', color: lernkarteOpen ? (dark ? '#c4b5fd' : color) : dm.text2, cursor: 'pointer' }}
+            >
+              📘 Erklärung zum Thema {lernkarteOpen ? '▲' : '▼'}
+            </button>
+            {lernkarteOpen && (
+              <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', marginTop: '10px' }}>
+                <h3 style={{ margin: '0 0 16px', fontSize: isMobile ? '17px' : '19px', fontWeight: '700', color: dm.text }}>{lernkarte.titel}</h3>
+                {lernkarte.abschnitte.map((abschnitt, i) => (
+                  <div key={i} style={{ marginBottom: '18px' }}>
+                    <p style={{ margin: '0 0 6px', fontSize: '14px', fontWeight: '700', color: dm.text }}>{abschnitt.titel}</p>
+                    <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.75', color: dm.text2, whiteSpace: 'pre-wrap' }}>{abschnitt.text}</p>
+                  </div>
+                ))}
+                {lernkarte.uebungen?.length > 0 && (
+                  <div>
+                    <p style={{ margin: '0 0 10px', fontSize: '14px', fontWeight: '700', color: dm.text }}>Probier es selbst</p>
+                    {lernkarte.uebungen.map((ueb, i) => {
+                      const open = uebungOpenSet.has(i);
+                      return (
+                        <div key={i} style={{ marginBottom: '14px', paddingBottom: '14px', borderBottom: i < lernkarte.uebungen.length - 1 ? `1px solid ${dm.border}` : 'none' }}>
+                          <p style={{ margin: '0 0 8px', fontSize: '14px', lineHeight: '1.6', color: dm.text2, whiteSpace: 'pre-wrap' }}>{ueb.frage}</p>
+                          <button
+                            onClick={() => toggleUebung(i)}
+                            style={{ padding: '7px 14px', background: open ? dm.accentBg : dm.bg3, border: `1px solid ${open ? (dark ? '#4c3f8f' : '#c4b5fd') : dm.border}`, borderRadius: '8px', fontSize: '12px', fontWeight: '600', color: open ? (dark ? '#c4b5fd' : color) : dm.text2, cursor: 'pointer' }}
+                          >
+                            {open ? 'Lösung ausblenden' : 'Lösung zeigen'}
+                          </button>
+                          {open && (
+                            <p style={{ margin: '8px 0 0', fontSize: '14px', lineHeight: '1.6', color: dm.text, whiteSpace: 'pre-wrap' }}>{ueb.loesung}</p>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+                {lernkarte.links?.length > 0 && (
+                  <div style={{ marginTop: '6px' }}>
+                    <p style={{ margin: '0 0 8px', fontSize: '14px', fontWeight: '700', color: dm.text }}>Weitere Links</p>
+                    {lernkarte.links.map((link, i) => (
+                      <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" style={{ display: 'block', fontSize: '13px', color: color, marginBottom: '4px' }}>
+                        {link.titel}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
         {/* Erst versuchen: Multiple-Choice (falls vorhanden) oder Selbst-Check-Button */}
         <div style={{ marginBottom: '20px' }}>
           {hasTeile ? (
