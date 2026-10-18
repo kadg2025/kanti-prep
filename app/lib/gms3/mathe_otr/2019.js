@@ -19,6 +19,10 @@ export const questionsMatheOtr2019 = [
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106598/AP19_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
 
+    figureUrl: '/figuren/2019_wuerfel1.png',
+
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2019',
+
     topic: 'Körper & Netze',
 
     questionText: `Aufgabe 1: Würfelabwicklung

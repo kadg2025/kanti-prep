@@ -439,6 +439,8 @@ Da die genaue Figur aus dem PDF benötigt wird, empfehlen wir die offizielle Sch
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=4',
+    figureUrl: '/figuren/2020_funk4.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2020',
     topic: 'Funktionen',
     questionText: `Aufgabe 4a: Taxi-Tarif Hamburg
 Im Koordinatensystem sind Taxi-Tarife von Hamburg und Paris eingezeichnet.
@@ -575,6 +577,8 @@ x = 55
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=4',
+    figureUrl: '/figuren/2020_funk4.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2020',
     topic: 'Funktionen',
     questionText: `Aufgabe 4d: Taxi-Tarif Paris
 Die zweite Gerade zeigt den Taxi-Tarif in Paris.

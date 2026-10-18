@@ -516,6 +516,8 @@ x = 105 / 0.7 = 150
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179274/AP25_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
+    figureUrl: '/figuren/2025_flaeche6.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2025',
     topic: 'Geometrie',
     questionText: `Aufgabe 6: Das grüne Sechseck A und das rote Trapez B besitzen den gleichen Flächeninhalt.
 Das Sechseck A hat eine obere Breite von 5 cm, eine linke Höhe von x, eine rechte Höhe von 2 cm (oben) und eine untere Breite von 2 cm (links). Das Trapez B schliesst rechts an A an: seine obere Seite (3 cm, = 5 cm − 2 cm) und untere Seite (6 cm) sind parallel, die Höhe des Trapezes ist (x − 2) cm.

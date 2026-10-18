@@ -387,6 +387,8 @@ z · 8bz = 8bz²
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=2',
+    figureUrl: '/figuren/2021_wuerfel5a.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2021',
     topic: 'Körper & Netze',
     questionText: `Aufgabe 5a: Würfelnetz beschriften
 Gegeben ist ein Würfel mit Ecken A, B, C, D (unten) und E, F, G, H (oben).
@@ -434,6 +436,8 @@ Da es sich um eine Zeichnungsaufgabe handelt, empfehlen wir die offizielle Schul
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=3',
+    figureUrl: '/figuren/2021_wuerfel5b.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2021',
     topic: 'Körper & Netze',
     questionText: `Aufgabe 5b: Punkt P ins Würfelnetz übertragen
 Gegeben ist ein Würfel mit Punkt P auf der Kante HG.
@@ -476,6 +480,8 @@ Es gibt zwei mögliche Lösungen je nach Aufklapprichtung (nach aussen oder nach
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119956/AP21_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=5',
+    figureUrl: '/figuren/2021_stat6a.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2021',
     topic: 'Statistik & Diagramme',
     questionText: `Aufgabe 6a: Tischkicker – richtiges Diagramm
 Susi gewinnt 2×, Moritz 3×, Giuliano 10×.

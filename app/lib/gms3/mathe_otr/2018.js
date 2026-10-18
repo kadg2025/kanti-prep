@@ -733,6 +733,10 @@ Total = 4/100 + 9/100 + 25/100 = 38/100 = 19/50`,
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106448/AP18%20GMS3%20M1_oTR.pdf?fp=1#page=7',
 
+    figureUrl: '/figuren/2018_pyramide6.png',
+
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2018',
+
     topic: 'Körper & Netze',
 
     questionText: `Aufgabe 6: Pyramide

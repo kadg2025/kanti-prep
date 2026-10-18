@@ -272,6 +272,8 @@ c) T3 : T4`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
+    figureUrl: '/figuren/2023_kerze4.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2023',
     topic: 'Funktionen',
     questionText: `Aufgabe 4a: Notiere die zugehörige Geradengleichung.
 
@@ -310,6 +312,8 @@ y-Achsenabschnitt zuerst erkennen, dann Steigung ablesen.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
+    figureUrl: '/figuren/2023_kerze4.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2023',
     topic: 'Funktionen',
     questionText: `Aufgabe 4b: Nach wie vielen Stunden ist die Kerze vollständig abgebrannt?`,
     options: [
@@ -347,6 +351,8 @@ Die Kerze ist weg, wenn y = 0 ist.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
+    figureUrl: '/figuren/2023_kerze4.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2023',
     topic: 'Funktionen',
     questionText: `Aufgabe 4d: Nach wie vielen Stunden sind die zwei Kerzen gleich lang?`,
     options: [
@@ -387,6 +393,8 @@ Gleich lang = beide Funktionswerte gleichsetzen.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=6',
+    figureUrl: '/figuren/2023_kerze4.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2023',
     topic: 'Funktionen',
     questionText: `Aufgabe 4e: Nach wie vielen Stunden ist die Stumpenkerze genau doppelt so gross wie die Stabkerze?`,
     options: [
@@ -432,6 +440,8 @@ Die Stumpenkerze soll doppelt so lang sein wie die Stabkerze → Gleichung aufst
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
+    figureUrl: '/figuren/2023_stat5a.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2023',
     topic: 'Statistik & Diagramme',
     questionText: `Aufgabe 5a: Berechne die absoluten Häufigkeiten.
 
@@ -477,6 +487,8 @@ Ausschliesslich Fernunterricht: 720 - 252 - 288 - 72 = 108
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=9',
+    figureUrl: '/figuren/2023_stat5b.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2023',
     topic: 'Statistik & Diagramme',
     questionText: `Aufgabe 5b: Welches Säulendiagramm passt zur Umfrage?`,
     options: [
@@ -594,6 +606,8 @@ Der Winkel bei M in diesem Dreieck: Winkel(A,M,T) = 180° − 30° − 30° = 12
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=11',
+    figureUrl: '/figuren/2023_geom6b.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2023',
     topic: 'Geometrie',
     questionText: `Aufgabe 6b: Das Trapez ABCD hat die parallelen Seiten 15 und 3 sowie die Höhe 16. Die rote Fläche F (ein Dreieck) ist 7/24 der Trapezfläche ABCD. Die Seite s des Dreiecks F ist parallel zur Höhe des Trapezes. Berechne s.
 Die Figur ist nicht massstabsgetreu!`,

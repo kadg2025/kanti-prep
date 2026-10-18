@@ -536,6 +536,8 @@ In der Figur sind Längen und Winkel nicht massstabsgetreu.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=8',
+    figureUrl: '/figuren/2022_wuerfel7.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2022',
     topic: 'Körper & Netze',
     questionText: `Aufgabe 7: Würfel mit Mustern
 

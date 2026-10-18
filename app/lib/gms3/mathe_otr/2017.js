@@ -858,6 +858,10 @@ y-Weg: Von 3.5 zu 1.5 ist –2. Nochmal –2 dazu: 1.5 - 2 = -0.5.
 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106610/AP17_M1_GMS3_Pr%C3%BCfung.pdf?fp=1#page=6',
 
+    figureUrl: '/figuren/2017_konstr1.png',
+
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2017',
+
     topic: 'Geometrie',
 
     questionText: `Aufgabe 7: Kreis konstruieren
