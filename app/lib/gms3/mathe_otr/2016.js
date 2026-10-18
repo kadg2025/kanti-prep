@@ -745,10 +745,13 @@ Eigene rote Farbe + übertragene rote Farbe
   {
     id: 'M3_2016_OTR_WINKEL_7a',
     year: 2016,
+    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=7',
+    figureUrl: '/figuren/2016_winkel7a.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2016',
     topic: 'Geometrie',
     questionText: `Aufgabe 7a: Winkel berechnen
 Gegeben ist ein Kreis mit einem einbeschriebenen Winkel von 32°. Berechne den Winkel α.
@@ -759,7 +762,7 @@ Die Skizze ist nicht massstabsgetreu!`,
       { label: 'α = 32°', correct: false },
     ],
     solution: {
-      intro: 'Die Figur enthält zwei ineinander verschachtelte Halbkreise mit unterschiedlichem Durchmesser. Der exakte Rechenweg mit den nötigen Hilfslinien lässt sich nur anhand der Original-Skizze sauber nachvollziehen — deshalb hier die Kernregeln und das offiziell bestätigte Ergebnis.',
+      intro: 'Die Figur enthält zwei ineinander verschachtelte Halbkreise mit unterschiedlichem Durchmesser. Hier die angewendeten Regeln und das offiziell bestätigte Ergebnis — die Figur oben hilft dir, die Konstruktion nachzuvollziehen.',
       steps: [
         {
           title: '📖 Begriffe',
@@ -811,10 +814,13 @@ Mit dem Satz vom Mittelpunktswinkel, gleichschenkligen Radien-Dreiecken und der 
   {
     id: 'M3_2016_OTR_WINKEL_7b',
     year: 2016,
+    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106440/AP16_M_GMS3_Teil_1_Pruefung.pdf?fp=1#page=8',
+    figureUrl: '/figuren/2016_winkel7b.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2016',
     topic: 'Geometrie',
     questionText: `Aufgabe 7b: Winkel berechnen
 Berechne die Winkel α und β.
@@ -826,7 +832,7 @@ Die Skizze ist nicht massstabsgetreu!`,
       { label: 'α = 54°, β = 27°', correct: false },
     ],
     solution: {
-      intro: 'Auch diese Figur besteht aus zwei verschachtelten Halbkreisen (wie in Aufgabe 7a). Der exakte Rechenweg mit den nötigen Hilfslinien lässt sich nur anhand der Original-Skizze sauber nachvollziehen — deshalb hier die Kernregeln und das offiziell bestätigte Ergebnis.',
+      intro: 'Auch diese Figur besteht aus zwei verschachtelten Halbkreisen (wie in Aufgabe 7a). Hier die angewendeten Regeln und das offiziell bestätigte Ergebnis — die Figur oben hilft dir, die Konstruktion nachzuvollziehen.',
       steps: [
         {
           title: '📖 Begriffe',

@@ -299,10 +299,13 @@ P(Robin) = P(AN) + P(NA) = 1/4 + 1/4 = 1/2
   {
     id: 'M1_2020_OTR_WINKEL_3a',
     year: 2020,
+    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=3',
+    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=6',
+    figureUrl: '/figuren/2020_winkel3a.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2020',
     topic: 'Geometrie',
     questionText: `Aufgabe 3a: Winkel bestimmen
 Bestimme die Winkel α, β und γ!
@@ -370,10 +373,13 @@ Da die genaue Figur aus dem PDF benötigt wird, empfehlen wir die offizielle Sch
   {
     id: 'M1_2020_OTR_WINKEL_3b',
     year: 2020,
+    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=3',
+    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106466/AP20_GMS3_M1_oTr_Pr%C3%BCfung.pdf?fp=1#page=6',
+    figureUrl: '/figuren/2020_winkel3b.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2020',
     topic: 'Geometrie',
     questionText: `Aufgabe 3b: Winkel α bestimmen
 Bestimme den Winkel α!

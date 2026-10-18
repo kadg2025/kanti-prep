@@ -821,6 +821,14 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
         </div>
         <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', marginBottom: '16px' }}>
           <p style={{ margin: 0, fontSize: '15px', lineHeight: '1.8', color: dm.text, whiteSpace: 'pre-wrap', fontFamily: 'inherit' }} dangerouslySetInnerHTML={{ __html: question.questionText.replace(/__(.*?)__/g, '<u>$1</u>') }} />
+          {question.figureUrl && (
+            <div style={{ marginTop: '16px' }}>
+              <img src={question.figureUrl} alt={question.figureCaption || 'Figur zur Aufgabe'} style={{ maxWidth: '100%', borderRadius: '8px', border: `1px solid ${dm.border}`, background: '#fff' }} />
+              {question.figureCaption && (
+                <p style={{ margin: '6px 0 0', fontSize: '11px', color: dm.text2, fontStyle: 'italic' }}>{question.figureCaption}</p>
+              )}
+            </div>
+          )}
         </div>
         {/* Erst versuchen: Multiple-Choice (falls vorhanden) oder Selbst-Check-Button */}
         <div style={{ marginBottom: '20px' }}>

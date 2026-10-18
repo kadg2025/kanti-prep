@@ -463,10 +463,13 @@ Prozentuale Verbilligung:
   {
     id: 'M1_2022_OTR_WINKEL_6',
     year: 2022,
+    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132684/AP22_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=7',
+    figureUrl: '/figuren/2022_winkel6.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2022',
     topic: 'Geometrie',
     questionText: `Aufgabe 6: Winkel bestimmen
 
@@ -478,7 +481,7 @@ In der Figur sind Längen und Winkel nicht massstabsgetreu.`,
       { label: 'α = 45°, β = 67.5°, γ = 78.75°', correct: false },
     ],
     solution: {
-      intro: `Die exakten Werte stehen in der offiziellen Lösung. Da die Figur im PDF wichtig ist, ist der vollständige geometrische Lösungsweg ohne Zeichnung nur eingeschränkt nachvollziehbar.`,
+      intro: `Die Figur zeigt eine Kette von gleichschenkligen Dreiecken. Hier die angewendeten Regeln und das offiziell bestätigte Ergebnis — die Figur oben hilft dir, die Konstruktion nachzuvollziehen.`,
       steps: [
         {
           title: 'Ergebnisse',

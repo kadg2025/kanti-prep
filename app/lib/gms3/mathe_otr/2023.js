@@ -509,6 +509,8 @@ Vergleiche die Balkenhöhen mit den absoluten Häufigkeiten.`,
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147192/AP23_GMS3_M1_oTR_Pr%C3%BCfung.pdf?fp=1#page=10',
+    figureUrl: '/figuren/2023_geom6a.png',
+    figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2023',
     topic: 'Geometrie',
     questionText: `Aufgabe 6a: Die Seiten a und b sind parallel. Ein gleichschenkliges Dreieck ist Teil der Figur. Bestimme die Grösse der Winkel α und β.
 Die Figur ist nicht massstabsgetreu!`,
@@ -518,21 +520,37 @@ Die Figur ist nicht massstabsgetreu!`,
       { label: 'α = 60°, β = 120°', correct: false },
     ],
     solution: {
-      intro: 'Die genaue Figur mit allen gegebenen Winkeln wird für den vollständigen Schritt-für-Schritt-Weg benötigt — hier die angewendeten Regeln und das Ergebnis.',
+      intro: '',
       steps: [
         {
           title: '📖 Begriffe',
-          content: `🔑 Stufen- bzw. Wechselwinkel an geschnittenen Parallelen sind gleich gross.
-🔺 Gleichschenkliges Dreieck: Die beiden Basiswinkel sind gleich gross.
-📐 Nebenwinkel ergänzen sich zu 180°.`,
+          content: `🔑 Wechselwinkel an geschnittenen Parallelen (hier a ∥ b) sind gleich gross.
+🔺 Zwei Radien desselben Kreises sind gleich lang — das macht ein Dreieck aus zwei Radien gleichschenklig mit gleich grossen Basiswinkeln.
+📐 Winkelsumme im Dreieck = 180°.`,
         },
         {
-          title: 'Winkel bestimmen',
-          content: `Stufen- bzw. Wechselwinkel an geschnittenen Parallelen sind gleich gross — daraus ergibt sich, dass der Restwinkel bei β 30° beträgt.
-Im gleichschenkligen Dreieck folgt daraus α = 75° (Basiswinkel).
-β ist der Nebenwinkel zu α: β = 180° − 30° = 150°... β entsteht als Summe/Nebenwinkel-Beziehung aus dem gleichschenkligen Dreieck und ergibt 150°.
+          title: 'Schritt 1: Winkel bei M (Wechselwinkel)',
+          content: `In der Figur ist M der Kreismittelpunkt. a (von A nach T) und b (von M nach B) sind parallel, TM ist die Schnittgerade (Transversale).
+Der gegebene Winkel bei T (zwischen a und TM) und der Winkel zwischen TM und b bei M sind Wechselwinkel an den Parallelen a und b — also gleich gross:
+Winkel(T,M,B) = 30°`,
+        },
+        {
+          title: 'Schritt 2: α im Dreieck TMB',
+          content: `MT und MB sind beides Radien desselben Kreises → MT = MB → Dreieck TMB ist gleichschenklig mit Spitze M.
+Die Basiswinkel bei T und bei B sind gleich gross:
+α = (180° − 30°) ÷ 2 = 75°
 
-✅ α = 75°
+✅ α = 75°`,
+        },
+        {
+          title: 'Schritt 3: β im Dreieck AMT',
+          content: `Auch MA und MT sind Radien desselben Kreises → MA = MT → Dreieck AMT ist gleichschenklig mit Spitze M.
+Der gegebene Winkel bei T (zwischen a und TM) ist hier der Basiswinkel: Winkel(M,A,T) = Winkel(M,T,A) = 30°.
+Der Winkel bei M in diesem Dreieck: Winkel(A,M,T) = 180° − 30° − 30° = 120°
+
+β ist der volle Winkel bei M zwischen der gestrichelten Linie (zu A) und b (zu B) — das ist die Summe aus Winkel(A,M,T) und Winkel(T,M,B):
+β = 120° + 30° = 150°
+
 ✅ β = 150°`,
         },
         {
