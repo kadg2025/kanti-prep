@@ -43,6 +43,19 @@ ${frac('1', '2')} · (x − ${frac('1', '3')}·x + 2·0.5²) = 0`,
 
     ],
 
+    teile: [
+      { letter: 'a', options: [
+        { label: 'a/2 - 3/2', correct: true },
+        { label: 'a/3 - 3/2', correct: false },
+        { label: 'a/2 - 9/2', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'x = -3/4', correct: true },
+        { label: 'x = 3/4', correct: false },
+        { label: 'x = -1/2', correct: false },
+      ] },
+    ],
+
     solution: {
 
       intro: 'Der Trick bei beiden Teilaufgaben: Erst alles INNERHALB der Klammer fertig ausrechnen (Potenzen, Punktrechnung), dann erst den Bruch davor ausmultiplizieren.',
@@ -193,6 +206,29 @@ d) 1, 3, 7, 15, 31, 63, …`,
 
       { label: 'a) 25, 29 | b) 47, 76 | c) 15.6, 46.8 | d) 127, 255', correct: false },
 
+    ],
+
+    teile: [
+      { letter: 'a', options: [
+        { label: '27, 31', correct: true },
+        { label: '25, 29', correct: false },
+        { label: '27, 27', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '47, 76', correct: true },
+        { label: '48, 78', correct: false },
+        { label: '47, 65', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '16.2, 48.6', correct: true },
+        { label: '15.6, 46.8', correct: false },
+        { label: '16.2, 32.4', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: '127, 255', correct: true },
+        { label: '125, 253', correct: false },
+        { label: '126, 252', correct: false },
+      ] },
     ],
 
     solution: {
@@ -474,6 +510,19 @@ b) Zeige mit einem Gegenbeispiel, dass diese Behauptung FALSCH ist:
 
     ],
 
+    teile: [
+      { letter: 'a', options: [
+        { label: 'Stimmt: 7n+21', correct: true },
+        { label: 'Stimmt nur manchmal', correct: false },
+        { label: 'Summe = 7n+14', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'Falsch: Summe=21', correct: true },
+        { label: 'Es gibt kein Gegenbeispiel', correct: false },
+        { label: 'Stimmt immer', correct: false },
+      ] },
+    ],
+
     solution: {
 
       intro: '',
@@ -603,6 +652,29 @@ e) Die zweite Kugel ist rot oder schwarz.`,
 
       { label: 'b) 1/4 | c) 1/2 | d) 3/50 | e) 3/5', correct: false },
 
+    ],
+
+    teile: [
+      { letter: 'b', options: [
+        { label: '1/4', correct: true },
+        { label: '1/5', correct: false },
+        { label: '1', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '19/50', correct: true },
+        { label: '2/5', correct: false },
+        { label: '1/2', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: '3/50', correct: true },
+        { label: '1/25', correct: false },
+        { label: '1/15', correct: false },
+      ] },
+      { letter: 'e', options: [
+        { label: '1/2', correct: true },
+        { label: '2/5', correct: false },
+        { label: '3/5', correct: false },
+      ] },
     ],
 
     solution: {
