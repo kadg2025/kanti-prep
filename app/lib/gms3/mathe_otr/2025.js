@@ -28,6 +28,28 @@ d) ${frac('2a', '5a³ + 10a²b')}`,
       { label: 'a) 30a³b⁴ | b) 25a⁴ | c) 10a²b+15a³b³ | d) 2a/(a+2b)', correct: false },
       { label: 'a) 6a³b⁴ | b) 125a⁴ | c) 10a²b+15ab³ | d) 2/(a+2b)', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '30a³b⁴', correct: true },
+        { label: '6a³b⁴', correct: false },
+        { label: '30a³b³', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '125a⁴', correct: true },
+        { label: '25a⁴', correct: false },
+        { label: '125a²', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '10a²b+15a³b³', correct: true },
+        { label: '10a²b+15ab³', correct: false },
+        { label: '10a²b+3ab³', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: '2a/(a+2b)', correct: true },
+        { label: '2/(a+2b)', correct: false },
+        { label: '2/(5a(a+2b))', correct: false },
+      ] },
+    ],
     solution: {
       intro: `Bei jedem Teil gibt es zwei Schritte: erst den gegebenen Term selbst vereinfachen, dann das Ergebnis mit 5a² multiplizieren.`,
       steps: [
@@ -233,6 +255,18 @@ Term B: ${frac('13', '3')} : ${frac('31', '6')}`,
       { label: 'a) 21 und 42 | b) Term A ist grösser', correct: false },
       { label: 'a) 27 und 36 | b) Term A ist grösser', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '27 und 36', correct: true },
+        { label: '21 und 42', correct: false },
+        { label: '15.75 und 21', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'Term B ist grösser (26/31 > 25/31)', correct: true },
+        { label: 'Term A ist grösser', correct: false },
+        { label: 'Beide Terme sind gleich groß', correct: false },
+      ] },
+    ],
     solution: {
       intro: '',
       steps: [
@@ -350,7 +384,7 @@ c2) Wie gross ist die Wahrscheinlichkeit, dass die Summe der beiden gezogenen Ku
       ] },
       { letter: 'b3', options: [
         { label: '7/25', correct: true },
-        { label: '35/125', correct: false },
+        { label: '54/125', correct: false },
         { label: '27/125', correct: false },
       ] },
       { letter: 'c1', options: [
@@ -479,6 +513,23 @@ c) Leider ist der Ertrag von Weizen im Vergleich zum Vorjahr um 30% auf 105 Tonn
       { label: 'a) Gerste 10 ha, Weizen 6.25 ha, Mais 8.75 ha | b) 20% | c) 150 Tonnen', correct: true },
       { label: 'a) Gerste 8 ha, Weizen 5 ha, Mais 12 ha | b) 16.7% | c) 135 Tonnen', correct: false },
       { label: 'a) Gerste 10 ha, Weizen 6.25 ha, Mais 8.75 ha | b) 60% | c) 75 Tonnen', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'Gerste 10 ha, Weizen 6.25 ha, Mais 8.75 ha', correct: true },
+        { label: 'Gerste 8 ha, Weizen 5 ha, Mais 12 ha', correct: false },
+        { label: 'Gerste 40 ha, Weizen 25 ha, Mais 35 ha', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '20%', correct: true },
+        { label: '16.7%', correct: false },
+        { label: '60%', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '150 Tonnen', correct: true },
+        { label: '135 Tonnen', correct: false },
+        { label: '75 Tonnen', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
