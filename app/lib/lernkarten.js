@@ -10,6 +10,7 @@ export const lernkarten = {
         id: 'primzahlen',
         emoji: '🔢',
         titel: 'Primzahlen',
+        video: undefined,
         karten: [
           { text: 'Stell dir Lego vor: Primzahlen sind die Grundsteine, die man nicht weiter zerlegen kann. Aus ihnen baust du jede andere Zahl durch Malnehmen. Zum Beispiel 6 = 2 · 3 und 20 = 2 · 2 · 5.' },
           { text: 'Primzahlen sind die Bausteine aller Zahlen. Sie haben genau zwei Teiler: 1 und sich selbst.' },
@@ -25,6 +26,7 @@ export const lernkarten = {
         id: 'teilbarkeit',
         emoji: '✅',
         titel: 'Teilbarkeitsregeln',
+        video: undefined,
         karten: [
           { text: 'Teilbar heisst: Beim Teilen bleibt kein Rest. 12 ist durch 3 teilbar (12 : 3 = 4), 13 nicht (es bleibt Rest 1). Die Regeln sind Abkürzungen, damit du nicht lange rechnen musst.' },
           {
@@ -51,6 +53,7 @@ export const lernkarten = {
         id: 'faktorbaum',
         emoji: '🌳',
         titel: 'Faktorbaum',
+        video: undefined,
         karten: [
           { text: 'Faktoren sind die Zahlen, die man malnimmt. In 2 · 3 = 6 sind 2 und 3 die Faktoren. Der Faktorbaum zerlegt eine Zahl Ast für Ast in Primfaktoren.' },
           { text: 'Zerlege eine Zahl so lange, bis nur noch Primzahlen übrig sind. Wie ein Baum, der sich verzweigt.' },
@@ -66,9 +69,11 @@ export const lernkarten = {
         id: 'ggt',
         emoji: '🧩',
         titel: 'ggT',
+        video: undefined,
         karten: [
-          { text: 'Ein Teiler passt ohne Rest in eine Zahl. Ein gemeinsamer Teiler passt in beide Zahlen. Der grösste davon ist der ggT. Denk ans Aufteilen: möglichst grosse, gleiche Gruppen, nichts übrig.' },
-          { text: 'Methode 1, kleine Zahlen: Teiler aufschreiben. 12: 1, 2, 3, 4, 6, 12. 18: 1, 2, 3, 6, 9, 18. Gemeinsam: 1, 2, 3, 6. Der grösste: 6.', visual: 'ggt_listen' },
+          { text: 'Teiler: Eine Zahl passt in eine andere, wenn beim Teilen nichts übrig bleibt. 4 ist ein Teiler von 12, denn 12 : 4 = 3. 5 ist kein Teiler von 12: Es bleibt ein Rest.' },
+          { text: 'Teiler von 12: 1, 2, 3, 4, 6, 12. Teiler von 18: 1, 2, 3, 6, 9, 18. Gemeinsame Teiler, also in beiden: 1, 2, 3, 6.', visual: 'ggt_listen' },
+          { text: 'ggT = der GRÖSSTE gemeinsame Teiler. Bei 12 und 18 ist das die 6. Merke: ggT = grösste gleiche Gruppen bilden, bei denen nichts übrig bleibt.' },
           { text: 'Methode 2, grosse Zahlen: Primfaktoren. 24 = 2³ · 3 und 36 = 2² · 3². Nimm die gemeinsamen Faktoren mit der KLEINEREN Hochzahl: 2² · 3 = 12.' },
           { text: 'Warum die kleinere? Die 2³ aus der 24 passt nicht in die 2² der 36.' },
           { text: 'Beispiel: 24 Schokoriegel und 36 Gummibärli-Tüten, möglichst viele gleiche Teller, nichts übrig. ggT = 12 Teller, auf jedem 2 Riegel und 3 Tüten.' },
@@ -81,9 +86,11 @@ export const lernkarten = {
         id: 'kgv',
         emoji: '🔁',
         titel: 'kgV',
+        video: undefined,
         karten: [
-          { text: 'Ein Vielfaches entsteht beim Malnehmen: Vielfache von 4 sind 4, 8, 12, 16 und so weiter. Gemeinsame Vielfache stehen in beiden Reihen, das kleinste davon ist das kgV. Denk an Dinge, die sich wiederholen.' },
-          { text: 'Methode 1: Reihen aufschreiben. 4er: 4, 8, 12, 16. 6er: 6, 12, 18. Erstes gemeinsames: 12.', visual: 'kgv_reihen' },
+          { text: 'Vielfache sind die Zahlen aus dem Einmaleins. Vielfache von 4: 4, 8, 12, 16, 20, immer plus 4.' },
+          { text: '4er-Reihe: 4, 8, 12, 16, 20, 24. 6er-Reihe: 6, 12, 18, 24. Gemeinsame Vielfache, also in beiden: 12 und 24.', visual: 'kgv_reihen' },
+          { text: 'kgV = das KLEINSTE gemeinsame Vielfache. Bei 4 und 6 ist das die 12. Merke: kgV = wann treffen sich zwei, die sich wiederholen, zum ersten Mal wieder.' },
           { text: 'Methode 2: Primfaktoren mit der GRÖSSEREN Hochzahl. 24 = 2³ · 3 und 36 = 2² · 3². kgV = 2³ · 3² = 8 · 9 = 72.' },
           { text: 'Warum die grössere? Sonst hätte die 24 mit ihren drei Zweien keinen Platz im Vielfachen.' },
           { text: 'Beispiel: Bus A fährt alle 12 Minuten, Bus B alle 18. Sie starten gemeinsam. 12 = 2² · 3 und 18 = 2 · 3², kgV = 2² · 3² = 36. Nach 36 Minuten treffen sie sich wieder.' },
@@ -96,6 +103,7 @@ export const lernkarten = {
         id: 'textaufgaben',
         emoji: '🚌',
         titel: 'Textaufgaben',
+        video: undefined,
         karten: [
           { text: 'In Textaufgaben versteckt sich meist ggT oder kgV. Frag dich zuerst: Teile ich etwas auf (ggT) oder wiederholt sich etwas (kgV)?' },
           { text: 'ggT-Signalwörter: aufteilen, gleich grosse Stücke, Gruppen, zuschneiden, möglichst gross.' },
@@ -111,6 +119,7 @@ export const lernkarten = {
         id: 'fehler',
         emoji: '⚠️',
         titel: 'Typische Fehler',
+        video: undefined,
         karten: [
           { text: '❌ Die 1 ist eine Primzahl. ✅ Nein, sie hat nur einen Teiler. Die erste Primzahl ist die 2.' },
           { text: '❌ Die Quersumme zeigt, ob eine Zahl durch 4 teilbar ist. ✅ Die Quersumme gilt nur für 3 und 9. Bei der 4 prüfst du die letzten zwei Ziffern.' },
@@ -121,7 +130,8 @@ export const lernkarten = {
       {
         id: 'ueben',
         emoji: '🎯',
-        titel: 'Üben',
+        titel: 'Dojo',
+        video: undefined,
         karten: [
           { text: 'Ist 512 durch 4 teilbar?', loesung: 'Ja. Die letzten zwei Ziffern 12 sind durch 4 teilbar.' },
           { text: 'Primfaktorzerlegung von 30.', loesung: '30 = 2 · 15 = 2 · 3 · 5' },

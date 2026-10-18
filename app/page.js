@@ -757,7 +757,7 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
                         <li>
                           <button onClick={() => onSelectLernkarte(topicName)} style={{ width: '100%', textAlign: 'left', padding: '8px 16px 8px 40px', background: selectedLernkarteTopic === topicName ? dm.accentBg : (dark ? '#2a2719' : '#fef9c3'), border: 'none', borderLeft: `3px solid ${selectedLernkarteTopic === topicName ? color : '#f59e0b'}`, cursor: 'pointer', color: selectedLernkarteTopic === topicName ? color : (dark ? '#d4b85a' : '#854d0e'), fontSize: '13px', fontWeight: '700', lineHeight: '1.4' }}
                           >
-                            📘 Erklärung
+                            🥋 Frag Sensei
                           </button>
                         </li>
                       )}
@@ -1953,7 +1953,17 @@ export default function Home() {
       )}
 
       {lernkarteTopic ? (
-        <LernkartePage topic={lernkarteTopic} dm={dm} dark={dark} isMobile={isMobile} onClose={() => setLernkarteTopic(null)} />
+        <LernkartePage
+          topic={lernkarteTopic}
+          dm={dm}
+          dark={dark}
+          isMobile={isMobile}
+          onClose={() => setLernkarteTopic(null)}
+          onStartAufgaben={() => {
+            const q = questions.find(x => x.topic === lernkarteTopic);
+            if (q) { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setLernkarteTopic(null); }
+          }}
+        />
       ) : (
         <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} onRemoveFehler={removeFehler} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
       )}

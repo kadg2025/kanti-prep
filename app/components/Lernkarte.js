@@ -5,6 +5,20 @@ import { lernkarten } from '../lib/lernkarten';
 
 const KACHEL_COLORS = ['#534AB7', '#0f766e', '#f59e0b', '#ef4444', '#3b82f6', '#ec4899', '#14b8a6', '#8b5cf6'];
 
+const BELT_LEVELS = [
+  { min: 0, max: 0, label: 'Weisser Gürtel', fill: '#f3f4f6', border: '#9ca3af' },
+  { min: 1, max: 2, label: 'Gelber Gürtel', fill: '#facc15', border: '#ca8a04' },
+  { min: 3, max: 4, label: 'Oranger Gürtel', fill: '#fb923c', border: '#c2410c' },
+  { min: 5, max: 5, label: 'Grüner Gürtel', fill: '#4ade80', border: '#15803d' },
+  { min: 6, max: 6, label: 'Blauer Gürtel', fill: '#60a5fa', border: '#1d4ed8' },
+  { min: 7, max: 7, label: 'Brauner Gürtel', fill: '#b45309', border: '#78350f' },
+  { min: 8, max: 8, label: 'Schwarzer Gürtel', fill: '#1f2937', border: '#000000' },
+];
+
+function beltFor(count) {
+  return BELT_LEVELS.find(b => count >= b.min && count <= b.max) || BELT_LEVELS[BELT_LEVELS.length - 1];
+}
+
 const GLOBAL_KEYFRAMES = `
 @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes cardEnter { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
@@ -107,9 +121,9 @@ function GgtListen({ dm, dark }) {
 }
 
 function KgvReihen({ dm, dark }) {
-  const a = [4, 8, 12, 16];
-  const b = [6, 12, 18];
-  const common = new Set([12]);
+  const a = [4, 8, 12, 16, 20, 24];
+  const b = [6, 12, 18, 24];
+  const common = new Set([12, 24]);
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px 0' }}>
       <div>
@@ -194,6 +208,7 @@ function CheckView({ step, dm, dark, isMobile, selected, onAnswer }) {
   const answered = selected !== undefined;
   return (
     <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '20px 18px' : '26px' }}>
+      <p style={{ margin: '0 0 10px', fontSize: '12px', fontWeight: '800', letterSpacing: '0.04em', textTransform: 'uppercase', color: dm.text3 }}>🥋 Dojo-Test</p>
       <p style={{ margin: '0 0 16px', fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text, lineHeight: '1.6' }}>{step.frage}</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {step.optionen.map((opt, i) => {
@@ -223,6 +238,55 @@ function CheckView({ step, dm, dark, isMobile, selected, onAnswer }) {
   );
 }
 
+function VideoCard({ video, dm, dark, isMobile }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '20px 18px' : '26px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+      <p style={{ margin: 0, fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text }}>🎬 Noch unklar? Schau dir das Video an</p>
+      {video.titel && <p style={{ margin: 0, fontSize: '13px', color: dm.text2 }}>{video.titel}</p>}
+      <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%', borderRadius: '12px', overflow: 'hidden', background: dm.bg3 }}>
+        {loaded ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1`}
+            title={video.titel || 'Video'}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
+          />
+        ) : (
+          <button
+            onClick={() => setLoaded(true)}
+            className="kp-tile"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', cursor: 'pointer', background: dark ? '#111827' : '#1a1a2e', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+            aria-label="Video laden und abspielen"
+          >
+            <span style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#ef4444', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>▶</span>
+            <span style={{ fontSize: '12px', fontWeight: '700', color: '#fff' }}>Video abspielen</span>
+          </button>
+        )}
+      </div>
+      <a href={`https://www.youtube.com/watch?v=${video.youtubeId}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px', color: dm.text3 }}>Auf YouTube öffnen ↗</a>
+    </div>
+  );
+}
+
+function BeltBar({ count, total, pop, dm }) {
+  const belt = beltFor(count);
+  const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+  const label = count >= total
+    ? 'Schwarzer Gürtel – Sensei-Prüfung bestanden 🎉'
+    : `${belt.label} · ${count} von ${total} Kacheln`;
+  return (
+    <div style={{ margin: '4px 0 20px' }}>
+      <div style={{ height: '10px', borderRadius: '6px', background: dm.bg3, border: `1px solid ${dm.border}`, overflow: 'hidden', animation: pop ? 'pop 400ms ease' : 'none' }}>
+        <div style={{ height: '100%', width: `${pct}%`, minWidth: pct > 0 ? '10px' : 0, background: belt.fill, border: `1.5px solid ${belt.border}`, boxSizing: 'border-box', borderRadius: '6px', transition: 'width 0.4s ease' }} />
+      </div>
+      <p style={{ margin: '6px 0 0', fontSize: '12px', fontWeight: '700', color: dm.text2 }}>{label}</p>
+    </div>
+  );
+}
+
 function ProgressDots({ total, current, color, dm }) {
   return (
     <div style={{ display: 'flex', gap: '6px', justifyContent: 'center', margin: '2px 0 18px' }}>
@@ -237,6 +301,7 @@ function buildSteps(kachel) {
   const steps = [];
   kachel.karten.forEach((k, i) => steps.push({ type: 'karte', karteIdx: i, ...k }));
   kachel.check.forEach((c, i) => steps.push({ type: 'check', checkIdx: i, ...c }));
+  if (kachel.video && kachel.video.youtubeId) steps.push({ type: 'video' });
   return steps;
 }
 
@@ -293,8 +358,10 @@ function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
       <div key={stepIdx} style={{ animation: 'cardEnter 220ms ease' }}>
         {step.type === 'karte' ? (
           <KarteView karte={step} dm={dm} dark={dark} isMobile={isMobile} revealed={revealed.has(step.karteIdx)} onToggleLoesung={() => toggleLoesung(step.karteIdx)} />
-        ) : (
+        ) : step.type === 'check' ? (
           <CheckView step={step} dm={dm} dark={dark} isMobile={isMobile} selected={answers[stepIdx]} onAnswer={answerCheck} />
+        ) : (
+          <VideoCard video={kachel.video} dm={dm} dark={dark} isMobile={isMobile} />
         )}
       </div>
       <div style={{ display: 'flex', gap: '10px', marginTop: '18px' }}>
@@ -307,12 +374,13 @@ function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
   );
 }
 
-function KachelGrid({ karte, dm, isMobile, done, justDone, onOpen, onClose }) {
+function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen, onClose, onStartAufgaben }) {
   return (
     <div>
       <button onClick={onClose} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 14px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '9px', fontSize: '13px', fontWeight: '600', color: dm.text2, cursor: 'pointer', marginBottom: '18px' }}>← Zurück</button>
-      <h1 style={{ fontSize: isMobile ? '22px' : '26px', fontWeight: '700', color: dm.text, margin: '0 0 4px' }}>{karte.titel}</h1>
-      <p style={{ fontSize: '14px', color: dm.text2, margin: '0 0 20px' }}>Was willst du lernen?</p>
+      <h1 style={{ fontSize: isMobile ? '22px' : '26px', fontWeight: '700', color: dm.text, margin: '0 0 12px' }}>🥋 Frag Sensei: {karte.titel}</h1>
+      <BeltBar count={done.size} total={karte.kacheln.length} pop={beltPop} dm={dm} />
+      <p style={{ fontSize: '14px', color: dm.text2, margin: '0 0 20px' }}>Was willst du trainieren?</p>
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)', gap: '12px' }}>
         {karte.kacheln.map((k, i) => {
           const color = KACHEL_COLORS[i % KACHEL_COLORS.length];
@@ -332,15 +400,25 @@ function KachelGrid({ karte, dm, isMobile, done, justDone, onOpen, onClose }) {
           );
         })}
       </div>
+      {onStartAufgaben && (
+        <button
+          onClick={onStartAufgaben}
+          className="kp-tile"
+          style={{ display: 'block', width: '100%', marginTop: '26px', padding: '14px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '15px', fontWeight: '700', cursor: 'pointer' }}
+        >
+          Jetzt Aufgaben üben →
+        </button>
+      )}
     </div>
   );
 }
 
-export default function LernkartePage({ topic, dm, dark, isMobile, onClose }) {
+export default function LernkartePage({ topic, dm, dark, isMobile, onClose, onStartAufgaben }) {
   const karte = lernkarten[topic];
   const { done, markDone } = useLernkarteDone();
   const [openKachelId, setOpenKachelId] = useState(null);
   const [justDone, setJustDone] = useState(null);
+  const [beltPop, setBeltPop] = useState(false);
 
   if (!karte) return null;
 
@@ -349,10 +427,16 @@ export default function LernkartePage({ topic, dm, dark, isMobile, onClose }) {
   const color = KACHEL_COLORS[kachelIdx >= 0 ? kachelIdx % KACHEL_COLORS.length : 0];
 
   function finishKachel(id) {
+    const alreadyDone = done.has(id);
+    const oldCount = done.size;
     markDone(id);
     setJustDone(id);
     setOpenKachelId(null);
     setTimeout(() => setJustDone(null), 700);
+    if (!alreadyDone && beltFor(oldCount + 1) !== beltFor(oldCount)) {
+      setBeltPop(true);
+      setTimeout(() => setBeltPop(false), 700);
+    }
   }
 
   return (
@@ -361,7 +445,7 @@ export default function LernkartePage({ topic, dm, dark, isMobile, onClose }) {
         {kachel ? (
           <MiniLektion kachel={kachel} color={color} dm={dm} dark={dark} isMobile={isMobile} onClose={() => setOpenKachelId(null)} onFinish={() => finishKachel(kachel.id)} />
         ) : (
-          <KachelGrid karte={karte} dm={dm} isMobile={isMobile} done={done} justDone={justDone} onOpen={setOpenKachelId} onClose={onClose} />
+          <KachelGrid karte={karte} dm={dm} dark={dark} isMobile={isMobile} done={done} justDone={justDone} beltPop={beltPop} onOpen={setOpenKachelId} onClose={onClose} onStartAufgaben={onStartAufgaben} />
         )}
       </div>
       <style>{GLOBAL_KEYFRAMES}</style>
