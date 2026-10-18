@@ -304,4 +304,189 @@ export const lernkarten = {
       },
     ],
   },
+  'Gleichungen': {
+    titel: 'Gleichungen',
+    kacheln: [
+      {
+        id: 'grundidee', emoji: '🎯', titel: 'Grundidee', videos: [],
+        karten: [
+          { text: 'Eine Gleichung ist wie eine Waage im Gleichgewicht. Beide Seiten müssen gleich schwer bleiben: Tust du auf der einen Seite etwas (z. B. 3 wegnehmen), musst du dasselbe auf der anderen Seite tun, sonst kippt die Waage.' },
+          {
+            text: 'Was darfst du mit einer Gleichung tun? Tippe an.',
+            visual: 'chips',
+            chips: [
+              { n: '+', regel: 'Auf beiden Seiten dieselbe Zahl addieren. Die Waage bleibt im Gleichgewicht.' },
+              { n: '−', regel: 'Auf beiden Seiten dieselbe Zahl subtrahieren.' },
+              { n: '·', regel: 'Beide Seiten mit derselben Zahl multiplizieren (nicht mit 0).' },
+              { n: ':', regel: 'Beide Seiten durch dieselbe Zahl teilen (nicht durch 0).' },
+            ],
+          },
+          { text: 'Profi-Tipp: Rechne immer so, dass auf einer Seite nur noch x übrig bleibt. Frag dich bei jedem Schritt: Was muss ich wegmachen, um näher an "x = ..." zu kommen?' },
+          { text: 'Löse 2x + 3 = 3 Schritt für Schritt.\n2x + 3 = 3\n| −3 auf beiden Seiten: 2x = 0\n| :2 auf beiden Seiten: x = 0' },
+          { text: 'Probe: Setze x = 0 in die ursprüngliche Gleichung ein: 2 · 0 + 3 = 3. Das stimmt, also ist x = 0 richtig.' },
+        ],
+        check: [
+          { frage: 'Löse: x + 7 = 12', optionen: ['5', '19', '−5', '12/7'], richtig: 0, erklaerung: 'Auf beiden Seiten 7 subtrahieren: x = 12 − 7 = 5. Bei 19 wurde addiert statt subtrahiert, bei −5 wurde das Vorzeichen falsch gedreht.' },
+          { frage: 'Löse: 3x = 15', optionen: ['5', '45', '12', '18'], richtig: 0, erklaerung: 'Beide Seiten durch 3 teilen: x = 15 : 3 = 5. Bei 45 wurde mit 3 multipliziert statt dividiert, bei 12 und 18 wurde addiert oder subtrahiert statt dividiert.' },
+          { frage: 'Löse: 4x − 5 = 11', optionen: ['4', '1.5', '16', '2.75'], richtig: 0, erklaerung: 'Erst +5 auf beiden Seiten: 4x = 16. Dann :4: x = 4. Bei 16 wurde nur addiert, aber nicht mehr durch 4 geteilt. Bei 1.5 wurde die 5 nochmals abgezogen statt addiert.' },
+        ],
+      },
+      {
+        id: 'klammern', emoji: '➖', titel: 'Klammern auflösen', videos: [],
+        karten: [
+          { text: 'Stell dir vor, du verteilst Süssigkeiten an 3 Gruppen mit je (x + 2) Stück. Das sind 3 · (x + 2) Stück insgesamt - die 3 muss an jeden Teil in der Klammer verteilt werden, nicht nur an den ersten.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'a(b+c)', regel: 'Jeden Summanden in der Klammer mit a multiplizieren: a · b + a · c.' },
+              { n: 'a(b−c)', regel: 'a · b − a · c.' },
+              { n: '−(b−c)', regel: 'Minus vor der Klammer dreht alle Zeichen um: −b + c.' },
+              { n: 'verschachtelt', regel: 'Klammern in Klammern löst du von innen nach aussen auf.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Schreib dir bei einer Minusklammer immer −1 davor, dann siehst du es genau: −1 · (x − 5) = −x + 5. So vergisst du kein Vorzeichen.' },
+          { text: 'x − 5 − (5 − x) = 0\n| Klammer auflösen, Minus dreht die Zeichen: x − 5 − 5 + x = 0\n| Zusammenfassen: 2x − 10 = 0\n| +10: 2x = 10\n| :2: x = 5' },
+          { text: 'Probe: x = 5 einsetzen: 5 − 5 − (5 − 5) = 0 − 0 = 0. Stimmt!' },
+          { text: 'Verschachtelte Klammern von innen nach aussen: 6 · (2 · (x + 1/4)) = 9 · (4x − 1)\n| Innere Klammer zuerst: 2 · (x + 1/4) = 2x + 1/2\n| Jetzt die äussere: 6 · (2x + 1/2) = 12x + 3\n| Rechte Seite ausmultiplizieren: 9 · (4x − 1) = 36x − 9\n| Gleichung: 12x + 3 = 36x − 9\n| −12x: 3 = 24x − 9\n| +9: 12 = 24x\n| :24: x = 1/2' },
+        ],
+        check: [
+          { frage: 'Löse: 2(x + 3) = 10', optionen: ['2', '3.5', '8', '5'], richtig: 0, erklaerung: 'Richtig: 2x + 6 = 10, also 2x = 4, also x = 2. Bei 3.5 wurde die 3 in der Klammer nicht mit 2 multipliziert (2x + 3 = 10). Bei 8 wurde die 6 addiert statt subtrahiert. Bei 5 wurde nach x + 3 = 5 die 3 vergessen.' },
+          { frage: 'Was ist −(x − 5)?', optionen: ['−x + 5', '−x − 5', 'x − 5', 'x + 5'], richtig: 0, erklaerung: 'Das Minus vor der Klammer dreht beide Zeichen um: aus x wird −x, aus −5 wird +5. Bei −x − 5 wurde nur ein Zeichen gedreht, bei x − 5 wurde das Minus ganz vergessen.' },
+          { frage: 'Löse: −3(x + 7) = 7(x − 3)', optionen: ['0', '2.8', '−4.2', '4.2'], richtig: 0, erklaerung: 'Richtig ausmultipliziert: −3x − 21 = 7x − 21, die −21 heben sich weg, also −10x = 0, x = 0. Bei 2.8 wurde die Klammer links falsch aufgelöst (−3x + 7 statt −3x − 21), bei −4.2 wurde beim Ausmultiplizieren rechts ein Vorzeichen falsch gesetzt.' },
+        ],
+      },
+      {
+        id: 'xverschieben', emoji: '🔀', titel: 'x verschieben', videos: [],
+        karten: [
+          { text: 'x sammeln ist wie Freunde zu einer Gruppe einladen: Du willst alle x-Freunde auf eine Seite der Waage holen, und alle Zahlen auf die andere.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'x auf beiden Seiten', regel: 'Bring alle x-Terme auf eine Seite, indem du den kleineren x-Term abziehst.' },
+              { n: 'x im Nenner', regel: 'Bei a/x wird x erst durch Multiplizieren mit x aus dem Nenner entfernt. x darf dabei nicht 0 sein.' },
+              { n: 'keine Lösung', regel: 'Bleibt am Ende ein falscher Satz wie 15 = 20 stehen, gibt es keine Lösung.' },
+              { n: 'x = 0', regel: '0 ist eine ganz normale Lösung, kein Fehler.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Bring immer den kleineren x-Term auf die andere Seite, dann bleibt die Zahl vor x positiv und du rechnest dich seltener in Vorzeichenfehler.' },
+          { text: '8/x + 7/x = 5\n| Gleichartige Brüche zusammenfassen: 15/x = 5\n| Mit x multiplizieren: 15 = 5x\n| :5: x = 3\n\nProbe: 8/3 + 7/3 = 15/3 = 5. Stimmt!' },
+          { text: 'Sonderfall "keine Lösung": 3(4x + 5) = 4(3x + 5) ergibt 12x + 15 = 12x + 20. Zieht man 12x auf beiden Seiten ab, bleibt 15 = 20 stehen - das ist nie wahr. Diese Gleichung hat keine Lösung.' },
+          { text: 'Sonderfall "x = 0": 5/2 · x + 0.5 = 15/2 − 7 ergibt nach dem Umformen x = 0. Das ist eine gültige Lösung, kein Rechenfehler!' },
+        ],
+        check: [
+          { frage: 'Löse: 5x + 2 = 2x + 11', optionen: ['3', '13/3', '9', '−3'], richtig: 0, erklaerung: '2x von beiden Seiten abziehen: 3x + 2 = 11, dann −2: 3x = 9, dann :3: x = 3. Bei 9 wurde die Division durch 3 vergessen, bei 13/3 wurde beim Verschieben ein Vorzeichen falsch gesetzt.' },
+          { frage: 'Löse: 6/x = 2', optionen: ['3', '12', '1/3', '4'], richtig: 0, erklaerung: '6 = 2x (beide Seiten mit x multiplizieren), dann :2: x = 3. Bei 12 wurde 6 mit 2 multipliziert statt durch 2 geteilt, bei 1/3 wurde der Bruch verkehrt gebildet.' },
+          { frage: 'Du erhältst nach dem Umformen 15 = 20. Was bedeutet das?', optionen: ['Die Gleichung hat keine Lösung', 'x = 0', 'x = 15', 'x = 5'], richtig: 0, erklaerung: '15 = 20 ist nie wahr, egal welchen Wert x hat. Das heisst: keine Lösung. x = 0 wäre es nur, wenn am Ende z. B. 0 = 0 stehen würde.' },
+        ],
+      },
+      {
+        id: 'brueche', emoji: '🍰', titel: 'Brüche vor x', videos: [],
+        karten: [
+          { text: 'Stell dir vor, x ist eine Pizza. 1/2 x und 1/4 x sind Stücke mit x als Grösse - um sie zusammenzuzählen, brauchen die Brüche vor dem x denselben Nenner, genau wie bei normaler Bruchrechnung.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'gleicher Nenner', regel: 'Zähler einfach addieren: 1/8x + 3/8x = 4/8x.' },
+              { n: 'verschiedener Nenner', regel: 'Erst auf den Hauptnenner (kgV der Nenner) bringen, dann addieren.' },
+              { n: 'Dezimalzahl', regel: '0.5 ist dasselbe wie 1/2 - du kannst zwischen beiden Schreibweisen wechseln.' },
+              { n: 'kürzen', regel: 'Den Bruch vor x am Schluss so weit wie möglich kürzen.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Schreib dir den Hauptnenner klein daneben, bevor du die Brüche umwandelst. So verrechnest du dich seltener.' },
+          { text: '1/2x + 1/4x + 1/8x = 14\n| Hauptnenner 8: 4/8x + 2/8x + 1/8x = 14\n| Zusammenfassen: 7/8x = 14\n| Mit 8/7 multiplizieren: x = 14 · 8/7\n| Kürzen: x = 16\n\nProbe: 1/2 · 16 + 1/4 · 16 + 1/8 · 16 = 8 + 4 + 2 = 14. Stimmt!' },
+          { text: 'Schwieriger: 15/7 x − 3/7 x = 1/2 x + 3\n| Linke Seite zusammenfassen: 12/7 x = 1/2 x + 3\n| 1/2x abziehen, Hauptnenner 14: 24/14x − 7/14x = 3\n| Zusammenfassen: 17/14 x = 3\n| x = 3 · 14/17 = 42/17' },
+        ],
+        check: [
+          { frage: 'Fasse zusammen: 1/3x + 1/6x', optionen: ['1/2 x', '2/9 x', '2/18 x', '1/3 x'], richtig: 0, erklaerung: 'Hauptnenner ist 6 (kgV von 3 und 6): 1/3x = 2/6x, zusammen mit 1/6x ergibt das 3/6x = 1/2x. Bei 2/9x wurden die Nenner addiert statt das kgV gesucht, bei 2/18x wurden die Nenner multipliziert.' },
+          { frage: 'Löse: 3/5x = 12', optionen: ['20', '7.2', '4', '36'], richtig: 0, erklaerung: 'Mit dem Kehrbruch 5/3 multiplizieren: x = 12 · 5/3 = 20. Bei 7.2 wurde mit 3/5 multipliziert statt mit dem Kehrbruch 5/3.' },
+          { frage: 'Fasse zusammen: 2/3x + 1/3x − x', optionen: ['0', 'x', '2x', '1/3x'], richtig: 0, erklaerung: '2/3x + 1/3x ergibt x, und x − x = 0. Das Ergebnis ist die Zahl 0, nicht mehr ein x-Term - das ist kein Fehler, nur ungewohnt.' },
+        ],
+      },
+      {
+        id: 'bruchgl', emoji: '🍕', titel: 'Bruchgleichungen', videos: [],
+        karten: [
+          { text: 'Eine Bruchgleichung hat Brüche mit x im Zähler oder Nenner auf beiden Seiten. Am einfachsten lässt du die Brüche ganz verschwinden, indem du mit dem Hauptnenner multiplizierst - wie wenn du Pizzastücke erst alle gleich gross machst und dann vergleichst.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Hauptnenner finden', regel: 'Das kgV aller Nenner in der Gleichung.' },
+              { n: 'mal Hauptnenner', regel: 'Jeden Term - auch die ohne Bruch! - mit dem Hauptnenner multiplizieren.' },
+              { n: 'kürzen', regel: 'Nach dem Multiplizieren kürzt sich jeder Nenner weg.' },
+              { n: 'Probe', regel: 'Am Schluss immer die Lösung einsetzen und nachrechnen.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Vergiss die Terme ohne Bruch nicht! Auch eine einzelne Zahl ohne Bruch muss mit dem Hauptnenner multipliziert werden, sonst stimmt die Gleichung nicht mehr.' },
+          { text: '(x + 1)/2 = (2x − 3)/3\n| Hauptnenner 6, beide Seiten mal 6: 6 · (x+1)/2 = 6 · (2x−3)/3\n| Kürzen: 3(x + 1) = 2(2x − 3)\n| Ausmultiplizieren: 3x + 3 = 4x − 6\n| −3x: 3 = x − 6\n| +6: x = 9\n\nProbe: (9+1)/2 = 5 und (2·9−3)/3 = 15/3 = 5. Stimmt!' },
+          { text: 'Schwieriger, mit Klammer und Hauptnenner 22: 6/11(x − 3) + 2 = 1 − 1/22(10x + 3)\n| Alles mal 22: 12(x − 3) + 44 = 22 − (10x + 3)\n| Ausmultiplizieren: 12x − 36 + 44 = 22 − 10x − 3\n| Zusammenfassen: 12x + 8 = 19 − 10x\n| +10x: 22x + 8 = 19\n| −8: 22x = 11\n| :22: x = 1/2' },
+        ],
+        check: [
+          { frage: 'Was ist der Hauptnenner von x/4 + x/6 = 5?', optionen: ['12', '24', '10', '6'], richtig: 0, erklaerung: 'Das kgV von 4 und 6 ist 12 (4 · 3 = 6 · 2 = 12). 24 ist zwar auch ein gemeinsamer Nenner (4 · 6), aber nicht der kleinste. Bei 10 wurden die Nenner addiert, das ist bei Nennern nie erlaubt.' },
+          { frage: 'Löse: x/3 = 2/5', optionen: ['6/5', '15/2', '2/5', '5/6'], richtig: 0, erklaerung: 'Über Kreuz multiplizieren: x · 5 = 3 · 2, also x = 6/5. Bei 15/2 wurden die Zahlen beim Kreuz-multiplizieren falsch zugeordnet (x · 2 = 3 · 5). Bei 2/5 wurde die 3 gar nicht beachtet.' },
+          { frage: 'Löse: (x − 2)/4 = 3', optionen: ['14', '12', '2.75', '6'], richtig: 0, erklaerung: 'Beide Seiten mit 4 multiplizieren: x − 2 = 12. Dann +2: x = 14. Bei 12 wurde das +2 am Schluss vergessen. Bei 2.75 wurde durch 4 geteilt statt multipliziert.' },
+        ],
+      },
+      {
+        id: 'text', emoji: '📝', titel: 'Textaufgaben', videos: [],
+        karten: [
+          { text: 'Bei Textaufgaben steckt die Gleichung im Satz versteckt. Nenn die gesuchte Zahl x und übersetze den Satz Stück für Stück in Rechenzeichen.' },
+          {
+            text: 'Tippe die Signalwörter an.',
+            visual: 'chips',
+            chips: [
+              { n: 'das Doppelte', regel: '2 · x oder 2x.' },
+              { n: 'um … vergrössert', regel: '+ … am Ende dazu.' },
+              { n: 'um … verkleinert', regel: '− … am Ende weg.' },
+              { n: 'gleich viel wie', regel: 'Das Gleichheitszeichen =.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Lies den Satz zweimal. Beim ersten Mal verstehst du, worum es geht. Beim zweiten Mal übersetzt du jedes Wort einzeln in ein Rechenzeichen.' },
+          { text: '"Das Sechsfache einer Zahl, verkleinert um 22, ist gleich viel wie das Vierfache, vergrössert um 24."\n| Gesuchte Zahl: x\n| Sechsfache, verkleinert um 22: 6x − 22\n| Vierfache, vergrössert um 24: 4x + 24\n| Gleichung: 6x − 22 = 4x + 24\n| −4x: 2x − 22 = 24\n| +22: 2x = 46\n| :2: x = 23\n\nProbe: 6 · 23 − 22 = 116, und 4 · 23 + 24 = 116. Stimmt!' },
+          { text: '"Die Summe einer Zahl und ihres Dreifachen ist 48."\n| Gesuchte Zahl: x\n| Die Zahl und ihr Dreifaches: x + 3x\n| Gleichung: x + 3x = 48\n| Zusammenfassen: 4x = 48\n| :4: x = 12\n\nProbe: 12 + 3 · 12 = 12 + 36 = 48. Stimmt!' },
+        ],
+        check: [
+          { frage: '"Das Doppelte einer Zahl, vermindert um 9, ist gleich viel wie die Zahl selbst, vermehrt um 15." Wie lautet die Zahl?', optionen: ['24', '−6', '33', '6'], richtig: 0, erklaerung: 'Die Gleichung lautet 2x − 9 = x + 15 (keine Klammer um x − 9). Daraus folgt x = 24. Bei 33 wurde fälschlich "2 mal (x − 9)" übersetzt, bei −6 wurde "vermehrt um 15" als Minus gelesen.' },
+          { frage: 'Welche Gleichung passt zu: "Das Vierfache einer Zahl ist um 5 grösser als die Zahl selbst."?', optionen: ['4x = x + 5', '4x = x − 5', '4(x+5) = x', 'x = 4x + 5'], richtig: 0, erklaerung: '"Ist um 5 grösser als" heisst: + 5 auf der kleineren Seite. Das Vierfache (4x) ist gleich der Zahl selbst (x) plus 5.' },
+          { frage: 'Löse: "Die Summe einer Zahl und ihres Doppelten ist 36."', optionen: ['12', '18', '9', '24'], richtig: 0, erklaerung: 'Die Zahl und ihr Doppeltes: x + 2x = 3x = 36, also x = 12. Bei 18 wurde nur 2x = 36 gerechnet, das einzelne x wurde vergessen.' },
+        ],
+      },
+      {
+        id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
+        karten: [
+          { text: '❌ −(x − 5) = −x − 5. ✅ Das Minus dreht beide Zeichen um: −(x − 5) = −x + 5.' },
+          { text: '❌ 3(x + 4) = 3x + 4. ✅ Der Faktor muss mit JEDEM Summanden multipliziert werden: 3(x + 4) = 3x + 12.' },
+          { text: '❌ Bei x + 5 = 10 wird links −5 gerechnet, aber rechts vergessen: x = 10. ✅ Was du links tust, musst du auch rechts tun: x + 5 − 5 = 10 − 5, also x = 5.' },
+          { text: '❌ Bei x/2 + 3 = 7 wird nur der Bruch mit 2 multipliziert: x + 3 = 7. ✅ Auch Terme ohne Bruch werden mit dem Hauptnenner multipliziert: x + 6 = 14.' },
+          { text: '❌ Bei 5/x = 0 wird einfach x = 0 eingesetzt. ✅ x darf bei einem Nenner nie 0 sein, Teilen durch 0 ist nicht erlaubt. Solche Lösungen fallen weg.' },
+          { text: '❌ Am Ende steht 8 = 12, also ist x = 0. ✅ 8 = 12 ist nie wahr, egal welchen Wert x hat - das heisst, die Gleichung hat keine Lösung. x = 0 wäre nur richtig, wenn sich x = 0 sauber aus der Gleichung ergibt, nicht bei einem falschen Satz wie 8 = 12.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
+        karten: [
+          { text: 'Löse: 3x + 4 = 19', loesung: '3x = 15 (−4 auf beiden Seiten). x = 5 (:3).' },
+          { text: 'Löse: 7 − 2x = 1', loesung: '−2x = −6 (−7 auf beiden Seiten). x = 3 (:−2).' },
+          { text: 'Löse: 2(x − 3) = 4', loesung: '2x − 6 = 4 (ausmultiplizieren). 2x = 10 (+6). x = 5 (:2).' },
+          { text: 'Löse: 10 − (x + 2) = 1', loesung: 'Klammer auflösen: 10 − x − 2 = 1, also 8 − x = 1. x = 7 (8 − 1).' },
+          { text: 'Löse: 4(x + 1) = 2(x + 9)', loesung: '4x + 4 = 2x + 18 (beide Seiten ausmultiplizieren). 2x = 14 (−2x, −4). x = 7 (:2).' },
+          { text: 'Löse: 5x − 3 = 2x + 18', loesung: '3x = 21 (−2x, +3 auf beiden Seiten). x = 7 (:3).' },
+          { text: 'Löse: 12/x = 4', loesung: '12 = 4x (mit x multiplizieren). x = 3 (:4).' },
+          { text: 'Löse: 2(5x + 3) = 5(2x + 1)', loesung: '10x + 6 = 10x + 5 (ausmultiplizieren). Zieht man 10x ab, bleibt 6 = 5 stehen - das ist falsch. Keine Lösung.' },
+          { text: 'Löse: 3/4x + 1/8x = 7', loesung: 'Hauptnenner 8: 6/8x + 1/8x = 7, also 7/8x = 7. x = 8 (mit 8/7 multiplizieren).' },
+          { text: 'Löse: 2/3x − 1/6x = 3/2', loesung: 'Hauptnenner 6: 4/6x − 1/6x = 3/2, also 1/2x = 3/2. x = 3 (mit 2 multiplizieren).' },
+          { text: 'Löse: (x + 3)/4 = (x − 1)/2', loesung: 'Über Kreuz: 2(x + 3) = 4(x − 1). 2x + 6 = 4x − 4. 10 = 2x (+4, −2x). x = 5 (:2).' },
+          { text: 'Löse: 5/6(x − 2) + 1 = 2 − 1/3(x + 1)', loesung: 'Hauptnenner 6, alles mal 6: 5(x − 2) + 6 = 12 − 2(x + 1). Ausmultiplizieren: 5x − 10 + 6 = 12 − 2x − 2, also 5x − 4 = 10 − 2x. 7x = 14 (+2x, +4). x = 2 (:7).' },
+          { text: 'Löse: "Das Fünffache einer Zahl, vergrössert um 6, ist gleich viel wie das Dreifache, vermindert um 8."', loesung: 'Gleichung: 5x + 6 = 3x − 8. 2x = −14 (−3x, −6). x = −7 (:2).' },
+          { text: 'Löse: "Die Summe einer Zahl und ihres Vierfachen ist 40."', loesung: 'Gleichung: x + 4x = 40, also 5x = 40. x = 8 (:5).' },
+          { text: 'Löse: 1/2(x + 4) = 3/4(x − 2)', loesung: 'Hauptnenner 4, alles mal 4: 2(x + 4) = 3(x − 2). Ausmultiplizieren: 2x + 8 = 3x − 6. 14 = x (8 + 6 auf eine Seite, x-Terme auf die andere). x = 14.' },
+          { text: 'Löse: 2/5(3x − 1) − x/2 = 1 − 1/10(x + 4)', loesung: 'Hauptnenner 10, alles mal 10: 4(3x − 1) − 5x = 10 − (x + 4). Ausmultiplizieren: 12x − 4 − 5x = 10 − x − 4, also 7x − 4 = 6 − x. 8x = 10 (+x, +4). x = 5/4 (:8).' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
