@@ -34,6 +34,18 @@ b) a = ${frac('1', '2')} und b = −1`,
       { label: 'a) 4x+1 | b) x/2 − 1/4', correct: false },
       { label: 'a) 4x+4 | b) x/2 − 1/2', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '4x+4', correct: true },
+        { label: '4x+1', correct: false },
+        { label: '4x+8', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'x/2 + 1/4', correct: true },
+        { label: 'x/2 − 1/4', correct: false },
+        { label: 'x/2 − 1/2', correct: false },
+      ] },
+    ],
     solution: {
       intro: `Zuerst a und b einsetzen, dann die Klammer ausmultiplizieren.`,
       steps: [
@@ -95,6 +107,23 @@ e) x + ${frac('1', '2')} · 2² = −3(x + 4)`,
       { label: 'c) x=0 | d) x=9 | e) x=−3.5', correct: true },
       { label: 'c) x=0 | d) x=5 | e) x=−3.5', correct: false },
       { label: 'c) x=3 | d) x=9 | e) x=3.5', correct: false },
+    ],
+    teile: [
+      { letter: 'c', options: [
+        { label: 'x=0', correct: true },
+        { label: 'x=3', correct: false },
+        { label: 'x=1.5', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: 'x=9', correct: true },
+        { label: 'x=5', correct: false },
+        { label: 'x=6', correct: false },
+      ] },
+      { letter: 'e', options: [
+        { label: 'x=−3.5', correct: true },
+        { label: 'x=3.5', correct: false },
+        { label: 'x=2.5', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
