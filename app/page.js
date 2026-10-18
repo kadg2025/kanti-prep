@@ -177,6 +177,142 @@ function useFehlerKiste() {
   return { fehler, addFehler, removeFehler, clearFehler };
 }
 
+// ─── HEUTE ÜBEN ────────────────────────────────────────────────────────────
+// Deterministischer Zufallsgenerator, mit dem Datum als Seed, damit der
+// 5er-Mix den ganzen Tag über gleich bleibt (auch nach Reload — zusätzlich
+// in kp_heute gecached).
+function mulberry32(seed) {
+  let a = seed;
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function hashStr(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) { h = (Math.imul(31, h) + s.charCodeAt(i)) | 0; }
+  return h;
+}
+function todayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+function addDays(dateStr, n) {
+  const d = new Date(dateStr + 'T00:00:00');
+  d.setDate(d.getDate() + n);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+const WDH_STAGES = [1, 3, 7, 21]; // Tage: falsch → Stufe 0 (morgen), richtig → eine Stufe weiter
+
+// Wählt die 5 Aufgaben für "Heute üben" nach dem Nacht-Auftrag-Rezept:
+// 1 leicht zum Einstieg, 1 aus der Fehler-Kiste, 1 aus dem schwächsten Thema
+// (Annäherung: Thema mit den meisten aktuellen Fehler-Kiste-Einträgen, da wir
+// keine Trefferquote pro Thema speichern), 1 nie gesehene, 1 fällige
+// Wiederholung — kein Thema doppelt, letzte Aufgabe eher leicht.
+function pickHeuteUeben({ pool, solved, fehler, wdh, date }) {
+  const rnd = mulberry32(hashStr(date) >>> 0);
+  const pick = (arr) => arr[Math.floor(rnd() * arr.length)];
+  const topicFreq = {};
+  pool.forEach(q => { topicFreq[q.topic] = (topicFreq[q.topic] || 0) + 1; });
+  const weightedPick = (arr) => {
+    if (arr.length === 0) return null;
+    const total = arr.reduce((s, q) => s + (topicFreq[q.topic] || 1), 0);
+    let r = rnd() * total;
+    for (const q of arr) { r -= (topicFreq[q.topic] || 1); if (r <= 0) return q; }
+    return arr[arr.length - 1];
+  };
+  const used = new Set();
+  const result = [];
+  const byTopicFree = (arr) => arr.filter(q => !used.has(q.topic));
+  const take = (q) => { if (q) { used.add(q.topic); result.push(q); } return q; };
+
+  const everSolved = pool.filter(q => solved.has(q.id));
+  const everSeen = new Set([...solved, ...fehler]);
+  const fehlerQs = fehler.map(id => pool.find(q => q.id === id)).filter(Boolean);
+
+  // Ohne jeden Verlauf: 5 verschiedene Themen, eher leicht (kurze Fragen zuerst).
+  if (everSolved.length === 0 && fehlerQs.length === 0) {
+    const sorted = [...pool].sort((a, b) => a.questionText.length - b.questionText.length);
+    for (const q of sorted) {
+      if (result.length >= 5) break;
+      if (!used.has(q.topic)) take(q);
+    }
+    return result;
+  }
+
+  // 1) Leicht zum Einstieg: bevorzugt schon Gelöstes (vertraut = fühlt sich leicht an).
+  take(weightedPick(byTopicFree(everSolved)) || weightedPick(byTopicFree(pool)));
+
+  // 2) Aus der Fehler-Kiste.
+  take(weightedPick(byTopicFree(fehlerQs)) || weightedPick(byTopicFree(pool.filter(q => !everSeen.has(q.id)))));
+
+  // 3) Schwächstes Thema (die meisten offenen Fehler-Kiste-Einträge).
+  const topicWrongCount = {};
+  fehlerQs.forEach(q => { topicWrongCount[q.topic] = (topicWrongCount[q.topic] || 0) + 1; });
+  const weakTopics = Object.keys(topicWrongCount).filter(t => !used.has(t)).sort((a, b) => topicWrongCount[b] - topicWrongCount[a]);
+  if (weakTopics.length > 0) {
+    take(weightedPick(pool.filter(q => q.topic === weakTopics[0])));
+  } else {
+    take(weightedPick(byTopicFree(pool)));
+  }
+
+  // 4) Brandneu, nie gesehen.
+  const neverSeen = byTopicFree(pool.filter(q => !everSeen.has(q.id)));
+  take(weightedPick(neverSeen) || weightedPick(byTopicFree(pool)));
+
+  // 5) Fällige Wiederholung, sonst irgendeine gelöste — eher leicht (kurzer Text zuerst).
+  const due = byTopicFree(everSolved).filter(q => !wdh[q.id] || wdh[q.id].due <= date);
+  const dueSorted = [...due].sort((a, b) => a.questionText.length - b.questionText.length);
+  take(dueSorted[0] || weightedPick(byTopicFree(everSolved)) || weightedPick(byTopicFree(pool)));
+
+  return result.filter(Boolean).slice(0, 5);
+}
+
+function useHeuteUeben(matheOhneTRPool, solved, fehler) {
+  const [wdh, setWdh] = useState({});
+  const [heute, setHeute] = useState(null); // { date, ids }
+  useEffect(() => {
+    try { setWdh(JSON.parse(localStorage.getItem('kp_wdh') || '{}')); } catch {}
+    try {
+      const cached = JSON.parse(localStorage.getItem('kp_heute') || 'null');
+      if (cached && cached.date === todayStr()) setHeute(cached);
+    } catch {}
+  }, []);
+
+  const ensureToday = useCallback(() => {
+    const date = todayStr();
+    if (heute && heute.date === date) return heute.ids;
+    const picked = pickHeuteUeben({ pool: matheOhneTRPool, solved, fehler, wdh, date });
+    const ids = picked.map(q => q.id);
+    const next = { date, ids };
+    setHeute(next);
+    try { localStorage.setItem('kp_heute', JSON.stringify(next)); } catch {}
+    return ids;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [heute]);
+
+  const recordOutcome = useCallback((id, wasWrong) => {
+    setWdh(prev => {
+      const date = todayStr();
+      const entry = prev[id];
+      let next;
+      if (wasWrong) {
+        next = { stage: 0, due: addDays(date, WDH_STAGES[0]) };
+      } else {
+        const stage = entry ? Math.min(entry.stage + 1, WDH_STAGES.length - 1) : 1;
+        next = { stage, due: addDays(date, WDH_STAGES[stage]) };
+      }
+      const merged = { ...prev, [id]: next };
+      try { localStorage.setItem('kp_wdh', JSON.stringify(merged)); } catch {}
+      return merged;
+    });
+  }, []);
+
+  return { ensureToday, recordOutcome, wdh };
+}
+
 // Fisher-Yates — mischt die Multiple-Choice-Antworten, damit die richtige
 // nicht immer an derselben Stelle steht.
 function shuffleArray(arr) {
@@ -1010,6 +1146,12 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
           </div>
         </div>
 
+        {/* Heute üben — eigener grosser Knopf */}
+        <button onClick={() => onSelect('heuteueben')} style={{ width: '100%', padding: '20px', marginBottom: '18px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', border: 'none', borderRadius: '18px', fontSize: '16px', fontWeight: '800', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', boxShadow: '0 4px 20px rgba(83,74,183,0.25)' }}>
+          <span style={{ fontSize: '26px' }}>🎯</span>
+          <span>Heute üben — 5 Aufgaben (Mathe ohne TR)</span>
+        </button>
+
         {/* Mind-Blow + Links — DANACH */}
         <div style={{ display: 'flex', alignItems: 'stretch', gap: '12px', justifyContent: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
           <div style={{ background: '#f9f8ff', border: '1px solid #e5e3f0', borderRadius: '14px', padding: '16px 20px', textAlign: 'left', flex: 1, minWidth: '240px', maxWidth: '580px' }}>
@@ -1128,6 +1270,97 @@ function FehlerKistePage({ fehlerIds, dm, onBack, onRemove, onClearAll, onJump }
   );
 }
 
+// ─── HEUTE ÜBEN (Session-Ansicht) ─────────────────────────────────────────
+function HeuteUebenPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onKonfetti, onBack, heuteUeben, streak, fehlerCount }) {
+  const isMobile = useIsMobile();
+  const matheOhneTRPool = useMemo(() => questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen'), []);
+  const [ids, setIds] = useState(null);
+  const [idx, setIdx] = useState(0);
+  const [outcomes, setOutcomes] = useState({});
+  const [wrongSeen, setWrongSeen] = useState(() => new Set());
+  const [finished, setFinished] = useState(false);
+
+  useEffect(() => {
+    void matheOhneTRPool; // sicherstellen, dass der Pool vor der Auswahl vorliegt
+    setIds(heuteUeben.ensureToday());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (!ids) return <div style={{ minHeight: '100vh', background: dm.bg }} />;
+  const qs = ids.map(id => questions.find(q => q.id === id)).filter(Boolean);
+
+  if (qs.length === 0) {
+    return (
+      <main style={{ minHeight: '100vh', background: dm.bg, padding: '40px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+        <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
+          <button onClick={onBack} style={{ padding: '9px 16px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '13px', marginBottom: '20px' }}>← Zurück</button>
+          <p style={{ color: dm.text2 }}>Heute leider keine Aufgaben verfügbar.</p>
+        </div>
+      </main>
+    );
+  }
+
+  const current = qs[idx];
+
+  const handleFehlerWrap = (id) => {
+    setWrongSeen(prev => new Set(prev).add(id));
+    heuteUeben.recordOutcome(id, true);
+    onFehler(id);
+  };
+  const handleSolvedWrap = (id) => {
+    onSolved(id);
+    heuteUeben.recordOutcome(id, false);
+    setOutcomes(prev => ({ ...prev, [id]: wrongSeen.has(id) ? 'retry' : 'first' }));
+  };
+
+  const goNext = () => {
+    if (idx + 1 >= qs.length) setFinished(true);
+    else setIdx(idx + 1);
+  };
+
+  if (finished) {
+    const correctFirst = Object.values(outcomes).filter(o => o === 'first').length;
+    return (
+      <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '40px 16px' : '60px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ maxWidth: '420px', width: '100%', textAlign: 'center', background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '18px', padding: '32px 24px' }}>
+          <div style={{ fontSize: '48px', marginBottom: '12px' }}>{correctFirst === 5 ? '🏆' : correctFirst >= 3 ? '🎉' : '💪'}</div>
+          <h2 style={{ fontSize: '22px', fontWeight: '800', color: dm.text, margin: '0 0 6px' }}>{correctFirst} von 5 auf Anhieb</h2>
+          <p style={{ fontSize: '14px', color: dm.text3, margin: '0 0 20px' }}>Geschafft für heute — komm morgen wieder für den nächsten Mix!</p>
+          {streak > 0 && (
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '20px', padding: '4px 14px', marginBottom: '16px', fontSize: '13px', fontWeight: '600', color: '#c2410c' }}>
+              🔥 {streak} {streak === 1 ? 'Tag' : 'Tage'} Streak
+            </div>
+          )}
+          <p style={{ fontSize: '13px', color: dm.text3, margin: '0 0 20px' }}>📦 Fehler-Kiste: {fehlerCount} {fehlerCount === 1 ? 'Aufgabe' : 'Aufgaben'}</p>
+          <button onClick={onBack} style={{ width: '100%', padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>Fertig</button>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: dm.bg, fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+      <div style={{ padding: isMobile ? '14px 16px 0' : '20px 40px 0', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+          <button onClick={onBack} style={{ padding: '7px 12px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '12px' }}>← Abbrechen</button>
+          <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text2 }}>🎯 Heute üben · {idx + 1} / 5</span>
+        </div>
+        <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
+          {qs.map((q, i) => (
+            <div key={q.id} style={{ flex: 1, height: '6px', borderRadius: '3px', background: i < idx ? (outcomes[q.id] === 'first' ? '#22c55e' : '#f59e0b') : i === idx ? '#534AB7' : dm.border }} />
+          ))}
+        </div>
+      </div>
+      <QuestionDisplay question={current} subject={subjectKeyOf(current)} onSolved={handleSolvedWrap} onFehler={handleFehlerWrap} onRemoveFehler={onRemoveFehler} solved={solved} dark={false} dm={dm} onKonfetti={onKonfetti} />
+      <div style={{ padding: isMobile ? '0 16px 24px' : '0 40px 32px', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+        <button onClick={goNext} style={{ width: '100%', padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>
+          {idx + 1 >= qs.length ? 'Fertig ✓' : 'Weiter →'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ─── MINI-PLAYER (läuft im Hintergrund weiter) ────────────────────────────
 // Hängt auf oberster Ebene der Lern-Ansicht und wird NIE neu gemountet, wenn
 // man Aufgaben wechselt oder die Pause öffnet/schliesst. Darum spielt die
@@ -1191,12 +1424,15 @@ export default function Home() {
   const [selectedId, setSelectedId] = useState(null);
   const [showLinks, setShowLinks] = useState(false);
   const [showFehlerKiste, setShowFehlerKiste] = useState(false);
+  const [showHeuteUeben, setShowHeuteUeben] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { solved, markSolved, clearSolved } = useSolved();
   const { dark, toggleDark } = useDarkMode();
   const { streak, bumpStreak } = useStreak();
   const { pruefungsDatum, saveDatum, daysLeft, aufgabenProTag } = useLernplan();
   const { fehler, addFehler, removeFehler, clearFehler } = useFehlerKiste();
+  const matheOhneTRPool = useMemo(() => questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen'), []);
+  const heuteUeben = useHeuteUeben(matheOhneTRPool, solved, fehler);
   const [konfetti, setKonfetti] = useState(false);
 
   const handleSolved = useCallback((id) => { markSolved(id); bumpStreak(); }, [markSolved, bumpStreak]);
@@ -1225,6 +1461,20 @@ export default function Home() {
   }, [mounted, subject, selectedId]);
 
   if (showLinks) return <LinksPage onBack={() => setShowLinks(false)} />;
+  if (showHeuteUeben) return (
+    <HeuteUebenPage
+      dm={dm}
+      solved={solved}
+      onSolved={handleSolved}
+      onFehler={addFehler}
+      onRemoveFehler={removeFehler}
+      onKonfetti={() => setKonfetti(true)}
+      onBack={() => setShowHeuteUeben(false)}
+      heuteUeben={heuteUeben}
+      streak={streak}
+      fehlerCount={fehler.length}
+    />
+  );
   if (showFehlerKiste) return (
     <FehlerKistePage
       fehlerIds={fehler}
@@ -1235,7 +1485,7 @@ export default function Home() {
       onJump={(q) => { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setShowFehlerKiste(false); }}
     />
   );
-  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } setSubject(s); setSelectedId(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} />;
+  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } setSubject(s); setSelectedId(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} />;
 
   const selectedQuestion = questions.find(q => q.id === selectedId) || null;
   return (
