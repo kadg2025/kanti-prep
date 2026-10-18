@@ -25,6 +25,28 @@ d) Löse mit Hilfe einer Gleichung: Von welcher Zahl ist das Sechsfache verklein
       { label: 'a) x = 17/42 | b) x = 2 | c) x = 0 | d) x = 11', correct: false },
       { label: 'a) x = 3 | b) x = -0.5 | c) x = 15 | d) x = -23', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'x = 42/17', correct: true },
+        { label: 'x = 17/42', correct: false },
+        { label: 'x = 3', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'x = 0', correct: true },
+        { label: 'x = 2', correct: false },
+        { label: 'x = -0.5', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: 'keine Lösung', correct: true },
+        { label: 'x = 0 ist Lösung', correct: false },
+        { label: 'x = 15 ist Lösung', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: 'x = 23', correct: true },
+        { label: 'x = 11', correct: false },
+        { label: 'x = -23', correct: false },
+      ] },
+    ],
     solution: {
       intro: '',
       steps: [
@@ -132,6 +154,23 @@ c) ${frac('8a · 27b²(4 + 7y)', '(8 + 14y) · 18a² · 6b')}`,
       { label: 'a) 12xy²/5 | b) 2/(3a²) | c) b/a', correct: true },
       { label: 'a) 12xy²/5 | b) 2a³/3 | c) b/a', correct: false },
       { label: 'a) 12x/5 | b) 2/(3a²) | c) a/b', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '12xy²/5', correct: true },
+        { label: '12x/5', correct: false },
+        { label: '12xy²z/5', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '2/(3a²)', correct: true },
+        { label: '2a³/3', correct: false },
+        { label: '-2/(3a²)', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: 'b/a', correct: true },
+        { label: 'a/b', correct: false },
+        { label: '2b/a', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
@@ -624,6 +663,18 @@ b) Es soll wieder so gesägt werden, dass gleich lange, aber möglichst grosse S
       { label: 'a) 18 cm, 25 Schnitte | b) 45 cm, Rest beim 144-cm-Stab', correct: true },
       { label: 'a) 18 cm, 24 Schnitte | b) 45 cm, Rest beim 144-cm-Stab', correct: false },
       { label: 'a) 18 cm, 25 Schnitte | b) 27 cm, Rest beim 144-cm-Stab', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '18 cm, 25 Schnitte', correct: true },
+        { label: '18 cm, 24 Schnitte', correct: false },
+        { label: '18 cm, 28 Schnitte', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '45 cm, Rest beim 144-cm-Stab', correct: true },
+        { label: '27 cm, Rest beim 144-cm-Stab', correct: false },
+        { label: '18 cm, Rest beim 144-cm-Stab', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
