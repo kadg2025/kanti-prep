@@ -129,6 +129,18 @@ b) 6 · (2 · (x + ${frac('1', '4')})) = 9 · (4x – 1)`,
       { label: 'a) x = 1 | b) x = 1', correct: false },
       { label: 'a) x = -2/5 | b) x = 1/12', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'x = 0', correct: true },
+        { label: 'x = 1', correct: false },
+        { label: 'x = -2/5', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'x = 0.5', correct: true },
+        { label: 'x = 1', correct: false },
+        { label: 'x = 1/12', correct: false },
+      ] },
+    ],
     solution: {
       intro: '',
       steps: [
@@ -324,6 +336,33 @@ c2) Wie gross ist die Wahrscheinlichkeit, dass die Summe der beiden gezogenen Ku
       { label: 'b1) 27/125 | b2) 54/125 | b3) 7/25 | c1) 2/25 | c2) 4/25', correct: true },
       { label: 'b1) 9/25 | b2) 27/125 | b3) 35/125 | c1) 1/25 | c2) 5/25', correct: false },
       { label: 'b1) 3/5 | b2) 72/125 | b3) 27/125 | c1) 1/5 | c2) 2/5', correct: false },
+    ],
+    teile: [
+      { letter: 'b1', options: [
+        { label: '27/125', correct: true },
+        { label: '9/25', correct: false },
+        { label: '3/5', correct: false },
+      ] },
+      { letter: 'b2', options: [
+        { label: '54/125', correct: true },
+        { label: '27/125', correct: false },
+        { label: '72/125', correct: false },
+      ] },
+      { letter: 'b3', options: [
+        { label: '7/25', correct: true },
+        { label: '35/125', correct: false },
+        { label: '27/125', correct: false },
+      ] },
+      { letter: 'c1', options: [
+        { label: '2/25', correct: true },
+        { label: '1/25', correct: false },
+        { label: '1/5', correct: false },
+      ] },
+      { letter: 'c2', options: [
+        { label: '4/25', correct: true },
+        { label: '5/25', correct: false },
+        { label: '2/5', correct: false },
+      ] },
     ],
     solution: {
       intro: '',

@@ -904,6 +904,17 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     if (!question || !Array.isArray(question.options)) return [];
     return shuffleArray(question.options);
   }, [question?.id]);
+  const hasTeile = !!question && Array.isArray(question.teile) && question.teile.length > 0;
+  const shuffledTeile = useMemo(() => {
+    if (!question || !Array.isArray(question.teile)) return [];
+    return question.teile.map(teil => ({ letter: teil.letter, options: shuffleArray(teil.options) }));
+  }, [question?.id]);
+  // Teilaufgaben nacheinander: eigener Fortschritt pro Teil, "auf Anhieb
+  // gelöst" gilt nur, wenn JEDER Teil beim allerersten Tippen richtig war.
+  const [teilIdx, setTeilIdx] = useState(0);
+  const [teilAnswered, setTeilAnswered] = useState([]);
+  const [teilWrongOptsArr, setTeilWrongOptsArr] = useState([]);
+  const [teilFirstTryOverall, setTeilFirstTryOverall] = useState(true);
   if (question && question.id !== prevId) {
     setShowSolution(false);
     setSolutionViewed(false);
@@ -914,6 +925,12 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     setIsCorrect(already);
     setFirstTry(already);
     setSelectedOpt(already ? shuffledOptions.find(o => o.correct) || null : null);
+    if (hasTeile) {
+      setTeilIdx(already ? shuffledTeile.length : 0);
+      setTeilAnswered(shuffledTeile.map(() => already));
+      setTeilWrongOptsArr(shuffledTeile.map(() => new Set()));
+      setTeilFirstTryOverall(true);
+    }
   }
   const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309', 'Mathe Neu': '#534AB7', 'Deutsch Neu': '#b45309' };
   const color = subjectColors[subject] || '#534AB7';
@@ -970,6 +987,22 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     }
   }
 
+  function handleTapTeil(i, opt) {
+    if (teilAnswered[i] || teilWrongOptsArr[i]?.has(opt)) return;
+    if (opt.correct) {
+      setTeilAnswered(prev => { const next = [...prev]; next[i] = true; return next; });
+      const nextIdx = i + 1;
+      setTeilIdx(nextIdx);
+      if (nextIdx >= shuffledTeile.length && teilFirstTryOverall) {
+        markCorrect();
+      }
+    } else {
+      setTeilWrongOptsArr(prev => { const next = [...prev]; next[i] = new Set(next[i]).add(opt); return next; });
+      setTeilFirstTryOverall(false);
+      onFehler(question.id);
+    }
+  }
+
   function handleIchHabsRichtig() {
     if (isCorrect || solutionViewed) return;
     setAnswered(true);
@@ -1020,7 +1053,46 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
         </div>
         {/* Erst versuchen: Multiple-Choice (falls vorhanden) oder Selbst-Check-Button */}
         <div style={{ marginBottom: '20px' }}>
-          {shuffledOptions.length > 0 ? (
+          {hasTeile ? (
+            <div>
+              {shuffledTeile.slice(0, Math.min(teilIdx + 1, shuffledTeile.length)).map((teil, i) => {
+                const wrongSet = teilWrongOptsArr[i] || new Set();
+                const isDone = !!teilAnswered[i];
+                return (
+                  <div key={teil.letter} style={{ marginBottom: '18px' }}>
+                    <p style={{ fontSize: '13px', fontWeight: '700', color: dm.text2, margin: '0 0 10px' }}>👉 Teilaufgabe {teil.letter}) — wähle die richtige Antwort:</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {teil.options.map((opt, j) => {
+                        const isWrongTap = wrongSet.has(opt);
+                        const isRevealedCorrect = isDone && opt.correct;
+                        const disabled = isDone || isWrongTap;
+                        const bg = isRevealedCorrect ? dm.okTint : isWrongTap ? (dark ? '#2a1515' : '#fef2f2') : dm.card;
+                        const border = isRevealedCorrect ? '#22c55e' : isWrongTap ? '#ef4444' : dm.border;
+                        const textColor = isRevealedCorrect ? dm.okText : isWrongTap ? '#ef4444' : dm.text;
+                        return (
+                          <button
+                            key={j}
+                            onClick={() => handleTapTeil(i, opt)}
+                            disabled={disabled}
+                            style={{ textAlign: 'left', padding: '13px 16px', borderRadius: '10px', border: `2px solid ${border}`, background: bg, color: textColor, fontSize: '14px', lineHeight: '1.6', fontWeight: isRevealedCorrect ? '700' : '500', cursor: disabled ? 'default' : 'pointer', transition: 'all 0.15s', whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}
+                          >
+                            {isRevealedCorrect ? '✓ ' : isWrongTap ? '❌ ' : ''}{opt.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {isDone && <p style={{ color: '#22c55e', fontWeight: '700', fontSize: '14px', margin: '10px 0 0' }}>✓ Richtig!</p>}
+                    {!isDone && wrongSet.size > 0 && <p style={{ color: '#ef4444', fontWeight: '600', fontSize: '13px', margin: '10px 0 0' }}>❌ Nochmal versuchen — die richtige Antwort ist noch dabei.</p>}
+                  </div>
+                );
+              })}
+              {teilIdx >= shuffledTeile.length && (
+                <p style={{ color: '#22c55e', fontWeight: '700', fontSize: '14px', margin: '10px 0 0' }}>
+                  {teilFirstTryOverall ? '✓ Alle Teilaufgaben richtig! 🎉' : '✓ Alle Teilaufgaben gelöst – beim nächsten Mal alle auf Anhieb! 💪'}
+                </p>
+              )}
+            </div>
+          ) : shuffledOptions.length > 0 ? (
             <div>
               <p style={{ fontSize: '13px', fontWeight: '700', color: dm.text2, margin: '0 0 10px' }}>👉 Wähle die richtige Antwort:</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
