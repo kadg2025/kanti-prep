@@ -115,6 +115,23 @@ c) x = −${frac('1', '2')}`,
       { label: 'a) A<B<C | b) B<C<A | c) C<A<B', correct: false },
       { label: 'a) B<C<A | b) A<B<C | c) A<B<C', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'B<C<A', correct: true },
+        { label: 'A<B<C', correct: false },
+        { label: 'A<C<B', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'A<B<C', correct: true },
+        { label: 'B<C<A', correct: false },
+        { label: 'C<B<A', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: 'C<A<B', correct: true },
+        { label: 'A<B<C', correct: false },
+        { label: 'B<A<C', correct: false },
+      ] },
+    ],
     solution: {
       intro: 'Setze den gegebenen x-Wert in jeden der drei Terme ein und berechne den Zahlenwert. Achtung bei negativem x: x² ist immer positiv, auch wenn x negativ ist!',
       steps: [
@@ -203,6 +220,18 @@ b) ${frac('8', 'x')} + ${frac('7', 'x')} = 5`,
       { label: 'a) x = –8/15 | b) x = 3', correct: true },
       { label: 'a) x = 8/15 | b) x = 5', correct: false },
       { label: 'a) x = –15/8 | b) x = 15', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'x = -8/15', correct: true },
+        { label: 'x = 8/15', correct: false },
+        { label: 'x = -15/8', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'x = 3', correct: true },
+        { label: 'x = 5', correct: false },
+        { label: 'x = 15', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
@@ -303,6 +332,28 @@ d) (7a²bk³ − 9kpu²) · 2k`,
       { label: 'a) 3a(4+13x) | b) 14b(1−3ab) | c) 7xz³+8bz² | d) 14a²bk⁴−18k²pu²', correct: true },
       { label: 'a) 3(4a+13ax) | b) 7b(2−6ab²) | c) 7xz³+8bz² | d) 14a²bk⁴−18kpu²', correct: false },
       { label: 'a) 3a(4+13x) | b) 7b(2−6ab²) | c) 7xz²+8bz | d) 14a²bk⁴−18k²pu²', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '3a(4+13x)', correct: true },
+        { label: '3(4a+13ax)', correct: false },
+        { label: 'a(12+39x)', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '14b(1−3ab)', correct: true },
+        { label: '7b(2−6ab²)', correct: false },
+        { label: '14b(1+3ab)', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '7xz³+8bz²', correct: true },
+        { label: '7xz²+8bz', correct: false },
+        { label: '7xz³+8bz', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: '14a²bk⁴−18k²pu²', correct: true },
+        { label: '14a²bk⁴−18kpu²', correct: false },
+        { label: '14a²bk⁴+18k²pu²', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
