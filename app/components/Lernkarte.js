@@ -166,7 +166,7 @@ function ChipsVisual({ chips, dm, dark }) {
       </div>
       {active && (
         <p key={active.n} style={{ margin: '12px 0 0', fontSize: '13px', lineHeight: '1.6', color: dm.text2, background: dm.bg3, borderRadius: '10px', padding: '10px 12px', animation: 'fadeSlideIn 200ms ease' }}>
-          Teilbar durch {active.n}: {active.regel}
+          {active.prefix ?? ''}{active.n}: {active.regel}
         </p>
       )}
     </div>
