@@ -21,6 +21,18 @@ b) ${frac('6', '11')}(x – 3) + 2 = 1 – ${frac('1', '22')}(10x + 3)`,
       { label: 'a) x = 8 | b) x = 2', correct: false },
       { label: 'a) x = 112/7 | b) x = 9/28', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'x = 16', correct: true },
+        { label: 'x = 8', correct: false },
+        { label: 'x = 2', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'x = 0.5', correct: true },
+        { label: 'x = 2', correct: false },
+        { label: 'x = 9/28', correct: false },
+      ] },
+    ],
     solution: {
       intro: '',
       steps: [
@@ -109,6 +121,23 @@ c) Vereinfache und klammere so weit wie möglich aus:
       { label: 'a) 2a−2 | b) −2x³y²−6x²y² | c) 3x³y²(2y−1)', correct: true },
       { label: 'a) 2a−2 | b) −2x³y²−6x²y² | c) 3x³y²(2y+1)', correct: false },
       { label: 'a) 12a−12 | b) 2x³y²+6x²y² | c) 3x³y²(2y−1)', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '2a−2', correct: true },
+        { label: '12a−12', correct: false },
+        { label: '2a−1', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '−2x³y²−6x²y²', correct: true },
+        { label: '2x³y²+6x²y²', correct: false },
+        { label: '−2x³y²+6x²y²', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '3x³y²(2y−1)', correct: true },
+        { label: '3x³y²(2y+1)', correct: false },
+        { label: '3x³y³(2y−1)', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
@@ -205,6 +234,23 @@ c) T3 : T4`,
       { label: 'a) 1 | b) a²/c² | c) b²', correct: true },
       { label: 'a) 1 | b) a/c | c) b', correct: false },
       { label: 'a) abc | b) a²/c² | c) b²', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '1', correct: true },
+        { label: 'abc', correct: false },
+        { label: 'a²b²c²', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'a²/c²', correct: true },
+        { label: 'a/c', correct: false },
+        { label: 'a²b/c²', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: 'b²', correct: true },
+        { label: 'b', correct: false },
+        { label: 'ab²', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
