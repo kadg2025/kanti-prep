@@ -40,6 +40,22 @@ b) a² · b · x³  und  a³ · b² · x`,
 
     ],
 
+    teile: [
+
+      { letter: 'a', options: [
+        { label: "ggT=13, kgV=78", correct: true },
+        { label: "ggT=3, kgV=156", correct: false },
+        { label: "ggT=78, kgV=13", correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: "ggT=a²·b·x, kgV=a³·b²·x³", correct: true },
+        { label: "ggT=a·b·x, kgV=a³·b²·x³", correct: false },
+        { label: "ggT=a²·b·x, kgV=a²·b·x³", correct: false },
+      ] },
+
+    ],
+
     solution: {
 
       intro: '',
@@ -274,6 +290,23 @@ c) 4a – 5b – 6a – 7b = –2a + 2b`,
       { label: 'a) (4a–5b)–6a–7b | b) 4a–5b–(6a–7b) | c) 4a–(5b–6a)–7b', correct: false },
       { label: 'a) 4a–5b–(6a–7b) | b) (4a–5b–6a)–7b | c) 4a–(5b–6a+7b)', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '4a–(5b–6a)–7b', correct: true },
+        { label: '(4a–5b)–6a–7b', correct: false },
+        { label: '4a–5b–(6a–7b)', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '4a–(5b–6a–7b)', correct: true },
+        { label: '4a–5b–(6a–7b)', correct: false },
+        { label: '(4a–5b–6a)–7b', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '4a–5b–(6a–7b)', correct: true },
+        { label: '4a–(5b–6a)–7b', correct: false },
+        { label: '4a–(5b–6a+7b)', correct: false },
+      ] },
+    ],
 
     solution: {
       intro: '',
@@ -480,6 +513,28 @@ c) In einem Dreieck ist eine Höhe um 4 cm grösser als die zugehörige Seite. V
       { label: 'a) x = 2 | b) x = 1/2 | c) Seite = 6 cm, Höhe = 10 cm', correct: false },
 
       { label: 'a) x = –14/7 | b) x = 4/10 | c) Seite = 8 cm, Höhe = 12 cm', correct: false },
+
+    ],
+
+    teile: [
+
+      { letter: 'a', options: [
+        { label: 'x = –2', correct: true },
+        { label: 'x = 2', correct: false },
+        { label: 'x = –1', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: 'x = 2/7', correct: true },
+        { label: 'x = 1/2', correct: false },
+        { label: 'x = 4/10', correct: false },
+      ] },
+
+      { letter: 'c', options: [
+        { label: 'Seite = 10.5 cm, Höhe = 14.5 cm', correct: true },
+        { label: 'Seite = 6 cm, Höhe = 10 cm', correct: false },
+        { label: 'Seite = 8 cm, Höhe = 12 cm', correct: false },
+      ] },
 
     ],
 
