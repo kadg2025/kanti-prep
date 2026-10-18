@@ -173,7 +173,7 @@ export const lernkarten = {
     titel: 'Terme & Klammern',
     kacheln: [
       {
-        id: 'vorzeichen', emoji: '➖', titel: 'Vorzeichen & Klammern', videos: [],
+        id: 'vorzeichen', emoji: '➖', titel: 'Vorzeichen & Klammern', videos: [{ titel: 'Vorzeichen & Klammern (Video 1)', youtubeId: 'yZGfccNtwbI' }, { titel: 'Vorzeichen & Klammern (Video 2)', youtubeId: 'N7xN_OI0nIA' }, { titel: 'Vorzeichen & Klammern (Video 3)', youtubeId: 'xbL27K2Ij4U' }],
         karten: [
           { text: 'Vorzeichen sind die Gegner im Dojo. Wer sie im Griff hat, rechnet fast fehlerfrei. Die Grundregel: Gleiche Zeichen ergeben Plus, verschiedene Zeichen ergeben Minus.' },
           { text: 'Tippe die Regeln an.', visual: 'chips', chips: [
@@ -192,7 +192,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'einsetzen', emoji: '🔤', titel: 'Einsetzen & Zusammenfassen', videos: [],
+        id: 'einsetzen', emoji: '🔤', titel: 'Einsetzen & Zusammenfassen', videos: [{ titel: 'Einsetzen & Zusammenfassen', youtubeId: 'F8UDB8ExLVc' }],
         karten: [
           { text: 'Ein Term ist eine Rechenvorschrift mit einem Platzhalter, zum Beispiel 3a + 2. Einsetzen heisst: Du ersetzt den Platzhalter durch eine Zahl. Für a = 4 gilt 3 · 4 + 2 = 14.' },
           { text: 'Profi-Tipp: Setze die Zahl immer in Klammern ein. Für a = −2 ergibt 3a + 2 den Wert 3 · (−2) + 2 = −6 + 2 = −4. Ohne Klammern passieren Vorzeichenfehler.' },
@@ -206,7 +206,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'potenzen', emoji: '⚡', titel: 'Potenzen', videos: [],
+        id: 'potenzen', emoji: '⚡', titel: 'Potenzen', videos: [{ titel: 'Potenzen', youtubeId: 'Oo7gFQoG16c' }],
         karten: [
           { text: 'Eine Potenz ist eine Abkürzung fürs Malnehmen: a³ = a · a · a. Die Hochzahl sagt, wie oft die Basis mit sich selbst multipliziert wird. Zum Beispiel 2⁴ = 2 · 2 · 2 · 2 = 16.' },
           { text: 'Tippe die Potenzregeln an.', visual: 'chips', chips: [
@@ -226,7 +226,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'klammern', emoji: '🧮', titel: 'Ausmultiplizieren & Ausklammern', videos: [],
+        id: 'klammern', emoji: '🧮', titel: 'Ausmultiplizieren & Ausklammern', videos: [{ titel: 'Ausmultiplizieren & Ausklammern', youtubeId: 'X5E2bqby8f0' }],
         karten: [
           { text: 'Ausmultiplizieren: Der Faktor vor der Klammer wird mit jedem Summanden in der Klammer multipliziert. 3(a + 4) = 3a + 12. Und 2a(3a − 5) = 6a² − 10a.' },
           { text: 'Steht ein Minus vor der Klammer, dreht es alle Zeichen um: −(x − 2) = −x + 2. Denk an −1 als Faktor vor der Klammer.' },
@@ -241,7 +241,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'bruch1', emoji: '🍰', titel: 'Bruchterme: Kürzen & Multiplizieren', videos: [],
+        id: 'bruch1', emoji: '🍰', titel: 'Bruchterme: Kürzen & Multiplizieren', videos: [{ titel: 'Bruchterme: Kürzen & Multiplizieren (Video 1)', youtubeId: 'LA3VrJBGyNE' }, { titel: 'Bruchterme: Kürzen & Multiplizieren (Video 2)', youtubeId: 'OuncwqLqdSU' }],
         karten: [
           { text: 'Ein Bruchterm ist ein Bruch mit Buchstaben, zum Beispiel 6a/9. Kürzen funktioniert wie bei Zahlen: Zähler und Nenner durch denselben Faktor teilen. 6a/9 = 2a/3.' },
           { text: 'Mit mehreren Buchstaben kürzt du jeden einzeln. Beispiel: 12a²b / 18ab². Zahlen: 12/18 = 2/3. a²/a = a. b/b² = 1/b. Ergebnis: 2a / 3b.' },
@@ -255,7 +255,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'bruch2', emoji: '🍕', titel: 'Bruchterme: Dividieren & Addieren', videos: [],
+        id: 'bruch2', emoji: '🍕', titel: 'Bruchterme: Dividieren & Addieren', videos: [{ titel: 'Bruchterme: Dividieren & Addieren', youtubeId: 'qH8gLQuOG_k' }],
         karten: [
           { text: 'Dividieren: Teilen durch einen Bruch heisst malnehmen mit dem Kehrbruch (Zähler und Nenner vertauschen). (2a/5) : (4/15) = 2a/5 · 15/4 = 30a/20 = 3a/2.' },
           { text: 'Manchmal kürzt sich der Buchstabe ganz weg: (a/3) : (a/6) = a/3 · 6/a = 6/3 = 2.' },
