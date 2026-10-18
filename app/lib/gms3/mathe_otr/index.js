@@ -8,6 +8,7 @@ import { questions2022_oTR } from './2022';
 import { questions2023_oTR } from './2023';
 import { questions2024_oTR } from './2024';
 import { questions2025_oTR } from './2025';
+import { questions2026_oTR } from './2026';
 
 export const questionsMatheOtrGms3 = [
   ...questions2016_oTR,
@@ -20,4 +21,5 @@ export const questionsMatheOtrGms3 = [
   ...questions2023_oTR,
   ...questions2024_oTR,
   ...questions2025_oTR,
+  ...questions2026_oTR,
 ];

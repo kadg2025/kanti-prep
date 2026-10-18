@@ -15,4 +15,4 @@ export const questions = [
   ...questionsMatheMtrGms2,
   ...questionsMatheOtrGms2,
   ...questionsDeutschGms2,
-];
+].filter(q => !q.hidden);
