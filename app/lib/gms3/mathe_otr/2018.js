@@ -763,7 +763,7 @@ c) Berechne den Oberflächeninhalt dieser Pyramide.`,
 
     solution: {
 
-      intro: 'Die Oberflächenberechnung war in einer früheren Version dieser App falsch (46.3 cm² statt 48 cm²) — hier die korrigierte, gegen die offizielle Lösung geprüfte Version. Der Fehler lag darin, die beiden fernen Seitenflächen fälschlich als gleichschenklige Dreiecke (5/5/4) statt als rechtwinklige Dreiecke (5/4, rechter Winkel) zu behandeln.',
+      intro: '',
 
       steps: [
 

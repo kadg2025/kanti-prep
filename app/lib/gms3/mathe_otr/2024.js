@@ -134,7 +134,7 @@ c) ${frac('8a · 27b²(4 + 7y)', '(8 + 14y) · 18a² · 6b')}`,
       { label: 'a) 12x/5 | b) 2/(3a²) | c) a/b', correct: false },
     ],
     solution: {
-      intro: 'Diese Aufgabe war in einer früheren Version dieser App komplett anders (und falsch) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version. Es fehlten ausserdem die Teile b) und c) komplett.',
+      intro: '',
       steps: [
         {
           title: 'a) Kürzen',
@@ -626,7 +626,7 @@ b) Es soll wieder so gesägt werden, dass gleich lange, aber möglichst grosse S
       { label: 'a) 18 cm, 25 Schnitte | b) 27 cm, Rest beim 144-cm-Stab', correct: false },
     ],
     solution: {
-      intro: 'Teil b) war in einer früheren Version dieser App falsch berechnet (27 cm statt 45 cm) und Teil a) hatte einen Tippfehler in der Antwortoption (24 statt 25 Schnitte) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
+      intro: '',
       steps: [
         {
           title: 'a) Länge bestimmen',

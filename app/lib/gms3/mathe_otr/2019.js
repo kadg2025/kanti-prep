@@ -326,7 +326,7 @@ b) ${sqrt('(3y)² − 5y²')}`,
 
     solution: {
 
-      intro: 'Der Aufgabentext war in einer früheren Version dieser App fehlerhaft (a⁴ statt a² durch einen Erfassungsfehler) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
+      intro: '',
 
       steps: [
 
@@ -454,7 +454,7 @@ c) Multipliziere das Dreifache der Summe von 2ab und 5b² mit 6.`,
 
     solution: {
 
-      intro: 'Der Aufgabentext war in einer früheren Version dieser App komplett anders (und falsch) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
+      intro: '',
 
       steps: [
 
@@ -760,7 +760,7 @@ d) Wie viel Prozent der Mädchen haben eine Sprache als Lieblingsfach?`,
 
     solution: {
 
-      intro: 'Teil d) war in einer früheren Version dieser App als Antwortoption falsch angegeben (50% statt 20%) — die Lösung selbst hat immer schon korrekt 20% vorgerechnet, aber diese 20% fehlten unter den Multiple-Choice-Antworten. Jetzt korrigiert und gegen die offizielle Lösung geprüft.',
+      intro: '',
 
       steps: [
 

@@ -781,7 +781,7 @@ c) ${frac('c', '2')} ÷ ${frac('c²', '4')} + ${frac('c', '2')} · 3 − c`,
       { label: 'a) a | b) b/2 | c) (4−c²)/(2c)', correct: false },
     ],
     solution: {
-      intro: 'Teil c) war in einer früheren Version dieser App leicht falsch geklammert ("· (3–c)" statt "· 3 − c"), wodurch die Herleitung nicht zum offiziellen Ergebnis passte. Hier die korrekte, gegen die offizielle Prüfung geprüfte Version aller drei Teile.',
+      intro: '',
       steps: [
         {
           title: 'a) Schritt für Schritt',

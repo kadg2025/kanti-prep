@@ -111,7 +111,7 @@ c) Vereinfache und klammere so weit wie möglich aus:
       { label: 'a) 12a−12 | b) 2x³y²+6x²y² | c) 3x³y²(2y−1)', correct: false },
     ],
     solution: {
-      intro: 'Diese Aufgabe war in einer früheren Version dieser App komplett anders (und falsch) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
+      intro: '',
       steps: [
         {
           title: 'a) Gleichartige Klammern zusammenfassen',
@@ -207,7 +207,7 @@ c) T3 : T4`,
       { label: 'a) abc | b) a²/c² | c) b²', correct: false },
     ],
     solution: {
-      intro: 'Diese Aufgabe war in einer früheren Version dieser App komplett anders (und falsch) — hier die korrekte, gegen die offizielle Prüfung geprüfte Version.',
+      intro: '',
       steps: [
         {
           title: 'a) T1 · T2',
