@@ -1147,9 +1147,13 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
         </div>
 
         {/* Heute üben — eigener grosser Knopf */}
-        <button onClick={() => onSelect('heuteueben')} style={{ width: '100%', padding: '20px', marginBottom: '18px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', border: 'none', borderRadius: '18px', fontSize: '16px', fontWeight: '800', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', boxShadow: '0 4px 20px rgba(83,74,183,0.25)' }}>
+        <button onClick={() => onSelect('heuteueben')} style={{ width: '100%', padding: '20px', marginBottom: '12px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', border: 'none', borderRadius: '18px', fontSize: '16px', fontWeight: '800', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', boxShadow: '0 4px 20px rgba(83,74,183,0.25)' }}>
           <span style={{ fontSize: '26px' }}>🎯</span>
           <span>Heute üben — 5 Aufgaben (Mathe ohne TR)</span>
+        </button>
+        <button onClick={() => onSelect('probepruefung')} style={{ width: '100%', padding: '16px', marginBottom: '18px', background: '#fff', border: '2px solid #534AB7', borderRadius: '18px', fontSize: '14px', fontWeight: '700', color: '#534AB7', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <span style={{ fontSize: '20px' }}>📝</span>
+          <span>Neue Probeprüfung (Mathe ohne TR)</span>
         </button>
 
         {/* Mind-Blow + Links — DANACH */}
@@ -1361,6 +1365,225 @@ function HeuteUebenPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onKonf
   );
 }
 
+// ─── PROBEPRÜFUNG (Mathe ohne TR) ─────────────────────────────────────────
+// Bauplan (Schritt 5): Durchschnittlich ~8 Aufgaben/Jahr (6–12), Themen quer
+// durch Terme & Klammern, Geometrie, Funktionen, Gleichungen, Zahlen &
+// Teilbarkeit am häufigsten — siehe NACHT_BERICHT.md für die volle Analyse.
+// 45 Minuten laut Deckblatt jeder Original-Prüfung ("Zur Verfügung stehende
+// Zeit: 45 Minuten").
+const PROBE_DAUER_MIN = 45;
+const PROBE_ANZAHL = 8;
+const PROBE_THEMEN_REIHENFOLGE = ['Zahlen & Teilbarkeit', 'Terme & Klammern', 'Gleichungen', 'Prozent & Zins', 'Proportionalität', 'Wahrscheinlichkeit', 'Statistik & Diagramme', 'Funktionen', 'Geometrie', 'Körper & Netze'];
+
+function pickProbepruefung(pool, recentIds) {
+  const avoid = new Set(recentIds);
+  const fresh = pool.filter(q => !avoid.has(q.id));
+  const usePool = fresh.length >= PROBE_ANZAHL ? fresh : pool;
+  const byTopic = {};
+  usePool.forEach(q => { (byTopic[q.topic] = byTopic[q.topic] || []).push(q); });
+  const result = [];
+  const usedIds = new Set();
+  // Reihenfolge der Themen pro Session mischen, sonst kämen bei
+  // PROBE_ANZAHL < Themenzahl die letzten Themen nie an die Reihe.
+  for (const topic of shuffleArray(PROBE_THEMEN_REIHENFOLGE)) {
+    if (result.length >= PROBE_ANZAHL) break;
+    const cands = (byTopic[topic] || []).filter(q => !usedIds.has(q.id));
+    if (cands.length === 0) continue;
+    const q = cands[Math.floor(Math.random() * cands.length)];
+    usedIds.add(q.id);
+    result.push(q);
+  }
+  // Auffüllen, falls weniger als PROBE_ANZAHL Themen Treffer hatten.
+  if (result.length < PROBE_ANZAHL) {
+    const rest = usePool.filter(q => !usedIds.has(q.id));
+    while (result.length < PROBE_ANZAHL && rest.length > 0) {
+      const i = Math.floor(Math.random() * rest.length);
+      const q = rest.splice(i, 1)[0];
+      usedIds.add(q.id);
+      result.push(q);
+    }
+  }
+  return result;
+}
+
+function useProbeHistory() {
+  const [history, setHistory] = useState([]);
+  useEffect(() => { try { setHistory(JSON.parse(localStorage.getItem('kp_probe_history') || '[]')); } catch {} }, []);
+  const pushSession = useCallback((ids) => {
+    setHistory(prev => {
+      const next = [...prev, { date: todayStr(), ids }].slice(-2);
+      try { localStorage.setItem('kp_probe_history', JSON.stringify(next)); } catch {}
+      return next;
+    });
+  }, []);
+  const recentIds = history.flatMap(h => h.ids);
+  return { recentIds, pushSession };
+}
+
+function ProbepruefungPage({ dm, solved, onSolved, onFehler, onRemoveFehler, onBack }) {
+  const isMobile = useIsMobile();
+  const matheOhneTRPool = useMemo(() => questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen'), []);
+  const probeHistory = useProbeHistory();
+  const [qs, setQs] = useState(null);
+  const [idx, setIdx] = useState(0);
+  const [phase, setPhase] = useState('intro'); // intro | exam | review | done
+  const [notes, setNotes] = useState({});
+  const [grades, setGrades] = useState({}); // id -> true/false (selbstbewertet)
+  const [secondsLeft, setSecondsLeft] = useState(PROBE_DAUER_MIN * 60);
+
+  useEffect(() => {
+    if (phase !== 'exam') return;
+    if (secondsLeft <= 0) return;
+    const t = setInterval(() => setSecondsLeft(s => Math.max(0, s - 1)), 1000);
+    return () => clearInterval(t);
+  }, [phase, secondsLeft]);
+
+  const start = () => {
+    const picked = pickProbepruefung(matheOhneTRPool, probeHistory.recentIds);
+    setQs(picked);
+    probeHistory.pushSession(picked.map(q => q.id));
+    setIdx(0);
+    setNotes({});
+    setGrades({});
+    setSecondsLeft(PROBE_DAUER_MIN * 60);
+    setPhase('exam');
+  };
+
+  const finishExam = () => { setIdx(0); setPhase('review'); };
+
+  const gradeAndNext = (id, correct) => {
+    setGrades(prev => ({ ...prev, [id]: correct }));
+    if (correct) { onSolved(id); onRemoveFehler(id); } else { onFehler(id); }
+    if (idx + 1 >= qs.length) setPhase('done');
+    else setIdx(idx + 1);
+  };
+
+  const fmtTime = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+
+  if (phase === 'intro') {
+    return (
+      <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '40px 16px' : '60px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ maxWidth: '440px', width: '100%', textAlign: 'center', background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '18px', padding: '32px 24px' }}>
+          <div style={{ fontSize: '48px', marginBottom: '12px' }}>📝</div>
+          <h2 style={{ fontSize: '22px', fontWeight: '800', color: dm.text, margin: '0 0 10px' }}>Probeprüfung Mathe ohne TR</h2>
+          <p style={{ fontSize: '14px', color: dm.text3, margin: '0 0 6px', lineHeight: '1.6' }}>{PROBE_ANZAHL} Aufgaben · {PROBE_DAUER_MIN} Minuten · wie die echte Prüfung</p>
+          <p style={{ fontSize: '13px', color: dm.text3, margin: '0 0 20px', lineHeight: '1.6' }}>Kein Multiple Choice, kein Lösungsweg während der Prüfung. Am Ende vergleichst du selbst mit der Lösung und bewertest dich.</p>
+          <button onClick={onBack} style={{ padding: '10px 16px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '8px', cursor: 'pointer', color: dm.text2, fontSize: '13px', marginBottom: '12px' }}>← Zurück</button>
+          <button onClick={start} style={{ width: '100%', padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>Jetzt starten</button>
+        </div>
+      </main>
+    );
+  }
+
+  if (!qs) return null;
+
+  if (phase === 'exam') {
+    const q = qs[idx];
+    const timeUp = secondsLeft <= 0;
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: dm.bg, fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+        <div style={{ padding: isMobile ? '14px 16px 0' : '20px 40px 0', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+            <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text2 }}>📝 Aufgabe {idx + 1} / {qs.length}</span>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: timeUp ? '#ef4444' : dm.text }}>{timeUp ? '⏰ Zeit um!' : `⏱️ ${fmtTime(secondsLeft)}`}</span>
+          </div>
+          <div style={{ display: 'flex', gap: '6px', marginBottom: '14px' }}>
+            {qs.map((qq, i) => <div key={qq.id} style={{ flex: 1, height: '6px', borderRadius: '3px', background: i < idx ? '#534AB7' : i === idx ? '#a89ee8' : dm.border }} />)}
+          </div>
+          <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', marginBottom: '16px' }}>
+            {q.isNew && <span style={{ display: 'inline-block', marginBottom: '10px', background: '#f0eeff', color: '#534AB7', padding: '3px 10px', borderRadius: '20px', fontSize: '11px', fontWeight: '700' }}>✨ Neu im Kanti-Stil</span>}
+            <p style={{ margin: 0, fontSize: '15px', lineHeight: '1.8', color: dm.text, whiteSpace: 'pre-wrap' }}>{q.questionText}</p>
+            {q.figureUrl && (
+              <div style={{ marginTop: '16px' }}>
+                <img src={q.figureUrl} alt={q.figureCaption || 'Figur'} style={{ maxWidth: '100%', borderRadius: '8px', border: `1px solid ${dm.border}`, background: '#fff' }} />
+                {q.figureCaption && <p style={{ margin: '6px 0 0', fontSize: '11px', color: dm.text2, fontStyle: 'italic' }}>{q.figureCaption}</p>}
+              </div>
+            )}
+          </div>
+          <textarea
+            value={notes[q.id] || ''}
+            onChange={e => setNotes(prev => ({ ...prev, [q.id]: e.target.value }))}
+            placeholder="Deine Lösung / Notizen (optional, wird am Ende mit der Musterlösung verglichen)…"
+            style={{ width: '100%', minHeight: '100px', padding: '12px', borderRadius: '10px', border: `1px solid ${dm.border}`, background: dm.bg, color: dm.text, fontSize: '14px', fontFamily: 'inherit', boxSizing: 'border-box', marginBottom: '16px' }}
+          />
+        </div>
+        <div style={{ padding: isMobile ? '0 16px 24px' : '0 40px 32px', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box', display: 'flex', gap: '10px' }}>
+          <button onClick={onBack} style={{ padding: '14px 18px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '12px', cursor: 'pointer', color: dm.text2, fontSize: '13px' }}>Abbrechen</button>
+          <button onClick={() => (idx + 1 >= qs.length ? finishExam() : setIdx(idx + 1))} style={{ flex: 1, padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>
+            {idx + 1 >= qs.length ? 'Prüfung abgeben →' : 'Weiter →'}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (phase === 'review') {
+    const q = qs[idx];
+    const s = q.solution;
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: dm.bg, fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+        <div style={{ padding: isMobile ? '14px 16px 0' : '20px 40px 0', maxWidth: '700px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+          <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text2 }}>✅ Auswertung · Aufgabe {idx + 1} / {qs.length}</span>
+          <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', margin: '12px 0' }}>
+            {q.isNew && <span style={{ display: 'inline-block', marginBottom: '10px', background: '#f0eeff', color: '#534AB7', padding: '3px 10px', borderRadius: '20px', fontSize: '11px', fontWeight: '700' }}>✨ Neu im Kanti-Stil</span>}
+            <p style={{ margin: '0 0 10px', fontSize: '15px', lineHeight: '1.7', color: dm.text, whiteSpace: 'pre-wrap' }}>{q.questionText}</p>
+            {notes[q.id] && (
+              <div style={{ background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: '8px', padding: '10px 14px', fontSize: '13px', color: dm.text2, whiteSpace: 'pre-wrap', marginBottom: '10px' }}>
+                <strong>Deine Notiz:</strong><br />{notes[q.id]}
+              </div>
+            )}
+            <div style={{ background: dm.okBg, border: `1px solid ${dm.okBorder}`, borderRadius: '10px', padding: '12px 14px' }}>
+              {s.intro && <p style={{ margin: '0 0 8px', fontSize: '13px', color: dm.okText }}>{s.intro}</p>}
+              {s.steps.filter(st => !st.solutionUrl).map((st, i) => (
+                <div key={i} style={{ marginBottom: '8px' }}>
+                  <p style={{ margin: '0 0 2px', fontSize: '12px', fontWeight: '700', color: dm.okText }}>{st.title}</p>
+                  <p style={{ margin: 0, fontSize: '13px', color: dm.okText, whiteSpace: 'pre-wrap' }}>{st.content}</p>
+                </div>
+              ))}
+              {q.options && <p style={{ margin: '6px 0 0', fontSize: '13px', fontWeight: '700', color: dm.okText }}>✅ {q.options.find(o => o.correct)?.label}</p>}
+            </div>
+          </div>
+          <p style={{ fontSize: '13px', color: dm.text2, margin: '0 0 12px', textAlign: 'center' }}>Hattest du das richtig?</p>
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '24px' }}>
+            <button onClick={() => gradeAndNext(q.id, false)} style={{ flex: 1, padding: '14px', background: 'none', border: '2px solid #ef4444', color: '#ef4444', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>✗ Falsch</button>
+            <button onClick={() => gradeAndNext(q.id, true)} style={{ flex: 1, padding: '14px', background: '#22c55e', border: 'none', color: '#fff', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>✓ Richtig</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // phase === 'done'
+  const total = qs.length;
+  const correct = qs.filter(q => grades[q.id]).length;
+  const note = Math.min(6, Math.max(1, Math.round((1 + 5 * (correct / total)) * 2) / 2));
+  const byTopic = {};
+  qs.forEach(q => {
+    byTopic[q.topic] = byTopic[q.topic] || { total: 0, correct: 0 };
+    byTopic[q.topic].total++;
+    if (grades[q.id]) byTopic[q.topic].correct++;
+  });
+  return (
+    <main style={{ minHeight: '100vh', background: dm.bg, padding: isMobile ? '40px 16px' : '60px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+      <div style={{ maxWidth: '480px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ fontSize: '48px', marginBottom: '12px' }}>{correct === total ? '🏆' : correct / total >= 0.5 ? '🎉' : '💪'}</div>
+        <h2 style={{ fontSize: '24px', fontWeight: '800', color: dm.text, margin: '0 0 6px' }}>{correct} von {total} richtig</h2>
+        <p style={{ fontSize: '14px', color: dm.text3, margin: '0 0 6px' }}>Geschätzte Note: <strong style={{ color: dm.text }}>{note.toFixed(1)}</strong></p>
+        <p style={{ fontSize: '11px', color: dm.text3, margin: '0 0 24px' }}>(Annahme: linear von Note 1 bei 0% bis Note 6 bei 100% — kein offizieller Notenschlüssel bekannt)</p>
+        <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '14px', padding: '18px', textAlign: 'left', marginBottom: '20px' }}>
+          <p style={{ margin: '0 0 10px', fontSize: '13px', fontWeight: '700', color: dm.text2 }}>Auswertung pro Thema</p>
+          {Object.entries(byTopic).map(([t, v]) => (
+            <div key={t} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: dm.text, padding: '4px 0' }}>
+              <span>{t}</span><span>{v.correct} / {v.total}</span>
+            </div>
+          ))}
+        </div>
+        <button onClick={onBack} style={{ width: '100%', padding: '14px', background: '#534AB7', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>Fertig</button>
+      </div>
+    </main>
+  );
+}
+
 // ─── MINI-PLAYER (läuft im Hintergrund weiter) ────────────────────────────
 // Hängt auf oberster Ebene der Lern-Ansicht und wird NIE neu gemountet, wenn
 // man Aufgaben wechselt oder die Pause öffnet/schliesst. Darum spielt die
@@ -1425,6 +1648,7 @@ export default function Home() {
   const [showLinks, setShowLinks] = useState(false);
   const [showFehlerKiste, setShowFehlerKiste] = useState(false);
   const [showHeuteUeben, setShowHeuteUeben] = useState(false);
+  const [showProbepruefung, setShowProbepruefung] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { solved, markSolved, clearSolved } = useSolved();
   const { dark, toggleDark } = useDarkMode();
@@ -1475,6 +1699,16 @@ export default function Home() {
       fehlerCount={fehler.length}
     />
   );
+  if (showProbepruefung) return (
+    <ProbepruefungPage
+      dm={dm}
+      solved={solved}
+      onSolved={handleSolved}
+      onFehler={addFehler}
+      onRemoveFehler={removeFehler}
+      onBack={() => setShowProbepruefung(false)}
+    />
+  );
   if (showFehlerKiste) return (
     <FehlerKistePage
       fehlerIds={fehler}
@@ -1485,7 +1719,7 @@ export default function Home() {
       onJump={(q) => { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setShowFehlerKiste(false); }}
     />
   );
-  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } setSubject(s); setSelectedId(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} />;
+  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} />;
 
   const selectedQuestion = questions.find(q => q.id === selectedId) || null;
   return (
