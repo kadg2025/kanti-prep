@@ -10,7 +10,10 @@ export const lernkarten = {
         id: 'primzahlen',
         emoji: '🔢',
         titel: 'Primzahlen',
-        video: undefined,
+        videos: [
+          { titel: 'Primzahlen (Lehrerschmidt)', youtubeId: 'vc9BEjHzJIU' },
+          { titel: 'Primzahlen einfach erklärt (MathemaTrick)', youtubeId: 'kesfaEFBcLY' },
+        ],
         karten: [
           { text: 'Stell dir Lego vor: Primzahlen sind die Grundsteine, die man nicht weiter zerlegen kann. Aus ihnen baust du jede andere Zahl durch Malnehmen. Zum Beispiel 6 = 2 · 3 und 20 = 2 · 2 · 5.' },
           { text: 'Primzahlen sind die Bausteine aller Zahlen. Sie haben genau zwei Teiler: 1 und sich selbst.' },
@@ -26,7 +29,9 @@ export const lernkarten = {
         id: 'teilbarkeit',
         emoji: '✅',
         titel: 'Teilbarkeitsregeln',
-        video: undefined,
+        videos: [
+          { titel: 'Teilbarkeitsregeln (Lehrerschmidt)', youtubeId: 'COe6sDmcFEo' },
+        ],
         karten: [
           { text: 'Teilbar heisst: Beim Teilen bleibt kein Rest. 12 ist durch 3 teilbar (12 : 3 = 4), 13 nicht (es bleibt Rest 1). Die Regeln sind Abkürzungen, damit du nicht lange rechnen musst.' },
           {
@@ -53,7 +58,10 @@ export const lernkarten = {
         id: 'faktorbaum',
         emoji: '🌳',
         titel: 'Faktorbaum',
-        video: undefined,
+        videos: [
+          { titel: 'Primfaktorzerlegung (Lehrerschmidt)', youtubeId: '7Z-bwJ5F6-M' },
+          { titel: 'Primfaktorzerlegung einfach erklärt (MathemaTrick)', youtubeId: 'l6vSWJmbh0s' },
+        ],
         karten: [
           { text: 'Faktoren sind die Zahlen, die man malnimmt. In 2 · 3 = 6 sind 2 und 3 die Faktoren. Der Faktorbaum zerlegt eine Zahl Ast für Ast in Primfaktoren.' },
           { text: 'Zerlege eine Zahl so lange, bis nur noch Primzahlen übrig sind. Wie ein Baum, der sich verzweigt.' },
@@ -69,7 +77,10 @@ export const lernkarten = {
         id: 'ggt',
         emoji: '🧩',
         titel: 'ggT',
-        video: undefined,
+        videos: [
+          { titel: 'ggT einfach erklärt (Lehrerschmidt)', youtubeId: 'vCk1qe1FyDI' },
+          { titel: 'ggT berechnen mit Primfaktorzerlegung (MathemaTrick)', youtubeId: 'vvXcBvyotjE' },
+        ],
         karten: [
           { text: 'Teiler: Eine Zahl passt in eine andere, wenn beim Teilen nichts übrig bleibt. 4 ist ein Teiler von 12, denn 12 : 4 = 3. 5 ist kein Teiler von 12: Es bleibt ein Rest.' },
           { text: 'Teiler von 12: 1, 2, 3, 4, 6, 12. Teiler von 18: 1, 2, 3, 6, 9, 18. Gemeinsame Teiler, also in beiden: 1, 2, 3, 6.', visual: 'ggt_listen' },
@@ -86,7 +97,10 @@ export const lernkarten = {
         id: 'kgv',
         emoji: '🔁',
         titel: 'kgV',
-        video: undefined,
+        videos: [
+          { titel: 'kgV (Lehrerschmidt)', youtubeId: 'tGDCF575v2o' },
+          { titel: 'kgV berechnen mit Primfaktorzerlegung (MathemaTrick)', youtubeId: 'G_2ex4DEaMM' },
+        ],
         karten: [
           { text: 'Vielfache sind die Zahlen aus dem Einmaleins. Vielfache von 4: 4, 8, 12, 16, 20, immer plus 4.' },
           { text: '4er-Reihe: 4, 8, 12, 16, 20, 24. 6er-Reihe: 6, 12, 18, 24. Gemeinsame Vielfache, also in beiden: 12 und 24.', visual: 'kgv_reihen' },
@@ -103,7 +117,9 @@ export const lernkarten = {
         id: 'textaufgaben',
         emoji: '🚌',
         titel: 'Textaufgaben',
-        video: undefined,
+        videos: [
+          { titel: 'kgV und ggT Textaufgaben (MathemaTrick)', youtubeId: 'S5P7ITOQwL0' },
+        ],
         karten: [
           { text: 'In Textaufgaben versteckt sich meist ggT oder kgV. Frag dich zuerst: Teile ich etwas auf (ggT) oder wiederholt sich etwas (kgV)?' },
           { text: 'ggT-Signalwörter: aufteilen, gleich grosse Stücke, Gruppen, zuschneiden, möglichst gross.' },
@@ -119,7 +135,7 @@ export const lernkarten = {
         id: 'fehler',
         emoji: '⚠️',
         titel: 'Typische Fehler',
-        video: undefined,
+        videos: [],
         karten: [
           { text: '❌ Die 1 ist eine Primzahl. ✅ Nein, sie hat nur einen Teiler. Die erste Primzahl ist die 2.' },
           { text: '❌ Die Quersumme zeigt, ob eine Zahl durch 4 teilbar ist. ✅ Die Quersumme gilt nur für 3 und 9. Bei der 4 prüfst du die letzten zwei Ziffern.' },
@@ -131,12 +147,23 @@ export const lernkarten = {
         id: 'ueben',
         emoji: '🎯',
         titel: 'Dojo',
-        video: undefined,
+        videos: [],
+        minLoesungen: 8,
         karten: [
           { text: 'Ist 512 durch 4 teilbar?', loesung: 'Ja. Die letzten zwei Ziffern 12 sind durch 4 teilbar.' },
           { text: 'Primfaktorzerlegung von 30.', loesung: '30 = 2 · 15 = 2 · 3 · 5' },
           { text: 'Eine Glocke läutet alle 15 Minuten, eine andere alle 20. Wann läuten beide wieder gemeinsam?', loesung: 'kgV von 15 = 3 · 5 und 20 = 2² · 5: 2² · 3 · 5 = 4 · 15 = 60. Nach 60 Minuten.' },
           { text: 'ggT und kgV von 18 und 24.', loesung: '18 = 2 · 3², 24 = 2³ · 3. ggT = 2 · 3 = 6. kgV = 2³ · 3² = 72.' },
+          { text: 'Welche Zahlen zwischen 20 und 30 sind Primzahlen?', loesung: '23 und 29. Alle anderen haben mehr als zwei Teiler (z. B. 21 = 3 · 7, 27 = 3 · 9).' },
+          { text: 'Ist 7245 durch 9 teilbar?', loesung: 'Quersumme 7 + 2 + 4 + 5 = 18. 18 ist durch 9 teilbar, also ja.' },
+          { text: 'Ist 1236 durch 6 teilbar?', loesung: 'Gerade, also durch 2 teilbar. Quersumme 1 + 2 + 3 + 6 = 12, durch 3 teilbar. Also ja.' },
+          { text: 'Primfaktorzerlegung von 60.', loesung: '60 = 2 · 30 = 2 · 2 · 15 = 2 · 2 · 3 · 5 = 2² · 3 · 5' },
+          { text: 'ggT von 30 und 45.', loesung: '30 = 2 · 3 · 5, 45 = 3² · 5. Gemeinsame Faktoren mit kleinerer Hochzahl: 3 · 5 = 15.' },
+          { text: 'kgV von 6 und 8.', loesung: '6 = 2 · 3, 8 = 2³. Grössere Hochzahlen: 2³ · 3 = 24.' },
+          { text: 'Ein Rechteck 48 cm × 36 cm soll ohne Rest mit möglichst grossen Quadraten ausgelegt werden. Wie lang ist die Quadratseite?', loesung: 'Aufteilen, also ggT: 48 = 2⁴ · 3, 36 = 2² · 3². ggT = 2² · 3 = 12. Die Seite ist 12 cm (4 · 3 = 12 Quadrate).' },
+          { text: 'Anna besucht Oma alle 6 Tage, Ben alle 9 Tage. Heute sind beide da. Nach wie vielen Tagen treffen sie sich dort wieder?', loesung: 'Wieder gleichzeitig, also kgV: 6 = 2 · 3, 9 = 3². kgV = 2 · 3² = 18. Nach 18 Tagen.' },
+          { text: 'Kürze den Bruch 36/48 mit dem ggT.', loesung: 'ggT von 36 und 48 ist 12. 36 : 12 = 3 und 48 : 12 = 4. Ergebnis: 3/4.' },
+          { text: 'Jemand sagt: Der ggT von 8 und 12 ist 24. Was stimmt nicht?', loesung: '8 = 2³, 12 = 2² · 3. Der ggT ist 2² = 4. Die 24 ist das kgV.' },
         ],
         check: [],
       },

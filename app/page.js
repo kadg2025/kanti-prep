@@ -1959,10 +1959,6 @@ export default function Home() {
           dark={dark}
           isMobile={isMobile}
           onClose={() => setLernkarteTopic(null)}
-          onStartAufgaben={() => {
-            const q = questions.find(x => x.topic === lernkarteTopic);
-            if (q) { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setLernkarteTopic(null); }
-          }}
         />
       ) : (
         <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} onRemoveFehler={removeFehler} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />

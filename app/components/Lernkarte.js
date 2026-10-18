@@ -238,12 +238,10 @@ function CheckView({ step, dm, dark, isMobile, selected, onAnswer }) {
   );
 }
 
-function VideoCard({ video, dm, dark, isMobile }) {
+function VideoEmbed({ video, dm, dark }) {
   const [loaded, setLoaded] = useState(false);
   return (
-    <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '20px 18px' : '26px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-      <p style={{ margin: 0, fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text }}>🎬 Noch unklar? Schau dir das Video an</p>
-      {video.titel && <p style={{ margin: 0, fontSize: '13px', color: dm.text2 }}>{video.titel}</p>}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%', borderRadius: '12px', overflow: 'hidden', background: dm.bg3 }}>
         {loaded ? (
           <iframe
@@ -266,7 +264,17 @@ function VideoCard({ video, dm, dark, isMobile }) {
           </button>
         )}
       </div>
+      {video.titel && <p style={{ margin: 0, fontSize: '13px', color: dm.text2 }}>{video.titel}</p>}
       <a href={`https://www.youtube.com/watch?v=${video.youtubeId}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px', color: dm.text3 }}>Auf YouTube öffnen ↗</a>
+    </div>
+  );
+}
+
+function VideoCard({ videos, dm, dark, isMobile }) {
+  return (
+    <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '20px 18px' : '26px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
+      <p style={{ margin: 0, fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text }}>🎬 Noch unklar? Schau dir ein Video an</p>
+      {videos.map((video, i) => <VideoEmbed key={i} video={video} dm={dm} dark={dark} />)}
     </div>
   );
 }
@@ -297,11 +305,15 @@ function ProgressDots({ total, current, color, dm }) {
   );
 }
 
+function hasVideos(kachel) {
+  return Array.isArray(kachel.videos) && kachel.videos.length > 0;
+}
+
 function buildSteps(kachel) {
   const steps = [];
   kachel.karten.forEach((k, i) => steps.push({ type: 'karte', karteIdx: i, ...k }));
+  if (hasVideos(kachel)) steps.push({ type: 'video' });
   kachel.check.forEach((c, i) => steps.push({ type: 'check', checkIdx: i, ...c }));
-  if (kachel.video && kachel.video.youtubeId) steps.push({ type: 'video' });
   return steps;
 }
 
@@ -314,6 +326,7 @@ function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
   const step = steps[stepIdx];
   const isLast = stepIdx === steps.length - 1;
   const hasLoesungKarten = kachel.karten.some(k => k.loesung);
+  const checkBase = kachel.karten.length + (hasVideos(kachel) ? 1 : 0);
 
   function toggleLoesung(karteIdx) {
     setRevealed(prev => {
@@ -332,10 +345,12 @@ function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
     if (isLast) {
       let complete;
       if (kachel.check.length > 0) {
-        complete = kachel.check.every((_, i) => answers[kachel.karten.length + i] !== undefined);
+        complete = kachel.check.every((_, i) => answers[checkBase + i] !== undefined);
       } else if (hasLoesungKarten) {
         const loesungIdxs = kachel.karten.map((k, i) => (k.loesung ? i : -1)).filter(i => i >= 0);
-        complete = loesungIdxs.every(i => revealed.has(i));
+        const revealedCount = loesungIdxs.filter(i => revealed.has(i)).length;
+        const threshold = kachel.minLoesungen ?? loesungIdxs.length;
+        complete = revealedCount >= threshold;
       } else {
         complete = true;
       }
@@ -361,7 +376,7 @@ function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
         ) : step.type === 'check' ? (
           <CheckView step={step} dm={dm} dark={dark} isMobile={isMobile} selected={answers[stepIdx]} onAnswer={answerCheck} />
         ) : (
-          <VideoCard video={kachel.video} dm={dm} dark={dark} isMobile={isMobile} />
+          <VideoCard videos={kachel.videos} dm={dm} dark={dark} isMobile={isMobile} />
         )}
       </div>
       <div style={{ display: 'flex', gap: '10px', marginTop: '18px' }}>
@@ -374,7 +389,7 @@ function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
   );
 }
 
-function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen, onClose, onStartAufgaben }) {
+function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen, onClose }) {
   return (
     <div>
       <button onClick={onClose} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 14px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '9px', fontSize: '13px', fontWeight: '600', color: dm.text2, cursor: 'pointer', marginBottom: '18px' }}>← Zurück</button>
@@ -394,26 +409,18 @@ function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen
               style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', padding: isMobile ? '20px 10px' : '24px 14px', borderRadius: '16px', border: `2px solid ${isDone ? '#22c55e' : dm.border}`, background: dm.card, cursor: 'pointer' }}
             >
               {isDone && <span style={{ position: 'absolute', top: '8px', right: '10px', fontSize: '16px', color: '#22c55e', animation: pop ? 'pop 400ms ease' : 'none' }}>✓</span>}
+              {k.videos && k.videos.length > 0 && <span style={{ position: 'absolute', top: '8px', left: '10px', fontSize: '14px' }}>🎬</span>}
               <span style={{ width: '54px', height: '54px', borderRadius: '50%', background: color + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px' }}>{k.emoji}</span>
               <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text, textAlign: 'center' }}>{k.titel}</span>
             </button>
           );
         })}
       </div>
-      {onStartAufgaben && (
-        <button
-          onClick={onStartAufgaben}
-          className="kp-tile"
-          style={{ display: 'block', width: '100%', marginTop: '26px', padding: '14px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '15px', fontWeight: '700', cursor: 'pointer' }}
-        >
-          Jetzt Aufgaben üben →
-        </button>
-      )}
     </div>
   );
 }
 
-export default function LernkartePage({ topic, dm, dark, isMobile, onClose, onStartAufgaben }) {
+export default function LernkartePage({ topic, dm, dark, isMobile, onClose }) {
   const karte = lernkarten[topic];
   const { done, markDone } = useLernkarteDone();
   const [openKachelId, setOpenKachelId] = useState(null);
@@ -445,7 +452,7 @@ export default function LernkartePage({ topic, dm, dark, isMobile, onClose, onSt
         {kachel ? (
           <MiniLektion kachel={kachel} color={color} dm={dm} dark={dark} isMobile={isMobile} onClose={() => setOpenKachelId(null)} onFinish={() => finishKachel(kachel.id)} />
         ) : (
-          <KachelGrid karte={karte} dm={dm} dark={dark} isMobile={isMobile} done={done} justDone={justDone} beltPop={beltPop} onOpen={setOpenKachelId} onClose={onClose} onStartAufgaben={onStartAufgaben} />
+          <KachelGrid karte={karte} dm={dm} dark={dark} isMobile={isMobile} done={done} justDone={justDone} beltPop={beltPop} onOpen={setOpenKachelId} onClose={onClose} />
         )}
       </div>
       <style>{GLOBAL_KEYFRAMES}</style>
