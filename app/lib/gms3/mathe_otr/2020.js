@@ -23,6 +23,18 @@ b) p³·m·s⁴  und  p²·m³·s²`,
       { label: 'a) ggT=5, kgV=330 | b) ggT=p²ms², kgV=p³m³s⁴', correct: false },
       { label: 'a) ggT=15, kgV=330 | b) ggT=p³m³s⁴, kgV=p²ms²', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'ggT=15, kgV=330', correct: true },
+        { label: 'ggT=5, kgV=330', correct: false },
+        { label: 'ggT=15, kgV=30', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'ggT=p²ms², kgV=p³m³s⁴', correct: true },
+        { label: 'ggT=p³m³s⁴, kgV=p²ms²', correct: false },
+        { label: 'ggT=p²ms⁴, kgV=p³m³s²', correct: false },
+      ] },
+    ],
     solution: {
       intro: '',
       steps: [
@@ -112,6 +124,18 @@ ii) p = –3 und q = 5`,
       { label: 'i) x = 5/24 | ii) x = 17/7', correct: true },
       { label: 'i) x = 3/8 | ii) x = 28/5', correct: false },
       { label: 'i) x = –5/24 | ii) x = 7/17', correct: false },
+    ],
+    teile: [
+      { letter: 'i', options: [
+        { label: 'x = 5/24', correct: true },
+        { label: 'x = 3/8', correct: false },
+        { label: 'x = –5/24', correct: false },
+      ] },
+      { letter: 'ii', options: [
+        { label: 'x = 17/7', correct: true },
+        { label: 'x = 28/5', correct: false },
+        { label: 'x = 7/17', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
@@ -204,6 +228,28 @@ d) Zeichne einen Wahrscheinlichkeitsbaum und begründe, warum beide die gleichen
       { label: 'a) 12 Wörter | b) 1/12 | c) 6 Wörter | d) P(Michael)=P(Robin)=1/2', correct: true },
       { label: 'a) 24 Wörter | b) 1/24 | c) 12 Wörter | d) P(Michael)=1/4, P(Robin)=3/4', correct: false },
       { label: 'a) 6 Wörter | b) 1/6 | c) 4 Wörter | d) P(Michael)=2/3, P(Robin)=1/3', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '12 Wörter', correct: true },
+        { label: '24 Wörter', correct: false },
+        { label: '6 Wörter', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '1/12', correct: true },
+        { label: '1/24', correct: false },
+        { label: '1/6', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '6 Wörter', correct: true },
+        { label: '12 Wörter', correct: false },
+        { label: '4 Wörter', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: 'P(Michael)=P(Robin)=1/2', correct: true },
+        { label: 'P(Michael)=1/4, P(Robin)=3/4', correct: false },
+        { label: 'P(Michael)=2/3, P(Robin)=1/3', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
@@ -691,6 +737,18 @@ b) Welches ist die grösste Primzahl, die mit ihren drei nachfolgenden ganzen Za
       { label: 'a) x=22.5 | b) 19', correct: false },
       { label: 'a) x=30 | b) 29', correct: false },
     ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'x=15', correct: true },
+        { label: 'x=22.5', correct: false },
+        { label: 'x=30', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '23', correct: true },
+        { label: '19', correct: false },
+        { label: '29', correct: false },
+      ] },
+    ],
     solution: {
       intro: '',
       steps: [
@@ -779,6 +837,23 @@ c) ${frac('c', '2')} ÷ ${frac('c²', '4')} + ${frac('c', '2')} · 3 − c`,
       { label: 'a) a | b) −b/2 | c) (4+c²)/(2c)', correct: true },
       { label: 'a) 2a/3 | b) −b/2 | c) (4+c²)/(2c)', correct: false },
       { label: 'a) a | b) b/2 | c) (4−c²)/(2c)', correct: false },
+    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'a', correct: true },
+        { label: '2a/3', correct: false },
+        { label: 'a/3', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '−b/2', correct: true },
+        { label: 'b/2', correct: false },
+        { label: '−b²/2', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '(4+c²)/(2c)', correct: true },
+        { label: '(4−c²)/(2c)', correct: false },
+        { label: '(2+c²)/c', correct: false },
+      ] },
     ],
     solution: {
       intro: '',
