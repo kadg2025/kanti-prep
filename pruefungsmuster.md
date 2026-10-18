@@ -80,14 +80,30 @@ Punkte pro Teilaufgabe aus dem PDF UND bereits geprüfte Antworten
 jetzt 4 Optionen (1 richtig + 3 typische Schülerfehler als neue Distraktoren),
 gruppiert nach der echten Aufgaben-Struktur aus dem PDF.
 
-**2023–2025 NICHT umgebaut** — bewusste Entscheidung, keine Zeitnot-Hektik:
-diese drei Jahre haben keine Einzelpunkte im PDF (nur Aufgabe-Totale) UND
-mehr Teilaufgaben als 2020–2022, d. h. mehr Annahmen UND mehr neue
-Distraktoren pro Jahr nötig gewesen wären. Lieber 3 Jahre sauber fertig als
-6 Jahre hastig. Der Jahres-Wähler in der App zeigt automatisch nur die
-Jahre an, für die eine Datei unter `app/lib/gms3/mathe_otr/pruefung/`
-existiert — ein weiteres Jahr lässt sich später einfach ergänzen, ohne
-Code-Änderungen am Prüfungsmotor.
+**2023–2025 jetzt auch umgebaut.** Ursprünglich bewusst zurückgestellt
+(siehe Begründung unten), auf expliziten Wunsch aber mit einer einfachen
+Punkte-Regel nachgezogen:
+
+> **Punkte-Regel für Jahre ohne Einzelpunkte im PDF (2023–2025):**
+> Gesamtpunkte der Aufgabe (aus dem PDF) ÷ Anzahl Teilaufgaben, **abgerundet**
+> — die **letzte** Teilaufgabe bekommt den Rest. Beispiel: 7 Punkte, 2 Teile
+> (a, b) → a=3, b=4. Beispiel: 10 Punkte, 3 Teile (a, b, c) → a=3, b=3, c=4.
+> Wird eine Teilaufgabe weggelassen (siehe Zeichen-/Konstruktionsaufgaben
+> unten), zählt sie für die Division trotzdem als eigener Teil — ihre
+> Punkte fallen beim Weglassen einfach aus dem Total (z. B. 2024 Aufgabe 3:
+> 5 Punkte auf 3 Teile a,b,c verteilt zu 1,1,3 — Teil c weggelassen, Rest
+> a+b=2 Punkte zählen; 2025 Aufgabe 4: 12 Punkte auf 6 Teile a,b1,b2,b3,c1,c2
+> zu je 2 verteilt — Teil a weggelassen, Rest 10 Punkte zählen).
+
+Ursprüngliche Zurückstellungs-Begründung (nicht mehr aktuell, nur noch zur
+Nachvollziehbarkeit): diese drei Jahre haben keine Einzelpunkte im PDF
+(nur Aufgabe-Totale) UND mehr Teilaufgaben als 2020–2022, d. h. mehr
+Annahmen UND mehr neue Distraktoren pro Jahr nötig gewesen wären. Mit der
+Punkte-Regel oben ist diese Unsicherheit jetzt klar dokumentiert statt
+implizit. Der Jahres-Wähler in der App zeigt automatisch nur die Jahre an,
+für die eine Datei unter `app/lib/gms3/mathe_otr/pruefung/` existiert — ein
+weiteres Jahr lässt sich später einfach ergänzen, ohne Code-Änderungen am
+Prüfungsmotor.
 
 **Modus B:** 1 neue Prüfung (`neu1.js`, 6 Aufgaben, 52 Punkte), überarbeitet
 mit AP 2024 als explizitem Vorbild für Schwierigkeit/Aufbau — inklusive
