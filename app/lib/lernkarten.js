@@ -169,4 +169,139 @@ export const lernkarten = {
       },
     ],
   },
+  'Terme & Klammern': {
+    titel: 'Terme & Klammern',
+    kacheln: [
+      {
+        id: 'vorzeichen', emoji: '➖', titel: 'Vorzeichen & Klammern', videos: [],
+        karten: [
+          { text: 'Vorzeichen sind die Gegner im Dojo. Wer sie im Griff hat, rechnet fast fehlerfrei. Die Grundregel: Gleiche Zeichen ergeben Plus, verschiedene Zeichen ergeben Minus.' },
+          { text: 'Tippe die Regeln an.', visual: 'chips', chips: [
+            { n: '(+)·(+)', regel: 'Plus. Beispiel: 3 · 4 = 12.' },
+            { n: '(−)·(−)', regel: 'Plus. Beispiel: (−3) · (−4) = 12.' },
+            { n: '(−)·(+)', regel: 'Minus. Beispiel: (−3) · 4 = −12.' },
+            { n: '−( … )', regel: 'Minus vor einer Klammer dreht alle Zeichen darin um. Beispiel: 10 − (3 − 5) = 10 − 3 + 5 = 12.' },
+          ] },
+          { text: 'Reihenfolge: Zuerst die Klammern, dann Punkt vor Strich (Mal und Geteilt vor Plus und Minus). Beispiel: 2 + 3 · 4 = 14, aber (2 + 3) · 4 = 20.' },
+          { text: 'Klammern setzen heisst: Du musst die Reihenfolge so ändern, dass das Ergebnis stimmt. Beispiel: 3 + 4 · 5 soll 35 ergeben. Dann setzt du (3 + 4) · 5 = 7 · 5 = 35.' },
+        ],
+        check: [
+          { frage: 'Was ist (−6) · (−2)?', optionen: ['−12', '12', '−8', '8'], richtig: 1, erklaerung: 'Minus mal Minus ergibt Plus: 6 · 2 = 12.' },
+          { frage: 'Was ist 8 − (5 − 9)?', optionen: ['4', '12', '−6', '22'], richtig: 1, erklaerung: 'Minus vor der Klammer dreht die Zeichen um: 8 − 5 + 9 = 12.' },
+          { frage: 'Wo setzt du Klammern, damit 2 + 3 · 4 = 20 stimmt?', optionen: ['2 + (3 · 4)', '(2 + 3) · 4', '2 + 3 · (4)', 'Das geht nicht'], richtig: 1, erklaerung: '(2 + 3) · 4 = 5 · 4 = 20. Bei den anderen Varianten kommt 14 heraus.' },
+        ],
+      },
+      {
+        id: 'einsetzen', emoji: '🔤', titel: 'Einsetzen & Zusammenfassen', videos: [],
+        karten: [
+          { text: 'Ein Term ist eine Rechenvorschrift mit einem Platzhalter, zum Beispiel 3a + 2. Einsetzen heisst: Du ersetzt den Platzhalter durch eine Zahl. Für a = 4 gilt 3 · 4 + 2 = 14.' },
+          { text: 'Profi-Tipp: Setze die Zahl immer in Klammern ein. Für a = −2 ergibt 3a + 2 den Wert 3 · (−2) + 2 = −6 + 2 = −4. Ohne Klammern passieren Vorzeichenfehler.' },
+          { text: 'Zusammenfassen darfst du nur gleichartige Terme, also gleicher Buchstabe mit gleicher Hochzahl. 3a + 5a = 8a. Aber 3a + 4b bleibt stehen, und 2a + 3a² auch, denn a und a² sind verschieden.' },
+          { text: 'Ein einzelnes a hat die Zahl 1 vor sich. Darum gilt 7x − 3x + x = 5x. Terme ordnen geht so: Erst jeden Wert ausrechnen, dann der Grösse nach sortieren.' },
+        ],
+        check: [
+          { frage: 'Welchen Wert hat 4x − 3 für x = −2?', optionen: ['−5', '−11', '5', '11'], richtig: 1, erklaerung: '4 · (−2) − 3 = −8 − 3 = −11.' },
+          { frage: 'Fasse zusammen: 5a + 3b − 2a + b', optionen: ['3a + 4b', '7a + 4b', '3a + 2b', '8ab'], richtig: 0, erklaerung: 'a-Terme: 5a − 2a = 3a. b-Terme: 3b + b = 4b.' },
+          { frage: 'Fasse zusammen: 3x + 2x²', optionen: ['5x²', 'Geht nicht, die Terme sind nicht gleichartig', '5x³', '6x³'], richtig: 1, erklaerung: 'x und x² sind verschieden, wie Äpfel und Birnen.' },
+        ],
+      },
+      {
+        id: 'potenzen', emoji: '⚡', titel: 'Potenzen', videos: [],
+        karten: [
+          { text: 'Eine Potenz ist eine Abkürzung fürs Malnehmen: a³ = a · a · a. Die Hochzahl sagt, wie oft die Basis mit sich selbst multipliziert wird. Zum Beispiel 2⁴ = 2 · 2 · 2 · 2 = 16.' },
+          { text: 'Tippe die Potenzregeln an.', visual: 'chips', chips: [
+            { n: 'a³ · a⁴', regel: 'Gleiche Basis, malnehmen: Hochzahlen addieren. a³ · a⁴ = a⁷.' },
+            { n: 'a⁵ : a²', regel: 'Gleiche Basis, teilen: Hochzahlen subtrahieren. a⁵ : a² = a³.' },
+            { n: '(a²)³', regel: 'Potenz hoch Zahl: Hochzahlen multiplizieren. (a²)³ = a⁶.' },
+            { n: '(5a)²', regel: 'Alles in der Klammer wird quadriert: (5a)² = 25a², nicht 5a².' },
+          ] },
+          { text: 'Achtung bei Minus: (−3)² = 9, aber −3² = −9. Im zweiten Fall wird nur die 3 quadriert, das Minus bleibt davor.' },
+          { text: 'Zehnerpotenzen: 10³ = 1000 und 10⁻² = 0.01. Die wissenschaftliche Schreibweise ist eine Zahl zwischen 1 und 10 mal eine Zehnerpotenz. Beispiele: 4 500 000 = 4.5 · 10⁶ und 0.00032 = 3.2 · 10⁻⁴.' },
+        ],
+        check: [
+          { frage: 'Was ist a³ · a⁴?', optionen: ['a⁷', 'a¹²', '2a⁷', 'a⁶'], richtig: 0, erklaerung: 'Gleiche Basis, Hochzahlen addieren: 3 + 4 = 7.' },
+          { frage: 'Was ist (5a)²?', optionen: ['25a²', '5a²', '10a', '25a'], richtig: 0, erklaerung: '(5a)² = 5a · 5a = 25a². Die 5 wird mit quadriert.' },
+          { frage: 'Welche Schreibweise ist die wissenschaftliche für 4 500 000?', optionen: ['4.5 · 10⁵', '4.5 · 10⁶', '45 · 10⁶', '4.5 · 10⁷'], richtig: 1, erklaerung: '4.5 · 1 000 000 = 4 500 000, und 1 000 000 = 10⁶.' },
+          { frage: 'Was ist −3²?', optionen: ['9', '−9', '6', '−6'], richtig: 1, erklaerung: 'Nur die 3 wird quadriert: −(3 · 3) = −9.' },
+        ],
+      },
+      {
+        id: 'klammern', emoji: '🧮', titel: 'Ausmultiplizieren & Ausklammern', videos: [],
+        karten: [
+          { text: 'Ausmultiplizieren: Der Faktor vor der Klammer wird mit jedem Summanden in der Klammer multipliziert. 3(a + 4) = 3a + 12. Und 2a(3a − 5) = 6a² − 10a.' },
+          { text: 'Steht ein Minus vor der Klammer, dreht es alle Zeichen um: −(x − 2) = −x + 2. Denk an −1 als Faktor vor der Klammer.' },
+          { text: 'Ausklammern ist das Rückwärts-Spiel: Du suchst den grössten gemeinsamen Faktor und ziehst ihn vor die Klammer. 6a + 9 = 3(2a + 3). Hier hilft dir der ggT aus dem ersten Thema!' },
+          { text: 'Bei Buchstaben nimmst du die kleinste Hochzahl. Beispiel: 10a²b + 15a³b³. Zahlen: ggT(10, 15) = 5. a: kleinste Hochzahl 2. b: kleinste Hochzahl 1. Also 5a²b · (2 + 3ab²).' },
+          { text: 'Probe: Multipliziere dein Ergebnis wieder aus. Du musst den ursprünglichen Term erhalten. 5a²b · 2 = 10a²b und 5a²b · 3ab² = 15a³b³. Passt.' },
+        ],
+        check: [
+          { frage: 'Multipliziere aus: 3(2x − 5)', optionen: ['6x − 5', '6x − 15', '5x − 15', '6x + 15'], richtig: 1, erklaerung: '3 · 2x = 6x und 3 · (−5) = −15. Beide Summanden werden mit 3 multipliziert.' },
+          { frage: 'Klammere den grössten gemeinsamen Faktor aus: 12a + 18', optionen: ['6(2a + 3)', '3(4a + 6)', '6(2a + 18)', '12(a + 18)'], richtig: 0, erklaerung: 'ggT(12, 18) = 6. Bei 3(4a + 6) steckt noch ein 2 in der Klammer, es ist also nicht vollständig ausgeklammert.' },
+          { frage: 'Was ist −(x − 2)?', optionen: ['−x − 2', '−x + 2', 'x − 2', 'x + 2'], richtig: 1, erklaerung: 'Das Minus dreht beide Zeichen um: aus x wird −x und aus −2 wird +2.' },
+        ],
+      },
+      {
+        id: 'bruch1', emoji: '🍰', titel: 'Bruchterme: Kürzen & Multiplizieren', videos: [],
+        karten: [
+          { text: 'Ein Bruchterm ist ein Bruch mit Buchstaben, zum Beispiel 6a/9. Kürzen funktioniert wie bei Zahlen: Zähler und Nenner durch denselben Faktor teilen. 6a/9 = 2a/3.' },
+          { text: 'Mit mehreren Buchstaben kürzt du jeden einzeln. Beispiel: 12a²b / 18ab². Zahlen: 12/18 = 2/3. a²/a = a. b/b² = 1/b. Ergebnis: 2a / 3b.' },
+          { text: 'Goldene Regel: Kürzen darfst du nur Faktoren, nie Summanden. (a + 3)/3 ist nicht a. Aber (2a + 4)/(a + 2) geht: Oben 2 ausklammern, 2(a + 2)/(a + 2) = 2. Ausklammern hilft also beim Kürzen!' },
+          { text: 'Multiplizieren: Zähler mal Zähler, Nenner mal Nenner. Vorher kürzen spart Arbeit. 2a/3 · 9/(4a²): 9 und 3 geben 3, 2 und 4 geben 1/2, a und a² geben 1/a. Ergebnis: 3/(2a).' },
+        ],
+        check: [
+          { frage: 'Kürze 12a/18.', optionen: ['2a/3', '2/3', 'Man kann nicht kürzen', 'a/6'], richtig: 0, erklaerung: 'Zahlen durch 6 teilen: 12/18 = 2/3, das a bleibt oben.' },
+          { frage: 'Kürze (4a + 8)/(a + 2).', optionen: ['4', '4a', '4a + 4', 'Man kann nichts kürzen'], richtig: 0, erklaerung: 'Oben 4 ausklammern: 4(a + 2)/(a + 2) = 4.' },
+          { frage: 'Was ist 3/a · a²/6?', optionen: ['a/2', 'a²/2', '1/2', '3a/2'], richtig: 0, erklaerung: '3a²/(6a): 3/6 = 1/2 und a²/a = a. Ergebnis a/2.' },
+        ],
+      },
+      {
+        id: 'bruch2', emoji: '🍕', titel: 'Bruchterme: Dividieren & Addieren', videos: [],
+        karten: [
+          { text: 'Dividieren: Teilen durch einen Bruch heisst malnehmen mit dem Kehrbruch (Zähler und Nenner vertauschen). (2a/5) : (4/15) = 2a/5 · 15/4 = 30a/20 = 3a/2.' },
+          { text: 'Manchmal kürzt sich der Buchstabe ganz weg: (a/3) : (a/6) = a/3 · 6/a = 6/3 = 2.' },
+          { text: 'Addieren und Subtrahieren: Brüche brauchen einen gemeinsamen Nenner, den Hauptnenner. Das ist das kgV aus dem ersten Thema! a/3 + a/4 = 4a/12 + 3a/12 = 7a/12.' },
+          { text: 'Mit zwei Buchstaben im Nenner multiplizierst du kreuzweise: 1/a + 1/b = b/(ab) + a/(ab) = (a + b)/(ab). Nie die Nenner addieren: 1/3 + 1/4 ist nicht 2/7.' },
+          { text: 'Falle beim Minus: Setze den ganzen Zähler in Klammern. a/2 − (a − 1)/3 = 3a/6 − 2(a − 1)/6 = (3a − 2a + 2)/6 = (a + 2)/6.' },
+        ],
+        check: [
+          { frage: 'Was ist (a/3) : (a/6)?', optionen: ['2', '1/2', 'a/18', 'a²/18'], richtig: 0, erklaerung: 'Kehrbruch: a/3 · 6/a = 6a/(3a) = 2.' },
+          { frage: 'Was ist a/3 + a/4?', optionen: ['7a/12', '2a/7', 'a/12', '2a/12'], richtig: 0, erklaerung: 'Hauptnenner 12: 4a/12 + 3a/12 = 7a/12.' },
+          { frage: 'Was ist 1/a + 1/b?', optionen: ['(a + b)/(ab)', '2/(a + b)', '1/(ab)', '2/(ab)'], richtig: 0, erklaerung: 'Hauptnenner ab: b/(ab) + a/(ab) = (a + b)/(ab).' },
+        ],
+      },
+      {
+        id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
+        karten: [
+          { text: '❌ −3² = 9. ✅ −3² = −9, denn nur die 3 wird quadriert. Erst (−3)² ergibt 9.' },
+          { text: '❌ 2a + 3a = 5a². ✅ 2a + 3a = 5a. Beim Addieren bleibt der Buchstabe gleich, nur die Zahlen werden addiert.' },
+          { text: '❌ (5a)² = 5a². ✅ (5a)² = 25a². Die 5 wird mit quadriert.' },
+          { text: '❌ a³ · a² = a⁶. ✅ a³ · a² = a⁵. Beim Malnehmen werden die Hochzahlen addiert, nicht multipliziert.' },
+          { text: '❌ (a + 3)/3 = a. ✅ Nur Faktoren dürfen gekürzt werden, nicht Summanden. Richtig: (a + 3)/3 = a/3 + 1.' },
+          { text: '❌ 5 − (x − 2) = 5 − x − 2. ✅ 5 − (x − 2) = 5 − x + 2 = 7 − x. Das Minus dreht beide Zeichen um.' },
+          { text: '❌ 1/3 + 1/4 = 2/7. ✅ Brüche nie über die Nenner addieren. Hauptnenner 12: 4/12 + 3/12 = 7/12.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        karten: [
+          { text: 'Berechne: 12 − (7 − 10)', loesung: 'Klammer zuerst: 7 − 10 = −3. Dann 12 − (−3) = 12 + 3 = 15.' },
+          { text: 'Welchen Wert hat 3a² − 2a für a = −2?', loesung: '3 · (−2)² − 2 · (−2) = 3 · 4 + 4 = 12 + 4 = 16.' },
+          { text: 'Fasse zusammen: 7x − 3y + 2x + 5y', loesung: 'x-Terme: 7x + 2x = 9x. y-Terme: −3y + 5y = 2y. Ergebnis: 9x + 2y.' },
+          { text: 'Ordne die Terme 2a + 1, a² und 3a − 1 für a = 3 der Grösse nach, kleinster zuerst.', loesung: 'Für a = 3: 2a + 1 = 7, a² = 9, 3a − 1 = 8. Reihenfolge: 2a + 1, 3a − 1, a².' },
+          { text: 'Vereinfache: a⁵ · a³ : a²', loesung: 'Zuerst a⁵ · a³ = a⁸, dann a⁸ : a² = a⁶.' },
+          { text: 'Schreibe 0.00032 in wissenschaftlicher Schreibweise.', loesung: '0.00032 = 3.2 · 10⁻⁴. Das Komma wandert um 4 Stellen nach rechts.' },
+          { text: 'Multipliziere aus: 2a(3a − 5)', loesung: '2a · 3a = 6a² und 2a · (−5) = −10a. Ergebnis: 6a² − 10a.' },
+          { text: 'Klammere aus: 10a²b + 15a³b³', loesung: 'ggT(10, 15) = 5, a²: kleinste Hochzahl 2, b: kleinste Hochzahl 1. Ergebnis: 5a²b(2 + 3ab²).' },
+          { text: 'Klammere aus: 4a²b + 6ab²', loesung: 'Zahlen: ggT(4, 6) = 2. a: Hochzahl 1, b: Hochzahl 1. Ergebnis: 2ab(2a + 3b). Probe: 2ab · 2a = 4a²b und 2ab · 3b = 6ab².' },
+          { text: 'Kürze: 12a²b / 18ab²', loesung: '12/18 = 2/3, a²/a = a, b/b² = 1/b. Ergebnis: 2a / 3b.' },
+          { text: 'Kürze: (3a + 6)/(a + 2)', loesung: 'Oben 3 ausklammern: 3(a + 2)/(a + 2) = 3.' },
+          { text: 'Multipliziere: 2a/3 · 9/(4a²)', loesung: 'Zähler: 2a · 9 = 18a. Nenner: 3 · 4a² = 12a². 18a/(12a²) = 3/(2a).' },
+          { text: 'Berechne: (2a/5) : (4/15)', loesung: 'Kehrbruch: 2a/5 · 15/4 = 30a/20 = 3a/2.' },
+          { text: 'Fasse zusammen: a/2 − (a − 1)/3', loesung: 'Hauptnenner 6: 3a/6 − 2(a − 1)/6 = (3a − 2a + 2)/6 = (a + 2)/6.' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
