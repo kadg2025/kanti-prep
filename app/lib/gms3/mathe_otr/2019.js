@@ -138,6 +138,34 @@ ${frac('9x – 6', '7x + 6')} = ${frac('3', '2')}`,
 
     ],
 
+    teile: [
+
+      { letter: 'a', options: [
+        { label: 'x=2', correct: true },
+        { label: 'x=3', correct: false },
+        { label: 'x=5', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: '∅', correct: true },
+        { label: 'x=2', correct: false },
+        { label: 'x=0', correct: false },
+      ] },
+
+      { letter: 'c', options: [
+        { label: 'x=0', correct: true },
+        { label: 'x=1', correct: false },
+        { label: 'x=2', correct: false },
+      ] },
+
+      { letter: 'd', options: [
+        { label: 'x=-10', correct: true },
+        { label: 'x=6', correct: false },
+        { label: 'x=2', correct: false },
+      ] },
+
+    ],
+
     solution: {
 
       intro: '',
@@ -324,6 +352,22 @@ b) ${sqrt('(3y)² − 5y²')}`,
 
     ],
 
+    teile: [
+
+      { letter: 'a', options: [
+        { label: '3a', correct: true },
+        { label: '3a²', correct: false },
+        { label: '9a', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: '2y', correct: true },
+        { label: '2y²', correct: false },
+        { label: '4y', correct: false },
+      ] },
+
+    ],
+
     solution: {
 
       intro: '',
@@ -449,6 +493,28 @@ c) Multipliziere das Dreifache der Summe von 2ab und 5b² mit 6.`,
       { label: 'a) 9a² | b) 144a⁸b² | c) 36ab + 90b²', correct: false },
 
       { label: 'a) 18a² | b) 12a⁴b | c) 30ab + 90b²', correct: false },
+
+    ],
+
+    teile: [
+
+      { letter: 'a', options: [
+        { label: '18a²', correct: true },
+        { label: '9a²', correct: false },
+        { label: '36a²', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: '144a⁸b²', correct: true },
+        { label: '12a⁴b', correct: false },
+        { label: '144a⁴b²', correct: false },
+      ] },
+
+      { letter: 'c', options: [
+        { label: '36ab + 90b²', correct: true },
+        { label: '30ab + 90b²', correct: false },
+        { label: '36ab + 5b²', correct: false },
+      ] },
 
     ],
 
@@ -597,6 +663,28 @@ c) Berechne als Bruch: Wahrscheinlichkeit bei viermaligem Drehen für die Kombin
       { label: 'a) ca. 808 Mal | b) 1/27 | c) 1/81', correct: false },
 
       { label: 'a) ca. 203 Mal | b) 1/64 | c) 1/256', correct: false },
+
+    ],
+
+    teile: [
+
+      { letter: 'a', options: [
+        { label: 'ca. 332 Mal', correct: true },
+        { label: 'ca. 808 Mal', correct: false },
+        { label: 'ca. 203 Mal', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: '1/512', correct: true },
+        { label: '1/27', correct: false },
+        { label: '1/64', correct: false },
+      ] },
+
+      { letter: 'c', options: [
+        { label: '1/1024', correct: true },
+        { label: '1/81', correct: false },
+        { label: '1/256', correct: false },
+      ] },
 
     ],
 
