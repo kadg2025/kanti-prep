@@ -227,14 +227,23 @@ function pickHeuteUeben({ pool, solved, fehler, wdh, date }) {
   const result = [];
   const byTopicFree = (arr) => arr.filter(q => !used.has(q.topic));
   const take = (q) => { if (q) { used.add(q.topic); result.push(q); } return q; };
+  // Geprüfte Aufgaben (verified:true) klar bevorzugen — ungeprüfte nur als Rückfalloption,
+  // wenn sonst nichts zum Thema/Slot passt.
+  const preferVerified = (arr) => {
+    const verified = arr.filter(q => q.verified);
+    return verified.length > 0 ? verified : arr;
+  };
 
   const everSolved = pool.filter(q => solved.has(q.id));
   const everSeen = new Set([...solved, ...fehler]);
   const fehlerQs = fehler.map(id => pool.find(q => q.id === id)).filter(Boolean);
 
-  // Ohne jeden Verlauf: 5 verschiedene Themen, eher leicht (kurze Fragen zuerst).
+  // Ohne jeden Verlauf: 5 verschiedene Themen, eher leicht (kurze Fragen zuerst), geprüfte zuerst.
   if (everSolved.length === 0 && fehlerQs.length === 0) {
-    const sorted = [...pool].sort((a, b) => a.questionText.length - b.questionText.length);
+    const sorted = [...pool].sort((a, b) => {
+      if (!!b.verified !== !!a.verified) return (b.verified ? 1 : 0) - (a.verified ? 1 : 0);
+      return a.questionText.length - b.questionText.length;
+    });
     for (const q of sorted) {
       if (result.length >= 5) break;
       if (!used.has(q.topic)) take(q);
@@ -243,29 +252,29 @@ function pickHeuteUeben({ pool, solved, fehler, wdh, date }) {
   }
 
   // 1) Leicht zum Einstieg: bevorzugt schon Gelöstes (vertraut = fühlt sich leicht an).
-  take(weightedPick(byTopicFree(everSolved)) || weightedPick(byTopicFree(pool)));
+  take(weightedPick(preferVerified(byTopicFree(everSolved))) || weightedPick(preferVerified(byTopicFree(pool))));
 
   // 2) Aus der Fehler-Kiste.
-  take(weightedPick(byTopicFree(fehlerQs)) || weightedPick(byTopicFree(pool.filter(q => !everSeen.has(q.id)))));
+  take(weightedPick(preferVerified(byTopicFree(fehlerQs))) || weightedPick(preferVerified(byTopicFree(pool.filter(q => !everSeen.has(q.id))))));
 
   // 3) Schwächstes Thema (die meisten offenen Fehler-Kiste-Einträge).
   const topicWrongCount = {};
   fehlerQs.forEach(q => { topicWrongCount[q.topic] = (topicWrongCount[q.topic] || 0) + 1; });
   const weakTopics = Object.keys(topicWrongCount).filter(t => !used.has(t)).sort((a, b) => topicWrongCount[b] - topicWrongCount[a]);
   if (weakTopics.length > 0) {
-    take(weightedPick(pool.filter(q => q.topic === weakTopics[0])));
+    take(weightedPick(preferVerified(pool.filter(q => q.topic === weakTopics[0]))));
   } else {
-    take(weightedPick(byTopicFree(pool)));
+    take(weightedPick(preferVerified(byTopicFree(pool))));
   }
 
   // 4) Brandneu, nie gesehen.
   const neverSeen = byTopicFree(pool.filter(q => !everSeen.has(q.id)));
-  take(weightedPick(neverSeen) || weightedPick(byTopicFree(pool)));
+  take(weightedPick(preferVerified(neverSeen)) || weightedPick(preferVerified(byTopicFree(pool))));
 
-  // 5) Fällige Wiederholung, sonst irgendeine gelöste — eher leicht (kurzer Text zuerst).
+  // 5) Fällige Wiederholung, sonst irgendeine gelöste — eher leicht (kurzer Text zuerst), geprüfte zuerst.
   const due = byTopicFree(everSolved).filter(q => !wdh[q.id] || wdh[q.id].due <= date);
-  const dueSorted = [...due].sort((a, b) => a.questionText.length - b.questionText.length);
-  take(dueSorted[0] || weightedPick(byTopicFree(everSolved)) || weightedPick(byTopicFree(pool)));
+  const dueSorted = [...preferVerified(due)].sort((a, b) => a.questionText.length - b.questionText.length);
+  take(dueSorted[0] || weightedPick(preferVerified(byTopicFree(everSolved))) || weightedPick(preferVerified(byTopicFree(pool))));
 
   return result.filter(Boolean).slice(0, 5);
 }
@@ -1077,7 +1086,7 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
   const deutschGMS2 = questions.filter(q => q.subject === 'Deutsch' && q.group === 'Alte Prüfungen' && q.id.startsWith('D2_')).length;
 
   return (
-    <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #f8f7ff 0%, #fff 100%)', padding: isMobile ? '24px 16px 80px' : '40px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+    <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #f8f7ff 0%, #fff 100%)', padding: isMobile ? '24px 16px 32px' : '40px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
       <div style={{ textAlign: 'center', maxWidth: '800px', width: '100%' }}>
 
         {/* Header */}
@@ -1147,13 +1156,19 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
         </div>
 
         {/* Heute üben — eigener grosser Knopf */}
-        <button onClick={() => onSelect('heuteueben')} style={{ width: '100%', padding: '20px', marginBottom: '12px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', border: 'none', borderRadius: '18px', fontSize: '16px', fontWeight: '800', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', boxShadow: '0 4px 20px rgba(83,74,183,0.25)' }}>
+        <button onClick={() => onSelect('heuteueben')} style={{ width: '100%', padding: '16px 20px', marginBottom: '12px', background: 'linear-gradient(135deg, #534AB7 0%, #7c6ee0 100%)', border: 'none', borderRadius: '18px', fontSize: '16px', fontWeight: '800', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', boxShadow: '0 4px 20px rgba(83,74,183,0.25)' }}>
           <span style={{ fontSize: '26px' }}>🎯</span>
-          <span>Heute üben — 5 Aufgaben (Mathe ohne TR)</span>
+          <span style={{ textAlign: 'left' }}>
+            <span style={{ display: 'block' }}>Heute üben</span>
+            <span style={{ display: 'block', fontSize: '11px', fontWeight: '500', opacity: 0.85 }}>5 Aufgaben · ca. 10 Min</span>
+          </span>
         </button>
-        <button onClick={() => onSelect('probepruefung')} style={{ width: '100%', padding: '16px', marginBottom: '18px', background: '#fff', border: '2px solid #534AB7', borderRadius: '18px', fontSize: '14px', fontWeight: '700', color: '#534AB7', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+        <button onClick={() => onSelect('probepruefung')} style={{ width: '100%', padding: '12px 20px', marginBottom: '18px', background: '#fff', border: '2px solid #534AB7', borderRadius: '18px', fontSize: '14px', fontWeight: '700', color: '#534AB7', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
           <span style={{ fontSize: '20px' }}>📝</span>
-          <span>Neue Probeprüfung (Mathe ohne TR)</span>
+          <span style={{ textAlign: 'left' }}>
+            <span style={{ display: 'block' }}>Probeprüfung</span>
+            <span style={{ display: 'block', fontSize: '11px', fontWeight: '500', opacity: 0.75 }}>45 Min · wie echt</span>
+          </span>
         </button>
 
         {/* Mind-Blow + Links — DANACH */}
@@ -1185,31 +1200,46 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
           </div>
         )}
 
-        {/* Floating Feedback */}
-        <div style={{
-          position: 'fixed',
-          top: isMobile ? 'auto' : '20px',
-          bottom: isMobile ? '16px' : 'auto',
-          right: isMobile ? '16px' : '20px',
-          zIndex: 1000,
-          background: '#fff',
-          border: '1px solid #e5e3f0',
-          borderRadius: '14px',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
-          padding: isMobile ? '8px 12px' : '12px 16px',
-          maxWidth: 'min(90vw, 380px)',
-        }}>
-          {!isMobile && (
+        {/* Feedback: auf dem Handy im normalen Layout (nicht schwebend, sonst überdeckt
+            es Knöpfe weiter oben), auf Desktop weiterhin schwebend unten rechts. */}
+        {isMobile ? (
+          <div style={{
+            marginTop: '16px',
+            background: '#fff',
+            border: '1px solid #e5e3f0',
+            borderRadius: '14px',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.08)',
+            padding: '8px 12px',
+          }}>
+            <FeedbackButton
+              questionId="ALLGEMEIN_STARTSEITE"
+              label="💬 Sag's uns"
+              placeholder="Was ist gut? Was nervt? Was fehlt? Raus damit 🙂"
+            />
+          </div>
+        ) : (
+          <div style={{
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            zIndex: 1000,
+            background: '#fff',
+            border: '1px solid #e5e3f0',
+            borderRadius: '14px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+            padding: '12px 16px',
+            maxWidth: 'min(90vw, 380px)',
+          }}>
             <p style={{ fontSize: '14px', color: '#666', margin: '0 0 8px', fontWeight: '600' }}>
               🗣️ Deine Meinung zählt!
             </p>
-          )}
-          <FeedbackButton
-            questionId="ALLGEMEIN_STARTSEITE"
-            label="💬 Sag's uns"
-            placeholder="Was ist gut? Was nervt? Was fehlt? Raus damit 🙂"
-          />
-        </div>
+            <FeedbackButton
+              questionId="ALLGEMEIN_STARTSEITE"
+              label="💬 Sag's uns"
+              placeholder="Was ist gut? Was nervt? Was fehlt? Raus damit 🙂"
+            />
+          </div>
+        )}
 
       </div>
     </main>

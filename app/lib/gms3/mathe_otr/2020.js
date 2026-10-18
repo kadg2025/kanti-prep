@@ -299,7 +299,6 @@ P(Robin) = P(AN) + P(NA) = 1/4 + 1/4 = 1/2
   {
     id: 'M1_2020_OTR_WINKEL_3a',
     year: 2020,
-    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
@@ -373,7 +372,6 @@ Da die genaue Figur aus dem PDF benötigt wird, empfehlen wir die offizielle Sch
   {
     id: 'M1_2020_OTR_WINKEL_3b',
     year: 2020,
-    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',

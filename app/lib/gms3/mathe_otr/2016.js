@@ -745,7 +745,6 @@ Eigene rote Farbe + übertragene rote Farbe
   {
     id: 'M3_2016_OTR_WINKEL_7a',
     year: 2016,
-    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
@@ -814,7 +813,6 @@ Mit dem Satz vom Mittelpunktswinkel, gleichschenkligen Radien-Dreiecken und der 
   {
     id: 'M3_2016_OTR_WINKEL_7b',
     year: 2016,
-    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',

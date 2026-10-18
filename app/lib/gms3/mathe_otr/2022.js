@@ -463,7 +463,6 @@ Prozentuale Verbilligung:
   {
     id: 'M1_2022_OTR_WINKEL_6',
     year: 2022,
-    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',

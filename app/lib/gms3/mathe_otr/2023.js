@@ -505,6 +505,7 @@ Vergleiche die Balkenhöhen mit den absoluten Häufigkeiten.`,
   {
     id: 'M1_2023_OTR_GEOM_6a',
     year: 2023,
+    verified: true,
     subject: 'Mathe',
     exam: 'Mathe ohne TR',
     group: 'Alte Prüfungen',
