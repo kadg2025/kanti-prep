@@ -909,9 +909,9 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     if (!question || !Array.isArray(question.teile)) return [];
     return question.teile.map(teil => ({ letter: teil.letter, options: shuffleArray(teil.options) }));
   }, [question?.id]);
-  // Teilaufgaben nacheinander: eigener Fortschritt pro Teil, "auf Anhieb
-  // gelöst" gilt nur, wenn JEDER Teil beim allerersten Tippen richtig war.
-  const [teilIdx, setTeilIdx] = useState(0);
+  // Teile sind alle gleichzeitig sichtbar, Reihenfolge frei: eigener
+  // Fortschritt pro Teil, "auf Anhieb gelöst" gilt nur, wenn JEDER Teil
+  // beim allerersten Tippen richtig war.
   const [teilAnswered, setTeilAnswered] = useState([]);
   const [teilWrongOptsArr, setTeilWrongOptsArr] = useState([]);
   const [teilFirstTryOverall, setTeilFirstTryOverall] = useState(true);
@@ -926,12 +926,12 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     setFirstTry(already);
     setSelectedOpt(already ? shuffledOptions.find(o => o.correct) || null : null);
     if (hasTeile) {
-      setTeilIdx(already ? shuffledTeile.length : 0);
       setTeilAnswered(shuffledTeile.map(() => already));
       setTeilWrongOptsArr(shuffledTeile.map(() => new Set()));
       setTeilFirstTryOverall(true);
     }
   }
+  const allTeileDone = hasTeile && teilAnswered.length === shuffledTeile.length && teilAnswered.every(Boolean);
   const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309', 'Mathe Neu': '#534AB7', 'Deutsch Neu': '#b45309' };
   const color = subjectColors[subject] || '#534AB7';
 
@@ -990,10 +990,10 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
   function handleTapTeil(i, opt) {
     if (teilAnswered[i] || teilWrongOptsArr[i]?.has(opt)) return;
     if (opt.correct) {
-      setTeilAnswered(prev => { const next = [...prev]; next[i] = true; return next; });
-      const nextIdx = i + 1;
-      setTeilIdx(nextIdx);
-      if (nextIdx >= shuffledTeile.length && teilFirstTryOverall) {
+      const nextAnswered = [...teilAnswered];
+      nextAnswered[i] = true;
+      setTeilAnswered(nextAnswered);
+      if (nextAnswered.every(Boolean) && teilFirstTryOverall) {
         markCorrect();
       }
     } else {
@@ -1055,7 +1055,7 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
         <div style={{ marginBottom: '20px' }}>
           {hasTeile ? (
             <div>
-              {shuffledTeile.slice(0, Math.min(teilIdx + 1, shuffledTeile.length)).map((teil, i) => {
+              {shuffledTeile.map((teil, i) => {
                 const wrongSet = teilWrongOptsArr[i] || new Set();
                 const isDone = !!teilAnswered[i];
                 return (
@@ -1086,7 +1086,7 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
                   </div>
                 );
               })}
-              {teilIdx >= shuffledTeile.length && (
+              {allTeileDone && (
                 <p style={{ color: '#22c55e', fontWeight: '700', fontSize: '14px', margin: '10px 0 0' }}>
                   {teilFirstTryOverall ? '✓ Alle Teilaufgaben richtig! 🎉' : '✓ Alle Teilaufgaben gelöst – beim nächsten Mal alle auf Anhieb! 💪'}
                 </p>
