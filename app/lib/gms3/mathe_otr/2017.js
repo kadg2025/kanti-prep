@@ -39,6 +39,22 @@ b) Alle 12 Sekunden verlässt eine Gondel die Talstation. In einer Stunde steige
 
     ],
 
+    teile: [
+
+      { letter: 'a', options: [
+        { label: '10 Arten', correct: true },
+        { label: '6 Arten', correct: false },
+        { label: '9 Arten', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: 'höchstens 246, mindestens 87', correct: true },
+        { label: 'höchstens 246, mindestens 100', correct: false },
+        { label: 'höchstens 300, mindestens 87', correct: false },
+      ] },
+
+    ],
+
     solution: {
 
       intro: ``,
@@ -192,6 +208,28 @@ c) Nach einer Saison mit 168 Kandidaten, welche Antwort ist am wahrscheinlichste
       { label: 'a) 1/2 | b) 1/12 | c) 28', correct: false },
 
       { label: 'a) 1/3 | b) 1/8 | c) 58', correct: false },
+
+    ],
+
+    teile: [
+
+      { letter: 'a', options: [
+        { label: '1/2', correct: true },
+        { label: '1/3', correct: false },
+        { label: '1/4', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: '1/24', correct: true },
+        { label: '1/12', correct: false },
+        { label: '1/8', correct: false },
+      ] },
+
+      { letter: 'c', options: [
+        { label: '12', correct: true },
+        { label: '28', correct: false },
+        { label: '58', correct: false },
+      ] },
 
     ],
 
@@ -457,6 +495,22 @@ b) Berechne den Wert des vereinfachten Terms für x = 3 und y = 4.`,
 
     ],
 
+    teile: [
+
+      { letter: 'a', options: [
+        { label: 'xy', correct: true },
+        { label: '–8xy / (12xy–11)', correct: false },
+        { label: 'x/y', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: '12', correct: true },
+        { label: '-11', correct: false },
+        { label: '0.75', correct: false },
+      ] },
+
+    ],
+
     solution: {
 
       intro: 'Zähler und Nenner sehen kompliziert aus, lassen sich aber getrennt vereinfachen — danach bleibt nur noch ein einfacher Bruch übrig.',
@@ -597,6 +651,34 @@ d) A = (π/4)*(D² - d²) (nach d)`,
       { label: 'a) b=A/2r | b) v=n/(dπ) | c) m=2a/(z+x) | d) d=√(D²–4A/π)', correct: false },
 
       { label: 'a) b=2A/r | b) v=n·d·π | c) m=a/(z+x) | d) d=√(D²+4A/π)', correct: false },
+
+    ],
+
+    teile: [
+
+      { letter: 'a', options: [
+        { label: 'b=2A/r', correct: true },
+        { label: 'b=A/2r', correct: false },
+        { label: 'b=A/r', correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: 'v=n·d·π', correct: true },
+        { label: 'v=n/(dπ)', correct: false },
+        { label: 'v=n·d', correct: false },
+      ] },
+
+      { letter: 'c', options: [
+        { label: 'm=2a/(z+x)', correct: true },
+        { label: 'm=a/(z+x)', correct: false },
+        { label: 'm=2a/z + 2a/x', correct: false },
+      ] },
+
+      { letter: 'd', options: [
+        { label: 'd=√(D²–4A/π)', correct: true },
+        { label: 'd=√(D²+4A/π)', correct: false },
+        { label: 'd=√(D²–A/π)', correct: false },
+      ] },
 
     ],
 
@@ -747,6 +829,22 @@ b) Spiegle das Dreieck ABC am Punkt B. Gib die Koordinaten von A''B''C'' an.`,
       { label: "a) A'(1.5|1.5), B'(4|1.5), C'(4.5|3.5) | b) A''(6.5|1.5), B''(4|1.5), C''(3.5|-0.5)", correct: false },
 
       { label: "a) A'(1.5|1.5), B'(1.5|4), C'(3.5|4.5) | b) A''(5.5|1.5), B''(4|1.5), C''(3.5|-0.5)", correct: false },
+
+    ],
+
+    teile: [
+
+      { letter: 'a', options: [
+        { label: "A'(1.5|1.5), B'(1.5|4), C'(3.5|4.5)", correct: true },
+        { label: "A'(1.5|1.5), B'(4|1.5), C'(4.5|3.5)", correct: false },
+        { label: "A'(-1.5|1.5), B'(-4|1.5), C'(-4.5|3.5)", correct: false },
+      ] },
+
+      { letter: 'b', options: [
+        { label: "A''(6.5|1.5), B''(4|1.5), C''(3.5|-0.5)", correct: true },
+        { label: "A''(5.5|1.5), B''(4|1.5), C''(3.5|-0.5)", correct: false },
+        { label: "A''(6.5|1.5), B''(4|1.5), C''(3.5|0.5)", correct: false },
+      ] },
 
     ],
 
