@@ -173,12 +173,79 @@ function ChipsVisual({ chips, dm, dark }) {
   );
 }
 
-function VisualBlock({ type, chips, dm, dark }) {
+const DIAGRAM_COLORS = {
+  accent: '#534AB7',
+  ok: '#22c55e',
+  warn: '#f59e0b',
+  danger: '#ef4444',
+};
+
+function diagramStroke(el, dm) {
+  return DIAGRAM_COLORS[el.color] || dm.text2;
+}
+
+// Winkel in Grad, SVG-Konvention (0° = nach rechts, y-Achse zeigt nach unten).
+// Der Bogen wird als Polylinie auf dem Kreis um (cx, cy) abgetastet - das macht
+// ihn unabhängig von den fehleranfälligen large-arc/sweep-Flags des SVG-Arc-Befehls
+// und garantiert, dass er exakt um den angegebenen Mittelpunkt liegt (immer der
+// kürzere Weg zwischen den beiden Winkeln).
+function arcPath(cx, cy, r, startDeg, endDeg, segments = 16) {
+  let delta = endDeg - startDeg;
+  while (delta > 180) delta -= 360;
+  while (delta < -180) delta += 360;
+  const toRad = (d) => (d * Math.PI) / 180;
+  const pts = [];
+  for (let i = 0; i <= segments; i++) {
+    const a = toRad(startDeg + (delta * i) / segments);
+    pts.push(`${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`);
+  }
+  return `M ${pts[0]} ` + pts.slice(1).map((p) => `L ${p}`).join(' ');
+}
+
+function DiagramEl({ el, dm }) {
+  const stroke = diagramStroke(el, dm);
+  const strokeWidth = el.strokeWidth || 2;
+  const dash = el.dashed ? '4 4' : undefined;
+  switch (el.type) {
+    case 'line':
+      return <line x1={el.x1} y1={el.y1} x2={el.x2} y2={el.y2} stroke={stroke} strokeWidth={strokeWidth} strokeDasharray={dash} strokeLinecap="round" />;
+    case 'rect':
+      return <rect x={el.x} y={el.y} width={el.w} height={el.h} stroke={stroke} strokeWidth={strokeWidth} strokeDasharray={dash} fill={el.fill ? DIAGRAM_COLORS[el.fill] || el.fill : 'none'} />;
+    case 'circle':
+      return <circle cx={el.cx} cy={el.cy} r={el.r} stroke={stroke} strokeWidth={strokeWidth} strokeDasharray={dash} fill={el.fill ? DIAGRAM_COLORS[el.fill] || el.fill : 'none'} />;
+    case 'arc':
+      return <path d={arcPath(el.cx, el.cy, el.r, el.startAngle, el.endAngle)} stroke={el.color ? stroke : DIAGRAM_COLORS.warn} strokeWidth={strokeWidth} fill="none" strokeLinecap="round" />;
+    case 'path':
+      return <path d={el.d} stroke={stroke} strokeWidth={strokeWidth} strokeDasharray={dash} fill={el.fill ? DIAGRAM_COLORS[el.fill] || el.fill : 'none'} />;
+    case 'text':
+      return (
+        <text x={el.x} y={el.y} fontSize={el.size || 13} fontWeight={el.bold ? 700 : 600} fill={el.color ? stroke : dm.text} textAnchor={el.anchor || 'middle'}>
+          {el.label}
+        </text>
+      );
+    default:
+      return null;
+  }
+}
+
+function DiagramVisual({ diagram, dm }) {
+  if (!diagram) return null;
+  return (
+    <div style={{ padding: '10px 0', display: 'flex', justifyContent: 'center', animation: 'fadeSlideIn 320ms ease both' }}>
+      <svg viewBox={diagram.viewBox || '0 0 200 160'} style={{ width: '100%', maxWidth: '280px', display: 'block' }}>
+        {(diagram.elements || []).map((el, i) => <DiagramEl key={i} el={el} dm={dm} />)}
+      </svg>
+    </div>
+  );
+}
+
+function VisualBlock({ type, chips, diagram, dm, dark }) {
   if (type === 'chips') return <ChipsVisual chips={chips} dm={dm} dark={dark} />;
   if (type === 'faktorbaum24') return <Faktorbaum n={24} dm={dm} dark={dark} />;
   if (type === 'faktorbaum36') return <Faktorbaum n={36} dm={dm} dark={dark} />;
   if (type === 'ggt_listen') return <GgtListen dm={dm} dark={dark} />;
   if (type === 'kgv_reihen') return <KgvReihen dm={dm} dark={dark} />;
+  if (type === 'diagram') return <DiagramVisual diagram={diagram} dm={dm} />;
   return null;
 }
 
@@ -186,7 +253,7 @@ function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung }) {
   return (
     <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '22px 18px' : '30px', minHeight: '240px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '14px' }}>
       <p style={{ margin: 0, fontSize: isMobile ? '17px' : '18px', lineHeight: '1.7', color: dm.text, whiteSpace: 'pre-wrap', fontWeight: karte.loesung ? '700' : '400' }}>{karte.text}</p>
-      {karte.visual && <VisualBlock type={karte.visual} chips={karte.chips} dm={dm} dark={dark} />}
+      {karte.visual && <VisualBlock type={karte.visual} chips={karte.chips} diagram={karte.diagram} dm={dm} dark={dark} />}
       {karte.loesung && (
         <div>
           <button
