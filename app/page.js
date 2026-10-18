@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { questions } from './lib/questions';
 import { facts } from './lib/facts';
 import { lernkarten } from './lib/lernkarten';
+import LernkartePage from './components/Lernkarte';
 import { pruefungenModusA, pruefungenModusB } from './lib/gms3/mathe_otr/pruefung';
 import LinksPage from './LinksPage';
 import FeedbackButton from './components/FeedbackButton';
@@ -213,6 +214,12 @@ const WDH_STAGES = [1, 3, 7, 21]; // Tage: falsch → Stufe 0 (morgen), richtig 
 // unterscheiden (…_4a, …_4b, …), teilen denselben Gruppenschlüssel.
 function groupKeyOf(id) {
   return id.replace(/[a-z]$/, '');
+}
+// "Aufgabe N" (ggf. mit Buchstabe, z.B. "7a") aus questionText lesen, für die
+// Sidebar-Anzeige "Jahr · Aufgabe N".
+function aufgabeLabelOf(q) {
+  const m = (q.questionText || '').match(/Aufgabe\s+(\d+[a-zA-Z]?)/);
+  return m ? `${q.year} · Aufgabe ${m[1]}` : `${q.year}`;
 }
 function needsFigureButMissing(q) {
   const text = q.questionText || '';
@@ -647,7 +654,7 @@ function PauseModal({ onClose, dm = makePalette(false) }) {
 }
 
 // ─── SIDEBAR ──────────────────────────────────────────────────────────────
-function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), clearSolved, dark = false, toggleDark = () => {}, streak = 0, dm = makePalette(false), mobile = false, onClose = () => {}, onShowFehlerKiste = () => {}, fehlerCount = 0, onShowHeuteUeben = () => {}, onShowPruefung = () => {} }) {
+function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), clearSolved, dark = false, toggleDark = () => {}, streak = 0, dm = makePalette(false), mobile = false, onClose = () => {}, onShowFehlerKiste = () => {}, fehlerCount = 0, onShowHeuteUeben = () => {}, onShowPruefung = () => {}, onSelectLernkarte = () => {}, selectedLernkarteTopic = null }) {
   const tree = buildTree(subject);
   const [openGroups, setOpenGroups] = useState(() => { const s = {}; Object.keys(tree).forEach(g => { s[g] = true; }); return s; });
   const [openTopics, setOpenTopics] = useState({});
@@ -746,13 +753,21 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
                   </button>
                   {open && (
                     <ul style={{ listStyle: 'none', margin: 0, padding: '0 0 6px 0' }}>
+                      {lernkarten[topicName] && (
+                        <li>
+                          <button onClick={() => onSelectLernkarte(topicName)} style={{ width: '100%', textAlign: 'left', padding: '8px 16px 8px 40px', background: selectedLernkarteTopic === topicName ? dm.accentBg : (dark ? '#2a2719' : '#fef9c3'), border: 'none', borderLeft: `3px solid ${selectedLernkarteTopic === topicName ? color : '#f59e0b'}`, cursor: 'pointer', color: selectedLernkarteTopic === topicName ? color : (dark ? '#d4b85a' : '#854d0e'), fontSize: '13px', fontWeight: '700', lineHeight: '1.4' }}
+                          >
+                            📘 Erklärung
+                          </button>
+                        </li>
+                      )}
                       {items.sort((a, b) => b.year - a.year).map(q => (
                         <li key={q.id}>
                           <button onClick={() => onSelect(q.id)} style={{ width: '100%', textAlign: 'left', padding: '8px 16px 8px 40px', background: selectedId === q.id ? dm.accentBg : solved.has(q.id) ? dm.okTint : 'none', border: 'none', borderLeft: selectedId === q.id ? `3px solid ${color}` : solved.has(q.id) ? '3px solid #22c55e' : '3px solid transparent', cursor: 'pointer', color: selectedId === q.id ? color : dm.text2, fontSize: '13px', lineHeight: '1.4', transition: 'all 0.12s', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
                             onMouseEnter={e => { if (selectedId !== q.id) e.currentTarget.style.background = dm.hover; }}
                             onMouseLeave={e => { if (selectedId !== q.id) e.currentTarget.style.background = solved.has(q.id) ? dm.okTint : 'none'; }}
                           >
-                            <span style={{ display: 'block', fontSize: '11px', color: dm.text3, marginBottom: '1px' }}>{q.year}</span>
+                            <span style={{ display: 'block', fontSize: '11px', color: dm.text3, marginBottom: '1px' }}>{aufgabeLabelOf(q)}</span>
                             {solved.has(q.id) && <span style={{ fontSize: '13px', color: '#22c55e' }}>✓</span>}
                           </button>
                         </li>
@@ -916,10 +931,6 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
   const [teilAnswered, setTeilAnswered] = useState([]);
   const [teilWrongOptsArr, setTeilWrongOptsArr] = useState([]);
   const [teilFirstTryOverall, setTeilFirstTryOverall] = useState(true);
-  // Lernkarte: reine Erklärung zum Thema, ohne Einfluss auf Wertung/Fehler-Kiste.
-  const lernkarte = question ? lernkarten[question.topic] : null;
-  const [lernkarteOpen, setLernkarteOpen] = useState(false);
-  const [uebungOpenSet, setUebungOpenSet] = useState(() => new Set());
   if (question && question.id !== prevId) {
     setShowSolution(false);
     setSolutionViewed(false);
@@ -935,8 +946,6 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
       setTeilWrongOptsArr(shuffledTeile.map(() => new Set()));
       setTeilFirstTryOverall(true);
     }
-    setLernkarteOpen(false);
-    setUebungOpenSet(new Set());
   }
   const allTeileDone = hasTeile && teilAnswered.length === shuffledTeile.length && teilAnswered.every(Boolean);
   const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309', 'Mathe Neu': '#534AB7', 'Deutsch Neu': '#b45309' };
@@ -1018,14 +1027,6 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     markCorrect();
   }
 
-  function toggleUebung(i) {
-    setUebungOpenSet(prev => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i); else next.add(i);
-      return next;
-    });
-  }
-
   return (
     <main style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '64px 16px 40px' : '40px', background: dm.bg }}>
       <div style={{ maxWidth: '700px', margin: '0 auto' }}>
@@ -1066,59 +1067,6 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
             </div>
           )}
         </div>
-        {lernkarte && (
-          <div style={{ marginBottom: '16px' }}>
-            <button
-              onClick={() => setLernkarteOpen(v => !v)}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '9px 16px', background: lernkarteOpen ? dm.accentBg : dm.bg3, border: `1px solid ${lernkarteOpen ? (dark ? '#4c3f8f' : '#c4b5fd') : dm.border}`, borderRadius: '10px', fontSize: '13px', fontWeight: '600', color: lernkarteOpen ? (dark ? '#c4b5fd' : color) : dm.text2, cursor: 'pointer' }}
-            >
-              📘 Erklärung zum Thema {lernkarteOpen ? '▲' : '▼'}
-            </button>
-            {lernkarteOpen && (
-              <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: isMobile ? '16px' : '22px', marginTop: '10px' }}>
-                <h3 style={{ margin: '0 0 16px', fontSize: isMobile ? '17px' : '19px', fontWeight: '700', color: dm.text }}>{lernkarte.titel}</h3>
-                {lernkarte.abschnitte.map((abschnitt, i) => (
-                  <div key={i} style={{ marginBottom: '18px' }}>
-                    <p style={{ margin: '0 0 6px', fontSize: '14px', fontWeight: '700', color: dm.text }}>{abschnitt.titel}</p>
-                    <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.75', color: dm.text2, whiteSpace: 'pre-wrap' }}>{abschnitt.text}</p>
-                  </div>
-                ))}
-                {lernkarte.uebungen?.length > 0 && (
-                  <div>
-                    <p style={{ margin: '0 0 10px', fontSize: '14px', fontWeight: '700', color: dm.text }}>Probier es selbst</p>
-                    {lernkarte.uebungen.map((ueb, i) => {
-                      const open = uebungOpenSet.has(i);
-                      return (
-                        <div key={i} style={{ marginBottom: '14px', paddingBottom: '14px', borderBottom: i < lernkarte.uebungen.length - 1 ? `1px solid ${dm.border}` : 'none' }}>
-                          <p style={{ margin: '0 0 8px', fontSize: '14px', lineHeight: '1.6', color: dm.text2, whiteSpace: 'pre-wrap' }}>{ueb.frage}</p>
-                          <button
-                            onClick={() => toggleUebung(i)}
-                            style={{ padding: '7px 14px', background: open ? dm.accentBg : dm.bg3, border: `1px solid ${open ? (dark ? '#4c3f8f' : '#c4b5fd') : dm.border}`, borderRadius: '8px', fontSize: '12px', fontWeight: '600', color: open ? (dark ? '#c4b5fd' : color) : dm.text2, cursor: 'pointer' }}
-                          >
-                            {open ? 'Lösung ausblenden' : 'Lösung zeigen'}
-                          </button>
-                          {open && (
-                            <p style={{ margin: '8px 0 0', fontSize: '14px', lineHeight: '1.6', color: dm.text, whiteSpace: 'pre-wrap' }}>{ueb.loesung}</p>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-                {lernkarte.links?.length > 0 && (
-                  <div style={{ marginTop: '6px' }}>
-                    <p style={{ margin: '0 0 8px', fontSize: '14px', fontWeight: '700', color: dm.text }}>Weitere Links</p>
-                    {lernkarte.links.map((link, i) => (
-                      <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" style={{ display: 'block', fontSize: '13px', color: color, marginBottom: '4px' }}>
-                        {link.titel}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        )}
         {/* Erst versuchen: Multiple-Choice (falls vorhanden) oder Selbst-Check-Button */}
         <div style={{ marginBottom: '20px' }}>
           {hasTeile ? (
@@ -1881,6 +1829,7 @@ export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [subject, setSubject] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+  const [lernkarteTopic, setLernkarteTopic] = useState(null);
   const [showLinks, setShowLinks] = useState(false);
   const [showFehlerKiste, setShowFehlerKiste] = useState(false);
   const [showHeuteUeben, setShowHeuteUeben] = useState(false);
@@ -1899,26 +1848,37 @@ export default function Home() {
 
   const dm = makePalette(dark);
 
-  // Beim Laden: ?id=… aus der URL lesen und direkt zur Aufgabe springen
+  // Beim Laden: ?id=… oder ?lernkarte=… aus der URL lesen und direkt dorthin springen
   useEffect(() => {
     try {
-      const qid = new URLSearchParams(window.location.search).get('id');
+      const params = new URLSearchParams(window.location.search);
+      const qid = params.get('id');
       if (qid) {
         const q = questions.find((x) => x.id === qid);
         if (q) { setSubject(subjectKeyOf(q)); setSelectedId(qid); }
+      } else {
+        const topic = params.get('lernkarte');
+        if (topic && lernkarten[topic]) {
+          const q = questions.find((x) => x.topic === topic);
+          if (q) setSubject(subjectKeyOf(q));
+          setLernkarteTopic(topic);
+        }
       }
     } catch {}
     setMounted(true);
   }, []);
 
-  // Zustand → URL spiegeln (ohne Reload), damit jede Aufgabe einen eigenen Link hat
+  // Zustand → URL spiegeln (ohne Reload), damit jede Aufgabe/Lernkarte einen eigenen Link hat
   useEffect(() => {
     if (!mounted) return;
     try {
       const base = window.location.pathname;
-      window.history.replaceState(null, '', selectedId ? `${base}?id=${encodeURIComponent(selectedId)}` : base);
+      let url = base;
+      if (selectedId) url = `${base}?id=${encodeURIComponent(selectedId)}`;
+      else if (lernkarteTopic) url = `${base}?lernkarte=${encodeURIComponent(lernkarteTopic)}`;
+      window.history.replaceState(null, '', url);
     } catch {}
-  }, [mounted, subject, selectedId]);
+  }, [mounted, subject, selectedId, lernkarteTopic]);
 
   if (showLinks) return <LinksPage onBack={() => setShowLinks(false)} />;
   if (showHeuteUeben) return (
@@ -1951,10 +1911,10 @@ export default function Home() {
       onBack={() => setShowFehlerKiste(false)}
       onRemove={removeFehler}
       onClearAll={clearFehler}
-      onJump={(q) => { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setShowFehlerKiste(false); }}
+      onJump={(q) => { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setLernkarteTopic(null); setShowFehlerKiste(false); }}
     />
   );
-  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} />;
+  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setLernkarteTopic(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} />;
 
   const selectedQuestion = questions.find(q => q.id === selectedId) || null;
   return (
@@ -1966,8 +1926,8 @@ export default function Home() {
           <Sidebar
             subject={subject}
             selectedId={selectedId}
-            onSelect={(id) => { setSelectedId(id); if (isMobile) setSidebarOpen(false); }}
-            onBack={() => { setSubject(null); setSelectedId(null); }}
+            onSelect={(id) => { setSelectedId(id); setLernkarteTopic(null); if (isMobile) setSidebarOpen(false); }}
+            onBack={() => { setSubject(null); setSelectedId(null); setLernkarteTopic(null); }}
             solved={solved}
             clearSolved={clearSolved}
             dark={dark}
@@ -1980,6 +1940,8 @@ export default function Home() {
             fehlerCount={fehler.length}
             onShowHeuteUeben={() => setShowHeuteUeben(true)}
             onShowPruefung={() => setShowProbepruefung(true)}
+            onSelectLernkarte={(topic) => { setLernkarteTopic(topic); setSelectedId(null); if (isMobile) setSidebarOpen(false); }}
+            selectedLernkarteTopic={lernkarteTopic}
           />
         </div>
       )}
@@ -1990,7 +1952,11 @@ export default function Home() {
         </button>
       )}
 
-      <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} onRemoveFehler={removeFehler} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
+      {lernkarteTopic ? (
+        <LernkartePage topic={lernkarteTopic} dm={dm} dark={dark} isMobile={isMobile} onClose={() => setLernkarteTopic(null)} />
+      ) : (
+        <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} onRemoveFehler={removeFehler} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
+      )}
 
       <MiniPlayer dm={dm} />
     </div>
