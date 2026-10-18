@@ -146,29 +146,10 @@ export const pruefung2022 = {
           ], solution: `Mit Nebenwinkel, Scheitelwinkel und Winkelsumme im Dreieck: α=67.5°, β=45°, γ=78.75°.` },
       ],
     },
-    {
-      nr: 7,
-      topic: 'Körper & Netze',
-      intro: `Aufgabe 7: Würfel mit Mustern\nEin Würfel hat auf jeder Fläche ein anderes Muster. Zwei Ansichten sind gegeben.`,
-      figureUrl: '/figuren/2022_wuerfel7.png',
-      figureCaption: 'Quelle: Kanti Frauenfeld, Aufnahmeprüfung 2022',
-      linkedQuestionId: 'M1_2022_OTR_WUERFEL_7',
-      teile: [
-        { letter: 'a', text: `a) Ergänze die obere Fläche in der abgebildeten Ansicht mit dem korrekten Muster.`, points: 2,
-          options: [
-            { label: 'Mit der offiziellen Würfel-Lösung ergänzen', correct: true },
-            { label: 'Beliebige Anordnung der Muster ist möglich', correct: false },
-            { label: 'Die obere Fläche kann nicht bestimmt werden', correct: false },
-            { label: 'Dasselbe Muster wie die Vorderfläche', correct: false },
-          ], solution: `Durch Vergleich der zwei gegebenen Ansichten lässt sich das fehlende Muster eindeutig bestimmen.` },
-        { letter: 'b', text: `b) Ergänze das Würfelnetz mit den korrekten Mustern.`, points: 5,
-          options: [
-            { label: 'Mit der offiziellen Würfel-Lösung ergänzen', correct: true },
-            { label: 'Beliebige Anordnung der Muster ist möglich', correct: false },
-            { label: 'Die Muster können nicht bestimmt werden', correct: false },
-            { label: 'Spiegelverkehrt zur Raumansicht eintragen', correct: false },
-          ], solution: `Im Netz müssen die Muster so platziert werden, dass sie nach dem Falten dieselben Nachbarschaften wie in den Würfelbildern ergeben.` },
-      ],
-    },
+    // Aufgabe 7 (Würfel mit Mustern) bewusst weggelassen: ohne die
+    // offizielle Lösung lässt sich nicht mit Sicherheit bestimmen, welches
+    // Muster auf welche Netz-Fläche gehört — eine MC-Antwort dafür wäre nur
+    // geraten. Punkte-Total der Prüfung dadurch 7 Punkte niedriger als im
+    // echten PDF (war 43, jetzt 36) — siehe pruefungsmuster.md.
   ],
 };

@@ -89,12 +89,28 @@ Jahre an, für die eine Datei unter `app/lib/gms3/mathe_otr/pruefung/`
 existiert — ein weiteres Jahr lässt sich später einfach ergänzen, ohne
 Code-Änderungen am Prüfungsmotor.
 
-**Modus B:** 1 neue Prüfung (`neu1.js`, 6 Aufgaben, 50 Punkte) — bewusst ohne
-figurenabhängige Themen (Geometrie, Körper & Netze, Statistik-Diagramme)
-gewählt, um keine neuen Python/matplotlib-Figuren erzeugen zu müssen
-(Aufwand für "vorerst nur 1 Prüfung" sonst deutlich grösser). Details und
+**Modus B:** 1 neue Prüfung (`neu1.js`, 6 Aufgaben, 52 Punkte), überarbeitet
+mit AP 2024 als explizitem Vorbild für Schwierigkeit/Aufbau — inklusive
+Funktionen und Geometrie am Schluss, mit zwei selbst erzeugten
+matplotlib-Figuren (`public/figuren/neu1_funktion.png`,
+`neu1_geometrie.png`). Die Geometrie-Figur wurde mit selbst gewählten,
+sauberen Pythagoras-Zahlen konstruiert — dadurch keine Unsicherheit wie
+bei handgezeichneten Original-Figuren ohne offizielle Lösung. Details und
 die zweifache unabhängige Lösung jeder Teilaufgabe: `pruefliste_neu.md`
 (nicht committet).
+
+**Zeichen-/Konstruktionsaufgaben in Modus A:** wo eine konkrete, prüfbare
+Frage möglich war, wurde sie gestellt (z. B. 2021 Aufgabe 5: "Welche Fläche
+enthält die Kante B-C?" statt vager "Beschrifte das Netz"-MC — eine reine
+3D-Würfel-Logik-Frage, unabhängig von der genauen Netz-Faltung lösbar).
+Wo das nicht ehrlich möglich war (2022 Aufgabe 7, Muster-Zuordnung auf
+einem unbeschrifteten Würfelnetz — würde eine exakte Nachverfolgung der
+Faltung ohne offizielle Lösung erfordern), wurde die Teilaufgabe
+weggelassen; 2022s Gesamtpunktzahl sank dadurch von 43 auf 36.
+
+**MC-Optionen:** alle Optionen in `pruefung/*.js` sind reine Antworten ohne
+erklärende Klammerzusätze, die die Lösung verraten würden (z. B. nicht mehr
+"Diagramm E (Skala 0–12, aber falsche Balken)", sondern nur "Diagramm E").
 
 **Fehler-Kiste:** falsche Teilaufgaben lösen `onFehler(linkedQuestionId)`
 aus — `linkedQuestionId` zeigt auf die passende, bereits existierende
