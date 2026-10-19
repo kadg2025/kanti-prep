@@ -30,6 +30,19 @@ a) Wie viele Meter legt Kurts Zug in einer Sekunde zurück?
 
 b) Wie viele Kilometer pro Stunde fährt der ICE, wenn die Vorbeifahrt des 450 m langen Zuges an Kurts Fenster genau 6 s dauert?`,
 
+    teile: [
+      { letter: 'a', options: [
+        { label: '25 m/s', correct: true },
+        { label: '324 m/s', correct: false },
+        { label: '30 m/s', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '180 km/h', correct: true },
+        { label: '270 km/h', correct: false },
+        { label: '50 km/h', correct: false },
+      ] },
+    ],
+
     solution: {
 
       intro: ``,
@@ -115,6 +128,24 @@ b) Von den Wählern der Partei C waren 52% weiblich, von diesen wiederum 65% unt
 c) Umfragen haben ergeben, dass 5% derjenigen, die ihre Stimme Partei A gaben, vor 4 Jahren noch Partei B wählten. Wie viel Prozent hätte Partei B erhalten, wenn dies nicht geschehen wäre?
 
 Hinweis: Die Anzahl der Wähler hat sich nicht geändert.`,
+
+    teile: [
+      { letter: 'a', options: [
+        { label: '2\'360\'000', correct: true },
+        { label: '1\'011\'429', correct: false },
+        { label: '212\'400', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '128\'856', correct: true },
+        { label: '368\'160', correct: false },
+        { label: '239\'304', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '40.9%', correct: true },
+        { label: '45%', correct: false },
+        { label: '40%', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -211,6 +242,12 @@ Berechne den Abstand der Punkte A₁ und A₂, in dem die Streben in der Erde be
 
 Hinweis: Der gesuchte Abstand beträgt NICHT 14 m.`,
 
+    options: [
+      { label: '16.5 m', correct: true },
+      { label: '14 m', correct: false },
+      { label: '8.25 m', correct: false },
+    ],
+
     solution: {
 
       intro: ``,
@@ -299,6 +336,19 @@ In einem Koffer befinden sich 200 Uhren. Davon sind 70% Originaluhren und 30% F�
 a) Wie gross ist die Wahrscheinlichkeit, eine funktionierende Fälschung zu erhalten, wenn man eine Uhr nimmt?
 
 b) Wie gross ist die Wahrscheinlichkeit, eine defekte Uhr zu nehmen?`,
+
+    teile: [
+      { letter: 'a', options: [
+        { label: '21%', correct: true },
+        { label: '9%', correct: false },
+        { label: '30%', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '12.5%', correct: true },
+        { label: '9%', correct: false },
+        { label: '3.5%', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -391,6 +441,19 @@ Vom herausgeschnittenen Quader sind zwei Kanten bekannt: 20 und 50. Die dritte K
 a) Berechne das Volumen des Restkörpers.
 
 b) Berechne den Oberflächeninhalt des herausgeschnittenen Quaders.`,
+
+    teile: [
+      { letter: 'a', options: [
+        { label: '12\'000 cm³', correct: true },
+        { label: '15\'000 cm³', correct: false },
+        { label: '3\'000 cm³', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '2\'420 cm²', correct: true },
+        { label: '1\'210 cm²', correct: false },
+        { label: '2\'938 cm²', correct: false },
+      ] },
+    ],
 
     solution: {
 
