@@ -20,11 +20,18 @@ Velo: 32 km/h. Transition (Wechsel): 4 min 30 s.
 
 a) Wie lange hat er für die Laufstrecke? (in min und s)
 b) Welches Lauftempo (min/km) muss er halten?`,
-    options: [
-      { label: 'a) 180 min | b) 4 min 16 s / km', correct: true },
-      { label: 'a) 195 min | b) 4 min 37 s / km', correct: false },
-      { label: 'a) 165 min | b) 3 min 54 s / km', correct: false },
-    ],
+    teile: [
+        { letter: 'a', options: [
+          { label: '180 min', correct: true },
+          { label: '195 min', correct: false },
+          { label: '165 min', correct: false },
+        ] },
+        { letter: 'b', options: [
+          { label: '4 min 16 s / km', correct: true },
+          { label: '4 min 37 s / km', correct: false },
+          { label: '3 min 54 s / km', correct: false },
+        ] },
+      ],
     solution: {
       intro: '',
       steps: [
@@ -232,11 +239,23 @@ a) Man braucht pro Versuch 10 s. Wie lange dauert es im schlimmsten Fall, die Ko
 b) Wie viele Kombinationen gibt es, wenn alle 3 Ziffern ungerade sein müssen?
 
 c) Ein Freund ist sicher, dass die erste Ziffer eine 5 war, die zweite grösser als die erste und die dritte grösser als die zweite. Gerade Ziffern kann er nicht ausschliessen. Wie viele Einstellungen sind so noch möglich?`,
-    options: [
-      { label: 'a) 2 h 46 min 40 s | b) 125 | c) 6 (567, 568, 569, 578, 579, 589)', correct: true },
-      { label: 'a) 1 h 30 min | b) 243 | c) 10', correct: false },
-      { label: 'a) 3 h 20 min | b) 100 | c) 15', correct: false },
-    ],
+    teile: [
+        { letter: 'a', options: [
+          { label: '2 h 46 min 40 s', correct: true },
+          { label: '1 h 30 min', correct: false },
+          { label: '3 h 20 min', correct: false },
+        ] },
+        { letter: 'b', options: [
+          { label: '125', correct: true },
+          { label: '243', correct: false },
+          { label: '100', correct: false },
+        ] },
+        { letter: 'c', options: [
+          { label: '6 (567, 568, 569, 578, 579, 589)', correct: true },
+          { label: '10', correct: false },
+          { label: '15', correct: false },
+        ] },
+      ],
     solution: {
       intro: '',
       steps: [
@@ -310,11 +329,23 @@ a) Wie viel % macht Flüssigkeit A aus?
 b) Wie viel ml B muss man dazugeben, damit Flüssigkeit C nur noch 40% des Gemisches ausmacht?
 
 c) 10 ml Flüssigkeit A kosten Fr. 20.–. Flüssigkeit B ist (pro gleicher Menge) 15% teurer. Das ursprüngliche Gemisch (20 ml A + 70 ml B + 70 ml C) kostet insgesamt Fr. 329.80. Um wie viel Prozent ist Flüssigkeit C billiger als Flüssigkeit A (pro gleicher Menge)?`,
-    options: [
-      { label: 'a) 12.5% | b) 15 ml B hinzufügen | c) 8% billiger', correct: true },
-      { label: 'a) 10% | b) 20 ml B | c) 25% billiger', correct: false },
-      { label: 'a) 15% | b) 10 ml B | c) 15% billiger', correct: false },
-    ],
+    teile: [
+        { letter: 'a', options: [
+          { label: '12.5%', correct: true },
+          { label: '10%', correct: false },
+          { label: '15%', correct: false },
+        ] },
+        { letter: 'b', options: [
+          { label: '15 ml B hinzufügen', correct: true },
+          { label: '20 ml B', correct: false },
+          { label: '10 ml B', correct: false },
+        ] },
+        { letter: 'c', options: [
+          { label: '8% billiger', correct: true },
+          { label: '25% billiger', correct: false },
+          { label: '15% billiger', correct: false },
+        ] },
+      ],
     solution: {
       intro: '',
       steps: [
