@@ -340,7 +340,7 @@ function VideoEmbed({ video, dm, dark }) {
 function VideoCard({ videos, dm, dark, isMobile }) {
   return (
     <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '20px 18px' : '26px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
-      <p style={{ margin: 0, fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text }}>🎬 Noch unklar? Schau dir ein Video an</p>
+      <p style={{ margin: 0, fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text }}>📺 Noch unklar? Schau dir ein Video an</p>
       {videos.map((video, i) => <VideoEmbed key={i} video={video} dm={dm} dark={dark} />)}
     </div>
   );

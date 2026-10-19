@@ -424,7 +424,7 @@ function buildTree(subject) {
 // ─── PAUSE MODAL ──────────────────────────────────────────────────────────
 const memes = [
   { emoji: '😭', top: 'Ich beim Lernen um 22 Uhr:', bottom: '💤💤💤', sub: 'Das Bett gewinnt immer.' },
-  { emoji: '🧠', top: '"Das kommt nie in der Prüfung"', bottom: 'Aufgabe 1: Genau das.', sub: 'Der Lehrer lacht irgendwo.' },
+  { emoji: '😬', top: '"Das kommt nie in der Prüfung"', bottom: 'Aufgabe 1: Genau das.', sub: 'Der Lehrer lacht irgendwo.' },
   { emoji: '😤', top: 'Ich: Ich habe alles verstanden!', bottom: 'Die Aufgabe: Berechne x...', sub: 'x = pure Panik' },
   { emoji: '📚', top: 'Plan: 2 Stunden lernen', bottom: 'Realität: 4 Stunden YouTube', sub: 'Der Algorithmus hat gewonnen.' },
   { emoji: '🤯', top: '"Die Prüfung wird nicht schwer"', bottom: '*Seite 1 von 12*', sub: 'Vertrauen? Nie wieder.' },
@@ -953,14 +953,14 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
 
   if (!question) {
     const emojis = { 'Mathe ohne TR': '📐', 'Mathe mit TR': '🔢', 'Deutsch': '📝', 'Deutsch GMS2': '📝' };
-    const tips = { 'Mathe ohne TR': 'Kein Taschenrechner erlaubt – Kopfrechnen trainieren! 🧠', 'Mathe mit TR': 'Taschenrechner erlaubt – aber den Rechenweg aufzeigen! ✏️', 'Deutsch': 'Lies die Texte genau – Details sind entscheidend! 🔍', 'Deutsch GMS2': 'GMS2 Deutsch — Wortarten, Satzbau, Zeitformen! 🎯' };
+    const tips = { 'Mathe ohne TR': 'Kein Taschenrechner erlaubt – Kopfrechnen trainieren!', 'Mathe mit TR': 'Taschenrechner erlaubt – aber den Rechenweg aufzeigen! ✏️', 'Deutsch': 'Lies die Texte genau – Details sind entscheidend! 🔍', 'Deutsch GMS2': 'GMS2 Deutsch — Wortarten, Satzbau, Zeitformen! 🎯' };
     return (
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: isMobile ? '64px 16px 40px' : '40px', background: dm.bg }}>
         <div style={{ textAlign: 'center', maxWidth: '400px' }}>
           <div style={{ fontSize: '52px', marginBottom: '16px' }}>{emojis[subject] || '📚'}</div>
           <h2 style={{ fontSize: '22px', fontWeight: '700', color: dm.text, margin: '0 0 8px' }}>Bereit zum Üben? 💪</h2>
           <p style={{ color: dm.text3, margin: '0 0 20px', lineHeight: '1.6', fontSize: '15px' }}>{isMobile ? 'Tippe oben auf ☰ Aufgaben, um eine Aufgabe auszuwählen.' : 'Wähle links eine Aufgabe aus, um zu beginnen.'}</p>
-          <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: '16px', fontSize: '14px', color: dm.text2 }}>💡 {tips[subject] || 'Viel Erfolg!'}</div>
+          <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: '16px', fontSize: '14px', color: dm.text2 }}>{tips[subject] || 'Viel Erfolg!'}</div>
         </div>
       </div>
     );

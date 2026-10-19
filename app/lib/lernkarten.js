@@ -27,7 +27,7 @@ export const lernkarten = {
       },
       {
         id: 'teilbarkeit',
-        emoji: '✅',
+        emoji: '➗',
         titel: 'Teilbarkeitsregeln',
         videos: [
           { titel: 'Teilbarkeitsregeln (Lehrerschmidt)', youtubeId: 'COe6sDmcFEo' },
@@ -75,7 +75,7 @@ export const lernkarten = {
       },
       {
         id: 'ggt',
-        emoji: '🧩',
+        emoji: '🤝',
         titel: 'ggT',
         videos: [
           { titel: 'ggT einfach erklärt (Lehrerschmidt)', youtubeId: 'vCk1qe1FyDI' },
@@ -115,7 +115,7 @@ export const lernkarten = {
       },
       {
         id: 'textaufgaben',
-        emoji: '🚌',
+        emoji: '📝',
         titel: 'Textaufgaben',
         videos: [
           { titel: 'kgV und ggT Textaufgaben (MathemaTrick)', youtubeId: 'S5P7ITOQwL0' },
@@ -218,7 +218,7 @@ export const lernkarten = {
       },
       {
         id: 'ueben',
-        emoji: '🎯',
+        emoji: '🥋',
         titel: 'Dojo',
         videos: [],
         minLoesungen: 8,
@@ -366,7 +366,7 @@ export const lernkarten = {
         check: [],
       },
       {
-        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
           { text: 'Berechne: 12 − (7 − 10)', loesung: 'Klammer zuerst: 7 − 10 = −3. Dann 12 − (−3) = 12 + 3 = 15.' },
           { text: 'Welchen Wert hat 3a² − 2a für a = −2?', loesung: '3 · (−2)² − 2 · (−2) = 3 · 4 + 4 = 12 + 4 = 16.' },
@@ -791,7 +791,7 @@ export const lernkarten = {
         check: [],
       },
       {
-        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
           { text: 'Lies m und b ab: y = 6x − 4.', loesung: 'm = 6 (Steigung), b = −4 (Startwert).' },
           { text: 'Steigt oder fällt die Gerade y = −5x + 1?', loesung: 'Sie fällt, denn m = −5 ist negativ.' },
@@ -906,7 +906,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'flaechen', emoji: '🧩', titel: 'Flächen & Umfang', videos: [{ titel: 'Flächen & Umfang (Video 1)', youtubeId: 's-QFShTrlOE' }, { titel: 'Flächen & Umfang (Video 2)', youtubeId: 'C4m9MwZbZuM' }],
+        id: 'flaechen', emoji: '🟩', titel: 'Flächen & Umfang', videos: [{ titel: 'Flächen & Umfang (Video 1)', youtubeId: 's-QFShTrlOE' }, { titel: 'Flächen & Umfang (Video 2)', youtubeId: 'C4m9MwZbZuM' }],
         karten: [
           { text: 'Eine zusammengesetzte Figur ist wie ein Puzzle aus einfachen Formen. Teile sie in Rechtecke oder Dreiecke - rechne jedes Stück einzeln aus und addiere, oder zieh ein fehlendes Stück ab.' },
           {
@@ -945,7 +945,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'spiegeln', emoji: '🔄', titel: 'Spiegeln & Konstruieren', videos: [{ titel: 'Achsenspiegelung im Koordinatensystem', youtubeId: '_LV31JK6280' }, { titel: 'Achsenspiegelung mit Zirkel und Geodreieck', youtubeId: 'pej1BH3i6Yw' }, { titel: 'Punktspiegelung', youtubeId: 'S0x6ZZhX1lo' }],
+        id: 'spiegeln', emoji: '🪞', titel: 'Spiegeln & Konstruieren', videos: [{ titel: 'Achsenspiegelung im Koordinatensystem', youtubeId: '_LV31JK6280' }, { titel: 'Achsenspiegelung mit Zirkel und Geodreieck', youtubeId: 'pej1BH3i6Yw' }, { titel: 'Punktspiegelung', youtubeId: 'S0x6ZZhX1lo' }],
         karten: [
           { text: 'Spiegeln ist wie ein Blick in den Spiegel: Die Form bleibt gleich, aber alles ist auf die andere Seite gedreht - jeder Punkt wandert gleich weit über die Spiegelachse.' },
           {
@@ -982,7 +982,7 @@ export const lernkarten = {
         check: [],
       },
       {
-        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
           { text: 'Ein Dreieck hat die Winkel 62° und 74°. Wie gross ist der dritte Winkel?', loesung: '180° − 62° − 74° = 44°.' },
           { text: 'Ein gleichschenkliges Dreieck hat einen Basiswinkel von 65°. Wie gross ist die Spitze?', loesung: 'Beide Basiswinkel zusammen: 130°. Spitze: 180° − 130° = 50°.' },
@@ -1140,7 +1140,7 @@ export const lernkarten = {
         check: [],
       },
       {
-        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
           { text: 'Urne: 5 rote, 3 blaue Kugeln. Wie gross ist P(rot)?', loesung: 'P = 5/8.' },
           { text: 'Ein Würfel wird 200 Mal geworfen. Wie oft ungefähr eine 3?', loesung: 'P(3) = 1/6. 200 · 1/6 ≈ 33 Mal.' },
@@ -1239,7 +1239,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'gemischt', emoji: '🧮', titel: 'Gemischte Textaufgaben', videos: [],
+        id: 'gemischt', emoji: '📝', titel: 'Gemischte Textaufgaben', videos: [],
         karten: [
           { text: 'Manche Aufgaben haben einen Zwischenschritt, der sich während der Aufgabe ändert - zum Beispiel wenn mitten in der Arbeit noch jemand dazukommt.' },
           {
@@ -1275,7 +1275,7 @@ export const lernkarten = {
         check: [],
       },
       {
-        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
           { text: 'Ein Drucker druckt 150 Seiten in 5 Minuten. Wie viele Seiten in 12 Minuten?', loesung: '150 : 5 = 30 Seiten/Minute. 30 · 12 = 360 Seiten.' },
           { text: '5 kg Mehl kosten 8 Franken. Wie viel kosten 12 kg?', loesung: '8 : 5 = 1.6 Fr/kg. 1.6 · 12 = 19.2 Franken.' },
@@ -1409,7 +1409,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'lesen', emoji: '🔎', titel: 'Diagramme lesen & Fehler finden', videos: [{ titel: 'Diagramme auswerten', youtubeId: 'hY_XiaT-3PI' }],
+        id: 'lesen', emoji: '🔍', titel: 'Diagramme lesen & Fehler finden', videos: [{ titel: 'Diagramme auswerten', youtubeId: 'hY_XiaT-3PI' }],
         karten: [
           { text: 'Ein Diagramm richtig zu lesen heisst: genau hinschauen, was die Achsen bedeuten, und nicht nur grob schätzen.' },
           {
@@ -1445,7 +1445,7 @@ export const lernkarten = {
         check: [],
       },
       {
-        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
           { text: '35 Personen befragt: 14 mögen Tee. Relative Häufigkeit in %?', loesung: '14 : 35 = 0.4 = 40%.' },
           { text: '80 Personen, relative Häufigkeiten 25%, 45% und x%. Wie gross ist x?', loesung: '100% − 25% − 45% = 30%.' },
@@ -1555,7 +1555,7 @@ export const lernkarten = {
         check: [],
       },
       {
-        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
           { text: 'Wie viel sind 40% von 150?', loesung: '150 · 40 : 100 = 60.' },
           { text: '24 ist wie viel Prozent von 80?', loesung: '24 : 80 · 100 = 30%.' },
@@ -1703,7 +1703,7 @@ export const lernkarten = {
         check: [],
       },
       {
-        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        id: 'ueben', emoji: '🥋', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
           { text: 'Wie viele Quadrate hat ein Würfelnetz?', loesung: '6, da ein Würfel 6 Seiten hat.' },
           { text: 'Wie viele Flächen treffen sich an jeder Kante eines Würfels?', loesung: '2 - jede Kante ist die Grenze zwischen genau 2 Flächen.' },

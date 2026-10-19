@@ -6,7 +6,7 @@ const actionCards = [
   { emoji: '🎵', challenge: 'Schreib deinen ersten KI-Song', url: 'https://suno.com' },
   { emoji: '🔍', challenge: 'Echt oder KI? Teste das Bild', url: 'https://lens.google.com' },
   { emoji: '👁', challenge: 'Wie viel weiss Google über dich?', url: 'https://myactivity.google.com' },
-  { emoji: '🧠', challenge: 'Was denkt dein Feed über dich?', tip: 'Auf TikTok oder Instagram bei einem Video auf die drei Punkte tippen → „Warum sehe ich das?“' },
+  { emoji: '🎯', challenge: 'Was denkt dein Feed über dich?', tip: 'Auf TikTok oder Instagram bei einem Video auf die drei Punkte tippen → „Warum sehe ich das?“' },
   { emoji: '📵', challenge: 'Autoplay aus — spür den Unterschied', tip: 'YouTube/Instagram → Einstellungen → Autoplay ausschalten. Schau mal, ob es sich anders anfühlt.' },
   { emoji: '⏱', challenge: 'Wie lang warst du diese Woche online?', tip: 'iOS: Einstellungen → Bildschirmzeit. Android: Einstellungen → Digitales Wohlbefinden.' },
 ];
