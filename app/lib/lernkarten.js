@@ -489,4 +489,162 @@ export const lernkarten = {
       },
     ],
   },
+  'Wahrscheinlichkeit': {
+    titel: 'Wahrscheinlichkeit',
+    kacheln: [
+      {
+        id: 'grundidee', emoji: '🎲', titel: 'Grundidee', videos: [],
+        karten: [
+          { text: 'Wahrscheinlichkeit ist ein Bruch: Anzahl der günstigen Ausgänge geteilt durch die Anzahl aller möglichen Ausgänge. 0 heisst unmöglich, 1 heisst sicher.' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: '0', regel: 'Unmöglich - kann nie passieren.' },
+              { n: '1', regel: 'Sicher - passiert immer.' },
+              { n: 'P = günstig/möglich', regel: 'Wahrscheinlichkeit = Anzahl günstiger Ausgänge geteilt durch Anzahl aller möglichen Ausgänge.' },
+              { n: 'als Prozent', regel: 'Einen Bruch wie 1/2 kannst du auch als 50% schreiben.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Zähl zuerst ALLE möglichen Ausgänge (der Nenner), dann die günstigen (der Zähler) - in dieser Reihenfolge verwechselst du am wenigsten.' },
+          { text: 'Ein Würfel hat 6 Seiten. Wie gross ist die Wahrscheinlichkeit, eine gerade Zahl zu würfeln?\n| Günstige Ausgänge: 2, 4, 6 → 3 Stück\n| Alle möglichen: 6\n| P = 3/6 = 1/2' },
+          { text: 'In einer Urne sind 4 rote und 6 blaue Kugeln. Wie gross ist P(rot)?\nP = 4/10 = 2/5' },
+        ],
+        check: [
+          { frage: 'In einem Beutel sind 3 grüne und 7 gelbe Kugeln. Wie gross ist P(grün)?', optionen: ['3/10', '7/10', '3/7', '7/3'], richtig: 0, erklaerung: 'Günstig (grün) = 3, alle = 10. P = 3/10. Bei 3/7 wurden nur die gelben Kugeln als Nenner genommen.' },
+          { frage: 'Ein Glücksrad bleibt sicher auf einem seiner 4 Felder stehen. Wie gross ist diese Wahrscheinlichkeit?', optionen: ['1 (100%)', '0', '4', '1/4'], richtig: 0, erklaerung: 'Ein sicheres Ereignis hat die Wahrscheinlichkeit 1 (= 100%). Bei 1/4 wurde mit der Wahrscheinlichkeit EINES bestimmten Feldes verwechselt.' },
+          { frage: 'Ein Würfel wird 600 Mal geworfen. Wie oft erwartest du ungefähr eine 6?', optionen: ['ca. 100 Mal', 'ca. 600 Mal', 'ca. 6 Mal', 'ca. 50 Mal'], richtig: 0, erklaerung: 'P(6) = 1/6. Erwartete Anzahl: 600 · 1/6 = 100. Bei 50 wurde durch 12 statt durch 6 geteilt.' },
+        ],
+      },
+      {
+        id: 'baum', emoji: '🌳', titel: 'Baumdiagramm & Pfadregel', videos: [],
+        karten: [
+          { text: 'Ein Wahrscheinlichkeitsbaum zeigt alle möglichen Wege wie ein Wegweiser mit Verzweigungen. An jedem Ast steht eine Wahrscheinlichkeit.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'ein Ast entlang', regel: 'Die Wahrscheinlichkeiten entlang EINES Weges werden multipliziert.' },
+              { n: 'mehrere Wege zum Ziel', regel: 'Führen mehrere Äste zum gleichen Ergebnis, werden ihre Wahrscheinlichkeiten addiert.' },
+              { n: 'Summe an einer Verzweigung', regel: 'Alle Äste, die von einem Punkt abgehen, ergeben zusammen immer 1 (= 100%).' },
+              { n: 'Pfadregel', regel: 'Der Name für "entlang multiplizieren, verschiedene Wege addieren".' },
+            ],
+          },
+          { text: 'Profi-Tipp: Zeichne IMMER den ganzen Baum, auch wenn die Aufgabe nur einen Ast verlangt - so siehst du alle Wahrscheinlichkeiten auf einen Blick und verwechselst nichts.' },
+          { text: 'Eine Urne hat 3 rote und 2 blaue Kugeln. Du ziehst 2 Mal MIT Zurücklegen. Wie gross ist P(beide rot)?\n| P(rot) beim 1. Zug: 3/5\n| P(rot) beim 2. Zug (wieder 3/5, da zurückgelegt): 3/5\n| Entlang des Astes multiplizieren: 3/5 · 3/5 = 9/25' },
+          { text: 'Wie gross ist P(genau eine rote Kugel bei 2 Zügen)?\n| Weg 1: rot dann blau: 3/5 · 2/5 = 6/25\n| Weg 2: blau dann rot: 2/5 · 3/5 = 6/25\n| Zwei Wege zum selben Ziel, also addieren: 6/25 + 6/25 = 12/25' },
+        ],
+        check: [
+          { frage: 'Urne: 4 rote, 1 blaue Kugel. 2 Züge MIT Zurücklegen. P(beide rot)?', optionen: ['16/25', '8/25', '4/5', '2/5'], richtig: 0, erklaerung: 'P(rot) = 4/5 bei jedem Zug. Entlang multiplizieren: 4/5 · 4/5 = 16/25. Bei 8/25 wurden die Brüche addiert statt multipliziert.' },
+          { frage: 'Im Baumdiagramm gehen an einer Verzweigung zwei Äste ab, einer mit P = 0.3. Wie gross ist der andere Ast?', optionen: ['0.7', '0.3', '1.3', '0.4'], richtig: 0, erklaerung: 'Alle Äste an einer Verzweigung ergeben zusammen 1: 1 − 0.3 = 0.7.' },
+          { frage: 'Eine Münze wird 2 Mal geworfen (Kopf/Zahl, je P = 1/2). Wie gross ist P(genau einmal Kopf)?', optionen: ['1/2', '1/4', '1', '3/4'], richtig: 0, erklaerung: 'Zwei Wege führen zu "genau einmal Kopf": Kopf-Zahl (1/2 · 1/2 = 1/4) und Zahl-Kopf (1/4). Addiert: 1/4 + 1/4 = 1/2.' },
+        ],
+      },
+      {
+        id: 'zuruecklegen', emoji: '🔁', titel: 'Mit oder ohne Zurücklegen', videos: [],
+        karten: [
+          { text: 'Zurücklegen heisst: Die gezogene Kugel kommt zurück in die Urne, bevor du nochmal ziehst - die Chancen bleiben gleich. Ohne Zurücklegen wird die Urne jedes Mal kleiner, und die Chancen ändern sich.' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'mit Zurücklegen', regel: 'Gleiche Wahrscheinlichkeiten bei jedem Zug - die Urne bleibt unverändert.' },
+              { n: 'ohne Zurücklegen', regel: 'Die Anzahl Kugeln UND die Zusammensetzung ändern sich nach jedem Zug.' },
+              { n: 'im Baum erkennen', regel: 'Mit Zurücklegen: An jeder Verzweigung die gleichen Zahlen. Ohne: Die Zahlen werden kleiner.' },
+              { n: 'Reihenfolge ohne Zurücklegen', regel: 'Jede gezogene Kugel fehlt beim nächsten Zug im Nenner.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Lies die Aufgabe genau: Steht da "mit Zurücklegen" oder "ohne Zurücklegen"? Das ändert JEDEN Ast im Baum.' },
+          { text: 'Urne mit 2 roten, 3 blauen Kugeln (5 total). 2 Züge.\nMIT Zurücklegen: P(rot, dann rot) = 2/5 · 2/5 = 4/25\nOHNE Zurücklegen: P(rot, dann rot) = 2/5 · 1/4 = 2/20 = 1/10\n\nOhne Zurücklegen bleibt nach dem ersten Zug nur noch 1 rote Kugel von 4 übrigen.' },
+        ],
+        check: [
+          { frage: 'Urne: 3 rote, 2 blaue Kugeln (5 total), OHNE Zurücklegen. P(1. Zug rot, 2. Zug rot)?', optionen: ['3/10', '9/25', '3/5', '2/4'], richtig: 0, erklaerung: '1. Zug: 3/5. 2. Zug (ohne Zurücklegen, eine rote weg): 2/4. Zusammen: 3/5 · 2/4 = 6/20 = 3/10. Bei 9/25 wurde fälschlich mit Zurücklegen gerechnet (3/5 · 3/5).' },
+          { frage: 'Urne: 3 rote, 2 blaue Kugeln, MIT Zurücklegen, 2 Züge. P(beide rot)?', optionen: ['9/25', '3/10', '6/20', '3/5'], richtig: 0, erklaerung: 'Mit Zurücklegen bleibt P(rot) = 3/5 bei jedem Zug: 3/5 · 3/5 = 9/25.' },
+          { frage: 'Woran erkennst du im Baumdiagramm, dass OHNE Zurücklegen gezogen wurde?', optionen: ['Die Zahlen im Bruch werden bei jedem Ast kleiner', 'Die Zahlen bleiben bei jedem Ast gleich', 'Es gibt nur einen Ast', 'Die Summe an jeder Verzweigung ist nicht 1'], richtig: 0, erklaerung: 'Ohne Zurücklegen fehlt die gezogene Kugel beim nächsten Mal - Zähler und Nenner werden kleiner. Mit Zurücklegen bleiben die Zahlen gleich.' },
+        ],
+      },
+      {
+        id: 'gluecksrad', emoji: '🎡', titel: 'Glücksrad & Flächen', videos: [],
+        karten: [
+          { text: 'Ein Glücksrad mit ungleich grossen Feldern ist wie eine Pizza mit unterschiedlich grossen Stücken: Je grösser das Stück (der Winkel), desto grösser die Chance, dass der Zeiger dort stehen bleibt.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'ganzer Kreis = 360°', regel: 'Der ganze Kreis hat 360°, das entspricht der Wahrscheinlichkeit 1.' },
+              { n: 'Winkel → Wahrscheinlichkeit', regel: 'P(Feld) = Winkel des Feldes : 360°.' },
+              { n: 'Fläche statt Winkel', regel: 'Genauso geht es mit der Fläche: P(Feld) = Fläche des Feldes : Gesamtfläche.' },
+              { n: 'alle Felder zusammen', regel: 'Alle Feld-Wahrscheinlichkeiten zusammen ergeben immer 1.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Kennst du nur die Winkel von drei der vier Felder, rechne das vierte über "360° minus die anderen".' },
+          { text: 'Ein Glücksrad hat vier Felder: A ist ein Viertel (90°), D ist die Hälfte (180°). B und C teilen sich den Rest zu gleichen Teilen.\n| Rest für B und C: 360° − 90° − 180° = 90°\n| Je zur Hälfte: 90° : 2 = 45° je\n| P(B) = 45°/360° = 1/8' },
+          { text: 'Das Rad wird 800 Mal gedreht. Wie oft bleibt es ungefähr auf A stehen?\nP(A) = 90°/360° = 1/4\n800 · 1/4 = 200 Mal' },
+        ],
+        check: [
+          { frage: 'Ein Glücksrad-Feld hat 120°. Wie gross ist seine Wahrscheinlichkeit?', optionen: ['1/3', '1/12', '3', '120/360 (nicht kürzbar)'], richtig: 0, erklaerung: 'P = 120°/360° = 1/3. Bei 1/12 wurde falsch gekürzt.' },
+          { frage: 'Drei Felder eines Glücksrads haben 90°, 120° und 60°. Wie gross ist der Winkel des vierten Feldes?', optionen: ['90°', '270°', '60°', '30°'], richtig: 0, erklaerung: '360° − 90° − 120° − 60° = 90°.' },
+          { frage: 'Ein Feld mit P = 1/5 wird 400 Mal gedreht. Wie oft bleibt es ungefähr auf diesem Feld stehen?', optionen: ['ca. 80 Mal', 'ca. 20 Mal', 'ca. 400 Mal', 'ca. 5 Mal'], richtig: 0, erklaerung: '400 · 1/5 = 80.' },
+        ],
+      },
+      {
+        id: 'kombinatorik', emoji: '🔢', titel: 'Kombinatorik', videos: [],
+        karten: [
+          { text: 'Manchmal willst du nicht die Wahrscheinlichkeit wissen, sondern nur: Wie viele verschiedene Möglichkeiten gibt es überhaupt?' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'alle verschieden', regel: 'n verschiedene Dinge in einer Reihenfolge: n · (n−1) · (n−2) · ... · 1 (genannt n Fakultät, n!).' },
+              { n: 'mit Wiederholung', regel: 'Kommen gleiche Dinge mehrmals vor, teilst du durch die Fakultät der Wiederholungen.' },
+              { n: 'Baum/Liste', regel: 'Bei wenigen Möglichkeiten einfach alle auflisten oder einen Baum zeichnen.' },
+              { n: 'mal statt plus', regel: 'Bei "erst dies, dann das" werden die Anzahl Möglichkeiten multipliziert.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Zähl zuerst, wie viele Plätze oder Schritte es gibt, und wie viele Möglichkeiten an jedem Platz - dann multiplizierst du alles zusammen.' },
+          { text: 'Ein Beutel hat die Kugeln B, E, E (3 Kugeln, 2 davon gleich). Wie viele verschiedene "Wörter" entstehen, wenn alle 3 ohne Zurücklegen gezogen werden?\n| Wären alle 3 verschieden: 3! = 6\n| Die zwei E sind aber gleich, jede Reihenfolge der E\'s zählt doppelt: durch 2! = 2 teilen\n| 3! : 2! = 6 : 2 = 3\n\nDie 3 Wörter: BEE, EBE, EEB.' },
+          { text: 'Wie gross ist P(genau das Wort "BEE")?\nAlle 3 Wörter sind gleich wahrscheinlich: P = 1/3' },
+        ],
+        check: [
+          { frage: 'Ein Beutel hat die Kugeln X, Y, Y, Y (4 Kugeln, 3 gleich). Wie viele verschiedene Wörter entstehen?', optionen: ['4', '24', '12', '1'], richtig: 0, erklaerung: '4! = 24 (wenn alle verschieden wären), geteilt durch 3! = 6 (für die drei gleichen Y): 24 : 6 = 4. Die 4 Wörter: XYYY, YXYY, YYXY, YYYX.' },
+          { frage: '3 verschiedene Freunde stellen sich in eine Reihe. Wie viele Reihenfolgen gibt es?', optionen: ['6', '3', '9', '1'], richtig: 0, erklaerung: '3 verschiedene Dinge in einer Reihenfolge: 3! = 3 · 2 · 1 = 6.' },
+          { frage: 'Ein Beutel hat die Kugeln K, K, L, L (4 Kugeln, je 2 gleich). Wie viele verschiedene Wörter entstehen?', optionen: ['6', '24', '4', '12'], richtig: 0, erklaerung: '4! = 24, geteilt durch 2! (für K, K) UND durch 2! (für L, L): 24 : 2 : 2 = 6.' },
+        ],
+      },
+      {
+        id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
+        karten: [
+          { text: '❌ Bei zwei Zügen MIT Zurücklegen wird beim zweiten Zug trotzdem mit einer Kugel weniger gerechnet. ✅ Mit Zurücklegen bleibt die Urne bei jedem Zug gleich - gleiche Brüche.' },
+          { text: '❌ Entlang eines Astes im Baum werden die Wahrscheinlichkeiten addiert statt multipliziert. ✅ Entlang EINES Weges multiplizieren, nur verschiedene Wege zum selben Ziel werden addiert.' },
+          { text: '❌ Beim Glücksrad wird der Winkel direkt als Wahrscheinlichkeit verwendet (z. B. 90° = P von 90). ✅ Immer durch 360° teilen: P = Winkel : 360°.' },
+          { text: '❌ Bei "mit Wiederholung" wird vergessen, durch die Fakultät der gleichen Elemente zu teilen. ✅ n! durch die Fakultät jeder Gruppe gleicher Elemente teilen.' },
+          { text: '❌ Die Summe aller Äste an einer Verzweigung wird nicht auf 1 geprüft. ✅ Alle Äste, die von einem Punkt abgehen, müssen sich zu 1 (100%) addieren.' },
+          { text: '❌ "Unmöglich" wird mit der Wahrscheinlichkeit 1 verwechselt. ✅ Unmöglich = 0, sicher = 1.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        karten: [
+          { text: 'Urne: 5 rote, 3 blaue Kugeln. Wie gross ist P(rot)?', loesung: 'P = 5/8.' },
+          { text: 'Ein Würfel wird 200 Mal geworfen. Wie oft ungefähr eine 3?', loesung: 'P(3) = 1/6. 200 · 1/6 ≈ 33 Mal.' },
+          { text: 'Urne: 2 rote, 3 blaue (5 total). 2 Züge MIT Zurücklegen. P(beide blau)?', loesung: '3/5 · 3/5 = 9/25.' },
+          { text: 'Eine Münze wird 2 Mal geworfen. Wie gross ist P(mindestens einmal Kopf)?', loesung: 'Gegenteil: P(keinmal Kopf) = 1/2 · 1/2 = 1/4. P(mindestens einmal) = 1 − 1/4 = 3/4.' },
+          { text: 'Urne: 4 rote, 2 blaue (6 total), OHNE Zurücklegen, 2 Züge. P(beide rot)?', loesung: '4/6 · 3/5 = 12/30 = 2/5.' },
+          { text: 'Dieselbe Urne (4 rote, 2 blaue), aber MIT Zurücklegen. P(beide rot)?', loesung: '4/6 · 4/6 = 16/36 = 4/9.' },
+          { text: 'Ein Glücksrad-Feld hat 72°. Wie gross ist P?', loesung: 'P = 72°/360° = 1/5.' },
+          { text: 'Zwei Felder eines Glücksrads haben 150° und 90°. Wie gross ist das dritte Feld?', loesung: '360° − 150° − 90° = 120°.' },
+          { text: 'Ein Feld mit P = 3/10 wird 500 Mal gedreht. Wie oft ungefähr?', loesung: '500 · 3/10 = 150 Mal.' },
+          { text: 'Kugeln A, A, B, B, B (5 Kugeln, 2 gleich A, 3 gleich B). Wie viele verschiedene Wörter?', loesung: '5! : (2! · 3!) = 120 : (2 · 6) = 10.' },
+          { text: '4 verschiedene Bücher werden ins Regal gestellt. Wie viele Reihenfolgen gibt es?', loesung: '4! = 24.' },
+          { text: 'Urne: 3 rote, 2 blaue (5 total). OHNE Zurücklegen, 2 Züge. P(genau eine rote)?', loesung: 'Weg rot-blau: 3/5 · 2/4 = 3/10. Weg blau-rot: 2/5 · 3/4 = 3/10. Zusammen: 3/10 + 3/10 = 3/5.' },
+          { text: 'Glücksrad: A = 100°, B = 140°, C = Rest. Bei 900 Drehungen, wie oft ungefähr C?', loesung: 'C = 360° − 100° − 140° = 120°. P(C) = 120°/360° = 1/3. 900 · 1/3 = 300 Mal.' },
+          { text: 'Kugeln R, R, R, G, G (5 Kugeln, 3 gleich R, 2 gleich G), alle gezogen. Wie viele Wörter, und wie gross ist P(ein bestimmtes Wort)?', loesung: '5! : (3! · 2!) = 120 : 12 = 10 Wörter. P(ein bestimmtes) = 1/10.' },
+          { text: 'Urne: 1 rote, 4 blaue (5 total), MIT Zurücklegen, 3 Züge. P(alle 3 blau)?', loesung: '4/5 · 4/5 · 4/5 = 64/125.' },
+          { text: 'Urne: 2 rote, 3 blaue (5 total), OHNE Zurücklegen, 3 Züge. P(1. rot, 2. rot, 3. blau)?', loesung: '2/5 · 1/4 · 3/3 = 2/20 = 1/10 (nach den zwei roten sind nur noch blaue übrig, also 3/3 = 1).' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
