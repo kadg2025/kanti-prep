@@ -3,6 +3,7 @@ export const questions2023 = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
     id: 'M2_2023_MTR_TEMP_1',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -73,6 +74,7 @@ Original: °C = 5/9 * (°F - 32)
   // ── AUFGABE 2 ─────────────────────────────────────────────
   {
     id: 'M2_2023_MTR_PROZ_1',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -136,6 +138,7 @@ Ersparnis = 100% - 97.57% = 2.43%
   // ── AUFGABE 3 ─────────────────────────────────────────────
   {
     id: 'M2_2023_MTR_PYTH_1',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -222,6 +225,7 @@ d = √936 ≈ 30.59 cm
   // ── AUFGABE 4 ─────────────────────────────────────────────
   {
     id: 'M2_2023_MTR_KONSTR_1',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -288,6 +292,7 @@ Die Seite BC muss senkrecht zur Seite AB stehen.
   // ── AUFGABE 5 ─────────────────────────────────────────────
   {
     id: 'M2_2023_MTR_WAHR_1',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -381,6 +386,7 @@ P(b,b) = 2/8 * 1/7 = 2/56 = 1/28
   // ── AUFGABE 6 ─────────────────────────────────────────────
   {
     id: 'M2_2023_MTR_BEWEG_1',
+    verified: true,
     year: 2023,
     subject: 'Mathe',
     exam: 'Mathe mit TR',

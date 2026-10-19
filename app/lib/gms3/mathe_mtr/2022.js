@@ -8,6 +8,8 @@ export const questions2022 = [
 
     id: 'M3_2022_MTR_ZUGE_1',
 
+    verified: true,
+
     year: 2022,
 
     subject: 'Mathe',
@@ -87,6 +89,8 @@ Wenn zwei Dinge aufeinander zukommen, addieren sich ihre Geschwindigkeiten. Sie 
   {
 
     id: 'M3_2022_MTR_WAHL_1',
+
+    verified: true,
 
     year: 2022,
 
@@ -185,6 +189,8 @@ Anteil = (Teil ÷ Ganzes) × 100 = (965'240 ÷ 2'360'000) × 100 ≈ 40.9%
 
     id: 'M3_2022_MTR_PYTH_1',
 
+    verified: true,
+
     year: 2022,
 
     subject: 'Mathe',
@@ -272,6 +278,8 @@ Abstand A₁A₂ = 2 × d = 2 × 8.25 ≈ 16.5 m
 
     id: 'M3_2022_MTR_WAHR_1',
 
+    verified: true,
+
     year: 2022,
 
     subject: 'Mathe',
@@ -358,6 +366,8 @@ Jetzt beide Wege addieren (Summen-Regel):
 
     id: 'M3_2022_MTR_VOL_1',
 
+    verified: true,
+
     year: 2022,
 
     subject: 'Mathe',
@@ -374,9 +384,9 @@ Jetzt beide Wege addieren (Summen-Regel):
 
 Aus einem senkrechten Prisma wird ein Quader herausgeschnitten, dessen Volumen ein Fünftel des ursprünglichen Prisma-Volumens beträgt.
 
-Masse: Prisma-Grundfläche = rechtwinkliges Dreieck (Katheten 20 und 30), Höhe = 50
+Masse: Prisma-Grundfläche = gleichschenkliges Trapez (Parallelseiten 30 und 20, Schenkel je 13), Prisma-Länge = 50
 
-       Quader: 13 × 13 × 50
+Vom herausgeschnittenen Quader sind zwei Kanten bekannt: 20 und 50. Die dritte Kante ist gesucht.
 
 a) Berechne das Volumen des Restkörpers.
 
@@ -389,7 +399,10 @@ b) Berechne den Oberflächeninhalt des herausgeschnittenen Quaders.`,
       steps: [
         {
           title: '📖 Deine Werkzeuge',
-          content: `📦 Volumen: Grundfläche × Höhe
+          content: `📐 Trapezfläche: (a+b) ÷ 2 × h
+Bei einem Trapez mit den parallelen Seiten a und b und der Höhe h gilt: Addiere die beiden parallelen Seiten, teile durch 2 und multipliziere mit der Höhe.
+
+📦 Volumen: Grundfläche × Höhe
 Stell dir vor, du stapelst Papier. Das Volumen ist einfach die Fläche von einem Blatt (Grundfläche) mal die Höhe des Stapels. Das gilt für Prisma und Quader.
 
 🍰 Restkörper: Grosses Volumen - Kleines Volumen
@@ -401,8 +414,12 @@ Die Oberfläche eines Quaders ist die Fläche, die du brauchst, um ihn komplett 
         },
         {
           title: 'Schritt 1: Volumen des grossen Prismas',
-          content: `Die Grundfläche ist ein rechtwinkliges Dreieck.
-• Fläche Dreieck = (Kathete × Kathete) ÷ 2 = (20 × 30) ÷ 2 = 300 cm²
+          content: `Die Grundfläche ist ein gleichschenkliges Trapez mit den parallelen Seiten 30 (unten) und 20 (oben) und den Schenkeln (schrägen Seiten) von je 13.
+
+Höhe des Trapezes (Pythagoras): Die Differenz der parallelen Seiten ist 30 - 20 = 10, zur Hälfte also 5 auf jeder Seite.
+h² = 13² - 5² = 169 - 25 = 144 → h = 12
+
+• Fläche Trapez = (30 + 20) ÷ 2 × 12 = 25 × 12 = 300 cm²
 • Volumen Prisma = Grundfläche × Höhe = 300 × 50 = 15'000 cm³`,
         },
         {
@@ -417,15 +434,16 @@ Jetzt ziehen wir das kleine Volumen vom grossen ab:
         },
         {
           title: 'b) Oberfläche des Quaders',
-          content: `Wir packen den Quader (13 × 13 × 50) in Geschenkpapier ein.
-• Boden & Deckel: 2 × (13 × 13) = 2 × 169 = 338 cm²
-• 4 Seitenwände: 4 × (13 × 50) = 4 × 650 = 2600 cm²
-• Total: 338 + 2600 = 2'938 cm²
+          content: `Zwei Kanten des Quaders kennen wir bereits: 20 und 50 (die volle Prisma-Länge). Die dritte Kante ist noch unbekannt – aber wir kennen ja sein Volumen (3'000 cm³ aus Teil a)!
 
-Oder mit der Formel:
-O = 2 × (13×13 + 13×50 + 13×50) = 2 × (169 + 650 + 650) = 2 × 1469 = 2'938 cm²
+Fehlende Kante = Volumen ÷ (bekannte Kante 1 × bekannte Kante 2) = 3'000 ÷ (20 × 50) = 3'000 ÷ 1'000 = 3 cm
 
-✅ Die Oberfläche des Quaders beträgt 2'938 cm².`,
+Der Quader ist also 20 × 50 × 3.
+
+Jetzt packen wir ihn in Geschenkpapier ein:
+O = 2 × (20×50 + 20×3 + 50×3) = 2 × (1'000 + 60 + 150) = 2 × 1'210 = 2'420 cm²
+
+✅ Die Oberfläche des Quaders beträgt 2'420 cm².`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -435,10 +453,12 @@ O = 2 × (13×13 + 13×50 + 13×50) = 2 × (169 + 650 + 650) = 2 × 1469 = 2'938
       ],
 
       tip: `🍳 Dein Gameplan:
-1️⃣ Prisma-Volumen: Rechne die dreieckige Grundfläche aus und multipliziere sie mit der Höhe.
-2️⃣ Quader-Volumen: Nimm 1/5 vom Prisma-Volumen (ist so gegeben!).
-3️⃣ Rest: Ziehe das Quader-Volumen vom Prisma-Volumen ab.
-4️⃣ Oberfläche: Stell dir vor, du packst den Quader ein. Addiere die Flächen von allen 6 Seiten.`,
+1️⃣ Trapezfläche: Finde mit Pythagoras die Höhe des Trapezes und berechne die Grundfläche ((a+b) ÷ 2 × h).
+2️⃣ Prisma-Volumen: Multipliziere die Grundfläche mit der Prisma-Länge (50).
+3️⃣ Quader-Volumen: Nimm 1/5 vom Prisma-Volumen (ist so gegeben!).
+4️⃣ Rest: Ziehe das Quader-Volumen vom Prisma-Volumen ab.
+5️⃣ Fehlende Kante: Nutze das Quader-Volumen und die zwei bekannten Kanten (20 und 50), um die dritte Kante zu berechnen.
+6️⃣ Oberfläche: Stell dir vor, du packst den Quader ein. Addiere die Flächen von allen 6 Seiten.`,
     },
 
   },
@@ -448,6 +468,8 @@ O = 2 × (13×13 + 13×50 + 13×50) = 2 × (169 + 650 + 650) = 2 × 1469 = 2'938
   {
 
     id: 'M3_2022_MTR_RHOM_1',
+
+    verified: true,
 
     year: 2022,
 
@@ -487,19 +509,22 @@ Ein Rhombus (auch Raute genannt) ist ein verzogenes Quadrat. Er hat 4 gleich lan
 1. Die Diagonalen stehen im 90°-Winkel aufeinander.
 2. Die Diagonalen halbieren sich gegenseitig im Schnittpunkt M.
 
+📐 Satz des Thales (rückwärts)
+Wenn ein Punkt mit den beiden Enden einer Strecke einen rechten Winkel bildet, liegt er auf dem Kreis über dieser Strecke (dem Thaleskreis).
+
 🔑 Der Schlüssel zur Lösung
-Stell dir vor, der Rhombus ist ein Papierdrachen. Die Strecke AB ist eine Kante. Weil der Drachen perfekt symmetrisch ist, muss sein "Kreuz" (der Punkt M) genau auf der Symmetrieachse von A und B liegen. Diese Achse ist die Mittelsenkrechte!
-→ M liegt also dort, wo sich die Mittelsenkrechte von AB und die Gerade g kreuzen.`,
+AB ist eine Seite des Rhombus, M der Diagonalenschnittpunkt. Weil die Diagonalen senkrecht aufeinander stehen, bilden A, M und B ein rechtwinkliges Dreieck mit dem rechten Winkel bei M.
+Nach dem Satz des Thales (rückwärts) liegt M deshalb auf dem Thaleskreis über der Strecke AB!
+→ M liegt also dort, wo sich der Thaleskreis über AB und die Gerade g schneiden.`,
         },
         {
           title: 'a) Den Punkt M finden',
-          content: `1. Konstruiere die Mittelsenkrechte von AB:
-   • Nimm den Zirkel, stich in A ein und wähle einen Radius, der grösser als die halbe Strecke AB ist. Zeichne einen Bogen.
-   • Behalte den Radius bei, stich in B ein und zeichne einen zweiten Bogen.
-   • Verbinde die beiden Schnittpunkte der Bögen mit einem Lineal. Das ist die Mittelsenkrechte.
+          content: `1. Konstruiere den Thaleskreis über AB:
+   • Finde zuerst die Mitte Z der Strecke AB: Stich mit dem Zirkel in A ein, wähle einen Radius grösser als die halbe Strecke AB, zeichne einen Bogen. Mach dasselbe von B aus mit gleichem Radius. Verbinde die beiden Bogen-Schnittpunkte – das gibt dir die Mitte Z von AB.
+   • Stich nun mit dem Zirkel in Z ein, mit Radius ZA (= ZB), und zeichne den Kreis. Das ist der Thaleskreis über AB.
 
 2. Finde M:
-   • Der Punkt, wo deine neue Linie die Gerade g schneidet, ist der gesuchte Punkt M! Beschrifte ihn.`,
+   • Die Punkte, wo dieser Thaleskreis die Gerade g schneidet, sind die gesuchten Punkte M (es kann keine, eine oder zwei Lösungen geben). Beschrifte sie.`,
         },
         {
           title: 'b) Den Rhombus fertig zeichnen',
@@ -523,9 +548,9 @@ Stell dir vor, der Rhombus ist ein Papierdrachen. Die Strecke AB ist eine Kante.
       ],
 
       tip: `🍳 Dein Gameplan:
-1️⃣ Der Trick: Erkenne, dass M auf der Mittelsenkrechten von AB liegen muss (Symmetrie!).
-2️⃣ Mittelsenkrechte konstruieren: Zirkel bei A, dann B, Bögen zeichnen, verbinden.
-3️⃣ M finden: Der Schnittpunkt von deiner Mittelsenkrechten und der Geraden g ist M.
+1️⃣ Der Trick: Erkenne, dass M mit A und B einen rechten Winkel bildet (die Diagonalen stehen senkrecht!) – M liegt also auf dem Thaleskreis über AB.
+2️⃣ Thaleskreis konstruieren: Finde die Mitte Z von AB und zeichne den Kreis mit Radius ZA um Z.
+3️⃣ M finden: Der Schnittpunkt von deinem Thaleskreis und der Geraden g ist M (ggf. zwei Lösungen).
 4️⃣ Spiegeln: Finde C, indem du A am Punkt M spiegelst. Finde D, indem du B am Punkt M spiegelst.
 5️⃣ Verbinden: Zeichne die vier Seiten des Rhombus.`,
     },
