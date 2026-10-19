@@ -489,4 +489,114 @@ export const lernkarten = {
       },
     ],
   },
+  'Prozent & Zins': {
+    titel: 'Prozent & Zins',
+    kacheln: [
+      {
+        id: 'grundidee', emoji: '📊', titel: 'Grundidee Prozent', videos: [],
+        karten: [
+          { text: 'Prozent heisst "von Hundert". 1% ist der hundertste Teil eines Ganzen - wie 1 Rappen von 1 Franken (100 Rappen).' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Grundwert', regel: 'Das Ganze, von dem die Prozente genommen werden (100%).' },
+              { n: 'Prozentsatz', regel: 'Wie viel Prozent - die Zahl vor dem %-Zeichen.' },
+              { n: 'Prozentwert', regel: 'Das Ergebnis - so viel ist der Anteil in echten Einheiten (Fr, kg, ...).' },
+              { n: 'Formel', regel: 'Prozentwert = Grundwert · Prozentsatz : 100.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Schreib dir die drei Grössen (Grundwert, Prozentsatz, Prozentwert) immer zuerst auf - zwei davon kennst du, die dritte suchst du.' },
+          { text: 'Wie viel sind 30% von 80 Franken?\n| Grundwert: 80\n| Prozentsatz: 30\n| Prozentwert: 80 · 30 : 100 = 24 Franken' },
+          { text: '120 ist der Prozentwert, der Grundwert ist 400. Wie viel Prozent ist das?\nProzentsatz = 120 : 400 · 100 = 30%' },
+        ],
+        check: [
+          { frage: 'Wie viel sind 25% von 160?', optionen: ['40', '64', '4', '6.4'], richtig: 0, erklaerung: '160 · 25 : 100 = 40.' },
+          { frage: '18 ist wie viel Prozent von 90?', optionen: ['20%', '18%', '5%', '50%'], richtig: 0, erklaerung: '18 : 90 · 100 = 20%.' },
+          { frage: '15% von einer Zahl sind 45. Wie gross ist die Zahl (der Grundwert)?', optionen: ['300', '6.75', '450', '30'], richtig: 0, erklaerung: '45 : 15 · 100 = 300. Bei 6.75 wurde mit 0.15 multipliziert statt dividiert.' },
+        ],
+      },
+      {
+        id: 'ganzesteil', emoji: '🥧', titel: 'Vom Ganzen zum Teil und zurück', videos: [],
+        karten: [
+          { text: 'Manchmal wird ein Ganzes (eine Fläche, eine Menge) in mehrere Prozent-Teile aufgeteilt. Am Schluss müssen alle Teile zusammen wieder 100% ergeben.' },
+          {
+            text: 'Tippe die Schritte an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Teile addieren', regel: 'Alle Prozent-Teile zusammen ergeben 100%.' },
+              { n: 'Rest berechnen', regel: 'Fehlt ein Teil, ziehst du die bekannten Prozente von 100% ab.' },
+              { n: 'in echte Einheiten umrechnen', regel: 'Jeden Prozentsatz mit dem Grundwert multiplizieren (geteilt durch 100).' },
+              { n: 'Kontrolle', regel: 'Die echten Einheiten der Teile addiert müssen wieder den Grundwert ergeben.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Rechne den fehlenden Prozentsatz zuerst aus (100% minus die bekannten), dann erst in echte Einheiten umrechnen - nicht umgekehrt.' },
+          { text: 'Ein Bauer bewirtschaftet 40 ha. Er baut auf 30% Kartoffeln an, auf 45% Rüben, auf dem Rest Mais.\n| Rest in %: 100% − 30% − 45% = 25%\n| Kartoffeln: 40 · 30 : 100 = 12 ha\n| Rüben: 40 · 45 : 100 = 18 ha\n| Mais: 40 · 25 : 100 = 10 ha\n\nKontrolle: 12 + 18 + 10 = 40 ha ✓' },
+        ],
+        check: [
+          { frage: 'Ein Garten von 60 m² wird zu 20% mit Rosen, zu 50% mit Rasen bepflanzt, der Rest ist ein Weg. Wie gross ist der Weg?', optionen: ['18 m²', '30 m²', '12 m²', '42 m²'], richtig: 0, erklaerung: 'Rest in %: 100% − 20% − 50% = 30%. 60 · 30 : 100 = 18 m².' },
+          { frage: '70 kg Obst: 40% Äpfel, 35% Birnen, Rest Pflaumen. Wie viele kg sind Pflaumen?', optionen: ['17.5 kg', '24.5 kg', '52.5 kg', '25 kg'], richtig: 0, erklaerung: 'Rest in %: 100% − 40% − 35% = 25%. 70 · 25 : 100 = 17.5 kg.' },
+          { frage: 'Eine Fläche wird in drei Teile zu 15%, 35% und x% aufgeteilt. Wie gross ist x?', optionen: ['50%', '40%', '60%', '45%'], richtig: 0, erklaerung: '100% − 15% − 35% = 50%.' },
+        ],
+      },
+      {
+        id: 'textaufgaben', emoji: '💰', titel: 'Textaufgaben mit Prozent', videos: [],
+        karten: [
+          { text: 'Bei Mengenrabatt und Preisänderungen steckt oft ein Zwischenschritt: erst den Preis PRO STÜCK ausrechnen, dann vergleichen.' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Stückpreis', regel: 'Gesamtpreis geteilt durch Anzahl Stück.' },
+              { n: 'prozentuale Veränderung', regel: '(alter Wert − neuer Wert) : alter Wert · 100.' },
+              { n: 'Zuwachs vs. Abnahme', regel: 'Ist der neue Wert grösser, ist es ein Zuwachs (+), ist er kleiner, eine Abnahme (−).' },
+              { n: 'rückwärts rechnen', regel: 'Kennst du den NEUEN Wert nach einer Veränderung, kannst du mit ihm den ALTEN Wert zurückrechnen.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Bei "wie viel Prozent teurer/billiger" immer durch den ALTEN (ursprünglichen) Wert teilen, nicht durch den neuen.' },
+          { text: 'Ein 3er-Pack Kerzen kostet 4.50 Fr. Ein 6er-Pack kostet 7.80 Fr. Wie viel Prozent billiger ist eine Kerze im 6er-Pack?\n| Preis pro Kerze (3er): 4.50 : 3 = 1.50 Fr\n| Preis pro Kerze (6er): 7.80 : 6 = 1.30 Fr\n| Differenz: 1.50 − 1.30 = 0.20 Fr\n| Prozent: 0.20 : 1.50 · 100 ≈ 13.3%' },
+          { text: 'Rückwärts rechnen: Der Ertrag ist um 20% auf 96 Tonnen gefallen. Wie gross war der Ertrag im Vorjahr?\n| 96 Tonnen sind 80% vom alten Wert (100% − 20%)\n| 0.8 · x = 96\n| x = 96 : 0.8 = 120 Tonnen' },
+        ],
+        check: [
+          { frage: 'Ein Preis steigt von 80 auf 92 Franken. Wie viel Prozent ist das?', optionen: ['15%', '12%', '13%', '150%'], richtig: 0, erklaerung: 'Zuwachs: 92 − 80 = 12. 12 : 80 · 100 = 15%.' },
+          { frage: 'Ein Preis fällt um 25% auf 60 Franken. Wie gross war der Preis vorher?', optionen: ['80 Fr', '75 Fr', '45 Fr', '90 Fr'], richtig: 0, erklaerung: '60 Fr sind 75% vom alten Preis (100% − 25%). 0.75 · x = 60, also x = 60 : 0.75 = 80 Fr.' },
+          { frage: 'Ein 4er-Pack kostet 6 Fr, ein 10er-Pack 13 Fr. Wie viel Prozent billiger ist das Stück im 10er-Pack?', optionen: ['ca. 13.3%', 'ca. 20%', 'ca. 7.7%', 'ca. 15%'], richtig: 0, erklaerung: '4er-Pack: 6 : 4 = 1.50 Fr/Stück. 10er-Pack: 13 : 10 = 1.30 Fr/Stück. Differenz 0.20 Fr, geteilt durch den alten Preis 1.50: 0.20 : 1.50 · 100 ≈ 13.3%.' },
+        ],
+      },
+      {
+        id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
+        karten: [
+          { text: '❌ Bei "um X% gefallen auf Y" wird Y direkt als X% vom Grundwert verwendet. ✅ Y entspricht (100% − X%) vom Grundwert, nicht X% selbst.' },
+          { text: '❌ Bei einer prozentualen Veränderung wird durch den NEUEN statt den ALTEN Wert geteilt. ✅ Prozentsatz = Differenz geteilt durch den ALTEN (ursprünglichen) Wert.' },
+          { text: '❌ Bei einer Aufteilung in Prozent-Teile wird vergessen, dass alle Teile zusammen 100% ergeben müssen. ✅ Fehlt ein Teil, rechne 100% minus die bekannten Prozente.' },
+          { text: '❌ Beim Mengenrabatt wird der Gesamtpreis statt der Preis pro Stück verglichen. ✅ Immer erst auf den Preis pro Stück umrechnen (Gesamtpreis : Anzahl), dann vergleichen.' },
+          { text: '❌ Prozent und Prozentpunkte werden verwechselt (von 20% auf 25% ist nicht automatisch "5% mehr"). ✅ Von 20% auf 25% sind 5 Prozentpunkte, aber (25 − 20) : 20 = 25% relativer Zuwachs.' },
+          { text: '❌ "Prozentwert = Grundwert · Prozentsatz" ohne durch 100 zu teilen. ✅ Immer durch 100 teilen: Prozentwert = Grundwert · Prozentsatz : 100.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        karten: [
+          { text: 'Wie viel sind 40% von 150?', loesung: '150 · 40 : 100 = 60.' },
+          { text: '24 ist wie viel Prozent von 80?', loesung: '24 : 80 · 100 = 30%.' },
+          { text: '20% einer Zahl sind 50. Wie gross ist die Zahl?', loesung: '50 : 20 · 100 = 250.' },
+          { text: 'Eine Fläche von 80 m² wird zu 25% Garten, zu 55% Haus, Rest Weg. Wie gross ist der Weg?', loesung: 'Rest: 100% − 25% − 55% = 20%. 80 · 20 : 100 = 16 m².' },
+          { text: '90 kg Mischung: 30% Nüsse, 50% Rosinen, Rest Schokostückchen. Wie viele kg Schoko?', loesung: 'Rest: 100% − 30% − 50% = 20%. 90 · 20 : 100 = 18 kg.' },
+          { text: 'Ein Preis steigt von 50 auf 60 Franken. Wie viel Prozent?', loesung: 'Zuwachs: 10. 10 : 50 · 100 = 20%.' },
+          { text: 'Ein Preis fällt um 30% auf 70 Franken. Wie gross war er vorher?', loesung: '70 Fr sind 70% vom alten Preis. 70 : 0.7 = 100 Fr.' },
+          { text: 'Ein 2er-Pack kostet 5 Fr, ein 5er-Pack 11 Fr. Wie viel Prozent billiger ist das Stück im 5er-Pack?', loesung: '2er: 5 : 2 = 2.50 Fr/Stück. 5er: 11 : 5 = 2.20 Fr/Stück. Differenz 0.30 Fr, geteilt durch 2.50: 0.30 : 2.50 · 100 = 12%.' },
+          { text: 'Eine Zahl wird um 10% erhöht, dann um 10% verringert. Ist das Ergebnis wieder die Ursprungszahl?', loesung: 'Nein! 100 → 110 (erhöht) → 110 · 0.9 = 99 (verringert). Die 10% verringern bezieht sich auf 110, nicht mehr auf 100.' },
+          { text: 'Der Umsatz stieg von 200 auf 250, dann wieder zurück auf 200. Um wie viel Prozent sank er beim zweiten Schritt?', loesung: 'Abnahme: 250 − 200 = 50. 50 : 250 · 100 = 20% (nicht 25%, weil jetzt 250 der alte Wert ist).' },
+          { text: '60% einer Klasse mit 25 Personen sind Mädchen. Wie viele Jungen sind das?', loesung: 'Mädchen: 25 · 60 : 100 = 15. Jungen: 25 − 15 = 10.' },
+          { text: 'Ein Acker von 36 ha: 1/4 Kartoffeln (in %), 30% Rüben, Rest Weizen. Wie viele ha Weizen?', loesung: '1/4 = 25%. Rest: 100% − 25% − 30% = 45%. 36 · 45 : 100 = 16.2 ha.' },
+          { text: 'Ein Preis fällt um 15% auf 51 Franken. Wie gross war er vorher, und wie viele Franken Differenz sind das?', loesung: '51 Fr sind 85% vom alten Preis. 51 : 0.85 = 60 Fr. Differenz: 60 − 51 = 9 Fr.' },
+          { text: 'Zwei aufeinanderfolgende Rabatte: erst 20%, dann weitere 10% auf den reduzierten Preis. Ein Artikel kostet ursprünglich 200 Fr. Wie viel kostet er am Ende?', loesung: '200 · 0.8 = 160 Fr (nach 20%). 160 · 0.9 = 144 Fr (nach weiteren 10%).' },
+          { text: 'Ein 3er-Pack kostet 9 Fr, ein 8er-Pack 20 Fr. Wie viel Prozent billiger ist das Stück im 8er-Pack?', loesung: '3er: 9 : 3 = 3 Fr/Stück. 8er: 20 : 8 = 2.50 Fr/Stück. Differenz 0.50 Fr, geteilt durch 3: 0.50 : 3 · 100 ≈ 16.7%.' },
+          { text: 'Eine Mischung von 50 Litern enthält 40% Wasser, der Rest ist Saft. Werden 10 Liter Wasser dazugegeben, wie viel Prozent Wasser hat die neue Mischung?', loesung: 'Wasser vorher: 50 · 40 : 100 = 20 L. Neu: 20 + 10 = 30 L Wasser, total 60 L. 30 : 60 · 100 = 50%.' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
