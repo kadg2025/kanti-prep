@@ -12,6 +12,11 @@ export const questions2025 = [
     topic: 'Körper & Netze', // NEU
     questionText: `Aufgabe 1: Der Goldbarren
 Natalie erbt einen prismenförmigen Goldbarren (Länge 12 cm, Höhe 0.8 cm, obere Vorderkante 4 cm, untere Vorderkante 6 cm). Die Dichte von Gold beträgt 19.3 g/cm³. 1 kg Gold ist derzeit 71'070 Fr. wert. Wieviel Wert hat ihr kleiner Goldbarren?`,
+    options: [
+      { label: '≈65\'839 CHF', correct: true },
+      { label: '≈52\'671 CHF', correct: false },
+      { label: '≈3\'411 CHF', correct: false },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -73,6 +78,33 @@ Jetzt berechnen wir den Wert unseres Barrens.
     topic: 'Funktionen', // NEU
     questionText: `Aufgabe 2: Funktionsgraphen zuordnen
 Finde zu jeder Situation den am besten passenden Funktionsgraphen.`,
+    teile: [
+      { letter: 'a', options: [
+        { label: 'Graph IV', correct: true },
+        { label: 'Graph II', correct: false },
+        { label: 'Graph I', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'Graph V', correct: true },
+        { label: 'Graph VI', correct: false },
+        { label: 'Graph I', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: 'Graph II', correct: true },
+        { label: 'Graph IV', correct: false },
+        { label: 'Graph I', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: 'Graph I', correct: true },
+        { label: 'Graph II', correct: false },
+        { label: 'Graph IV', correct: false },
+      ] },
+      { letter: 'e', options: [
+        { label: 'Graph VI', correct: true },
+        { label: 'Graph V', correct: false },
+        { label: 'Graph II', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -136,6 +168,18 @@ e → VI`,
 Ein Rennrad kostet im Jubiläumsverkauf nach 20% Reduktion nur noch 460 Fr. Rudi weiss aber nicht, dass der Preis davor um 15% erhöht wurde.
 a) Wie viel kostete das Rad ursprünglich?
 b) Wie viel Prozent beträgt der Preisnachlass in Wirklichkeit?`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '500 Fr.', correct: true },
+        { label: '575 Fr.', correct: false },
+        { label: '634.80 Fr.', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '8%', correct: true },
+        { label: '20%', correct: false },
+        { label: '8.7%', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -193,6 +237,11 @@ Um den prozentualen Nachlass zu finden, beziehen wir die Differenz auf den Origi
     topic: 'Körper & Netze', // NEU
     questionText: `Aufgabe 4: Das Puzzleteil
 Welches der Teile a bis f passt genau in die Aussparung des Körpers, der auf der linken Bildseite dargestellt ist?`,
+    options: [
+      { label: 'Teil e', correct: true },
+      { label: 'Teil b', correct: false },
+      { label: 'Teil a', correct: false },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -245,6 +294,28 @@ a) Er braucht 18 min von der Zentrale zum Krankenhaus. Wie weit ist das?
 b) Wie lange braucht er für eine 26 km lange Strecke zum Unfallort?
 c) Vom Unfallort (36 km vom KH entfernt) fährt er los. Gleichzeitig startet ein Notarzt (95 km/h) vom KH aus ihm entgegen. Wann treffen sie sich?
 d) Wie weit vom Krankenhaus entfernt ist der Treffpunkt?`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '19.5 km', correct: true },
+        { label: '1\'170 km', correct: false },
+        { label: '3.6 km', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '24 Minuten', correct: true },
+        { label: '0.4 Minuten', correct: false },
+        { label: '150 Minuten', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '13 Minuten 30 Sekunden', correct: true },
+        { label: '≈22.7 Minuten', correct: false },
+        { label: '72 Minuten', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: '21.375 km', correct: true },
+        { label: '14.625 km', correct: false },
+        { label: '36 km', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -365,6 +436,11 @@ Die Lösungen sind die Schnittpunkte der Ortslinie A mit den Ortslinien B1 und B
     topic: 'Wahrscheinlichkeit', // NEU
     questionText: `Aufgabe 7: Saft einkaufen
 Tim soll 4 Flaschen Saft einkaufen. Es gibt die Sorten Traubensaft (T), Apfelsaft (A) und Rhabarbersaft (R). Wie viele Einkaufsmöglichkeiten hat er? Liste alle auf.`,
+    options: [
+      { label: '15', correct: true },
+      { label: '81', correct: false },
+      { label: '9', correct: false },
+    ],
     solution: {
       intro: ``,
       steps: [
