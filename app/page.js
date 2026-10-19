@@ -955,11 +955,12 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
     const emojis = { 'Mathe ohne TR': '📐', 'Mathe mit TR': '🔢', 'Deutsch': '📝', 'Deutsch GMS2': '📝' };
     const tips = { 'Mathe ohne TR': 'Kein Taschenrechner erlaubt – Kopfrechnen trainieren!', 'Mathe mit TR': 'Taschenrechner erlaubt – aber den Rechenweg aufzeigen! ✏️', 'Deutsch': 'Lies die Texte genau – Details sind entscheidend! 🔍', 'Deutsch GMS2': 'GMS2 Deutsch — Wortarten, Satzbau, Zeitformen! 🎯' };
 
-    // "Weiter bei"-Box nur für Mathe ohne TR: nutzt ausschliesslich bestehende
-    // solved/fehler-Daten, kein neues Tracking.
+    // "Weiter bei"-Box für Mathe ohne TR und Mathe mit TR: nutzt ausschliesslich
+    // bestehende solved/fehler-Daten, kein neues Tracking.
     let weiterBox = null;
-    if (subject === 'Mathe ohne TR') {
-      const pool = questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen');
+    if (subject === 'Mathe ohne TR' || subject === 'Mathe mit TR') {
+      const examFilter = subject === 'Mathe ohne TR' ? 'ohne TR' : 'mit TR';
+      const pool = questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes(examFilter) && q.group === 'Alte Prüfungen');
       const poolIds = new Set(pool.map(q => q.id));
       const solvedArr = [...solved];
       let lastTopic = null;
