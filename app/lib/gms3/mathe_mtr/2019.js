@@ -7,6 +7,8 @@ export const questions2019 = [
 
     id: 'M3_2019_MTR_GEO_1',
 
+    verified: true,
+
     year: 2019,
 
     subject: 'Mathe',
@@ -29,11 +31,11 @@ Berechne die Strecken a und b, sowie die Fläche des Trapezes.
 
     options: [
 
-      { label: 'Lösung über offizielle Schullösung verfügbar', correct: true },
+      { label: 'a = 2.74 | b = 3.6 | Fläche = 34.49 FE', correct: true },
 
-      { label: 'Nicht lösbar ohne Zeichnung', correct: false },
+      { label: 'a = 3.6 | b = 2.74 | Fläche = 34.49 FE', correct: false },
 
-      { label: 'a = 3.5 cm, b = 2.1 cm', correct: false },
+      { label: 'a = 2.74 | b = 3.6 | Fläche = 68.99 FE', correct: false },
 
     ],
 
@@ -68,6 +70,35 @@ a = eine parallele Seite
 b = andere parallele Seite
 h = Höhe (senkrechter Abstand zwischen den parallelen Seiten)`,
 
+        },
+
+        {
+
+          title: 'Schritt 1: b berechnen (Ähnlichkeit der Dreiecke)',
+
+          content: `An der oberen Ecke treffen sich die Strecken 6.18 (Kathete 3) und 7.41 (Kathete b) im gleichen Winkel – die beiden kleinen Dreiecke sind ähnlich:
+6.18 / 3 = 7.41 / b
+b = 7.41 × 3 / 6.18 ≈ 3.6`,
+
+        },
+
+        {
+
+          title: 'Schritt 2: a berechnen (Pythagoras)',
+
+          content: `An der unteren rechten Ecke steht ein rechter Winkel zwischen den Strecken 3.13 und 1.52.
+a = √(3.13² − 1.52²) = √(9.7969 − 2.3104) = √7.4865 ≈ 2.74`,
+
+        },
+
+        {
+
+          title: 'Schritt 3: Fläche des Trapezes',
+
+          content: `Die parallelen Seiten des Trapezes sind 6.18 und 3.13, die Höhe (senkrechter Abstand zwischen ihnen) ist 7.41:
+Fläche = (6.18 + 3.13) / 2 × 7.41 ≈ 34.49 FE
+✅ a ≈ 2.74, b ≈ 3.6, Fläche ≈ 34.49 FE (Flächeneinheiten)`,
+
         },
 
         {
@@ -83,9 +114,10 @@ h = Höhe (senkrechter Abstand zwischen den parallelen Seiten)`,
       ],
 
       tip: `🍳 Kochrezept:
-1️⃣  Rechtwinklige Dreiecke in der Skizze identifizieren
-2️⃣  Pythagoras: fehlende Seite = √(hyp² − kathete²)
-3️⃣  Trapezfläche: (a+b)/2 × h`,
+1️⃣  Rechtwinklige Dreiecke in der Skizze identifizieren
+2️⃣  Ähnlichkeit/Verhältnisgleichung nutzen, um b zu finden
+3️⃣  Pythagoras: fehlende Seite = √(hyp² − kathete²) → a
+4️⃣  Trapezfläche: (a+b)/2 × h`,
 
     },
 
@@ -96,6 +128,8 @@ h = Höhe (senkrechter Abstand zwischen den parallelen Seiten)`,
   {
 
     id: 'M3_2019_MTR_PROZ_1',
+
+    verified: true,
 
     year: 2019,
 
@@ -235,6 +269,8 @@ Mit 5% Rabatt: 50 × 0.95 = Fr. 47.50
 
     id: 'M3_2019_MTR_GESCH_1',
 
+    verified: true,
+
     year: 2019,
 
     subject: 'Mathe',
@@ -348,6 +384,8 @@ c) % = (v_LKW × t_Auto) ÷ Strecke × 100`,
 
     id: 'M3_2019_MTR_PROP_1',
 
+    verified: true,
+
     year: 2019,
 
     subject: 'Mathe',
@@ -367,7 +405,7 @@ c) 4 Astronauten stranden auf dem Mars mit Vorräten für 302 Tage. Nach 53 Tage
 
     options: [
 
-      { label: 'a) ≈ 496 | b) 237.6 Tage | c) 449 Tage', correct: true },
+      { label: 'a) ≈ 496 | b) 237 Tage | c) 449 Tage', correct: true },
 
       { label: 'a) ≈ 5100 | b) ≈ 220 Tage | c) ≈ 300 Tage', correct: false },
 
@@ -417,7 +455,8 @@ Jetzt Dreisatz:
 6 Personen → 198 Tage
 1 Person → 198 * 6 = 1188 Tage
 5 Personen → 1188 / 5 = 237.6 Tage
-✅ 5 Astronauten überleben 237.6 Tage.`,
+Ein angebrochener Tag zählt nicht als "überlebt" → abrunden!
+✅ 5 Astronauten überleben mindestens 237 Tage.`,
 
         },
 
@@ -463,6 +502,8 @@ c) Personentage: (Rest_original + Neue) / Personen`,
   {
 
     id: 'M3_2019_MTR_KOMB_1',
+
+    verified: true,
 
     year: 2019,
 
@@ -578,6 +619,8 @@ Probe: 8+36+54+27 = 125 ✓`,
 
     id: 'M3_2019_MTR_KONSTR_1',
 
+    verified: true,
+
     year: 2019,
 
     subject: 'Mathe',
@@ -599,7 +642,7 @@ c) Spiegle das Dreieck ABC an einer dieser Achsen.
 
     options: [
 
-      { label: 'Lösung über offizielle Schullösung verfügbar', correct: true },
+      { label: 'Es gibt genau 2 mögliche Spiegelachsen (die beiden Winkelhalbierenden zwischen g und der verlängerten Höhe h_c durch C und F)', correct: true },
 
       { label: 'Keine Spiegelachse existiert', correct: false },
 
@@ -615,14 +658,18 @@ c) Spiegle das Dreieck ABC an einer dieser Achsen.
 
         {
 
-          title: '📖 Methode: Spiegelung',
+          title: '📖 Methode: Spiegelachse über die Höhe h_c finden',
 
-          content: `Die Bedingung: Die Höhe auf die Seite c' (also h'c) soll auf der Geraden g liegen.
-Die Höhe h'c steht senkrecht auf der Seite A'B'. Das heisst, die gespiegelte Seite A'B' muss senkrecht zur Geraden g sein.
+          content: `Die Höhe hc des Dreiecks ABC steht senkrecht auf AB und hat ihren Fusspunkt F auf AB. Die Gerade durch C und F (verlängert) nennen wir h.
+Bedingung: Nach der Spiegelung soll h'c (das Bild von h) auf der Geraden g liegen.
+
+Wichtiger Fakt: Wenn eine Gerade h durch Spiegelung auf eine Gerade g abgebildet wird, dann geht die Spiegelachse immer durch den Schnittpunkt S von h und g und halbiert dort den Winkel zwischen h und g.
 
 Vorgehen:
-1. Zielposition finden: Zeichne eine Gerade, die senkrecht zu g ist. Das ist die Linie, auf der A'B' liegen wird.
-2. Spiegelachse finden: Die Spiegelachse ist die Winkelhalbierende zwischen der ursprünglichen Gerade AB und der neuen Gerade A'B'.`,
+1. Gerade h = Gerade durch C und F zeichnen (Höhenlinie verlängern).
+2. Schnittpunkt S von h und g bestimmen.
+3. Die beiden Winkelhalbierenden a₁, a₂ des Winkels zwischen g und h in S konstruieren – das sind die 2 möglichen Spiegelachsen.
+4. Dreieck ABC an a₁ (oder a₂) spiegeln.`,
 
         },
 
@@ -639,8 +686,8 @@ Vorgehen:
       ],
 
       tip: `🍳 Kochrezept:
-1️⃣  Ziel-Richtung für A'B' finden (muss senkrecht zu g sein).
-2️⃣  Winkelhalbierende zwischen AB und der Ziel-Richtung konstruieren. Das ist die Spiegelachse.
+1️⃣  Gerade h (durch C und F, verlängerte Höhe hc) einzeichnen.
+2️⃣  Schnittpunkt S von h und g bestimmen, dann die 2 Winkelhalbierenden von (g, h) konstruieren – das sind die möglichen Spiegelachsen.
 3️⃣  Alle Punkte an dieser Achse spiegeln.`,
 
     },
