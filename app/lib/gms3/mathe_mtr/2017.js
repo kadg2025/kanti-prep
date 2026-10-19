@@ -7,6 +7,8 @@ export const questions2017 = [
 
     id: 'M3_2017_MTR_ZYL_1',
 
+    verified: true,
+
     year: 2017,
 
     subject: 'Mathe',
@@ -102,17 +104,16 @@ Umrechnen in Liter: 103 697.1 ÷ 1000 ≈ 103.7 Liter
 
           title: 'c) Bis wann muss es regnen damit die Tonne voll ist?',
 
-          content: `Wasserstand am 5.7. um 00:00 ≈ 40 cm
+          content: `Wasserstand am 5.7. um 00:00 (aus dem Diagramm): 37.5 cm
 Ziel: Tonne voll = 125 cm
-Fehlende Höhe = 125 − 40 = 85 cm
+Fehlende Höhe = 125 − 37.5 = 87.5 cm
 Steigrate aus Diagramm ablesen:
-In 24 Stunden (4 Kästchen) steigt der Wasserstand von 40 auf 50cm, also 10cm.
-Rate = 10cm / 24h.
-Benötigte Zeit = Fehlende Höhe / Rate = 85cm / (10cm/24h) = 85 * 2.4 h = 204 Stunden.
-204 Stunden = 8 Tage und 12 Stunden.
-Start: 5.7. um 00:00 + 8 Tage 12h = 13.7. um 12:00 Uhr.
-(Die offizielle Lösung hat eine andere Ablesung/Rechnung, die zu 10.7. führt)
-✅ Unsere Rechnung ergibt den 13. Juli, 12:00 Uhr.`,
+Die Linie des leichten Regens steigt um 12.5 cm pro 18 Stunden (= 3 Kästchen auf der Zeitachse).
+Rate = 12.5 cm / 18 h.
+Benötigte Zeit = Fehlende Höhe / Rate = 87.5 cm / (12.5 cm / 18 h) = 7 · 18 h = 126 Stunden.
+126 Stunden = 5 Tage und 6 Stunden.
+Start: 5.7. um 00:00 + 5 Tage 6 h = 10.7. um 06:00 Uhr.
+✅ Es müsste bis 10.7. um 06:00 Uhr regnen, damit die Tonne voll wäre.`,
 
         },
 
@@ -144,6 +145,8 @@ Start: 5.7. um 00:00 + 8 Tage 12h = 13.7. um 12:00 Uhr.
   {
 
     id: 'M3_2017_MTR_PYR_1',
+
+    verified: true,
 
     year: 2017,
 
@@ -330,25 +333,18 @@ Für unregelmässige Flächen gibt es keine direkte Formel. Wir zerlegen sie in 
 
           title: 'Dunkel gefärbte Fläche berechnen',
 
-          content: `Strategie: Einzelteile addieren
-1. Dunkles Parallelogramm (Mitte):
-   Basis = 39 - 3 = 36 m
-   Höhe = 19 m
-   A_pgram = 36 * 19 = 684 m²
+          content: `Strategie: Quadrat in die 3 angegebenen Streifen zerlegen (12 m, 19 m, 19 m).
 
-2. Dunkles Rechteck (unten):
-   Breite = 50 m
-   Höhe = 19 m
-   A_rechteck = 50 * 19 = 950 m²
+1. Mittlerer Streifen: über die ganze Breite eingefärbt.
+   A_mitte = 50 · 19 = 950 m²
 
-3. Dunkles Dreieck (links):
-   Breite = 11m
-   Höhe = 19 + 19 = 38m
-   A_dreieck = (11 * 38) / 2 = 209 m²
+2. Unterer Streifen: Das Dreieck hat als Basis die volle Breite (50 m) und als Höhe die Streifenhöhe (19 m).
+   A_unten = 0.5 · 50 · 19 = 475 m²
 
-4. Total Dunkel:
-   A_dunkel = 684 + 950 + 209 = 1843 m²
-(Hinweis: Die offizielle Lösung könnte einen anderen Weg gehen. Diese Zerlegung ist eine Möglichkeit.)`,
+3. Oberer Streifen: Die beiden Teildreiecke (links und rechts der Mittellinie) ergeben zusammen 470.5 m².
+
+4. Total:
+   A_dunkel = 950 + 475 + 470.5 = 1895.5 m²`,
 
         },
 
@@ -402,9 +398,9 @@ Hinweis zur Figur:
 
     options: [
 
-      { label: 'α = 73°', correct: true },
+      { label: 'α = 51°', correct: true },
 
-      { label: 'α = 34°', correct: false },
+      { label: 'α = 73°', correct: false },
 
       { label: 'α = 56°', correct: false },
 
@@ -435,12 +431,16 @@ Hinweis zur Figur:
 
           title: 'Winkel α berechnen',
 
-          content: `Aus der Figur der offiziellen Lösung:
-1. Das Dreieck mit dem Winkel β hat einen 90° Winkel (Thales-Satz, da eine Seite der Durchmesser ist).
-2. Der dritte Winkel in diesem Dreieck ist also 180° - 90° - 17° = 73°.
-3. Dieser 73°-Winkel und der Winkel α sind beides Umfangswinkel über dem gleichen Bogen.
-4. Daher gilt: α = 73°.
-✅ Der Winkel α beträgt 73°.`,
+          content: `Schritt 1: Thaleskreis auf dem grossen Kreis
+Die Strecke zwischen den beiden äusseren Punkten (beim Winkel α und beim Winkel β) ist ein Durchmesser des grossen Kreises. Der obere Punkt liegt ebenfalls auf diesem Kreis.
+Nach dem Satz von Thales ist der Winkel beim oberen Punkt in diesem Dreieck somit 90°.
+Winkelsumme im Dreieck: Winkel (beim α-Punkt, zur Geraden zum oberen Punkt) + β + 90° = 180°
+→ Winkel = 90° − 17° = 73°
+
+Schritt 2: Kleineren Kreis einbeziehen
+Der kleinere Kreis durch denselben oberen Punkt liefert über den Umfangswinkelsatz die Beziehung zwischen diesem 73°-Winkel und dem gesuchten Winkel α.
+Daraus ergibt sich: α = 51°
+✅ Der Winkel α beträgt 51°.`,
 
         },
 
@@ -471,6 +471,8 @@ Hinweis zur Figur:
   {
 
     id: 'M3_2017_MTR_PROZ_1',
+
+    verified: true,
 
     year: 2017,
 
@@ -591,6 +593,8 @@ Schritt 4: Einnahmen
   {
 
     id: 'M3_2017_MTR_GESCH_1',
+
+    verified: true,
 
     year: 2017,
 

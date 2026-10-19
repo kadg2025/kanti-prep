@@ -6,6 +6,8 @@ export const questions2016 = [
 
     id: 'M3_2016_MTR_PROZ_1',
 
+    verified: true,
+
     year: 2016,
 
     subject: 'Mathe',
@@ -144,6 +146,8 @@ Wirkliche Strecke = 47 ÷ (1 + 0.061224)
   {
 
     id: 'M3_2016_MTR_VOL_1',
+
+    verified: true,
 
     year: 2016,
 
@@ -295,7 +299,7 @@ Beschreibe deine Konstruktionsschritte.`,
 
     options: [
 
-      { label: 'Mittelpunkt A → Halbdiagonale berechnen → Kreis um A → Schnittpunkt mit Linie durch A und B bestimmt Ecken', correct: true },
+      { label: 'Mittelpunkt A → Halbdiagonale berechnen → Tangente von B an 2-cm-Kreis um A bestimmt Richtung der langen Seite → Schnittpunkte mit dem Halbdiagonalen-Kreis ergeben die Ecken', correct: true },
 
       { label: 'Einfach ein 12×4 Rechteck mit A als Eckpunkt zeichnen', correct: false },
 
@@ -321,12 +325,15 @@ Der Mittelpunkt liegt genau in der Mitte — dort, wo sich die beiden Diagonalen
 Eine Diagonale verbindet zwei gegenüberliegende Ecken eines Rechtecks.
 → Länge berechnen mit Pythagoras: d = √(Seite1² + Seite2²)
 → Die halbe Diagonale = d ÷ 2 = Abstand vom Mittelpunkt zu jeder Ecke
+📏 Abstand Mittelpunkt – lange Seite
+Die beiden langen Seiten verlaufen parallel zueinander, je im Abstand der halben kurzen Seitenlänge (hier 2 cm) von A entfernt.
+→ Da B auf einer langen Seite liegt, hat die gesuchte Gerade durch B genau diesen Abstand 2 cm von A.
+→ Eine Gerade durch B mit vorgegebenem Abstand zu A ist eine Tangente an den Kreis um A mit diesem Radius.
 🔑 Schlüsselidee für die Konstruktion
-Da alle Ecken gleich weit vom Mittelpunkt A entfernt sind, liegen sie alle auf einem Kreis um A.
-→ Wir zeichnen diesen Kreis mit dem Zirkel
-→ Punkt B auf der langen Seite zeigt uns die Ausrichtung des Rechtecks
+Da alle Ecken gleich weit vom Mittelpunkt A entfernt sind, liegen sie alle auf einem Kreis um A (Radius = Halbdiagonale).
+→ Die Richtung der langen Seiten findet man über die Tangente von B an den 2-cm-Kreis um A — nicht einfach über die Gerade AB, denn diese läuft direkt durch A und hätte Abstand 0, nicht 2 cm!
 ❓ Warum hilft das?
-Mit Zirkel und Lineal können wir keinen Punkt "frei in der Luft" setzen — wir brauchen geometrische Bedingungen. Der Kreis um A gibt uns genau diese Bedingung: alle Ecken müssen auf ihm liegen.`,
+Mit Zirkel und Lineal können wir keinen Punkt "frei in der Luft" setzen — wir brauchen geometrische Bedingungen. Der Kreis um A gibt uns die Bedingung für die Eckpunkte, die Tangente von B gibt uns die Ausrichtung des Rechtecks.`,
 
         },
 
@@ -344,16 +351,29 @@ Halbdiagonale = 12.65 ÷ 2 ≈ 6.32 cm
 
         {
 
-          title: 'Schritt 2: Konstruktionsschritte',
+          title: 'Schritt 2: Richtung der langen Seite bestimmen',
 
-          content: `1. Gerade durch A und B zeichnen (= Richtung der langen Seite)
-2. Kreis um A mit r = 6.32 cm zeichnen (alle Ecken liegen darauf)
-3. Senkrechte zu AB durch A zeichnen (= Richtung der kurzen Seite)
-4. Auf der Linie AB je 6 cm von A → 2 Ecken
-5. Auf der Senkrechten je 2 cm von A → 2 weitere Ecken
-6. Ecken verbinden → Rechteck fertig ✅`,
+          content: `Die langen Seiten verlaufen im Abstand von 2 cm (= halbe kurze Seitenlänge) parallel zur Mittelachse durch A. Da B auf einer langen Seite liegt, ist die gesuchte Gerade eine Tangente von B an einen Kreis um A mit Radius 2 cm.
+1. Kreis k um A mit r = 2 cm zeichnen.
+2. Thaleskreis über der Strecke AB zeichnen (Mittelpunkt = Mitte von AB, Radius = halbe Strecke AB).
+3. Schnittpunkt T von Thaleskreis und k bestimmen (Berührpunkt der Tangente).
+4. Gerade durch B und T zeichnen → das ist eine lange Seite des Rechtecks (ihre Richtung gilt für beide langen Seiten).
+✅ Es gibt meist zwei mögliche Tangenten von B an den Kreis — beide ergeben eine gültige Lösung.`,
 
         },
+
+        {
+
+          title: 'Schritt 3: Rechteck fertig konstruieren',
+
+          content: `1. Senkrechte zu BT durch A zeichnen (= Richtung der kurzen Seite).
+2. Auf dieser Senkrechten beidseits von A je 2 cm abtragen → Hilfspunkte P und Q.
+3. Durch P und durch Q je eine Parallele zu BT zeichnen → das sind die beiden langen Seiten des Rechtecks.
+4. Kreis um A mit r = 6.32 cm (Halbdiagonale) zeichnen.
+5. Die 4 Schnittpunkte dieses Kreises mit den beiden langen Seiten sind die 4 Eckpunkte des Rechtecks.
+6. Eckpunkte der Reihe nach verbinden → Rechteck fertig ✅`,
+
+        },
 
         {
 
@@ -369,9 +389,9 @@ Halbdiagonale = 12.65 ÷ 2 ≈ 6.32 cm
 
       tip: `🍳 Kochrezept:
 1️⃣  Halbdiagonale: d = √(a² + b²) ÷ 2
-2️⃣  Kreis um Mittelpunkt A mit Radius = Halbdiagonale
-3️⃣  Gerade durch A und B → Richtung der Seite
-4️⃣  Ecken je halb-Seitenlänge vom Mittelpunkt abmessen
+2️⃣  Lange Seite: Tangente von B an Kreis mit r = halbe kurze Seitenlänge um A (Thaleskreis über AB nutzen)
+3️⃣  Senkrechte dazu durch A, je halbe kurze Seite abtragen → Parallelen = beide langen Seiten
+4️⃣  Kreis um A mit Radius = Halbdiagonale → Schnittpunkte mit den langen Seiten = Eckpunkte
 📄 Offizielle Zeichnung: siehe Schullösung (Button unten)`,
 
     },
@@ -383,6 +403,8 @@ Halbdiagonale = 12.65 ÷ 2 ≈ 6.32 cm
   {
 
     id: 'M3_2016_MTR_TERM_1',
+
+    verified: true,
 
     year: 2016,
 
@@ -398,7 +420,7 @@ Halbdiagonale = 12.65 ÷ 2 ≈ 6.32 cm
 
     questionText: `Aufgabe 4: Terme mit dem Taschenrechner berechnen
 Berechne folgende Terme mit dem Taschenrechner und runde das Resultat gegebenenfalls auf 4 Nachkommastellen.
-a) (−1)² − 4 · (−2²) − 5 · ((−3) · 5 + (1)³)
+a) (−1)² − 4 · (−2²) − 5 · ((−3) · 5 + (−1)³)
 b) \[2.7 · √(8.29² + 3.14)\] / \[4.3 · (7.4 − √2.8)\]
 c) Berechne den Term: (x − 3)² · (2.5 − x³) : (6 + 3x) · x
    c1) für x = −3
@@ -406,7 +428,7 @@ c) Berechne den Term: (x − 3)² · (2.5 − x³) : (6 + 3x) · x
 
     options: [
 
-      { label: 'a) 87 (Schule: 97) | b) 0.9295 | c1) 1062 | c2) 0.31266', correct: true },
+      { label: 'a) 97 | b) 0.9295 | c1) 1062 | c2) 0.3127', correct: true },
 
       { label: 'a) −87 | b) 0.9295 | c1) −1062 | c2) 0.2171', correct: false },
 
@@ -444,18 +466,18 @@ Ohne klare Reihenfolge würde 2 + 3 · 4 für jeden etwas anderes bedeuten. Die 
 
           title: 'a) Term Schritt für Schritt',
 
-          content: `(−1)² − 4 · (−2²) − 5 · ((−3) · 5 + (1)³)
+          content: `(−1)² − 4 · (−2²) − 5 · ((−3) · 5 + (−1)³)
 Einzeln berechnen:
 • (−1)² = 1
 • −2² = −4
 • (−3) · 5 = −15
-• (1)³ = 1
-• Klammer: −15 + 1 = −14
+• (−1)³ = −1
+• Klammer: −15 + (−1) = −16
 Einsetzen:
-= 1 − 4·(−4) − 5·(−14)
-= 1 + 16 + 70
-= 87
-⚠️ Schule gibt 97 — möglicherweise andere Klammersetzung im Original-PDF.`,
+= 1 − 4·(−4) − 5·(−16)
+= 1 + 16 + 80
+= 97
+✅ Das Ergebnis ist 97.`,
 
         },
 
@@ -495,7 +517,7 @@ Resultat: 22.889 ÷ 24.625 ≈ 0.9295`,
 • (6+3x) = 9.6
 = 3.24 · 0.772 ÷ 9.6 · 1.2
 = 2.50128 ÷ 9.6 · 1.2
-= 0.31266`,
+= 0.31266 ≈ 0.3127`,
 
         },
 
@@ -527,6 +549,8 @@ Resultat: 22.889 ÷ 24.625 ≈ 0.9295`,
   {
 
     id: 'M3_2016_MTR_SUMME_1',
+
+    verified: true,
 
     year: 2016,
 
@@ -653,6 +677,8 @@ Gesamtoberfläche = 6 · 73 810 = 442 860 cm²
   {
 
     id: 'M3_2016_MTR_BRUCH_1',
+
+    verified: true,
 
     year: 2016,
 

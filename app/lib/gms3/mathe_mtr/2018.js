@@ -7,6 +7,8 @@ export const questions2018 = [
 
     id: 'M3_2018_MTR_PROZ_1',
 
+    verified: true,
+
     year: 2018,
 
     subject: 'Mathe',
@@ -113,6 +115,8 @@ Preis teurer = 15.00 + 1.20 = Fr. 16.20 pro kg`,
   {
 
     id: 'M3_2018_MTR_STAT_1',
+
+    verified: true,
 
     year: 2018,
 
@@ -241,6 +245,8 @@ Gesamt:   1400 Personen | 100% ✅`,
 
     id: 'M3_2018_MTR_GLSYS_1',
 
+    verified: true,
+
     year: 2018,
 
     subject: 'Mathe',
@@ -352,6 +358,8 @@ p = Fr. 26.50
   {
 
     id: 'M3_2018_MTR_GEO_1',
+
+    verified: true,
 
     year: 2018,
 
@@ -475,6 +483,8 @@ Fläche E = 3.25 × 14 = 45.5 cm²
 
     id: 'M3_2018_MTR_PYTH_1',
 
+    verified: true,
+
     year: 2018,
 
     subject: 'Mathe',
@@ -494,9 +504,9 @@ b) Berechne die Länge der Diagonalen d des Tablets. (Runde auf 2 Nachkommastell
 
     options: [
 
-      { label: 'a) h = 30.00 cm | b) d ≈ 54.08 cm', correct: true },
+      { label: 'a) h = 21.21 cm | b) d ≈ 38.24 cm', correct: true },
 
-      { label: 'a) h = 15.00 cm | b) d ≈ 27.04 cm', correct: false },
+      { label: 'a) h = 30.00 cm | b) d ≈ 54.08 cm', correct: false },
 
       { label: 'a) h = 24.00 cm | b) d ≈ 43.27 cm', correct: false },
 
@@ -513,10 +523,10 @@ b) Berechne die Länge der Diagonalen d des Tablets. (Runde auf 2 Nachkommastell
           title: '📖 Begriffe',
 
           content: `📐 Ständer-Dreieck (rechtwinkliges Dreieck)
-Der Ständer bildet mit dem Tisch und dem Tablet ein rechtwinkliges Dreieck.
+Der Ständer bildet mit der Tischfläche und der Senkrechten zum Befestigungspunkt ein rechtwinkliges Dreieck.
 → Winkel am Boden: 45°
-→ Bei einem 45°-Winkel sind die beiden Katheten gleich lang.
-→ Höhe des Ständers = Bodenlänge s₁ = 15 cm.
+→ Bei einem 45°-Winkel sind die beiden Katheten gleich lang: beide Katheten = h/2.
+→ Die eingezeichnete Strecke s₁ ist die Hypotenuse dieses Dreiecks: s₁ = (h/2) · √2
 📏 Seitenverhältnis h:b = 2:3
 → b = 3/2 × h
 📐 Pythagoras für die Diagonale:
@@ -528,10 +538,11 @@ d = √(h² + b²)`,
 
           title: 'Schritt 1: a) Höhe h berechnen',
 
-          content: `Der Ständer ist bei h/2 befestigt und hat eine Höhe von 15 cm.
-h/2 = 15 cm
-h = 30 cm
-✅ h = 30.00 cm`,
+          content: `Rechtwinkliges Dreieck mit 45°-Winkel am Boden: beide Katheten = h/2, Hypotenuse = s₁ = 15 cm.
+s₁ = (h/2) · √2
+h/2 = s₁ / √2 = 15 / √2 ≈ 10.61 cm
+h = 2 × 10.61 ≈ 21.21 cm
+✅ h ≈ 21.21 cm`,
 
         },
 
@@ -540,14 +551,14 @@ h = 30 cm
           title: 'Schritt 2: b) Diagonale d berechnen',
 
           content: `Seitenverhältnis h:b = 2:3
-b = (3/2) * h = 1.5 * 30 = 45 cm
+b = (3/2) · h = 1.5 · 21.21 ≈ 31.82 cm
 Pythagoras:
 d = √(h² + b²)
-d = √(30² + 45²)
-d = √(900 + 2025)
-d = √2925
-d ≈ 54.08 cm
-✅ Diagonale d ≈ 54.08 cm`,
+d = √(21.21² + 31.82²)
+d = √(450.00 + 1012.50)
+d = √1462.50
+d ≈ 38.24 cm
+✅ Diagonale d ≈ 38.24 cm`,
 
         },
 
@@ -564,8 +575,8 @@ d ≈ 54.08 cm
       ],
 
       tip: `🍳 Kochrezept:
-1️⃣  Ständer: 45° → Höhe des Stützdreiecks = Bodenlänge s₁.
-2️⃣  Tablet-Höhe h: Ständer ist bei h/2 befestigt → h = 2 × Ständerhöhe.
+1️⃣  Ständer: 45° → beide Katheten = h/2, Hypotenuse s₁ = (h/2) · √2
+2️⃣  Tablet-Höhe h: h/2 = s₁ / √2 → h = 2 · s₁ / √2
 3️⃣  Breite: b = (3/2) × h (aus Verhältnis 2:3).
 4️⃣  Diagonale: d = √(h² + b²).`,
 
@@ -578,6 +589,8 @@ d ≈ 54.08 cm
   {
 
     id: 'M3_2018_MTR_GESCH_1',
+
+    verified: true,
 
     year: 2018,
 
