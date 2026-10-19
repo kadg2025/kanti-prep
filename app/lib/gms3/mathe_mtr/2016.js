@@ -34,15 +34,23 @@ b2) Welches ist die wirkliche Länge der heutigen Strecke gemäss Karte?
 
 (Wenn du a) nicht lösen konntest, nimm an, dass die Zählerangabe von der wirklichen Streckenlänge um 4.35% abweicht.)`,
 
-    options: [
-
-      { label: 'a) ≈ 6.12% | b1) 1511 | b2) ≈ 44.29 km', correct: true },
-
-      { label: 'a) ≈ 6.12% | b1) 1515 | b2) ≈ 44.50 km', correct: false },
-
-      { label: 'a) ≈ 5.88% | b1) 1500 | b2) ≈ 34.00 km', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '≈ 6.12%', correct: true },
+        { label: '≈ 5.88%', correct: false },
+        { label: '≈ 5.77%', correct: false },
+      ] },
+      { letter: 'b1', options: [
+        { label: '1511', correct: true },
+        { label: '1515', correct: false },
+        { label: '1500', correct: false },
+      ] },
+      { letter: 'b2', options: [
+        { label: '≈ 44.29 km', correct: true },
+        { label: '≈ 44.50 km', correct: false },
+        { label: '≈ 34.00 km', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -169,15 +177,23 @@ Volumenformel: V = π · r² · h
 b) Wie viel Liter Wasser passen noch in die Pfanne, wenn die Suppe drin ist?
 c) Eine Dose hat d = 8 cm und h = 12 cm. Wie viel % mehr Volumen hat die Pfanne als die Dose? (Runde auf 2 Nachkommastellen)`,
 
-    options: [
-
-      { label: 'a) ≈ 3.98 cm | b) ≈ 2.52 l | c) ≈ 525.00%', correct: true },
-
-      { label: 'a) ≈ 4.50 cm | b) ≈ 2.10 l | c) ≈ 500.00%', correct: false },
-
-      { label: 'a) ≈ 3.98 cm | b) ≈ 2.00 l | c) ≈ 491.15%', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '≈ 3.98 cm', correct: true },
+        { label: '≈ 4.50 cm', correct: false },
+        { label: '≈ 0.99 cm', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '≈ 2.52 l', correct: true },
+        { label: '≈ 2.10 l', correct: false },
+        { label: '≈ 2.00 l', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '≈ 525.00%', correct: true },
+        { label: '≈ 500.00%', correct: false },
+        { label: '≈ 491.15%', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -426,15 +442,28 @@ c) Berechne den Term: (x − 3)² · (2.5 − x³) : (6 + 3x) · x
    c1) für x = −3
    c2) für x = 1.2`,
 
-    options: [
-
-      { label: 'a) 97 | b) 0.9295 | c1) 1062 | c2) 0.3127', correct: true },
-
-      { label: 'a) −87 | b) 0.9295 | c1) −1062 | c2) 0.2171', correct: false },
-
-      { label: 'a) 87 | b) 1.2340 | c1) 118 | c2) 1.2000', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '97', correct: true },
+        { label: '−87', correct: false },
+        { label: '87', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '0.9295', correct: true },
+        { label: '1.2340', correct: false },
+        { label: '≈ 0.9091', correct: false },
+      ] },
+      { letter: 'c1', options: [
+        { label: '1062', correct: true },
+        { label: '−1062', correct: false },
+        { label: '118', correct: false },
+      ] },
+      { letter: 'c2', options: [
+        { label: '0.3127', correct: true },
+        { label: '0.2171', correct: false },
+        { label: '1.2000', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -573,15 +602,23 @@ a) Wie gross ist die Summe aller Quadratzahlen
 b) Wir haben 60 Würfel. Der erste Würfel hat Kantenlänge 1 cm, der zweite 2 cm, der dritte 3 cm usw.
 Berechne die gesamte Oberfläche aller 60 Würfel zusammen.`,
 
-    options: [
-
-      { label: 'a1) 42 925 | a2) 998 450 | b) 442 860 cm²', correct: true },
-
-      { label: 'a1) 42 925 | a2) 987 450 | b) 442 860 cm²', correct: false },
-
-      { label: 'a1) 42 000 | a2) 998 450 | b) 400 000 cm²', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a1', options: [
+        { label: '42 925', correct: true },
+        { label: '42 000', correct: false },
+        { label: '2 500', correct: false },
+      ] },
+      { letter: 'a2', options: [
+        { label: '998 450', correct: true },
+        { label: '987 450', correct: false },
+        { label: '992 825', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '442 860 cm²', correct: true },
+        { label: '400 000 cm²', correct: false },
+        { label: '73 810 cm²', correct: false },
+      ] },
+    ],
 
     solution: {
 
