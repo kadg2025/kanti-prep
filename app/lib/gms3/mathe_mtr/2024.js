@@ -4,6 +4,7 @@ export const questions2024 = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
     id: 'M2_2024_MTR_LIN_1',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -70,6 +71,11 @@ Grundfläche = 6 m³ / 0.4 m = 15 m²
 
 ✅ Die Grundfläche des Beckens beträgt 15 m².`,
         },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179313/AP24_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
+        },
       ],
       tip: `🍳 Dein Gameplan:
 1️⃣ Gleichung finden: Identifiziere den Startwert (q) und die stündliche Änderung (m).
@@ -80,6 +86,7 @@ Grundfläche = 6 m³ / 0.4 m = 15 m²
     // ── AUFGABE 2 ─────────────────────────────────────────────
   {
     id: 'M2_2024_MTR_MISCH_1',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -132,6 +139,11 @@ Preis nach Gewichtsverlust: Der Preis für die ursprüngliche Menge verteilt sic
 
 ✅ 15 kg gerösteter Kaffee kosten 165 CHF.`,
         },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179313/AP24_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
+        },
       ],
       tip: `🍳 Dein Gameplan:
 a) Rechne für jede Sorte aus, wie viel Gramm Kirschen drin sind. Addiere alles. Teile das Ergebnis durch das neue Gesamtgewicht.
@@ -141,6 +153,7 @@ b) Rechne den Preis pro Kilo für den Rohkaffee aus. Berechne dann das neue, lei
   // ── AUFGABE 3 ─────────────────────────────────────────────
   {
     id: 'M2_2024_MTR_KONSTR_1',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -177,6 +190,11 @@ Der gesuchte Mittelpunkt M' ist also der Schnittpunkt dieser beiden Linien!`,
 3. Mittelpunkt M' finden: Der Schnittpunkt der Geraden (aus 1.) und der Mittelsenkrechten (aus 2.) ist der gesuchte Mittelpunkt M'.
 4. Kreis zeichnen: Stich in M' ein, nimm den Abstand zu S (oder T) in den Zirkel und zeichne den Kreis. Fertig!`,
         },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179313/AP24_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
+        },
       ],
       tip: `🍳 Dein Gameplan:
 1️⃣ Linie MS: Ziehe eine Gerade durch den alten Mittelpunkt M und den Berührpunkt S.
@@ -188,6 +206,7 @@ Der gesuchte Mittelpunkt M' ist also der Schnittpunkt dieser beiden Linien!`,
   // ── AUFGABE 4 ─────────────────────────────────────────────
   {
     id: 'M2_2024_MTR_PYTH_1',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -195,10 +214,10 @@ Der gesuchte Mittelpunkt M' ist also der Schnittpunkt dieser beiden Linien!`,
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164190/AP24_GMS3_M2_mTR_Pr%C3%BCfung.pdf?fp=1#page=5',
     topic: 'Geometrie', // NEU
     questionText: `Aufgabe 4: Die Rutschbahn
-Eine Rutschbahn wird aufgestellt (siehe Skizze). Stütze s1 ist 2.5m lang, die Rutschfläche ist 6m lang und der Punkt F ist 3m von A entfernt.
+Eine Rutschbahn wird am Beckenrand aufgestellt (siehe Skizze). Die Einstiegsleiter (Strecke FS) ist 2.5m lang und trifft im Punkt S im rechten Winkel auf die 6m lange Rutschfläche (Strecke SB). Der Punkt F liegt 3m von der Wand A entfernt. Unter dem obersten Punkt S soll eine senkrechte Stütze s1 zum Boden führen, unter der Mitte der Rutschfläche eine zweite Stütze s2.
 a) Berechne die Fläche des Stoffnetzes im Dreieck FBS.
 b) Berechne die Breite AB.
-c) Wie weit vom Beckenrand (A) ist die Stütze s1 verankert und wie lang ist sie?
+c) Wie weit vom Beckenrand entfernt ist die Stütze s1 zu verankern und wie lang ist sie?
 d) Wie lang ist die Stütze s2 in der Mitte der Rutschfläche?
 e) Berechne das Gefälle der Rutschfläche in Prozent.`,
     solution: {
@@ -207,72 +226,66 @@ e) Berechne das Gefälle der Rutschfläche in Prozent.`,
         {
           title: '📖 Deine Werkzeuge',
           content: `Pythagoras: a² + b² = c² für rechtwinklige Dreiecke.
-Strahlensatz: Wenn zwei Geraden von einem Punkt ausgehen und von zwei Parallelen geschnitten werden, bleiben die Verhältnisse gleich. (Kurz/Lang = Kurz/Lang)
+Flächenformel: Die Fläche eines rechtwinkligen Dreiecks ist (Kathete₁ × Kathete₂) / 2. Du kannst dieselbe Fläche aber auch mit jeder anderen Seite als Grundlinie berechnen, wenn du die passende Höhe dazu kennst: Fläche = (Grundlinie × Höhe) / 2.
+Strahlensatz: Wenn zwei Geraden von einem Punkt ausgehen und von zwei Parallelen geschnitten werden, bleiben die Verhältnisse gleich.
 Gefälle: (Höhenunterschied / Horizontale Distanz) * 100`,
         },
         {
           title: 'a) Fläche Stoffnetz FBS',
-          content: `Das Dreieck FBS ist rechtwinklig bei F. Wir brauchen die Höhe FB.
-Im grossen Dreieck (mit s1 als Hypotenuse):
-Höhe FB² = (Länge s1)² - (Abstand AF)² = 2.5² - (AF)²
-Oops, wir kennen AF nicht.
-Aber wir kennen die Höhe des Startpunkts der Rutsche! Nennen wir ihn P. Das Dreieck APF (A an der Wand, P oben, F am Boden) ist rechtwinklig. AF = 3. Die Höhe PF ist die Höhe des Dreiecks AFB.
-Höhe² = 2.5² - 3² -> geht nicht.
-Die Höhe des Rutschenstarts über dem Boden ist 2.5 m, das ist die Länge der Stütze s1. F ist direkt darunter. Also ist FB = 2.5 m.
-Fläche = (Grundseite * Höhe) / 2 = (BF * FS) / 2. Wir brauchen FS.
-Im grossen rechtwinkligen Dreieck (ganze Rutsche): Höhe = 2.5m. Horizontale Länge AB. Rutsche = 6m.
-Horizontale Länge² = Rutsche² - Höhe² = 6² - 2.5² = 36 - 6.25 = 29.75. => Horizontale Länge AB ≈ 5.45m.
-FS ist nicht direkt gegeben. Ah, die Skizze zeigt, s1 steht senkrecht! Also ist das Dreieck AFS rechtwinklig bei F.
-AF = 3m. Höhe FS = 2.5m.
-Fläche F(FBS) = (FB * FS)/2. B ist nicht bei S.
-Ok, Plan B: Das Dreieck ist FBS, nicht AFS. Die Höhe ist 2.5m. S ist die Spitze. B ist das Ende. F ist der Fußpunkt von S. Dann ist FS = 2.5m. Wir brauchen FB. FB = AB - AF.
-AB² = 6² - 2.5² = 29.75 => AB = √29.75 ≈ 5.45 m.
-FB = 5.45 - 3 = 2.45 m.
-Fläche = (FS * FB) / 2 = (2.5 * 2.45) / 2 ≈ 3.07 m².`,
+          content: `Das Dreieck FBS ist bei S rechtwinklig - dort treffen sich die Einstiegsleiter (FS = 2.5m) und die Rutschfläche (SB = 6m) im rechten Winkel. Das sind also die beiden Katheten des Dreiecks.
+Fläche = (FS × SB) / 2 = (2.5 × 6) / 2 = 7.5 m²
+✅ Das Stoffnetz hat eine Fläche von 7.5 m².`,
         },
         {
           title: 'b) Breite AB',
-          content: `Wir betrachten das grosse, rechtwinklige Dreieck, das von der Rutsche (Hypotenuse, 6m), der Stütze s1 (Höhe, 2.5m) und dem Boden (AB) gebildet wird.
-AB² = (Rutschfläche)² - (Höhe)²
-AB² = 6² - 2.5² = 36 - 6.25 = 29.75
-AB = √29.75 ≈ 5.45 m.
-✅ Die Breite AB beträgt ca. 5.45 m.`,
+          content: `Mit Pythagoras findest du zuerst die lange Seite FB - das ist die Hypotenuse des rechtwinkligen Dreiecks FBS (rechter Winkel bei S):
+FB² = FS² + SB² = 2.5² + 6² = 6.25 + 36 = 42.25
+FB = √42.25 = 6.5 m
+Die Breite AB reicht von der Wand (A) bis zum Beckenrand (B): AB = AF + FB = 3 + 6.5 = 9.5 m
+✅ Der Platz ist 9.5 m breit.`,
         },
         {
           title: 'c) Stütze s1',
-          content: `Frage ist falsch gestellt in der Zusammenfassung. s1 IST 2.5m. Gefragt ist wie weit vom Beckenrand (A) die Stütze s1 verankert ist und wie lang diese ist. Verankerungspunkt ist A. Die Stütze s1 selbst ist 2.5m lang. Die Frage im PDF ist: "Wie weit vom Beckenrand entfernt ist die Stütze s2 zu verankern und wie lang ist diese?". Das ist c.
-Im Original-PDF: "Wie weit vom Beckenrand entfernt ist die Stütze s1 zu verankern und wie lang ist diese?". Das ist redundant. s1 ist 2.5m. Die Verankerung ist in der Skizze Punkt A, also 0m vom Rand. Das ist verwirrend.
-Ich nehme an, es ist die Position von F gemeint.
-✅ Die Stütze s1 (Länge 2.5m) ist bei Punkt F verankert, 3m vom Beckenrand (A) entfernt.`,
+          content: `s1 ist die Höhe des Dreiecks FBS, gemessen senkrecht von der Spitze S auf die lange Seite FB. Du findest sie, indem du die Fläche aus a) noch einmal nutzt - diesmal mit FB als Grundlinie:
+Fläche = (FB × s1) / 2
+7.5 = (6.5 × s1) / 2
+s1 = (2 × 7.5) / 6.5 ≈ 2.31 m
+Für den Abstand vom Beckenrand (B) nutzt du nochmals Pythagoras: im kleinen Dreieck ist die Rutsche (6m) die Hypotenuse und s1 eine Kathete.
+Abstand = √(SB² - s1²) = √(6² - 2.31²) = √(36 - 5.34) = √30.66 ≈ 5.54 m
+✅ Die Stütze s1 ist 2.31 m lang und wird 5.54 m vom Beckenrand entfernt verankert.`,
         },
         {
           title: 'd) Länge der Stütze s2',
-          content: `s2 ist in der Mitte der Rutschfläche, also bei 3m auf der 6m langen Rutsche. Hier hilft der Strahlensatz!
-Wir vergleichen das kleine Dreieck bei s2 mit dem grossen Dreieck bei s1.
-(Länge s2) / (Länge s1) = (horiz. Distanz zu s2) / (horiz. Distanz zu s1 = AB)
-Die horiz. Position von s2 ist in der Mitte von AB, also bei 5.45/2 = 2.725m von der Spitze (nicht A).
-s2 / 2.5 = (5.45 / 2) / 5.45 = 0.5
-s2 = 2.5 * 0.5 = 1.25 m.
+          content: `s2 steht unter der Mitte der 6m langen Rutschfläche, also genau bei 3m - auf halbem Weg. Mit dem Strahlensatz vergleichst du diese Position mit der Einstiegsleiter (2.5m) am oberen Ende der Rutsche:
+s2 / 2.5 = 3 / 6
+s2 = 2.5 × 0.5 = 1.25 m
 ✅ Die Stütze s2 ist 1.25 m lang.`,
         },
         {
           title: 'e) Gefälle in Prozent',
           content: `Gefälle = (Höhenunterschied / Horizontale Distanz) * 100
-Höhenunterschied = 2.5 m
-Horizontale Distanz = AB ≈ 5.45 m
-Gefälle = (2.5 / 5.45) * 100 ≈ 45.87%
-✅ Das Gefälle der Rutschfläche beträgt ca. 45.9%.`,
+Höhenunterschied = s1 ≈ 2.31 m
+Horizontale Distanz = 5.54 m (der Abstand von s1 zum Beckenrand aus c))
+Gefälle = (2.31 / 5.54) * 100 ≈ 41.7%
+✅ Das Gefälle der Rutschfläche beträgt ca. 42%.`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179313/AP24_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Dein Gameplan:
-1️⃣ Grosses Dreieck: Berechne als erstes die gesamte horizontale Länge AB mit Pythagoras (Hypotenuse 6m, Höhe 2.5m).
-2️⃣ Strahlensatz: Für die Höhe von s2, nutze den Strahlensatz. Das Verhältnis der Höhen (s2 / s1) ist gleich dem Verhältnis der horizontalen Abstände.
-3️⃣ Gefälle: Teile die Gesamthöhe (2.5m) durch die Gesamtlänge am Boden (AB) und nimm das Ergebnis mal 100.`,
+1️⃣ Rechtwinkliges Dreieck FBS: Die Einstiegsleiter (2.5m) und die Rutsche (6m) treffen sich bei S im rechten Winkel - das ist dein Schlüssel für a) und b).
+2️⃣ Fläche doppelt nutzen: Du kennst die Fläche aus a). Setze sie mit der Grundlinie FB und der gesuchten Höhe s1 gleich, um s1 in c) zu berechnen.
+3️⃣ Strahlensatz: Für s2 vergleichst du die Mitte der Rutsche (3m von 6m) mit der Einstiegsleiter (2.5m) am oberen Ende.
+4️⃣ Gefälle: Teile den Höhenunterschied (s1) durch die horizontale Distanz zum Beckenrand und nimm das Ergebnis mal 100.`,
     },
   },
   // ── AUFGABE 5 ─────────────────────────────────────────────
   {
     id: 'M2_2024_MTR_VOL_1',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -294,21 +307,26 @@ Einheiten: 1 m³ = 1000 Liter. 1 dm³ = 1 Liter. Es ist oft am einfachsten, alle
         },
         {
           title: 'a) Wassermenge berechnen',
-          content: `Der Wassergraben ist ein Prisma, das auf der Seite liegt. Die "Länge" ist 70cm, die Grundfläche ist das Trapez. Rechnen wir in dm (10cm = 1dm):
-- Länge des Prismas: 70 cm = 7 dm.
-- Trapez-Seiten: 366 cm = 36.6 dm, 350 cm = 35 dm.
-- Trapez-Höhe: 30 cm = 3 dm.
+          content: `Schau dir die Seitenansicht des Grabens (in Laufrichtung) genau an: Sie ist ein Trapez.
+- Die beiden parallelen Trapezseiten sind 350 cm (oben, auf Bodenniveau) und 30 cm (unten, der flache Boden direkt bei der Hürde).
+- Die Trapezhöhe (die Tiefe des Grabens) ist 70 cm.
+- Die "Länge" des Prismas ist die Breite des Grabens quer zur Laufbahn: 366 cm.
+
+Rechnen wir in dm (10 cm = 1 dm), dann ist dm³ direkt Liter:
+- Parallelseiten: 350 cm = 35 dm, 30 cm = 3 dm.
+- Trapezhöhe: 70 cm = 7 dm.
+- Länge (Breite des Grabens): 366 cm = 36.6 dm.
 
 1. Fläche des Trapezes (Grundfläche):
-   A = ((36.6 + 35) / 2) * 3 = (71.6 / 2) * 3 = 35.8 * 3 = 107.4 dm².
+   A = ((35 + 3) / 2) * 7 = (38 / 2) * 7 = 19 * 7 = 133 dm².
 
 2. Volumen des Prismas:
-   V = Grundfläche * Länge = 107.4 dm² * 7 dm = 751.8 dm³.
+   V = Grundfläche * Länge = 133 dm² * 36.6 dm = 4867.8 dm³.
 
 3. In Liter umrechnen:
-   Da 1 dm³ = 1 Liter, sind das 751.8 Liter.
+   Da 1 dm³ = 1 Liter, sind das 4867.8 Liter.
 
-✅ Es sind 751.8 Liter Wasser erforderlich.`,
+✅ Es sind 4867.8 Liter Wasser erforderlich.`,
         },
         {
           title: 'b) Welcher Graph passt?',
@@ -327,17 +345,23 @@ Der Graph muss also am Anfang steil sein und dann immer flacher werden. Er besch
 
 ✅ Graph II beschreibt den Zusammenhang korrekt.`,
         },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179313/AP24_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
+        },
       ],
       tip: `🍳 Dein Gameplan:
-1️⃣ Einheiten umrechnen: Wandle alle cm in dm um, dann ist dm³ direkt Liter.
-2️⃣ Trapezfläche: Berechne die Fläche des vorderen Trapezes.
-3️⃣ Volumen: Multipliziere die Trapezfläche mit der Länge (70cm) des Grabens.
-4️⃣ Graph: Überlege dir: Wird der Behälter nach oben breiter oder schmaler? Breiter bedeutet, der Graph wird flacher. Schmaler bedeutet, er wird steiler.`,
+1️⃣ Trapez erkennen: Die Seitenansicht in Laufrichtung ist ein Trapez mit den Parallelseiten 350cm und 30cm und der Höhe 70cm.
+2️⃣ Einheiten umrechnen: Wandle alle cm in dm um, dann ist dm³ direkt Liter.
+3️⃣ Volumen: Multipliziere die Trapezfläche mit der Breite des Grabens quer zur Laufbahn (366cm).
+4️⃣ Graph: Überlege dir: Wird der Graben nach oben breiter oder schmaler? Breiter bedeutet, der Graph wird flacher. Schmaler bedeutet, er wird steiler.`,
     },
   },
   // ── AUFGABE 6 ─────────────────────────────────────────────
   {
     id: 'M2_2024_MTR_WAHR_1',
+    verified: true,
     year: 2024,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -400,6 +424,11 @@ P(C) = 16/90 + 16/90 = 32/90 ≈ 35.6%`,
 
 Die Wahrscheinlichkeit zu gewinnen ist bei Variante B am kleinsten.
 ✅ Martin und Karin sollten Variante B ("Keine Kugel ist rot") wählen, da hier die Gewinnchance am geringsten ist und die Klasse somit die meisten Einnahmen erzielt.`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179313/AP24_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Dein Gameplan:
