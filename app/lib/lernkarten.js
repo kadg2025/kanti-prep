@@ -261,7 +261,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'potenzen', emoji: '⚡', titel: 'Potenzen', videos: [{ titel: 'Potenzen', youtubeId: 'Oo7gFQoG16c' }],
+        id: 'potenzen', emoji: '⚡', titel: 'Potenzen & Wurzeln', videos: [{ titel: 'Potenzen', youtubeId: 'Oo7gFQoG16c' }],
         karten: [
           { text: 'Eine Potenz ist eine Abkürzung fürs Malnehmen: a³ = a · a · a. Die Hochzahl sagt, wie oft die Basis mit sich selbst multipliziert wird. Zum Beispiel 2⁴ = 2 · 2 · 2 · 2 = 16.' },
           { text: 'Tippe die Potenzregeln an.', visual: 'chips', chips: [
@@ -272,12 +272,19 @@ export const lernkarten = {
           ] },
           { text: 'Achtung bei Minus: (−3)² = 9, aber −3² = −9. Im zweiten Fall wird nur die 3 quadriert, das Minus bleibt davor.' },
           { text: 'Zehnerpotenzen: 10³ = 1000 und 10⁻² = 0.01. Die wissenschaftliche Schreibweise ist eine Zahl zwischen 1 und 10 mal eine Zehnerpotenz. Beispiele: 4 500 000 = 4.5 · 10⁶ und 0.00032 = 3.2 · 10⁻⁴.' },
+          { text: 'Eine Wurzel macht das Quadrieren rückgängig: √16 = 4, weil 4² = 16 ist. Für Terme gilt dasselbe: √(a²) = a. Und eine Wurzel aus einem Produkt darfst du einzeln auf jeden Faktor ziehen: √(a · b) = √a · √b. Zum Beispiel √(9a²) = √9 · √(a²) = 3 · a = 3a.' },
+          { text: 'Vereinfache so weit wie möglich: √(a² + 8a²). Zuerst unter der Wurzel zusammenfassen: a² + 8a² = 9a². Dann die Wurzel ziehen: √(9a²) = 3a.' },
+          { text: 'Vereinfache so weit wie möglich: √((3y)² − 5y²). Zuerst (3y)² ausrechnen: (3y)² = 9y². Dann unter der Wurzel zusammenfassen: 9y² − 5y² = 4y². Wurzel ziehen: √(4y²) = 2y.' },
+          { text: 'Noch kniffliger, wenn mehrere Wurzeln multipliziert werden: (3/5) · √(a/3) · (1/4) · √(4a/3) · √49. Zuerst die Zahlen vor den Wurzeln einzeln multiplizieren: 3/5 · 1/4 · 7 = 21/20. Dann die beiden Wurzelterme zu einer Wurzel zusammenfassen: √(a/3) · √(4a/3) = √(a/3 · 4a/3) = √(4a²/9). Wurzel ziehen: √(4a²/9) = 2a/3. Alles zusammen: 21/20 · 2a/3 = 7a/10.' },
         ],
         check: [
           { frage: 'Was ist a³ · a⁴?', optionen: ['a⁷', 'a¹²', '2a⁷', 'a⁶'], richtig: 0, erklaerung: 'Gleiche Basis, Hochzahlen addieren: 3 + 4 = 7.' },
           { frage: 'Was ist (5a)²?', optionen: ['25a²', '5a²', '10a', '25a'], richtig: 0, erklaerung: '(5a)² = 5a · 5a = 25a². Die 5 wird mit quadriert.' },
           { frage: 'Welche Schreibweise ist die wissenschaftliche für 4 500 000?', optionen: ['4.5 · 10⁵', '4.5 · 10⁶', '45 · 10⁶', '4.5 · 10⁷'], richtig: 1, erklaerung: '4.5 · 1 000 000 = 4 500 000, und 1 000 000 = 10⁶.' },
           { frage: 'Was ist −3²?', optionen: ['9', '−9', '6', '−6'], richtig: 1, erklaerung: 'Nur die 3 wird quadriert: −(3 · 3) = −9.' },
+          { frage: 'Vereinfache: √(a² + 3a²)', optionen: ['2a', '4a', '√4a', 'a²'], richtig: 0, erklaerung: 'Erst unter der Wurzel zusammenfassen: a² + 3a² = 4a². Dann die Wurzel ziehen: √(4a²) = 2a.' },
+          { frage: 'Vereinfache: √((4y)² − 7y²)', optionen: ['3y', '9y', '3y²', '√9y'], richtig: 0, erklaerung: '(4y)² = 16y². Dann 16y² − 7y² = 9y². Wurzel ziehen: √(9y²) = 3y.' },
+          { frage: 'Vereinfache so weit wie möglich: (3/5) · √(a/3) · (1/4) · √(4a/3) · √49', optionen: ['7a/10', '21a/20', '7a/5', '2a/3'], richtig: 0, erklaerung: 'Zahlen vor den Wurzeln: 3/5 · 1/4 · 7 = 21/20. Wurzeln zusammenfassen: √(a/3) · √(4a/3) = √(4a²/9) = 2a/3. Zusammen: 21/20 · 2a/3 = 7a/10.' },
         ],
       },
       {
