@@ -509,6 +509,30 @@ export const lernkarten = {
         ],
       },
       {
+        id: 'formelumstellung', emoji: '🔧', titel: 'Formeln umstellen', videos: [],
+        karten: [
+          { text: 'Manchmal sollst du eine Formel nicht nach x, sondern nach einem anderen Buchstaben auflösen - zum Beispiel nach b, v oder d. Das funktioniert genau gleich wie bei einer normalen Gleichung: Du behandelst alle anderen Buchstaben wie ganz normale Zahlen und wendest dieselben Waage-Regeln an (+, −, ·, :). Profi-Tipp: Markiere dir zuerst, nach welchem Buchstaben du auflösen sollst, und rechne Schritt für Schritt, bis genau dieser Buchstabe allein auf einer Seite steht.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'andere Buchstaben = Zahlen', regel: 'Alle Buchstaben ausser der gesuchten Variable behandelst du wie bekannte Zahlen.' },
+              { n: 'mehrere Faktoren', regel: 'Steht die gesuchte Variable mit mehreren anderen Buchstaben multipliziert, teilst du am Schluss durch ALLE diese Faktoren auf einmal.' },
+              { n: 'unter der Wurzel', regel: 'Steht die Variable unter einer Wurzel, quadrierst du zuerst beide Seiten, um die Wurzel wegzubekommen.' },
+              { n: 'nur + sinnvoll', regel: 'Bei Längen wie einem Durchmesser ist nur die positive Lösung einer Wurzel sinnvoll, auch wenn mathematisch ± möglich wäre.' },
+            ],
+          },
+          { text: 'Löse A = (b · r) / 2 nach b auf. (A = Fläche, b = Grundseite, r = Höhe eines Dreiecks)\nA = (b · r) / 2\n| ·2 auf beiden Seiten: 2A = b · r\n| :r auf beiden Seiten: 2A / r = b\n\nb = 2A / r' },
+          { text: 'Löse a = (m · z + m · x) / 2 nach m auf. Hier steht m in zwei Summanden - zuerst musst du m ausklammern, bevor du teilen kannst.\na = (m · z + m · x) / 2\n| ·2 auf beiden Seiten: 2a = m · z + m · x\n| m ausklammern: 2a = m · (z + x)\n| :(z + x) auf beiden Seiten: 2a / (z + x) = m\n\nm = 2a / (z + x)' },
+          { text: 'Löse A = (π/4) · (D² − d²) nach d auf. (A = Fläche eines Kreisrings, D = äusserer, d = innerer Durchmesser)\nA = (π/4) · (D² − d²)\n| ·4 auf beiden Seiten: 4A = π · (D² − d²)\n| :π auf beiden Seiten: 4A/π = D² − d²\n| D² auf die andere Seite: d² = D² − 4A/π\n| Wurzel ziehen: d = √(D² − 4A/π)\n\nNur die positive Wurzel ist sinnvoll, weil d eine Länge ist.' },
+        ],
+        check: [
+          { frage: 'Löse n = v / (d · π) nach v auf. Was ist richtig?', optionen: ['v = n · d · π', 'v = n / (d · π)', 'v = n · d', 'v = n · π / d'], richtig: 0, erklaerung: 'Beide Seiten mit (d · π) multiplizieren: v = n · d · π. Bei "v = n / (d·π)" wurde gar nicht umgestellt, bei "v = n · d" wurde der Faktor π vergessen.' },
+          { frage: 'Löse A = (b · r) / 2 nach r auf. Was ist richtig?', optionen: ['r = 2A / b', 'r = A / (2b)', 'r = 2A · b', 'r = A/2 · b'], richtig: 0, erklaerung: 'Erst ·2 auf beiden Seiten: 2A = b · r, dann :b: r = 2A / b. Bei "r = A / (2b)" wurde direkt durch 2b geteilt, statt zuerst mit 2 zu multiplizieren - das ergibt ein falsches Ergebnis.' },
+          { frage: 'Du stellst A = (π/4)(D² − d²) nach d um und erhältst d² = D² − 4A/π. Wie geht es weiter?', optionen: ['d = √(D² − 4A/π), nur die positive Lösung ist sinnvoll', 'd = ±√(D² − 4A/π), beide Lösungen eintragen', 'd = (D² − 4A/π) / 2', 'd = √D² − √(4A/π)'], richtig: 0, erklaerung: 'Mathematisch gäbe es + und −, aber da d ein Durchmesser - also eine Länge - ist, ist nur die positive Lösung sinnvoll. Bei "d = (D² − 4A/π) / 2" wurde durch 2 geteilt statt die Wurzel gezogen. Bei "√D² − √(4A/π)" wurde die Wurzel fälschlich auf jeden Summanden einzeln angewendet - das ist nicht erlaubt.' },
+        ],
+      },
+      {
         id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
         karten: [
           { text: '❌ −(x − 5) = −x − 5. ✅ Das Minus dreht beide Zeichen um: −(x − 5) = −x + 5.' },
@@ -539,6 +563,10 @@ export const lernkarten = {
           { text: 'Löse: "Die Summe einer Zahl und ihres Vierfachen ist 40."', loesung: 'Gleichung: x + 4x = 40, also 5x = 40. x = 8 (:5).' },
           { text: 'Löse: 1/2(x + 4) = 3/4(x − 2)', loesung: 'Hauptnenner 4, alles mal 4: 2(x + 4) = 3(x − 2). Ausmultiplizieren: 2x + 8 = 3x − 6. 14 = x (8 + 6 auf eine Seite, x-Terme auf die andere). x = 14.' },
           { text: 'Löse: 2/5(3x − 1) − x/2 = 1 − 1/10(x + 4)', loesung: 'Hauptnenner 10, alles mal 10: 4(3x − 1) − 5x = 10 − (x + 4). Ausmultiplizieren: 12x − 4 − 5x = 10 − x − 4, also 7x − 4 = 6 − x. 8x = 10 (+x, +4). x = 5/4 (:8).' },
+          { text: 'Löse A = (b · r) / 2 nach b auf.', loesung: 'b = 2A / r (·2 auf beiden Seiten: 2A = b · r, dann :r).' },
+          { text: 'Löse n = v / (d · π) nach v auf.', loesung: 'v = n · d · π (beide Seiten mit d · π multiplizieren).' },
+          { text: 'Löse a = (m · z + m · x) / 2 nach m auf.', loesung: 'm = 2a / (z + x) (·2: 2a = m · z + m · x, dann m ausklammern: 2a = m · (z + x), dann :(z + x)).' },
+          { text: 'Löse A = (π/4) · (D² − d²) nach d auf.', loesung: 'd = √(D² − 4A/π) (·4, :π, D² auf die andere Seite bringen, dann Wurzel ziehen - nur die positive Lösung ist sinnvoll, da d eine Länge ist).' },
         ],
         check: [],
       },
