@@ -4,6 +4,7 @@ export const questions2020 = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
     id: 'M3_2020_MTR_GESCH_1',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -76,6 +77,7 @@ Laufzeit = 522 − 337.5 − 4.5 = 180 min
   // ── AUFGABE 2 ─────────────────────────────────────────────
   {
     id: 'M3_2020_MTR_GEO3D_1',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -92,9 +94,9 @@ Berechne die Weglänge (blauer Streckenzug SABCF). Runde auf ganze Meter.
 
 📐 Für diese Aufgabe: originelle Prüfung und Lösung öffnen!`,
     options: [
-      { label: 'Lösung über offizielle Schullösung verfügbar', correct: true },
-      { label: 'Ca. 170 m', correct: false },
-      { label: 'Ca. 250 m', correct: false },
+      { label: 'Ca. 153 m (SA≈49.68 + AB=26 + BC≈69.24 + CF=8)', correct: true },
+      { label: 'Ca. 120 m (Höhenunterschied bei BC vergessen)', correct: false },
+      { label: 'Ca. 161 m (CF nicht halbiert, mit 16 statt 8 gerechnet)', correct: false },
     ],
     solution: {
       intro: '',
@@ -113,49 +115,90 @@ Dabei:
 Tipp: Koordinatensystem aufstellen!`,
         },
         {
+          title: 'Schritt 1: SA (Weg auf dem Boden)',
+          content: `Aus den Mass-Angaben (77m, 23m, 45m, 16m) ergeben sich die beiden Katheten:
+77 − 23 − 16 = 38 m und 77 − 45 = 32 m
+SA = √(32² + 38²) = √(1024 + 1444) = √2468 ≈ 49.68 m`,
+        },
+        {
+          title: 'Schritt 2: AB (Gebäudewand hoch)',
+          content: `AB ist die Höhe des ersten Gebäudes: AB = 26 m.`,
+        },
+        {
+          title: 'Schritt 3: BC (über das zweite Gebäude)',
+          content: `Mit Hilfspunkten D, E (nicht in der Aufgabenstellung, nur zur Berechnung):
+BD = 23 m, DE = 45 − 34/2 = 28 m, EC = 85 − 26 = 59 m
+BC = √(23² + 28² + 59²) = √(529 + 784 + 3481) = √4794 ≈ 69.24 m`,
+        },
+        {
+          title: 'Schritt 4: CF (bis zur Dachmitte) und Total',
+          content: `Das Dach ist an dieser Kante 16 m breit. F liegt in der Mitte:
+CF = 16 ÷ 2 = 8 m
+Weglänge: SA + AB + BC + CF = 49.68 + 26 + 69.24 + 8 = 152.92 m
+✅ Auf ganze Meter gerundet: ca. 153 m.`,
+        },
+        {
           title: '📄 Offizielle Schullösung',
           content: 'Klicke auf den Button, um die offizielle Schullösung zu öffnen.',
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119942/AP20_GMS3_M2_mTr_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Koordinaten für jeden Punkt bestimmen
+1️⃣  Koordinaten/Hilfsstrecken aus den Mass-Angaben ableiten
 2️⃣  Für jede Teilstrecke: √(Δx²+Δy²+Δz²)
-3️⃣  Alle Teilstrecken addieren`,
+3️⃣  Alle Teilstrecken addieren (SA+AB+BC+CF) → auf ganze Meter runden`,
     },
   },
 
   // ── AUFGABE 3 ─────────────────────────────────────────────
   {
     id: 'M3_2020_MTR_KOERPER_1',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106465/AP20_GMS3_M1_mTr_Pr%C3%BCfung.pdf?fp=1#page=6',
     topic: 'Körper & Netze',
-    questionText: `Aufgabe 3: Pyramide – Netz und Oberfläche
+    questionText: `Aufgabe 3: Pyramide – Netz vervollständigen
 
-Eine Pyramide mit quadratischer Grundfläche. Zeichne das Netz und berechne die Oberfläche.
+Eine Pyramide hat eine rechteckige Grundfläche ABCD. H ist der Höhenfusspunkt der Pyramide, die Spitze wird mit S bezeichnet.
 
-📐 Für diese Aufgabe: originelle Prüfung und Lösung öffnen!`,
+Gegeben ist bereits ein Teil des Netzes: die Grundfläche ABCD und die Seitenfläche (Dreieck SAB).
+
+Konstruiere das vollständige Netz, d.h. die drei fehlenden Seitenflächen (Dreiecke bei BC, CD und DA).`,
     options: [
-      { label: 'Lösung über offizielle Schullösung verfügbar', correct: true },
-      { label: 'Keine Berechnung möglich', correct: false },
-      { label: 'Nur mit bekannter Höhe lösbar', correct: false },
+      { label: 'Kreis um A (Radius AS) und Parallele zu AB durch H schneiden sich in S\' – analog für die Seiten BC und CD', correct: true },
+      { label: 'Nur mit bekannter Pyramidenhöhe konstruierbar', correct: false },
+      { label: 'Netz hat nur 2 Dreiecke, da Grundfläche quadratisch ist', correct: false },
     ],
     solution: {
       intro: '',
       steps: [
         {
-          title: '📖 Methode: Pyramide Oberfläche',
-          content: `Oberfläche Pyramide = Grundfläche + 4 × Seitenflächen
+          title: '📖 Methode: Netz einer geraden Pyramide',
+          content: `Das Netz besteht aus der Grundfläche ABCD und 4 Seitendreiecken (SAB, SBC, SCD, SDA).
+Gegeben ist bereits die Grundfläche und das Dreieck SAB – die 3 fehlenden Seitendreiecke müssen konstruiert werden.
 
-Grundfläche (Quadrat): G = a²
-Seitenfläche (Dreieck): S = ½ × a × h_s
-(h_s = Höhe der Dreiecksfläche, nicht Pyramidenhöhe!)
-
-Netz: Ein Quadrat in der Mitte + 4 gleichschenklige Dreiecke drumherum.`,
+💡 Trick: Da H der Höhenfusspunkt ist (Mitte der Grundfläche), haben gegenüberliegende Eckpunkte den gleichen Abstand zur Spitze: AS = CS und BS = DS.`,
+        },
+        {
+          title: 'Schritt 1: Seite bei D (gegenüber von B)',
+          content: `Kreis um A mit Radius AS zeichnen (die Strecke AS mit dem Zirkel aus dem gegebenen Dreieck SAB abgreifen).
+Parallele zu AB durch H zeichnen → Schnittpunkt mit dem Kreis ergibt S'.
+S' mit D verbinden → das ist die 2. Seitenfläche (Dreieck S'AD).`,
+        },
+        {
+          title: 'Schritt 2: gegenüberliegende Seite (bei C)',
+          content: `Analoges Vorgehen auf der Seite BC: Kreis um B mit Radius BS, Parallele zu AB durch H → Schnittpunkt S''.
+S'' mit C verbinden → 3. Seitenfläche (Dreieck S''BC).`,
+        },
+        {
+          title: 'Schritt 3: Seite auf CD',
+          content: `Kreis um D mit Radius DS (= BS) bzw. um C mit Radius CS (= AS).
+Parallele zu AD durch H zeichnen → Schnittpunkt S'''.
+S''' mit C und D verbinden → 4. Seitenfläche (Dreieck S'''CD).
+✅ Damit ist das vollständige Netz konstruiert: Grundfläche ABCD + 4 Seitendreiecke.`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -164,15 +207,16 @@ Netz: Ein Quadrat in der Mitte + 4 gleichschenklige Dreiecke drumherum.`,
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Netz: Quadrat + 4 Dreiecke
-2️⃣  Seitenhöhe h_s mit Pythagoras berechnen
-3️⃣  O = a² + 4 × (a × h_s / 2)`,
+1️⃣  AS = CS und BS = DS (H = Mitte der rechteckigen Grundfläche)
+2️⃣  Für jede fehlende Seite: Kreis mit passendem Radius um die Ecke + Parallele zu AB bzw. AD durch H
+3️⃣  Schnittpunkt mit dem gegenüberliegenden Eckpunkt verbinden → fertige Seitenfläche`,
     },
   },
 
   // ── AUFGABE 4 ─────────────────────────────────────────────
   {
     id: 'M3_2020_MTR_KOMB_1',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -187,10 +231,10 @@ a) Man braucht pro Versuch 10 s. Wie lange dauert es im schlimmsten Fall, die Ko
 
 b) Wie viele Kombinationen gibt es, wenn alle 3 Ziffern ungerade sein müssen?
 
-c) Wie viele Kombinationen gibt es mit 3 verschiedenen Ziffern, alle grösser als 4 und aufsteigend geordnet?`,
+c) Ein Freund ist sicher, dass die erste Ziffer eine 5 war, die zweite grösser als die erste und die dritte grösser als die zweite. Gerade Ziffern kann er nicht ausschliessen. Wie viele Einstellungen sind so noch möglich?`,
     options: [
-      { label: 'a) 2 h 46 min 40 s | b) 125 | c) 10', correct: true },
-      { label: 'a) 1 h 30 min | b) 243 | c) 6', correct: false },
+      { label: 'a) 2 h 46 min 40 s | b) 125 | c) 6 (567, 568, 569, 578, 579, 589)', correct: true },
+      { label: 'a) 1 h 30 min | b) 243 | c) 10', correct: false },
       { label: 'a) 3 h 20 min | b) 100 | c) 15', correct: false },
     ],
     solution: {
@@ -223,17 +267,16 @@ Anzahl = 5 × 5 × 5 = 125
 ✅ Es gibt 125 Kombinationen mit lauter ungeraden Ziffern.`,
         },
         {
-          title: 'c) 3 verschiedene Ziffern > 4, aufsteigend',
-          content: `Erlaubte Ziffern: 5, 6, 7, 8, 9 (grösser als 4)
-Aufsteigend geordnet → nur 1 Anordnung pro Gruppe.
+          title: 'c) Erste Ziffer 5, aufsteigend',
+          content: `1. Ziffer ist fix: 5.
+2. und 3. Ziffer müssen aufsteigend sein und grösser als die vorherige (gerade Ziffern erlaubt!): 5 < d₂ < d₃, mit d₂, d₃ ∈ {6,7,8,9}.
 
-Alle möglichen aufsteigenden Dreiergruppen:
-(5,6,7), (5,6,8), (5,6,9)
-(5,7,8), (5,7,9), (5,8,9)
-(6,7,8), (6,7,9), (6,8,9)
-(7,8,9)
+Alle möglichen Paare (d₂, d₃):
+(6,7), (6,8), (6,9), (7,8), (7,9), (8,9) → 6 Möglichkeiten
 
-✅ Es gibt 10 Kombinationen.`,
+Das ergibt die Einstellungen: 567, 568, 569, 578, 579, 589
+
+✅ Es gibt 6 mögliche Einstellungen.`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -244,13 +287,14 @@ Alle möglichen aufsteigenden Dreiergruppen:
       tip: `🍳 Kochrezept:
 a) 10³ = 1000 Möglichkeiten × 10 s → Sekunden umrechnen
 b) Nur ungerade (5 Stück): 5³ = 125
-c) Ziffern > 4 aufzählen, alle 3er-Gruppen auflisten`,
+c) 1. Ziffer fix (5), dann alle aufsteigenden Paare aus den grösseren Ziffern auflisten`,
     },
   },
 
   // ── AUFGABE 5 ─────────────────────────────────────────────
   {
     id: 'M3_2020_MTR_PROZ_1',
+    verified: true,
     year: 2020,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -263,15 +307,13 @@ Ein Behälter enthält 20 ml Flüssigkeit A, 70 ml B und 70 ml C.
 
 a) Wie viel % macht Flüssigkeit A aus?
 
-b) Wie viel ml C muss man hinzufügen, damit B 40% des Gemisches ausmacht?
+b) Wie viel ml B muss man dazugeben, damit Flüssigkeit C nur noch 40% des Gemisches ausmacht?
 
-c) Kosten: A kostet Fr. 3.20/l, B kostet Fr. 1.80/l, C kostet Fr. 0.60/l.
-Der Verkaufspreis des Gemisches beträgt Fr. 2.00/l.
-Wie hoch ist der Gewinn in % gegenüber dem Einkaufspreis?`,
+c) 10 ml Flüssigkeit A kosten Fr. 20.–. Flüssigkeit B ist (pro gleicher Menge) 15% teurer. Das ursprüngliche Gemisch (20 ml A + 70 ml B + 70 ml C) kostet insgesamt Fr. 329.80. Um wie viel Prozent ist Flüssigkeit C billiger als Flüssigkeit A (pro gleicher Menge)?`,
     options: [
-      { label: 'a) 12.5% | b) 15 ml C hinzufügen | c) Schullösung beachten', correct: true },
-      { label: 'a) 10% | b) 20 ml | c) 25%', correct: false },
-      { label: 'a) 15% | b) 10 ml | c) 15%', correct: false },
+      { label: 'a) 12.5% | b) 15 ml B hinzufügen | c) 8% billiger', correct: true },
+      { label: 'a) 10% | b) 20 ml B | c) 25% billiger', correct: false },
+      { label: 'a) 15% | b) 10 ml B | c) 15% billiger', correct: false },
     ],
     solution: {
       intro: '',
@@ -280,9 +322,10 @@ Wie hoch ist der Gewinn in % gegenüber dem Einkaufspreis?`,
           title: '📖 Begriffe',
           content: `📐 Prozentteil = Anteil ÷ Gesamtmenge × 100
 💡 Wenn man etwas hinzufügt: Gesamtmenge ändert sich!
-→ Neue Bedingung aufstellen: Anteil_B ÷ (Gesamt + x) = 40%
+→ Neue Bedingung aufstellen: Anteil_C ÷ (Gesamt + x) = 40%
 
-💰 Gewinn% = (Verkaufspreis − Einkaufspreis) ÷ Einkaufspreis × 100`,
+💰 Preisvergleich: Kosten pro gleicher Menge berechnen, dann prozentualen Unterschied bestimmen
+% billiger = (Preis_A − Preis_C) ÷ Preis_A × 100`,
         },
         {
           title: 'a) Anteil Flüssigkeit A',
@@ -292,32 +335,30 @@ Anteil A = 20 ÷ 160 × 100 = 12.5%
 ✅ Flüssigkeit A macht 12.5% aus.`,
         },
         {
-          title: 'b) Menge C für 40% B-Anteil',
-          content: `B = 70 ml (bleibt unverändert)
-Neue Gesamtmenge = 160 + x ml (x = hinzugefügtes C)
+          title: 'b) Menge B für 40% C-Anteil',
+          content: `C = 70 ml (bleibt unverändert, nur B wird ergänzt)
+Neue Gesamtmenge = 160 + x ml (x = hinzugefügtes B)
 
 Bedingung: 70 ÷ (160 + x) = 0.40
 160 + x = 70 ÷ 0.40 = 175
 x = 175 − 160 = 15 ml
 
-✅ Man muss 15 ml C hinzufügen.`,
+✅ Man muss 15 ml B hinzufügen, damit C nur noch 40% des Gemisches ausmacht.`,
         },
         {
-          title: 'c) Gewinn berechnen',
-          content: `Gemisch (nach a): 20 ml A + 70 ml B + 70 ml C = 160 ml = 0.16 l
+          title: 'c) Preisvergleich A und C',
+          content: `Preis pro 10 ml A = Fr. 20.–
+Preis pro 10 ml B = Fr. 20.– × 1.15 = Fr. 23.– (15% teurer)
 
-Einkaufskosten:
-A: 0.020 l × Fr. 3.20 = Fr. 0.064
-B: 0.070 l × Fr. 1.80 = Fr. 0.126
-C: 0.070 l × Fr. 0.60 = Fr. 0.042
-Total = Fr. 0.232
+Ursprüngliches Gemisch: 20 ml A + 70 ml B + 70 ml C
+Kosten A (20 ml = 2 × 10 ml): 2 × Fr. 20.– = Fr. 40.–
+Kosten B (70 ml = 7 × 10 ml): 7 × Fr. 23.– = Fr. 161.–
+Kosten C: Fr. 329.80 − Fr. 40.– − Fr. 161.– = Fr. 128.80
 
-Verkaufserlös: 0.16 l × Fr. 2.00 = Fr. 0.320
+Preis pro 10 ml C = Fr. 128.80 ÷ 7 = Fr. 18.40
 
-Gewinn = 0.320 − 0.232 = Fr. 0.088
-Gewinn% = 0.088 ÷ 0.232 × 100 ≈ 37.9%
-
-✅ Der Gewinn beträgt ca. 37.9% des Einkaufspreises.`,
+Vergleich: Fr. 18.40 ÷ Fr. 20.– = 0.92 → C kostet 92% von A
+✅ Flüssigkeit C ist 8% billiger als Flüssigkeit A.`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -327,8 +368,8 @@ Gewinn% = 0.088 ÷ 0.232 × 100 ≈ 37.9%
       ],
       tip: `🍳 Kochrezept:
 a) A ÷ Gesamt × 100
-b) B ÷ (Gesamt + x) = 0.40 → x auflösen
-c) Kosten pro Flüssigkeit addieren → Verkaufspreis − Einkauf → Gewinn%`,
+b) C bleibt bei 70 ml fix → 70 ÷ (160 + x) = 0.40 → x auflösen (x = zugefügtes B)
+c) Kosten A und B berechnen (B = A × 1.15) → Kosten C = Total − Kosten A − Kosten B → Preis pro gleicher Menge vergleichen`,
     },
   },
 

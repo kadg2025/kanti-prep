@@ -7,6 +7,8 @@ export const questions2021 = [
 
     id: 'M3_2021_MTR_GESCH_1',
 
+    verified: true,
+
     year: 2021,
 
     subject: 'Mathe',
@@ -121,16 +123,20 @@ b) Gleichung aufstellen: t_velo = t_auto + nebenzeit_auto. Also: d/18 = d/54 + 5
     topic: 'Geometrie', // NEU
 
     questionText: `Aufgabe 2: Geometrische Orte
-Konstruiere geometrische Orte nach den gegebenen Bedingungen.
-📐 Für diese Aufgabe: originelle Prüfung und Lösung öffnen!`,
+Markiere alle Punkte, die von den Geraden g und h den gleichen Abstand haben und zudem mindestens zwei der folgenden drei Bedingungen erfüllen:
+• Abstand von g mindestens 2.5 cm
+• Abstand von h höchstens 1.5 cm
+• Abstand vom Punkt P (auf h) höchstens 6 cm
+Die Konstruktion muss klar ersichtlich sein.
+📐 Für diese Aufgabe: originelle Prüfung und Lösung öffnen – die genaue Lage der gesuchten Punkte hängt von der Zeichnung ab!`,
 
     options: [
 
-      { label: 'Lösung über offizielle Schullösung verfügbar', correct: true },
+      { label: 'Die gesuchten Punkte liegen auf den beiden Winkelhalbierenden von g und h – eingeschränkt auf die Abschnitte, die mindestens 2 der 3 Bedingungen erfüllen', correct: true },
 
-      { label: 'Kein geometrischer Ort existiert', correct: false },
+      { label: 'Nur Punkte auf einer einzigen Winkelhalbierenden', correct: false },
 
-      { label: 'Nur Kreise als geometrische Orte', correct: false },
+      { label: 'Alle Punkte auf g und h selbst', correct: false },
 
     ],
 
@@ -148,9 +154,16 @@ Konstruiere geometrische Orte nach den gegebenen Bedingungen.
 Wichtige geometrische Orte sind:
 • Gleicher Abstand zu einem Punkt → Kreis
 • Gleicher Abstand zu zwei Punkten → Mittelsenkrechte
-• Gleicher Abstand zu zwei Geraden → Winkelhalbierende
+• Gleicher Abstand zu zwei Geraden → Winkelhalbierende(n)
 • Gleicher Abstand zu einer Geraden → Parallele Gerade
-• Alle Punkte, die über einer Strecke einen rechten Winkel bilden → Thaleskreis`,
+• Alle Punkte, die über einer Strecke einen rechten Winkel bilden → Thaleskreis
+
+💡 In dieser Aufgabe: "Gleicher Abstand von g und h" → die gesuchten Punkte liegen auf den beiden Winkelhalbierenden von g und h (senkrecht zueinander).
+Die drei Zusatzbedingungen grenzen das Gebiet weiter ein:
+• Abstand von g ≥ 2.5 cm → ausserhalb eines Parallelenpaars zu g
+• Abstand von h ≤ 1.5 cm → innerhalb eines Parallelenpaars zu h
+• Abstand von P ≤ 6 cm → innerhalb eines Kreises um P
+Markiert werden nur die Teile der Winkelhalbierenden, auf denen mindestens 2 dieser 3 Bedingungen gleichzeitig gelten.`,
 
         },
 
@@ -167,9 +180,9 @@ Wichtige geometrische Orte sind:
       ],
 
       tip: `🍳 Kochrezept:
-1. Bedingung genau lesen ("Abstand zu Punkt A", "Abstand zu Gerade g", etc.).
-2. Passenden geometrischen Ort aus der Liste oben identifizieren.
-3. Mit Zirkel und Lineal konstruieren.`,
+1. Beide Winkelhalbierenden von g und h konstruieren (gleicher Abstand von g und h).
+2. Hilfslinien für jede der 3 Bedingungen einzeichnen (Parallelen zu g/h, Kreis um P).
+3. Nur die Abschnitte der Winkelhalbierenden markieren, auf denen mindestens 2 der 3 Bedingungen erfüllt sind.`,
 
     },
 
@@ -180,6 +193,8 @@ Wichtige geometrische Orte sind:
   {
 
     id: 'M3_2021_MTR_TAB_1',
+
+    verified: true,
 
     year: 2021,
 
@@ -204,15 +219,15 @@ Spargang = −0.2 kWh und −2 l pro Waschgang.
 Familie nutzt GS alle 2 Tage (= 182 ×/Jahr).
 a) Wassereinsparung (l und %) wenn NORMAL statt INTENSIV (in einem Jahr)?
 b) Stromeinsparung (%) bei KURZ mit Spargang-Taste?
-c) kWh: Fr. 0.17 (Niedertarif) / Fr. 0.23 (Hochtarif). Wasser: Fr. 1.18/m³. Mittel+Klarspüler: Fr. 0.15/Wäsche. Wie viel spart man bei 200 Waschgängen: INTENSIV Hochtarif vs. KURZ Niedertarif mit Spartaste?`,
+c) kWh: Fr. 0.17 (Niedertarif) / Fr. 0.23 (Hochtarif). Wasser: Fr. 1.18/m³. Mittel+Klarspüler: Fr. 0.15/Wäsche. Wie viel spart man bei 200 Waschgängen im Programm INTENSIV, wenn man statt zum Hochtarif ohne Spartaste, immer zum Niedertarif mit zusätzlicher Spartaste spült?`,
 
     options: [
 
-      { label: 'a) 1820 l / 45.5% | b) 33.3% | c) ca. Fr. 68.–', correct: true },
+      { label: 'a) 1820 l / 45.5% | b) 33.3% | c) ca. Fr. 27.70', correct: true },
 
-      { label: 'a) 910 l / 40% | b) 25% | c) ca. Fr. 45.–', correct: false },
+      { label: 'a) 910 l / 40% | b) 25% | c) ca. Fr. 68.–', correct: false },
 
-      { label: 'a) 2000 l / 50% | b) 20% | c) ca. Fr. 80.–', correct: false },
+      { label: 'a) 2000 l / 50% | b) 20% | c) ca. Fr. 20.40', correct: false },
 
     ],
 
@@ -256,25 +271,25 @@ Prozentuale Einsparung: (0.2 kWh / 0.6 kWh) × 100 ≈ 33.3%
 
         {
 
-          title: 'c) Kostenvergleich über 200 Wäschen',
+          title: 'c) Kostenvergleich über 200 Wäschen (Programm INTENSIV)',
 
-          content: `Kosten INTENSIV (pro Wäsche):
-Strom:  1.7 kWh × 0.23 Fr/kWh = 0.391 Fr.
+          content: `Kosten INTENSIV, Hochtarif, ohne Spartaste (pro Wäsche):
+Strom: 1.7 kWh × 0.23 Fr/kWh = 0.391 Fr.
 Wasser: 22 l = 0.022 m³ → 0.022 m³ × 1.18 Fr/m³ = 0.026 Fr.
 Mittel: 0.150 Fr.
 Total = 0.567 Fr. pro Wäsche.
 
-Kosten KURZ mit Spar-Taste (pro Wäsche):
-Strom: (0.6 - 0.2) kWh × 0.17 Fr/kWh = 0.068 Fr.
-Wasser: (10 - 2) l = 0.008 m³ → 0.008 m³ × 1.18 Fr/m³ = 0.009 Fr.
+Kosten INTENSIV, Niedertarif, mit Spartaste (pro Wäsche):
+Strom: (1.7 - 0.2) kWh × 0.17 Fr/kWh = 0.255 Fr.
+Wasser: (22 - 2) l = 0.020 m³ → 0.020 m³ × 1.18 Fr/m³ = 0.024 Fr.
 Mittel: 0.150 Fr.
-Total = 0.227 Fr. pro Wäsche.
+Total = 0.429 Fr. pro Wäsche.
 
 Kosten für 200 Wäschen:
-INTENSIV: 200 × 0.567 Fr. = 113.40 Fr.
-KURZ: 200 × 0.227 Fr. = 45.40 Fr.
-Ersparnis = 113.40 Fr. − 45.40 Fr. = 68.00 Fr.
-✅ Man spart Fr. 68.–.`,
+Hochtarif ohne Spartaste: 200 × 0.567 Fr. = 113.40 Fr.
+Niedertarif mit Spartaste: 200 × 0.429 Fr. = 85.70 Fr.
+Ersparnis = 113.40 Fr. − 85.70 Fr. = 27.70 Fr.
+✅ Man spart Fr. 27.70.`,
 
         },
 
@@ -304,6 +319,8 @@ c) Kosten pro Wäsche = (kWh×Tarif) + (l/1000 × Wasserpreis) + 0.15. Dann für
   {
 
     id: 'M3_2021_MTR_WAHR_1',
+
+    verified: true,
 
     year: 2021,
 
@@ -409,6 +426,8 @@ Total Einnahmen = 76.00 + 4.80 = 80.80 Fr.
 
     id: 'M3_2021_MTR_FLAE_1',
 
+    verified: true,
+
     year: 2021,
 
     subject: 'Mathe',
@@ -422,21 +441,23 @@ Total Einnahmen = 76.00 + 4.80 = 80.80 Fr.
     topic: 'Geometrie', // NEU
 
     questionText: `Aufgabe 5: Gleiche Flächen
-In der Abbildung ist A₁ = A₂ = A₃.
-Das grosse Dreieck ist rechtwinklig mit Basis 18 cm.
-Die linke Seite ist aufgeteilt: oberer Teil 18 cm, unterer Teil 9 cm.
-E liegt 6 cm horizontal vom unteren Teilungspunkt.
+In der nicht massstabsgetreuen Abbildung ist A₁ = A₂ = A₃.
+Die Figur ist – von oben nach unten – entlang einer gemeinsamen linken Kante in 3 Teile gegliedert:
+• A₁ (oben): rechtwinkliges Dreieck mit linker (vertikaler) Kathete 18 cm. Die Hypotenuse führt zum Punkt E.
+• A₂ (Mitte): rechtwinkliges Trapez; obere Parallelseite = horizontale Lage von E, untere Parallelseite 6 cm.
+• A₃ (unten): rechtwinkliges Trapez mit linker Kathete 9 cm, unterer Grundseite 18 cm (gesamte Breite der Figur) und oberer Parallelseite 6 cm.
+A₄ ist die Dreiecksfläche rechts aussen, zwischen dem Ende der 6-cm-Strecke, E und der unteren rechten Ecke der Figur.
 Berechne A₄.`,
 
     options: [
 
-      { label: 'A₄ = 162 cm²', correct: true },
+      { label: 'A₄ = 99 cm²', correct: true },
 
       { label: 'A₄ = 135 cm²', correct: false },
 
-      { label: 'A₄ = 189 cm²', correct: false },
+      { label: 'A₄ = 162 cm²', correct: false },
 
-    ],
+          ],
 
     solution: {
 
@@ -448,45 +469,60 @@ Berechne A₄.`,
 
           title: '📖 Begriffe',
 
-          content: `📐 Flächeninhalt grosses Dreieck:
-F = ½ × Basis × Höhe
-💡 Strategie: A₄ berechnen durch Subtraktion!
-A₄ = F_gesamt − (A₁ + A₂ + A₃)
-Da A₁ = A₂ = A₃, genügt es, eine davon zu berechnen.`,
+          content: `📐 Trapezfläche: F = (a + b) / 2 × h (a, b = parallele Seiten, h = Höhe)
+📐 Dreiecksfläche: F = Basis × Höhe / 2
+💡 Strategie: Zuerst A₃ berechnen (einziges vollständig bekanntes Teilstück) → da A₁=A₂=A₃, kennen wir damit alle drei.
+Danach die unbekannten Breiten x (für A₁) und y (für A₂) über deren Flächenformeln bestimmen.
+Zum Schluss A₄ = grosses Trapez (A₂+A₃+A₄) − A₂ − A₃.`,
 
         },
 
         {
 
-          title: 'Schritt 1: Gesamtfläche',
+          title: 'Schritt 1: A₃ berechnen (vollständig bekannt)',
 
-          content: `Linke Seite (Höhe): 18 cm + 9 cm = 27 cm
-Basis: 18 cm
-F_gesamt = (18 * 27) / 2 = 243 cm²`,
-
-        },
-
-        {
-
-          title: 'Schritt 2: Fläche A₃ berechnen',
-
-          content: `A₃ ist das kleine rechtwinklige Dreieck unten links.
-Senkrechter Schenkel: 9 cm
-Waagrechter Schenkel: 6 cm
-A₃ = (9 * 6) / 2 = 27 cm²`,
+          content: `A₃ ist ein rechtwinkliges Trapez: untere Parallelseite 18 cm, obere Parallelseite 6 cm, Höhe (linke Kathete) 9 cm.
+A₃ = (18 + 6) / 2 × 9 = 108 cm²
+Da A₁ = A₂ = A₃, gilt auch A₁ = 108 cm² und A₂ = 108 cm².`,
 
         },
 
         {
 
-          title: 'Schritt 3: A₄ berechnen',
+          title: 'Schritt 2: Horizontale Lage von E (aus A₁)',
 
-          content: `Wir wissen: A₁ = A₂ = A₃ = 27 cm².
-Die Summe der drei kleinen Flächen ist:
-3 × 27 cm² = 81 cm²
-A₄ = F_gesamt − (A₁ + A₂ + A₃)
-A₄ = 243 - 81 = 162 cm²
-✅ A₄ = 162 cm²`,
+          content: `A₁ ist ein rechtwinkliges Dreieck mit linker Kathete 18 cm und horizontaler Kathete x (= horizontaler Abstand von E zur linken Kante).
+A₁ = 18 × x / 2 = 108
+x = 108 × 2 / 18 = 12 cm`,
+
+        },
+
+        {
+
+          title: 'Schritt 3: Höhe von A₂',
+
+          content: `A₂ ist ein rechtwinkliges Trapez mit oberer Parallelseite x = 12 cm, unterer Parallelseite 6 cm und unbekannter Höhe y.
+A₂ = (12 + 6) / 2 × y = 108
+9 × y = 108
+y = 12 cm`,
+
+        },
+
+        {
+
+          title: 'Schritt 4: Grosses Trapez (A₂+A₃+A₄)',
+
+          content: `Das grosse Trapez (A₂+A₃+A₄ zusammen) hat obere Parallelseite x = 12 cm, untere Parallelseite 18 cm und Höhe y + 9 = 12 + 9 = 21 cm.
+Fläche = (12 + 18) / 2 × 21 = 315 cm²`,
+
+        },
+
+        {
+
+          title: 'Schritt 5: A₄ berechnen',
+
+          content: `A₄ = 315 − (A₂ + A₃) = 315 − (108 + 108) = 315 − 216 = 99 cm²
+✅ A₄ = 99 cm²`,
 
         },
 
@@ -503,10 +539,11 @@ A₄ = 243 - 81 = 162 cm²
       ],
 
       tip: `🍳 Kochrezept:
-1️⃣  Gesamtfläche = ½ × Basis × Höhe
-2️⃣  A₃ aus der Skizze berechnen: A₃ = ½ × 9 × 6 = 27 cm²
-3️⃣  Da A₁=A₂=A₃, ist die Summe der drei Flächen 3 × 27 cm²
-4️⃣  A₄ = Gesamtfläche − (3 × 27)`,
+1️⃣  A₃ (bekanntes Trapez 18/6/9) berechnen → gilt auch für A₁ und A₂
+2️⃣  Mit A₁ (Dreieck 18×x/2) die Breite x bestimmen
+3️⃣  Mit A₂ (Trapez (x+6)/2×y) die Höhe y bestimmen
+4️⃣  Grosses Trapez (x+18)/2×(y+9) berechnen
+5️⃣  A₄ = grosses Trapez − A₂ − A₃`,
 
     },
 
