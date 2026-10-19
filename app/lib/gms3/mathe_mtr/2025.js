@@ -3,6 +3,7 @@ export const questions2025 = [
   // ── AUFGABE 1 ─────────────────────────────────────────────
   {
     id: 'M2_2025_MTR_VOL_1',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -43,9 +44,14 @@ Das ist fast ein ganzes Kilo!`,
 - Preis pro Gramm = 71'070 CHF / 1000 g = 71.07 CHF/g.
 
 Jetzt berechnen wir den Wert unseres Barrens.
-- Wert = Masse * Preis pro Gramm = 926.4 g * 71.07 CHF/g ≈ 65'835.53 CHF.
+- Wert = Masse * Preis pro Gramm = 926.4 g * 71.07 CHF/g ≈ 65'839.25 CHF.
 
-✅ Der Goldbarren hat einen Wert von ca. 65'835.50 CHF.`,
+✅ Der Goldbarren hat einen Wert von ca. 65'839.25 CHF.`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/190918/AP25_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Dein Gameplan:
@@ -58,6 +64,7 @@ Jetzt berechnen wir den Wert unseres Barrens.
     // ── AUFGABE 2 ─────────────────────────────────────────────
   {
     id: 'M2_2025_MTR_GRAPH_1',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -102,6 +109,11 @@ c → II
 d → I
 e → VI`,
         },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/190918/AP25_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
+        },
       ],
       tip: `🍳 Dein Gameplan:
 - Fixpreis: Der Graph macht einen Sprung nach oben und verläuft dann flach.
@@ -113,6 +125,7 @@ e → VI`,
   // ── AUFGABE 3 ─────────────────────────────────────────────
   {
     id: 'M2_2025_MTR_PROZ_1',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -157,6 +170,11 @@ Um den prozentualen Nachlass zu finden, beziehen wir die Differenz auf den Origi
 
 ✅ Der Preisnachlass beträgt in Wirklichkeit nur 8%.`,
         },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/190918/AP25_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
+        },
       ],
       tip: `🍳 Dein Gameplan:
 1️⃣ Rechne rückwärts: Nimm den Endpreis und mache die Rabatte und Erhöhungen rückgängig, indem du durch die entsprechenden Prozentwerte (z.B. 0.80 oder 1.15) teilst.
@@ -166,6 +184,7 @@ Um den prozentualen Nachlass zu finden, beziehen wir die Differenz auf den Origi
   // ── AUFGABE 4 ─────────────────────────────────────────────
   {
     id: 'M2_2025_MTR_RAUM_1',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -180,23 +199,27 @@ Welches der Teile a bis f passt genau in die Aussparung des Körpers, der auf de
         {
           title: 'Analyse der Lücke',
           content: `Wir müssen die "negative" Form der Aussparung verstehen.
-- Die Lücke hat eine breite, L-förmige Grundfläche.
-- In der Mitte ragt ein kleiner, einstufiger "Turm" nach oben.
-- Auf der rechten Seite der Lücke gibt es eine hohe, senkrechte Wand.
-- Auf der linken Seite gibt es eine zweistufige "Treppe", die nach aussen führt.`,
+- Auf der einen Seite der Lücke steht eine hohe, senkrechte Wand.
+- Direkt daneben gibt es einen auffälligen, schmalen, schrägen Spalt (wie ein Keil) in der Lücke.
+- Der übrige Boden der Lücke ist eher flach gehalten.`,
         },
         {
           title: 'Die Teile im Check',
-          content: `Wir suchen das Teil, das diese Lücke exakt füllt.
-- Teil a: Zu einfach, passt nicht zur komplexen Form.
-- Teil b: Sieht vielversprechend aus. Es hat eine L-Form und eine Stufe in der Mitte. Wenn man es hineinschiebt, scheint die Stufe den "Turm" zu umschliessen und die Rückseite passt an die Wand.
+          content: `Wir suchen das Teil, das diese Lücke exakt füllt - mit der hohen Wand UND dem schrägen Spalt an genau der richtigen Stelle.
+- Teil a: Die Stufe sitzt an der falschen Stelle.
+- Teil b: Hat eine symmetrische Stufe, aber keinen schrägen Spalt - passt nicht zur Lücke.
 - Teil c: Die Aussparung in c ist falsch herum.
-- Teil d: Hat eine schräge Fläche, die in der Lücke nicht vorkommt.
-- Teil e: Ist zu blockartig und hat die falsche Form.
-- Teil f: Hat eine Stufe an der falschen Stelle.
+- Teil d: Zeigt eine Stufe, aber keine passende Schräge.
+- Teil e: Hat genau die hohe, senkrechte Wand auf der einen Seite und direkt daneben den schmalen schrägen Spalt - exakt wie die Lücke.
+- Teil f: Die Stufe sitzt an der falschen Stelle.
 
-Wenn man Teil b gedanklich in die Lücke schiebt, füllt sein unterer Teil die L-Form am Boden. Der höhere Teil von b legt sich an die hohe Wand rechts. Die Aussparung in b passt genau über den kleinen Turm in der Mitte der Lücke.
-✅ Teil b ist die richtige Lösung.`,
+Wenn man Teil e gedanklich in die Lücke schiebt, passt die hohe Wand genau an die entsprechende Seite der Lücke, und der schräge Spalt verzahnt sich exakt mit dem schrägen Spalt der Lücke.
+✅ Teil e ist die richtige Lösung.`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/190918/AP25_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Dein Gameplan:
@@ -209,6 +232,7 @@ Wenn man Teil b gedanklich in die Lücke schiebt, füllt sein unterer Teil die L
   // ── AUFGABE 5 ─────────────────────────────────────────────
   {
     id: 'M2_2025_MTR_BEWEG_1',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -266,6 +290,11 @@ Zeit in Minuten und Sekunden:
 In Metern: 21.375 km = 21'375 m.
 ✅ Der Treffpunkt ist 21.375 km (oder 21'375 m) vom Krankenhaus entfernt.`,
         },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/190918/AP25_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
+        },
       ],
       tip: `🍳 Dein Gameplan:
 1️⃣ Einheiten: Wandle Minuten immer sofort in Stunden um (geteilt durch 60).
@@ -277,6 +306,7 @@ In Metern: 21.375 km = 21'375 m.
   // ── AUFGABE 6 ─────────────────────────────────────────────
   {
     id: 'M2_2025_MTR_KONSTR_1',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -308,8 +338,13 @@ Die Lösungen sind die Schnittpunkte der Ortslinie A mit den Ortslinien B1 und B
           content: `1. Konstruiere Ortslinie A: Zeichne einen Kreis um den Punkt P mit einem Radius von 2.5 cm.
 2. Konstruiere Ortslinie B1: Miss den Radius des Kreises k (r_k). Zeichne um den Mittelpunkt M einen neuen, grösseren Kreis mit dem Radius r_k + 2.5 cm.
 3. Konstruiere Ortslinie B2: Zeichne um den Mittelpunkt M einen kleineren Kreis mit dem Radius r_k - 2.5 cm (falls r_k > 2.5 cm).
-4. Finde die Mittelpunkte: Die Schnittpunkte des Kreises um P (aus 1.) mit den beiden Kreisen um M (aus 2. und 3.) sind die gesuchten Mittelpunkte für deine neuen Kreise.
+4. Finde die Mittelpunkte: Die Schnittpunkte des Kreises um P (aus 1.) mit den beiden Kreisen um M (aus 2. und 3.) sind die gesuchten Mittelpunkte für deine neuen Kreise. Je nach Lage von P kann es sein, dass eine der beiden Ortslinien (B1 oder B2) den Kreis um P gar nicht schneidet - dann liefert dieser Fall keine Lösung.
 5. Kreise zeichnen: Stich in jeden gefundenen Mittelpunkt ein, stelle den Radius auf 2.5 cm und zeichne die Lösungskreise.`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/190918/AP25_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Dein Gameplan:
@@ -321,6 +356,7 @@ Die Lösungen sind die Schnittpunkte der Ortslinie A mit den Ortslinien B1 und B
   // ── AUFGABE 7 ─────────────────────────────────────────────
   {
     id: 'M2_2025_MTR_KOMB_1',
+    verified: true,
     year: 2025,
     subject: 'Mathe',
     exam: 'Mathe mit TR',
@@ -386,6 +422,11 @@ Total: 3 + 6 + 3 + 3 = 15 Möglichkeiten.`,
 15. RRTA
 
 ✅ Es gibt insgesamt 15 verschiedene Einkaufsmöglichkeiten.`,
+        },
+        {
+          title: '📄 Offizielle Schullösung',
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
+          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/190918/AP25_GMS3_M2_mTR_L%C3%B6sung.pdf?fp=1',
         },
       ],
       tip: `🍳 Dein Gameplan:
