@@ -544,4 +544,152 @@ export const lernkarten = {
       },
     ],
   },
+  'Körper & Netze': {
+    titel: 'Körper & Netze',
+    kacheln: [
+      {
+        id: 'wuerfelnetz', emoji: '📦', titel: 'Würfel und sein Netz', videos: [],
+        karten: [
+          { text: 'Ein Würfelnetz ist ein Würfel, den du auseinandergefaltet und flachgelegt hast - 6 Quadrate, die zusammen alle 6 Seiten ergeben. Nicht jede Anordnung von 6 Quadraten lässt sich zu einem Würfel falten!' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: '6 Quadrate', regel: 'Ein Würfelnetz hat immer genau 6 gleich grosse Quadrate.' },
+              { n: 'nicht überlappen', regel: 'Beim Falten dürfen sich keine zwei Flächen überlappen.' },
+              { n: 'alle 6 Seiten bedeckt', regel: 'Jede der 6 Würfelseiten muss genau einmal entstehen.' },
+              { n: 'verschiedene Formen', regel: 'Es gibt 11 verschiedene Grundformen, die zu einem Würfel falten - viele andere Anordnungen funktionieren NICHT.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Stell dir vor, du faltest das Netz in Gedanken zusammen - oder zeichne kleine Pfeile, welche Kante auf welche andere Kante zu liegen kommt.' },
+          {
+            text: 'Dieses Netz funktioniert: 6 Quadrate in Kreuzform. Beim Zusammenfalten ergeben sie einen Würfel.',
+            visual: 'diagram',
+            diagram: {
+              viewBox: '0 0 200 160',
+              elements: [
+                { type: 'rect', x: 20, y: 62, w: 36, h: 36 },
+                { type: 'rect', x: 58, y: 62, w: 36, h: 36 },
+                { type: 'rect', x: 96, y: 62, w: 36, h: 36 },
+                { type: 'rect', x: 134, y: 62, w: 36, h: 36 },
+                { type: 'rect', x: 58, y: 24, w: 36, h: 36 },
+                { type: 'rect', x: 58, y: 100, w: 36, h: 36 },
+              ],
+            },
+          },
+          { text: 'Nicht-Beispiel: 6 Quadrate einfach in einer geraden Reihe (1 × 6) funktionieren NICHT - beim Falten würden sich mehrere Flächen überlappen, und manche Seiten blieben offen.' },
+        ],
+        check: [
+          { frage: 'Wie viele Quadrate hat ein Würfelnetz?', optionen: ['6', '4', '8', '12'], richtig: 0, erklaerung: 'Ein Würfel hat 6 Seiten, also braucht das Netz genau 6 Quadrate.' },
+          { frage: 'Welche Anordnung von 6 Quadraten funktioniert sicher NICHT als Würfelnetz?', optionen: ['Alle 6 in einer geraden Reihe', 'Eine Kreuzform', 'Eine Treppenform mit versetzten Quadraten', 'Mehrere richtige Antworten möglich, es kommt auf die genaue Form an'], richtig: 0, erklaerung: '6 Quadrate in einer geraden Reihe lassen sich nicht zu einem Würfel falten - es gibt keine Möglichkeit, alle 6 Seiten ohne Überlappung zu bedecken.' },
+          { frage: 'Was bedeutet es, wenn sich beim Falten zwei Flächen eines angeblichen "Würfelnetzes" überlappen?', optionen: ['Es ist gar kein gültiges Würfelnetz', 'Das ist normal und völlig in Ordnung', 'Es entsteht automatisch eine Pyramide', 'Der Würfel wird einfach kleiner'], richtig: 0, erklaerung: 'Ein gültiges Netz darf beim Falten nirgends überlappen - sonst bedeckt es die 6 Seiten nicht richtig.' },
+        ],
+      },
+      {
+        id: 'punkteuebertragen', emoji: '🧭', titel: 'Punkte und Kanten übertragen', videos: [],
+        karten: [
+          { text: 'Ein Würfel hat 8 Ecken. Standard-Beschriftung: unten A, B, C, D (im Kreis rum), oben genau darüber E, F, G, H (E über A, F über B, G über C, H über D).' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'unten/oben', regel: 'A, B, C, D unten im Kreis. E, F, G, H oben, jeweils direkt über dem Buchstaben darunter (E über A).' },
+              { n: 'eine Fläche = 4 Ecken', regel: 'Jede der 6 Flächen wird durch ihre 4 Eckpunkte benannt, z. B. ABCD (Boden) oder EFGH (Deckel).' },
+              { n: 'Seitenflächen', regel: 'Die vier Seitenflächen: vorne ABFE, rechts BCGF, hinten CDHG, links DAEH.' },
+              { n: 'eine Kante gehört zu 2 Flächen', regel: 'Jede Kante liegt an der Grenze von genau zwei Flächen.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Suchst du die Flächen zu einer Kante, schau welche zwei Buchstaben die Kante hat, und ergänze sie einmal mit der Fläche darunter/darüber und einmal mit der Nachbarfläche daneben.' },
+          { text: 'Welche zwei Flächen treffen sich an der Kante B-C (beide unten)?\n| B und C sind Nachbarn im unteren Quadrat\n| Die eine Fläche: der Boden ABCD\n| Die andere Fläche: die rechte Seite BCGF (B, C und die Punkte direkt darüber: G über C, F über B)' },
+          { text: 'Welche zwei Flächen treffen sich an der Kante A-E (eine senkrechte Kante)?\n| A unten, E oben direkt darüber\n| Die eine Fläche: vorne ABFE\n| Die andere Fläche: links DAEH' },
+        ],
+        check: [
+          { frage: 'Welche zwei Flächen treffen sich an der Kante F-G (beide oben)?', optionen: ['Deckel EFGH und rechte Seite BCGF', 'Boden ABCD und Deckel EFGH', 'Vorne ABFE und hinten CDHG', 'Links DAEH und rechts BCGF'], richtig: 0, erklaerung: 'F und G sind beide obere Ecken - sie liegen auf dem Deckel EFGH UND auf der rechten Seitenfläche BCGF (die auch F und G enthält).' },
+          { frage: 'Welche zwei Flächen treffen sich an der Kante C-G (eine senkrechte Kante)?', optionen: ['Rechte Seite BCGF und hintere Seite CDHG', 'Boden ABCD und Deckel EFGH', 'Vorne ABFE und links DAEH', 'Nur die rechte Seite BCGF'], richtig: 0, erklaerung: 'C unten, G oben direkt darüber - eine senkrechte Kante. Sie liegt zwischen der rechten Seite BCGF und der hinteren Seite CDHG, die beide C und G enthalten.' },
+          { frage: 'Wie viele Flächen treffen sich an jeder Kante eines Würfels?', optionen: ['2', '1', '3', '4'], richtig: 0, erklaerung: 'Jede Kante ist die gemeinsame Grenze von genau 2 Flächen - nie mehr, nie weniger.' },
+        ],
+      },
+      {
+        id: 'pyramide', emoji: '🔺', titel: 'Pyramide', videos: [],
+        karten: [
+          { text: 'Eine Pyramide mit quadratischer Grundfläche hat 1 Quadrat als Boden und 4 gleiche Dreiecke als Seitenflächen, die sich oben in der Spitze treffen.' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Grundfläche', regel: 'Das Quadrat am Boden - Fläche = Seite · Seite.' },
+              { n: 'Seitenfläche', regel: 'Ein Dreieck - Fläche = Grundseite · Höhe des Dreiecks : 2.' },
+              { n: 'Oberfläche', regel: 'Grundfläche plus alle 4 Seitendreiecke zusammen.' },
+              { n: 'Höhe der Pyramide ≠ Höhe des Dreiecks', regel: 'Die Pyramidenhöhe steht senkrecht zur Grundfläche, die Dreieckshöhe liegt IN der Seitenfläche - meist unterschiedlich lang.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Zeichne das Netz: 1 Quadrat plus 4 Dreiecke. Rechne jede Fläche einzeln aus, dann addieren.' },
+          { text: 'Eine Pyramide hat eine quadratische Grundfläche mit Seite 6 cm. Jede Seitenfläche ist ein Dreieck mit Grundseite 6 cm und Höhe 5 cm (die Höhe DES DREIECKS, nicht die Pyramidenhöhe).\n| Grundfläche: 6 · 6 = 36 cm²\n| Eine Seitenfläche: 6 · 5 : 2 = 15 cm²\n| Vier Seitenflächen: 4 · 15 = 60 cm²\n| Oberfläche total: 36 + 60 = 96 cm²' },
+        ],
+        check: [
+          { frage: 'Grundfläche eines Quadrats mit Seite 5 cm?', optionen: ['25 cm²', '20 cm²', '10 cm²', '100 cm²'], richtig: 0, erklaerung: '5 · 5 = 25 cm².' },
+          { frage: 'Eine Seitenfläche einer Pyramide ist ein Dreieck mit Grundseite 8 cm und Höhe 6 cm. Wie gross ist diese Fläche?', optionen: ['24 cm²', '48 cm²', '14 cm²', '28 cm²'], richtig: 0, erklaerung: '8 · 6 : 2 = 24 cm². Bei 48 wurde nicht durch 2 geteilt.' },
+          { frage: 'Eine Pyramide hat Grundfläche 49 cm² und vier Seitenflächen von je 21 cm². Wie gross ist die gesamte Oberfläche?', optionen: ['133 cm²', '70 cm²', '84 cm²', '245 cm²'], richtig: 0, erklaerung: '49 + 4 · 21 = 49 + 84 = 133 cm².' },
+        ],
+      },
+      {
+        id: 'raeumlich', emoji: '👀', titel: 'Räumlich denken', videos: [],
+        karten: [
+          { text: 'Bei Würfeln mit Mustern auf jeder Seite musst du dir vorstellen, wie der Würfel von verschiedenen Seiten aussieht - welche Fläche liegt gegenüber, welche daneben?' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'gegenüberliegend', regel: 'Zwei Flächen, die nie gleichzeitig sichtbar sind, wenn du geradeaus schaust - sie haben nie eine gemeinsame Kante.' },
+              { n: 'benachbart', regel: 'Flächen, die eine gemeinsame Kante haben.' },
+              { n: 'im Netz erkennen', regel: 'Im Kreuz-Netz liegen sich gegenüberliegende Flächen oft nicht direkt an - meist mit einem Feld dazwischen.' },
+              { n: 'zwei Ansichten kombinieren', regel: 'Siehst du den Würfel von zwei Seiten, kannst du oft die restlichen Flächen ableiten.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Nummeriere die Flächen eines Standard-Spielwürfels (1-6), bei dem sich gegenüberliegende Zahlen zu 7 ergänzen (1↔6, 2↔5, 3↔4) - das hilft dir, dich zu orientieren.' },
+          { text: 'Auf einem Spielwürfel ergänzen sich gegenüberliegende Zahlen zu 7. Du siehst die 1 oben. Welche Zahl ist unten?\n6 (denn 1 + 6 = 7)' },
+          { text: 'Im Kreuz-Netz (4 Quadrate in einer Reihe, dazu 1 oben und 1 unten beim zweiten Quadrat): Die beiden Enden der langen Reihe (1. und 4. Quadrat) liegen sich beim gefalteten Würfel gegenüber - genauso wie das obere und das untere Quadrat.' },
+        ],
+        check: [
+          { frage: 'Auf einem Spielwürfel ist die 3 oben. Welche Zahl ist unten (gegenüberliegende Seiten ergänzen sich zu 7)?', optionen: ['4', '3', '7', '1'], richtig: 0, erklaerung: '3 + 4 = 7, also liegt die 4 unten.' },
+          { frage: 'Zwei Flächen eines Würfels haben eine gemeinsame Kante. Sind sie benachbart oder gegenüberliegend?', optionen: ['Benachbart', 'Gegenüberliegend', 'Weder noch', 'Das kommt darauf an'], richtig: 0, erklaerung: 'Flächen mit einer gemeinsamen Kante sind benachbart. Gegenüberliegende Flächen haben NIE eine gemeinsame Kante.' },
+          { frage: 'Im Kreuz-Netz liegen 4 Quadrate in einer Reihe, dazu 1 oben und 1 unten beim zweiten Quadrat. Welche zwei Quadrate der Reihe liegen sich im gefalteten Würfel gegenüber?', optionen: ['Das 1. und das 4. Quadrat der Reihe', 'Das 1. und das 2. Quadrat', 'Das 2. und das 3. Quadrat', 'Keine zwei, alle sind benachbart'], richtig: 0, erklaerung: 'Beim Falten der 4er-Reihe um den Würfel treffen sich die beiden äusseren Enden (1. und 4. Quadrat) auf der gegenüberliegenden Seite.' },
+        ],
+      },
+      {
+        id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
+        karten: [
+          { text: '❌ Ein Würfelnetz wird aus irgendwelchen 6 Quadraten zusammengesetzt, ohne zu prüfen, ob sie sich beim Falten überlappen. ✅ Immer in Gedanken falten und prüfen, ob alle 6 Seiten ohne Überlappung entstehen.' },
+          { text: '❌ Bei Würfel-Ecken wird angenommen, dass eine Kante nur zu EINER Fläche gehört. ✅ Jede Kante gehört immer zu genau 2 Flächen.' },
+          { text: '❌ Pyramidenhöhe und die Höhe der Dreiecks-Seitenfläche werden verwechselt. ✅ Die Pyramidenhöhe steht senkrecht zur Grundfläche, die Dreieckshöhe liegt in der Seitenfläche - meist unterschiedlich lang.' },
+          { text: '❌ Beim Oberflächeninhalt einer Pyramide wird die Grundfläche vergessen und nur die Seitendreiecke addiert. ✅ Oberfläche = Grundfläche plus alle Seitenflächen zusammen.' },
+          { text: '❌ Benachbarte und gegenüberliegende Flächen eines Würfels werden verwechselt. ✅ Benachbart = gemeinsame Kante. Gegenüberliegend = nie eine gemeinsame Kante.' },
+          { text: '❌ Bei einem Dreieck als Seitenfläche wird die Fläche ohne das ": 2" gerechnet. ✅ Eine Dreiecksfläche ist immer Grundseite · Höhe geteilt durch 2.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        karten: [
+          { text: 'Wie viele Quadrate hat ein Würfelnetz?', loesung: '6, da ein Würfel 6 Seiten hat.' },
+          { text: 'Wie viele Flächen treffen sich an jeder Kante eines Würfels?', loesung: '2 - jede Kante ist die Grenze zwischen genau 2 Flächen.' },
+          { text: 'Welche zwei Flächen treffen sich an der Kante A-B (Würfel ABCD unten, EFGH oben, E über A usw.)?', loesung: 'Boden ABCD und vorne ABFE.' },
+          { text: 'Welche zwei Flächen treffen sich an der Kante B-F (senkrechte Kante)?', loesung: 'Vorne ABFE und rechts BCGF.' },
+          { text: 'Grundfläche eines Quadrats mit Seite 7 cm?', loesung: '7 · 7 = 49 cm².' },
+          { text: 'Eine Pyramiden-Seitenfläche ist ein Dreieck mit Grundseite 10 cm und Höhe 8 cm. Wie gross ist die Fläche?', loesung: '10 · 8 : 2 = 40 cm².' },
+          { text: 'Pyramide: Grundfläche 64 cm², 4 Seitenflächen je 30 cm². Wie gross ist die Oberfläche?', loesung: '64 + 4 · 30 = 64 + 120 = 184 cm².' },
+          { text: 'Spielwürfel: oben ist die 2. Was ist unten (Summe gegenüberliegender Seiten = 7)?', loesung: '7 − 2 = 5.' },
+          { text: 'Zwei Flächen haben eine gemeinsame Kante - benachbart oder gegenüberliegend?', loesung: 'Benachbart.' },
+          { text: 'Eine quadratische Pyramide hat Grundseite 8 cm und Seitenflächen-Höhe 9 cm. Berechne die Oberfläche.', loesung: 'Grundfläche: 8 · 8 = 64 cm². Seitenfläche: 8 · 9 : 2 = 36 cm². Vier davon: 4 · 36 = 144 cm². Oberfläche: 64 + 144 = 208 cm².' },
+          { text: 'Welche zwei Flächen treffen sich an der Kante C-D (beide unten)?', loesung: 'Boden ABCD und hinten CDHG.' },
+          { text: 'Welche zwei Flächen treffen sich an der Kante D-H (senkrechte Kante)?', loesung: 'Hinten CDHG und links DAEH.' },
+          { text: 'Spielwürfel: vorne ist die 4, oben die 1. Welche Zahl ist hinten?', loesung: 'Gegenüber von 4 liegt 3 (4 + 3 = 7).' },
+          { text: 'Spielwürfel: oben die 6. Welche Zahl ist unten, und was lässt sich über vorne/hinten/links/rechts sagen?', loesung: 'Unten: 7 − 6 = 1. Vorne, hinten, links, rechts sind die restlichen Zahlen 2, 3, 4, 5 - in welcher genauen Anordnung, lässt sich ohne weitere Angabe nicht eindeutig bestimmen.' },
+          { text: 'Eine Pyramide hat eine quadratische Grundfläche mit Flächeninhalt 100 cm². Die Seitenflächen sind Dreiecke mit Höhe 13 cm. Berechne die Oberfläche.', loesung: 'Grundfläche ist bereits 100 cm² (Seite 10 cm). Seitenfläche: 10 · 13 : 2 = 65 cm². Vier davon: 4 · 65 = 260 cm². Oberfläche: 100 + 260 = 360 cm².' },
+          { text: 'Welche zwei Flächen treffen sich an der Kante E-F (beide oben)?', loesung: 'Deckel EFGH und vorne ABFE.' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
