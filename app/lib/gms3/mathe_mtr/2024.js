@@ -44,7 +44,7 @@ e) Die Pumpe bewegt 6 m³ Wasser pro Stunde. Wie gross ist die Grundfläche des 
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Lineare Funktion: y = mx + q
 Das ist die Formel für jede gerade Linie.
 • y: Der Wert auf der senkrechten Achse (hier: Wasserhöhe).
@@ -134,7 +134,7 @@ b) 10 kg ungerösteter Kaffee für 85.80 CHF verlieren beim Rösten 22% ihres Ge
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Mischungsrechnen: Die goldene Regel ist, immer die absoluten Mengen zu berechnen, nicht die Prozentsätze zu mitteln!
 Gesamtanteil = (Absolute Menge Zutat) / (Gesamtmenge der Mischung)
 
@@ -200,7 +200,7 @@ Konstruiere einen Kreis, der den gegebenen Kreis k im Punkt S berührt und durch
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Kreisberührung: Wenn sich zwei Kreise berühren, liegen ihre Mittelpunkte und der Berührpunkt auf einer geraden Linie. Das ist das grosse Geheimnis!
 
 Mittelsenkrechte: Alle Punkte, die von zwei anderen Punkten (z.B. S und T) gleich weit entfernt sind, liegen auf der Mittelsenkrechten dieser beiden Punkte. Der Mittelpunkt unseres neuen Kreises muss also hier liegen.`,
@@ -285,7 +285,7 @@ e) Berechne das Gefälle der Rutschfläche in Prozent.`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Pythagoras: a² + b² = c² für rechtwinklige Dreiecke.
 Flächenformel: Die Fläche eines rechtwinkligen Dreiecks ist (Kathete₁ × Kathete₂) / 2. Du kannst dieselbe Fläche aber auch mit jeder anderen Seite als Grundlinie berechnen, wenn du die passende Höhe dazu kennst: Fläche = (Grundlinie × Höhe) / 2.
 Strahlensatz: Wenn zwei Geraden von einem Punkt ausgehen und von zwei Parallelen geschnitten werden, bleiben die Verhältnisse gleich.
@@ -373,7 +373,7 @@ b) Der leere Graben wird gefüllt. Welcher Graph beschreibt den Zusammenhang zwi
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Volumen Prisma: V = Grundfläche × Länge
 Trapezfläche: A = ((a + c) / 2) * h_trapez, wobei a und c die parallelen Seiten sind.
 Einheiten: 1 m³ = 1000 Liter. 1 dm³ = 1 Liter. Es ist oft am einfachsten, alles in Dezimeter (dm) umzurechnen.`,
@@ -459,7 +459,7 @@ C: Gewinn, wenn genau eine Kugel schwarz ist.`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Wahrscheinlichkeitsbaum (ohne Zurücklegen): Die Wahrscheinlichkeiten ändern sich nach dem ersten Zug! Es sind dann nur noch 9 Kugeln im Topf.
 Pfadregel (UND): Wahrscheinlichkeiten entlang eines Pfades werden multipliziert.
 Summenregel (ODER): Wahrscheinlichkeiten für mehrere gewünschte Pfade werden addiert.

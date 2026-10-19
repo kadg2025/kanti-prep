@@ -102,7 +102,7 @@ Berechne die Weglänge (blauer Streckenzug SABCF). Runde auf ganze Meter.
       intro: '',
       steps: [
         {
-          title: '📖 Methode: 3D-Pythagoras',
+          title: '📖 Begriffe',
           content: `Für jede Teilstrecke: Pythagoras in 3D
 → Länge = √(Δx² + Δy² + Δz²)
 
@@ -176,7 +176,7 @@ Konstruiere das vollständige Netz, d.h. die drei fehlenden Seitenflächen (Drei
       intro: '',
       steps: [
         {
-          title: '📖 Methode: Netz einer geraden Pyramide',
+          title: '📖 Begriffe',
           content: `Das Netz besteht aus der Grundfläche ABCD und 4 Seitendreiecken (SAB, SBC, SCD, SDA).
 Gegeben ist bereits die Grundfläche und das Dreieck SAB – die 3 fehlenden Seitendreiecke müssen konstruiert werden.
 

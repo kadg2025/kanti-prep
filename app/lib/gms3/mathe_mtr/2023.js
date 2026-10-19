@@ -30,7 +30,7 @@ b) Löse die Formel von a) nach der Temperatur in °F auf.`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `1. Formeln sind Kochrezepte
 Eine Formel ist wie ein Rezept. Du gibst eine Zutat (z.B. °F) hinein und bekommst ein Ergebnis (°C) heraus. Wir müssen die Zahlen nur richtig einsetzen.
 
@@ -113,7 +113,7 @@ b) Wie viel Prozent spart Cem beim günstigeren Angebot?`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `1. Netto-Preis: Der Preis ohne Märchensteuer (Mehrwertsteuer). Wenn 19% draufkamen, entspricht der Bruttopreis 119%. Um die Steuer abzuziehen, rechnest du: Preis / 1.19.
 
 2. Rabatt: Ein Preisnachlass. Bei 25% Rabatt zahlst du nur noch 75% des Preises. Also einfach: Preis * 0.75.
@@ -195,7 +195,7 @@ c) Berechne die Länge einer der Diagonalen d des Trapezes.`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Pythagoras im 3D-Raum: a² + b² = c²
 Unser Superheld für diese Aufgabe! Wir müssen rechtwinklige Dreiecke im Würfel "sehen" lernen. Meistens sind das eine Würfelkante und eine Strecke auf einer Würfelfläche.
 
@@ -279,7 +279,7 @@ Konstruiere alle Punkte, die vom Punkt A 4 cm entfernt sind und mit den Punkten 
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `1. Ortslinie "gleicher Abstand": Alle Punkte, die von einem Punkt (A) den gleichen Abstand (4cm) haben, liegen auf einem Kreis um diesen Punkt A mit diesem Radius (4cm).
 
 2. Satz des Thales: Alle Punkte (C), die mit den Enden einer Strecke (AB) ein rechtwinkliges Dreieck bilden, liegen auf einem Kreis über dieser Strecke. Man nennt ihn den Thaleskreis. Der Mittelpunkt des Kreises liegt genau in der Mitte von AB.
@@ -367,7 +367,7 @@ d) Zu welchem Pfad passt die Wahrscheinlichkeit 1/28?`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Baumdiagramm (ohne Zurücklegen):
 Zeichne für jeden Zug eine Stufe. Die Wahrscheinlichkeiten ändern sich im zweiten Zug! Wenn du eine von 8 Kugeln ziehst, sind für den zweiten Zug nur noch 7 übrig.
 
@@ -477,7 +477,7 @@ c) Wann ist der Rennvelofahrer genau in der Mitte von Simon und Tanja?`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Weg = Geschwindigkeit × Zeit (s = v * t)
 Das ist die goldene Regel aller Bewegungsaufgaben.
 

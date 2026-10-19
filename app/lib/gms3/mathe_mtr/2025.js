@@ -21,7 +21,7 @@ Natalie erbt einen prismenförmigen Goldbarren (Länge 12 cm, Höhe 0.8 cm, ober
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `1. Volumen eines Prismas: V = Grundfläche × Länge. Unsere Grundfläche ist das vordere Trapez.
 2. Trapezfläche: A = ((a + c) / 2) * h, wobei a und c die parallelen Seiten sind.
 3. Masse (Gewicht): Masse = Volumen × Dichte.
@@ -184,7 +184,7 @@ b) Wie viel Prozent beträgt der Preisnachlass in Wirklichkeit?`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Prozentrechnung rückwärts:
 - Wenn ein Preis um 20% reduziert wurde, entsprechen die 460 Fr. genau 80% des Preises davor. Um den 100%-Preis zu finden, rechnest du: 460 / 0.80.
 - Wenn ein Preis um 15% erhöht wurde, entspricht er 115% des Ursprungspreises. Um zurückzurechnen, teilst du durch 1.15.`,
@@ -320,7 +320,7 @@ d) Wie weit vom Krankenhaus entfernt ist der Treffpunkt?`,
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Die magische Formel: Weg = Geschwindigkeit × Zeit (s = v * t).
 Einheiten umrechnen: Die Zeit muss immer in Stunden sein, wenn die Geschwindigkeit in km/h ist!
 - Minuten in Stunden: Minuten / 60.
@@ -390,7 +390,7 @@ Konstruiere alle Kreise mit 2.5 cm Radius, welche den gegebenen Kreis k berühre
       intro: ``,
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `Ortslinie 1: Alle Punkte, die von einem Punkt (P) einen festen Abstand (2.5 cm) haben, liegen auf einem Kreis um P mit diesem Radius.
 Ortslinie 2: Alle Punkte (die Mittelpunkte unserer gesuchten Kreise), die von einem anderen Kreis (k) einen festen Abstand haben, liegen auf zwei konzentrischen Kreisen. Einem grösseren (Aussenberührung) und einem kleineren (Innenberührung).`,
         },

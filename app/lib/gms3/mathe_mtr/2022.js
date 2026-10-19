@@ -49,7 +49,7 @@ b) Wie viele Kilometer pro Stunde fährt der ICE, wenn die Vorbeifahrt des 450 m
 
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `1. Der 3.6-Trick (km/h ↔ m/s)
 Stell dir vor, du fährst mit dem Velo 36 km/h. Fühlt sich schnell an, oder? Aber wie viele Meter sind das pro Sekunde? Um das auszurechnen, gibt es einen Zaubertrick:
 • km/h → m/s: Wert ÷ 3.6 (weil 1h = 3600s und 1km = 1000m)
@@ -153,7 +153,7 @@ Hinweis: Die Anzahl der Wähler hat sich nicht geändert.`,
 
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `1. Das grosse Ganze (100%) finden
 Stell dir vor, du kennst nur einen Teil von etwas. Wenn du weisst, dass 708'000 Stimmen genau 30% sind, kannst du das Ganze (den Grundwert) ausrechnen.
 • Anteil von Partei C: 100% - 18% (A) - 40% (B) - 12% (Rest) = 30%
@@ -254,7 +254,7 @@ Hinweis: Der gesuchte Abstand beträgt NICHT 14 m.`,
 
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `🔵 Tangente trifft Radius → 90°
 Stell dir vor, du lehnst eine Leiter (die Strebe) an einen riesigen Ball (die Kugel). Genau dort, wo die Leiter den Ball berührt (Punkt T), bildet der Weg zum Mittelpunkt des Balls (der Radius) einen perfekten 90°-Winkel zur Leiter. Das ist ein Naturgesetz der Geometrie!
 
@@ -356,7 +356,7 @@ b) Wie gross ist die Wahrscheinlichkeit, eine defekte Uhr zu nehmen?`,
 
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `🌳 Der Wahrscheinlichkeitsbaum
 Das ist die beste Methode hier! Stell dir zwei Abzweigungen vor:
 1. Stufe: Ist die Uhr echt? (Original 70% / Fälschung 30%)
@@ -461,7 +461,7 @@ b) Berechne den Oberflächeninhalt des herausgeschnittenen Quaders.`,
 
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `📐 Trapezfläche: (a+b) ÷ 2 × h
 Bei einem Trapez mit den parallelen Seiten a und b und der Höhe h gilt: Addiere die beiden parallelen Seiten, teile durch 2 und multipliziere mit der Höhe.
 
@@ -566,7 +566,7 @@ Tipp: Die Diagonalen stehen rechtwinklig aufeinander.`,
 
       steps: [
         {
-          title: '📖 Deine Werkzeuge',
+          title: '📖 Begriffe',
           content: `🔷 Rhombus-Geheimnisse
 Ein Rhombus (auch Raute genannt) ist ein verzogenes Quadrat. Er hat 4 gleich lange Seiten. Seine wichtigsten Geheimnisse:
 1. Die Diagonalen stehen im 90°-Winkel aufeinander.

@@ -47,7 +47,7 @@ Berechne die Strecken a und b, sowie die Fläche des Trapezes.
 
         {
 
-          title: '📖 Methode: Pythagoras für rechtwinklige Dreiecke',
+          title: '📖 Begriffe',
 
           content: `Diese Aufgabe braucht die Originalskizze! Die rechten Winkel (Punkte) zeigen, wo Pythagoras angewendet wird.
 
@@ -658,7 +658,7 @@ c) Spiegle das Dreieck ABC an einer dieser Achsen.
 
         {
 
-          title: '📖 Methode: Spiegelachse über die Höhe h_c finden',
+          title: '📖 Begriffe',
 
           content: `Die Höhe hc des Dreiecks ABC steht senkrecht auf AB und hat ihren Fusspunkt F auf AB. Die Gerade durch C und F (verlängert) nennen wir h.
 Bedingung: Nach der Spiegelung soll h'c (das Bild von h) auf der Geraden g liegen.

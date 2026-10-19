@@ -148,7 +148,7 @@ Die Konstruktion muss klar ersichtlich sein.
 
         {
 
-          title: '📖 Methode: Geometrische Orte',
+          title: '📖 Begriffe',
 
           content: `Ein geometrischer Ort ist die Menge aller Punkte, die eine bestimmte Bedingung erfüllen.
 Wichtige geometrische Orte sind:
