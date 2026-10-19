@@ -33,15 +33,23 @@ b) An welchem Tag wird am meisten Wasser entnommen? Bestimme die entnommene Meng
 
 c) Am 5. Juli um 00:00 regnet es nur leicht (siehe Diagramm). Bis wann müsste es mit gleicher Intensität regnen, damit die ganze Tonne voll wäre? Berechne!`,
 
-    options: [
-
-      { label: 'a) ≈ 0.166 m³ | b) 2. Juli, ≈ 103.7 l | c) 10.7. um 06:00 Uhr', correct: true },
-
-      { label: 'a) ≈ 0.200 m³ | b) 3. Juli, ≈ 100 l | c) ca. 12:00 Uhr am 6.7.', correct: false },
-
-      { label: 'a) ≈ 0.166 m³ | b) 4. Juli, ≈ 82.96 l | c) 5.7. um 17:00 Uhr', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '≈ 0.166 m³', correct: true },
+        { label: '≈ 0.200 m³', correct: false },
+        { label: '≈ 0.663 m³', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '2. Juli, ≈ 103.7 l', correct: true },
+        { label: '3. Juli, ≈ 100 l', correct: false },
+        { label: '4. Juli, ≈ 82.96 l', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '10.7. um 06:00 Uhr', correct: true },
+        { label: 'ca. 12:00 Uhr am 6.7.', correct: false },
+        { label: '5.7. um 17:00 Uhr', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -170,15 +178,18 @@ b) Berechne die Masse m des Gesteins (ohne Beton) in Tonnen.
 Dichte ρ = 2.6 g/cm³  (entspricht 2.6 t/m³)
 Formel: m = ρ · V`,
 
-    options: [
-
-      { label: 'a) V ≈ 72.76 m³ | b) m ≈ 113.50 t', correct: true },
-
-      { label: 'a) V ≈ 60.00 m³ | b) m ≈ 93.60 t', correct: false },
-
-      { label: 'a) V ≈ 72.76 m³ | b) m ≈ 189.18 t', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '≈ 72.76 m³', correct: true },
+        { label: '60.00 m³', correct: false },
+        { label: '≈ 88.80 m³', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '≈ 113.50 t', correct: true },
+        { label: '93.60 t', correct: false },
+        { label: '189.18 t', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -494,15 +505,18 @@ In einem neu erbauten Fussball-Stadion gibt es 32 000 Sitzplätze:
 a) Wie hoch sind die Ticket-Einnahmen für ein Spiel, wenn alle Tickets verkauft werden?
 b) Wie hoch sind die Ticket-Einnahmen für Kategorie A mindestens, wenn nur insgesamt 85% aller Plätze im Stadion besetzt sind und 10.5% der besetzten Plätze von Kategorie A als Freikarten verschenkt werden?`,
 
-options: [
-
-  { label: "a) 1'398'160 Fr. | b) 73'032 Fr.", correct: true },
-
-  { label: "a) 1'200'000 Fr. | b) 340'000 Fr.", correct: false },
-
-  { label: "a) 1'398'160 Fr. | b) 365'160 Fr.", correct: false },
-
-],
+teile: [
+      { letter: 'a', options: [
+        { label: "1'398'160 Fr.", correct: true },
+        { label: "1'200'000 Fr.", correct: false },
+        { label: "1'786'000 Fr.", correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: "73'032 Fr.", correct: true },
+        { label: "340'000 Fr.", correct: false },
+        { label: "365'160 Fr.", correct: false },
+      ] },
+    ],
     solution: {
 
       intro: ``,
@@ -614,15 +628,18 @@ Um wie viele km/h müsste sie durchschnittlich schneller fahren, damit sie zur g
 b) Ein D-Zug benötigt zum Durchqueren eines Tunnels eine Zeit von 5 min 30 s, ein Güterzug eine Zeit von 8 min 30 s. Die Geschwindigkeit des D-Zuges ist um 6 m/s grösser als die des Güterzuges.
 Berechne die Länge des Tunnels.`,
 
-    options: [
-
-      { label: 'a) ≈ 8.33 km/h mehr | b) 5610 m', correct: true },
-
-      { label: 'a) ≈ 5.00 km/h mehr | b) 4800 m', correct: false },
-
-      { label: 'a) ≈ 8.33 km/h mehr | b) 6120 m', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '≈ 8.33 km/h mehr', correct: true },
+        { label: '≈ 5.00 km/h mehr', correct: false },
+        { label: '≈ 58.33 km/h', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '5610 m', correct: true },
+        { label: '4800 m', correct: false },
+        { label: '6120 m', correct: false },
+      ] },
+    ],
 
     solution: {
 
