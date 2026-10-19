@@ -269,14 +269,17 @@ Eine rechteckige Platte kostet Fr. 75.–
 a) Wie lang ist die Seitenlänge s?
 b) Wie teuer ist eine quadratische Platte?`,
 
-    options: [
-
-      { label: 'a) s = 8 dm | b) Fr. 26.50', correct: true },
-
-      { label: 'a) s = 6 dm | b) Fr. 32.00', correct: false },
-
-      { label: 'a) s = 10 dm | b) Fr. 20.00', correct: false },
-
+    teile: [
+      { letter: 'a', options: [
+        { label: 's = 8 dm', correct: true },
+        { label: 's = 6 dm', correct: false },
+        { label: 's = 10 dm', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'Fr. 26.50', correct: true },
+        { label: 'Fr. 32.00', correct: false },
+        { label: 'Fr. 20.00', correct: false },
+      ] },
     ],
 
     solution: {
@@ -379,14 +382,22 @@ a) Berechne die fehlenden Seitenlängen der Rechtecke A, B und C.
 b) Der Flächeninhalt von Rechteck D beträgt 67.5 cm². Berechne die Seitenlängen von D.
 c) Das grosse Rechteck (A+B+C+D+E) hat Umfang 79.5 cm. Berechne den Flächeninhalt von E.`,
 
-    options: [
-
-      { label: 'a) A&B: h=5.5cm, C: b=8.5cm | b) D: h=3cm, b=22.5cm | c) E: 45.5 cm²', correct: true },
-
-      { label: 'a) A&B: h=5cm, C: b=9cm | b) D: h=3.5cm | c) E: 50 cm²', correct: false },
-
-      { label: 'a) A&B: h=6cm, C: b=7.5cm | b) D: h=2.5cm | c) E: 40 cm²', correct: false },
-
+    teile: [
+      { letter: 'a', options: [
+        { label: 'A&B: h=5.5cm, C: b=8.5cm', correct: true },
+        { label: 'A&B: h=5cm, C: b=9cm', correct: false },
+        { label: 'A&B: h=6cm, C: b=7.5cm', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'D: h=3cm, b=22.5cm', correct: true },
+        { label: 'D: h=3.5cm', correct: false },
+        { label: 'D: h=2.5cm', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '45.5 cm²', correct: true },
+        { label: '50 cm²', correct: false },
+        { label: '40 cm²', correct: false },
+      ] },
     ],
 
     solution: {
@@ -502,14 +513,17 @@ Ein Tablet steht schräg auf einem Ständer. Der Ständer ist in der Mitte der H
 a) Berechne die Höhe h des Tablets. (Runde auf 2 Nachkommastellen)
 b) Berechne die Länge der Diagonalen d des Tablets. (Runde auf 2 Nachkommastellen)`,
 
-    options: [
-
-      { label: 'a) h = 21.21 cm | b) d ≈ 38.24 cm', correct: true },
-
-      { label: 'a) h = 30.00 cm | b) d ≈ 54.08 cm', correct: false },
-
-      { label: 'a) h = 24.00 cm | b) d ≈ 43.27 cm', correct: false },
-
+    teile: [
+      { letter: 'a', options: [
+        { label: 'h = 21.21 cm', correct: true },
+        { label: 'h = 30.00 cm', correct: false },
+        { label: 'h = 24.00 cm', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'd ≈ 38.24 cm', correct: true },
+        { label: 'd ≈ 54.08 cm', correct: false },
+        { label: 'd ≈ 43.27 cm', correct: false },
+      ] },
     ],
 
     solution: {
@@ -609,14 +623,22 @@ a) Zwei Schnellzüge befahren die 450 km Strecke zwischen Städten A und B auf p
 b) Ein Güterzug (Länge 350 m) fährt durch den Gotthardtunnel (15.6 km) mit 110 km/h. Wie lange dauert die vollständige Durchfahrt? (Gib Minuten und Sekunden an)
 c) Ein rotes Auto (5 m) will ein blaues Auto (4 m) überholen. Beginn: roter Abstand 10 m hinter Blauem. Ende: rotes Auto 10 m vor Blauem. Rot: 90 km/h, Blau: 72 km/h. Wie viele Sekunden dauert der Überholvorgang?`,
 
-    options: [
-
-      { label: 'a) 108 min | b) 8 min 42 s | c) 5.8 s', correct: true },
-
-      { label: 'a) 120 min | b) 9 min 10 s | c) 4.5 s', correct: false },
-
-      { label: 'a) 90 min | b) 7 min 55 s | c) 6.2 s', correct: false },
-
+    teile: [
+      { letter: 'a', options: [
+        { label: '108 min', correct: true },
+        { label: '120 min', correct: false },
+        { label: '90 min', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '8 min 42 s', correct: true },
+        { label: '9 min 10 s', correct: false },
+        { label: '7 min 55 s', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '5.8 s', correct: true },
+        { label: '4.5 s', correct: false },
+        { label: '6.2 s', correct: false },
+      ] },
     ],
 
     solution: {
