@@ -152,15 +152,23 @@ b) Ein Gruppenticket gibt Rabatt → nur noch Fr. 522.50.
    i. Wie viel % Rabatt ist das?
    ii. Was kostet die Reise nun für Vollzahler?`,
 
-    options: [
-
-      { label: 'a) Fr. 550.– | b.i) 5% | b.ii) Fr. 47.50', correct: true },
-
-      { label: 'a) Fr. 600.– | b.i) 12.9% | b.ii) Fr. 43.50', correct: false },
-
-      { label: 'a) Fr. 480.– | b.i) 8% | b.ii) Fr. 46.00', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: 'Fr. 550.–', correct: true },
+        { label: 'Fr. 600.–', correct: false },
+        { label: 'Fr. 480.–', correct: false },
+      ] },
+      { letter: 'b.i', options: [
+        { label: '5%', correct: true },
+        { label: '12.9%', correct: false },
+        { label: '8%', correct: false },
+      ] },
+      { letter: 'b.ii', options: [
+        { label: 'Fr. 47.50', correct: true },
+        { label: 'Fr. 43.50', correct: false },
+        { label: 'Fr. 46.00', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -288,15 +296,23 @@ a) Wie viele Minuten früher ist der Autofahrer am Ziel? Auto: 85 km/h, LKW: 52 
 b) Das Auto fährt 2 h 30 min SPÄTER ab. Der LKW fährt 20% schneller als in a). Wie schnell muss das Auto fahren, damit beide gleichzeitig ankommen? (Ganze km/h)
 c) Beide starten gleichzeitig in München Richtung Prag. Wie viel % der Strecke hat der LKW geschafft, wenn das Auto in Prag ist?`,
 
-    options: [
-
-      { label: 'a) ≈ 139 min | b) ≈ 126 km/h | c) ≈ 61.2%', correct: true },
-
-      { label: 'a) 52 min | b) 80 km/h | c) 58%', correct: false },
-
-      { label: 'a) 40 min | b) 70 km/h | c) 65%', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '≈ 139 min', correct: true },
+        { label: '52 min', correct: false },
+        { label: '40 min', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '≈ 126 km/h', correct: true },
+        { label: '80 km/h', correct: false },
+        { label: '70 km/h', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '≈ 61.2%', correct: true },
+        { label: '58%', correct: false },
+        { label: '65%', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -403,15 +419,23 @@ a) Die ISS umkreist die Erde 7.25 mal in 10 h 52 min 30 s. Wie viele Umrundungen
 b) Standardvorräte reichen für 6 Crew-Mitglieder 99 Tage. Wie viele Tage würden 5 Astronauten überleben, wenn sie die Rationen halbieren?
 c) 4 Astronauten stranden auf dem Mars mit Vorräten für 302 Tage. Nach 53 Tagen finden sie weitere Vorräte (reicht für 25 Personen × 32 Tage). Wie viele Tage reichen die Vorräte ab dem 54. Tag?`,
 
-    options: [
-
-      { label: 'a) ≈ 496 | b) 237 Tage | c) 449 Tage', correct: true },
-
-      { label: 'a) ≈ 5100 | b) ≈ 220 Tage | c) ≈ 300 Tage', correct: false },
-
-      { label: 'a) ≈ 4800 | b) ≈ 250 Tage | c) ≈ 180 Tage', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '≈ 496', correct: true },
+        { label: '≈ 5100', correct: false },
+        { label: '≈ 4800', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '237 Tage', correct: true },
+        { label: '≈ 220 Tage', correct: false },
+        { label: '≈ 250 Tage', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '449 Tage', correct: true },
+        { label: '≈ 300 Tage', correct: false },
+        { label: '≈ 180 Tage', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -523,15 +547,23 @@ a) In 27 Würfelchen (3×3×3): Wie viele haben 3 / 2 / 1 / 0 bemalte Flächen?
 b) In 125 Würfelchen (5×5×5): Wie viele haben 2 / 1 / 0 bemalte Flächen?
 c) In n³ Würfelchen (n > 2): Wie viele haben 2 / 1 / 0 bemalte Flächen? (Formel)`,
 
-    options: [
-
-      { label: 'a) 3-bem:8 | 2-bem:12 | 1-bem:6 | 0-bem:1 | b) 2-bem:36 | 1-bem:54 | 0-bem:27 | c) 12(n−2) / 6(n−2)² / (n−2)³', correct: true },
-
-      { label: 'a) 3-bem:4 | 2-bem:8 | 1-bem:12 | 0-bem:3 | b) 2-bem:24 | 1-bem:48 | 0-bem:8', correct: false },
-
-      { label: 'a) 3-bem:6 | 2-bem:12 | 1-bem:9 | 0-bem:0', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '3-bem:8, 2-bem:12, 1-bem:6, 0-bem:1', correct: true },
+        { label: '3-bem:4, 2-bem:8, 1-bem:12, 0-bem:3', correct: false },
+        { label: '3-bem:6, 2-bem:12, 1-bem:9, 0-bem:0', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '2-bem:36, 1-bem:54, 0-bem:27', correct: true },
+        { label: '2-bem:24, 1-bem:48, 0-bem:8', correct: false },
+        { label: '2-bem:48, 1-bem:54, 0-bem:27', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '12(n−2) / 6(n−2)² / (n−2)³', correct: true },
+        { label: '12(n−2) / 6(n−2)³ / (n−2)²', correct: false },
+        { label: '(n−2) / (n−2)² / (n−2)³', correct: false },
+      ] },
+    ],
 
     solution: {
 
