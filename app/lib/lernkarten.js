@@ -489,4 +489,139 @@ export const lernkarten = {
       },
     ],
   },
+  'Proportionalität': {
+    titel: 'Proportionalität',
+    kacheln: [
+      {
+        id: 'direkt', emoji: '➡️', titel: 'Direkt proportional', videos: [],
+        karten: [
+          { text: 'Direkt proportional heisst: Doppelt so viel von der einen Sache → doppelt so viel von der anderen. Kaufst du doppelt so viele Äpfel, zahlst du doppelt so viel.' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'doppelt → doppelt', regel: 'Mehr von der einen Grösse heisst gleich viel mehr von der anderen.' },
+              { n: 'Dreisatz-Schema', regel: 'Erst auf EINS runterrechnen (geteilt), dann auf die gesuchte Anzahl hochrechnen (mal).' },
+              { n: 'pro Einheit', regel: 'Der Wert für 1 Stück/Minute/km heisst Einheitswert.' },
+              { n: 'Graph', regel: 'Eine direkt proportionale Grösse ergibt eine Gerade durch den Ursprung (0, 0).' },
+            ],
+          },
+          { text: 'Profi-Tipp: Rechne immer über EINS: Wie viel ist es für 1 Stück/Minute/Kilometer? Von dort kommst du mit Malnehmen zu jeder beliebigen Menge.' },
+          { text: 'Ein Drucker druckt 240 Seiten in 8 Minuten. Wie viele Seiten in 15 Minuten?\n| 1 Minute: 240 : 8 = 30 Seiten\n| 15 Minuten: 30 · 15 = 450 Seiten' },
+          { text: 'Eine Pumpe fördert 360 Liter in 6 Minuten. Wie lange braucht sie für 900 Liter?\n| 1 Liter braucht: 6 : 360 = 1/60 Minute\n| 900 Liter: 900 · 1/60 = 15 Minuten' },
+        ],
+        check: [
+          { frage: 'Ein Zug fährt 280 km in 3.5 Stunden. Wie weit kommt er in 5 Stunden bei gleicher Geschwindigkeit?', optionen: ['400 km', '560 km', '200 km', '350 km'], richtig: 0, erklaerung: '280 : 3.5 = 80 km/h. 80 · 5 = 400 km. Bei 560 wurde mit 3.5 multipliziert statt dividiert.' },
+          { frage: 'Für 4 kg Äpfel zahlst du 10 Franken. Wie viel kosten 6 kg?', optionen: ['15 Fr', '12 Fr', '20 Fr', '6.67 Fr'], richtig: 0, erklaerung: '1 kg kostet 10 : 4 = 2.5 Fr. 6 kg kosten 6 · 2.5 = 15 Fr.' },
+          { frage: 'Welche Aussage beschreibt "direkt proportional" richtig?', optionen: ['Doppelte Menge → doppelter Preis', 'Doppelte Menge → halber Preis', 'Doppelte Menge → gleicher Preis', 'Der Preis hat nichts mit der Menge zu tun'], richtig: 0, erklaerung: 'Direkt proportional heisst: Beide Grössen wachsen im gleichen Verhältnis - doppelt so viel heisst doppelt so teuer.' },
+        ],
+      },
+      {
+        id: 'umgekehrt', emoji: '🔄', titel: 'Umgekehrt proportional', videos: [],
+        karten: [
+          { text: 'Umgekehrt proportional heisst: Mehr von der einen Sache → weniger von der anderen. Mehr Leute, die zusammen anpacken, brauchen weniger Zeit für die gleiche Arbeit.' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'mehr → weniger', regel: 'Mehr Arbeiter oder Maschinen → weniger Zeit für die gleiche Arbeit.' },
+              { n: 'Produkt bleibt gleich', regel: 'Anzahl · Zeit ergibt immer die gleiche "Gesamtarbeit" (z. B. Arbeitertage).' },
+              { n: 'Dreisatz-Schema', regel: 'Erst die Gesamtarbeit berechnen (Anzahl · Zeit), dann durch die neue Anzahl teilen.' },
+              { n: 'Graph', regel: 'Eine umgekehrt proportionale Grösse ergibt eine fallende Kurve, keine Gerade.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Rechne über die Gesamtarbeit: Wie viele "Arbeitertage" braucht das Ganze? Das bleibt immer gleich, egal wie viele mitmachen.' },
+          { text: '7 Maler brauchen 9 Tage für ein Haus. Wie lange brauchen 3 Maler bei gleicher Leistung?\n| Gesamtarbeit: 7 · 9 = 63 Malertage\n| Mit 3 Malern: 63 : 3 = 21 Tage' },
+          { text: '12 Maschinen füllen ein Lager in 10 Tagen. Wie lange brauchen 8 Maschinen?\n| Gesamtarbeit: 12 · 10 = 120 Maschinentage\n| Mit 8 Maschinen: 120 : 8 = 15 Tage' },
+        ],
+        check: [
+          { frage: '6 Arbeiter streichen einen Zaun in 8 Tagen. Wie lange brauchen 4 Arbeiter?', optionen: ['12 Tage', '5.3 Tage', '32 Tage', '10 Tage'], richtig: 0, erklaerung: 'Gesamtarbeit: 6 · 8 = 48 Arbeitertage. Mit 4 Arbeitern: 48 : 4 = 12 Tage. Bei 5.3 wurde fälschlich wie bei direkt proportional gerechnet.' },
+          { frage: 'Welche Situation ist umgekehrt proportional?', optionen: ['Mehr Bauarbeiter → weniger Tage für dasselbe Haus', 'Mehr Kilometer → mehr Benzinkosten', 'Mehr Stunden → mehr Lohn', 'Mehr Äpfel → mehr Kosten'], richtig: 0, erklaerung: 'Nur bei den Bauarbeitern wächst die eine Grösse, während die andere kleiner wird - das ist umgekehrt proportional. Die anderen drei sind direkt proportional.' },
+          { frage: '9 Pumpen leeren einen Teich in 6 Stunden. Wie lange brauchen 3 Pumpen?', optionen: ['18 Stunden', '2 Stunden', '27 Stunden', '3 Stunden'], richtig: 0, erklaerung: 'Gesamtarbeit: 9 · 6 = 54 Pumpenstunden. Mit 3 Pumpen: 54 : 3 = 18 Stunden.' },
+        ],
+      },
+      {
+        id: 'erkennen', emoji: '🔍', titel: 'Direkt oder umgekehrt?', videos: [],
+        karten: [
+          { text: 'Bevor du rechnest, frag dich: Wenn die eine Zahl grösser wird, wird die andere auch grösser (direkt) oder kleiner (umgekehrt)? Dieser kurze Check verhindert den grössten Fehler bei diesem Thema.' },
+          {
+            text: 'Tippe die Hinweise an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Signalwörter direkt', regel: 'Preis, Menge, Strecke bei gleicher Geschwindigkeit, Gewicht.' },
+              { n: 'Signalwörter umgekehrt', regel: 'Mehrere Personen oder Maschinen teilen sich eine Arbeit, Geschwindigkeit und Zeit bei fester Strecke.' },
+              { n: 'Plausibilität prüfen', regel: 'Ist die Antwort grösser oder kleiner als erwartet? Mehr Arbeiter sollten NIE mehr Zeit brauchen.' },
+              { n: 'Extremfall-Trick', regel: 'Stell dir eine riesige Zahl vor (z. B. 1000 Arbeiter) - wird die Zeit dann riesig oder winzig klein?' },
+            ],
+          },
+          { text: 'Profi-Tipp: Nutze den Extremfall-Trick: Müsste nur 1 Person die ganze Arbeit machen, bräuchte sie am längsten. Das bestätigt: mehr Personen → weniger Zeit, also umgekehrt proportional.' },
+          { text: '"Eine Kerze brennt in 4 Stunden ab. Wie lange brennen 3 gleiche Kerzen?" - Trickfrage: Das ist WEDER direkt noch umgekehrt proportional! Jede Kerze brennt für sich 4 Stunden, egal wie viele es sind (sie brennen gleichzeitig, nicht nacheinander).' },
+          { text: '"5 Kopien kosten 2 Franken. Wie viel kosten 20 Kopien?" - Mehr Kopien, mehr Kosten: direkt proportional. 2 : 5 = 0.4 Fr pro Kopie, 20 · 0.4 = 8 Franken.' },
+        ],
+        check: [
+          { frage: '"3 Köche backen 60 Kuchen in 4 Stunden. Wie lange brauchen 6 Köche für 60 Kuchen?" Direkt oder umgekehrt proportional?', optionen: ['Umgekehrt - mehr Köche, weniger Zeit', 'Direkt - mehr Köche, mehr Zeit', 'Weder noch', 'Nicht bestimmbar'], richtig: 0, erklaerung: 'Mehr Köche schaffen die gleiche Arbeit schneller - das ist umgekehrt proportional.' },
+          { frage: '"1 Liter Farbe reicht für 8 m² Wand. Wie viele Liter für 24 m²?" Direkt oder umgekehrt proportional?', optionen: ['Direkt - mehr Fläche, mehr Farbe', 'Umgekehrt - mehr Fläche, weniger Farbe', 'Weder noch', 'Nicht bestimmbar'], richtig: 0, erklaerung: 'Mehr Wandfläche braucht mehr Farbe im gleichen Verhältnis - direkt proportional.' },
+          { frage: '"Ein Läufer braucht für 1 Runde 2 Minuten. Wie lange für 5 Runden?" Was für eine Beziehung ist das bei gleichem Tempo?', optionen: ['Direkt proportional', 'Umgekehrt proportional', 'Weder noch, die Zeit bleibt gleich', 'Nicht bestimmbar'], richtig: 0, erklaerung: 'Mehr Runden bei gleichem Tempo brauchen proportional mehr Zeit - direkt proportional.' },
+        ],
+      },
+      {
+        id: 'gemischt', emoji: '🧮', titel: 'Gemischte Textaufgaben', videos: [],
+        karten: [
+          { text: 'Manche Aufgaben haben einen Zwischenschritt, der sich während der Aufgabe ändert - zum Beispiel wenn mitten in der Arbeit noch jemand dazukommt.' },
+          {
+            text: 'Tippe die Schritte an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Zwischenschritt', regel: 'Berechne zuerst, wie viel schon erledigt ist, bevor sich etwas ändert.' },
+              { n: 'Rest berechnen', regel: 'Gesamtarbeit minus bereits erledigte Arbeit = was noch übrig bleibt.' },
+              { n: 'neu aufteilen', regel: 'Den Rest mit der NEUEN Anzahl Personen oder Maschinen weiterrechnen.' },
+              { n: 'Verhältnis teilen', regel: 'Eine Menge im Verhältnis a:b aufteilen: durch (a+b) teilen, dann mit a bzw. b multiplizieren.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Zeichne dir eine Zeitlinie: Erste Phase (alte Anzahl) - Wechsel - zweite Phase (neue Anzahl). So verlierst du den Überblick nicht.' },
+          { text: 'Ein Projekt braucht 10 Techniker 18 Tage. Nach 6 Tagen kommen 5 weitere dazu (neu 15 total). Wie lange dauert das Projekt insgesamt?\n| Gesamtarbeit: 10 · 18 = 180 Technikertage\n| Nach 6 Tagen erledigt: 10 · 6 = 60\n| Rest: 180 − 60 = 120\n| Mit 15 Technikern: 120 : 15 = 8 Tage\n| Total: 6 + 8 = 14 Tage' },
+          { text: 'Ein 150 m langes Kabel wird so geteilt, dass ein Stück 3/2 der Länge des anderen ist. Wie lang ist das kürzere Stück?\n| Verhältnis 2:3 (kürzer:länger)\n| In 5 Teile aufteilen: 150 : 5 = 30\n| Kürzeres Stück: 2 · 30 = 60 m' },
+        ],
+        check: [
+          { frage: '8 Maler brauchen 12 Tage für ein Haus. Nach 3 Tagen kommen 4 weitere dazu (neu 12 total). Wie lange dauert es insgesamt?', optionen: ['9 Tage', '6 Tage', '15 Tage', '12 Tage'], richtig: 0, erklaerung: 'Gesamtarbeit: 8 · 12 = 96 Malertage. Nach 3 Tagen erledigt: 8 · 3 = 24. Rest: 96 − 24 = 72. Mit 12 Malern: 72 : 12 = 6 Tage. Total: 3 + 6 = 9 Tage.' },
+          { frage: 'Ein 100 m langes Seil wird im Verhältnis 2:3 geteilt. Wie lang ist das kürzere Stück?', optionen: ['40 m', '60 m', '50 m', '33.3 m'], richtig: 0, erklaerung: 'Verhältnis 2:3 ergibt 5 Teile. 100 : 5 = 20 m pro Teil. Kürzeres Stück: 2 · 20 = 40 m.' },
+          { frage: 'Ein 90 m Draht wird so geteilt, dass ein Stück doppelt so lang ist wie das andere. Wie lang ist das längere Stück?', optionen: ['60 m', '45 m', '30 m', '80 m'], richtig: 0, erklaerung: 'Verhältnis 1:2 ergibt 3 Teile. 90 : 3 = 30 m pro Teil. Längeres Stück: 2 · 30 = 60 m.' },
+        ],
+      },
+      {
+        id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
+        karten: [
+          { text: '❌ Bei umgekehrt proportional wird trotzdem einfach wie bei direkt proportional "über eins" gerechnet. ✅ Erst die Gesamtarbeit (Anzahl · Zeit) berechnen, dann durch die neue Anzahl teilen.' },
+          { text: '❌ Mehr Arbeiter werden mit MEHR Zeit verbunden. ✅ Mehr Arbeiter bedeuten WENIGER Zeit für die gleiche Arbeit (umgekehrt proportional).' },
+          { text: '❌ Bei einer Aufgabe mit Zwischenschritt wird die ganze Zeit mit der neuen Anzahl berechnet, nicht nur der Rest. ✅ Erst die bereits erledigte Arbeit abziehen, dann nur den Rest mit der neuen Anzahl weiterrechnen.' },
+          { text: '❌ Beim Verhältnis-Teilen wird die Gesamtlänge direkt durch eine der beiden Verhältniszahlen geteilt. ✅ Erst die Verhältniszahlen addieren (die Anzahl Teile), dann die Gesamtlänge durch diese Summe teilen.' },
+          { text: '❌ Es wird nicht geprüft, ob eine Aufgabe überhaupt proportional ist (z. B. "3 Kerzen brennen gleichzeitig"). ✅ Erst überlegen: Ändert sich die zweite Grösse überhaupt mit der ersten?' },
+          { text: '❌ Beim Dreisatz wird direkt von der gegebenen Zahl auf die gesuchte Zahl gerechnet, ohne über die 1 zu gehen. ✅ Rechne immer zuerst auf 1 Einheit um, dann auf die gesuchte Menge.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        karten: [
+          { text: 'Ein Drucker druckt 150 Seiten in 5 Minuten. Wie viele Seiten in 12 Minuten?', loesung: '150 : 5 = 30 Seiten/Minute. 30 · 12 = 360 Seiten.' },
+          { text: '5 kg Mehl kosten 8 Franken. Wie viel kosten 12 kg?', loesung: '8 : 5 = 1.6 Fr/kg. 1.6 · 12 = 19.2 Franken.' },
+          { text: '4 Bagger graben einen Graben in 10 Tagen. Wie lange brauchen 5 Bagger?', loesung: 'Gesamtarbeit: 4 · 10 = 40 Baggertage. 40 : 5 = 8 Tage.' },
+          { text: '6 Maschinen füllen ein Lager in 14 Tagen. Wie lange brauchen 7 Maschinen?', loesung: 'Gesamtarbeit: 6 · 14 = 84 Maschinentage. 84 : 7 = 12 Tage.' },
+          { text: '"2 Bäcker backen 100 Brote in 5 Stunden. Wie lange brauchen 4 Bäcker für 100 Brote?" Direkt oder umgekehrt?', loesung: 'Umgekehrt: 2 · 5 = 10 Bäckerstunden. 10 : 4 = 2.5 Stunden.' },
+          { text: '"3 Liter Farbe reichen für 18 m² Wand. Wie viele Liter für 30 m²?" Direkt oder umgekehrt?', loesung: 'Direkt: 3 : 18 = 1/6 Liter pro m². 30 · 1/6 = 5 Liter.' },
+          { text: 'Ein 72 m Seil wird im Verhältnis 3:5 geteilt. Wie lang ist das kürzere Stück?', loesung: '3 + 5 = 8 Teile. 72 : 8 = 9 m pro Teil. Kürzeres Stück: 3 · 9 = 27 m.' },
+          { text: 'Ein 96 m Draht wird im Verhältnis 1:3 geteilt. Wie lang ist das längere Stück?', loesung: '1 + 3 = 4 Teile. 96 : 4 = 24 m pro Teil. Längeres Stück: 3 · 24 = 72 m.' },
+          { text: 'Ein Auto fährt 180 km in 2.5 Stunden. Wie weit in 4 Stunden?', loesung: '180 : 2.5 = 72 km/h. 72 · 4 = 288 km.' },
+          { text: '9 Arbeiter brauchen 8 Tage für ein Projekt. Wie viele Arbeiter braucht es, um es in 6 Tagen fertigzustellen?', loesung: 'Gesamtarbeit: 9 · 8 = 72 Arbeitertage. 72 : 6 = 12 Arbeiter.' },
+          { text: '7 Maler brauchen 20 Tage für ein Haus. Nach 5 Tagen kommen 8 weitere dazu (neu 15 total). Wie lange dauert es insgesamt?', loesung: 'Gesamtarbeit: 7 · 20 = 140 Malertage. Erledigt nach 5 Tagen: 35. Rest: 105. Mit 15 Malern: 105 : 15 = 7 Tage. Total: 5 + 7 = 12 Tage.' },
+          { text: '10 Techniker brauchen 21 Tage. Nach 7 Tagen kommen 4 weitere dazu (neu 14 total). Wie lange dauert es insgesamt?', loesung: 'Gesamtarbeit: 10 · 21 = 210 Technikertage. Erledigt nach 7 Tagen: 70. Rest: 140. Mit 14 Technikern: 140 : 14 = 10 Tage. Total: 7 + 10 = 17 Tage.' },
+          { text: 'Ein 180 m langes Band wird im Verhältnis 4:5 geteilt. Das kürzere Stück wird danach nochmals in 2 gleiche Teile geschnitten. Wie lang ist jedes dieser kleinen Teile?', loesung: '4 + 5 = 9 Teile. 180 : 9 = 20 m pro Teil. Kürzeres Stück: 4 · 20 = 80 m. Geteilt durch 2: 40 m.' },
+          { text: '15 Pumpen leeren einen Teich in 4.8 Stunden. Wie lange brauchen 8 Pumpen?', loesung: 'Gesamtarbeit: 15 · 4.8 = 72 Pumpenstunden. 72 : 8 = 9 Stunden.' },
+          { text: '"5 Freunde teilen eine Pizza mit 20 Stücken zu gleichen Teilen. Wie viele Stücke bekommt jeder bei 4 Freunden?" Direkt oder umgekehrt - und wie viele Stücke?', loesung: 'Umgekehrt: Mehr Freunde, weniger Stücke pro Person. Bei 5 Freunden: 20 : 5 = 4 Stücke. Bei 4 Freunden: 20 : 4 = 5 Stücke.' },
+          { text: '12 Arbeiter schaffen ein Projekt in 15 Tagen. Nach 5 Tagen fallen 2 Arbeiter aus (neu 10 total). Wie lange dauert das Projekt insgesamt?', loesung: 'Gesamtarbeit: 12 · 15 = 180 Arbeitertage. Erledigt nach 5 Tagen: 60. Rest: 120. Mit 10 Arbeitern: 120 : 10 = 12 Tage. Total: 5 + 12 = 17 Tage.' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
