@@ -889,7 +889,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'spiegeln', emoji: '🔄', titel: 'Spiegeln & Konstruieren', videos: [{ titel: 'Achsenspiegelung im Koordinatensystem', youtubeId: '_LV31JK6280' }, { titel: 'Punktspiegelung', youtubeId: 'S0x6ZZhX1lo' }],
+        id: 'spiegeln', emoji: '🔄', titel: 'Spiegeln & Konstruieren', videos: [{ titel: 'Achsenspiegelung im Koordinatensystem', youtubeId: '_LV31JK6280' }, { titel: 'Achsenspiegelung mit Zirkel und Geodreieck', youtubeId: 'pej1BH3i6Yw' }, { titel: 'Punktspiegelung', youtubeId: 'S0x6ZZhX1lo' }],
         karten: [
           { text: 'Spiegeln ist wie ein Blick in den Spiegel: Die Form bleibt gleich, aber alles ist auf die andere Seite gedreht - jeder Punkt wandert gleich weit über die Spiegelachse.' },
           {
@@ -953,7 +953,7 @@ export const lernkarten = {
     titel: 'Wahrscheinlichkeit',
     kacheln: [
       {
-        id: 'grundidee', emoji: '🎲', titel: 'Grundidee', videos: [],
+        id: 'grundidee', emoji: '🎲', titel: 'Grundidee', videos: [{ titel: 'Einstufiger Zufallsversuch', youtubeId: 'rkLmLaFHodo' }],
         karten: [
           { text: 'Wahrscheinlichkeit ist ein Bruch: Anzahl der günstigen Ausgänge geteilt durch die Anzahl aller möglichen Ausgänge. 0 heisst unmöglich, 1 heisst sicher.' },
           {
@@ -1111,7 +1111,7 @@ export const lernkarten = {
     titel: 'Proportionalität',
     kacheln: [
       {
-        id: 'direkt', emoji: '➡️', titel: 'Direkt proportional', videos: [{ titel: 'Dreisatz - Einführung', youtubeId: 'ELKsWSoQUjo' }],
+        id: 'direkt', emoji: '➡️', titel: 'Direkt proportional', videos: [{ titel: 'Dreisatz - Einführung', youtubeId: 'ELKsWSoQUjo' }, { titel: 'Proportionale Zuordnung', youtubeId: 'MT3hVo_BfT0' }],
         karten: [
           { text: 'Direkt proportional heisst: Doppelt so viel von der einen Sache → doppelt so viel von der anderen. Kaufst du doppelt so viele Äpfel, zahlst du doppelt so viel.' },
           {
@@ -1135,7 +1135,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'umgekehrt', emoji: '🔄', titel: 'Umgekehrt proportional', videos: [],
+        id: 'umgekehrt', emoji: '🔄', titel: 'Umgekehrt proportional', videos: [{ titel: 'Umgekehrt-proportionale Zuordnung', youtubeId: 'ISGhREON0T4' }],
         karten: [
           { text: 'Umgekehrt proportional heisst: Mehr von der einen Sache → weniger von der anderen. Mehr Leute, die zusammen anpacken, brauchen weniger Zeit für die gleiche Arbeit.' },
           {
@@ -1353,7 +1353,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'lesen', emoji: '🔎', titel: 'Diagramme lesen & Fehler finden', videos: [],
+        id: 'lesen', emoji: '🔎', titel: 'Diagramme lesen & Fehler finden', videos: [{ titel: 'Diagramme auswerten', youtubeId: 'hY_XiaT-3PI' }],
         karten: [
           { text: 'Ein Diagramm richtig zu lesen heisst: genau hinschauen, was die Achsen bedeuten, und nicht nur grob schätzen.' },
           {
