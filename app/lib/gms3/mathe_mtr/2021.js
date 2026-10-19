@@ -27,15 +27,18 @@ a) Max startet um 08:15 Uhr und muss um 08:40 Uhr am vereinbarten Ort sein. Die 
 
 b) Wie lang muss die Strecke sein, damit es sich lohnt, statt Velo (18 km/h) das Auto (54 km/h) zu nehmen, wenn für Bereitstellung und Parkieren des Autos zusammen 5 Minuten mehr als für die Sicherung des Velos gerechnet werden müssen?`,
 
-    options: [
-
-      { label: 'a) 27.5 km/h | b) 2.25 km', correct: true },
-
-      { label: 'a) 26.4 km/h | b) 3.0 km', correct: false },
-
-      { label: 'a) 30.0 km/h | b) 1.5 km', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '27.5 km/h', correct: true },
+        { label: '26.4 km/h', correct: false },
+        { label: '30.0 km/h', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '2.25 km', correct: true },
+        { label: '3.0 km', correct: false },
+        { label: '1.5 km', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -221,15 +224,23 @@ a) Wassereinsparung (l und %) wenn NORMAL statt INTENSIV (in einem Jahr)?
 b) Stromeinsparung (%) bei KURZ mit Spargang-Taste?
 c) kWh: Fr. 0.17 (Niedertarif) / Fr. 0.23 (Hochtarif). Wasser: Fr. 1.18/m³. Mittel+Klarspüler: Fr. 0.15/Wäsche. Wie viel spart man bei 200 Waschgängen im Programm INTENSIV, wenn man statt zum Hochtarif ohne Spartaste, immer zum Niedertarif mit zusätzlicher Spartaste spült?`,
 
-    options: [
-
-      { label: 'a) 1820 l / 45.5% | b) 33.3% | c) ca. Fr. 27.70', correct: true },
-
-      { label: 'a) 910 l / 40% | b) 25% | c) ca. Fr. 68.–', correct: false },
-
-      { label: 'a) 2000 l / 50% | b) 20% | c) ca. Fr. 20.40', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '1820 l / 45.5%', correct: true },
+        { label: '910 l / 40%', correct: false },
+        { label: '2000 l / 50%', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '33.3%', correct: true },
+        { label: '25%', correct: false },
+        { label: '20%', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: 'ca. Fr. 27.70', correct: true },
+        { label: 'ca. Fr. 68.–', correct: false },
+        { label: 'ca. Fr. 20.40', correct: false },
+      ] },
+    ],
 
     solution: {
 
@@ -343,15 +354,18 @@ b) Ein Schälchen nicht aufgeplatzter Kirschen = Fr. 1.–, aufgeplatzter = Fr. 
 Es werden 100 Schälchen geerntet und verkauft.
 Berechne die Einnahmen.`,
 
-    options: [
-
-      { label: 'a) 76% | b) Fr. 80.80', correct: true },
-
-      { label: 'a) 80% | b) Fr. 85.00', correct: false },
-
-      { label: 'a) 70% | b) Fr. 75.50', correct: false },
-
-    ],
+    teile: [
+      { letter: 'a', options: [
+        { label: '76%', correct: true },
+        { label: '80%', correct: false },
+        { label: '70%', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'Fr. 80.80', correct: true },
+        { label: 'Fr. 85.00', correct: false },
+        { label: 'Fr. 75.50', correct: false },
+      ] },
+    ],
 
     solution: {
 
