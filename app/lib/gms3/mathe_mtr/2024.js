@@ -18,6 +18,28 @@ b) Zeichne die Gerade ins Koordinatensystem.
 c) Notiere die Geradengleichung.
 d) Wann ist das Becken leer?
 e) Die Pumpe bewegt 6 m³ Wasser pro Stunde. Wie gross ist die Grundfläche des Beckens?`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '(0|2.5), (1|2.1), (3.5|1.1), (5|0.5)', correct: true },
+        { label: '(0|2.5), (1|2.9), (3.5|1.1), (5|0.5)', correct: false },
+        { label: '(0|2.5), (1|2.1), (3.5|3.9), (5|7.5)', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: 'y = -0.4x + 2.5', correct: true },
+        { label: 'y = 0.4x + 2.5', correct: false },
+        { label: 'y = -0.4x + 0', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: 'Nach 6 Stunden 15 Minuten', correct: true },
+        { label: 'Nach 6 Stunden', correct: false },
+        { label: 'Nach 2.5 Stunden', correct: false },
+      ] },
+      { letter: 'e', options: [
+        { label: '15 m²', correct: true },
+        { label: '2.4 m²', correct: false },
+        { label: '6 m²', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -96,6 +118,18 @@ Grundfläche = 6 m³ / 0.4 m = 15 m²
     questionText: `Aufgabe 2: Marmelade & Kaffee
 a) Tina mischt 500g Marmelade (30% Kirschen) mit 750g einer anderen Sorte (40% Kirschen). Wie gross ist der Kirschanteil in der Mischung?
 b) 10 kg ungerösteter Kaffee für 85.80 CHF verlieren beim Rösten 22% ihres Gewichts. Was kosten 15 kg des gerösteten Kaffees?`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '36%', correct: true },
+        { label: '35%', correct: false },
+        { label: '60%', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '165 CHF', correct: true },
+        { label: '128.70 CHF', correct: false },
+        { label: '111.54 CHF', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -220,6 +254,33 @@ b) Berechne die Breite AB.
 c) Wie weit vom Beckenrand entfernt ist die Stütze s1 zu verankern und wie lang ist sie?
 d) Wie lang ist die Stütze s2 in der Mitte der Rutschfläche?
 e) Berechne das Gefälle der Rutschfläche in Prozent.`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '7.5 m²', correct: true },
+        { label: '15 m²', correct: false },
+        { label: '6.5 m²', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '9.5 m', correct: true },
+        { label: '6.5 m', correct: false },
+        { label: '8.45 m', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '2.31 m lang, 5.54 m vom Beckenrand', correct: true },
+        { label: '2.5 m lang, 3 m vom Beckenrand', correct: false },
+        { label: '1.25 m lang, 5.54 m vom Beckenrand', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: '1.25 m', correct: true },
+        { label: '2.31 m', correct: false },
+        { label: '1.04 m', correct: false },
+      ] },
+      { letter: 'e', options: [
+        { label: '≈42%', correct: true },
+        { label: '≈24.3%', correct: false },
+        { label: '≈45.1%', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -296,6 +357,18 @@ Gefälle = (2.31 / 5.54) * 100 ≈ 41.7%
 Ein Wassergraben (siehe Skizze) soll gefüllt werden. Er ist ein Prisma mit einer trapezförmigen Grundfläche.
 a) Wie viele Liter Wasser sind zum Füllen erforderlich?
 b) Der leere Graben wird gefüllt. Welcher Graph beschreibt den Zusammenhang zwischen Volumen (V) und Füllhöhe (h)?`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '4867.8 Liter', correct: true },
+        { label: '751.8 Liter', correct: false },
+        { label: '≈2086 Liter', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: 'Graph II (zuerst steil, dann flacher)', correct: true },
+        { label: 'Graph I (immer steiler werdend)', correct: false },
+        { label: 'Graph VI (linear)', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -375,6 +448,13 @@ b) Berechne die Gewinnwahrscheinlichkeit für drei Varianten und entscheide, wel
 A: Gewinn, wenn beide Kugeln die gleiche Farbe haben.
 B: Gewinn, wenn keine Kugel rot ist.
 C: Gewinn, wenn genau eine Kugel schwarz ist.`,
+    teile: [
+      { letter: 'b', options: [
+        { label: 'P(A)≈31.1%, P(B)≈22.2%, P(C)≈35.6% → Variante B wählen', correct: true },
+        { label: 'P(A)≈31.1%, P(B)≈22.2%, P(C)≈35.6% → Variante C wählen', correct: false },
+        { label: 'P(A)≈31.1%, P(B)≈22.2%, P(C)≈35.6% → Variante A wählen', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
