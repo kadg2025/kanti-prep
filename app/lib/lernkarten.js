@@ -1215,7 +1215,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'erkennen', emoji: '🔍', titel: 'Direkt oder umgekehrt?', videos: [],
+        id: 'erkennen', emoji: '🔍', titel: 'Direkt oder umgekehrt?', videos: [{ titel: 'Direkt oder umgekehrt?', youtubeId: 'KtZuohtlMCw' }],
         karten: [
           { text: 'Bevor du rechnest, frag dich: Wenn die eine Zahl grösser wird, wird die andere auch grösser (direkt) oder kleiner (umgekehrt)? Dieser kurze Check verhindert den grössten Fehler bei diesem Thema.' },
           {
@@ -1239,7 +1239,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'gemischt', emoji: '📝', titel: 'Gemischte Textaufgaben', videos: [],
+        id: 'gemischt', emoji: '📝', titel: 'Gemischte Textaufgaben', videos: [{ titel: 'Gemischte Textaufgaben', youtubeId: 'EHYyHg1Wmuk' }],
         karten: [
           { text: 'Manche Aufgaben haben einen Zwischenschritt, der sich während der Aufgabe ändert - zum Beispiel wenn mitten in der Arbeit noch jemand dazukommt.' },
           {
@@ -1620,7 +1620,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'punkteuebertragen', emoji: '🧭', titel: 'Punkte und Kanten übertragen', videos: [],
+        id: 'punkteuebertragen', emoji: '🧭', titel: 'Punkte und Kanten übertragen', videos: [{ titel: 'Punkte und Kanten übertragen', youtubeId: '_8qTI8Mi9_8' }],
         karten: [
           { text: 'Ein Würfel hat 8 Ecken. Standard-Beschriftung: unten A, B, C, D (im Kreis rum), oben genau darüber E, F, G, H (E über A, F über B, G über C, H über D).' },
           {
@@ -1667,7 +1667,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'raeumlich', emoji: '👀', titel: 'Räumlich denken', videos: [],
+        id: 'raeumlich', emoji: '👀', titel: 'Räumlich denken', videos: [{ titel: 'Räumlich denken', youtubeId: 'y1B1KugPSyI' }],
         karten: [
           { text: 'Bei Würfeln mit Mustern auf jeder Seite musst du dir vorstellen, wie der Würfel von verschiedenen Seiten aussieht - welche Fläche liegt gegenüber, welche daneben?' },
           {

@@ -687,7 +687,7 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
             {streak >= 3 && <span style={{ fontSize: '11px', color: '#f97316', fontWeight: '600' }}>Streak!</span>}
           </div>
           <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
-            <button onClick={toggleDark} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '18px', padding: '4px' }}>{dark ? '☀️' : '🌙'}</button>
+            <button onClick={toggleDark} title="Hell-/Dunkelmodus wechseln" aria-label="Hell-/Dunkelmodus wechseln" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '18px', padding: '4px' }}>{dark ? '☀️' : '🌙'}</button>
             {mobile && <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', padding: '4px', color: dm.text3 }}>✕</button>}
           </div>
         </div>
@@ -736,7 +736,7 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
           <div key={groupName}>
             <button onClick={() => toggleGroup(groupName)} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', background: 'none', border: 'none', cursor: 'pointer', color: color, fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ fontSize: '13px' }}>{openGroups[groupName] ? '📂' : '📁'}</span>{groupName}
+                <span style={{ fontSize: '13px' }}>{openGroups[groupName] ? '📂' : '📁'}</span>{groupName === 'Alte Prüfungen' ? 'Prüfungen & Themen' : groupName}
               </span>
               <span style={{ fontSize: '9px', opacity: 0.6 }}>{openGroups[groupName] ? '▲' : '▼'}</span>
             </button>
@@ -902,7 +902,7 @@ function PracticeLadder({ practice, dm, dark }) {
 }
 
 // ─── QUESTION DISPLAY ─────────────────────────────────────────────────────
-function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = () => {}, onRemoveFehler = () => {}, solved = new Set(), dark = false, dm = makePalette(false), onKonfetti = () => {}, buildTree: bt }) {
+function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = () => {}, onRemoveFehler = () => {}, solved = new Set(), fehler = [], dark = false, dm = makePalette(false), onKonfetti = () => {}, buildTree: bt }) {
   const isMobile = useIsMobile();
   const [showSolution, setShowSolution] = useState(false);
   const [solutionViewed, setSolutionViewed] = useState(false);
@@ -954,6 +954,36 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
   if (!question) {
     const emojis = { 'Mathe ohne TR': '📐', 'Mathe mit TR': '🔢', 'Deutsch': '📝', 'Deutsch GMS2': '📝' };
     const tips = { 'Mathe ohne TR': 'Kein Taschenrechner erlaubt – Kopfrechnen trainieren!', 'Mathe mit TR': 'Taschenrechner erlaubt – aber den Rechenweg aufzeigen! ✏️', 'Deutsch': 'Lies die Texte genau – Details sind entscheidend! 🔍', 'Deutsch GMS2': 'GMS2 Deutsch — Wortarten, Satzbau, Zeitformen! 🎯' };
+
+    // "Weiter bei"-Box nur für Mathe ohne TR: nutzt ausschliesslich bestehende
+    // solved/fehler-Daten, kein neues Tracking.
+    let weiterBox = null;
+    if (subject === 'Mathe ohne TR') {
+      const pool = questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen');
+      const poolIds = new Set(pool.map(q => q.id));
+      const solvedArr = [...solved];
+      let lastTopic = null;
+      for (let i = solvedArr.length - 1; i >= 0; i--) {
+        if (poolIds.has(solvedArr[i])) {
+          const q = pool.find(p => p.id === solvedArr[i]);
+          if (q) { lastTopic = q.topic; break; }
+        }
+      }
+      const fehlerHier = fehler.filter(id => poolIds.has(id)).length;
+      const naechste = pool.find(q => !solved.has(q.id));
+      const vorschlag = fehlerHier > 0
+        ? `Als nächstes: ${fehlerHier} Aufgabe${fehlerHier === 1 ? '' : 'n'} aus deiner Fehler-Kiste wiederholen.`
+        : naechste ? `Als nächstes: Thema „${naechste.topic}" probieren.` : 'Du hast alle Aufgaben gelöst – stark! 🎉';
+
+      weiterBox = (
+        <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: '16px', fontSize: '13px', color: dm.text2, marginTop: '12px', textAlign: 'left', lineHeight: '1.7' }}>
+          {lastTopic && <p style={{ margin: '0 0 6px' }}>📍 Weiter bei: <strong style={{ color: dm.text }}>{lastTopic}</strong></p>}
+          <p style={{ margin: '0 0 6px' }}>🗑️ {fehlerHier} offene{fehlerHier === 1 ? 'r' : ''} Eintrag{fehlerHier === 1 ? '' : 'e'} in der Fehler-Kiste</p>
+          <p style={{ margin: 0 }}>💡 {vorschlag}</p>
+        </div>
+      );
+    }
+
     return (
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: isMobile ? '64px 16px 40px' : '40px', background: dm.bg }}>
         <div style={{ textAlign: 'center', maxWidth: '400px' }}>
@@ -961,6 +991,7 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
           <h2 style={{ fontSize: '22px', fontWeight: '700', color: dm.text, margin: '0 0 8px' }}>Bereit zum Üben? 💪</h2>
           <p style={{ color: dm.text3, margin: '0 0 20px', lineHeight: '1.6', fontSize: '15px' }}>{isMobile ? 'Tippe oben auf ☰ Aufgaben, um eine Aufgabe auszuwählen.' : 'Wähle links eine Aufgabe aus, um zu beginnen.'}</p>
           <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '12px', padding: '16px', fontSize: '14px', color: dm.text2 }}>{tips[subject] || 'Viel Erfolg!'}</div>
+          {weiterBox}
         </div>
       </div>
     );
@@ -1203,7 +1234,7 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
 }
 
 // ─── LANDING PAGE ─────────────────────────────────────────────────────────
-function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
+function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, toggleDark = () => {} }) {
   const isMobile = useIsMobile();
   const [fact, setFact] = useState(null);
   const [logoClicks, setLogoClicks] = useState(0);
@@ -1218,6 +1249,7 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0 }) {
 
   return (
     <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #f8f7ff 0%, #fff 100%)', padding: isMobile ? '24px 16px 32px' : '40px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
+      <button onClick={toggleDark} title="Hell-/Dunkelmodus wechseln" aria-label="Hell-/Dunkelmodus wechseln" style={{ position: 'fixed', top: '16px', left: '16px', zIndex: 1000, background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', padding: '6px' }}>{dark ? '☀️' : '🌙'}</button>
       <div style={{ textAlign: 'center', maxWidth: '800px', width: '100%' }}>
 
         {/* Header */}
@@ -1914,7 +1946,7 @@ export default function Home() {
       onJump={(q) => { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setLernkarteTopic(null); setShowFehlerKiste(false); }}
     />
   );
-  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setLernkarteTopic(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} />;
+  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setLernkarteTopic(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} dark={dark} toggleDark={toggleDark} />;
 
   const selectedQuestion = questions.find(q => q.id === selectedId) || null;
   return (
@@ -1961,7 +1993,7 @@ export default function Home() {
           onClose={() => setLernkarteTopic(null)}
         />
       ) : (
-        <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} onRemoveFehler={removeFehler} solved={solved} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
+        <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} onRemoveFehler={removeFehler} solved={solved} fehler={fehler} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />
       )}
 
       <MiniPlayer dm={dm} />
