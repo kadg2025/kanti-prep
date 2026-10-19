@@ -14,6 +14,18 @@ export const questions2023 = [
 In den USA wird die Temperatur in Grad Fahrenheit (°F) gemessen, bei uns in Grad Celsius (°C).
 a) Berechne die gesuchten Werte in der Tabelle mit dieser Formel: °C = 5/9 * (°F - 32)
 b) Löse die Formel von a) nach der Temperatur in °F auf.`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '32°F → 0°C | 200°F → 93.3°C | 45°C → 113°F', correct: true },
+        { label: '32°F → 0°C | 200°F → 111.1°C | 45°C → 113°F', correct: false },
+        { label: '32°F → 0°C | 200°F → 93.3°C | 45°C → 81°F', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '°F = 9/5 · °C + 32', correct: true },
+        { label: '°F = 5/9 · °C + 32', correct: false },
+        { label: '°F = 9/5 · (°C + 32)', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -85,6 +97,18 @@ Original: °C = 5/9 * (°F - 32)
 Cem hat in Konstanz eine tolle Jeans für 69.99 Euro gefunden. Mit einem Ausfuhrschein kann er die 19% Mehrwertsteuer zurückfordern. In Kreuzlingen kostet die gleiche Hose 75 Franken, aber es gibt 25% Rabatt. Der Wechselkurs ist 1 Euro = 0.98 Franken.
 a) Wo soll Cem die Jeans kaufen? Begründe rechnerisch.
 b) Wie viel Prozent spart Cem beim günstigeren Angebot?`,
+    teile: [
+      { letter: 'a', options: [
+        { label: 'Kreuzlingen (56.25 CHF) ist günstiger als Konstanz (57.65 CHF)', correct: true },
+        { label: 'Konstanz (57.65 CHF) ist günstiger als Kreuzlingen (56.25 CHF)', correct: false },
+        { label: 'Konstanz, weil 58.82 CHF unter 75 CHF liegt', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '≈2.4%', correct: true },
+        { label: '≈97.6%', correct: false },
+        { label: '≈19.6%', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -150,6 +174,23 @@ Ein Würfel mit Kantenlänge 24cm wird geschnitten. Die Schnittfigur ist ein gle
 a) Berechne alle Seitenlängen des Trapezes.
 b) Berechne die Höhe h des Trapezes.
 c) Berechne die Länge einer der Diagonalen d des Trapezes.`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '8.49 cm, 25.46 cm, 2× 26.83 cm', correct: true },
+        { label: '8.49 cm, 25.46 cm, 2× 24.74 cm', correct: false },
+        { label: '6 cm, 18 cm, 2× 24 cm', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '≈25.46 cm', correct: true },
+        { label: '≈26.83 cm', correct: false },
+        { label: '≈12.73 cm', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '≈30.59 cm', correct: true },
+        { label: '≈18.97 cm', correct: false },
+        { label: '≈33.94 cm', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -305,6 +346,23 @@ a) Zeichne einen vollständigen Wahrscheinlichkeitsbaum.
 b) Mit welcher Wahrscheinlichkeit ist keine der Kugeln rot?
 c) Berechne die Wahrscheinlichkeit, dass mindestens eine der Kugeln weiss oder blau ist.
 d) Zu welchem Pfad passt die Wahrscheinlichkeit 1/28?`,
+    teile: [
+      { letter: 'b', options: [
+        { label: '5/14 (≈35.7%)', correct: true },
+        { label: '25/64 (≈39.1%)', correct: false },
+        { label: '3/28 (≈10.7%)', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '25/28 (≈89.3%)', correct: true },
+        { label: '3/28 (≈10.7%)', correct: false },
+        { label: '5/8 (≈62.5%)', correct: false },
+      ] },
+      { letter: 'd', options: [
+        { label: 'blau, blau', correct: true },
+        { label: 'rot, rot', correct: false },
+        { label: 'rot, blau', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
@@ -398,6 +456,23 @@ Simon (9 km/h) und Tanja (18 km/h) starten gleichzeitig an Ort A. 13 Minuten sp�
 a) Stelle einen Term auf für die Streckenmitte von Simon und Tanja zum Zeitpunkt t.
 b) Welche Strecke ist der Rennvelofahrer zur Zeit t gefahren (t ist die Zeit seit dem Start von Simon/Tanja)?
 c) Wann ist der Rennvelofahrer genau in der Mitte von Simon und Tanja?`,
+    teile: [
+      { letter: 'a', options: [
+        { label: '13.5t', correct: true },
+        { label: '27t', correct: false },
+        { label: '9t', correct: false },
+      ] },
+      { letter: 'b', options: [
+        { label: '33 · (t − 13/60)', correct: true },
+        { label: '33 · (t + 13/60)', correct: false },
+        { label: '33 · (t − 13)', correct: false },
+      ] },
+      { letter: 'c', options: [
+        { label: '9 Minuten nach seinem Start', correct: true },
+        { label: '22 Minuten nach seinem Start', correct: false },
+        { label: '13 Minuten nach seinem Start', correct: false },
+      ] },
+    ],
     solution: {
       intro: ``,
       steps: [
