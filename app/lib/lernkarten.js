@@ -544,4 +544,195 @@ export const lernkarten = {
       },
     ],
   },
+  'Geometrie': {
+    titel: 'Geometrie',
+    kacheln: [
+      {
+        id: 'dreieck', emoji: '📐', titel: 'Winkel im Dreieck', videos: [],
+        karten: [
+          { text: 'Ein Dreieck ist wie ein Kuchen, der in drei Stücke geschnitten ist - die drei Winkel zusammen ergeben immer 180°, egal wie das Dreieck aussieht.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Winkelsumme', regel: 'Alle drei Winkel in einem Dreieck ergeben zusammen immer 180°.' },
+              { n: 'gleichschenklig', regel: 'Zwei Seiten gleich lang → die zwei Basiswinkel sind gleich gross.' },
+              { n: 'gleichseitig', regel: 'Alle drei Seiten gleich lang → alle drei Winkel sind 60°.' },
+              { n: 'rechtwinklig', regel: 'Ein Winkel ist 90° → die anderen zwei ergeben zusammen 90°.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Kennst du zwei Winkel, ist der dritte ein Kinderspiel: 180° minus die beiden anderen.' },
+          { text: 'Ein Dreieck hat die Winkel 55° und 70°. Wie gross ist der dritte?\n180° − 55° − 70° = 55°' },
+          { text: 'Ein gleichschenkliges Dreieck hat an der Spitze 40°. Wie gross sind die beiden Basiswinkel?\n| Rest: 180° − 40° = 140°\n| Beide Basiswinkel gleich, also halbieren: 140° : 2 = 70°\n\nKontrolle: 40° + 70° + 70° = 180°.' },
+        ],
+        check: [
+          { frage: 'Ein Dreieck hat die Winkel 48° und 65°. Wie gross ist der dritte?', optionen: ['67°', '113°', '17°', '77°'], richtig: 0, erklaerung: '180° − 48° − 65° = 67°. Bei 113° wurden die zwei Winkel addiert statt von 180° abgezogen.' },
+          { frage: 'Ein gleichschenkliges Dreieck hat einen Basiswinkel von 50°. Wie gross ist die Spitze?', optionen: ['80°', '50°', '100°', '130°'], richtig: 0, erklaerung: 'Beide Basiswinkel sind 50°, zusammen 100°. Spitze: 180° − 100° = 80°. Bei 100° wurde nur ein Basiswinkel abgezogen, nicht beide.' },
+          { frage: 'Ein rechtwinkliges Dreieck hat einen Winkel von 35°. Wie gross ist der dritte?', optionen: ['55°', '65°', '35°', '145°'], richtig: 0, erklaerung: 'Ein Winkel ist 90°, der zweite 35°, zusammen 125°. Der dritte ist 180° − 125° = 55°. Bei 65° wurde nicht mit allen drei Winkeln gerechnet.' },
+        ],
+      },
+      {
+        id: 'geraden', emoji: '📏', titel: 'Winkel an Geraden', videos: [],
+        karten: [
+          { text: 'Wenn eine Linie zwei parallele Strassen kreuzt, entstehen überall gleiche oder sich ergänzende Winkel - wie ein Muster, das sich wiederholt.' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Scheitelwinkel', regel: 'Gegenüberliegende Winkel an einer Kreuzung - immer gleich gross.' },
+              { n: 'Stufenwinkel', regel: 'Gleiche Lage an den zwei Parallelen (z. B. beide oben rechts) - gleich gross.' },
+              { n: 'Wechselwinkel', regel: 'Gegenüberliegende Lage an den zwei Parallelen (einmal oben rechts, einmal unten links) - auch gleich gross.' },
+              { n: 'Nebenwinkel', regel: 'Winkel nebeneinander auf einer Linie - ergänzen sich zu 180°.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Suchst du einen unbekannten Winkel an Parallelen, zeichne dir in Gedanken ein grosses "Z" oder "F" - das hilft, Stufen- und Wechselwinkel zu erkennen.' },
+          {
+            text: 'Zwei parallele Linien, eine dritte Linie kreuzt beide. Der Winkel 65° kommt an der unteren Kreuzung an der gleichen Stelle wieder vor (Stufenwinkel) - direkt daneben entsteht der Nebenwinkel 115° (65° + 115° = 180°).',
+            visual: 'diagram',
+            diagram: {
+              viewBox: '0 0 200 160',
+              elements: [
+                { type: 'line', x1: 15, y1: 40, x2: 185, y2: 40 },
+                { type: 'line', x1: 15, y1: 120, x2: 185, y2: 120 },
+                { type: 'line', x1: 35, y1: 15, x2: 165, y2: 145, color: 'accent' },
+                { type: 'circle', cx: 66, cy: 40, r: 2.5, fill: 'accent' },
+                { type: 'circle', cx: 134, cy: 120, r: 2.5, fill: 'accent' },
+                { type: 'text', x: 82, y: 32, label: '65°', anchor: 'start', color: 'accent' },
+                { type: 'text', x: 150, y: 112, label: '65°', anchor: 'start', color: 'accent' },
+                { type: 'text', x: 150, y: 134, label: '115°', anchor: 'start', color: 'warn' },
+              ],
+            },
+          },
+          { text: 'Wechselwinkel liegen gegenüber: Ist der Winkel oben links 72°, dann ist der Winkel unten rechts an der anderen Parallele auch 72°. Der Winkel unten links ist der Nebenwinkel dazu: 180° − 72° = 108°.' },
+        ],
+        check: [
+          { frage: 'Zwei Parallelen werden von einer Linie gekreuzt. Ein Winkel ist 72°. Wie gross ist der Stufenwinkel an der anderen Parallele?', optionen: ['72°', '108°', '18°', '144°'], richtig: 0, erklaerung: 'Stufenwinkel an Parallelen sind immer gleich gross: 72°. Bei 108° wurde der Nebenwinkel berechnet (180° − 72°), nicht der Stufenwinkel.' },
+          { frage: 'Ein Winkel an einer Kreuzung ist 55°. Wie gross ist sein Scheitelwinkel (direkt gegenüber)?', optionen: ['55°', '125°', '35°', '110°'], richtig: 0, erklaerung: 'Scheitelwinkel sind immer gleich gross: 55°. Bei 125° wurde stattdessen der Nebenwinkel (180° − 55°) berechnet.' },
+          { frage: 'Ein Wechselwinkel-Paar an Parallelen: Der eine Winkel ist 38°. Wie gross ist der andere?', optionen: ['38°', '142°', '19°', '76°'], richtig: 0, erklaerung: 'Wechselwinkel an Parallelen sind gleich gross: 38°. Bei 142° wurde der Nebenwinkel gerechnet.' },
+        ],
+      },
+      {
+        id: 'kreis', emoji: '⭕', titel: 'Winkel am Kreis', videos: [],
+        karten: [
+          { text: 'Stell dir eine Pizza vor, die vom Mittelpunkt aus angeschnitten wird (Mittelpunktswinkel) - und einen Winkel, den du vom Rand aus auf dasselbe Stück siehst (Winkel am Kreisrand). Der Winkel am Rand ist immer halb so gross wie der Winkel in der Mitte.' },
+          {
+            text: 'Tippe die Begriffe an.',
+            visual: 'chips',
+            chips: [
+              { n: 'Mittelpunktswinkel', regel: 'Der Winkel im Mittelpunkt des Kreises, der auf ein Bogenstück zeigt.' },
+              { n: 'Winkel am Kreisrand', regel: 'Ein Winkel von einem Punkt auf dem Kreisrand aus, der auf dasselbe Bogenstück zeigt.' },
+              { n: 'doppelt/halb', regel: 'Mittelpunktswinkel = 2 × Winkel am Kreisrand, für denselben Bogen.' },
+              { n: 'gleiche Bögen', regel: 'Zwei Winkel am Kreisrand, die auf denselben Bogen zeigen, sind gleich gross.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Zeichne dir die zwei Radien zum Bogen ein - sie bilden mit der Sehne ein gleichschenkliges Dreieck, das hilft oft beim Weiterrechnen.' },
+          { text: 'Ein Winkel am Kreisrand beträgt 28°. Wie gross ist der Mittelpunktswinkel zum gleichen Bogen?\nMittelpunktswinkel = 2 × 28° = 56°' },
+          { text: 'Ein Winkel am Kreisrand beträgt 40°. Verbindet man den Mittelpunkt mit den beiden Randpunkten, entsteht ein gleichschenkliges Dreieck mit Spitzenwinkel 2 × 40° = 80° (der Mittelpunktswinkel).\n| Basiswinkel gleich, also: (180° − 80°) : 2 = 50° je' },
+        ],
+        check: [
+          { frage: 'Ein Winkel am Kreisrand ist 35°. Wie gross ist der Mittelpunktswinkel zum gleichen Bogen?', optionen: ['70°', '17.5°', '35°', '145°'], richtig: 0, erklaerung: 'Mittelpunktswinkel = 2 × Winkel am Kreisrand = 2 × 35° = 70°. Bei 17.5° wurde durch 2 geteilt statt verdoppelt.' },
+          { frage: 'Der Mittelpunktswinkel ist 120°. Wie gross ist der Winkel am Kreisrand zum gleichen Bogen?', optionen: ['60°', '240°', '30°', '90°'], richtig: 0, erklaerung: 'Winkel am Kreisrand = Mittelpunktswinkel : 2 = 120° : 2 = 60°. Bei 240° wurde verdoppelt statt halbiert.' },
+          { frage: 'Zwei Winkel am Kreisrand zeigen auf denselben Bogen. Der eine ist 42°. Wie gross ist der andere?', optionen: ['42°', '84°', '21°', '138°'], richtig: 0, erklaerung: 'Winkel am Kreisrand, die auf denselben Bogen zeigen, sind immer gleich gross: 42°.' },
+        ],
+      },
+      {
+        id: 'flaechen', emoji: '🧩', titel: 'Flächen & Umfang', videos: [],
+        karten: [
+          { text: 'Eine zusammengesetzte Figur ist wie ein Puzzle aus einfachen Formen. Teile sie in Rechtecke oder Dreiecke - rechne jedes Stück einzeln aus und addiere, oder zieh ein fehlendes Stück ab.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'zerlegen', regel: 'Die Figur in einfache Formen (Rechteck, Dreieck, Kreis) aufteilen.' },
+              { n: 'addieren', regel: 'Flächen, die zur Figur gehören, zusammenzählen.' },
+              { n: 'subtrahieren', regel: 'Löcher oder fehlende Teile von der Gesamtfläche abziehen.' },
+              { n: 'Umfang ≠ Fläche', regel: 'Umfang ist die Länge rundherum, Fläche ist der Inhalt - nicht verwechseln.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Zeichne die Zerlegung mit Bleistift direkt in die Figur ein, bevor du rechnest - dann siehst du sofort, was du addieren und was du subtrahieren musst.' },
+          {
+            text: 'Diese Figur ist ein Rechteck mit einer fehlenden Ecke (gestrichelt). Fläche = grosses Rechteck minus die fehlende Ecke.',
+            visual: 'diagram',
+            diagram: {
+              viewBox: '0 0 200 160',
+              elements: [
+                { type: 'rect', x: 30, y: 30, w: 120, h: 72 },
+                { type: 'rect', x: 102, y: 30, w: 48, h: 36, dashed: true, color: 'warn' },
+                { type: 'text', x: 90, y: 116, label: '10' },
+                { type: 'text', x: 16, y: 66, label: '6', anchor: 'end' },
+                { type: 'text', x: 126, y: 22, label: '4' },
+                { type: 'text', x: 158, y: 48, label: '3', anchor: 'start' },
+              ],
+            },
+          },
+          { text: 'Fläche berechnen:\n| Grosses Rechteck: 10 · 6 = 60\n| Fehlende Ecke: 4 · 3 = 12\n| Fläche der Figur: 60 − 12 = 48' },
+          { text: 'Überraschung beim Umfang: Er ist genau gleich gross wie beim vollen Rechteck: 2 · (10 + 6) = 32. Schneidest du eine rechteckige Ecke weg, verschiebst du nur Kanten - du verlierst keine Umfangslänge.' },
+        ],
+        check: [
+          { frage: 'Ein Rechteck hat die Fläche 48 cm² und eine Seite von 6 cm. Wie lang ist die andere Seite x?', optionen: ['8 cm', '42 cm', '288 cm', '12 cm'], richtig: 0, erklaerung: '48 = 6 · x, also x = 48 : 6 = 8. Bei 288 wurde multipliziert statt dividiert, bei 42 wurde die 6 abgezogen statt dividiert.' },
+          { frage: 'Eine L-förmige Figur: Rechteck 12 × 8, davon eine Ecke 5 × 3 weggeschnitten. Wie gross ist die Fläche?', optionen: ['81', '111', '96', '15'], richtig: 0, erklaerung: '96 (grosses Rechteck) − 15 (weggeschnittene Ecke) = 81. Bei 111 wurde addiert statt subtrahiert, bei 96 wurde die Ecke vergessen.' },
+          { frage: 'Dieselbe Figur (12 × 8, Ecke 5 × 3 weg). Wie gross ist der Umfang?', optionen: ['40', '36', '81', '56'], richtig: 0, erklaerung: 'Beim Wegschneiden einer rechteckigen Ecke bleibt der Umfang gleich wie beim vollen Rechteck: 2 · (12 + 8) = 40.' },
+        ],
+      },
+      {
+        id: 'spiegeln', emoji: '🔄', titel: 'Spiegeln & Konstruieren', videos: [],
+        karten: [
+          { text: 'Spiegeln ist wie ein Blick in den Spiegel: Die Form bleibt gleich, aber alles ist auf die andere Seite gedreht - jeder Punkt wandert gleich weit über die Spiegelachse.' },
+          {
+            text: 'Tippe die Regeln an.',
+            visual: 'chips',
+            chips: [
+              { n: 'an der x-Achse', regel: 'Das Vorzeichen des y-Werts dreht sich um: (x, y) → (x, −y).' },
+              { n: 'an der y-Achse', regel: 'Das Vorzeichen des x-Werts dreht sich um: (x, y) → (−x, y).' },
+              { n: 'am Ursprung', regel: 'Beide Vorzeichen drehen sich um: (x, y) → (−x, −y).' },
+              { n: 'Abstand bleibt gleich', regel: 'Der Punkt und sein Spiegelbild sind gleich weit von der Spiegelachse entfernt.' },
+            ],
+          },
+          { text: 'Profi-Tipp: Zähle die Kästchen vom Punkt zur Spiegelachse - und genauso viele Kästchen auf der anderen Seite weiter. Dann kannst du nichts falsch machen.' },
+          { text: 'Spiegle den Punkt A(3, 5) an der x-Achse.\n| Nur das Vorzeichen von y dreht sich um\n| A\' = (3, −5)' },
+          { text: 'Spiegle das Dreieck A(2, 1), B(5, 1), C(4, 3) an der y-Achse.\n| Nur das Vorzeichen von x dreht sich um\n| A\' = (−2, 1), B\' = (−5, 1), C\' = (−4, 3)' },
+          { text: 'Ein Kreis lässt sich mit Zirkel und Lineal konstruieren, wenn du Mittelpunkt und Radius kennst - oder wenn er eine Gerade und einen anderen Kreis berühren soll. Das ist eine Konstruktion mit dem Zirkel, keine Rechnung.' },
+        ],
+        check: [
+          { frage: 'Spiegle den Punkt P(4, −2) an der x-Achse.', optionen: ['(4, 2)', '(−4, −2)', '(−4, 2)', '(2, 4)'], richtig: 0, erklaerung: 'An der x-Achse dreht sich nur das Vorzeichen von y um: aus −2 wird 2. Der x-Wert bleibt gleich.' },
+          { frage: 'Spiegle den Punkt P(−3, 6) an der y-Achse.', optionen: ['(3, 6)', '(−3, −6)', '(3, −6)', '(6, −3)'], richtig: 0, erklaerung: 'An der y-Achse dreht sich nur das Vorzeichen von x um: aus −3 wird 3. Der y-Wert bleibt gleich.' },
+          { frage: 'Spiegle den Punkt P(5, −4) am Ursprung.', optionen: ['(−5, 4)', '(5, 4)', '(−5, −4)', '(4, −5)'], richtig: 0, erklaerung: 'Am Ursprung drehen sich beide Vorzeichen um: aus (5, −4) wird (−5, 4).' },
+        ],
+      },
+      {
+        id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
+        karten: [
+          { text: '❌ Bei einem gleichschenkligen Dreieck wird die Spitze einfach durch 2 geteilt. ✅ Erst 180° minus Spitzenwinkel rechnen, dann DAS Ergebnis durch 2 teilen (für die zwei Basiswinkel).' },
+          { text: '❌ Stufenwinkel und Nebenwinkel werden verwechselt. ✅ Stufenwinkel (gleiche Lage) sind gleich gross, Nebenwinkel (nebeneinander) ergänzen sich zu 180°.' },
+          { text: '❌ Beim Winkel am Kreisrand wird durch 2 geteilt statt verdoppelt (oder umgekehrt). ✅ Der Mittelpunktswinkel ist immer das Doppelte vom Winkel am Kreisrand zum gleichen Bogen.' },
+          { text: '❌ Umfang und Fläche werden verwechselt. ✅ Umfang ist die Länge rundherum (addieren), Fläche ist der Flächeninhalt (oft multiplizieren).' },
+          { text: '❌ Beim Spiegeln werden beide Vorzeichen gedreht, auch wenn nur an einer Achse gespiegelt wird. ✅ An der x-Achse dreht sich nur y, an der y-Achse nur x. Beide drehen sich nur beim Spiegeln am Ursprung.' },
+          { text: '❌ Bei einer zusammengesetzten Figur wird das fehlende Stück addiert statt abgezogen. ✅ Ein Loch oder eine fehlende Ecke wird von der Gesamtfläche subtrahiert.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
+        karten: [
+          { text: 'Ein Dreieck hat die Winkel 62° und 74°. Wie gross ist der dritte Winkel?', loesung: '180° − 62° − 74° = 44°.' },
+          { text: 'Ein gleichschenkliges Dreieck hat einen Basiswinkel von 65°. Wie gross ist die Spitze?', loesung: 'Beide Basiswinkel zusammen: 130°. Spitze: 180° − 130° = 50°.' },
+          { text: 'Ein Winkel ist 48°. Wie gross ist sein Scheitelwinkel?', loesung: 'Scheitelwinkel sind gleich gross: 48°.' },
+          { text: 'Ein Stufenwinkel-Paar an Parallelen: einer ist 83°. Wie gross ist der andere?', loesung: 'Stufenwinkel sind gleich gross: 83°.' },
+          { text: 'Ein Winkel am Kreisrand ist 22°. Wie gross ist der Mittelpunktswinkel?', loesung: '2 × 22° = 44°.' },
+          { text: 'Der Mittelpunktswinkel ist 150°. Wie gross ist der Winkel am Kreisrand zum gleichen Bogen?', loesung: '150° : 2 = 75°.' },
+          { text: 'Rechteck 9 × 5, eine Ecke 2 × 2 weggeschnitten. Wie gross ist die Fläche?', loesung: '9 · 5 = 45. Ecke: 2 · 2 = 4. Fläche: 45 − 4 = 41.' },
+          { text: 'Dieselbe Figur (9 × 5, Ecke 2 × 2 weg). Wie gross ist der Umfang?', loesung: 'Umfang bleibt wie beim vollen Rechteck: 2 · (9 + 5) = 28.' },
+          { text: 'Ein Rechteck hat die Fläche 54 cm² und eine Seite von 9 cm. Wie lang ist die andere Seite?', loesung: '54 : 9 = 6 cm.' },
+          { text: 'Spiegle P(6, −3) an der x-Achse.', loesung: 'Nur y dreht sich um: (6, 3).' },
+          { text: 'Spiegle P(−7, 2) an der y-Achse.', loesung: 'Nur x dreht sich um: (7, 2).' },
+          { text: 'Spiegle P(−4, −5) am Ursprung.', loesung: 'Beide Vorzeichen drehen sich um: (4, 5).' },
+          { text: 'Zwei parallele Linien, eine Querlinie erzeugt einen Winkel von 110°. Im gleichschenkligen Dreieck mit dem Nebenwinkel als Spitzenwinkel - wie gross sind die Basiswinkel?', loesung: 'Nebenwinkel zu 110° ist 180° − 110° = 70° (Spitzenwinkel). Basiswinkel: (180° − 70°) : 2 = 55° je.' },
+          { text: 'Ein Winkel am Kreisrand beträgt 37°. Wie gross sind die Basiswinkel des gleichschenkligen Radien-Dreiecks zu diesem Bogen?', loesung: 'Mittelpunktswinkel = 2 × 37° = 74° (die Spitze). Basiswinkel: (180° − 74°) : 2 = 53° je.' },
+          { text: 'Ein Quadrat mit Seite x hat dieselbe Fläche wie ein Rechteck 16 × 9. Wie lang ist x?', loesung: '16 · 9 = 144. x² = 144, also x = 12 (denn 12 · 12 = 144).' },
+          { text: 'Eine Figur: Rechteck 14 × 10, davon zwei gegenüberliegende Ecken je 3 × 2 weggeschnitten. Fläche und Umfang?', loesung: 'Fläche: 14 · 10 − 3 · 2 − 3 · 2 = 140 − 6 − 6 = 128. Umfang bleibt wie beim vollen Rechteck: 2 · (14 + 10) = 48.' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
