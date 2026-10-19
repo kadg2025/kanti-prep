@@ -548,22 +548,22 @@ export const lernkarten = {
     titel: 'Funktionen',
     kacheln: [
       {
-        id: 'formel', emoji: '📏', titel: 'Gerade als Formel', videos: [],
+        id: 'formel', emoji: '📏', titel: 'Gerade als Formel', videos: [{ titel: 'Gerade als Formel (Video 1)', youtubeId: 'TKK-25nz-cE' }, { titel: 'Gerade als Formel (Video 2)', youtubeId: '50E1gIunhzE' }],
         karten: [
-          { text: 'Stell dir ein Taxi vor: Du zahlst eine Grundgebühr, bevor es überhaupt losfährt, und dann noch einen festen Betrag pro Kilometer. Eine lineare Funktion rechnet genau so: y = m · x + q.' },
+          { text: 'Stell dir ein Taxi vor: Du zahlst eine Grundgebühr, bevor es überhaupt losfährt, und dann noch einen festen Betrag pro Kilometer. Eine lineare Funktion rechnet genau so: y = m · x + b.' },
           {
             text: 'Tippe die Buchstaben an.',
             visual: 'chips',
             chips: [
               { n: 'm', regel: 'Die Steigung. Sagt, wie viel y bei jedem Schritt in x dazukommt (z. B. Franken pro Kilometer).' },
-              { n: 'q', regel: 'Der Startwert (auch y-Achsenabschnitt genannt). Der y-Wert, wenn x = 0 ist.' },
+              { n: 'b', regel: 'Der Startwert (auch y-Achsenabschnitt genannt). Der y-Wert, wenn x = 0 ist.' },
               { n: 'm positiv', regel: 'Die Gerade steigt von links nach rechts.' },
               { n: 'm negativ', regel: 'Die Gerade fällt von links nach rechts.' },
             ],
           },
-          { text: 'Profi-Tipp: Schau dir die Formel wie ein Rezept an. q ist das, was du sofort hast (bei x = 0). m ist das, was pro Schritt dazukommt oder weggeht.' },
+          { text: 'Profi-Tipp: Schau dir die Formel wie ein Rezept an. b ist das, was du sofort hast (bei x = 0). m ist das, was pro Schritt dazukommt oder weggeht.' },
           {
-            text: 'Die Gerade y = 0.5x + 2: q ist der Start bei x = 0, das Dreieck zeigt die Steigung - 2 Schritte nach rechts (Δx), 1 Schritt nach oben (Δy). m = Δy/Δx = 1/2.',
+            text: 'Die Gerade y = 0.5x + 2: b ist der Start bei x = 0, das Dreieck zeigt die Steigung - 2 Schritte nach rechts (Δx), 1 Schritt nach oben (Δy). m = Δy/Δx = 1/2.',
             visual: 'diagram',
             diagram: {
               viewBox: '0 0 200 160',
@@ -574,7 +574,7 @@ export const lernkarten = {
                 { type: 'text', x: 34, y: 40, label: 'y', anchor: 'start' },
                 { type: 'line', x1: 30, y1: 110, x2: 166, y2: 50, color: 'accent', strokeWidth: 2.5 },
                 { type: 'circle', cx: 30, cy: 110, r: 3, fill: 'accent' },
-                { type: 'text', x: 18, y: 112, label: 'q', anchor: 'end', color: 'accent' },
+                { type: 'text', x: 18, y: 112, label: 'b', anchor: 'end', color: 'accent' },
                 { type: 'line', x1: 64, y1: 95, x2: 98, y2: 95, color: 'warn', dashed: true },
                 { type: 'line', x1: 98, y1: 95, x2: 98, y2: 80, color: 'warn', dashed: true },
                 { type: 'text', x: 81, y: 108, label: 'Δx', color: 'warn' },
@@ -582,41 +582,41 @@ export const lernkarten = {
               ],
             },
           },
-          { text: 'Lies m und q ab: y = 3x − 2.\n| m (die Zahl direkt vor dem x): 3\n| q (die Zahl ohne x): −2\n| Bedeutung: Start bei −2, pro Schritt in x steigt y um 3.' },
-          { text: 'Kontrolle: Setze x = 0 in die Formel ein: y = 3 · 0 − 2 = −2. Das ist genau q - stimmt.' },
+          { text: 'Lies m und b ab: y = 3x − 2.\n| m (die Zahl direkt vor dem x): 3\n| b (die Zahl ohne x): −2\n| Bedeutung: Start bei −2, pro Schritt in x steigt y um 3.' },
+          { text: 'Kontrolle: Setze x = 0 in die Formel ein: y = 3 · 0 − 2 = −2. Das ist genau b - stimmt.' },
         ],
         check: [
-          { frage: 'Welche Zahl ist bei y = 4x − 7 die Steigung m?', optionen: ['4', '−7', '−4', '7'], richtig: 0, erklaerung: 'm ist immer die Zahl direkt vor dem x. Bei −7 wurde q statt m gewählt.' },
-          { frage: 'Steigt oder fällt die Gerade y = −2x + 5?', optionen: ['Sie fällt (m ist negativ)', 'Sie steigt (m ist negativ)', 'Sie fällt (q ist positiv)', 'Sie bleibt gleich'], richtig: 0, erklaerung: 'm = −2 ist negativ, darum fällt die Gerade von links nach rechts. q sagt nichts über steigen oder fallen, nur über den Startwert.' },
-          { frage: 'Eine Gerade geht bei x = 0 durch y = 6 und fällt pro Schritt in x um 3. Wie lautet die Formel?', optionen: ['y = −3x + 6', 'y = 3x + 6', 'y = −3x − 6', 'y = 6x − 3'], richtig: 0, erklaerung: 'Fällt heisst m ist negativ: m = −3. Start bei y = 6 heisst q = 6. Zusammen: y = −3x + 6.' },
+          { frage: 'Welche Zahl ist bei y = 4x − 7 die Steigung m?', optionen: ['4', '−7', '−4', '7'], richtig: 0, erklaerung: 'm ist immer die Zahl direkt vor dem x. Bei −7 wurde b statt m gewählt.' },
+          { frage: 'Steigt oder fällt die Gerade y = −2x + 5?', optionen: ['Sie fällt (m ist negativ)', 'Sie steigt (m ist negativ)', 'Sie fällt (b ist positiv)', 'Sie bleibt gleich'], richtig: 0, erklaerung: 'm = −2 ist negativ, darum fällt die Gerade von links nach rechts. b sagt nichts über steigen oder fallen, nur über den Startwert.' },
+          { frage: 'Eine Gerade geht bei x = 0 durch y = 6 und fällt pro Schritt in x um 3. Wie lautet die Formel?', optionen: ['y = −3x + 6', 'y = 3x + 6', 'y = −3x − 6', 'y = 6x − 3'], richtig: 0, erklaerung: 'Fällt heisst m ist negativ: m = −3. Start bei y = 6 heisst b = 6. Zusammen: y = −3x + 6.' },
         ],
       },
       {
-        id: 'textformel', emoji: '💰', titel: 'Formel aus Text', videos: [],
+        id: 'textformel', emoji: '💰', titel: 'Formel aus Text', videos: [{ titel: 'Formel aus Text', youtubeId: 'Q733CvZN8w0' }],
         karten: [
-          { text: 'In Textaufgaben versteckt sich y = mx + q oft hinter Wörtern wie "Grundgebühr" und "pro". Die Grundgebühr ist q, der Preis pro Einheit ist m.' },
+          { text: 'In Textaufgaben versteckt sich y = mx + b oft hinter Wörtern wie "Grundgebühr" und "pro". Die Grundgebühr ist b, der Preis pro Einheit ist m.' },
           {
             text: 'Tippe die Wörter an.',
             visual: 'chips',
             chips: [
-              { n: 'Grundgebühr', regel: 'Das ist q, der Startwert - das zahlst du, bevor überhaupt etwas dazukommt.' },
+              { n: 'Grundgebühr', regel: 'Das ist b, der Startwert - das zahlst du, bevor überhaupt etwas dazukommt.' },
               { n: 'pro km / Stück', regel: 'Das ist m, die Steigung - für jede Einheit kommt dieser Betrag dazu.' },
               { n: 'x', regel: 'Die Anzahl Einheiten (km, Stück, Stunden, ...).' },
               { n: 'y', regel: 'Der Betrag, den du am Ende zahlst.' },
             ],
           },
-          { text: 'Profi-Tipp: Lies den Text zweimal. Beim ersten Mal suchst du die feste Grundgebühr (q), beim zweiten Mal den Preis pro Einheit (m).' },
-          { text: 'Ein Velo-Verleih kostet 5 Franken Grundgebühr, dazu 2 Franken pro Stunde.\n| Grundgebühr → q = 5\n| Preis pro Stunde → m = 2\n| Formel: y = 2x + 5\n\nKontrolle für x = 3 Stunden: y = 2 · 3 + 5 = 11 Franken.' },
-          { text: 'Nicht immer steht "Grundgebühr" wörtlich da: "Ein Praktikant verdient 50 Franken pro Tag, zusätzlich eine einmalige Startprämie von 20 Franken."\n| Einmalig, unabhängig von x → q = 20\n| Pro Tag → m = 50\n| Formel: y = 50x + 20' },
+          { text: 'Profi-Tipp: Lies den Text zweimal. Beim ersten Mal suchst du die feste Grundgebühr (b), beim zweiten Mal den Preis pro Einheit (m).' },
+          { text: 'Ein Velo-Verleih kostet 5 Franken Grundgebühr, dazu 2 Franken pro Stunde.\n| Grundgebühr → b = 5\n| Preis pro Stunde → m = 2\n| Formel: y = 2x + 5\n\nKontrolle für x = 3 Stunden: y = 2 · 3 + 5 = 11 Franken.' },
+          { text: 'Nicht immer steht "Grundgebühr" wörtlich da: "Ein Praktikant verdient 50 Franken pro Tag, zusätzlich eine einmalige Startprämie von 20 Franken."\n| Einmalig, unabhängig von x → b = 20\n| Pro Tag → m = 50\n| Formel: y = 50x + 20' },
         ],
         check: [
-          { frage: 'Ein Schwimmbad kostet 4 Franken Eintritt, dazu 1.50 Franken pro Stunde. Formel?', optionen: ['y = 1.5x + 4', 'y = 4x + 1.5', 'y = 1.5x − 4', 'y = 5.5x'], richtig: 0, erklaerung: 'Eintritt (Grundgebühr) ist q = 4, Preis pro Stunde ist m = 1.5. Bei y = 4x + 1.5 wurden m und q verwechselt, bei y = 5.5x wurden beide Zahlen einfach zusammengezählt statt als m und q eingesetzt.' },
+          { frage: 'Ein Schwimmbad kostet 4 Franken Eintritt, dazu 1.50 Franken pro Stunde. Formel?', optionen: ['y = 1.5x + 4', 'y = 4x + 1.5', 'y = 1.5x − 4', 'y = 5.5x'], richtig: 0, erklaerung: 'Eintritt (Grundgebühr) ist b = 4, Preis pro Stunde ist m = 1.5. Bei y = 4x + 1.5 wurden m und b verwechselt, bei y = 5.5x wurden beide Zahlen einfach zusammengezählt statt als m und b eingesetzt.' },
           { frage: 'Ein Handyabo kostet 15 Franken pro Monat, keine weiteren Kosten pro SMS. Formel (x = Anzahl SMS)?', optionen: ['y = 15', 'y = 15x', 'y = x + 15', 'y = 15 − x'], richtig: 0, erklaerung: 'Keine Kosten pro SMS heisst m = 0. Die Formel wird y = 0x + 15 = 15 - ein fester Betrag, egal wie viele SMS. Bei y = 15x wurde die Grundgebühr als Steigung benutzt.' },
-          { frage: 'Ein Fahrdienst verlangt 3 Franken pro km, keine Grundgebühr. Formel?', optionen: ['y = 3x', 'y = 3x + 3', 'y = x + 3', 'y = 3'], richtig: 0, erklaerung: 'Keine Grundgebühr heisst q = 0. Die Formel ist y = 3x + 0 = 3x.' },
+          { frage: 'Ein Fahrdienst verlangt 3 Franken pro km, keine Grundgebühr. Formel?', optionen: ['y = 3x', 'y = 3x + 3', 'y = x + 3', 'y = 3'], richtig: 0, erklaerung: 'Keine Grundgebühr heisst b = 0. Die Formel ist y = 3x + 0 = 3x.' },
         ],
       },
       {
-        id: 'zweipunkte', emoji: '📐', titel: 'Gerade aus zwei Punkten', videos: [],
+        id: 'zweipunkte', emoji: '📐', titel: 'Gerade aus zwei Punkten', videos: [{ titel: 'Gerade aus zwei Punkten', youtubeId: 'fGi3XPMnSVA' }],
         karten: [
           { text: 'Du kennst zwei Punkte, durch die eine Gerade geht - wie zwei Ortschaften auf einer Wanderkarte. Daraus kannst du die ganze Formel berechnen.' },
           {
@@ -624,30 +624,30 @@ export const lernkarten = {
             visual: 'chips',
             chips: [
               { n: 'Steigung m', regel: 'm = (y-Wert von B − y-Wert von A) / (x-Wert von B − x-Wert von A).' },
-              { n: 'q berechnen', regel: 'Einen der Punkte in y = mx + q einsetzen und nach q auflösen.' },
+              { n: 'b berechnen', regel: 'Einen der Punkte in y = mx + b einsetzen und nach b auflösen.' },
               { n: 'gleiche y-Werte', regel: 'Waagrechte Gerade: y = (dieser Wert), m = 0.' },
               { n: 'gleiche x-Werte', regel: 'Senkrechte Gerade: x = (dieser Wert) - das ist keine Funktion mehr.' },
             ],
           },
           { text: 'Profi-Tipp: Zeichne dir die zwei Punkte grob in ein Koordinatensystem. Dann siehst du sofort, ob die Gerade steigt, fällt oder waagrecht ist - bevor du überhaupt rechnest.' },
-          { text: 'Gerade durch A(2, 5) und B(6, 13).\n| Steigung: m = (13 − 5)/(6 − 2) = 8/4 = 2\n| q berechnen, Punkt A einsetzen: 5 = 2 · 2 + q, also q = 1\n| Formel: y = 2x + 1\n\nKontrolle mit B: y = 2 · 6 + 1 = 13. Stimmt!' },
+          { text: 'Gerade durch A(2, 5) und B(6, 13).\n| Steigung: m = (13 − 5)/(6 − 2) = 8/4 = 2\n| b berechnen, Punkt A einsetzen: 5 = 2 · 2 + b, also b = 1\n| Formel: y = 2x + 1\n\nKontrolle mit B: y = 2 · 6 + 1 = 13. Stimmt!' },
           { text: 'Sonderfälle: A(4, 3) und B(−2, 3) haben denselben y-Wert → waagrechte Gerade: y = 3 (m = 0).\nA(5, 1) und B(5, −4) haben denselben x-Wert → senkrechte Gerade: x = 5. Das ist keine Funktion, denn zu x = 5 gäbe es unendlich viele y-Werte.' },
         ],
         check: [
           { frage: 'Berechne die Steigung durch A(1, 4) und B(5, 16).', optionen: ['3', '12', '4/16', '1/3'], richtig: 0, erklaerung: 'm = (16 − 4)/(5 − 1) = 12/4 = 3. Bei 12 wurde nicht durch die x-Differenz geteilt, bei 1/3 wurde der Bruch verkehrt gebildet.' },
           { frage: 'A(2, 7) und B(8, 7) - welche Gerade ist das?', optionen: ['Eine waagrechte Gerade: y = 7', 'Eine senkrechte Gerade: x = 7', 'Eine steigende Gerade mit m = 7', 'Das geht nicht'], richtig: 0, erklaerung: 'Beide Punkte haben denselben y-Wert (7) - das ist eine waagrechte Gerade y = 7, mit Steigung m = 0.' },
-          { frage: 'Gerade durch A(0, 2) und B(4, 10). Formel?', optionen: ['y = 2x + 2', 'y = 8x + 2', 'y = 2x + 4', 'y = 4x + 2'], richtig: 0, erklaerung: 'm = (10 − 2)/(4 − 0) = 2. Weil A bei x = 0 liegt, ist q direkt der y-Wert von A: q = 2. Formel: y = 2x + 2. Bei y = 8x + 2 wurde die Steigung nicht durch die x-Differenz geteilt.' },
+          { frage: 'Gerade durch A(0, 2) und B(4, 10). Formel?', optionen: ['y = 2x + 2', 'y = 8x + 2', 'y = 2x + 4', 'y = 4x + 2'], richtig: 0, erklaerung: 'm = (10 − 2)/(4 − 0) = 2. Weil A bei x = 0 liegt, ist b direkt der y-Wert von A: b = 2. Formel: y = 2x + 2. Bei y = 8x + 2 wurde die Steigung nicht durch die x-Differenz geteilt.' },
         ],
       },
       {
-        id: 'ablesen', emoji: '📊', titel: 'Werte ablesen & Nullstelle', videos: [],
+        id: 'ablesen', emoji: '📊', titel: 'Werte ablesen & Nullstelle', videos: [{ titel: 'Werte ablesen & Nullstelle', youtubeId: 'dLfPBJgHgC4' }],
         karten: [
-          { text: 'Ein Graph ist wie eine Tabelle, die man zeichnet. Du kannst m und q direkt ablesen, oder einzelne Werte einsetzen - in beide Richtungen: x hinein, y heraus, oder umgekehrt.' },
+          { text: 'Ein Graph ist wie eine Tabelle, die man zeichnet. Du kannst m und b direkt ablesen, oder einzelne Werte einsetzen - in beide Richtungen: x hinein, y heraus, oder umgekehrt.' },
           {
             text: 'Tippe die Begriffe an.',
             visual: 'chips',
             chips: [
-              { n: 'q ablesen', regel: 'Da, wo die Gerade die y-Achse (x = 0) schneidet.' },
+              { n: 'b ablesen', regel: 'Da, wo die Gerade die y-Achse (x = 0) schneidet.' },
               { n: 'm ablesen', regel: 'Ein Schritt nach rechts (Δx), wie viel geht es hoch oder runter (Δy)? m = Δy/Δx.' },
               { n: 'x einsetzen', regel: 'Gegebenen x-Wert in die Formel einsetzen, y ausrechnen.' },
               { n: 'Nullstelle', regel: 'Der x-Wert, bei dem y = 0 ist - z. B. wann ein Tank leer oder eine Schuld abbezahlt ist.' },
@@ -655,7 +655,7 @@ export const lernkarten = {
           },
           { text: 'Profi-Tipp: Bei "wie lange bis..." oder "wann ist...leer/aufgebraucht/abbezahlt" geht es fast immer um die Nullstelle: Setze y = 0 und löse nach x auf.' },
           {
-            text: 'Ein Wasserspeicher mit 16 Litern wird mit 2 Litern pro Minute leer gepumpt: y = −2x + 16. q = 16 ist der Start, bei y = 0 ist der Speicher leer.',
+            text: 'Ein Wasserspeicher mit 16 Litern wird mit 2 Litern pro Minute leer gepumpt: y = −2x + 16. b = 16 ist der Start, bei y = 0 ist der Speicher leer.',
             visual: 'diagram',
             diagram: {
               viewBox: '0 0 200 160',
@@ -666,7 +666,7 @@ export const lernkarten = {
                 { type: 'text', x: 34, y: 23, label: 'y', anchor: 'start' },
                 { type: 'line', x1: 30, y1: 28, x2: 166, y2: 140, color: 'accent', strokeWidth: 2.5 },
                 { type: 'circle', cx: 30, cy: 28, r: 3, fill: 'accent' },
-                { type: 'text', x: 36, y: 24, label: 'q = 16 Liter', anchor: 'start', size: 11 },
+                { type: 'text', x: 36, y: 24, label: 'b = 16 Liter', anchor: 'start', size: 11 },
                 { type: 'circle', cx: 166, cy: 140, r: 3, fill: 'warn' },
                 { type: 'text', x: 122, y: 152, label: 'Nullstelle: x = 8 Minuten', anchor: 'middle', size: 11, color: 'warn' },
               ],
@@ -682,14 +682,14 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'vergleichen', emoji: '⚖️', titel: 'Zwei Geraden vergleichen', videos: [],
+        id: 'vergleichen', emoji: '⚖️', titel: 'Zwei Geraden vergleichen', videos: [{ titel: 'Zwei Geraden vergleichen', youtubeId: 'kPofqbNlkM4' }],
         karten: [
           { text: 'Zwei Angebote vergleichen heisst: Beide Formeln gleichsetzen und schauen, wo sie sich schneiden - der Punkt, ab dem sich etwas ändert.' },
           {
             text: 'Tippe die Schritte an.',
             visual: 'chips',
             chips: [
-              { n: 'gleichsetzen', regel: 'Beide Formeln gleich setzen: m₁x + q₁ = m₂x + q₂, nach x auflösen.' },
+              { n: 'gleichsetzen', regel: 'Beide Formeln gleich setzen: m₁x + b₁ = m₂x + b₂, nach x auflösen.' },
               { n: 'Schnittpunkt', regel: 'Der x-Wert, bei dem beide Angebote gleich viel kosten.' },
               { n: 'danach', regel: 'Nach dem Schnittpunkt gewinnt die Gerade mit der kleineren Steigung - sie wächst langsamer.' },
               { n: 'Probe', regel: 'Einen x-Wert vor und einen nach dem Schnittpunkt einsetzen, um zu prüfen, wer wirklich günstiger ist.' },
@@ -719,16 +719,16 @@ export const lernkarten = {
         check: [
           { frage: 'Angebot A: y = 2x + 8. Angebot B: y = 4x + 2. Bei welchem x sind beide gleich teuer?', optionen: ['3', '6', '2', '5'], richtig: 0, erklaerung: '2x + 8 = 4x + 2 → 6 = 2x → x = 3. Bei 6 wurde die Division durch 2 am Schluss vergessen.' },
           { frage: 'Bei x = 3 sind A (y = 2x + 8) und B (y = 4x + 2) gleich teuer. Für x = 10, welches Angebot ist günstiger?', optionen: ['A, weil B schneller wächst (grössere Steigung)', 'B, weil B eine kleinere Grundgebühr hat', 'A, weil A eine kleinere Grundgebühr hat', 'Beide gleich'], richtig: 0, erklaerung: 'Für grosse x gewinnt die Gerade mit der kleineren Steigung. A hat m = 2, B hat m = 4 - A wächst langsamer. Probe: A(10) = 28, B(10) = 42.' },
-          { frage: 'Zwei Kerzen: A y = −x + 15, B y = −3x + 15. Wann sind sie gleich lang (ausser am Anfang)?', optionen: ['Nie wieder - zwei verschiedene Geraden schneiden sich nur einmal', 'Bei x = 5', 'Bei x = 15', 'Immer, weil beide bei 15 starten'], richtig: 0, erklaerung: 'Beide Geraden haben q = 15 und schneiden sich dort einmal, bei x = 0. Zwei nicht-parallele Geraden schneiden sich immer nur an genau einem Punkt - danach laufen sie auseinander.' },
+          { frage: 'Zwei Kerzen: A y = −x + 15, B y = −3x + 15. Wann sind sie gleich lang (ausser am Anfang)?', optionen: ['Nie wieder - zwei verschiedene Geraden schneiden sich nur einmal', 'Bei x = 5', 'Bei x = 15', 'Immer, weil beide bei 15 starten'], richtig: 0, erklaerung: 'Beide Geraden haben b = 15 und schneiden sich dort einmal, bei x = 0. Zwei nicht-parallele Geraden schneiden sich immer nur an genau einem Punkt - danach laufen sie auseinander.' },
         ],
       },
       {
         id: 'fehler', emoji: '⚠️', titel: 'Typische Fehler', videos: [],
         karten: [
-          { text: '❌ Bei y = 3x + 7 denkt man, q = 3 und m = 7. ✅ m steht immer direkt vor dem x, q ist die Zahl ohne x: hier ist m = 3 und q = 7.' },
+          { text: '❌ Bei y = 3x + 7 denkt man, b = 3 und m = 7. ✅ m steht immer direkt vor dem x, b ist die Zahl ohne x: hier ist m = 3 und b = 7.' },
           { text: '❌ Bei der Steigung werden die x- und y-Werte vertauscht. ✅ m = (y₂ − y₁)/(x₂ − x₁), nie umgekehrt.' },
           { text: '❌ Bei gleichen y-Werten denkt man an eine senkrechte Gerade. ✅ Gleiche y-Werte → waagrechte Gerade (y = ...). Gleiche x-Werte → senkrechte Gerade (x = ...).' },
-          { text: '❌ Die Grundgebühr wird als Steigung m statt als Startwert q eingesetzt. ✅ Die Grundgebühr ist das, was du bei 0 Einheiten schon zahlst - das ist q.' },
+          { text: '❌ Die Grundgebühr wird als Steigung m statt als Startwert b eingesetzt. ✅ Die Grundgebühr ist das, was du bei 0 Einheiten schon zahlst - das ist b.' },
           { text: '❌ Beim Vergleichen zweier Geraden wird nur der Schnittpunkt berechnet, aber nicht geprüft, wer vorher und wer nachher günstiger ist. ✅ Nach dem Gleichsetzen immer einen x-Wert vor und einen nach dem Schnittpunkt einsetzen.' },
           { text: '❌ Bei der Nullstelle wird x = 0 statt y = 0 gesetzt. ✅ Nullstelle heisst y = 0 (wo die Gerade die x-Achse kreuzt), nicht x = 0.' },
         ],
@@ -737,21 +737,21 @@ export const lernkarten = {
       {
         id: 'ueben', emoji: '🎯', titel: 'Dojo', videos: [], minLoesungen: 8,
         karten: [
-          { text: 'Lies m und q ab: y = 6x − 4.', loesung: 'm = 6 (Steigung), q = −4 (Startwert).' },
+          { text: 'Lies m und b ab: y = 6x − 4.', loesung: 'm = 6 (Steigung), b = −4 (Startwert).' },
           { text: 'Steigt oder fällt die Gerade y = −5x + 1?', loesung: 'Sie fällt, denn m = −5 ist negativ.' },
-          { text: 'Ein Parkhaus kostet 2 Franken Grundgebühr, dazu 1.50 Franken pro Stunde. Formel?', loesung: 'y = 1.5x + 2 (m = 1.5 Franken pro Stunde, q = 2 Franken Grundgebühr).' },
+          { text: 'Ein Parkhaus kostet 2 Franken Grundgebühr, dazu 1.50 Franken pro Stunde. Formel?', loesung: 'y = 1.5x + 2 (m = 1.5 Franken pro Stunde, b = 2 Franken Grundgebühr).' },
           { text: 'Ein Abo kostet 25 Franken Startgebühr, danach nichts mehr pro Monat. Formel (x = Monate)?', loesung: 'y = 0x + 25 = 25 (konstant, m = 0).' },
           { text: 'Steigung durch A(3, 2) und B(7, 18)?', loesung: 'm = (18 − 2)/(7 − 3) = 16/4 = 4.' },
-          { text: 'Formel durch A(0, −3) und B(5, 7)?', loesung: 'm = (7 − (−3))/(5 − 0) = 10/5 = 2. Weil A bei x = 0 liegt: q = −3. Formel: y = 2x − 3.' },
+          { text: 'Formel durch A(0, −3) und B(5, 7)?', loesung: 'm = (7 − (−3))/(5 − 0) = 10/5 = 2. Weil A bei x = 0 liegt: b = −3. Formel: y = 2x − 3.' },
           { text: 'A(−2, 6) und B(4, 6) - welche Gerade?', loesung: 'Gleiche y-Werte → waagrechte Gerade: y = 6.' },
           { text: 'Formel y = 7x − 21. Nullstelle?', loesung: '0 = 7x − 21, also 7x = 21, x = 3.' },
           { text: 'Formel y = −4x + 32 (Liter Wasser nach x Minuten). Nach wie vielen Minuten ist der Speicher leer?', loesung: '0 = −4x + 32, also 4x = 32, x = 8. Nach 8 Minuten.' },
           { text: 'Formel y = 2.5x + 6. Für welches x ist y = 26?', loesung: '26 = 2.5x + 6, also 2.5x = 20, x = 8.' },
           { text: 'A: y = 4x + 5. B: y = 6x + 1. Ab welchem x sind sie gleich?', loesung: '4x + 5 = 6x + 1 → 4 = 2x → x = 2.' },
           { text: 'Bei A: y = 4x + 5, B: y = 6x + 1 (Schnittpunkt bei x = 2). Wer ist günstiger für x = 10?', loesung: 'A(10) = 4 · 10 + 5 = 45. B(10) = 6 · 10 + 1 = 61. A ist günstiger, weil B eine grössere Steigung hat und schneller wächst.' },
-          { text: 'Eine Pflanze ist nach 2 Wochen 14 cm hoch, nach 5 Wochen 26 cm. Wie hoch war sie bei der Pflanzung (Woche 0), wenn sie linear wächst?', loesung: 'm = (26 − 14)/(5 − 2) = 12/3 = 4 cm pro Woche. Mit (2, 14): 14 = 4 · 2 + q, also q = 6. Bei der Pflanzung war sie 6 cm hoch.' },
+          { text: 'Eine Pflanze ist nach 2 Wochen 14 cm hoch, nach 5 Wochen 26 cm. Wie hoch war sie bei der Pflanzung (Woche 0), wenn sie linear wächst?', loesung: 'm = (26 − 14)/(5 − 2) = 12/3 = 4 cm pro Woche. Mit (2, 14): 14 = 4 · 2 + b, also b = 6. Bei der Pflanzung war sie 6 cm hoch.' },
           { text: 'Kerze A: y = −3x + 30. Kerze B: y = −2x + 40. Ab wann ist B doppelt so lang wie A?', loesung: 'Gleichung: −2x + 40 = 2 · (−3x + 30). Ausmultiplizieren: −2x + 40 = −6x + 60. +6x: 4x + 40 = 60. −40: 4x = 20. :4: x = 5. Kontrolle: A(5) = 15, B(5) = 30 = 2 · 15.' },
-          { text: 'Gerade durch A(−4, 9) und B(2, −3). Formel?', loesung: 'm = (−3 − 9)/(2 − (−4)) = −12/6 = −2. Mit B(2, −3): −3 = −2 · 2 + q, also q = 1. Formel: y = −2x + 1.' },
+          { text: 'Gerade durch A(−4, 9) und B(2, −3). Formel?', loesung: 'm = (−3 − 9)/(2 − (−4)) = −12/6 = −2. Mit B(2, −3): −3 = −2 · 2 + b, also b = 1. Formel: y = −2x + 1.' },
           { text: 'A: y = 3x + 2. B: y = 7x − 6. Schnittpunkt?', loesung: '3x + 2 = 7x − 6 → 8 = 4x → x = 2.' },
         ],
         check: [],
@@ -762,7 +762,7 @@ export const lernkarten = {
     titel: 'Geometrie',
     kacheln: [
       {
-        id: 'dreieck', emoji: '📐', titel: 'Winkel im Dreieck', videos: [],
+        id: 'dreieck', emoji: '📐', titel: 'Winkel im Dreieck', videos: [{ titel: 'Winkel im Dreieck (Video 1)', youtubeId: 'TaOvMNWvZbA' }, { titel: 'Winkel im Dreieck (Video 2)', youtubeId: 'DRHsQoL6GAM' }],
         karten: [
           { text: 'Ein Dreieck ist wie ein Kuchen, der in drei Stücke geschnitten ist - die drei Winkel zusammen ergeben immer 180°, egal wie das Dreieck aussieht.' },
           {
@@ -786,7 +786,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'geraden', emoji: '📏', titel: 'Winkel an Geraden', videos: [],
+        id: 'geraden', emoji: '📏', titel: 'Winkel an Geraden', videos: [{ titel: 'Winkel an Geraden', youtubeId: 'D_9JeyujdaE' }],
         karten: [
           { text: 'Wenn eine Linie zwei parallele Strassen kreuzt, entstehen überall gleiche oder sich ergänzende Winkel - wie ein Muster, das sich wiederholt.' },
           {
@@ -826,7 +826,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'kreis', emoji: '⭕', titel: 'Winkel am Kreis', videos: [],
+        id: 'kreis', emoji: '⭕', titel: 'Winkel am Kreis', videos: [{ titel: 'Winkel am Kreis', youtubeId: 'XpGbVXxOhEA' }],
         karten: [
           { text: 'Stell dir eine Pizza vor, die vom Mittelpunkt aus angeschnitten wird (Mittelpunktswinkel) - und einen Winkel, den du vom Rand aus auf dasselbe Stück siehst (Winkel am Kreisrand). Der Winkel am Rand ist immer halb so gross wie der Winkel in der Mitte.' },
           {
@@ -850,7 +850,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'flaechen', emoji: '🧩', titel: 'Flächen & Umfang', videos: [],
+        id: 'flaechen', emoji: '🧩', titel: 'Flächen & Umfang', videos: [{ titel: 'Flächen & Umfang (Video 1)', youtubeId: 's-QFShTrlOE' }, { titel: 'Flächen & Umfang (Video 2)', youtubeId: 'C4m9MwZbZuM' }],
         karten: [
           { text: 'Eine zusammengesetzte Figur ist wie ein Puzzle aus einfachen Formen. Teile sie in Rechtecke oder Dreiecke - rechne jedes Stück einzeln aus und addiere, oder zieh ein fehlendes Stück ab.' },
           {
@@ -889,7 +889,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'spiegeln', emoji: '🔄', titel: 'Spiegeln & Konstruieren', videos: [],
+        id: 'spiegeln', emoji: '🔄', titel: 'Spiegeln & Konstruieren', videos: [{ titel: 'Achsenspiegelung im Koordinatensystem', youtubeId: '_LV31JK6280' }, { titel: 'Punktspiegelung', youtubeId: 'S0x6ZZhX1lo' }],
         karten: [
           { text: 'Spiegeln ist wie ein Blick in den Spiegel: Die Form bleibt gleich, aber alles ist auf die andere Seite gedreht - jeder Punkt wandert gleich weit über die Spiegelachse.' },
           {
@@ -977,7 +977,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'baum', emoji: '🌳', titel: 'Baumdiagramm & Pfadregel', videos: [],
+        id: 'baum', emoji: '🌳', titel: 'Baumdiagramm & Pfadregel', videos: [{ titel: 'Baumdiagramm', youtubeId: 'mBknBnww5fA' }, { titel: 'Zweistufiger Zufallsversuch', youtubeId: '-z3BBJjJPOE' }],
         karten: [
           { text: 'Ein Wahrscheinlichkeitsbaum zeigt alle möglichen Wege wie ein Wegweiser mit Verzweigungen. An jedem Ast steht eine Wahrscheinlichkeit.' },
           {
@@ -1048,7 +1048,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'kombinatorik', emoji: '🔢', titel: 'Kombinatorik', videos: [],
+        id: 'kombinatorik', emoji: '🔢', titel: 'Kombinatorik', videos: [{ titel: 'Anzahl der Möglichkeiten berechnen', youtubeId: 'GpioDtIFtN4' }, { titel: 'Produktregel', youtubeId: 'fLPxMfgUxVk' }],
         karten: [
           { text: 'Manchmal willst du nicht die Wahrscheinlichkeit wissen, sondern nur: Wie viele verschiedene Möglichkeiten gibt es überhaupt?' },
           {
@@ -1111,7 +1111,7 @@ export const lernkarten = {
     titel: 'Proportionalität',
     kacheln: [
       {
-        id: 'direkt', emoji: '➡️', titel: 'Direkt proportional', videos: [],
+        id: 'direkt', emoji: '➡️', titel: 'Direkt proportional', videos: [{ titel: 'Dreisatz - Einführung', youtubeId: 'ELKsWSoQUjo' }],
         karten: [
           { text: 'Direkt proportional heisst: Doppelt so viel von der einen Sache → doppelt so viel von der anderen. Kaufst du doppelt so viele Äpfel, zahlst du doppelt so viel.' },
           {
@@ -1270,7 +1270,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'balkendiagramm', emoji: '📊', titel: 'Richtiges Diagramm erkennen', videos: [],
+        id: 'balkendiagramm', emoji: '📊', titel: 'Richtiges Diagramm erkennen', videos: [{ titel: 'Säulendiagramm erstellen', youtubeId: 'yW2xP3_EGi4' }, { titel: 'Balkendiagramm erstellen', youtubeId: 'OKEL1dcCRVI' }],
         karten: [
           { text: 'Ein Balkendiagramm muss ehrlich sein: Die Höhe der Balken muss genau den Werten entsprechen, und die Skala muss alle Werte zeigen können.' },
           {
@@ -1315,7 +1315,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'kreisdiagramm', emoji: '🥧', titel: 'Kreisdiagramm berechnen', videos: [],
+        id: 'kreisdiagramm', emoji: '🥧', titel: 'Kreisdiagramm berechnen', videos: [{ titel: 'Kreisdiagramm erstellen', youtubeId: 'ecdLniw5DM8' }],
         karten: [
           { text: 'Ein Kreisdiagramm teilt den vollen Kreis (360°) auf alle Antworten auf - wie ein Kuchen, der nach der Anzahl Stimmen angeschnitten wird.' },
           {
@@ -1416,7 +1416,7 @@ export const lernkarten = {
     titel: 'Prozent & Zins',
     kacheln: [
       {
-        id: 'grundidee', emoji: '📊', titel: 'Grundidee Prozent', videos: [],
+        id: 'grundidee', emoji: '📊', titel: 'Grundidee Prozent', videos: [{ titel: 'Prozentrechnung - Formeldreieck', youtubeId: 'amSw62SFKDI' }],
         karten: [
           { text: 'Prozent heisst "von Hundert". 1% ist der hundertste Teil eines Ganzen - wie 1 Rappen von 1 Franken (100 Rappen).' },
           {
@@ -1440,7 +1440,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'ganzesteil', emoji: '🥧', titel: 'Vom Ganzen zum Teil und zurück', videos: [],
+        id: 'ganzesteil', emoji: '🥧', titel: 'Vom Ganzen zum Teil und zurück', videos: [{ titel: 'Prozentwert berechnen', youtubeId: 'cMvTcS3vCOA' }, { titel: 'Grundwert berechnen', youtubeId: 'T3pw6lgtI7Y' }],
         karten: [
           { text: 'Manchmal wird ein Ganzes (eine Fläche, eine Menge) in mehrere Prozent-Teile aufgeteilt. Am Schluss müssen alle Teile zusammen wieder 100% ergeben.' },
           {
@@ -1463,7 +1463,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'textaufgaben', emoji: '💰', titel: 'Textaufgaben mit Prozent', videos: [],
+        id: 'textaufgaben', emoji: '💰', titel: 'Textaufgaben mit Prozent', videos: [{ titel: 'Prozentwert berechnen - Textaufgaben', youtubeId: 'WZuEUyGgkBc' }],
         karten: [
           { text: 'Bei Mengenrabatt und Preisänderungen steckt oft ein Zwischenschritt: erst den Preis PRO STÜCK ausrechnen, dann vergleichen.' },
           {
@@ -1526,7 +1526,7 @@ export const lernkarten = {
     titel: 'Körper & Netze',
     kacheln: [
       {
-        id: 'wuerfelnetz', emoji: '📦', titel: 'Würfel und sein Netz', videos: [],
+        id: 'wuerfelnetz', emoji: '📦', titel: 'Würfel und sein Netz', videos: [{ titel: 'Würfel - Körpernetz erstellen', youtubeId: '_8qTI8Mi9_8' }],
         karten: [
           { text: 'Ein Würfelnetz ist ein Würfel, den du auseinandergefaltet und flachgelegt hast - 6 Quadrate, die zusammen alle 6 Seiten ergeben. Nicht jede Anordnung von 6 Quadraten lässt sich zu einem Würfel falten!' },
           {
@@ -1588,7 +1588,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'pyramide', emoji: '🔺', titel: 'Pyramide', videos: [],
+        id: 'pyramide', emoji: '🔺', titel: 'Pyramide', videos: [{ titel: 'Pyramide - richtig beschriften', youtubeId: '9mmgxbaVCOA' }],
         karten: [
           { text: 'Eine Pyramide mit quadratischer Grundfläche hat 1 Quadrat als Boden und 4 gleiche Dreiecke als Seitenflächen, die sich oben in der Spitze treffen.' },
           {
