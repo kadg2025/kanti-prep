@@ -977,7 +977,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'baum', emoji: '🌳', titel: 'Baumdiagramm & Pfadregel', videos: [{ titel: 'Baumdiagramm', youtubeId: 'mBknBnww5fA' }, { titel: 'Zweistufiger Zufallsversuch', youtubeId: '-z3BBJjJPOE' }],
+        id: 'baum', emoji: '🌳', titel: 'Baumdiagramm & Pfadregel', videos: [{ titel: 'Baumdiagramm', youtubeId: 'mBknBnww5fA' }, { titel: 'Zweistufiger Zufallsversuch', youtubeId: '-z3BBJjJPOE' }, { titel: 'Baumdiagramm (Realschule Abschlussprüfung)', youtubeId: 'sJfrgdfYlPM' }],
         karten: [
           { text: 'Ein Wahrscheinlichkeitsbaum zeigt alle möglichen Wege wie ein Wegweiser mit Verzweigungen. An jedem Ast steht eine Wahrscheinlichkeit.' },
           {
@@ -1001,7 +1001,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'zuruecklegen', emoji: '🔁', titel: 'Mit oder ohne Zurücklegen', videos: [],
+        id: 'zuruecklegen', emoji: '🔁', titel: 'Mit oder ohne Zurücklegen', videos: [{ titel: 'Ziehen ohne Zurücklegen', youtubeId: 'TsiAKQtwY8Y' }],
         karten: [
           { text: 'Zurücklegen heisst: Die gezogene Kugel kommt zurück in die Urne, bevor du nochmal ziehst - die Chancen bleiben gleich. Ohne Zurücklegen wird die Urne jedes Mal kleiner, und die Chancen ändern sich.' },
           {
@@ -1024,7 +1024,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'gluecksrad', emoji: '🎡', titel: 'Glücksrad & Flächen', videos: [],
+        id: 'gluecksrad', emoji: '🎡', titel: 'Glücksrad & Flächen', videos: [{ titel: 'Glücksrad - Baumdiagramm', youtubeId: 'IkAZPaNlemI' }, { titel: 'Glücksrad - Wahrscheinlichkeitsverteilung', youtubeId: 'q6Rk3xD0xNQ' }],
         karten: [
           { text: 'Ein Glücksrad mit ungleich grossen Feldern ist wie eine Pizza mit unterschiedlich grossen Stücken: Je grösser das Stück (der Winkel), desto grösser die Chance, dass der Zeiger dort stehen bleibt.' },
           {
@@ -1246,7 +1246,7 @@ export const lernkarten = {
     titel: 'Statistik & Diagramme',
     kacheln: [
       {
-        id: 'haeufigkeiten', emoji: '📋', titel: 'Häufigkeiten', videos: [],
+        id: 'haeufigkeiten', emoji: '📋', titel: 'Häufigkeiten', videos: [{ titel: 'Absolute & relative Häufigkeit', youtubeId: 'PBRoDcPymec' }],
         karten: [
           { text: 'Wenn du eine Umfrage auswertest, zählst du zuerst, wie oft jede Antwort vorkommt (absolute Häufigkeit) - und rechnest dann aus, welchen Anteil das von allen Antworten ist (relative Häufigkeit).' },
           {
