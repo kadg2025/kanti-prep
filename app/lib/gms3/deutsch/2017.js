@@ -73,7 +73,7 @@ Welche Kombination stimmt?`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -135,7 +135,7 @@ Welche Reihenfolge stimmt?`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -197,7 +197,7 @@ Welche stimmen, welche nicht?`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -274,7 +274,7 @@ würden → Hilfsverb ✅ + Konjunktiv II ✅ (bildet Konjunktiv II von «zuflie
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -336,7 +336,7 @@ Welche Kombination ist korrekt?`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -388,7 +388,7 @@ Zeitform:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -435,7 +435,7 @@ Was ist «mich» für ein Satzglied?`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -495,7 +495,7 @@ Teilsatz 2: «hat verlassen müssen»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -566,7 +566,7 @@ Alternativen (alle akzeptiert):
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -634,7 +634,7 @@ wieder → Partikel (Temporaladverb, unveränderlich) ✅`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -713,7 +713,7 @@ Sonstige:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -774,7 +774,7 @@ Verbale Teile:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -836,7 +836,7 @@ Aussagesatz: Viele Jahre schon war jede Verbindung …
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -911,7 +911,7 @@ der (2. «der in diesem Viertel die Runde») → Relativpronomen ✅ (Wiederholu
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -969,7 +969,7 @@ Analyse:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1026,7 +1026,7 @@ Schreibe alle Präpositionalgefüge heraus.`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1087,7 +1087,7 @@ Ordne die Objekte ein:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1148,7 +1148,7 @@ Schreibe alle Nebensätze heraus.`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1200,7 +1200,7 @@ HS 3: «jetzt erst begriff ich» ✅
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1248,7 +1248,7 @@ Unterordnende (subordinierende) Konjunktionen: leiten Nebensätze ein, das Verb 
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1282,15 +1282,15 @@ d) Ersetze «auch» [Z. 53] durch ein gleichbedeutendes Wort.`,
 
     options: [
       {
-        label: 'a: Ausreisser | b: Wache, Posten, Bezirk, Bereich | c: Fliehen, Entrinnen | d: ausserdem / zudem / ja',
+        label: 'a: Ausreisser | b: Wache, Posten | c: Fliehen, Entrinnen | d: ausserdem / zudem / ja',
         correct: true,
       },
       {
-        label: 'a: Brandstifter | b: Wache, Zone | c: Rennen, Fliehen | d: auch noch',
+        label: 'a: Ausreisser | b: Wache, Posten, Bezirk, Bereich | c: Fliehen, Entrinnen | d: ausserdem / zudem / ja',
         correct: false,
       },
       {
-        label: 'a: Ausreisser | b: Jagdgebiet, Zone | c: Fliehen, Abtreten | d: ausserdem',
+        label: 'a: Brandstifter | b: Jagdgebiet, Zone | c: Rennen, Abtreten | d: auch noch',
         correct: false,
       },
     ],
@@ -1305,9 +1305,9 @@ d) Ersetze «auch» [Z. 53] durch ein gleichbedeutendes Wort.`,
 → ❌ Brandstifter (= legt Feuer) / Feuerwehrmann / Panzerknacker (= Einbrecher)
 
 b) «Revier» im Kontext «Weg zum Revier nicht weit» (nach einer Verhaftung):
-→ ✅ Wache (= Polizeiwache) ✅ Posten ✅ Bezirk ✅ Bereich
-→ ❌ Jagdgebiet (= falsche Bedeutungsebene, auch wenn «Revier» das bedeuten kann)
-→ ❌ Zone (zu unspezifisch)
+→ ✅ Wache (= Polizeiwache) ✅ Posten (= Polizeiposten)
+→ ❌ Jagdgebiet (andere Bedeutungsebene, auch wenn «Revier» das bedeuten kann)
+→ ❌ Zone, Bezirk, Bereich (bezeichnen ein Gebiet, nicht das Gebäude, zu dem man gebracht wird)
 
 c) «Entweichen»: entkommen, fliehen:
 → ✅ Fliehen (= entkommen durch Wegrennen)
@@ -1320,7 +1320,7 @@ d) «auch» in «ich war auch schmutzig» = zusätzlich/ebenfalls:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106604/AP17_D_GMS3_L%C3%B6sung.pdf?fp=1',
         },
       ],
