@@ -154,7 +154,7 @@ Welche Kombination ist korrekt?`,
 
     options: [
       {
-        label: 'A: abgesetzt, übergeben | B: Öffentlichkeit',
+        label: 'A: abgesetzt, übergeben | B: Zuschauer, Zuhörer, Öffentlichkeit',
         correct: true,
       },
       {
@@ -180,10 +180,11 @@ Welche Kombination ist korrekt?`,
 → ❌ ausgesetzt = hat negative/gefährliche Konnotation
 → ❌ abgemahnt = rechtlicher Begriff, passt nicht
 
-«Publikum» im Kontext = zufällige Menge von Leuten, die zuhören/zusehen könnten:
+«Publikum» im Kontext = die Leute ringsum, die zusehen und zuhören:
+→ ✅ Zuschauer (= Leute, die zusehen)
+→ ✅ Zuhörer (= Leute, die zuhören)
 → ✅ Öffentlichkeit (= Leute um einen herum, die es mitbekommen)
-→ ❌ Zuschauer / Zuhörer = zu spezifisch (Theaterkontext)
-→ ❌ Fans = passt überhaupt nicht`,
+→ ❌ Fans = passt nicht: Fans bewundern jemanden, diese Reisenden sind einfach anwesend`,
         },
         {
           title: '📄 Offizielle Schullösung',

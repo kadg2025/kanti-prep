@@ -861,13 +861,13 @@ Aussagesatz: Viele Jahre schon war jede Verbindung …
 «Als ich an der Hafenmauer stand, um den Möwen zuzusehen, fiel mein trauriges Gesicht einem Polizisten auf, der in diesem Viertel die Runde zu gehen hatte.» [Z. 1]
 
 Ordne alle Pronomen ein:
-ich / diesem / der / den / einem / die / mein / der (zweites)
+ich / der (in «an der Hafenmauer») / den / mein / einem / der (in «der in diesem Viertel …») / diesem / die
 
 Kategorien: Personalpronomen | Demonstrativpronomen | Artikel | Possessivpronomen | Relativpronomen`,
 
     options: [
       {
-        label: 'Personal: ich | Demonstrativ: diesem | Artikel: den, einem, die | Possessiv: mein | Relativ: der (beide)',
+        label: 'Personal: ich | Demonstrativ: diesem | Artikel: der, den, einem, die | Possessiv: mein | Relativ: der (nur das im Relativsatz)',
         correct: true,
       },
       {
@@ -875,7 +875,7 @@ Kategorien: Personalpronomen | Demonstrativpronomen | Artikel | Possessivpronome
         correct: false,
       },
       {
-        label: 'Personal: ich | Demonstrativ: diesem | Artikel: den, einem, die, der | Possessiv: mein | Relativ: –',
+        label: 'Personal: ich | Demonstrativ: diesem | Artikel: den, einem, die | Possessiv: mein | Relativ: der (beide)',
         correct: false,
       },
     ],
@@ -897,7 +897,7 @@ Relativpronomen: der, die, das, welcher → leiten Relativsatz ein.`,
 
 diesem → Demonstrativpronomen ✅ («in diesem Viertel» → zeigt auf das Viertel, steht aber vor Nomen → Grenzfall; offizielle Lösung: Demonstrativpronomen)
 
-der (1. «der in diesem Viertel…») → Relativpronomen ✅ (leitet Relativsatz ein, bezieht sich auf «Polizisten»)
+der (1. «an der Hafenmauer») → Artikel ✅ (bestimmter Artikel Dativ Singular, steht vor dem Nomen «Hafenmauer»)
 
 den → Artikel ✅ (vor «Möwen» = bestimmter Artikel Dativ Plural)
 
@@ -907,7 +907,7 @@ die → Artikel ✅ (vor «Runde» = bestimmter Artikel Akkusativ Singular)
 
 mein → Possessivpronomen ✅ (vor «Gesicht» = Zugehörigkeit)
 
-der (2. «der in diesem Viertel die Runde») → Relativpronomen ✅ (Wiederholung: ebenfalls Relativpronomen)`,
+der (2. «der in diesem Viertel die Runde zu gehen hatte») → Relativpronomen ✅ (leitet den Relativsatz ein, bezieht sich auf «Polizisten»)`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -916,7 +916,7 @@ der (2. «der in diesem Viertel die Runde») → Relativpronomen ✅ (Wiederholu
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Artikel: steht VOR Nomen ohne eigene Bedeutung → den, einem, die
+1️⃣  Artikel: steht VOR einem Nomen → der (Hafenmauer), den, einem, die
 2️⃣  Relativpronomen: leitet Relativsatz ein → «der in diesem Viertel…»
 3️⃣  Possessivpronomen: zeigt Besitz → mein
 4️⃣  Demonstrativpronomen: «dieser/diese/dieses» zeigt auf etwas → diesem`,
