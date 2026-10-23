@@ -71,7 +71,7 @@ Welche Kombination stimmt?`,
 
 7. ✅ stimmt – «keinen falschen Respekt vor den falschen Künsten» (Z. 32) → der Vater sieht Fotografieren als keine echte/grosse Kunst.
 
-8. ✅ stimmt – «man blamiere sich ja» → Schulversäumnisse waren dem Vater egal: Er meldete den Erzähler krank, damit er arbeiten konnte (Z. 42–44) → Schule hatte für ihn keinen allzu grossen Wert.
+8. ✅ stimmt – «unser Vater mich nicht wieder krank melden konnte, weil er es bereits an so vielen Wochenenden davor getan hatte» (Z. 40) → der Vater meldete den Erzähler an Wochenenden immer wieder krank, damit er arbeiten konnte → Schule hatte für ihn keinen allzu grossen Wert.
 
 9. ✅ stimmt – «Damit hätte ich mich auch bei einem Begräbnis nicht schlecht gemacht» (Z. 40) → seine Ausstattung war auch für Begräbnisse passend.
 
@@ -1211,7 +1211,7 @@ Stell dir vor, du bist Miles. Erzähle, wie es aus deiner Sicht dazu gekommen is
         {
           title: '📖 Textanalyse: Was sagt die Vorlage über Miles?',
           content: `Aus dem Text geht hervor:
-→ Miles ist introvertiert, nicht beliebt («trauriger Haufen von Theatergruppenleuten»)
+→ Miles ist introvertiert, nicht beliebt («den traurigen Haufen von Theatergruppenleuten»)
 → Er hat seine Isolation nie wirklich versteckt
 → Er erwartet von Anfang an, dass kaum jemand kommt → «Von gedämpften Erwartungen … wäre heillos übertrieben»
 → Er ist nicht enttäuscht — er hatte es gewusst
@@ -1391,11 +1391,11 @@ Schreibe einen Tagebucheintrag aus der Sicht von Miles' Mutter nach dem Fest.`,
           title: '📖 Charakterisierung der Mutter aus dem Text',
           content: `Was wissen wir über Miles' Mutter?
 → Sie liebt Miles und will das Beste für ihn
-→ Sie klammert sich an eine Illusion: «sie klammerte sich an die Wunschvorstellung, ich hätte meine wahre Beliebtheit all die Jahre vor ihr geheim gehalten»
+→ Sie klammert sich an eine Illusion: «so sehr klammerte sie sich an die Wunschvorstellung, ich hätte meine wahre Beliebtheit all die Jahre vor ihr geheim gehalten»
 → Sie organisiert die Party enthusiastisch (Artischocken-Dip, Girlanden, Tischbomben)
 → Sie schafft es, die peinliche Lage durch Small Talk zu retten
 → Sie ist enttäuscht, zeigt es aber kaum direkt
-→ Sie stellt Miles die schwierige Frage: «Ist das der Grund, warum du uns verlassen willst?»`,
+→ Sie stellt Miles die schwierige Frage: «Ist das der Grund, warum du uns verlassen willst, Miles?»`,
         },
         {
           title: '✍️ Aufbau des Tagebucheintrags',
@@ -1415,7 +1415,7 @@ INHALT (3 Teile):
 → Scham? Schmerz? Verständnis?
 → Sorge um Miles: Hat sie ihn falsch eingeschätzt? War sie blind?
 → Selbstvorwürfe oder Rechtfertigungen
-→ Die Frage, die sie Miles stellte: «Ist das der Grund, warum du uns verlassen willst?»
+→ Die Frage, die sie Miles stellte: «Ist das der Grund, warum du uns verlassen willst, Miles?»
 
 3. AUSBLICK:
 → Miles reist morgen ab

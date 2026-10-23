@@ -486,7 +486,7 @@ Bestimme die Fälle der unterstrichenen Wörter:
 («für das Ergebnis» → für + Akkusativ)
 
 «Hypnose» → «einer unguten Hypnose» → Genitiv ✅
-(«einer» = Genitiv Fem. Sg.; «das Ergebnis EINER Hypnose» = Genitivattribut)`,
+(«einer» = Genitiv Fem. Sg.; «das Ergebnis EINER unguten Hypnose» = Genitivattribut)`,
         },
         {
           title: '📄 Offizielle Schullösung',

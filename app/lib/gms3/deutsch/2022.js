@@ -260,8 +260,8 @@ D) Sofern`,
         {
           title: '📖 «falls» als Konjunktion',
           content: `«falls» = konditionale (bedingende) Konjunktion: wenn die Bedingung eintritt, dann …
-→ ✅ «Wenn» = ebenfalls konditional: «Wenn das Boot aufs Wasser hineintrieb …» ✅
-→ ✅ «Sofern» = konditional: «Sofern das Boot aufs Wasser hineintrieb …» ✅
+→ ✅ «Wenn» = ebenfalls konditional: «Wenn das Boot wieder aufs Wasser hinaustrieb …» ✅
+→ ✅ «Sofern» = konditional: «Sofern das Boot wieder aufs Wasser hinaustrieb …» ✅
 → ❌ «Weil» = kausal: Ursache-Wirkung (hier keine Ursache, sondern Bedingung)
 → ❌ «Obwohl» = konzessiv: trotz einer Bedingung (Gegensatz)
 

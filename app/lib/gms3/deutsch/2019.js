@@ -82,7 +82,7 @@ Welche Kombination stimmt?`,
 1️⃣  Textstelle suchen – nie nach Gefühl urteilen
 2️⃣  Vergleiche («wie Pudelhunde») ≠ echte Aussage über Pudelhunde
 3️⃣  «Fotografie» vs. «Gemälde/Malerei» → kleiner Unterschied, grosser Fehler
-4️⃣  Konjunktiv-Tricks («sollte bewirken, dass ich mich wälzte») = spätere Handlung, stimmt`,
+4️⃣  Konjunktiv-Tricks («Er sollte wohl bewirken, dass ich mich auf den Rücken wälzte») = spätere Handlung, stimmt`,
     },
   },
 
