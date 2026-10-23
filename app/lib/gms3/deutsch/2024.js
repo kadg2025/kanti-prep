@@ -79,7 +79,7 @@ Welche Kombination stimmt?`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -141,7 +141,7 @@ Finde für das unterstrichene Wort «ausstaffiert» einen Begriff mit entspreche
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -202,7 +202,7 @@ Finde für die unterstrichene Wendung «zustande bringen» ein Wort oder eine We
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -267,7 +267,7 @@ Ruf → Rufe ✅ (einfaches -e, kein Umlaut)
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -331,7 +331,7 @@ D) wenngleich`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -396,7 +396,7 @@ geführt → Verb ✅ (Partizip II von «führen»; im 5-WA-System zählt es als
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -467,7 +467,7 @@ Satz B: «Und dann begann es auch schon mit den Hochzeiten.»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -537,7 +537,7 @@ b) Konjunktionen in «Und weil er … anbieten»:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -608,7 +608,7 @@ Bestimme die unterstrichenen Satzglieder:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -674,7 +674,7 @@ Nebensatz: «um nach dem Rechten zu sehen»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -730,7 +730,7 @@ Schreibe alle Verben aus dem obigen Satz der Reihe nach in der Infinitivform auf
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -788,7 +788,7 @@ D) 4`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -866,7 +866,7 @@ getan → Vollverb ✅ + Partizip II ✅
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -940,7 +940,7 @@ Aktiv | Passiv | Indikativ | Konjunktiv | Präteritum | Plusquamperfekt
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1006,7 +1006,7 @@ Schreibe aus dem obigen Satz alle Präpositionalgefüge untereinander der Reihe 
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1076,7 +1076,7 @@ Bestimme die Fälle der unterstrichenen Wörter:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1159,7 +1159,7 @@ D = Subjekt – Prädikat – Akkusativobjekt
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179311/AP24_GMS3_D_Sprachpr%C3%BCfung_L%C3%B6sung.pdf?fp=1',
         },
       ],

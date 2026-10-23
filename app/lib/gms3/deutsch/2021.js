@@ -75,7 +75,7 @@ Welche Kombination stimmt?`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -136,7 +136,7 @@ Finde für «ungeschickt» ein Wort mit entsprechender Bedeutung, das im obigen 
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -197,7 +197,7 @@ Antonym: ✅ raschen / entschiedenen / sicheren / zielgerichteten / gelenkigen /
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -261,7 +261,7 @@ D) Kurzzeitig`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -329,7 +329,7 @@ Präpositionen (stehen vor Nomengruppen, regieren Fall):
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -400,7 +400,7 @@ Bestimme die unterstrichenen Pronomen näher:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -475,7 +475,7 @@ Satz C: «Ihr Kopf fühlte sich zart an.»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -546,7 +546,7 @@ sich → Pronomen / nähere Bestimmung: Reflexivpronomen ✅
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -610,7 +610,7 @@ Schreibe aus dem obigen Satz die Objekte untereinander der Reihe nach heraus und
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -663,7 +663,7 @@ Schreibe der Reihe nach alle Subjekte heraus.`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -729,7 +729,7 @@ Schreibe aus dem obigen Satz die Satzglieder untereinander der Reihe nach heraus
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -783,7 +783,7 @@ Satzrahmen: «sagte sie leise» wird zum Begleitsatz (Verbum dicendi)`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -847,7 +847,7 @@ Teilsatz 2: «ihre Schultern bebten»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -902,7 +902,7 @@ Relativsatz: «das er und seine Mutter … bewohnten»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -952,7 +952,7 @@ Schreibe alle Verben aus dem obigen Satz der Reihe nach untereinander in der Inf
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1031,7 +1031,7 @@ wurden → Hilfsverb ✅ | Personalform ✅
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1097,7 +1097,7 @@ Vollständig ausgeschrieben:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1165,7 +1165,7 @@ Komma 7: vor «denn» → nebenordnende Konjunktion zwischen zwei Hauptsätzen �
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132704/AP21_GMS3_D_L%C3%B6sung.pdf?fp=1',
         },
       ],

@@ -75,7 +75,7 @@ Welche Kombination stimmt?`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -143,7 +143,7 @@ Finde für «weitschweifigen» einen Begriff mit entsprechender Bedeutung, der i
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -206,7 +206,7 @@ Antonym: ✅ schlenderte, schlich, spazierte (= langsam/gemächlich bewegen)
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -269,7 +269,7 @@ D) Sofern`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -340,7 +340,7 @@ parallel → Adjektiv / nähere Bestimmung: — ✅
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -418,7 +418,7 @@ Satz C: «Er sagte ihren Namen.»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -488,7 +488,7 @@ Bestimme die folgenden Satzglieder:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -538,7 +538,7 @@ Satz 2: «Er schob den Hebel … und versuchte es erneut.»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -605,7 +605,7 @@ Konjunktionen zum Unterstreichen: und | oder | während
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -678,7 +678,7 @@ verschwunden → Vollverb ✅ | Partizip II ✅
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -743,7 +743,7 @@ Beide Verben mit «wird» im Futur I:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -799,7 +799,7 @@ Schreibe alle Verben aus dem obigen Satz der Reihe nach untereinander in der Inf
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -868,7 +868,7 @@ Zeitform:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -927,7 +927,7 @@ D) 4`,
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -993,7 +993,7 @@ Schreibe aus dem obigen Satz alle Präpositionalgefüge untereinander der Reihe 
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1057,7 +1057,7 @@ Bestimme die folgenden Pronomen näher:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1124,7 +1124,7 @@ c) «nah»:
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
@@ -1193,7 +1193,7 @@ Komma 5 + 6: «während Amber[,] die er kaum sehen konnte[,]»
         },
         {
           title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung der Kanti Frauenfeld zu öffnen.`,
+          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
           solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
         },
       ],
