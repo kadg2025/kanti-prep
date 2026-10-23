@@ -53,25 +53,25 @@ Welche Kombination stimmt?`,
         },
         {
           title: 'Auflösung der 10 Aussagen',
-          content: `1. ❌ stimmt nicht – Der See liegt mitten in Reihenhaussiedlungen: «der von grossen Reihenhaussiedlungen umgeben war» (Z. 1) → keine einsame Gegend.
+          content: `1. ❌ stimmt nicht – «… mitten auf einem ansonsten leeren künstlichen See, der von grossen Reihenhaussiedlungen umgeben war» (Z. 1–2) → keine einsame Gegend.
 
-2. ✅ stimmt – «Kein Wind» / die Wasseroberfläche ist glatt (Z. 13: «glatte Oberfläche») → praktisch windstill.
+2. ✅ stimmt – «Einige Vögel strichen über die glatte Oberfläche des Sees» (Z. 13) und «sah er Rauch über sich schweben» (Z. 5) → praktisch windstill.
 
-3. ❌ stimmt nicht – Er hört ihre Feuerzeug-Geräusche und sieht den Rauch (Z. 4–5) → er kann sie wahrnehmen, es ist nicht komplett dunkel.
+3. ❌ stimmt nicht – Von Dunkelheit ist im Text nichts zu lesen: Er sieht das blaue Licht am Ufer (Z. 3–4), später den Mondschein auf dem Motor (Z. 26). Amber ist verschwunden, als er sich umdreht (Z. 7–8) – nicht bloss nicht erkennbar.
 
-4. ❌ stimmt nicht – Er hatte sich VORHER vorgenommen zu reden, aber spontan eine Rede gehalten: «Er hatte sich nicht vorgenommen» → er hatte es nicht geplant, er tat es aus dem Gefühl heraus.
+4. ❌ stimmt nicht – «Er war begierig darauf, seine Gleichgültigkeit zu demonstrieren, sobald er sie wohlbehalten an Land wusste» (Z. 24–25) → er will Gleichgültigkeit zeigen, nicht sie zur Rede stellen.
 
-5. ✅ stimmt – «Als er sich umdrehte … war Amber verschwunden» (Z. 8) → er hat während der Rede weggeschaut (in die Ferne).
+5. ✅ stimmt – «Als er sich umdrehte, um festzustellen, welche Wirkung seine Rede gehabt hatte …» (Z. 7) → er muss sich erst umdrehen, hat sie also während der Rede nicht angeschaut.
 
-6. ✅ stimmt – Aus Adams Rede und Verhalten geht eine schwierige Beziehung hervor; er redet über Probleme, Fehler, Erwartungen.
+6. ✅ stimmt – «Er hatte gesagt, sie würden zusammenbleiben, wenn er erst einmal zum Studium aus Topeka wegging, aber nun wusste er, dass das nicht passieren würde» (Z. 23–24).
 
-7. ✅ stimmt – «Er war froh über seinen Zorn» oder ähnliche Textstelle: der Zorn gibt ihm Energie/Klarheit.
+7. ✅ stimmt – «Er spürte eine Welle von Zorn in sich aufsteigen und hiess sie willkommen, wollte, dass sie seine Panik überwältigte» (Z. 20–22) → er begrüsst den Zorn.
 
-8. ❌ stimmt nicht – Er wollte reden und sich klären, nicht die Beziehung beenden. Er springt ins Wasser, um ihr nachzugehen.
+8. ❌ stimmt nicht – «Er hatte gesagt, sie würden zusammenbleiben …» (Z. 23) → auf dem Boot wollte er die Beziehung gerade nicht beenden.
 
-9. ✅ stimmt – «er nicht einmal mit Schaltgetriebe fahren konnte» (Z. 28) → er kann Auto fahren, aber nicht mit Schaltgetriebe. Er kann also grundsätzlich Auto fahren (Automatik).
+9. ✅ stimmt – «… während er nicht einmal mit Schaltgetriebe fahren konnte» (Z. 30) → er kann Auto fahren, nur nicht mit Schaltgetriebe.
 
-10. ✅ stimmt – «Das laute Krachen brachte die Ochsenfrösche in der Nähe zum Schweigen» (Z. 37) → Frösche hört man, bevor er anlegt.`,
+10. ✅ stimmt – «Das laute Krachen … brachte die Ochsenfrösche in der Nähe zum Schweigen» (Z. 37–38) → vorher waren die Frösche zu hören.`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -568,15 +568,15 @@ Schreibe alle Partikeln der Reihe nach heraus und unterstreiche die Konjunktione
 
     options: [
       {
-        label: 'Partikeln: sogar, für, und, oder, während, nicht, einmal, mit | Konjunktionen (unterstreichen): und, oder, während',
+        label: 'Partikeln: sogar, für, und, (selbst), oder, während, nicht, einmal, mit | Konjunktionen (unterstreichen): und, oder, während',
         correct: true,
       },
       {
-        label: 'Partikeln: sogar, für, und, oder, während, nicht, mit | Konjunktionen: und, oder, während',
+        label: 'Partikeln: sogar, für, und, oder, während, nicht, mit | Konjunktionen (unterstreichen): und, oder, während',
         correct: false,
       },
       {
-        label: 'Partikeln: sogar, für, und, selbst, oder, während, nicht, einmal, mit | Konjunktionen: und, oder, während',
+        label: 'Partikeln: sogar, für, und, (selbst), oder, während, nicht, einmal, mit | Konjunktionen (unterstreichen): sogar, und, oder',
         correct: false,
       },
     ],
@@ -591,7 +591,7 @@ Schreibe alle Partikeln der Reihe nach heraus und unterstreiche die Konjunktione
 sogar → Partikel (Fokuspartikel/Adverb) ✅
 für → Partikel (Präposition) ✅
 und → Partikel (Konjunktion, nebenordnend) ✅ → unterstreichen!
-(selbst) → in manchen Lösungen akzeptiert als Partikel/Adverb
+(selbst) → Partikel (Adverb) ✅ – in der Lösung in Klammern, wird also auch akzeptiert
 oder → Partikel (Konjunktion, nebenordnend) ✅ → unterstreichen!
 während → Partikel (Konjunktion, unterordnend) ✅ → unterstreichen!
 nicht → Partikel (Negationsadverb) ✅
@@ -600,7 +600,7 @@ mit → Partikel (Präposition) ✅
 
 Konjunktionen zum Unterstreichen: und | oder | während
 
-⚠️ «selbst» ist in manchen Varianten als Partikel akzeptiert, aber nicht obligatorisch.
+⚠️ «(selbst)» steht in der Lösung in Klammern: Es darf in der Liste stehen, muss aber nicht.
 ⚠️ Pro falsche oder fehlende Nennung: je ½ Punkt Abzug.`,
         },
         {
@@ -1005,7 +1005,7 @@ Schreibe aus dem obigen Satz alle Präpositionalgefüge untereinander der Reihe 
     },
   },
 
-  // ── AUFGABE 16 ─────────────────────────────────────────────
+  // ── AUFGABE 16 ─────────────────────────────
 
   {
     id: 'D3_2022_GRAMMATIK_PRONOMEN_1',
@@ -1016,27 +1016,28 @@ Schreibe aus dem obigen Satz alle Präpositionalgefüge untereinander der Reihe 
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=8',
     topic: 'Wortarten',
 
-    questionText: `Aufgabe 16 (4 Punkte): Pronomen näher bestimmen.
+    questionText: `Aufgabe 16 (5 Punkte): Pronomen näher bestimmen.
 
-«Adam sass vorn im Boot und betrachtete ein unstetes blaues Licht am Ufer, wahrscheinlich ein Fernseher, gesehen durch ein Fenster oder eine Glastür.» [Z. 3]
+«Einige Vögel strichen über die glatte Oberfläche des Sees; nein, es waren Fledermäuse. Wann war sie aus dem Boot gesprungen oder gestiegen? Und wieso hatte es nicht geplatscht, und was, wenn sie ertrunken war?» [Z. 13]
 
-Bestimme die folgenden Pronomen näher:
-– «ein» (in «ein unstetes blaues Licht»)
-– «ein» (in «ein Fernseher»)
-– «ein» (in «ein Fenster»)
-– «eine» (in «eine Glastür»)`,
+Bestimme die unterstrichenen Pronomen näher:
+– «Einige» in «Einige Vögel strichen»
+– «des» in «über die glatte Oberfläche des Sees»
+– «sie» in «Wann war sie aus dem Boot gesprungen»
+– «es» in «wieso hatte es nicht geplatscht»
+– «was» in «und was, wenn sie ertrunken war?»`,
 
     options: [
       {
-        label: 'Alle vier: Unbestimmter Artikel',
+        label: 'Einige: Indefinitpronomen | des: Bestimmter Artikel | sie: Personalpronomen | es: Personalpronomen | was: Interrogativpronomen',
         correct: true,
       },
       {
-        label: 'Alle vier: Indefinitpronomen',
+        label: 'Einige: Indefinitpronomen | des: Possessivpronomen | sie: Personalpronomen | es: Personalpronomen | was: Relativpronomen',
         correct: false,
       },
       {
-        label: 'ein (Licht): Unbestimmter Artikel | ein (Fernseher): Indefinitpronomen | ein (Fenster): Unbestimmter Artikel | eine (Glastür): Unbestimmter Artikel',
+        label: 'Einige: Unbestimmter Artikel | des: Bestimmter Artikel | sie: Possessivpronomen | es: Personalpronomen | was: Interrogativpronomen',
         correct: false,
       },
     ],
@@ -1045,15 +1046,32 @@ Bestimme die folgenden Pronomen näher:
       intro: ``,
       steps: [
         {
-          title: '📖 Pronomen näher bestimmen',
-          content: `«ein unstetes blaues Licht» → «ein» steht direkt vor dem Nomen «Licht» → Unbestimmter Artikel ✅
-«ein Fernseher» → «ein» steht direkt vor «Fernseher» → Unbestimmter Artikel ✅
-«ein Fenster» → «ein» steht direkt vor «Fenster» → Unbestimmter Artikel ✅
-«eine Glastür» → «eine» steht direkt vor «Glastür» → Unbestimmter Artikel ✅
+          title: '📖 Die fünf Pronomen der Reihe nach',
+          content: `«Einige» (Vögel) → Indefinitpronomen ✅
+→ Es bezeichnet eine unbestimmte Menge. Niemand weiss, wie viele Vögel es sind.
 
-⚠️ Unbestimmter Artikel ≠ Indefinitpronomen:
-→ Unbestimmter Artikel: steht DIREKT VOR einem Nomen (ein/eine/einen …)
-→ Indefinitpronomen: steht ALLEIN, ohne nachfolgendes Nomen (z.B. «Einer kam», «nichts passierte»)`,
+«des» (Sees) → Bestimmter Artikel ✅
+→ «des» steht direkt vor dem Nomen «Sees» und bestimmt es (Genitiv Singular von «der»).
+
+«sie» (war sie gesprungen) → Personalpronomen ✅
+→ Es steht für eine Person, hier für Amber.
+
+«es» (hatte es geplatscht) → Personalpronomen ✅
+→ Auch das unpersönliche «es» ist ein Personalpronomen.
+
+«was» (und was, wenn …) → Interrogativpronomen ✅
+→ Es stellt eine Frage: «Was, wenn sie ertrunken war?»`,
+        },
+        {
+          title: '⚠️ Die häufigsten Verwechslungen',
+          content: `«des» ist KEIN Possessivpronomen.
+→ Possessivpronomen sind mein, dein, sein, ihr, unser, euer. «des Sees» ist ein Genitiv mit bestimmtem Artikel.
+
+«was» ist hier KEIN Relativpronomen.
+→ Als Relativpronomen würde «was» sich auf etwas Vorangehendes beziehen («alles, was er sah»). Hier eröffnet es eine Frage.
+
+«Einige» ist KEIN unbestimmter Artikel.
+→ Unbestimmte Artikel sind nur ein/eine/einen usw. «Einige» nennt eine unbestimmte Menge → Indefinitpronomen.`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -1062,43 +1080,58 @@ Bestimme die folgenden Pronomen näher:
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  «ein/eine» VOR Nomen = Unbestimmter Artikel ✅
-2️⃣  «ein» OHNE Nomen danach = Indefinitpronomen (z.B. «Einer von ihnen»)
-3️⃣  Alle vier Fälle hier: jeweils direkt vor Nomen → alle Unbestimmter Artikel
-4️⃣  Abzug pro Fehler: 1 Punkt!`,
+1️⃣  Steht das Pronomen direkt vor einem Nomen und bestimmt es? → der/die/das/des = Bestimmter Artikel
+2️⃣  Steht es für eine Person oder Sache? → ich, du, er, sie, es = Personalpronomen
+3️⃣  Nennt es eine unbestimmte Menge? → einige, viele, alle, nichts = Indefinitpronomen
+4️⃣  Fragt es? → wer, was, welcher, wessen = Interrogativpronomen
+5️⃣  1 Punkt pro richtige Nennung, also 5 Punkte insgesamt`,
     },
   },
 
-  // ── AUFGABE 17 ─────────────────────────────────────────────
+  // ── AUFGABE 17 ─────────────────────────────
 
   {
-    id: 'D3_2022_GRAMMATIK_KOMPARATIV_1',
+    id: 'D3_2022_GRAMMATIK_SATZGLIEDSCHEMEN_1',
     year: 2022,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Wortarten',
+    topic: 'Satzglieder',
 
-    questionText: `Aufgabe 17 (3 Punkte): Adjektive im Komparativ und Superlativ.
+    questionText: `Aufgabe 17 (5 Punkte): Satzgliedschemen zuordnen.
 
-Schreibe von den folgenden Adjektiven den Komparativ und Superlativ auf:
+Ordne die Satzgliedschemen (A, B, C oder D) den Sätzen im Kästchen zu.
 
-a) laut
-b) glatt
-c) nah`,
+A = Präpositionalgefüge – Prädikat – Subjekt
+{Präpositionalgruppe – Prädikat – Nominalgruppe im Nominativ}
+
+B = Subjekt – Prädikat – Akkusativobjekt
+{Nominalgruppe im Nominativ – Prädikat – Nominalgruppe im Akkusativ}
+
+C = Subjekt – Prädikat – Präpositionalgefüge
+{Nominalgruppe im Nominativ – Prädikat – Präpositionalgruppe}
+
+D = Subjekt – Prädikat – Akkusativobjekt – Präpositionalgefüge
+{Nominalgruppe im Nominativ – Prädikat – Nominalgruppe im Akkusativ – Präpositionalgruppe}
+
+1. Er sagte ihren Namen.
+2. Einige Vögel strichen über die glatte Oberfläche des Sees.
+3. In der Ferne reagierte ein Hund.
+4. Er spürte eine Welle von Zorn in sich aufsteigen.
+5. Er hörte das kratzende Geräusch ihres Feuerzeugs.`,
 
     options: [
       {
-        label: 'a: lauter / am lautesten | b: glatter / am glattesten | c: näher / am nächsten',
+        label: '1: B | 2: C | 3: A | 4: D | 5: B',
         correct: true,
       },
       {
-        label: 'a: lauter / am lautsten | b: glatter / am glattsten | c: näher / am nähsten',
+        label: '1: B | 2: C | 3: C | 4: D | 5: B',
         correct: false,
       },
       {
-        label: 'a: lauter / am lautesten | b: glätter / am glättesten | c: näher / am nächsten',
+        label: '1: B | 2: A | 3: A | 4: D | 5: D',
         correct: false,
       },
     ],
@@ -1107,20 +1140,22 @@ c) nah`,
       intro: ``,
       steps: [
         {
-          title: '📖 Komparativ und Superlativ',
-          content: `a) «laut»:
-→ Komparativ: lauter (laut + er) ✅
-→ Superlativ: am lautesten (laut + esten, mit e-Einschub vor st nach -t) ✅
+          title: '📖 Satz für Satz zerlegen',
+          content: `1. «Er sagte ihren Namen.» → B ✅
+→ Er (Subjekt) | sagte (Prädikat) | ihren Namen (Akkusativobjekt)
 
-b) «glatt»:
-→ Komparativ: glatter (glatt + er) ✅
-→ Superlativ: am glattesten (glatt + esten, mit e-Einschub) ✅
-→ ❌ «glätter» = falsch (kein Umlaut bei «glatt» im Komparativ)
+2. «Einige Vögel strichen über die glatte Oberfläche des Sees.» → C ✅
+→ Einige Vögel (Subjekt) | strichen (Prädikat) | über die glatte Oberfläche des Sees (Präpositionalgefüge)
 
-c) «nah»:
-→ Komparativ: näher (nah + er + Umlaut: a→ä) ✅
-→ Superlativ: am nächsten (unregelmässig! nah → nächst-) ✅
-→ ❌ «am nähsten» = falsch (Superlativ von «nah» ist «nächst», nicht «nähst»)`,
+3. «In der Ferne reagierte ein Hund.» → A ✅
+→ In der Ferne (Präpositionalgefüge) | reagierte (Prädikat) | ein Hund (Subjekt)
+→ Achtung: Hier steht das Präpositionalgefüge VOR dem Prädikat und das Subjekt dahinter.
+
+4. «Er spürte eine Welle von Zorn in sich aufsteigen.» → D ✅
+→ Er (Subjekt) | spürte … aufsteigen (Prädikat) | eine Welle von Zorn (Akkusativobjekt) | in sich (Präpositionalgefüge)
+
+5. «Er hörte das kratzende Geräusch ihres Feuerzeugs.» → B ✅
+→ Er (Subjekt) | hörte (Prädikat) | das kratzende Geräusch ihres Feuerzeugs (Akkusativobjekt)`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -1129,80 +1164,11 @@ c) «nah»:
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  Komparativ: Grundform + -er (+ evtl. Umlaut): lauter, glatter, näher
-2️⃣  Superlativ: am + Grundform + -sten (+ evtl. e-Einschub bei -t, -d, -s, -sch): am lautesten, am glattesten
-3️⃣  UNREGELMÄSSIG: nah → näher → am nächsten (Superlativ «nächst»!)
-4️⃣  «glatt» hat KEINEN Umlaut im Komparativ (nicht «glätter»)`,
-    },
-  },
-
-  // ── AUFGABE 18 ─────────────────────────────────────────────
-
-  {
-    id: 'D3_2022_GRAMMATIK_KOMMA_1',
-    year: 2022,
-    subject: 'Deutsch',
-    exam: 'Deutsch GMS 3',
-    group: 'Alte Prüfungen',
-    pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Zeichensetzung',
-
-    questionText: `Aufgabe 18 (3 Punkte): Kommas setzen.
-
-Setze in der untenstehenden Textvariante alle nötigen Kommas:
-
-«Adam sass im Boot und betrachtete ein unstetes blaues Licht am Ufer wahrscheinlich ein Fernseher gesehen durch ein Fenster das nach Norden zeigte während Amber die er kaum sehen konnte an der Pfeife sog.»`,
-
-    options: [
-      {
-        label: 'Adam sass im Boot und betrachtete ein unstetes blaues Licht am Ufer, wahrscheinlich ein Fernseher, gesehen durch ein Fenster, das nach Norden zeigte, während Amber, die er kaum sehen konnte, an der Pfeife sog.',
-        correct: true,
-      },
-      {
-        label: 'Adam sass im Boot und betrachtete ein unstetes blaues Licht am Ufer wahrscheinlich ein Fernseher gesehen durch ein Fenster das nach Norden zeigte während Amber die er kaum sehen konnte an der Pfeife sog.',
-        correct: false,
-      },
-      {
-        label: 'Adam sass im Boot, und betrachtete ein unstetes blaues Licht am Ufer, wahrscheinlich ein Fernseher, gesehen durch ein Fenster, das nach Norden zeigte, während Amber die er kaum sehen konnte an der Pfeife sog.',
-        correct: false,
-      },
-    ],
-
-    solution: {
-      intro: ``,
-      steps: [
-        {
-          title: '📖 Kommaregeln anwenden',
-          content: `Komma 1: «am Ufer[,] wahrscheinlich ein Fernseher»
-→ Apposition/Einschub («wahrscheinlich ein Fernseher» erklärt «Licht») → Komma ✅
-
-Komma 2: «ein Fernseher[,] gesehen durch ein Fenster»
-→ nachgestelltes Partizipialgefüge («gesehen durch …») → Komma ✅
-
-Komma 3: «ein Fenster[,] das nach Norden zeigte»
-→ Relativsatz → Komma vor «das» ✅
-
-Komma 4: «zeigte[,] während Amber …»
-→ vor unterordnender Konjunktion «während» → Komma ✅
-
-Komma 5 + 6: «während Amber[,] die er kaum sehen konnte[,]»
-→ eingeschobener Relativsatz → je ein Komma davor und danach ✅
-
-⚠️ Kein Komma nach «und» (verbindet Prädikate, kein vollständiger zweiter Hauptsatz)
-⚠️ Jedes falsche und jedes fehlende Komma = 0,5 Punkte Abzug!`,
-        },
-        {
-          title: '📄 Offizielle Schullösung',
-          content: `Klicke auf den Button um die offizielle Schullösung zu öffnen.`,
-          solutionUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147233/AP22_GMS3_Deutsch_L%C3%B6sung.pdf?fp=1',
-        },
-      ],
-      tip: `🍳 Kochrezept:
-1️⃣  Apposition/Erläuterung: «wahrscheinlich ein Fernseher» → Komma ✅
-2️⃣  Nachgestelltes Partizipialgefüge: «gesehen durch …» → Komma ✅
-3️⃣  Relativsatz: «das nach Norden zeigte» → Komma vor «das» ✅
-4️⃣  Vor «während» (unterordnend) → Komma ✅
-5️⃣  Eingeschobener Relativsatz: Komma VOR und NACH dem Satz ✅`,
+1️⃣  Zuerst das Prädikat suchen: Welches Verb trägt den Satz? Mehrteilige Prädikate zählen als eines.
+2️⃣  Dann mit «Wer oder was …?» das Subjekt bestimmen – es muss nicht am Satzanfang stehen.
+3️⃣  Mit «Wen oder was …?» nach dem Akkusativobjekt fragen.
+4️⃣  Alles, was mit einer Präposition beginnt (über, in, von, in der …), ist ein Präpositionalgefüge.
+5️⃣  Erst zum Schluss das Schema A–D auswählen: 1 Punkt pro richtige Zuordnung.`,
     },
   },
 
