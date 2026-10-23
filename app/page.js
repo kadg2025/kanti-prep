@@ -1314,9 +1314,9 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <div style={{ background: '#b45309', borderRadius: '8px', padding: '5px 12px', fontSize: '12px', fontWeight: '700', color: '#fff' }}>GMS 2</div>
               <span style={{ fontSize: '12px', color: '#999' }}>2. Sek</span>
-              <span style={{ marginLeft: 'auto', background: '#f3f4f6', color: '#888', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>🔒 Bald verfügbar</span>
+              <span style={{ marginLeft: 'auto', background: '#f3f4f6', color: '#888', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>🔒 Coming Soon</span>
             </div>
-            {/* GMS 2 ist noch gesperrt: alle Fächer gleich als «Bald verfügbar». */}
+            {/* GMS 2 ist noch gesperrt: alle Fächer gleich als «Coming Soon». */}
             {[
               { emoji: '📝', label: 'Deutsch' },
               { emoji: '📐', label: 'Mathe ohne TR' },
@@ -1325,7 +1325,7 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
               <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 14px', borderRadius: '10px', background: '#f3f4f6', marginBottom: '8px', cursor: 'not-allowed' }}>
                 <span style={{ fontSize: '16px', opacity: 0.4 }}>{item.emoji}</span>
                 <span style={{ fontSize: '13px', color: '#bbb' }}>{item.label}</span>
-                <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#ccc' }}>Bald verfügbar</span>
+                <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#ccc' }}>Coming Soon</span>
               </div>
             ))}
           </div>

@@ -120,6 +120,7 @@ export const textsortenTipps = [
       'Ich kann mir gut vorstellen, dass …',
       'Darum möchte ich Sie bitten, …',
       'Über eine Antwort würde ich mich freuen.',
+      'Schreibst du an eine Person, die du duzt, ändere «Sie» in «du».',
     ],
   },
   {
@@ -306,7 +307,7 @@ export const selbstcheckHinweis =
   'Geh die Liste durch, wenn du fertig geschrieben hast. Sie ist unsere Zusammenstellung und kein offizielles Bewertungsraster.';
 
 export const selbstcheckPunkte = [
-  { key: 'titel', text: 'Ich habe einen eigenen Titel gesetzt.' },
+  { key: 'titel', text: 'Ich habe einen eigenen Titel gesetzt (ab 2024 verlangt, bei «Geschichte fortsetzen» auch früher).' },
   { key: 'lesetext', text: 'Ab 2024: Mein Text bezieht sich inhaltlich auf den gelesenen Text.' },
   { key: 'aufbau', text: 'Einleitung, Hauptteil und Schluss sind erkennbar.' },
   { key: 'zeitform', text: 'Die Zeitform ist im ganzen Text dieselbe.' },
