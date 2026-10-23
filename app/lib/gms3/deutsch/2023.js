@@ -230,14 +230,14 @@ Bei b) ist das Gegenwort zu «mühsam» gesucht. Passend sind «mühelos», «le
 
     questionText: `Aufgabe 4 (1 Punkt): Sinnentsprechung.
 
-«... wurde es auf dieser Höhe ein wenig kalt, wie er zugeben musste.» [Z. 4]
-Kreuze an, wie das unterstrichene Wort sinngemäss ersetzt werden kann:
+«Jetzt, wo die Sonne verschwunden war, wurde es auf dieser Höhe ein wenig kalt, wie er zugeben musste.» [Z. 4]
+Kreuze an, wie das unterstrichene Wort «wo» sinngemäss ersetzt werden kann:
 
 obwohl / weil / bevor`,
 
     options: [
-      { label: 'obwohl', correct: true },
-      { label: 'weil', correct: false },
+      { label: 'weil', correct: true },
+      { label: 'obwohl', correct: false },
       { label: 'bevor', correct: false },
     ],
 
@@ -245,14 +245,14 @@ obwohl / weil / bevor`,
       intro: ``,
       steps: [
         {
-          title: '📖 Bedeutung von «wie» im Satz',
-          content: `In diesem Satz bedeutet «wie» nicht «auf welche Art», sondern sinngemäss «obwohl». Henry muss zugeben, dass es kalt wird, auch wenn er das vielleicht nicht gern eingesteht.
+          title: '📖 Bedeutung von «wo» im Satz',
+          content: `«wo» ist hier nicht örtlich gemeint. «Jetzt, wo die Sonne verschwunden war» nennt den Grund dafür, dass es kalt wird → sinngemäss «weil» (auch «da»).
 
-«weil» wäre eine Begründung und passt hier nicht. «bevor» beschreibt eine zeitliche Reihenfolge und ist ebenfalls unpassend.`,
+«obwohl» würde einen Gegensatz ausdrücken, den der Satz nicht hat. «bevor» würde eine zeitliche Reihenfolge behaupten: Die Sonne ist schon verschwunden, bevor es kalt wird – der Satz sagt aber, dass beides zusammenhängt.`,
         },
         {
           title: '🧠 Terminologie',
-          content: `Sinngemäss ersetzen heisst: nicht am Wortlaut hängen, sondern die Funktion im Satz erkennen. Hier erfüllt «wie» eine einräumende Bedeutung.`,
+          content: `Sinngemäss ersetzen heisst: nicht am Wortlaut hängen, sondern die Funktion im Satz erkennen. Hier hat «wo» eine begründende Bedeutung (kausal).`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -263,7 +263,7 @@ obwohl / weil / bevor`,
       tip: `🍳 Kochrezept:
 1️⃣  Nicht nur das Wort anschauen, sondern den ganzen Satz
 2️⃣  Fragen: Ist es Grund, Zeit oder Gegensatz?
-3️⃣  Hier liegt ein Gegensatz vor → «obwohl»
+3️⃣  Hier wird ein Grund genannt → «weil»
 4️⃣  Bei Unsicherheit Ersatzprobe machen`,
     },
   },

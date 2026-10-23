@@ -29,7 +29,7 @@ Welche Kombination stimmt?`,
 
     options: [
       {
-        label: 'stimmt: 1, 4, 6, 9, 10 | stimmt nicht: 2, 3, 5, 7, 8',
+        label: 'stimmt: 1, 4, 6, 8, 9 | stimmt nicht: 2, 3, 5, 7, 10',
         correct: true,
       },
       {
@@ -51,8 +51,7 @@ Welche Kombination stimmt?`,
         },
         {
           title: 'Auflösung der 10 Aussagen',
-          content: `1. ✅ stimmt – Der Text erwähnt Sonnenschein: «Oktober-Sonne» → klarer Tag, nicht bewölkt.
-→ ⚠️ Achtung: «bewölkt» stimmt je nach Textversion; laut offizieller Lösung stimmt «bewölkter Tag».
+          content: `1. ✅ stimmt – «ein Tag ohne Sonne und mit klarer Sicht auf die Vorberge, was klatschnassen Regen verhiess» (Z. 1–2) → bewölkt.
 
 2. ❌ stimmt nicht – Es regnet nicht stark; es nieselt höchstens leicht oder gar nicht.
 
@@ -66,11 +65,11 @@ Welche Kombination stimmt?`,
 
 7. ❌ stimmt nicht – Über dem Kamin hängt eine Malerei/ein Gemälde eines Offiziers, keine Fotografie.
 
-8. ❌ stimmt nicht – Der Detektiv lässt sich sehr wohl von der Frau beeindrucken/verführen (Wimperntrick).
+8. ✅ stimmt – Der Wimperntrick «sollte wohl bewirken, dass ich mich auf den Rücken wälzte» (Z. 43–44), doch sie merkt, «dass ich nicht zu Boden ging» (Z. 45) → er lässt sich nicht verführen.
 
 9. ✅ stimmt – «Diesen Trick durfte ich später noch näher kennenlernen» → er begegnet ihr wieder.
 
-10. ✅ stimmt – «Er sollte wohl bewirken, dass ich mich auf den Rücken wälzte» (Z. 43–44).`,
+10. ❌ stimmt nicht – Der Trick «sollte wohl bewirken, dass ich mich auf den Rücken wälzte» (Z. 43–44) – wälzen tut er sich aber nicht, er geht «nicht zu Boden» (Z. 45).`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -82,7 +81,7 @@ Welche Kombination stimmt?`,
 1️⃣  Textstelle suchen – nie nach Gefühl urteilen
 2️⃣  Vergleiche («wie Pudelhunde») ≠ echte Aussage über Pudelhunde
 3️⃣  «Fotografie» vs. «Gemälde/Malerei» → kleiner Unterschied, grosser Fehler
-4️⃣  Konjunktiv-Tricks («Er sollte wohl bewirken, dass ich mich auf den Rücken wälzte») = spätere Handlung, stimmt`,
+4️⃣  «sollte bewirken» heisst nicht, dass es eintrifft: Der Erzähler geht «nicht zu Boden» (Z. 45)`,
     },
   },
 

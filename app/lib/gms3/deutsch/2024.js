@@ -823,11 +823,11 @@ hätte / gemacht / sah / konnte / vergessen / gewesen / war / getan`,
     options: [
       {
         label: 'hätte: Hilfsverb+Modalverb+Personalform+Konjunktiv | gemacht: Vollverb+Partizip II | sah: Vollverb+Personalform | konnte: Modalverb+Personalform | vergessen: Vollverb+Partizip II | gewesen: Vollverb+Partizip II | war: Hilfsverb+Personalform | getan: Vollverb+Partizip II',
-        correct: true,
+        correct: false,
       },
       {
         label: 'hätte: Hilfsverb+Personalform+Konjunktiv | gemacht: Vollverb+Partizip II | sah: Vollverb+Personalform | konnte: Modalverb+Personalform | vergessen: Vollverb+Infinitiv | gewesen: Vollverb+Partizip II | war: Hilfsverb+Personalform | getan: Vollverb+Partizip II',
-        correct: false,
+        correct: true,
       },
       {
         label: 'hätte: Hilfsverb+Modalverb+Personalform+Konjunktiv | gemacht: Vollverb+Partizip II | sah: Vollverb+Personalform | konnte: Modalverb+Personalform+Konjunktiv | vergessen: Vollverb+Partizip II | gewesen: Hilfsverb+Partizip II | war: Hilfsverb+Personalform | getan: Vollverb+Partizip II',
@@ -840,8 +840,8 @@ hätte / gemacht / sah / konnte / vergessen / gewesen / war / getan`,
       steps: [
         {
           title: '📖 Alle 8 Verbformen analysieren',
-          content: `hätte → Hilfsverb ✅ + Modalverb ✅ + Personalform ✅ + Konjunktiv ✅
-(«hätte … gemacht» = Konjunktiv II Perfekt; «hätte» = Konjunktiv II von «haben»; als Hilfsverb UND Modalverb für die Irrealis-Konstruktion)
+          content: `hätte → Hilfsverb ✅ + Personalform ✅ + Konjunktiv ✅
+(«hätte … gemacht» = Konjunktiv II Perfekt; «hätte» = Konjunktiv II von «haben» und bildet als Hilfsverb die Zeitform. Kein Modalverb: Modalverben sind dürfen, können, mögen, müssen, sollen, wollen.)
 
 gemacht → Vollverb ✅ + Partizip II ✅
 (Partizip II von «machen»; trägt die Hauptbedeutung der Handlung)
@@ -852,8 +852,8 @@ sah → Vollverb ✅ + Personalform ✅
 konnte → Modalverb ✅ + Personalform ✅
 (Präteritum von «können»; konjugiert; kein Konjunktiv hier!)
 
-vergessen → Vollverb ✅ + Partizip II ✅
-(Partizip II von «vergessen»; bildet zusammen mit «konnte … vergessen» eine Konstruktion)
+vergessen → Vollverb ✅ + Infinitiv ✅
+(«konnte man leicht vergessen» → «vergessen» hängt vom Modalverb «konnte» ab und steht im Infinitiv. Die Form ist gleich wie das Partizip II, hier aber ein Infinitiv.)
 
 gewesen → Vollverb ✅ + Partizip II ✅
 (Partizip II von «sein»; «gewesen war» = Plusquamperfekt; «sein» ist hier Vollverb)
@@ -871,9 +871,9 @@ getan → Vollverb ✅ + Partizip II ✅
         },
       ],
       tip: `🍳 Kochrezept:
-1️⃣  «hätte» = Konjunktiv II von «haben» → Hilfsverb + Konjunktiv (+ Modalverb für Irrealis)
+1️⃣  «hätte» = Konjunktiv II von «haben» → Hilfsverb + Personalform + Konjunktiv (kein Modalverb)
 2️⃣  «konnte» = Indikativ Präteritum (kein Konjunktiv!) → nur Modalverb + Personalform
-3️⃣  «gewesen» = Partizip II von «sein» (= Vollverb wenn eigenständig)
+3️⃣  «gewesen» = Partizip II von «sein» (= Vollverb wenn eigenständig); «vergessen» nach «konnte» = Infinitiv, nicht Partizip II
 4️⃣  Partizip I (suchend, lachend) kommt hier nicht vor → nicht ankreuzen!
 5️⃣  Jede richtige Zeile = 1 Punkt; ein Fehler in der Zeile = 0 Punkte`,
     },

@@ -647,11 +647,11 @@ Aktiv | Passiv | Indikativ | Konjunktiv | Präsens | Präteritum | Plusquamperfe
     options: [
       {
         label: '1: Passiv+Indikativ+Präteritum | 2: Aktiv+Indikativ+Präteritum | 3: Aktiv+Indikativ+Präteritum | 4: Aktiv+Konjunktiv+Präteritum',
-        correct: true,
+        correct: false,
       },
       {
         label: '1: Passiv+Indikativ+Präteritum | 2: Aktiv+Indikativ+Präteritum | 3: Aktiv+Indikativ+Präteritum | 4: Aktiv+Indikativ+Präteritum',
-        correct: false,
+        correct: true,
       },
       {
         label: '1: Passiv+Indikativ+Präteritum | 2: Aktiv+Indikativ+Präteritum | 3: Aktiv+Indikativ+Präsens | 4: Aktiv+Konjunktiv+Präteritum',
@@ -681,9 +681,9 @@ Aktiv | Passiv | Indikativ | Konjunktiv | Präsens | Präteritum | Plusquamperfe
 ⚠️ «jetzt» = Gegenwartsadverb, aber die Zeitform des Verbs ist trotzdem Präteritum (erzählte Gegenwart)!
 
 4. «damit nichts verrutschte»
-→ Aktiv ✅ (niemand handelt direkt, aber kein Passiv)
-→ Konjunktiv ✅ («damit»-Satz = Finalsatz → Konjunktiv I/II)
-→ Präteritum ✅ («verrutschte» → Konjunktiv II Präteritum von «verrutschen»)`,
+→ Aktiv ✅ (kein «werden» + Partizip II, also kein Passiv)
+→ Indikativ ✅ (so wertet es die Schullösung: bei schwachen Verben sehen Indikativ Präteritum und Konjunktiv II gleich aus – «verrutschte» gilt hier als Indikativ)
+→ Präteritum ✅ («verrutschte» = Präteritum von «verrutschen»)`,
         },
         {
           title: '📄 Offizielle Schullösung',
@@ -693,7 +693,7 @@ Aktiv | Passiv | Indikativ | Konjunktiv | Präsens | Präteritum | Plusquamperfe
       ],
       tip: `🍳 Kochrezept:
 1️⃣  «wurde … getragen» = Passiv (wurde + PII) ✅
-2️⃣  «damit»-Sätze → Finalsatz → Konjunktiv! «verrutschte» = Konjunktiv ✅
+2️⃣  «verrutschte» sieht wie ein Konjunktiv II aus, ist bei schwachen Verben aber dieselbe Form wie der Indikativ Präteritum → Indikativ ✅
 3️⃣  «jetzt» täuscht → aber Verbform «sprang, half» = Präteritum ✅
 4️⃣  Jede richtige Zeile = 1 Punkt; ein Fehler in der Zeile → 0 Punkte`,
     },
