@@ -16,6 +16,7 @@ const AP21 = 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_G
 const AP23 = 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1';
 const AP24 = 'https://www.kanti-frauenfeld.ch/public/upload/assets/164519/AP24_GMS3_D_Schreibaufgabe.pdf?fp=1';
 const AP25 = 'https://www.kanti-frauenfeld.ch/public/upload/assets/179272/AP25_GMS3_D_Schreibaufgabe.pdf?fp=1';
+const AP26 = 'https://www.kanti-frauenfeld.ch/public/upload/assets/190991/AP26_GMS3_Deutsch_Schreibaufgabe.pdf?fp=1';
 
 // Hinweise zur Fortsetzungsaufgabe – wörtlich, pro Jahrgang leicht verschieden.
 const FORTSETZUNG_OHNE_ABSCHREIBEN = `Der untenstehende Text geht noch weiter. Schreibe eine glaubwürdige Fortsetzung und beachte dabei Folgendes:
@@ -36,7 +37,7 @@ export const aufsatzGms3 = [
     titel: null,
     aufgabe: `«Immer mehr Eltern fahren ihre Kinder mit dem Auto zur Schule.» Erörtere diese Entwicklung. Verwende dazu Beispiele aus dem Text und schreibe auch über vergleichbare Situationen, in denen es nicht um den Schulweg geht.`,
     lesetext: 'Wer seine Kinder zur Schule fährt, schadet ihnen',
-    pdfUrl: null,
+    pdfUrl: `${AP26}#page=1`,
     form: 'ab2024',
   },
   {
@@ -47,7 +48,7 @@ export const aufsatzGms3 = [
     titel: null,
     aufgabe: `Wo hättest du gern, dass man sich mehr um dich kümmert, wo nicht? Schreibe, ausgehend vom Text, über Situationen, in denen das eine oder das andere der Fall ist!`,
     lesetext: 'Wer seine Kinder zur Schule fährt, schadet ihnen',
-    pdfUrl: null,
+    pdfUrl: `${AP26}#page=1`,
     form: 'ab2024',
   },
   {
@@ -58,7 +59,7 @@ export const aufsatzGms3 = [
     titel: null,
     aufgabe: `Vor 60 Jahren gab es noch keine «Probleme» mit Elterntaxis. Wie sieht das wohl in Zukunft aus? Erfinde ein Schulwegerlebnis im Jahr 2086, in das du auch das Thema des Ausgangstextes einbaust.`,
     lesetext: 'Wer seine Kinder zur Schule fährt, schadet ihnen',
-    pdfUrl: null,
+    pdfUrl: `${AP26}#page=1`,
     form: 'ab2024',
   },
 

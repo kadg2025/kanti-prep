@@ -38,6 +38,7 @@ PDFS = {
     2023: ['AP23_GMS3_D_Prüfung.pdf'],
     2024: ['AP24_GMS3_D_Sprachsprüfung.pdf', 'AP24_GMS3_D_Schreibaufgabe.pdf'],
     2025: ['AP25_GMS3_D_Sprachprüfung.pdf', 'AP25_GMS3_D_Schreibaufgabe.pdf'],
+    2026: ['AP26_GMS3_Deutsch_Sprachprüfung.pdf', 'AP26_GMS3_Deutsch_Schreibaufgabe.pdf'],
 }
 
 MIN_WORTE = 4

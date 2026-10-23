@@ -9,7 +9,7 @@ import { pathToFileURL } from 'node:url';
 
 const SRC = path.resolve('app/lib/gms3/deutsch');
 const OUT = path.resolve('Deutsch/_export');
-const YEARS = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+const YEARS = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
 const MAX_WORDS = 15;
 
 // Die Jahresdateien sind ES-Module mit der Endung .js; ueber eine .mjs-Kopie
