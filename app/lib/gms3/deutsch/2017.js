@@ -1082,7 +1082,7 @@ Ordne die Objekte ein:
 «Mein trauriges Gesicht fiel einem Polizisten auf»
 → auffallen + Dativ: Wem fiel es auf? → einem Polizisten → Dativobjekt ✅
 
-«Dieser hatte die Runde zu gehen»
+«Dieser hatte in diesem Viertel die Runde zu gehen»
 → zu gehen WAS? → die Runde → Akkusativobjekt ✅`,
         },
         {
@@ -1315,7 +1315,7 @@ c) «Entweichen»: entkommen, fliehen:
 → ❌ Rennen (= zu allgemein, kein «Entkommen» impliziert)
 → ❌ Abtreten (= weggehen/sterben, andere Bedeutung)
 
-d) «auch» in «ich war auch schmutzig» = zusätzlich/ebenfalls:
+d) «auch» in «dass ich auch schmutzig war» = zusätzlich/ebenfalls:
 → ✅ ausserdem, zudem, ja (Verstärkungs-/Ergänzungspartikel)`,
         },
         {

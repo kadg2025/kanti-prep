@@ -62,7 +62,7 @@ Schon ein kleines falsches Detail macht die ganze Aussage falsch. Genau das ist 
 3. ✅ stimmt – Ludwig wechselt «vom Gymnasium der Nachbarstadt» (Z. 23–24), und die Klasse reagiert so, als sei diese Schule angesehener.
 4. ❌ stimmt nicht – Im Text steht, die Brücke sei «zu schmal für den Wind, für die grossen Laster, für vier Spuren Autobahn» (Z. 14–15). Gemeint ist nicht, dass die ganze Brücke zu schmal für vierspurige Autobahn wäre, sondern dass ihre Pfeiler / Konstruktion verstörend schmal wirken.
 5. ✅ stimmt – Zum Haus von Ludwigs Eltern fährt man «von unserem Städtchen» aus nur eine Viertelstunde mit dem Fahrrad (Z. 2–3). Also wohnen sie nicht im Städtchen selbst.
-6. ✅ stimmt – Im Fluss «durften wir nicht schwimmen» (Z. 6–7).
+6. ✅ stimmt – Der Fluss, «in dem wir nicht schwimmen durften» (Z. 6–7).
 7. ❌ stimmt nicht – Schwindelig wird nicht Ludwig, sondern allgemein «einem», wenn man so angestrengt schaut (Z. 11–12).
 8. ❌ stimmt nicht – Die Weisse Flotte unterhielt «im Sommer einen kleinen Liniendienst» (Z. 4–5), also nicht ganzjährig.
 9. ❌ stimmt nicht – Die Seen mit Algen und Fisch sind ein Bild in der Fantasie des Erzählers («dachte ich», Z. 31–32), nicht echte Seen vor dem Schulzimmer.
@@ -1273,8 +1273,8 @@ Sie bedeutet:
 Auch «zu zeigen, wie man es macht» trifft die Bedeutung gut. ✅
 
 Nicht passend sind:
-→ «gute Manieren lehren»
-→ «im Sportunterricht zeigen, was Sache ist»
+→ «gute Manieren zu lehren»
+→ «im Sportunterricht zu zeigen, was Sache ist»
 
 Denn die Redewendung meint allgemein helfen, nicht erziehen oder Sport machen.`,
         },

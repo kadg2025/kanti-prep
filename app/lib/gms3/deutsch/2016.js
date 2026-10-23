@@ -1134,7 +1134,7 @@ Schreibe alle Stellvertreter (= Pronomen) heraus.`,
 → Relativpronomen: der, die, das, welcher (im Relativsatz)
 → Demonstrativpronomen: dieser, jener, der (allein stehend)
 
-Im Satz «Sie war begeistert von den handtuchschmalen Häusern, die vorbeirauschten»:
+Im Satz «Sie war begeistert von den handtuchschmalen Häusern, die am Zugfenster vorbeirauschten»:
 → «Sie» = Personalpronomen (steht für Thérèse) ✅
 → «die» = Relativpronomen (steht für «die Häuser», leitet Relativsatz ein) ✅
 → «den» = Artikel (steht VOR dem Nomen «Häusern»), kein Stellvertreter ❌`,
