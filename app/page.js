@@ -403,6 +403,19 @@ function Konfetti({ onDone }) {
 }
 
 // ─── BUILD TREE ───────────────────────────────────────────────────────────
+// Reihenfolge der Themen in der Sprachprüfung (Deutsch GMS 3).
+// Themen, die hier nicht stehen, erscheinen danach in der Reihenfolge der Daten.
+const DEUTSCH_THEMEN = [
+  'Textverständnis', 'Wortschatz', 'Zeitformen', 'Satzglieder', 'Wortarten',
+  'Pronomen', 'Nomen & Adjektive', 'Präpositionen', 'Satzbau & Konjunktionen',
+  'Aktiv / Passiv', 'Direkte / Indirekte Rede', 'Zeichensetzung',
+];
+
+function themenRang(topic) {
+  const i = DEUTSCH_THEMEN.indexOf(topic);
+  return i < 0 ? DEUTSCH_THEMEN.length : i;
+}
+
 function buildTree(subject) {
   const filtered = questions.filter(q => {
     if (subject === 'Mathe ohne TR') return q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR');
@@ -421,6 +434,15 @@ function buildTree(subject) {
     if (!tree[g][t]) tree[g][t] = [];
     tree[g][t].push(q);
   });
+  if (subject === 'Deutsch') {
+    Object.keys(tree).forEach(g => {
+      const sortiert = {};
+      Object.keys(tree[g])
+        .sort((a, b) => themenRang(a) - themenRang(b))
+        .forEach(t => { sortiert[t] = tree[g][t]; });
+      tree[g] = sortiert;
+    });
+  }
   return tree;
 }
 
@@ -739,7 +761,7 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
           <div key={groupName}>
             <button onClick={() => toggleGroup(groupName)} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', background: 'none', border: 'none', cursor: 'pointer', color: color, fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ fontSize: '13px' }}>{openGroups[groupName] ? '📂' : '📁'}</span>{groupName === 'Alte Prüfungen' ? 'Prüfungen & Themen' : groupName}
+                <span style={{ fontSize: '13px' }}>{openGroups[groupName] ? '📂' : '📁'}</span>{groupName === 'Alte Prüfungen' ? (subject === 'Deutsch' ? 'Sprachprüfung' : 'Prüfungen & Themen') : groupName}
               </span>
               <span style={{ fontSize: '9px', opacity: 0.6 }}>{openGroups[groupName] ? '▲' : '▼'}</span>
             </button>

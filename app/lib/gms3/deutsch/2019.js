@@ -819,7 +819,7 @@ Die Schullösung verlangt genau diese Wortfolge: Das neue Subjekt steht am Satza
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=6',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 14 (3 Punkte): Alle Konjunktionen herausschreiben.
 
@@ -1144,7 +1144,7 @@ b) Wie viele verschiedene Zeitformen kommen im Satz vor?`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106596/AP19_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=8',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
 
     questionText: `Aufgabe 20 (3 Punkte): Pronomen näher bestimmen.
 

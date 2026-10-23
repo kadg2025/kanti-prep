@@ -221,7 +221,7 @@ Finde für die unterstrichene Wendung «zustande bringen» ein Wort oder eine We
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Wortschatz',
+    topic: 'Nomen & Adjektive',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=3',
 
     questionText: `Aufgabe 4 (3 Punkte): Pluralformen bilden.
@@ -287,7 +287,7 @@ Ruf → Rufe ✅ (einfaches -e, kein Umlaut)
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Wortschatz',
+    topic: 'Satzbau & Konjunktionen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=3',
 
     questionText: `Aufgabe 5 (1 Punkt): Konjunktion ersetzen.
@@ -1096,7 +1096,7 @@ Bestimme die Fälle der unterstrichenen Wörter:
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/164188/AP24_GMS3_D_Sprachspr%C3%BCfung.pdf?fp=2#page=8',
 
     questionText: `Aufgabe 17 (4 Punkte): Satzgliedschema zuordnen.

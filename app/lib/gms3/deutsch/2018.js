@@ -638,7 +638,7 @@ Zwei Wochen zuvor war Ludwig (von mir) zum ersten Mal gesehen worden.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=4',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
 
     questionText: `Aufgabe 9 (4 Punkte): Pronomen zuordnen.
 
@@ -718,7 +718,7 @@ Relativpronomen: die`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=4',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 10 (2 Punkte): Satzbaumuster prüfen.
 
@@ -794,7 +794,7 @@ Nebensatz:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=5',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 11 (2 Punkte): Einfachen Satz herausschreiben.
 
@@ -869,7 +869,7 @@ Darum ist der erste einfache Satz:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106446/AP18%20GMS3%20D.pdf?fp=1#page=5',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 12 (3 Punkte): Konjunktionen zuordnen.
 

@@ -226,7 +226,7 @@ Antonym: ✅ schlenderte, schlich, spazierte (= langsam/gemächlich bewegen)
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=3',
-    topic: 'Wortschatz',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 4 (1 Punkt): Wendung verstehen.
 
@@ -1014,7 +1014,7 @@ Schreibe aus dem obigen Satz alle Präpositionalgefüge untereinander der Reihe 
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/132682/AP22_GMS3_Deutsch_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
 
     questionText: `Aufgabe 16 (5 Punkte): Pronomen näher bestimmen.
 

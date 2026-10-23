@@ -1029,7 +1029,7 @@ Hund / Richtung / Holzpflock / Wiese`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/147190/AP23_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=10',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 17 (5 Punkte): Ordne die Satzgliedschemen A, B, C oder D zu.
 

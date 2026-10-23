@@ -433,7 +433,7 @@ Merke: Es ist eine zusammenfassende Aussage, keine Häufigkeitsaussage!`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=5',
-    topic: 'Wortarten',
+    topic: 'Nomen & Adjektive',
 
     questionText: `Aufgabe 8 (1 Punkt): Adjektive in Vergleichsform.
 
@@ -541,7 +541,7 @@ Schreibe alle Satzglieder der Reihe nach heraus und bestimme sie.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=6',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 10 (1 Punkt): Satzbaumuster bestimmen.
 
@@ -863,7 +863,7 @@ Satz C: «Einige gingen auf den Trottoirs in Gruppen.»
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=8',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 15 (1 Punkt): Hauptsatz herausschreiben.
 
@@ -1149,7 +1149,7 @@ Plusquamperfekt: «hatte … bestanden» → Hilfsverb weg, Partizip → Infinit
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106463/AP20_GMS3_D_Pr%C3%BCfung.pdf?fp=2#page=10',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
 
     questionText: `Aufgabe 20 (3 Punkte): Pronomen näher bestimmen.
 

@@ -350,7 +350,7 @@ Präpositionen (stehen vor Nomengruppen, regieren Fall):
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
 
     questionText: `Aufgabe 6 (2 Punkte): Pronomen näher bestimmen.
 
@@ -1053,7 +1053,7 @@ wurden → Hilfsverb ✅ | Personalform ✅
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/119954/AP21_GMS3_D_Pr%C3%BCfung.pdf?fp=1#page=9',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 17 (2 Punkte): Zusammengezogene Nebensätze vollständig aufschreiben.
 

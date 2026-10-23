@@ -618,7 +618,7 @@ Hier: «war … genommen worden» = Plusquamperfekt Passiv ✅`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=4',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
 
     questionText: `Aufgabe 10 (3 Punkte): Pronomen näher bestimmen.
 
@@ -845,7 +845,7 @@ kann:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=5',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 13 (2 Punkte): Satzbaumuster bestimmen.
 
@@ -1110,7 +1110,7 @@ Schreibe das Subjekt heraus und gib den Fall an.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=7',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
 
     questionText: `Aufgabe 17 (1 Punkt): Stellvertreter herausschreiben.
 
@@ -1301,7 +1301,7 @@ während → Partikel (Konjunktion/Präposition, unveränderlich) ✅`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106435/AP16_D_GMS3_Pruefung.pdf?fp=1#page=8',
-    topic: 'Wortarten',
+    topic: 'Nomen & Adjektive',
 
     questionText: `Aufgabe 20 (3 Punkte): Nomen nach Kategorien zuordnen.
 
