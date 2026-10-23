@@ -370,7 +370,7 @@ kleinen → Adjektiv ✅
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Wortschatz',
+    topic: 'Nomen & Adjektive',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=3',
 
     questionText: `Aufgabe 6 (4 Punkte): Pluralformen bilden.
@@ -878,7 +878,7 @@ Schreibe alle Partikeln der Reihe nach heraus.`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Rechtschreibung',
+    topic: 'Nomen & Adjektive',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=5',
 
     questionText: `Aufgabe 14 (2 Punkte): Nominalisierung.
@@ -952,7 +952,7 @@ Nominalisiere das angegebene Adjektiv und füge den bestimmten Artikel hinzu.
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=6',
 
     questionText: `Aufgabe 15 (3 Punkte): Alle Pronomen herausschreiben.
@@ -1133,7 +1133,7 @@ Schreibe die Satzglieder heraus und bestimme sie.`,
     subject: 'Deutsch',
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/179273/AP25_GMS3_D_Sprachpr%C3%BCfung.pdf?fp=1#page=7',
 
     questionText: `Aufgabe 18 (5 Punkte): Satzgliedschema zuordnen.

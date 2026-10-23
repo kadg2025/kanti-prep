@@ -793,7 +793,7 @@ Verbale Teile:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=5',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 13 (1 Punkt): Aussagesatz → Fragesatz im Präsens.
 
@@ -854,7 +854,7 @@ Aussagesatz: Viele Jahre schon war jede Verbindung …
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Wortarten',
+    topic: 'Pronomen',
 
     questionText: `Aufgabe 14 (4 Punkte): Pronomen in Spalten einordnen.
 
@@ -930,7 +930,7 @@ der (2. «der in diesem Viertel die Runde») → Relativpronomen ✅ (Wiederholu
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=6',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 15 (1 Punkt): Hauptsatz herausschreiben.
 
@@ -1106,7 +1106,7 @@ Ordne die Objekte ein:
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 18 (2 Punkte): Nebensätze herausschreiben.
 
@@ -1166,7 +1166,7 @@ Schreibe alle Nebensätze heraus.`,
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=7',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 19 (2 Punkte): Wie viele Hauptsätze?
 
@@ -1219,7 +1219,7 @@ HS 3: «jetzt erst begriff ich» ✅
     exam: 'Deutsch GMS 3',
     group: 'Alte Prüfungen',
     pdfUrl: 'https://www.kanti-frauenfeld.ch/public/upload/assets/106605/AP17_D_GMS3_Pr%C3%BCfung.pdf?fp=1#page=8',
-    topic: 'Satzbau',
+    topic: 'Satzbau & Konjunktionen',
 
     questionText: `Aufgabe 20 (1 Punkt): Definition vervollständigen.
 
