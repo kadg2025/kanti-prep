@@ -777,7 +777,7 @@ Schreibe den Satz um und setze die direkte Rede durch indirekte Rede.`,
 ✅ (oder: Er sei ertrunken, sagte sie leise.)
 
 ⚠️ «ist ertrunken» (Indikativ) → bleibt nicht im Indikativ → muss in Konjunktiv I
-⚠️ «wäre ertrunken» = Konjunktiv II → falsch für indirekte Rede (außer Konjunktiv I gleicht Indikativ)
+⚠️ «wäre ertrunken» = Konjunktiv II → falsch für indirekte Rede (ausser Konjunktiv I gleicht Indikativ)
 
 Satzrahmen: «sagte sie leise» wird zum Begleitsatz (Verbum dicendi)`,
         },
