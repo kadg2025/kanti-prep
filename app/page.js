@@ -7,6 +7,7 @@ import { lernkarten } from './lib/lernkarten';
 import LernkartePage from './components/Lernkarte';
 import { pruefungenModusA, pruefungenModusB } from './lib/gms3/mathe_otr/pruefung';
 import LinksPage from './LinksPage';
+import AufsatzPage from './components/AufsatzPage';
 import FeedbackButton from './components/FeedbackButton';
 
 // ─── MOBILE DETECTION ─────────────────────────────────────────────────────
@@ -654,7 +655,7 @@ function PauseModal({ onClose, dm = makePalette(false) }) {
 }
 
 // ─── SIDEBAR ──────────────────────────────────────────────────────────────
-function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), clearSolved, dark = false, toggleDark = () => {}, streak = 0, dm = makePalette(false), mobile = false, onClose = () => {}, onShowFehlerKiste = () => {}, fehlerCount = 0, onShowHeuteUeben = () => {}, onShowPruefung = () => {}, onSelectLernkarte = () => {}, selectedLernkarteTopic = null }) {
+function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), clearSolved, dark = false, toggleDark = () => {}, streak = 0, dm = makePalette(false), mobile = false, onClose = () => {}, onShowFehlerKiste = () => {}, fehlerCount = 0, onShowHeuteUeben = () => {}, onShowPruefung = () => {}, onSelectLernkarte = () => {}, selectedLernkarteTopic = null, onSelectAufsatz = () => {}, aufsatzSelected = false }) {
   const tree = buildTree(subject);
   const [openGroups, setOpenGroups] = useState(() => { const s = {}; Object.keys(tree).forEach(g => { s[g] = true; }); return s; });
   const [openTopics, setOpenTopics] = useState({});
@@ -779,6 +780,20 @@ function Sidebar({ subject, selectedId, onSelect, onBack, solved = new Set(), cl
             })}
           </div>
         ))}
+        {subject === 'Deutsch' && (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '10px 16px', color: color, fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+              <span style={{ fontSize: '13px' }}>📂</span>AUFSATZ
+            </div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: '0 0 6px 0' }}>
+              <li>
+                <button onClick={onSelectAufsatz} style={{ width: '100%', textAlign: 'left', padding: '8px 16px 8px 28px', background: aufsatzSelected ? dm.accentBg : 'none', border: 'none', borderLeft: aufsatzSelected ? `3px solid ${color}` : '3px solid transparent', cursor: 'pointer', color: aufsatzSelected ? color : dm.text2, fontSize: '13px', fontWeight: '600', lineHeight: '1.4' }}>
+                  ✍️ Alte Aufgabenstellungen
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
       </nav>
       <div style={{ padding: '14px 16px', borderTop: `1px solid ${dm.border}` }}>
         <button onClick={() => setShowPause(true)} style={{ width: '100%', padding: '10px', background: 'linear-gradient(135deg, #534AB7, #0f766e)', color: '#fff', border: 'none', borderRadius: '10px', cursor: 'pointer', fontSize: '13px', fontWeight: '700', marginBottom: '8px' }}>☕ Pause machen</button>
@@ -1863,6 +1878,7 @@ export default function Home() {
   const [subject, setSubject] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [lernkarteTopic, setLernkarteTopic] = useState(null);
+  const [showAufsatz, setShowAufsatz] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
   const [showFehlerKiste, setShowFehlerKiste] = useState(false);
   const [showHeuteUeben, setShowHeuteUeben] = useState(false);
@@ -1947,7 +1963,7 @@ export default function Home() {
       onJump={(q) => { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setLernkarteTopic(null); setShowFehlerKiste(false); }}
     />
   );
-  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setLernkarteTopic(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} dark={dark} toggleDark={toggleDark} />;
+  if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setLernkarteTopic(null); setShowAufsatz(false); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} dark={dark} toggleDark={toggleDark} />;
 
   const selectedQuestion = questions.find(q => q.id === selectedId) || null;
   return (
@@ -1959,8 +1975,8 @@ export default function Home() {
           <Sidebar
             subject={subject}
             selectedId={selectedId}
-            onSelect={(id) => { setSelectedId(id); setLernkarteTopic(null); if (isMobile) setSidebarOpen(false); }}
-            onBack={() => { setSubject(null); setSelectedId(null); setLernkarteTopic(null); }}
+            onSelect={(id) => { setSelectedId(id); setLernkarteTopic(null); setShowAufsatz(false); if (isMobile) setSidebarOpen(false); }}
+            onBack={() => { setSubject(null); setSelectedId(null); setLernkarteTopic(null); setShowAufsatz(false); }}
             solved={solved}
             clearSolved={clearSolved}
             dark={dark}
@@ -1973,8 +1989,10 @@ export default function Home() {
             fehlerCount={fehler.length}
             onShowHeuteUeben={() => setShowHeuteUeben(true)}
             onShowPruefung={() => setShowProbepruefung(true)}
-            onSelectLernkarte={(topic) => { setLernkarteTopic(topic); setSelectedId(null); if (isMobile) setSidebarOpen(false); }}
+            onSelectLernkarte={(topic) => { setLernkarteTopic(topic); setSelectedId(null); setShowAufsatz(false); if (isMobile) setSidebarOpen(false); }}
             selectedLernkarteTopic={lernkarteTopic}
+            onSelectAufsatz={() => { setShowAufsatz(true); setSelectedId(null); setLernkarteTopic(null); if (isMobile) setSidebarOpen(false); }}
+            aufsatzSelected={showAufsatz}
           />
         </div>
       )}
@@ -1985,7 +2003,14 @@ export default function Home() {
         </button>
       )}
 
-      {lernkarteTopic ? (
+      {showAufsatz ? (
+        <AufsatzPage
+          dm={dm}
+          dark={dark}
+          isMobile={isMobile}
+          onClose={() => setShowAufsatz(false)}
+        />
+      ) : lernkarteTopic ? (
         <LernkartePage
           topic={lernkarteTopic}
           dm={dm}
