@@ -1726,4 +1726,106 @@ export const lernkarten = {
       },
     ],
   },
+  // ─── Deutsch GMS 3 ────────────────────────────────────────────────────────
+  'Zeitformen': {
+    titel: 'Zeitformen',
+    kacheln: [
+      {
+        id: 'zeitformen-erkennen',
+        emoji: '⏰',
+        titel: 'Zeitformen erkennen und zählen',
+        videos: [
+          { titel: 'Übersicht über die Zeitformen (Lehrerschmidt)', youtubeId: 'HJt1fllNbwg' },
+          { titel: 'Perfekt (Lehrerschmidt)', youtubeId: 'Ip9gJgm1E9g' },
+        ],
+        karten: [
+          { text: 'Im Deutschen gibt es sechs Zeitformen. In der Prüfung brauchst du vor allem diese fünf: Präsens, Präteritum, Perfekt, Plusquamperfekt und Futur I.' },
+          { text: 'Einfache Formen bestehen aus einem Wort: er lacht (Präsens), er lachte (Präteritum).' },
+          { text: 'Zusammengesetzte Formen bestehen aus mehreren Wörtern: er hat gelacht (Perfekt), er hatte gelacht (Plusquamperfekt), er wird lachen (Futur I).' },
+          { text: 'Erkennungstest: Schau auf die Personalform. hat oder ist + Partizip → Perfekt. hatte oder war + Partizip → Plusquamperfekt. wird + Infinitiv → Futur I.' },
+          { text: 'Bei Verben mit Verbzusatz gehören beide Teile zusammen: In «Er stellt den Koffer ab» ist «stellt ab» der verbale Teil im Präsens.' },
+          { text: 'Zeitformen zählen: Gefragt ist immer die Anzahl der VERSCHIEDENEN Zeitformen. Bestimme bei jedem verbalen Teil die Zeitform und zähle jede Zeitform nur einmal, auch wenn sie mehrmals vorkommt. Beispiel: «Da ist jemand, der die Arbeit sieht», war das höchste Lob, das sein Vater zu vergeben hatte. → vier verbale Teile (ist, sieht, war, hatte), aber nur zwei Zeitformen: Präsens und Präteritum.' },
+        ],
+        check: [
+          { frage: 'In welcher Zeitform steht «Sie hatte das Buch gelesen»?', optionen: ['Präteritum', 'Perfekt', 'Plusquamperfekt', 'Futur I'], richtig: 2, erklaerung: 'hatte + Partizip II (gelesen) ist das Plusquamperfekt.' },
+          { frage: 'In welcher Zeitform steht «Wir werden morgen kommen»?', optionen: ['Präsens', 'Perfekt', 'Präteritum', 'Futur I'], richtig: 3, erklaerung: 'werden + Infinitiv (kommen) bildet das Futur I.' },
+          { frage: 'In welcher Zeitform steht «Er ist gestern gerannt»?', optionen: ['Präteritum', 'Perfekt', 'Plusquamperfekt', 'Präsens'], richtig: 1, erklaerung: 'ist + Partizip II (gerannt) ist das Perfekt.' },
+        ],
+      },
+      {
+        id: 'zeitformen-bilden',
+        emoji: '🔧',
+        titel: 'Sätze in eine andere Zeitform setzen',
+        videos: [
+          { titel: 'Präteritum (Lehrerschmidt)', youtubeId: '7x_nH-BVkDw' },
+          { titel: 'Futur I (Lehrerschmidt)', youtubeId: '5fxSc3GwDmw' },
+        ],
+        karten: [
+          { text: 'Präteritum: Du änderst die Verbform. Schwache Verben bekommen -te (lachen → er lachte). Starke Verben ändern den Stammvokal (gehen → er ging, kommen → er kam).' },
+          { text: 'Beispiel: «Er hat den Zug verlassen.» → Präteritum: «Er verliess den Zug.»' },
+          { text: 'Plusquamperfekt: haben oder sein im Präteritum + Partizip II: er hatte gelacht, sie war gegangen. Die Satzstellung bleibt, nur der verbale Teil ändert sich.' },
+          { text: 'haben oder sein? Verben der Bewegung und der Zustandsänderung bilden die Zeit meist mit sein (gehen, kommen, einschlafen). Die meisten anderen mit haben.' },
+          { text: 'Futur I: werden im Präsens + Infinitiv. Beispiel: «Meine Mutter hatte die Fahrprüfung bestanden.» → Futur I: «Meine Mutter wird die Fahrprüfung bestehen.»' },
+          { text: 'Verben mit Verbzusatz: «er stellt ab» → Präteritum: «er stellte ab», Plusquamperfekt: «er hatte abgestellt», Futur I: «er wird abstellen».' },
+        ],
+        check: [
+          { frage: 'Wie lautet «Er hat den Zug verlassen» im Präteritum?', optionen: ['Er verliess den Zug.', 'Er verlasste den Zug.', 'Er hatte den Zug verlassen.', 'Er wird den Zug verlassen.'], richtig: 0, erklaerung: 'verlassen ist ein starkes Verb: er verliess.' },
+          { frage: 'Wie lautet «Sie geht nach Hause» im Plusquamperfekt?', optionen: ['Sie ist nach Hause gegangen.', 'Sie war nach Hause gegangen.', 'Sie hatte nach Hause gegangen.', 'Sie wird nach Hause gehen.'], richtig: 1, erklaerung: 'gehen bildet die Zeit mit sein: war + Partizip II (gegangen).' },
+          { frage: 'Wie lautet «Er hat gewonnen» im Futur I?', optionen: ['Er wird gewinnen.', 'Er wird gewonnen.', 'Er würde gewinnen.', 'Er wird gewonnen haben.'], richtig: 0, erklaerung: 'Futur I: werden im Präsens + Infinitiv (gewinnen).' },
+        ],
+      },
+      {
+        id: 'verben-bestimmen',
+        emoji: '🔍',
+        titel: 'Verben genau bestimmen',
+        karten: [
+          { text: 'Jedes Verb gehört zu einer Gruppe: Vollverb, Hilfsverb oder Modalverb.' },
+          { text: 'Vollverb: Es hat eine eigene Bedeutung und kann allein das Prädikat bilden: lachen, abstellen, warten.' },
+          { text: 'Hilfsverb: sein, haben und werden. Sie helfen, Zeitformen und das Passiv zu bilden: er hat gelacht, sie wird kommen.' },
+          { text: 'Modalverb: können, müssen, dürfen, sollen, wollen, mögen. Sie verändern die Bedeutung des Vollverbs: er muss gehen.' },
+          { text: 'Achtung: sein und haben können auch Vollverben sein, wenn sie allein stehen: «Anna war müde.» «Er hat ein Fahrrad.» Hier sind «war» und «hat» Vollverben.' },
+          { text: 'Personalform, Infinitiv oder Partizip? Die Personalform ändert sich mit der Person (ich lache, er lacht). Der Infinitiv ist die Grundform (lachen). Das Partizip II steht bei zusammengesetzten Zeiten (gelacht).' },
+        ],
+        check: [
+          { frage: 'Welche Verbgruppe ist «hatte» in «Er hatte den Koffer abgestellt»?', optionen: ['Vollverb', 'Hilfsverb', 'Modalverb'], richtig: 1, erklaerung: 'hatte hilft, das Plusquamperfekt von «abstellen» zu bilden.' },
+          { frage: 'Welche Verbgruppe ist «sollen» in «Er hätte fliegen sollen»?', optionen: ['Vollverb', 'Hilfsverb', 'Modalverb'], richtig: 2, erklaerung: 'sollen gehört zu können, müssen, dürfen, sollen, wollen, mögen.' },
+          { frage: 'Welche Verbgruppe ist «war» in «Anna war müde»?', optionen: ['Vollverb', 'Hilfsverb', 'Modalverb'], richtig: 0, erklaerung: 'war steht allein und hat eine eigene Bedeutung.' },
+        ],
+      },
+      {
+        id: 'konjunktiv',
+        emoji: '💭',
+        titel: 'Konjunktiv erkennen und bilden',
+        karten: [
+          { text: 'Der Konjunktiv ist die Möglichkeitsform. Man braucht ihn für die indirekte Rede (Konjunktiv I) und für Wünsche oder Unwirkliches (Konjunktiv II).' },
+          { text: 'Konjunktiv I: Stamm + -e: er gehe, sie habe, er sei, sie könne. Beispiel: «Sie sagte, er sei müde.»' },
+          { text: 'Konjunktiv II: Präteritumform mit Umlaut: er käme, sie hätte, er wäre. Oder würde + Infinitiv: er würde gehen.' },
+          { text: 'Wenn der Konjunktiv I gleich aussieht wie der Indikativ (zum Beispiel «sie sagen»), nimmt man den Konjunktiv II.' },
+          { text: 'Erkennen: «sei», «habe», «könne» → Konjunktiv I. «wäre», «hätte», «käme» → Konjunktiv II.' },
+        ],
+        check: [
+          { frage: 'Welche Form ist Konjunktiv I?', optionen: ['sei', 'war', 'ist', 'wäre'], richtig: 0, erklaerung: 'sei ist der Konjunktiv I von sein.' },
+          { frage: 'Welche Form ist Konjunktiv II?', optionen: ['habe', 'hatte', 'hätte', 'haben'], richtig: 2, erklaerung: 'hätte ist der Konjunktiv II von haben.' },
+          { frage: 'Sie sagte, er ___ müde.', optionen: ['sei', 'ist', 'war', 'sein'], richtig: 0, erklaerung: 'In der indirekten Rede steht bevorzugt der Konjunktiv I: er sei müde.' },
+        ],
+      },
+      {
+        id: 'infinitiv-bilden',
+        emoji: '📝',
+        titel: 'Verben in die Grundform setzen',
+        karten: [
+          { text: 'Der Infinitiv ist die Grundform des Verbs. Er endet meist auf -en: lachen, gehen. Manchmal auf -n: sammeln.' },
+          { text: 'Aufgabe: Schreibe alle Verben im Infinitiv heraus. Suche zuerst alle verbalen Teile im Satz, dann bilde zu jeder Form die Grundform.' },
+          { text: 'Gebeugte Formen zurückführen: sie lachte → lachen. er ging → gehen. gekommen → kommen. hat → haben.' },
+          { text: 'Verben mit Verbzusatz: «er stellt den Koffer ab» → abstellen. Der Zusatz gehört zum Infinitiv: nachschauen, hinfahren.' },
+          { text: 'Lies die Aufgabe genau. Sind nur Vollverben gesucht, schreibst du «haben», «sein» und «werden» nur auf, wenn sie im Satz Vollverben sind.' },
+        ],
+        check: [
+          { frage: 'Wie lautet der Infinitiv von «sie ging»?', optionen: ['gehen', 'gang', 'gegangen', 'ging'], richtig: 0, erklaerung: 'ging ist die Präteritumform von gehen.' },
+          { frage: 'Wie lautet der Infinitiv von «er stellte ab»?', optionen: ['abstellen', 'stellen', 'abgestellt', 'ab stellen'], richtig: 0, erklaerung: 'Der Verbzusatz «ab» gehört zum Infinitiv: abstellen.' },
+          { frage: 'Wie lautet der Infinitiv von «gekommen»?', optionen: ['kommen', 'gekommen', 'kam', 'kommt'], richtig: 0, erklaerung: 'gekommen ist das Partizip II von kommen.' },
+        ],
+      },
+    ],
+  },
 };
