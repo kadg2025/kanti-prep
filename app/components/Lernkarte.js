@@ -5,6 +5,57 @@ import { lernkarten } from '../lib/lernkarten';
 
 const KACHEL_COLORS = ['#534AB7', '#0f766e', '#f59e0b', '#ef4444', '#3b82f6', '#ec4899', '#14b8a6', '#8b5cf6'];
 
+// Farbmarkierung im Kartentext: [[tag|Text]] setzt den Text farbig und halbfett.
+// Erster Wert ist der helle Modus, zweiter der Dunkelmodus; beide haben auf dem
+// Kartenhintergrund (dm.card) mindestens 4.5:1 Kontrast. Hier anpassen, wenn
+// eine Farbe geaendert werden soll.
+const KARTEN_FARBEN = {
+  pr:  { light: '#15803d', dark: '#4ade80' },  // Praesens
+  pt:  { light: '#1d4ed8', dark: '#93c5fd' },  // Praeteritum
+  pf:  { light: '#6d28d9', dark: '#c4b5fd' },  // Perfekt
+  pq:  { light: '#0f766e', dark: '#5eead4' },  // Plusquamperfekt
+  fu:  { light: '#be123c', dark: '#fda4af' },  // Futur I
+  vv:  { light: '#c2410c', dark: '#fdba74' },  // Vollverb
+  hv:  { light: '#0e7490', dark: '#67e8f9' },  // Hilfsverb
+  mv:  { light: '#a21caf', dark: '#f0abfc' },  // Modalverb
+  k1:  { light: '#4d7c0f', dark: '#bef264' },  // Konjunktiv I
+  k2:  { light: '#a16207', dark: '#fcd34d' },  // Konjunktiv II
+  aen: { light: '#713f12', dark: '#fde68a', bg: { light: '#fef08a', dark: '#4a3a0b' } },  // der Teil, der sich aendert
+};
+
+const MARKIERUNG = /\[\[([a-zA-Z0-9]+)\|([^\]]*)\]\]/g;
+const KLAMMER_RESTE = /\[\[[a-zA-Z0-9]*\|?|\]\]/g;
+
+// Eine unvollstaendige Markierung soll den Text zeigen, nicht die Klammern.
+function roh(teil) {
+  return teil.includes('[[') || teil.includes(']]') ? teil.replace(KLAMMER_RESTE, '') : teil;
+}
+
+// Gibt den Text mit farbigen Stellen zurueck. Ohne Markierung kommt der Text
+// unveraendert zurueck, damit sich am bisherigen Aussehen nichts aendert.
+// Unbekannte Tags erscheinen als normaler Text, ohne Klammern und ohne Farbe.
+function Markiert({ text, dark }) {
+  if (typeof text !== 'string' || !text.includes('[[')) return text ?? null;
+  const teile = [];
+  let last = 0;
+  let key = 0;
+  for (const m of text.matchAll(MARKIERUNG)) {
+    if (m.index > last) teile.push(<span key={key++}>{roh(text.slice(last, m.index))}</span>);
+    const farbe = KARTEN_FARBEN[m[1].toLowerCase()];
+    if (farbe) {
+      const bg = farbe.bg ? (dark ? farbe.bg.dark : farbe.bg.light) : undefined;
+      teile.push(
+        <span key={key++} style={{ color: dark ? farbe.dark : farbe.light, fontWeight: '600', background: bg, borderRadius: bg ? '4px' : undefined, padding: bg ? '1px 4px' : undefined }}>{m[2]}</span>
+      );
+    } else {
+      teile.push(<span key={key++}>{m[2]}</span>);
+    }
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) teile.push(<span key={key++}>{roh(text.slice(last))}</span>);
+  return teile;
+}
+
 const BELT_LEVELS = [
   { min: 0, max: 0, label: 'Weisser Gürtel', fill: '#f3f4f6', border: '#9ca3af' },
   { min: 1, max: 2, label: 'Gelber Gürtel', fill: '#facc15', border: '#ca8a04' },
@@ -252,7 +303,7 @@ function VisualBlock({ type, chips, diagram, dm, dark }) {
 function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung }) {
   return (
     <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '22px 18px' : '30px', minHeight: '240px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '14px' }}>
-      <p style={{ margin: 0, fontSize: isMobile ? '17px' : '18px', lineHeight: '1.7', color: dm.text, whiteSpace: 'pre-wrap', fontWeight: karte.loesung ? '700' : '400' }}>{karte.text}</p>
+      <p style={{ margin: 0, fontSize: isMobile ? '17px' : '18px', lineHeight: '1.7', color: dm.text, whiteSpace: 'pre-wrap', fontWeight: karte.loesung ? '700' : '400' }}><Markiert text={karte.text} dark={dark} /></p>
       {karte.visual && <VisualBlock type={karte.visual} chips={karte.chips} diagram={karte.diagram} dm={dm} dark={dark} />}
       {karte.loesung && (
         <div>
@@ -263,7 +314,7 @@ function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung }) {
             {revealed ? 'Lösung ausblenden' : 'Lösung zeigen'}
           </button>
           {revealed && (
-            <p key="loesung" style={{ margin: '12px 0 0', fontSize: '15px', lineHeight: '1.6', color: dm.text, whiteSpace: 'pre-wrap', animation: 'fadeSlideIn 200ms ease' }}>{karte.loesung}</p>
+            <p key="loesung" style={{ margin: '12px 0 0', fontSize: '15px', lineHeight: '1.6', color: dm.text, whiteSpace: 'pre-wrap', animation: 'fadeSlideIn 200ms ease' }}><Markiert text={karte.loesung} dark={dark} /></p>
           )}
         </div>
       )}
@@ -276,7 +327,7 @@ function CheckView({ step, dm, dark, isMobile, selected, onAnswer }) {
   return (
     <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '20px 18px' : '26px' }}>
       <p style={{ margin: '0 0 10px', fontSize: '12px', fontWeight: '800', letterSpacing: '0.04em', textTransform: 'uppercase', color: dm.text3 }}>🥋 Dojo-Test</p>
-      <p style={{ margin: '0 0 16px', fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text, lineHeight: '1.6' }}>{step.frage}</p>
+      <p style={{ margin: '0 0 16px', fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text, lineHeight: '1.6' }}><Markiert text={step.frage} dark={dark} /></p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {step.optionen.map((opt, i) => {
           const isRichtig = i === step.richtig;
@@ -299,7 +350,7 @@ function CheckView({ step, dm, dark, isMobile, selected, onAnswer }) {
         })}
       </div>
       {answered && (
-        <p style={{ margin: '14px 0 0', fontSize: '13px', color: dm.text2, lineHeight: '1.6', animation: 'fadeSlideIn 200ms ease' }}>{step.erklaerung}</p>
+        <p style={{ margin: '14px 0 0', fontSize: '13px', color: dm.text2, lineHeight: '1.6', animation: 'fadeSlideIn 200ms ease' }}><Markiert text={step.erklaerung} dark={dark} /></p>
       )}
     </div>
   );
