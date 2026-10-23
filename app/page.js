@@ -1235,6 +1235,11 @@ function QuestionDisplay({ question, subject, onSolved = () => {}, onFehler = ()
         </div>
         {showSolution && (
           <div style={{ marginTop: '28px' }}>
+            {question.loesungStatus === 'inoffiziell' && (
+              <div style={{ border: `1px solid ${dm.border}`, borderRadius: '8px', padding: '10px 14px', marginBottom: '18px', fontSize: '13px', color: dm.text3, lineHeight: '1.6' }}>
+                Diese Lösung ist von KantiPrep erarbeitet. Die offizielle Lösung liegt noch nicht vor.
+              </div>
+            )}
             <div style={{ background: 'transparent', padding: '0 0 16px 0', marginBottom: '4px', fontSize: '14px', color: dm.text2, lineHeight: '1.9', whiteSpace: 'pre-wrap' }}>{s.intro}</div>
             {s.svg && (
               <div style={{ marginBottom: '20px', textAlign: 'center' }}
@@ -1335,7 +1340,7 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <div style={{ background: '#534AB7', borderRadius: '8px', padding: '5px 12px', fontSize: '12px', fontWeight: '700', color: '#fff' }}>GMS 3</div>
               <span style={{ fontSize: '12px', color: '#999' }}>3. Sek</span>
-              <span style={{ marginLeft: 'auto', background: '#dcfce7', color: '#166534', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>✅ 2016–2025</span>
+              <span style={{ marginLeft: 'auto', background: '#dcfce7', color: '#166534', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>✅ 2016–2026</span>
             </div>
             {[
               { emoji: '📝', label: 'Deutsch', key: 'Deutsch', count: deutschGMS3, color: '#b45309', bg: '#fffbeb', border: '#fcd34d' },

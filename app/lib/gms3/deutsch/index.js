@@ -8,6 +8,7 @@ import { questions2022 } from './2022';
 import { questions2023 } from './2023';
 import { questions2024 } from './2024';
 import { questions2025 } from './2025';
+import { questions2026 } from './2026';
 
 export const questionsDeutschGms3 = [
   ...questions2016,
@@ -20,4 +21,5 @@ export const questionsDeutschGms3 = [
   ...questions2023,
   ...questions2024,
   ...questions2025,
+  ...questions2026,
 ];
