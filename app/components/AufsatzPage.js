@@ -3,9 +3,9 @@
 import { useMemo, useState } from 'react';
 import { aufsatzGms3, aufsatzJahreOhneBlatt, AUFSATZ_TEXTSORTEN } from '../lib/gms3/deutsch/aufsatz';
 
-const ACCENT = '#b45309';
+export const ACCENT = '#b45309';
 
-const TEXTSORTEN_FARBEN = {
+export const TEXTSORTEN_FARBEN = {
   'Brief': '#0f766e',
   'Geschichte fortsetzen': '#7c3aed',
   'Freier Text': '#b45309',
