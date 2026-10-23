@@ -1290,7 +1290,6 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
   const matheOhneTR = questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('ohne TR') && q.group === 'Alte Prüfungen').length;
   const matheMitTR = questions.filter(q => q.subject === 'Mathe' && q.exam && q.exam.includes('mit TR') && q.group === 'Alte Prüfungen').length;
   const deutschGMS3 = questions.filter(q => q.subject === 'Deutsch' && q.group === 'Alte Prüfungen' && q.id.startsWith('D3_')).length;
-  const deutschGMS2 = questions.filter(q => q.subject === 'Deutsch' && q.group === 'Alte Prüfungen' && q.id.startsWith('D2_')).length;
 
   return (
     <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #f8f7ff 0%, #fff 100%)', padding: isMobile ? '24px 16px 32px' : '40px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
@@ -1315,26 +1314,18 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <div style={{ background: '#b45309', borderRadius: '8px', padding: '5px 12px', fontSize: '12px', fontWeight: '700', color: '#fff' }}>GMS 2</div>
               <span style={{ fontSize: '12px', color: '#999' }}>2. Sek</span>
-              <span style={{ marginLeft: 'auto', background: '#dcfce7', color: '#166534', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>✅ 2016–2025</span>
+              <span style={{ marginLeft: 'auto', background: '#f3f4f6', color: '#888', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>🔒 Bald verfügbar</span>
             </div>
+            {/* GMS 2 ist noch gesperrt: alle Fächer gleich als «Bald verfügbar». */}
             {[
-              { emoji: '📝', label: 'Deutsch', key: 'Deutsch GMS2', count: deutschGMS2, color: '#b45309', bg: '#fffbeb', border: '#fcd34d' },
-              { emoji: '📐', label: 'Mathe ohne TR', key: null, color: '#aaa', bg: '#f3f4f6', border: '#f3f4f6' },
-              { emoji: '🔢', label: 'Mathe mit TR', key: null, color: '#aaa', bg: '#f3f4f6', border: '#f3f4f6' },
-            ].map(item => item.key ? (
-              <button key={item.label} onClick={() => onSelect(item.key)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 14px', borderRadius: '10px', background: item.bg, border: `1px solid ${item.border}`, marginBottom: '8px', cursor: 'pointer', transition: 'transform 0.15s', textAlign: 'left' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateX(4px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateX(0)'; }}
-              >
-                <span style={{ fontSize: '16px' }}>{item.emoji}</span>
-                <span style={{ fontSize: '13px', fontWeight: '600', color: item.color }}>{item.label}</span>
-                <span style={{ marginLeft: 'auto', fontSize: '11px', color: item.color, fontWeight: '700' }}>{item.count}</span>
-              </button>
-            ) : (
-              <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 14px', borderRadius: '10px', background: item.bg, marginBottom: '8px', cursor: 'not-allowed' }}>
+              { emoji: '📝', label: 'Deutsch' },
+              { emoji: '📐', label: 'Mathe ohne TR' },
+              { emoji: '🔢', label: 'Mathe mit TR' },
+            ].map(item => (
+              <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 14px', borderRadius: '10px', background: '#f3f4f6', marginBottom: '8px', cursor: 'not-allowed' }}>
                 <span style={{ fontSize: '16px', opacity: 0.4 }}>{item.emoji}</span>
                 <span style={{ fontSize: '13px', color: '#bbb' }}>{item.label}</span>
-                <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#ccc' }}>Bald</span>
+                <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#ccc' }}>Bald verfügbar</span>
               </div>
             ))}
           </div>
