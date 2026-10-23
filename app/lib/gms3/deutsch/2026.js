@@ -69,7 +69,7 @@ Welche Kombination stimmt?`,
 
 6. ✅ stimmt – «dieser bezaubernden Erscheinung» (Z. 29) und «nicht nur Martine die Anmut in Person» (Z. 37).
 
-7. ✅ stimmt – «Auch Eschers kräftige Statur konnte sich sehen lassen», und der Spitzname «Neandertaler» «war ihm seit Jahren nicht mehr zu Ohren gekommen» (Z. 37–40).
+7. ✅ stimmt – «Auch Eschers kräftige Statur konnte sich sehen lassen» (Z. 37–38). Den Spottnamen «Neandertaler» hatten ihm «ein zu schnelles Wachstum, eine kaum zu bändigende Lockenpracht und seine hohen Wangenknochen» eingebracht, und er «war ihm seit Jahren nicht mehr zu Ohren gekommen» (Z. 38–40) → was früher Spott war, fällt am Abend der Feier positiv auf.
 
 8. ❌ stimmt nicht – Escher selbst spricht die Einladung aus: Es gelang ihm, «wie nebenbei zu ihrer stillen Freundin zu sagen, sie könne gern auch kommen» (Z. 15–17).
 
@@ -139,7 +139,7 @@ Welche Kombination stimmt?`,
           title: '📖 b) «Abfuhr» – entsprechende Bedeutung',
           content: `Eine «Abfuhr» ist ein deutliches Nein auf eine Frage oder Bitte.
 → Akzeptiert sind zum Beispiel: Ablehnung, Absage, Korb, Nein, Verweigerung, Weigerung, Zurückweisung, Versagung, Abweisung.
-→ Der Begriff darf auch gebeugt sein und muss grammatikalisch nicht in den Satz passen.`,
+→ Es genügt, das passende Nomen zu nennen; es muss nicht in die Satzform eingepasst werden.`,
         },
         {
           title: '📖 c) «ungläubig» – was passt nicht?',
@@ -147,7 +147,7 @@ Welche Kombination stimmt?`,
 → ✅ baff, überrascht, verblüfft, perplex bleiben stehen: alle vier bedeuten «sehr überrascht».
 → ❌ freudig wird gestrichen: Escher freut sich gerade nicht, er weiss nicht, was er vom Geschenk halten soll.
 → ❌ komplex wird gestrichen: Das heisst «vielschichtig» und beschreibt keine Reaktion.
-→ Den Punkt gibt es nur, wenn beide gestrichen sind und sonst keines.`,
+→ Gestrichen werden genau diese zwei Wörter, die anderen vier bleiben stehen.`,
         },
       ],
       tip: `🍳 Kochrezept:
@@ -266,7 +266,7 @@ Welche Fortsetzung passt zu beiden Sätzen?`,
 
 ⚠️ Nach «wie» folgt ein Nebensatz mit dem Verb am Ende, zum Beispiel: wie man sich in einer bestimmten Situation verhalten soll.
 
-Hier gibt es mehrere richtige Formulierungen. Die Prüfung ist bei der Grammatik streng und beim Inhalt etwas offener – ein gutes Beispiel genügt.`,
+Hier gibt es mehrere richtige Formulierungen. Wichtig ist, dass der Satzbau stimmt und dass der Inhalt zum Text passt.`,
         },
       ],
       tip: `🍳 Kochrezept:
@@ -334,7 +334,7 @@ erwartenden → das Erwarten ✅ oder die Erwartung ✅
 1️⃣  Verb in den Infinitiv setzen: linderte → lindern
 2️⃣  Gross schreiben und «das» davorsetzen: das Lindern
 3️⃣  Prüfen, ob es auch eine Form auf -ung gibt: die Linderung
-4️⃣  1 Punkt pro richtiges Feld, der Artikel gehört dazu`,
+4️⃣  Der Artikel gehört zur Antwort: «das Gehen», nicht nur «Gehen»`,
     },
   },
 
@@ -389,7 +389,7 @@ das Päckchen → die Päckchen ✅ (Verkleinerung auf -chen → gleiche Form)
 das Ziehen → ✗ ✅ (nominalisierter Infinitiv, kein Plural)
 
 ⚠️ Bei «Mäntel» ist die Aufgabe rückwärts: Du musst den Singular «der Mantel» finden.
-⚠️ Pro richtige Zeile 0.5 Punkte, bei einem Schreibfehler ist die ganze Zeile falsch.`,
+⚠️ Achte auf die Schreibweise: «die Mäntel» und «die Längen» mit Umlaut, «die Papiere» mit -e.`,
         },
       ],
       tip: `🍳 Kochrezept:
@@ -446,14 +446,14 @@ es → Pronomen ✅ (Personalpronomen)
 klare → Adjektiv ✅ (beschreibt «Angelegenheit», ist gebeugt)
 
 ⚠️ Die fünf Wortarten sind: Nomen, Verb, Adjektiv, Pronomen, Partikel. Präpositionen und Konjunktionen sind Partikeln.
-⚠️ Ist eine Nennung falsch, gilt die ganze Lösung als falsch.`,
+⚠️ Bestimme jedes der sechs Wörter, auch die kurzen wie «für» und «es».`,
         },
       ],
       tip: `🍳 Kochrezept:
 1️⃣  Kannst du das Wort beugen? Nomen, Verb, Adjektiv und Pronomen ja, Partikel nein
 2️⃣  Steht es vor einem Nomen und bestimmt es? → Artikel, also Pronomen
 3️⃣  Alles Unveränderliche (auch, für, und, nicht) → Partikel
-4️⃣  0.5 Punkte pro richtige Nennung, eine genauere Bestimmung ist zulässig`,
+4️⃣  Eine genauere Bestimmung ist auch richtig: «bestimmter Artikel» statt nur «Pronomen»`,
     },
   },
 
@@ -525,7 +525,7 @@ Ordnung → Nomen
 1️⃣  Jedes Wort einzeln bestimmen, am besten darüberschreiben
 2️⃣  Dann die verschiedenen Wortarten zusammenzählen, nicht die Wörter
 3️⃣  Höchstens 5 sind möglich: Nomen, Verb, Adjektiv, Pronomen, Partikel
-4️⃣  1 Punkt pro richtige Zahl`,
+4️⃣  Gefragt ist eine Zahl, nicht eine Liste der Wortarten`,
     },
   },
 
@@ -572,7 +572,7 @@ war → sein ✅ (hier Vollverb: «fertig war» – «sein» ist die Aussage sel
 schaute … nach → nachschauen ✅ (Verb mit Verbzusatz: im Infinitiv zusammen)
 abgestellt (hatte) → abstellen ✅ (Vollverb im Plusquamperfekt)
 
-⚠️ «hatte» ist hier Hilfsverb und gehört NICHT dazu: Für «haben» gibt es 0.5 Punkte Abzug, ebenso für jedes andere falsche Wort.
+⚠️ «hatte» ist hier Hilfsverb und gehört NICHT dazu: Es bildet nur das Plusquamperfekt von «abstellen».
 ⚠️ «nachschauen» muss zusammengeschrieben werden, nicht nur «schauen».`,
         },
       ],
@@ -580,7 +580,7 @@ abgestellt (hatte) → abstellen ✅ (Vollverb im Plusquamperfekt)
 1️⃣  Alle Verbformen im Satz suchen, auch die am Satzende
 2️⃣  Bilden sie zusammen eine Zeitform? Dann ist das vordere Verb Hilfsverb
 3️⃣  Verbzusätze (nach, ab, auf) gehören im Infinitiv an den Anfang
-4️⃣  0.5 Punkte pro richtige Lösung`,
+4️⃣  Nur Vollverben aufschreiben, keine Hilfs- und keine Modalverben`,
     },
   },
 
@@ -655,7 +655,7 @@ Aktiv | Passiv | Indikativ | Konjunktiv | Präsens | Präteritum | Perfekt
 1️⃣  Passiv erkennst du an «werden» + Partizip II – fehlt das, ist es Aktiv
 2️⃣  Konjunktiv I: «sie könne», «sie habe» statt «sie kann», «sie hat»
 3️⃣  Konjunktiv I gehört zum Präsens, Konjunktiv II zum Präteritum
-4️⃣  Jede richtige Zeile 1 Punkt, ein Fehler in der Zeile gibt 0 Punkte`,
+4️⃣  Jede Zeile braucht drei Angaben: Aktiv oder Passiv, Indikativ oder Konjunktiv, Zeitform`,
     },
   },
 
@@ -707,8 +707,7 @@ sandte → Präteritum
 → Verschiedene Zeitformen: Präteritum und Plusquamperfekt = 2 ✅
 
 ⚠️ «zu verletzen» ist ein Infinitiv und bildet keine eigene Zeitform.
-⚠️ Es zählt nicht, wie viele Verben es sind, sondern wie viele verschiedene Zeitformen.
-⚠️ Die Aufgabe gibt 2 Punkte, aber nur ganz oder gar nicht.`,
+⚠️ Es zählt nicht, wie viele Verben es sind, sondern wie viele verschiedene Zeitformen.`,
         },
       ],
       tip: `🍳 Kochrezept:
@@ -764,7 +763,7 @@ Teilsatz 2: «als ihm lieb war» → «als ihm lieb gewesen war» ✅
 → «sein» bildet das Plusquamperfekt mit «war» + «gewesen».
 
 ⚠️ «hat … erinnert» wäre Perfekt, nicht Plusquamperfekt.
-⚠️ Beide Teilsätze müssen umgeformt werden: pro richtigen Teilsatz 1 Punkt.`,
+⚠️ Beide Teilsätze müssen umgeformt werden, auch der kurze am Ende.`,
         },
       ],
       tip: `🍳 Kochrezept:
@@ -819,8 +818,7 @@ b) Schreibe alle Konjunktionen der Reihe nach heraus.`,
 → Partikeln sind alle unveränderlichen Wörter: Präpositionen (mithilfe, mit, von, aus), Konjunktionen (Als, ohne, und, aber) und Adverbien oder Verstärkungen (nicht, zu).
 → «zu» in «nicht zu torrerohaften» ist eine Gradpartikel und gehört dazu.
 
-⚠️ Das «zu» in «zu verletzen» ist eine Infinitivpartikel: Die Prüfung lässt es hier weg.
-⚠️ Für falsch herausgeschriebene Begriffe gibt es Abzug, die Reihenfolge selbst kostet keine Punkte.`,
+⚠️ Das «zu» in «zu verletzen» ist eine Infinitivpartikel: Sie gehört zum Verb «verletzen» und wird hier nicht mitgezählt.`,
         },
         {
           title: '📖 b) Die Konjunktionen',
@@ -830,8 +828,7 @@ b) Schreibe alle Konjunktionen der Reihe nach heraus.`,
 → «ohne … zu verletzen» leitet ebenfalls einen Nebensatz ein.
 → «und», «aber», «und» verbinden Satzteile oder Teilsätze (nebenordnende Konjunktionen).
 
-⚠️ «dessen» ist ein Relativpronomen, keine Konjunktion.
-⚠️ Jede richtige Partikel und jede richtige Konjunktion gibt 0.5 Punkte.`,
+⚠️ «dessen» ist ein Relativpronomen, keine Konjunktion.`,
         },
       ],
       tip: `🍳 Kochrezept:
@@ -902,7 +899,7 @@ c) «Escher erhält ein Puzzle zum Geburtstag, obwohl er kein kleines Kind mehr 
 1️⃣  Fragen: Grund, Gegensatz oder Gleichzeitigkeit?
 2️⃣  weil = Grund, obwohl = Gegensatz, während = gleichzeitig, als = einmaliger Zeitpunkt
 3️⃣  Nebensatz heisst: Verb ans Ende, Komma davor
-4️⃣  Inhalt muss zum Text passen – pro richtige Lösung 1 Punkt`,
+4️⃣  Der neue Satz muss inhaltlich zum Text passen, nicht nur grammatikalisch stimmen`,
     },
   },
 
@@ -961,7 +958,7 @@ Z. 27 «bester» → gut – besser – (am) besten ✅
 Z. 29 «bezaubernden» → bezaubernd – bezaubernder – (am) bezauberndsten ✅
 → Das Partizip «bezaubernd» wird wie ein normales Adjektiv gesteigert.
 
-⚠️ 1 Punkt pro Zeile, die ganze Zeile muss stimmen. Gebeugte Adjektive werden akzeptiert.`,
+⚠️ Die Formen dürfen auch gebeugt sein, entscheidend ist die richtige Steigerungsstufe.`,
         },
       ],
       tip: `🍳 Kochrezept:
@@ -1013,11 +1010,12 @@ Schreibe alle Pronomen der Reihe nach heraus.`,
           content: `Er → Personalpronomen ✅ (steht für Escher)
 sich → Reflexivpronomen ✅ («befand sich»)
 der → Artikel ✅ («in der üblichen Warteschleife») – Artikel zählen bei den fünf Wortarten zu den Pronomen
+→ Probe: «der» begleitet hier das Nomen «Warteschleife» und lässt sich durch «dieser» ersetzen. Ein Relativpronomen wäre es nur, wenn danach ein Nebensatz mit dem Verb am Ende käme.
 deren → Relativpronomen ✅ («auf deren Umlaufbahn» → bezieht sich auf die Warteschleife)
 man → Indefinitpronomen ✅ (unbestimmt: irgendwer)
 
 ⚠️ «nicht» ist eine Partikel, kein Pronomen.
-⚠️ 0.5 Punkte pro richtige Antwort, für ein falsches Wort 0.5 Punkte Abzug – also nur herausschreiben, was sicher ein Pronomen ist.`,
+⚠️ Schreibe nur diese fünf Wörter heraus: Jedes zusätzliche Wort macht die Liste falsch.`,
         },
       ],
       tip: `🍳 Kochrezept:
@@ -1075,8 +1073,7 @@ er → Subjekt {Nominalgruppe im Nominativ} ✅
 ein paar Leute → Akkusativobjekt {Nominalgruppe im Akkusativ} ✅
 → Probe: Wen oder was hatte er eingeladen? → ein paar Leute
 
-⚠️ Das Prädikat «hatte … eingeladen» NICHT aufschreiben: Dafür gibt die Prüfung 1 Punkt Abzug.
-⚠️ Pro richtige Zeile 1 Punkt.`,
+⚠️ Das Prädikat «hatte … eingeladen» ist kein Satzglied in dieser Aufstellung und wird nicht aufgeschrieben.`,
         },
       ],
       tip: `🍳 Kochrezept:
