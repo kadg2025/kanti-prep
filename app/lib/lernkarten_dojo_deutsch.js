@@ -348,7 +348,7 @@ export const dojoDeutsch = {
   // ─── Direkte / Indirekte Rede ─────────────────────────────────────────────
   'Direkte / Indirekte Rede': [
     // 2016, Aufgabe 8 (Frage)
-    { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', loesung: 'Wenger fragte, ob sie ihr Haus blöd finde (fände).' },
+    { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', loesung: 'Ob sie ihr Haus blöd finde (fände), fragte Wenger. Auch möglich: Wenger fragte, ob sie ihr Haus blöd finde.' },
     // 2016, Aufgabe 8 (Aussage)
     { text: 'Setze in die indirekte Rede:\n\n«Es ist doch auch ein Chalet.»', loesung: 'Es sei (wäre) doch auch ein Chalet.' },
     // 2017, Aufgabe 9

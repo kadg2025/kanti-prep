@@ -1896,10 +1896,10 @@ export const lernkarten = {
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Aussage: ein Satz, von dem du sagen musst, ob er stimmt.\n• Beleg: die Stelle im Text, die es beweist.\n• Detail: eine kleine Angabe wie eine Zahl, ein Ort, eine Person.' },
           { text: 'So gehst du vor:\n\n1. Aussage lesen\n2. Die passende Stelle im Text suchen\n3. Wort für Wort vergleichen\n\n💡 Nie nach Gefühl entscheiden. Was du nicht belegen kannst, stimmt nicht.' },
-          { text: 'Falle 1: Ein [[aen|Detail]] ist verdreht.\n\nAussage: «Vater und Tochter haben ein Privatabteil.»\nIm Text: Sie liegen in einem Liegewagenabteil, und ein anderer Fahrgast steigt zu.\n\n→ stimmt nicht' },
+          { text: 'Falle 1: Ein [[aen|Detail]] ist verdreht.\n\nMini-Text: «Der Bus fuhr um acht. Ich wartete schon um sieben. Mein Bruder kam zu spät.»\n\nAussage: «Der Bruder wartete zuerst.»\n→ stimmt nicht' },
           { text: 'Falle 2: Ein [[aen|Vergleich]] ist keine Aussage über die Wirklichkeit.\n\nIm Text: «… ein paar Bäume, sauber gestutzt wie Pudelhunde.»\n\n→ Es gibt dort keine Pudelhunde. Eine Aussage über Hunde stimmt nicht.' },
           { text: 'Falle 3: Die [[aen|Richtung]] ist vertauscht.\n\nAussage: «Thérèse sagt ihrem Vater, er solle nicht so laut schreien.»\nIm Text: Der Vater sagt es ihr.\n\n→ stimmt nicht' },
-          { text: '💡 Merksatz:\n\nKein Beleg im Text → die Aussage stimmt nicht.\n\nAchte besonders auf immer, alle, nie und auf Zahlen. Solche Wörter machen eine Aussage schnell zu stark.' },
+          { text: '💡 Merksatz:\n\nKein Beleg im Text → die Aussage stimmt nicht.\n\nAchte besonders auf immer, alle, nie und auf Zahlen. Solche Wörter machen eine Aussage oft zu stark.' },
         ],
         check: [
           { frage: 'Im Text steht: «Hinter der Garage standen ein paar Bäume, sauber gestutzt wie Pudelhunde.» Stimmt die Aussage «Im Garten laufen Pudelhunde herum»?', optionen: ['Ja, sie werden erwähnt', 'Nein, das ist nur ein Vergleich'], richtig: 1, erklaerung: 'Der Vergleich beschreibt die Form der Bäume, keine echten Hunde.' },
@@ -1915,7 +1915,7 @@ export const lernkarten = {
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Reihenfolge: in welcher Zeit die Ereignisse wirklich passieren.\n• Rückblende: der Text erzählt etwas, das vorher geschehen ist.\n• Zeitwörter: zuerst, dann, später, am nächsten Tag.' },
           { text: 'So gehst du vor:\n\n1. Jedes Ereignis im Text suchen und markieren\n2. Auf die [[aen|Zeitwörter]] achten\n3. Nummern 1 bis 5 vergeben' },
-          { text: '⚠️ Die Erzählreihenfolge ist nicht immer die Zeitreihenfolge.\n\nEine [[aen|Rückblende]] erzählt mitten in der Geschichte etwas, das schon vorbei ist. Die Zeitform hilft: Plusquamperfekt zeigt, dass etwas vorher war.' },
+          { text: '⚠️ Die Erzählreihenfolge ist nicht immer die Zeitreihenfolge.\n\nEine [[aen|Rückblende]] erzählt mitten in der Geschichte etwas, das schon vorbei ist. Die Zeitform hilft: Plusquamperfekt zeigt oft, dass etwas vorher war.' },
           { text: 'Beispiel. Bringe diese Ereignisse in die richtige Reihenfolge:\n\n• Fahrt durch ein Moorgebiet\n• Mittagessen mit dem Lieblingsgericht\n• Bierflasche fliegt aus dem Zug\n• Ein Taxi wird überholt\n• Abschiedskuss für den Vater' },
           { text: 'Die Lösung dazu:\n\n1. Mittagessen\n2. Abschiedskuss\n3. Moorgebiet\n4. Bierflasche\n5. Taxi\n\n💡 Setze zuerst das Erste und das Letzte. Die Mitte ergibt sich dann fast von allein.' },
         ],
@@ -1942,7 +1942,7 @@ export const lernkarten = {
           { text: 'So gehst du vor:\n\n1. Was heisst das Wort hier? Sag es in eigenen Worten.\n2. Ein Wort dazu suchen.\n3. [[aen|Einsetzprobe]]: in den Satz einsetzen und laut lesen.' },
           { text: 'Beispiel:\n\n«… der Hafen war verödet …»\n\nverödet = da ist niemand mehr\n→ [[syn|verlassen]], [[syn|verwaist]], [[syn|unbelebt]]' },
           { text: 'Beispiel:\n\n«Nach dem Essen kramte sie unter ihren Schürzen.»\n\nkramen = ungeordnet suchen\n→ [[syn|suchte]], [[syn|stöberte]], [[syn|wühlte]]' },
-          { text: '⚠️ Dein Wort muss auch grammatikalisch passen.\n\n«Von Böen getrieben, prasselte der Regen gegen die Fensterscheiben.»\n→ [[syn|trommelte]], [[syn|peitschte]], [[syn|klopfte]]\n\nNicht «Trommeln»: Im Satz steht eine Verbform.' },
+          { text: '⚠️ Dein Wort muss auch grammatikalisch passen.\n\n«Von Böen getrieben, prasselte der Regen gegen die Fensterscheiben.»\n→ [[syn|trommelte]], [[syn|peitschte]], [[syn|klopfte]]\n\nAm sichersten passt dein Wort grammatikalisch in den Satz: trommelte statt trommeln.' },
           { text: '💡 Merksatz:\n\nEin Synonym muss in DIESEN Satz passen, nicht nur ungefähr dasselbe heissen.\n\nDie Einsetzprobe entlarvt jedes Wort, das nur fast passt.' },
         ],
         check: [
@@ -1961,7 +1961,7 @@ export const lernkarten = {
           { text: 'So gehst du vor:\n\n1. Bedeutung in eigenen Worten sagen\n2. Das Gegenteil davon denken\n3. Einsetzprobe im Satz\n\n→ Ein ähnliches Wort ist noch kein Gegenteil.' },
           { text: 'Beispiel:\n\n«… hier blickte er mich verächtlich an …»\n\nverächtlich = von oben herab\n→ [[geg|bewundernd]], [[geg|respektvoll]]' },
           { text: 'Beispiel:\n\n«Franz tat einen zögerlichen Schritt …»\n\nzögerlich = unsicher, langsam\n→ [[geg|raschen]], [[geg|entschiedenen]], [[geg|sicheren]]\n\nAchtung: Die Endung muss zum Satz passen.' },
-          { text: '⚠️ Oft ist die Vorsilbe un- verboten.\n\n«… beobachtete ihn jedoch aufmerksam.»\nNicht erlaubt: unaufmerksam\n→ [[geg|achtlos]], [[geg|zerstreut]], [[geg|nachlässig]]' },
+          { text: '⚠️ Lies die Aufgabe genau: Manchmal ist ein Wort mit der Vorsilbe un- ausdrücklich verboten.\n\n«… beobachtete ihn jedoch aufmerksam.»\nNicht erlaubt: unaufmerksam\n→ [[geg|achtlos]], [[geg|zerstreut]], [[geg|nachlässig]]' },
           { text: '💡 Merksatz:\n\nLies die Aufgabe genau: Steht dort «nicht mit un-», brauchst du ein eigenes Wort.\n\nSuch dann ein Wort, das die Sache von der anderen Seite beschreibt.' },
         ],
         check: [
@@ -1999,7 +1999,7 @@ export const lernkarten = {
           { text: '❌ Gegenteil mit un-, obwohl die Aufgabe das verbietet.\n✅ Ein eigenes Wort suchen: achtlos statt unaufmerksam, mühelos statt unmühsam.' },
           { text: '❌ Die Wendung wörtlich nehmen.\n✅ «nicht zu Rande kommen» hat nichts mit einem Rand zu tun: Es heisst, etwas nicht zu schaffen.' },
           { text: '❌ Die Wortform vergessen.\n✅ Steht im Satz ein Verb in der Vergangenheit, muss auch dein Wort passen: trommelte, nicht trommeln.' },
-          { text: '❌ Nur ein Wort nennen, obwohl mehrere gesucht sind.\n✅ Lies, wie viele Wörter verlangt sind, und streiche beim Ankreuzen wirklich alle, die nicht passen.' },
+          { text: '❌ Nur ein Wort nennen, obwohl mehrere gesucht sind.\n✅ Lies, wie viele Wörter verlangt sind. Wird ein Wort gesucht, schreibst du eines auf. Sollst du Wörter streichen, streichst du alle, die nicht passen.' },
           { text: '❌ Synonym und Gegenteil verwechseln.\n✅ Unterstreiche in der Aufgabe das Wort «entsprechend» oder «gegensätzlich», bevor du schreibst.' },
           { text: '❌ Raten, wenn du das Wort nicht kennst.\n✅ Lies den ganzen Satz: Oft verrät der Zusammenhang die Bedeutung.' },
         ],
@@ -2112,7 +2112,7 @@ export const lernkarten = {
           { text: 'Beispiel:\n\n«Er zog mich fort.»\n\n→ Wen oder was zog er fort? [[ao|mich]]\n→ Akkusativobjekt.' },
           { text: 'Beispiel mit Dativ:\n\n«Ich sah [[do|den Möwen]] zu. Mein trauriges Gesicht fiel [[do|einem Polizisten]] auf.»\n\n→ Wem sah ich zu? Wem fiel es auf? Beides Dativobjekte.' },
           { text: '⚠️ Was mit einer Präposition beginnt, ist kein Objekt.\n\n«Franz tat [[ao|einen zögerlichen Schritt]], legte [[ao|seine Hand]] auf ihren Kopf.»\n\n→ «auf ihren Kopf» ist ein [[pg|Präpositionalgefüge]].' },
-          { text: '💡 Merksatz:\n\nErst das Prädikat, dann fragen.\n\nGenitivobjekte sind selten. Wenn du eines zu finden meinst, prüfe nochmals mit «Wessen?».' },
+          { text: '💡 Merksatz:\n\nErst das Prädikat, dann fragen.\n\nGenitivobjekte sind im Deutschen selten. Wenn du eines zu finden meinst, prüfe nochmals: Meist ist es ein Akkusativ- oder Dativobjekt.' },
         ],
         check: [
           { frage: 'Welches Objekt ist «ihm» in «Ich gab ihm den Abschiedskuss»?', optionen: ['Dativobjekt', 'Akkusativobjekt', 'Genitivobjekt'], richtig: 0, erklaerung: 'Wem gab ich den Kuss? ihm. Das ist der Dativ.' },
@@ -2130,7 +2130,7 @@ export const lernkarten = {
           { text: 'So gehst du vor:\n\n1. [[prd|Prädikat]] suchen\n2. [[su|Subjekt]] erfragen\n3. Objekte erfragen\n4. Der Rest mit Präposition ist [[pg|Präpositionalgefüge]]' },
           { text: 'Beispiel:\n\n«Meinen Koffer hatte der Vater nach dem Mittagessen zum Auto getragen.»\n\n[[ao|Meinen Koffer]] – [[su|der Vater]] – [[pg|nach dem Mittagessen]] – [[pg|zum Auto]]' },
           { text: 'Beispiel:\n\n«Unter ihrer Kopfhaut spürte er das warme Pulsieren.»\n\n[[pg|Unter ihrer Kopfhaut]] – [[su|er]] – [[ao|das warme Pulsieren]]' },
-          { text: '⚠️ Das [[prd|Prädikat]] schreibst du bei dieser Aufgabe nicht mit auf. Gefragt sind nur die übrigen Satzglieder.\n\n💡 Die Verschiebeprobe zeigt dir die Grenzen: «Zum Auto hatte der Vater …» funktioniert, also gehört es zusammen.' },
+          { text: '⚠️ Lies die Aufgabe genau: Oft sind nur die übrigen Satzglieder gefragt, nicht das [[prd|Prädikat]].\n\n💡 Die Verschiebeprobe zeigt dir die Grenzen: «Zum Auto hatte der Vater …» funktioniert, also gehört es zusammen.' },
         ],
         check: [
           { frage: 'Was ist «durch den Flur» in «Sie fuhren den Wagen durch den Flur»?', optionen: ['Präpositionalgefüge', 'Akkusativobjekt', 'Subjekt'], richtig: 0, erklaerung: 'Es beginnt mit der Präposition «durch».' },
@@ -2148,7 +2148,7 @@ export const lernkarten = {
           { text: 'So gehst du vor:\n\n1. Satzglieder bestimmen\n2. Sie in der Reihenfolge des Satzes aufschreiben\n3. Mit den Schemata vergleichen' },
           { text: 'Beispiel:\n\n«Er sagte ihren Namen.»\n\n[[su|Er]] – [[prd|sagte]] – [[ao|ihren Namen]]\n→ Subjekt – Prädikat – Akkusativobjekt' },
           { text: 'Beispiel mit umgekehrter Reihenfolge:\n\n«In der Ferne reagierte ein Hund.»\n\n[[pg|In der Ferne]] – [[prd|reagierte]] – [[su|ein Hund]]\n→ Präpositionalgefüge – Prädikat – Subjekt' },
-          { text: 'Beispiel mit vier Gliedern:\n\n«Er spürte eine Welle von Zorn in sich aufsteigen.»\n\n[[su|Er]] – [[prd|spürte … aufsteigen]] – [[ao|eine Welle von Zorn]] – [[pg|in sich]]' },
+          { text: 'Beispiel mit vier Gliedern:\n\n«Der Vater trug den Koffer zum Auto.»\n\n[[su|Der Vater]] – [[prd|trug]] – [[ao|den Koffer]] – [[pg|zum Auto]]' },
           { text: '💡 Merksatz:\n\nEntscheidend ist die Reihenfolge in DIESEM Satz.\n\nSteht das Subjekt hinten, steht es auch im Schema hinten.' },
         ],
         check: [
@@ -2250,7 +2250,7 @@ export const lernkarten = {
           { text: 'Der Test: Kannst du das Wort verändern?\n\n[[nn|Nomen]], [[vb|Verb]], [[adj|Adjektiv]] und [[pro|Pronomen]] lassen sich beugen: Haus – Häuser, geht – ging.\n\n[[pa|Partikel]] bleiben immer gleich: und, auf, nicht.' },
           { text: '⚠️ Merk dir diese zwei Zuordnungen:\n\nArtikel (der, die, das, ein) → [[pro|Pronomen]]\nPräpositionen und Konjunktionen (auf, und, weil) → [[pa|Partikel]]' },
           { text: 'Beispiel:\n\n«[[pro|Ihr]] [[nn|Gesicht]] [[vb|war]] [[adj|fahl]] [[pa|und]] [[vb|wirkte]] [[pa|nicht]] [[pa|sehr]] [[adj|gesund]].»' },
-          { text: 'Beispiel:\n\n«[[pa|Wie]] [[pro|zwei]] [[nn|Kinder]] [[vb|fuhren]] sie [[pa|dann]] den [[adj|kleinen]] Wagen …»\n\n→ Zahlwörter wie zwei zählen zu den [[pro|Pronomen]].' },
+          { text: 'Beispiel:\n\n«[[pa|Wie]] [[pro|zwei]] [[nn|Kinder]] [[vb|fuhren]] sie [[pa|dann]] den [[adj|kleinen]] Wagen …»\n\n→ Zahlwörter wie «zwei» gelten bei den fünf Wortarten als [[pro|Pronomen]].' },
           { text: '💡 Merksatz:\n\nUnveränderlich? → [[pa|Partikel]].\nBegleitet es ein Nomen? → [[pro|Pronomen]].\n\nAlles andere erkennst du an der Bedeutung: Ding, Tätigkeit oder Eigenschaft.' },
         ],
         check: [
@@ -2267,7 +2267,7 @@ export const lernkarten = {
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Verschiedene Wortarten zählen heisst: Jede Art zählt nur einmal, egal wie oft sie vorkommt.\n• Mehr als fünf geht nie.' },
           { text: 'So gehst du vor:\n\n1. Über jedes Wort die Wortart schreiben\n2. Die verschiedenen Arten zusammenzählen\n\nNicht die Wörter zählen, sondern die Arten.' },
-          { text: 'Beispiel:\n\n«[[adj|Stumm]] [[vb|sahen]] [[pro|wir]] hinaus.»\n\n→ nur 3 Wortarten. «hinaus» ist ein [[aen|Verbzusatz]] und gehört zum Verb hinaussehen.' },
+          { text: 'Beispiel:\n\n«[[adj|Stumm]] [[vb|sahen]] [[pro|wir]] hinaus.»\n\n→ 3 Wortarten: Adjektiv, Verb, Pronomen. «hinaus» ist ein [[aen|Verbzusatz]] und gehört zum Verb.' },
           { text: 'Beispiel mit allen fünf:\n\n«[[pa|Neben]] [[pro|einem]] [[adj|grauen]] [[nn|Fluss]] [[vb|hatte]] die Strasse [[pa|kaum]] Platz.»\n\n→ 5 Wortarten.' },
           { text: '💡 Merksatz:\n\nZähl zuletzt ab: Nomen? Verb? Adjektiv? Pronomen? Partikel?\n\nFünf Haken, fünf Fragen. Fehlt eine Art, zählst du sie nicht mit.' },
         ],
@@ -2288,7 +2288,7 @@ export const lernkarten = {
           { text: 'Beispiel:\n\ndurch, nach → Präpositionen\n[[konj|und]], [[konj|obwohl]], [[konj|dass]], [[konj|denn]] → Konjunktionen\nnicht, bald → Sonstige\n\nAlle zusammen sind [[pa|Partikeln]].' },
           { text: '⚠️ Ein [[aen|Verbzusatz]] ist keine Präposition.\n\n«Ich fing links an, mein Blick wanderte von Pfeiler zu Pfeiler.»\n\n→ an gehört zu anfangen.\n→ von, zu, bis sind Präpositionen.' },
           { text: 'Beispiel zum Herausschreiben:\n\n«Aber früher war er mal von einem Nachbarshund gebissen worden, und selbst die Welpen bellten sofort, wenn sie ihn sahen.»\n\nPartikeln: aber, früher, mal, von, und, selbst, sofort, wenn' },
-          { text: '💡 Merksatz:\n\nJede Konjunktion ist auch eine Partikel, aber nicht jede Partikel ist eine Konjunktion.\n\nFrag bei jedem Wort: Verbindet es etwas? Dann ist es eine Konjunktion.' },
+          { text: '💡 Merksatz:\n\nJede [[konj|Konjunktion]] ist eine [[pa|Partikel]], aber nicht jede Partikel ist eine Konjunktion.\n\nVerbindet das Wort zwei Sätze oder Satzteile? → Konjunktion.\nSteht es vor einem Nomen und verlangt einen Fall? → Präposition.' },
         ],
         check: [
           { frage: 'Welche Gruppe gehört NICHT zu den Partikeln?', optionen: ['Pronomen', 'Präpositionen', 'Konjunktionen'], richtig: 0, erklaerung: 'Pronomen sind eine eigene Wortart.' },
@@ -2392,7 +2392,7 @@ export const lernkarten = {
         videos: [],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[pro|Pronomen]]: ein Wort, das für ein Nomen steht oder es begleitet.\n• Unterkategorie: die genaue Sorte, zum Beispiel Personalpronomen.\n• Bezugswort: das Nomen, auf das sich das Pronomen bezieht.' },
-          { text: 'Die drei häufigsten Sorten:\n\nPersonalpronomen: ich, du, er, sie, es\nPossessivpronomen: mein, dein, sein, ihr\nReflexivpronomen: sich, mir, mich (zurück auf das Subjekt)' },
+          { text: 'Die drei häufigsten Sorten:\n\nPersonalpronomen: ich, du, er, sie, es\nPossessivpronomen: mein, dein, sein, ihr\nReflexivpronomen: «sich» ist immer reflexiv. mich, dich, uns, euch, mir, dir nur, wenn sie auf das Subjekt zurückweisen: «Ich wasche mich.» Sonst sind sie Personalpronomen.' },
           { text: 'Relativpronomen leiten einen Nebensatz ein. Das Verb steht dann am Ende.\n\n«… einem Polizisten, [[pro|der]] in diesem Viertel die Runde zu gehen hatte.»\n\n→ der bezieht sich auf Polizisten.' },
           { text: 'Zwei weitere Sorten:\n\nInterrogativpronomen fragen: wer, was, welcher\nIndefinitpronomen bleiben unbestimmt: einige, ein paar, jemand, alle, etwas' },
           { text: 'Beispiel:\n\n«[[pro|Einige]] Vögel strichen über die Oberfläche [[pro|des]] Sees … Und [[pro|was]], wenn [[pro|sie]] ertrunken war?»\n\nEinige: Indefinitpronomen\ndes: bestimmter Artikel\nsie: Personalpronomen\nwas: Interrogativpronomen' },
@@ -2414,7 +2414,7 @@ export const lernkarten = {
           { text: 'Der Test bei «der, die, das»:\n\nFolgt direkt ein Nomen (auch mit Adjektiv dazwischen)?\n→ [[aen|Artikel]]\n\nLeitet es einen Nebensatz ein, Verb am Ende?\n→ Relativpronomen' },
           { text: 'Beide in einem Satz:\n\n«Als ich an [[aen|der]] Hafenmauer stand … fiel mein Gesicht einem Polizisten auf, [[pro|der]] in diesem Viertel die Runde zu gehen hatte.»\n\nerstes der: Artikel\nzweites der: Relativpronomen' },
           { text: 'Noch ein Beispiel:\n\n«[[pro|Sein]] Schädel, [[pro|der]] auf [[aen|dem]] verdorrten Hals zu schwer geworden war …»\n\nSein: Possessivpronomen\nder: Relativpronomen\ndem: bestimmter Artikel' },
-          { text: '💡 Merksatz:\n\nKomma davor und Verb am Ende → Relativpronomen.\nNomen direkt dahinter → Artikel.\n\nSteht das Wort allein und zeigt es auf etwas, ist es ein Demonstrativpronomen.' },
+          { text: '💡 Merksatz:\n\nKomma davor und Verb am Ende → Relativpronomen.\nBegleitet es ein Nomen, das sonst keinen Begleiter hat → [[aen|Artikel]].\nZeigt es nur noch auf etwas → Demonstrativpronomen.' },
         ],
         check: [
           { frage: 'Was ist «die» in «Wir hatten die Angst»?', optionen: ['Artikel', 'Relativpronomen', 'Indefinitpronomen'], richtig: 0, erklaerung: 'Direkt danach steht das Nomen Angst.' },
@@ -2486,7 +2486,7 @@ export const lernkarten = {
           { text: 'Die vier Fragen:\n\n[[nom|Nominativ]] → Wer oder was?\n[[gen|Genitiv]] → Wessen?\n[[dat|Dativ]] → Wem?\n[[akk|Akkusativ]] → Wen oder was?' },
           { text: 'Beispiel:\n\n«[[nom|Man]] hatte [[dat|meinem Bruder]] … [[akk|den Vorzug]] gegeben, als [[nom|der Mietvertrag]] erneut ausgeschrieben worden war.»' },
           { text: 'Beispiel mit Genitiv:\n\n«Carl begann, [[akk|das Ganze]] für [[akk|das Ergebnis]] [[gen|einer unguten Hypnose]] zu halten.»\n\n→ Wessen Ergebnis? Der Hypnose. Das ist der Genitiv.' },
-          { text: '💡 Die Präposition verrät oft den Fall:\n\nmit, von, bei, zu, aus → [[dat|Dativ]]\nfür, durch, ohne, gegen → [[akk|Akkusativ]]\n\n«beim Abendbrot» → Dativ.' },
+          { text: '💡 Die Präposition verrät oft den Fall:\n\nmit, von, bei, zu, aus → [[dat|Dativ]]\nfür, durch, ohne, gegen → [[akk|Akkusativ]]\nin, auf, an, über, unter: Wo? → [[dat|Dativ]], Wohin? → [[akk|Akkusativ]]\n\n«beim Abendbrot» → Dativ.' },
           { text: '💡 Merksatz:\n\nFrag mit dem Verb: Wer oder was? Wen oder was? Wem? Wessen?\n\nDie Frage, die eine sinnvolle Antwort gibt, nennt dir den Fall.' },
         ],
         check: [
@@ -2522,7 +2522,7 @@ export const lernkarten = {
           { text: 'Diese Wörter brauchst du:\n\n• Grundform (Positiv): schnell\n• Komparativ: schneller\n• Superlativ: am schnellsten\n• Nominalisierung: aus einem Adjektiv oder Verb wird ein Nomen.' },
           { text: 'Regelmässig steigern:\n\nüblich → üblicher → am üblichsten\nbezaubernd → bezaubernder → am bezauberndsten\n\n→ Endung -er, dann -sten.' },
           { text: '⚠️ Diese musst du auswendig können:\n\ngut → besser → am besten\ngern → lieber → am liebsten\nviel → mehr → am meisten' },
-          { text: 'Vergleichsformen erkennen:\n\n«Je [[aen|näher]] wir an das Dorf herankamen, desto [[aen|grösser]] wurden die Häuser …»\n\n→ näher und grösser stehen im Komparativ.' },
+          { text: 'Vergleichsformen erkennen:\n\n«Je [[aen|näher]] wir an das Dorf herankamen, desto [[aen|grösser]] wurden die Häuser …»\n\n→ näher und grösser stehen in der Vergleichsform (Komparativ).' },
           { text: 'Nominalisieren: Adjektiv → [[nn|Nomen]] mit Artikel.\n\nsauber → die Sauberkeit, das Saubere\ndunkel → die Dunkelheit, das Dunkle' },
           { text: 'Auch Verben werden zu Nomen:\n\ngehen → das Gehen\nlindern → das Lindern, die Linderung\n\n💡 Merksatz: Gross schreiben und immer den Artikel im [[nom|Nominativ]] dazusetzen.' },
         ],
@@ -2611,7 +2611,7 @@ export const lernkarten = {
           { text: '❌ Den Verbzusatz als Präposition zählen.\n✅ In «er stellt den Koffer ab» gehört ab zum Verb abstellen.' },
           { text: '❌ Die Reihenfolge durcheinanderbringen.\n✅ Schreib die Gefüge so heraus, wie sie im Satz vorkommen.' },
           { text: '❌ Ein Präpositionalgefüge für ein Objekt halten.\n✅ Objekte stehen ohne Präposition: «seine Hand» ist ein Objekt, «auf ihren Kopf» nicht.' },
-          { text: '❌ Den Fall vergessen, wenn er verlangt ist.\n✅ Nach aus, mit, bei, von, zu steht der Dativ: «aus Sparsamkeit», «mit dem gleichen Zug».' },
+          { text: '❌ Den Fall vergessen, wenn er verlangt ist.\n✅ Der Fall hängt von der Präposition ab. Nach aus, mit, bei, von, zu steht der Dativ: «aus Sparsamkeit», «mit dem gleichen Zug».' },
         ],
         check: [],
       },
@@ -2695,7 +2695,7 @@ export const lernkarten = {
           { text: 'So gehst du vor:\n\n1. Personalformen suchen\n2. An den Kommas und Konjunktionen trennen\n3. Jeden Teilsatz bestimmen\n4. In der Reihenfolge aufschreiben' },
           { text: 'Beispiel:\n\n«[[hs|Sie hatte sich zur Wand hin gerollt]] und [[hs|er sah von ihr nur die Masse ihres Haars]], [[ns|das ihr Schwierigkeiten bereitete]], [[ns|mit dem sie Kämpfe ausfocht]].»\n\n→ HS-HS-NS-NS' },
           { text: 'Beispiel mit fünf Teilsätzen:\n\n«[[hs|Die Klinke sprang nach unten]] und [[hs|wir wussten sofort]], [[ns|dass der Rektor kommt]], [[ns|weil nur er der Klinke einen Hieb versetzte]], [[ns|dass sie nach unten sprang]].»\n\n→ HS-HS-NS-NS-NS' },
-          { text: 'Beispiel mit Nebensatz in der Mitte:\n\n«[[hs|Sie steckten die Köpfe zusammen]] und [[ns|wenn sie die Köpfe wieder hoben]], [[hs|hatten alle einen lachend geöffneten Mund]].»\n\n💡 Merksatz: Erst zählen, dann bestimmen, dann aufschreiben.' },
+          { text: 'Beispiel mit Nebensatz in der Mitte:\n\n«[[hs|Ich stand auf]], [[ns|als der Wecker klingelte]], [[hs|und ging in die Küche]].»\n\n→ HS-NS-HS\n\n💡 Merksatz: Erst zählen, dann bestimmen, dann aufschreiben.' },
         ],
         check: [
           { frage: 'Welches Muster hat «Ich sah erst jetzt, dass Ludwig tropfte»?', optionen: ['HS-NS', 'HS-HS', 'NS-HS'], richtig: 0, erklaerung: 'Der zweite Teilsatz beginnt mit dass und hat das Verb am Ende.' },
@@ -2711,8 +2711,8 @@ export const lernkarten = {
         karten: [
           { text: 'Diese Wörter brauchst du. Jede Konjunktion hat eine Bedeutung:\n\nweil → Grund\nobwohl → Gegensatz\nwährend → Gleichzeitigkeit\nals → einmaliger Zeitpunkt' },
           { text: 'So verbindest du zwei Sätze:\n\n1. Passende [[konj|Konjunktion]] wählen\n2. Komma setzen\n3. Im [[ns|Nebensatz]] das Verb ans Ende stellen' },
-          { text: 'Beispiel:\n\n«Henry drehte sich um. Der Schäferhund rannte los.»\n\n→ Henry drehte sich um, [[konj|als]] der Schäferhund [[aen|losrannte]].' },
-          { text: 'Beispiel mit Grund:\n\n«Er lief panisch davon. Auf der Wiese gab es keinen Baum.»\n\n→ Er lief panisch davon, [[konj|weil]] es auf der Wiese keinen Baum [[aen|gab]].' },
+          { text: 'Beispiel mit Grund:\n\n«Er lief davon. Ein Hund bellte.»\n\n→ Er lief davon, [[konj|weil]] ein Hund [[aen|bellte]].' },
+          { text: 'Beispiel mit Gleichzeitigkeit:\n\n«Sie las ein Buch. Draussen regnete es.»\n\n→ Sie las ein Buch, [[konj|während]] es draussen [[aen|regnete]].' },
           { text: '⚠️ Achte auf zwei Dinge:\n\n1. Der Inhalt muss stimmen: weil nennt wirklich einen Grund.\n2. Jede Konjunktion darfst du nur einmal verwenden, wenn die Aufgabe das sagt.' },
           { text: '💡 Merksatz:\n\nFrag dich zuerst: Grund, Gegensatz oder Zeit?\n\nDanach kontrollierst du nur noch: Komma gesetzt, Verb am Ende.' },
         ],
@@ -2818,7 +2818,7 @@ export const lernkarten = {
           { text: 'Diese Wörter brauchst du:\n\n• [[akt|Aktiv]]: Das Subjekt handelt selbst.\n• [[pas|Passiv]]: Es zählt, was geschieht; wer es tut, ist nebensächlich.\n• Täter: die handelnde Person, im Passiv mit von … genannt.' },
           { text: 'So erkennst du das [[pas|Passiv]]:\n\n[[aen|werden]] + Partizip II\n\n«Ich [[pas|wurde]] von vier Millionen Dollar [[pas|erwartet]].»\n\nFehlt diese Verbindung, ist der Satz [[akt|Aktiv]].' },
           { text: 'Vom [[akt|Aktiv]] zum [[pas|Passiv]]:\n\n1. Akkusativobjekt wird Subjekt\n2. Altes Subjekt wird «von …» oder fällt weg\n3. werden + Partizip II' },
-          { text: 'Beispiel:\n\n[[akt|«Zwei Wochen zuvor hatte ich Ludwig zum ersten Mal gesehen.»]]\n\n→ [[pas|«Zwei Wochen zuvor war Ludwig von mir zum ersten Mal gesehen worden.»]]' },
+          { text: 'Beispiel:\n\n[[akt|«Zwei Wochen zuvor hatte ich Ludwig zum ersten Mal gesehen.»]]\n\n→ [[pas|«Zwei Wochen zuvor war Ludwig (von mir) zum ersten Mal gesehen worden.»]]\n\nDen Täter in Klammern darfst du weglassen.' },
           { text: 'Vom [[pas|Passiv]] zum [[akt|Aktiv]]:\n\n«Ich wurde von vier Millionen Dollar erwartet.»\n\n→ [[akt|«Vier Millionen Dollar erwarteten mich.»]]\n\nDer Täter wird zum Subjekt und steht am Anfang.' },
           { text: '💡 Merksatz:\n\nIm Passiv heisst es worden, nicht geworden:\n«… war gesehen [[aen|worden]]».\n\nDie Zeitform bleibt beim Umwandeln gleich.' },
         ],
@@ -2895,7 +2895,7 @@ export const lernkarten = {
           { text: 'Diese Wörter brauchst du:\n\n• [[dr|Direkte Rede]]: die Worte stehen in Anführungszeichen.\n• [[ir|Indirekte Rede]]: du gibst sie wieder, mit [[k1|Konjunktiv I]].\n• Begleitsatz: der Teil mit sagte, rief, fragte.' },
           { text: 'Von der [[dr|direkten]] zur [[ir|indirekten]] Rede:\n\n1. Anführungszeichen weg\n2. Verb in den [[k1|Konjunktiv I]]\n3. Pronomen anpassen (ich wird er oder sie)' },
           { text: 'Beispiel:\n\n«Er ist ertrunken», sagte sie leise.\n\n→ Sie sagte leise, er [[k1|sei]] ertrunken.' },
-          { text: 'Fragen brauchen ein Einleitewort:\n\n«Findest du unser Haus blöd?», fragte Wenger.\n\n→ Wenger fragte, [[konj|ob]] sie ihr Haus blöd [[k1|finde]].\n\nBei einem Fragewort bleibt dieses: wann, wo, warum.' },
+          { text: 'Fragen brauchen ein Einleitewort:\n\nWenger fragt Thérèse: «Findest du unser Haus blöd?»\n\n→ Wenger fragte, [[konj|ob]] sie ihr Haus blöd [[k1|finde]].\n\nAus «du» wird «sie», aus «unser» wird «ihr».' },
           { text: '⚠️ Sieht der [[k1|Konjunktiv I]] gleich aus wie der Indikativ, nimmst du den [[k2|Konjunktiv II]].\n\nsie sagen → nicht «sie sagen», sondern [[k2|sie sagten]] oder [[k2|sie würden sagen]].' },
           { text: 'Von der [[ir|indirekten]] zur [[dr|direkten]] Rede:\n\n«Der Grossvater, sagte die Mutter, [[ir|hole]] sich eine Erkältung.»\n\n→ Die Mutter sagte: «Der Grossvater [[dr|holt]] sich eine Erkältung.»\n\n💡 Doppelpunkt, Anführungszeichen, Indikativ.' },
         ],
@@ -2928,7 +2928,7 @@ export const lernkarten = {
         minLoesungen: 3,
         karten: [
           // 2016, Aufgabe 8 (Frage)
-          { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', loesung: 'Wenger fragte, ob sie ihr Haus blöd finde (fände).' },
+          { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', loesung: 'Ob sie ihr Haus blöd finde (fände), fragte Wenger. Auch möglich: Wenger fragte, ob sie ihr Haus blöd finde.' },
           // 2016, Aufgabe 8 (Aussage)
           { text: 'Setze in die indirekte Rede:\n\n«Es ist doch auch ein Chalet.»', loesung: 'Es sei (wäre) doch auch ein Chalet.' },
           // 2017, Aufgabe 9
