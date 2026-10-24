@@ -22,7 +22,7 @@ export const dojoDeutsch = {
     // 2016, Aufgabe 3b
     { text: 'Welche Wörter entsprechen hier «Publikum»?\n\n«… unter einem Publikum aus reisenden Engländern …»\n\nZuschauer / Zuhörer / Fans / Öffentlichkeit', loesung: 'Zuschauer, Zuhörer und Öffentlichkeit. «Fans» passt nicht.' },
     // 2016, Aufgabe 4a
-    { text: 'Finde ein Wort mit gleicher Bedeutung für «peinlich»:\n\n«… es war Wenger peinlich, dass Thérèse ihn so laut mit Daddy anredete.»', loesung: 'unangenehm, genierlich' },
+    { text: 'Finde ein Wort mit gleicher Bedeutung für «peinlich»:\n\n«… es war Wenger peinlich, dass Thérèse ihn so laut … mit Daddy anredete.»', loesung: 'unangenehm, genierlich' },
     // 2016, Aufgabe 4b
     { text: 'Finde ein Wort mit gleicher Bedeutung für «überhaupt»:\n\n«Mammi und du, ihr seid überhaupt keine Spiesser.»', loesung: 'wirklich, gar, wahrhaftig' },
     // 2016, Aufgabe 22b
@@ -50,7 +50,7 @@ export const dojoDeutsch = {
     // 2019, Aufgabe 2a
     { text: 'Finde ein Wort mit gleicher Bedeutung für «gestutzt»:\n\n«Hinter der Garage standen dekorativ ein paar Bäume umher, sauber gestutzt wie Pudelhunde.»', loesung: 'beschnitten, geschnitten, geschoren' },
     // 2019, Aufgabe 2b
-    { text: 'Finde ein Wort mit gleicher Bedeutung für «verkraften»:\n\n«Sie sah aber ganz so aus, als ob sie einiges verkraften könnte.»', loesung: 'bewältigen, aushalten, ertragen' },
+    { text: 'Finde ein Wort mit gleicher Bedeutung für «verkraften»:\n\n«Sie […] sah aber ganz so aus, als ob sie einiges verkraften könnte.»', loesung: 'bewältigen, aushalten, ertragen' },
     // 2019, Aufgabe 3
     { text: 'Finde für «schimmernd» ein Wort mit gleicher und eines mit gegenteiliger Bedeutung:\n\n«… weiss wie frisches Orangenmark und schimmernd wie Porzellan.»', loesung: 'Gleich: glänzend, leuchtend, blank.\nGegenteil: matt, stumpf, glanzlos.' },
     // 2019, Aufgabe 4
@@ -160,7 +160,7 @@ export const dojoDeutsch = {
     // 2020, Aufgabe 21
     { text: 'Schreibe die Konjunktionen und die Präpositionen heraus:\n\n«Die Scheibenwischer schlugen Wasser weg, und aus den Hangwäldern zu beiden Seiten des Moorgebiets wuchsen schiefe Nebelsäulen.»', loesung: 'Konjunktion: und.\nPräpositionen: aus, zu.' },
     // 2021, Aufgabe 5
-    { text: 'Schreibe alle Konjunktionen und alle Präpositionen heraus:\n\n«Als sich das Gewitter endlich ausgetobt hatte und sich ein erster zaghafter Sonnenstrahl über die ausgetretenen Dielen an sein Bett heranzitterte, rollte sich Franz in einem kleinen Wohligkeitsanfall zusammen, nur um gleich darauf seinen Kopf unter der Decke hervorzustrecken und sich umzuschauen.»', loesung: 'Konjunktionen: als, und, um, und.\nPräpositionen: über, an, in, unter.' },
+    { text: 'Schreibe alle Konjunktionen und alle Präpositionen heraus:\n\n«Als sich das Gewitter endlich ausgetobt hatte und sich ein erster zaghafter Sonnenstrahl über die russschwarzen, von Generationen schwerer Fischerstiefel ausgetretenen Dielen an sein Bett heranzitterte, rollte sich Franz in einem kleinen Wohligkeitsanfall zusammen, nur um gleich darauf seinen Kopf unter der Decke hervorzustrecken und sich umzuschauen.»', loesung: 'Konjunktionen: als, und, um, und.\nPräpositionen: über, an, in, unter.' },
     // 2021, Aufgabe 7
     { text: 'Wie viele verschiedene Wortarten kommen vor?\n\nA: «Die Hütte war stehen geblieben.»\nB: «Franz kroch aus dem Bett.»\nC: «Ihr Kopf fühlte sich zart an.»', loesung: 'A: 3. B: 4. C: 4.' },
     // 2021, Aufgabe 8
@@ -194,9 +194,9 @@ export const dojoDeutsch = {
   // ─── Pronomen ─────────────────────────────────────────────────────────────
   'Pronomen': [
     // 2016, Aufgabe 10 (1-3)
-    { text: 'Bestimme die Pronomen näher:\n\n1. «Es hat etwas von einer Skihütte, findest du nicht?» → «Es»\n2. «… um nachzusehen, was in London los war.» → «was»\n3. «Ich möchte in einem Land wohnen, das ganz flach ist.» → «das»', loesung: '1: Personalpronomen. 2: Interrogativpronomen. 3: Relativpronomen.' },
+    { text: 'Bestimme die Pronomen näher:\n\n1. «Es hat etwas von einer Skihütte, findest du nicht?» → «Es»\n2. «… um nachzusehen, was in London los war.» → «was»\n3. «Ich möchte … in einem Land wohnen, das ganz flach ist.» → «das»', loesung: '1: Personalpronomen. 2: Interrogativpronomen. 3: Relativpronomen.' },
     // 2016, Aufgabe 10 (4-6)
-    { text: 'Bestimme die Pronomen näher:\n\n4. «Das sind Häuser!», rief sie. → «Das»\n5. «Daddy, ist das unser Schiff?» → «das»\n6. «Daddy, ist das unser Schiff?» → «unser»', loesung: '4: Demonstrativpronomen. 5: bestimmter Artikel. 6: Demonstrativpronomen.' },
+    { text: 'Bestimme die Pronomen näher:\n\n4. «Das sind Häuser!», rief sie. → «Das»\n5. «Thérèse deutete auf das Fährschiff …» → «das»\n6. «… ist das unser Schiff?» → «das»', loesung: '4: Demonstrativpronomen. 5: bestimmter Artikel (vor dem Nomen Fährschiff). 6: Demonstrativpronomen (es zeigt auf das Schiff).' },
     // 2016, Aufgabe 17
     { text: 'Schreibe alle Pronomen heraus:\n\n«Sie war begeistert von den handtuchschmalen Häusern, die am Zugfenster vorbeirauschten.»', loesung: 'Sie, die' },
     // 2017, Aufgabe 14
@@ -204,15 +204,15 @@ export const dojoDeutsch = {
     // 2018, Aufgabe 9
     { text: 'Ordne die Pronomen zu:\n\n«Wir hatten die Angst, die man hat, wenn andere etwas Verbotenes tun, aber die Strafe alle treffen wird.»\n\nWir / die / man / andere / etwas / alle / die', loesung: 'Personalpronomen: Wir, man.\nArtikel: die, die.\nIndefinitpronomen: andere, etwas, alle.\nRelativpronomen: die.' },
     // 2019, Aufgabe 20 (1)
-    { text: 'Bestimme das Pronomen näher:\n\n«Der Ritter fummelte an den Stricken herum, mit denen die Dame an den Baum gezurrt war.» → «denen»', loesung: 'Relativpronomen' },
+    { text: 'Bestimme das Pronomen näher:\n\n«Der Ritter hatte … sein Visier hochgeklappt und fummelte an den Stricken herum, mit denen die Dame an den Baum gezurrt war.» → «denen»', loesung: 'Relativpronomen' },
     // 2019, Aufgabe 20 (2-3)
-    { text: 'Bestimme die Pronomen näher:\n\n«Ihre Augen waren schiefergrau und fast völlig ausdruckslos.» → «Ihre»\n«Ich hab es mir nicht ausgesucht.» → «mir»', loesung: 'Ihre: Possessivpronomen.\nmir: Reflexivpronomen.' },
+    { text: 'Bestimme die Pronomen näher:\n\n«Ihre Augen waren schiefergrau und fast völlig ausdruckslos.» → «Ihre»\n«Ich hab\'s mir nicht ausgesucht.» → «mir»', loesung: 'Ihre: Possessivpronomen.\nmir: Reflexivpronomen.' },
     // 2020, Aufgabe 20
     { text: 'Bestimme die Pronomen näher:\n\n«Sein Schädel, der auf dem verdorrten Hals zu schwer geworden war, nickte vor sich hin …»\n\nSein / der / dem', loesung: 'Sein: Possessivpronomen.\nder: Relativpronomen.\ndem: bestimmter Artikel.' },
     // 2021, Aufgabe 6
     { text: 'Bestimme die Pronomen näher:\n\n«Statt einer Antwort stiess sich die Mutter vom Türrahmen ab, kam mit ein paar unsicheren Schritten auf ihn zu.»\n\neiner / die / ein paar / ihn', loesung: 'einer: unbestimmter Artikel.\ndie: bestimmter Artikel.\nein paar: Indefinitpronomen.\nihn: Personalpronomen.' },
     // 2022, Aufgabe 16
-    { text: 'Bestimme die Pronomen näher:\n\n«Einige Vögel strichen über die glatte Oberfläche des Sees; nein, es waren Fledermäuse. Wann war sie aus dem Boot gesprungen? Und was, wenn sie ertrunken war?»\n\nEinige / des / sie / es / was', loesung: 'Einige: Indefinitpronomen.\ndes: bestimmter Artikel.\nsie und es: Personalpronomen.\nwas: Interrogativpronomen.' },
+    { text: 'Bestimme die Pronomen näher:\n\n«Einige Vögel strichen über die glatte Oberfläche des Sees; nein, es waren Fledermäuse. Wann war sie aus dem Boot gesprungen oder gestiegen? Und wieso hatte es nicht geplatscht, und was, wenn sie ertrunken war?»\n\nEinige / des / sie / es / was', loesung: 'Einige: Indefinitpronomen.\ndes: bestimmter Artikel.\nsie und es: Personalpronomen.\nwas: Interrogativpronomen.' },
     // 2025, Aufgabe 15
     { text: 'Schreibe alle Pronomen der Reihe nach heraus:\n\n«Da ist jemand, der die Arbeit sieht», war das höchste Lob, das sein Vater zu vergeben hatte.', loesung: 'jemand, der, die, das, das, sein' },
   ],
@@ -240,9 +240,9 @@ export const dojoDeutsch = {
   // ─── Präpositionen ────────────────────────────────────────────────────────
   'Präpositionen': [
     // 2016, Aufgabe 5
-    { text: 'Schreibe die Präpositionalgefüge heraus und gib den Fall an:\n\n«Aus Sparsamkeit, aus erzieherischen Gründen und weil Thérèse in den Weihnachtsferien mit dem gleichen Zug und in der gleichen Klasse reisen sollte, hatte Dr. Wenger kein Schlafwagenabteil erster Klasse bestellt.»', loesung: 'aus Sparsamkeit, aus erzieherischen Gründen, in den Weihnachtsferien, mit dem gleichen Zug, in der gleichen Klasse — alle im Dativ.' },
+    { text: 'Schreibe die Präpositionalgefüge heraus und gib den Fall an:\n\n«Aus Sparsamkeit, aus erzieherischen Gründen und weil Thérèse in den Weihnachtsferien mit dem gleichen Zug und in der gleichen Klasse reisen, Strecke und Art des Reisens also kennenlernen sollte, hatte Dr. Wenger kein Schlafwagenabteil erster Klasse bestellt.»', loesung: 'aus Sparsamkeit, aus erzieherischen Gründen, in den Weihnachtsferien, mit dem gleichen Zug, in der gleichen Klasse — alle im Dativ.' },
     // 2017, Aufgabe 16
-    { text: 'Schreibe alle Präpositionalgefüge heraus:\n\n«Das Gesetz wurde vorgestern durch alle Lautsprecher und in allen Zeitungen verkündet. Diesen wurde es durch Flugblätter bekanntgegeben. Über allen Strassen des Reiches wurden diese abgeworfen.»', loesung: 'durch alle Lautsprecher, in allen Zeitungen, durch Flugblätter, über allen Strassen des Reiches' },
+    { text: 'Schreibe alle Präpositionalgefüge heraus:\n\n«Das Gesetz wurde vorgestern durch alle Lautsprecher und in allen Zeitungen verkündet. … Diesen wurde es durch Flugblätter bekanntgegeben. Über allen Strassen des Reiches wurden diese abgeworfen.»', loesung: 'durch alle Lautsprecher, in allen Zeitungen, durch Flugblätter, über allen Strassen des Reiches' },
     // 2019, Aufgabe 17
     { text: 'Schreibe alle Präpositionen heraus:\n\n«Über den Türflügeln, die eine Herde indischer Elefanten durchgelassen hätten, war auf einem breiten bunten Glasfenster ein Ritter in dunklem Harnisch bei der Errettung einer Dame zu sehen.»', loesung: 'über, auf, in, bei' },
     // 2019, Aufgabe 18
@@ -254,7 +254,7 @@ export const dojoDeutsch = {
     // 2024, Aufgabe 15
     { text: 'Schreibe alle Präpositionalgefüge der Reihe nach heraus:\n\n«Kaum jemand aus den umliegenden Dörfern schlug sein Angebot aus, aber die Leute kamen auch aus der Stadt, entschieden sich für eine der drei Möglichkeiten und liessen sich von unserem Vater beraten.»', loesung: 'aus den umliegenden Dörfern, aus der Stadt, für eine der drei Möglichkeiten, von unserem Vater' },
     // 2025, Aufgabe 12
-    { text: 'Schreibe alle Präpositionen der Reihe nach heraus:\n\n«Carl begann, das Ganze für das Ergebnis einer unguten Hypnose zu halten, in die er nicht noch tiefer hineingezogen werden wollte. Dann wurde abgeräumt und alles mit dem Servierwagen zurück in die Küche gefahren.»', loesung: 'für, in, mit, in' },
+    { text: 'Schreibe alle Präpositionen der Reihe nach heraus:\n\n«Carl begann, das Ganze für das Ergebnis einer unguten Hypnose zu halten, in die er nicht noch tiefer hineingezogen werden wollte. … dann wurde abgeräumt und alles mit dem Servierwagen zurück in die Küche gefahren.»', loesung: 'für, in, mit, in' },
   ],
 
   // ─── Satzbau & Konjunktionen ──────────────────────────────────────────────
@@ -348,7 +348,7 @@ export const dojoDeutsch = {
   // ─── Direkte / Indirekte Rede ─────────────────────────────────────────────
   'Direkte / Indirekte Rede': [
     // 2016, Aufgabe 8 (Frage)
-    { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', loesung: 'Wenger fragte, ob sie ihr Haus blöd finde (fände).' },
+    { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', loesung: 'Ob sie ihr Haus blöd finde (fände), fragte Wenger. Auch möglich: Wenger fragte, ob sie ihr Haus blöd finde.' },
     // 2016, Aufgabe 8 (Aussage)
     { text: 'Setze in die indirekte Rede:\n\n«Es ist doch auch ein Chalet.»', loesung: 'Es sei (wäre) doch auch ein Chalet.' },
     // 2017, Aufgabe 9

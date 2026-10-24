@@ -629,8 +629,8 @@ Bestimme die unterstrichenen Pronomen (Unterkategorie):
 2. «Er hatte das Blatt … gekauft, um nachzusehen, was in London los war.» → «was»
 3. «Ich möchte … in einem Land wohnen, das ganz flach ist.» → «das»
 4. «Das sind Häuser!» rief sie. → «Das»
-5. «Daddy, ist das unser Schiff?» → «das» (beim Fährschiff)
-6. «Daddy, ist das unser Schiff?» → «unser»
+5. «Thérèse deutete auf das Fährschiff und rief: „Daddy, ist das unser Schiff?“» → «das» (vor «Fährschiff»)
+6. Gleicher Satz → «das» (vor «unser Schiff»)
 
 Welche Zuordnung ist vollständig korrekt?`,
 
@@ -640,11 +640,11 @@ Welche Zuordnung ist vollständig korrekt?`,
         correct: true,
       },
       {
-        label: '1: Demonstrativpronomen | 2: Relativpronomen | 3: Relativpronomen | 4: Demonstrativpronomen | 5: Demonstrativpronomen | 6: Possessivpronomen',
+        label: '1: Demonstrativpronomen | 2: Relativpronomen | 3: Relativpronomen | 4: Demonstrativpronomen | 5: Demonstrativpronomen | 6: Artikel (bestimmter)',
         correct: false,
       },
       {
-        label: '1: Personalpronomen | 2: Relativpronomen | 3: Relativpronomen | 4: Demonstrativpronomen | 5: Demonstrativpronomen | 6: Possessivpronomen',
+        label: '1: Personalpronomen | 2: Relativpronomen | 3: Relativpronomen | 4: Demonstrativpronomen | 5: Artikel (bestimmter) | 6: Relativpronomen',
         correct: false,
       },
     ],
@@ -671,11 +671,12 @@ Bestimmter Artikel: der, die, das (vor einem Nomen stehend, nicht allein).`,
 
 4. «Das sind Häuser!» → Das = Demonstrativpronomen (steht allein, zeigt auf die Häuser) ✅
 
-5. «ist das unser Schiff?» → das = bestimmter Artikel (steht direkt vor «Schiff») ✅
+5. «Thérèse deutete auf das Fährschiff» → das = bestimmter Artikel ✅
+→ Es steht direkt vor dem Nomen «Fährschiff» und begleitet es.
 
-6. «ist das unser Schiff?» → unser = Demonstrativpronomen?
-→ Nein! «unser» ist ein POSSESSIVPRONOMEN (zeigt Besitz: unser = uns gehörend).
-→ ⚠️ Laut offizieller Lösung: Demonstrativpronomen — hier weicht die offizielle Lösung von der Standardgrammatik ab. In der Prüfung gilt: Demonstrativpronomen ✅`,
+6. «ist das unser Schiff?» → das = Demonstrativpronomen ✅
+→ Hier zeigt «das» auf das Schiff. Begleiter des Nomens «Schiff» ist «unser», deshalb ist «das» kein Artikel.
+→ Unterstrichen sind in dieser Aufgabe beide «das», nicht «unser».`,
         },
         {
           title: '📄 Offizielle Schullösung',

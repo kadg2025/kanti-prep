@@ -21,6 +21,43 @@ const KARTEN_FARBEN = {
   k1:  { light: '#4d7c0f', dark: '#bef264' },  // Konjunktiv I
   k2:  { light: '#a16207', dark: '#fcd34d' },  // Konjunktiv II
   aen: { light: '#713f12', dark: '#fde68a', bg: { light: '#fef08a', dark: '#4a3a0b' } },  // der Teil, der sich aendert
+
+  // Satzglieder und Faelle: Subjekt/Nominativ, Akkusativ, Dativ, Genitiv
+  // teilen sich je eine Farbe, weil sie zusammengehoeren.
+  su:  { light: '#15803d', dark: '#4ade80' },  // Subjekt
+  nom: { light: '#15803d', dark: '#4ade80' },  // Nominativ
+  ao:  { light: '#1d4ed8', dark: '#93c5fd' },  // Akkusativobjekt
+  akk: { light: '#1d4ed8', dark: '#93c5fd' },  // Akkusativ
+  do:  { light: '#c2410c', dark: '#fdba74' },  // Dativobjekt
+  dat: { light: '#c2410c', dark: '#fdba74' },  // Dativ
+  go:  { light: '#a21caf', dark: '#f0abfc' },  // Genitivobjekt
+  gen: { light: '#a21caf', dark: '#f0abfc' },  // Genitiv
+  prd: { light: '#6d28d9', dark: '#c4b5fd' },  // Praedikat
+  pg:  { light: '#0f766e', dark: '#5eead4' },  // Praepositionalgefuege
+
+  // Die fuenf Wortarten
+  nn:  { light: '#15803d', dark: '#4ade80' },  // Nomen
+  vb:  { light: '#be123c', dark: '#fda4af' },  // Verb
+  adj: { light: '#a16207', dark: '#fcd34d' },  // Adjektiv
+  pro: { light: '#6d28d9', dark: '#c4b5fd' },  // Pronomen
+  pa:  { light: '#0f766e', dark: '#5eead4' },  // Partikel
+
+  // Satzbau
+  hs:   { light: '#15803d', dark: '#4ade80' },  // Hauptsatz
+  ns:   { light: '#be123c', dark: '#fda4af' },  // Nebensatz
+  konj: { light: '#c2410c', dark: '#fdba74' },  // Konjunktion
+
+  // Handlungsrichtung
+  akt: { light: '#0e7490', dark: '#67e8f9' },  // Aktiv
+  pas: { light: '#a21caf', dark: '#f0abfc' },  // Passiv
+
+  // Rede
+  dr: { light: '#1d4ed8', dark: '#93c5fd' },  // direkte Rede
+  ir: { light: '#a16207', dark: '#fcd34d' },  // indirekte Rede
+
+  // Wortschatz
+  syn: { light: '#15803d', dark: '#4ade80' },  // gleiche Bedeutung
+  geg: { light: '#be123c', dark: '#fda4af' },  // gegenteilige Bedeutung
 };
 
 const MARKIERUNG = /\[\[([a-zA-Z0-9]+)\|([^\]]*)\]\]/g;
