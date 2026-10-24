@@ -2380,4 +2380,95 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Pronomen ─────────────────────────────────────────────────────────────
+  'Pronomen': {
+    titel: 'Pronomen',
+    kacheln: [
+      {
+        id: 'pronomen-bestimmen',
+        emoji: '👤',
+        titel: 'Pronomen bestimmen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• [[pro|Pronomen]]: ein Wort, das für ein Nomen steht oder es begleitet.\n• Unterkategorie: die genaue Sorte, zum Beispiel Personalpronomen.\n• Bezugswort: das Nomen, auf das sich das Pronomen bezieht.' },
+          { text: 'Die drei häufigsten Sorten:\n\nPersonalpronomen: ich, du, er, sie, es\nPossessivpronomen: mein, dein, sein, ihr\nReflexivpronomen: sich, mir, mich (zurück auf das Subjekt)' },
+          { text: 'Relativpronomen leiten einen Nebensatz ein. Das Verb steht dann am Ende.\n\n«… einem Polizisten, [[pro|der]] in diesem Viertel die Runde zu gehen hatte.»\n\n→ der bezieht sich auf Polizisten.' },
+          { text: 'Zwei weitere Sorten:\n\nInterrogativpronomen fragen: wer, was, welcher\nIndefinitpronomen bleiben unbestimmt: einige, ein paar, jemand, alle, etwas' },
+          { text: 'Beispiel:\n\n«[[pro|Einige]] Vögel strichen über die Oberfläche [[pro|des]] Sees … Und [[pro|was]], wenn [[pro|sie]] ertrunken war?»\n\nEinige: Indefinitpronomen\ndes: bestimmter Artikel\nsie: Personalpronomen\nwas: Interrogativpronomen' },
+          { text: '💡 Merksatz:\n\nFrag immer: Wofür steht das Wort?\n\nFür eine Person → Personalpronomen. Für Besitz → Possessivpronomen. Für etwas Unbestimmtes → Indefinitpronomen.' },
+        ],
+        check: [
+          { frage: 'Was ist «mir» in «Ich hab es mir nicht ausgesucht»?', optionen: ['Reflexivpronomen', 'Possessivpronomen', 'Relativpronomen'], richtig: 0, erklaerung: 'Es weist auf das Subjekt zurück.' },
+          { frage: 'Was ist «denen» in «… an den Stricken, mit denen die Dame gezurrt war»?', optionen: ['Relativpronomen', 'Demonstrativpronomen', 'Indefinitpronomen'], richtig: 0, erklaerung: 'Es leitet den Nebensatz ein und bezieht sich auf die Stricke.' },
+          { frage: 'Was ist «ein paar» in «mit ein paar unsicheren Schritten»?', optionen: ['Indefinitpronomen', 'Unbestimmter Artikel', 'Personalpronomen'], richtig: 0, erklaerung: 'Es nennt eine unbestimmte Menge.' },
+        ],
+      },
+      {
+        id: 'pronomen-artikel',
+        emoji: '🔍',
+        titel: 'Artikel oder Pronomen?',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Artikel: der, die, das, ein, eine. Er begleitet ein Nomen.\n• Bei den fünf Wortarten gehört der Artikel zu den [[pro|Pronomen]]. Gefragt ist aber oft die Unterkategorie.' },
+          { text: 'Der Test bei «der, die, das»:\n\nFolgt direkt ein Nomen (auch mit Adjektiv dazwischen)?\n→ [[aen|Artikel]]\n\nLeitet es einen Nebensatz ein, Verb am Ende?\n→ Relativpronomen' },
+          { text: 'Beide in einem Satz:\n\n«Als ich an [[aen|der]] Hafenmauer stand … fiel mein Gesicht einem Polizisten auf, [[pro|der]] in diesem Viertel die Runde zu gehen hatte.»\n\nerstes der: Artikel\nzweites der: Relativpronomen' },
+          { text: 'Noch ein Beispiel:\n\n«[[pro|Sein]] Schädel, [[pro|der]] auf [[aen|dem]] verdorrten Hals zu schwer geworden war …»\n\nSein: Possessivpronomen\nder: Relativpronomen\ndem: bestimmter Artikel' },
+          { text: '💡 Merksatz:\n\nKomma davor und Verb am Ende → Relativpronomen.\nNomen direkt dahinter → Artikel.\n\nSteht das Wort allein und zeigt es auf etwas, ist es ein Demonstrativpronomen.' },
+        ],
+        check: [
+          { frage: 'Was ist «die» in «Wir hatten die Angst»?', optionen: ['Artikel', 'Relativpronomen', 'Indefinitpronomen'], richtig: 0, erklaerung: 'Direkt danach steht das Nomen Angst.' },
+          { frage: 'Was ist «die» in «die Angst, die man hat»?', optionen: ['Das zweite die ist ein Relativpronomen', 'Beide sind Artikel', 'Beide sind Relativpronomen'], richtig: 0, erklaerung: 'Das zweite die leitet den Nebensatz ein, das Verb hat steht am Ende.' },
+          { frage: 'Woran erkennst du einen Artikel am schnellsten?', optionen: ['Es folgt ein Nomen', 'Es folgt ein Verb', 'Es steht am Satzende'], richtig: 0, erklaerung: 'Der Artikel begleitet immer ein Nomen.' },
+        ],
+      },
+      {
+        id: 'pronomen-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ «der» ist immer ein Artikel.\n✅ Leitet es einen Nebensatz ein, ist es ein Relativpronomen: «der Polizist, der die Runde ging».' },
+          { text: '❌ «sich» vergessen.\n✅ Auch sich ist ein Pronomen: ein Reflexivpronomen.' },
+          { text: '❌ Possessiv- und Reflexivpronomen verwechseln.\n✅ mein, sein, ihr zeigen Besitz. sich, mir weisen auf das Subjekt zurück.' },
+          { text: '❌ «man» nicht als Pronomen zählen.\n✅ man ist ein Indefinitpronomen: unbestimmt, aber ein Pronomen.' },
+          { text: '❌ Nur die Hauptkategorie nennen.\n✅ Verlangt ist meist die nähere Bestimmung, also Personalpronomen statt nur Pronomen.' },
+          { text: '❌ Zusätzliche Wörter herausschreiben.\n✅ Schreib nur, was sicher ein Pronomen ist. Partikeln wie nicht gehören nicht dazu.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'pronomen-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 6,
+        karten: [
+          // 2016, Aufgabe 10 (1-3)
+          { text: 'Bestimme die Pronomen näher:\n\n1. «Es hat etwas von einer Skihütte, findest du nicht?» → «Es»\n2. «… um nachzusehen, was in London los war.» → «was»\n3. «Ich möchte in einem Land wohnen, das ganz flach ist.» → «das»', loesung: '1: Personalpronomen. 2: Interrogativpronomen. 3: Relativpronomen.' },
+          // 2016, Aufgabe 10 (4-6)
+          { text: 'Bestimme die Pronomen näher:\n\n4. «Das sind Häuser!», rief sie. → «Das»\n5. «Daddy, ist das unser Schiff?» → «das»\n6. «Daddy, ist das unser Schiff?» → «unser»', loesung: '4: Demonstrativpronomen. 5: bestimmter Artikel. 6: Demonstrativpronomen.' },
+          // 2016, Aufgabe 17
+          { text: 'Schreibe alle Pronomen heraus:\n\n«Sie war begeistert von den handtuchschmalen Häusern, die am Zugfenster vorbeirauschten.»', loesung: 'Sie, die' },
+          // 2017, Aufgabe 14
+          { text: 'Ordne die Pronomen ein:\n\n«Als ich an der Hafenmauer stand, um den Möwen zuzusehen, fiel mein trauriges Gesicht einem Polizisten auf, der in diesem Viertel die Runde zu gehen hatte.»', loesung: 'Personalpronomen: ich.\nDemonstrativpronomen: diesem.\nArtikel: der (Hafenmauer), den, einem, die.\nPossessivpronomen: mein.\nRelativpronomen: der (im Relativsatz).' },
+          // 2018, Aufgabe 9
+          { text: 'Ordne die Pronomen zu:\n\n«Wir hatten die Angst, die man hat, wenn andere etwas Verbotenes tun, aber die Strafe alle treffen wird.»\n\nWir / die / man / andere / etwas / alle / die', loesung: 'Personalpronomen: Wir, man.\nArtikel: die, die.\nIndefinitpronomen: andere, etwas, alle.\nRelativpronomen: die.' },
+          // 2019, Aufgabe 20 (1)
+          { text: 'Bestimme das Pronomen näher:\n\n«Der Ritter fummelte an den Stricken herum, mit denen die Dame an den Baum gezurrt war.» → «denen»', loesung: 'Relativpronomen' },
+          // 2019, Aufgabe 20 (2-3)
+          { text: 'Bestimme die Pronomen näher:\n\n«Ihre Augen waren schiefergrau und fast völlig ausdruckslos.» → «Ihre»\n«Ich hab es mir nicht ausgesucht.» → «mir»', loesung: 'Ihre: Possessivpronomen.\nmir: Reflexivpronomen.' },
+          // 2020, Aufgabe 20
+          { text: 'Bestimme die Pronomen näher:\n\n«Sein Schädel, der auf dem verdorrten Hals zu schwer geworden war, nickte vor sich hin …»\n\nSein / der / dem', loesung: 'Sein: Possessivpronomen.\nder: Relativpronomen.\ndem: bestimmter Artikel.' },
+          // 2021, Aufgabe 6
+          { text: 'Bestimme die Pronomen näher:\n\n«Statt einer Antwort stiess sich die Mutter vom Türrahmen ab, kam mit ein paar unsicheren Schritten auf ihn zu.»\n\neiner / die / ein paar / ihn', loesung: 'einer: unbestimmter Artikel.\ndie: bestimmter Artikel.\nein paar: Indefinitpronomen.\nihn: Personalpronomen.' },
+          // 2022, Aufgabe 16
+          { text: 'Bestimme die Pronomen näher:\n\n«Einige Vögel strichen über die glatte Oberfläche des Sees; nein, es waren Fledermäuse. Wann war sie aus dem Boot gesprungen? Und was, wenn sie ertrunken war?»\n\nEinige / des / sie / es / was', loesung: 'Einige: Indefinitpronomen.\ndes: bestimmter Artikel.\nsie und es: Personalpronomen.\nwas: Interrogativpronomen.' },
+          // 2025, Aufgabe 15
+          { text: 'Schreibe alle Pronomen der Reihe nach heraus:\n\n«Da ist jemand, der die Arbeit sieht», war das höchste Lob, das sein Vater zu vergeben hatte.', loesung: 'jemand, der, die, das, das, sein' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
