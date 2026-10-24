@@ -2447,7 +2447,7 @@ export const lernkarten = {
           // 2016, Aufgabe 10 (1-3)
           { text: 'Bestimme die Pronomen näher:\n\n1. «Es hat etwas von einer Skihütte, findest du nicht?» → «Es»\n2. «… um nachzusehen, was in London los war.» → «was»\n3. «Ich möchte in einem Land wohnen, das ganz flach ist.» → «das»', loesung: '1: Personalpronomen. 2: Interrogativpronomen. 3: Relativpronomen.' },
           // 2016, Aufgabe 10 (4-6)
-          { text: 'Bestimme die Pronomen näher:\n\n4. «Das sind Häuser!», rief sie. → «Das»\n5. «Daddy, ist das unser Schiff?» → «das»\n6. «Daddy, ist das unser Schiff?» → «unser»', loesung: '4: Demonstrativpronomen. 5: bestimmter Artikel. 6: Demonstrativpronomen.' },
+          { text: 'Bestimme die Pronomen näher:\n\n4. «Das sind Häuser!», rief sie. → «Das»\n5. «Thérèse deutete auf das Fährschiff …» → «das»\n6. «… ist das unser Schiff?» → «das»', loesung: '4: Demonstrativpronomen. 5: bestimmter Artikel (vor dem Nomen Fährschiff). 6: Demonstrativpronomen (es zeigt auf das Schiff).' },
           // 2016, Aufgabe 17
           { text: 'Schreibe alle Pronomen heraus:\n\n«Sie war begeistert von den handtuchschmalen Häusern, die am Zugfenster vorbeirauschten.»', loesung: 'Sie, die' },
           // 2017, Aufgabe 14
