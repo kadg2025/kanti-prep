@@ -2881,4 +2881,65 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Direkte / Indirekte Rede ─────────────────────────────────────────────
+  'Direkte / Indirekte Rede': {
+    titel: 'Direkte / Indirekte Rede',
+    kacheln: [
+      {
+        id: 'rede-umwandeln',
+        emoji: '🗣️',
+        titel: 'Direkte und indirekte Rede umwandeln',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• [[dr|Direkte Rede]]: die Worte stehen in Anführungszeichen.\n• [[ir|Indirekte Rede]]: du gibst sie wieder, mit [[k1|Konjunktiv I]].\n• Begleitsatz: der Teil mit sagte, rief, fragte.' },
+          { text: 'Von der [[dr|direkten]] zur [[ir|indirekten]] Rede:\n\n1. Anführungszeichen weg\n2. Verb in den [[k1|Konjunktiv I]]\n3. Pronomen anpassen (ich wird er oder sie)' },
+          { text: 'Beispiel:\n\n«Er ist ertrunken», sagte sie leise.\n\n→ Sie sagte leise, er [[k1|sei]] ertrunken.' },
+          { text: 'Fragen brauchen ein Einleitewort:\n\n«Findest du unser Haus blöd?», fragte Wenger.\n\n→ Wenger fragte, [[konj|ob]] sie ihr Haus blöd [[k1|finde]].\n\nBei einem Fragewort bleibt dieses: wann, wo, warum.' },
+          { text: '⚠️ Sieht der [[k1|Konjunktiv I]] gleich aus wie der Indikativ, nimmst du den [[k2|Konjunktiv II]].\n\nsie sagen → nicht «sie sagen», sondern [[k2|sie sagten]] oder [[k2|sie würden sagen]].' },
+          { text: 'Von der [[ir|indirekten]] zur [[dr|direkten]] Rede:\n\n«Der Grossvater, sagte die Mutter, [[ir|hole]] sich eine Erkältung.»\n\n→ Die Mutter sagte: «Der Grossvater [[dr|holt]] sich eine Erkältung.»\n\n💡 Doppelpunkt, Anführungszeichen, Indikativ.' },
+        ],
+        check: [
+          { frage: 'Wie lautet «Es gibt keine Herren», rief er zornig, in der indirekten Rede?', optionen: ['Er rief zornig, es gebe keine Herren.', 'Er rief zornig, es gibt keine Herren.', 'Er rief zornig, es gäbe keine Herren gehabt.'], richtig: 0, erklaerung: 'gebe ist der Konjunktiv I von geben.' },
+          { frage: 'Welches Wort leitet eine indirekte Entscheidungsfrage ein?', optionen: ['ob', 'dass', 'weil'], richtig: 0, erklaerung: '«Findest du …?» wird zu «… ob sie … finde».' },
+          { frage: 'Was brauchst du beim Umwandeln in die direkte Rede?', optionen: ['Doppelpunkt und Anführungszeichen', 'Nur ein Komma', 'Den Konjunktiv I'], richtig: 0, erklaerung: 'In der direkten Rede steht der Indikativ in Anführungszeichen.' },
+        ],
+      },
+      {
+        id: 'rede-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ In der indirekten Rede den Indikativ stehen lassen.\n✅ «Sie sagte, er ist müde» wird zu «Sie sagte, er sei müde».' },
+          { text: '❌ Den Konjunktiv II nehmen, obwohl Konjunktiv I verlangt ist.\n✅ sei, habe, gebe, könne statt wäre, hätte, gäbe, könnte.' },
+          { text: '❌ Die Anführungszeichen stehen lassen.\n✅ In der indirekten Rede fallen sie weg.' },
+          { text: '❌ Die Pronomen vergessen.\n✅ Aus «ich bin müde» wird «er sei müde».' },
+          { text: '❌ Bei der Frage das Einleitewort vergessen.\n✅ Ohne Fragewort brauchst du ob.' },
+          { text: '❌ Beim Rückweg in die direkte Rede den Konjunktiv behalten.\n✅ «hole sich eine Erkältung» wird zu «holt sich eine Erkältung».' },
+        ],
+        check: [],
+      },
+      {
+        id: 'rede-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 3,
+        karten: [
+          // 2016, Aufgabe 8 (Frage)
+          { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', loesung: 'Wenger fragte, ob sie ihr Haus blöd finde (fände).' },
+          // 2016, Aufgabe 8 (Aussage)
+          { text: 'Setze in die indirekte Rede:\n\n«Es ist doch auch ein Chalet.»', loesung: 'Es sei (wäre) doch auch ein Chalet.' },
+          // 2017, Aufgabe 9
+          { text: 'Setze in die indirekte Rede mit Konjunktiv I:\n\n«Es gibt keine Herren», rief er zornig. «Wir sind alle Kameraden.»', loesung: 'Er rief zornig, es gebe keine Herren, wir (sie) seien alle Kameraden.' },
+          // 2020, Aufgabe 12
+          { text: 'Ersetze die indirekte Rede durch direkte Rede:\n\n«Der Grossvater, sagte die Mutter, hole sich eine Erkältung.»', loesung: 'Die Mutter sagte: «Der Grossvater holt sich eine Erkältung.»' },
+          // 2021, Aufgabe 12
+          { text: 'Setze die direkte Rede in indirekte Rede:\n\n«Er ist ertrunken», sagte sie leise.', loesung: 'Sie sagte leise, er sei ertrunken.' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };

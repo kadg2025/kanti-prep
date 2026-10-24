@@ -42,6 +42,7 @@ function pruefeText(text, wo) {
   for (const m of text.matchAll(/\[\[([^|\]]*)\|/g)) {
     if (!TAGS.includes(m[1])) fehler.push(`${wo}: unbekannter Tag «${m[1]}»`);
   }
+  if (/\[\[[a-zA-Z0-9]+\|[^\]]*\[\[/.test(text)) fehler.push(`${wo}: verschachtelte Markierung`);
   const offen = (text.match(/\[\[/g) || []).length;
   const zu = (text.match(/\]\]/g) || []).length;
   if (offen !== zu) fehler.push(`${wo}: offene Markierung (${offen} mal [[, ${zu} mal ]])`);
