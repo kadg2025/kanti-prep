@@ -1892,7 +1892,9 @@ export const lernkarten = {
         id: 'textverstaendnis-aussagen',
         emoji: '✅',
         titel: 'Aussagen im Text prüfen',
-        videos: [],
+        videos: [
+          { titel: '6 Tipps für dein Textverständnis (lernfoerderung)', youtubeId: 'OJw0wQNXWXc' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Aussage: ein Satz, von dem du sagen musst, ob er stimmt.\n• Beleg: die Stelle im Text, die es beweist.\n• Detail: eine kleine Angabe wie eine Zahl, ein Ort, eine Person.' },
           { text: 'So gehst du vor:\n\n1. Aussage lesen\n2. Die passende Stelle im Text suchen\n3. Wort für Wort vergleichen\n\n💡 Nie nach Gefühl entscheiden. Was du nicht belegen kannst, stimmt nicht.' },
@@ -2124,7 +2126,9 @@ export const lernkarten = {
         id: 'satzglieder-bestimmen',
         emoji: '🧩',
         titel: 'Satzglieder bestimmen',
-        videos: [],
+        videos: [
+          { titel: 'Satzglieder bestimmen (Duden Learnattack)', youtubeId: 'Qb5ZuwTZlXY' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Nominalgruppe: ein Nomen mit allem, was dazugehört (der kleine Wagen).\n• [[pg|Präpositionalgefüge]] {Präpositionalgruppe}: beginnt mit einer Präposition (durch den Flur).\n• Verschiebeprobe: Was gemeinsam an den Satzanfang passt, ist ein Satzglied.' },
           { text: 'So gehst du vor:\n\n1. [[prd|Prädikat]] suchen\n2. [[su|Subjekt]] erfragen\n3. Objekte erfragen\n4. Der Rest mit Präposition ist [[pg|Präpositionalgefüge]]' },
@@ -2244,7 +2248,9 @@ export const lernkarten = {
         id: 'wortarten-fuenf',
         emoji: '🖐️',
         titel: 'Die fünf Wortarten erkennen',
-        videos: [],
+        videos: [
+          { titel: 'Wortarten im Überblick (Lehrerschmidt)', youtubeId: 'eBEeFYQ6YIE' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du. Es gibt fünf Wortarten:\n\n[[nn|Nomen]] (Haus)\n[[vb|Verb]] (gehen)\n[[adj|Adjektiv]] (schnell)\n[[pro|Pronomen]] (er, der, mein)\n[[pa|Partikel]] (und, auf, nicht)' },
           { text: 'Der Test: Kannst du das Wort verändern?\n\n[[nn|Nomen]], [[vb|Verb]], [[adj|Adjektiv]] und [[pro|Pronomen]] lassen sich beugen: Haus – Häuser, geht – ging.\n\n[[pa|Partikel]] bleiben immer gleich: und, auf, nicht.' },
@@ -2389,7 +2395,9 @@ export const lernkarten = {
         id: 'pronomen-bestimmen',
         emoji: '👤',
         titel: 'Pronomen bestimmen',
-        videos: [],
+        videos: [
+          { titel: 'Was sind Pronomen? (UNICUM Stiftung)', youtubeId: '-dtqEvb8I4g' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[pro|Pronomen]]: ein Wort, das für ein Nomen steht oder es begleitet.\n• Unterkategorie: die genaue Sorte, zum Beispiel Personalpronomen.\n• Bezugswort: das Nomen, auf das sich das Pronomen bezieht.' },
           { text: 'Die drei häufigsten Sorten:\n\nPersonalpronomen: ich, du, er, sie, es\nPossessivpronomen: mein, dein, sein, ihr\nReflexivpronomen: «sich» ist immer reflexiv. mich, dich, uns, euch, mir, dir nur, wenn sie auf das Subjekt zurückweisen: «Ich wasche mich.» Sonst sind sie Personalpronomen.' },
@@ -2480,7 +2488,9 @@ export const lernkarten = {
         id: 'nomenadj-faelle',
         emoji: '🎲',
         titel: 'Fälle bestimmen',
-        videos: [],
+        videos: [
+          { titel: 'Die 4 Fälle erklärt (lernfoerderung)', youtubeId: 'lKOJqjGTvv0' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Fall: die Form, in der ein Nomen steht.\n• Es gibt vier: [[nom|Nominativ]], [[gen|Genitiv]], [[dat|Dativ]], [[akk|Akkusativ]].' },
           { text: 'Die vier Fragen:\n\n[[nom|Nominativ]] → Wer oder was?\n[[gen|Genitiv]] → Wessen?\n[[dat|Dativ]] → Wem?\n[[akk|Akkusativ]] → Wen oder was?' },
@@ -2517,7 +2527,9 @@ export const lernkarten = {
         id: 'nomenadj-steigern',
         emoji: '📈',
         titel: 'Steigern und nominalisieren',
-        videos: [],
+        videos: [
+          { titel: 'Adjektive richtig steigern (Learnhard)', youtubeId: 'nbmqSBnMQNc' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Grundform (Positiv): schnell\n• Komparativ: schneller\n• Superlativ: am schnellsten\n• Nominalisierung: aus einem Adjektiv oder Verb wird ein Nomen.' },
           { text: 'Regelmässig steigern:\n\nüblich → üblicher → am üblichsten\nbezaubernd → bezaubernder → am bezauberndsten\n\n→ Endung -er, dann -sten.' },
@@ -2652,7 +2664,9 @@ export const lernkarten = {
         id: 'satzbau-hs-ns',
         emoji: '🏠',
         titel: 'Hauptsatz und Nebensatz erkennen',
-        videos: [],
+        videos: [
+          { titel: 'Hauptsätze, Nebensätze, Satzgefüge (Learnhard)', youtubeId: 'IPeUwMbwfVM' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Teilsatz: ein Stück Satz mit eigener Personalform.\n• [[hs|Hauptsatz]]: kann allein stehen.\n• [[ns|Nebensatz]]: kann nicht allein stehen.\n• Personalform: das gebeugte Verb.' },
           { text: 'Der Test steht beim Verb:\n\n[[hs|Hauptsatz]] → Personalform an zweiter Stelle\n[[ns|Nebensatz]] → Personalform ganz am Ende, meist mit Einleitewort' },
@@ -2671,7 +2685,9 @@ export const lernkarten = {
         id: 'satzbau-konjunktionen',
         emoji: '🔌',
         titel: 'Konjunktionen erkennen',
-        videos: [],
+        videos: [
+          { titel: 'Bindewörter / Konjunktionen (lernfoerderung)', youtubeId: '96FAXfWbtcI' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[konj|Konjunktion]]: ein Wort, das Sätze oder Satzteile verbindet.\n• beiordnend: verbindet Gleichwertiges (und, oder, aber, denn).\n• unterordnend: leitet einen [[ns|Nebensatz]] ein (dass, weil, als, wenn, obwohl).' },
           { text: 'Die Merkformel der Prüfung:\n\nUnterordnende [[konj|Konjunktionen]] leiten einen [[ns|Nebensatz]] ein.\n\n→ Und im Nebensatz steht die Personalform am Ende.' },
@@ -2813,7 +2829,10 @@ export const lernkarten = {
         id: 'aktivpassiv-umwandeln',
         emoji: '🔄',
         titel: 'Aktiv und Passiv umwandeln',
-        videos: [],
+        videos: [
+          { titel: 'Aktiv und Passiv (Ivi-Education)', youtubeId: 'SXC_wswsA38' },
+          { titel: 'Aktiv Passiv: Unterschied (musstewissen Deutsch)', youtubeId: 'LZeDZZGjWNs' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[akt|Aktiv]]: Das Subjekt handelt selbst.\n• [[pas|Passiv]]: Es zählt, was geschieht; wer es tut, ist nebensächlich.\n• Täter: die handelnde Person, im Passiv mit von … genannt.' },
           { text: 'So erkennst du das [[pas|Passiv]]:\n\n[[aen|werden]] + Partizip II\n\n«Ich [[pas|wurde]] von vier Millionen Dollar [[pas|erwartet]].»\n\nFehlt diese Verbindung, ist der Satz [[akt|Aktiv]].' },
@@ -2890,7 +2909,9 @@ export const lernkarten = {
         id: 'rede-umwandeln',
         emoji: '🗣️',
         titel: 'Direkte und indirekte Rede umwandeln',
-        videos: [],
+        videos: [
+          { titel: 'Wörtliche (direkte) Rede (Lehrerschmidt)', youtubeId: 'WOEXfwkIw0o' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[dr|Direkte Rede]]: die Worte stehen in Anführungszeichen.\n• [[ir|Indirekte Rede]]: du gibst sie wieder, mit [[k1|Konjunktiv I]].\n• Begleitsatz: der Teil mit sagte, rief, fragte.' },
           { text: 'Von der [[dr|direkten]] zur [[ir|indirekten]] Rede:\n\n1. Anführungszeichen weg\n2. Verb in den [[k1|Konjunktiv I]]\n3. Pronomen anpassen (ich wird er oder sie)' },
