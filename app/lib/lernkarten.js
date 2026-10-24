@@ -2077,4 +2077,162 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Satzglieder ──────────────────────────────────────────────────────────
+  'Satzglieder': {
+    titel: 'Satzglieder',
+    kacheln: [
+      {
+        id: 'satzglieder-subjekt',
+        emoji: '🎯',
+        titel: 'Subjekt finden',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Satzglied: ein Baustein des Satzes, der zusammen verschoben werden kann.\n• [[prd|Prädikat]]: der verbale Teil des Satzes.\n• [[su|Subjekt]]: wer oder was etwas tut. Es ist eine Nominalgruppe im [[nom|Nominativ]].' },
+          { text: 'Der Fragetest:\n\n1. Zuerst das [[prd|Prädikat]] suchen\n2. Dann fragen: [[aen|Wer oder was]] + Prädikat?\n\n«Der Vater trug den Koffer.»\n→ Wer oder was trug? → [[su|der Vater]]' },
+          { text: '⚠️ Das Subjekt steht nicht immer vorn.\n\n«In der Ferne reagierte ein [[su|Hund]].»\n\n→ Wer oder was reagierte? Ein Hund. Vorn steht nur eine Ortsangabe.' },
+          { text: 'Auch ein kleines Wort kann Subjekt sein.\n\n«Aber hier, in Calais, unter einem Publikum aus reisenden Engländern, störte [[su|es]] ihn plötzlich.»\n\n→ Subjekt: es, im [[nom|Nominativ]].' },
+          { text: 'Mehrere Teilsätze haben mehrere Subjekte.\n\n«Bislang war [[su|es]] umgekehrt gewesen: [[su|Er]] hatte geheult, und [[su|die Mutter]] hatte ihn gestreichelt.»\n\n→ drei Subjekte, eines pro Teilsatz.' },
+          { text: '💡 Merksatz:\n\nSubjekt = «Wer oder was?» + Prädikat.\n\nDas Subjekt steht immer im [[nom|Nominativ]] und passt in der Form zum Verb: er geht, sie gehen.' },
+        ],
+        check: [
+          { frage: 'Was ist das Subjekt in «Mitten auf der Wiese stand ein grosser Schäferhund»?', optionen: ['ein grosser Schäferhund', 'Mitten auf der Wiese', 'stand'], richtig: 0, erklaerung: 'Wer oder was stand? Ein grosser Schäferhund.' },
+          { frage: 'In welchem Fall steht das Subjekt immer?', optionen: ['Nominativ', 'Akkusativ', 'Dativ'], richtig: 0, erklaerung: 'Das Subjekt ist eine Nominalgruppe im Nominativ.' },
+          { frage: 'Wie viele Subjekte hat «Nichts passierte. Er schob den Hebel in eine andere Position»?', optionen: ['Zwei: Nichts und Er', 'Eines: Er', 'Drei'], richtig: 0, erklaerung: 'Jeder der beiden Sätze hat ein eigenes Subjekt.' },
+        ],
+      },
+      {
+        id: 'satzglieder-objekte',
+        emoji: '🎒',
+        titel: 'Objekte finden',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Objekt: die Ergänzung zum Verb, meist eine Nominalgruppe.\n• [[ao|Akkusativobjekt]], [[do|Dativobjekt]], [[go|Genitivobjekt]]: benannt nach ihrem Fall.' },
+          { text: 'Die drei Fragetests:\n\n[[ao|Akkusativobjekt]] → Wen oder was?\n[[do|Dativobjekt]] → Wem?\n[[go|Genitivobjekt]] → Wessen?\n\nImmer zusammen mit dem Prädikat fragen.' },
+          { text: 'Beispiel:\n\n«Er zog mich fort.»\n\n→ Wen oder was zog er fort? [[ao|mich]]\n→ Akkusativobjekt.' },
+          { text: 'Beispiel mit Dativ:\n\n«Ich sah [[do|den Möwen]] zu. Mein trauriges Gesicht fiel [[do|einem Polizisten]] auf.»\n\n→ Wem sah ich zu? Wem fiel es auf? Beides Dativobjekte.' },
+          { text: '⚠️ Was mit einer Präposition beginnt, ist kein Objekt.\n\n«Franz tat [[ao|einen zögerlichen Schritt]], legte [[ao|seine Hand]] auf ihren Kopf.»\n\n→ «auf ihren Kopf» ist ein [[pg|Präpositionalgefüge]].' },
+          { text: '💡 Merksatz:\n\nErst das Prädikat, dann fragen.\n\nGenitivobjekte sind selten. Wenn du eines zu finden meinst, prüfe nochmals mit «Wessen?».' },
+        ],
+        check: [
+          { frage: 'Welches Objekt ist «ihm» in «Ich gab ihm den Abschiedskuss»?', optionen: ['Dativobjekt', 'Akkusativobjekt', 'Genitivobjekt'], richtig: 0, erklaerung: 'Wem gab ich den Kuss? ihm. Das ist der Dativ.' },
+          { frage: 'Mit welcher Frage findest du das Akkusativobjekt?', optionen: ['Wen oder was?', 'Wem?', 'Wer oder was?'], richtig: 0, erklaerung: '«Wer oder was?» führt zum Subjekt, «Wem?» zum Dativobjekt.' },
+          { frage: 'Ist «auf ihren Kopf» in «legte seine Hand auf ihren Kopf» ein Objekt?', optionen: ['Nein, es ist ein Präpositionalgefüge', 'Ja, ein Akkusativobjekt', 'Ja, ein Dativobjekt'], richtig: 0, erklaerung: 'Es beginnt mit der Präposition «auf», also ein Präpositionalgefüge.' },
+        ],
+      },
+      {
+        id: 'satzglieder-bestimmen',
+        emoji: '🧩',
+        titel: 'Satzglieder bestimmen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Nominalgruppe: ein Nomen mit allem, was dazugehört (der kleine Wagen).\n• [[pg|Präpositionalgefüge]] {Präpositionalgruppe}: beginnt mit einer Präposition (durch den Flur).\n• Verschiebeprobe: Was gemeinsam an den Satzanfang passt, ist ein Satzglied.' },
+          { text: 'So gehst du vor:\n\n1. [[prd|Prädikat]] suchen\n2. [[su|Subjekt]] erfragen\n3. Objekte erfragen\n4. Der Rest mit Präposition ist [[pg|Präpositionalgefüge]]' },
+          { text: 'Beispiel:\n\n«Meinen Koffer hatte der Vater nach dem Mittagessen zum Auto getragen.»\n\n[[ao|Meinen Koffer]] – [[su|der Vater]] – [[pg|nach dem Mittagessen]] – [[pg|zum Auto]]' },
+          { text: 'Beispiel:\n\n«Unter ihrer Kopfhaut spürte er das warme Pulsieren.»\n\n[[pg|Unter ihrer Kopfhaut]] – [[su|er]] – [[ao|das warme Pulsieren]]' },
+          { text: '⚠️ Das [[prd|Prädikat]] schreibst du bei dieser Aufgabe nicht mit auf. Gefragt sind nur die übrigen Satzglieder.\n\n💡 Die Verschiebeprobe zeigt dir die Grenzen: «Zum Auto hatte der Vater …» funktioniert, also gehört es zusammen.' },
+        ],
+        check: [
+          { frage: 'Was ist «durch den Flur» in «Sie fuhren den Wagen durch den Flur»?', optionen: ['Präpositionalgefüge', 'Akkusativobjekt', 'Subjekt'], richtig: 0, erklaerung: 'Es beginnt mit der Präposition «durch».' },
+          { frage: 'Was gehört bei dieser Aufgabe NICHT in deine Liste?', optionen: ['Das Prädikat', 'Das Subjekt', 'Das Akkusativobjekt'], richtig: 0, erklaerung: 'Gefragt sind die Satzglieder ohne das Prädikat.' },
+          { frage: 'Womit prüfst du, ob mehrere Wörter ein einziges Satzglied sind?', optionen: ['Mit der Verschiebeprobe', 'Mit der Zeitform', 'Mit der Silbenzahl'], richtig: 0, erklaerung: 'Nur ein vollständiges Satzglied lässt sich gemeinsam an den Satzanfang stellen.' },
+        ],
+      },
+      {
+        id: 'satzglieder-schema',
+        emoji: '🗺️',
+        titel: 'Satzgliedschemata zuordnen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Satzgliedschema: die Reihenfolge der Satzglieder, so wie sie im Satz stehen.\n\nBeispiel für ein Schema:\n[[su|Subjekt]] – [[prd|Prädikat]] – [[ao|Akkusativobjekt]]' },
+          { text: 'So gehst du vor:\n\n1. Satzglieder bestimmen\n2. Sie in der Reihenfolge des Satzes aufschreiben\n3. Mit den Schemata vergleichen' },
+          { text: 'Beispiel:\n\n«Er sagte ihren Namen.»\n\n[[su|Er]] – [[prd|sagte]] – [[ao|ihren Namen]]\n→ Subjekt – Prädikat – Akkusativobjekt' },
+          { text: 'Beispiel mit umgekehrter Reihenfolge:\n\n«In der Ferne reagierte ein Hund.»\n\n[[pg|In der Ferne]] – [[prd|reagierte]] – [[su|ein Hund]]\n→ Präpositionalgefüge – Prädikat – Subjekt' },
+          { text: 'Beispiel mit vier Gliedern:\n\n«Er spürte eine Welle von Zorn in sich aufsteigen.»\n\n[[su|Er]] – [[prd|spürte … aufsteigen]] – [[ao|eine Welle von Zorn]] – [[pg|in sich]]' },
+          { text: '💡 Merksatz:\n\nEntscheidend ist die Reihenfolge in DIESEM Satz.\n\nSteht das Subjekt hinten, steht es auch im Schema hinten.' },
+        ],
+        check: [
+          { frage: 'Welches Schema hat «Das Hotel blieb im Sommer geschlossen»?', optionen: ['Subjekt – Prädikat – Präpositionalgefüge', 'Präpositionalgefüge – Prädikat – Subjekt', 'Subjekt – Prädikat – Akkusativobjekt'], richtig: 0, erklaerung: 'Das Hotel ist das Subjekt, im Sommer ein Präpositionalgefüge.' },
+          { frage: 'Welches Schema hat «Das bisschen Knipserei würde ich zustande bringen»?', optionen: ['Akkusativobjekt – Prädikat – Subjekt', 'Subjekt – Prädikat – Akkusativobjekt', 'Präpositionalgefüge – Prädikat – Subjekt'], richtig: 0, erklaerung: 'Vorn steht das Akkusativobjekt, das Subjekt ich steht dahinter.' },
+          { frage: 'Worauf kommt es beim Schema an?', optionen: ['Auf die Reihenfolge im Satz', 'Auf die Länge der Satzglieder', 'Auf die Zeitform'], richtig: 0, erklaerung: 'Das Schema bildet genau die Abfolge im Satz ab.' },
+        ],
+      },
+      {
+        id: 'satzglieder-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ Das erste Wort ist das Subjekt.\n✅ Frag immer «Wer oder was?». In «In der Ferne reagierte ein Hund» steht das Subjekt hinten.' },
+          { text: '❌ Jede Ergänzung ist ein Objekt.\n✅ Was mit einer Präposition beginnt, ist ein Präpositionalgefüge: «auf ihren Kopf», «zum Auto».' },
+          { text: '❌ Das Prädikat in die Liste der Satzglieder schreiben.\n✅ Bei dieser Aufgabe ist es nicht gefragt.' },
+          { text: '❌ Nur ein Teil der Nominalgruppe herausschreiben.\n✅ Alles, was dazugehört: nicht «Wagen», sondern «den kleinen Wagen».' },
+          { text: '❌ Bei mehreren Teilsätzen nur ein Subjekt suchen.\n✅ Jeder Teilsatz hat sein eigenes Subjekt.' },
+          { text: '❌ «mich» und «mir» verwechseln.\n✅ mich antwortet auf «Wen oder was?» (Akkusativ), mir auf «Wem?» (Dativ).' },
+          { text: '❌ Beim Schema die gewohnte Reihenfolge aufschreiben.\n✅ Es zählt, was wirklich im Satz steht, auch wenn das Objekt vorn steht.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'satzglieder-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 13,
+        karten: [
+          // 2016, Aufgabe 16
+          { text: 'Schreibe das Subjekt heraus und gib den Fall an:\n\n«Aber hier, in Calais, unter einem Publikum aus reisenden Engländern, störte es ihn plötzlich.»', loesung: 'Subjekt: es — Nominativ.' },
+          // 2016, Aufgabe 18
+          { text: 'Schreibe die Objekte heraus und bestimme sie:\n\n«Sie hatte sich zur Wand hin gerollt und er sah von ihr nur die Masse ihres dunklen Haars, das ihr immer solche Schwierigkeiten bereitete, mit dem sie Kämpfe ausfocht.»', loesung: 'Akkusativobjekte: (nur) die Masse ihres dunklen Haars, solche Schwierigkeiten, Kämpfe.\nDativobjekt: ihr.' },
+          // 2017, Aufgabe 7
+          { text: 'Welches Satzglied ist «mich»?\n\n«Er zog mich fort.»', loesung: 'Akkusativobjekt' },
+          // 2017, Aufgabe 12
+          { text: 'Schreibe das Subjekt und die verbalen Teile heraus:\n\n«Viele Jahre schon war jede Verbindung nach aussen abgeschnitten.»', loesung: 'Subjekt: jede Verbindung (nach aussen).\nVerbale Teile: war abgeschnitten.' },
+          // 2017, Aufgabe 17
+          { text: 'Ordne die Objekte ein:\n\n«Ich stand an der Hafenmauer. Ich sah den Möwen zu. Mein trauriges Gesicht fiel einem Polizisten auf. Dieser hatte in diesem Viertel die Runde zu gehen.»', loesung: 'Akkusativobjekt: die Runde.\nDativobjekte: den Möwen, einem Polizisten.\nGenitivobjekt: keines.' },
+          // 2018, Aufgabe 18
+          { text: 'Bestimme die Satzglieder:\n\n«Nach der Schule waren wir zu Ludwig nach Hause gefahren.»', loesung: 'Nach der Schule: Präpositionalgefüge.\nwir: Subjekt.\nzu Ludwig nach Hause: Präpositionalgefüge.' },
+          // 2019, Aufgabe 5
+          { text: 'Schreibe alle Satzglieder heraus und bezeichne sie:\n\n«Auf der Malerei posierte ein steifer Offizier in einer Gala-Uniform. Er hatte heisse, harte, kohlschwarze Augen.»', loesung: 'Auf der Malerei: Präpositionalgefüge.\nein steifer Offizier in einer Gala-Uniform: Subjekt.\nEr: Subjekt.\nheisse, harte, kohlschwarze Augen: Akkusativobjekt.' },
+          // 2019, Aufgabe 16
+          { text: 'Schreibe alle Akkusativobjekte der Reihe nach heraus:\n\n«Sie senkte die Wimpern, bis sie ihr fast die Wangen streichelten, und hob sie langsam wieder. Diesen Trick durfte ich später noch näher kennenlernen.»', loesung: 'die Wimpern, die Wangen, sie, Diesen Trick' },
+          // 2020, Aufgabe 9
+          { text: 'Schreibe alle Satzglieder heraus und bestimme sie:\n\n«Meinen Koffer hatte der Vater nach dem Mittagessen zum Auto getragen.»', loesung: 'Meinen Koffer: Akkusativobjekt.\nder Vater: Subjekt.\nnach dem Mittagessen und zum Auto: Präpositionalgefüge.' },
+          // 2020, Aufgabe 16
+          { text: 'Schreibe alle Akkusativobjekte der Reihe nach heraus:\n\n«Sie steckten die Köpfe zusammen und wenn sie die Köpfe wieder hoben, hatten alle einen lachend geöffneten Mund, als wollten sie Regenwasser trinken. Man hielt die Zigarette in der Linken, die Asche tupfte man ab.»', loesung: 'die Köpfe, die Köpfe, einen lachend geöffneten Mund, Regenwasser, die Zigarette, die Asche' },
+          // 2020, Aufgabe 18
+          { text: 'Schreibe die Akkusativ- und die Dativobjekte heraus:\n\n«Dann machte er eine Verbeugung: Ich gab ihm den Abschiedskuss.»', loesung: 'Akkusativobjekte: eine Verbeugung, den Abschiedskuss.\nDativobjekt: ihm.' },
+          // 2021, Aufgabe 9
+          { text: 'Schreibe die Objekte heraus und bestimme sie:\n\n«Franz tat einen zögerlichen Schritt, legte seine Hand auf ihren Kopf und begann ungeschickt über ihr Haar zu streicheln.»', loesung: 'einen zögerlichen Schritt: Akkusativobjekt.\nseine Hand: Akkusativobjekt.' },
+          // 2021, Aufgabe 10
+          { text: 'Schreibe alle Subjekte der Reihe nach heraus:\n\n«Bislang war es umgekehrt gewesen: Er hatte geheult, und die Mutter hatte ihn gestreichelt.»', loesung: 'es, Er, die Mutter' },
+          // 2021, Aufgabe 11
+          { text: 'Schreibe die Satzglieder heraus und bestimme sie:\n\n«Unter ihrer Kopfhaut spürte er das warme Pulsieren.»', loesung: 'Unter ihrer Kopfhaut: Präpositionalgefüge.\ner: Subjekt.\ndas warme Pulsieren: Akkusativobjekt.' },
+          // 2022, Aufgabe 7
+          { text: 'Bestimme die beiden Satzglieder:\n\n«Adam sass vorn im Boot und betrachtete ein unstetes blaues Licht am Ufer.»\n\n– im Boot\n– ein unstetes blaues Licht am Ufer', loesung: 'im Boot: Präpositionalgefüge.\nein unstetes blaues Licht am Ufer: Akkusativobjekt.' },
+          // 2022, Aufgabe 8
+          { text: 'Schreibe alle Subjekte der Reihe nach heraus:\n\n«Nichts passierte. Er schob den Hebel in eine andere Position und versuchte es erneut.»', loesung: 'Nichts, Er' },
+          // 2022, Aufgabe 17.1
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Er sagte ihren Namen.»', loesung: 'Subjekt – Prädikat – Akkusativobjekt' },
+          // 2022, Aufgabe 17.2
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Einige Vögel strichen über die glatte Oberfläche des Sees.»', loesung: 'Subjekt – Prädikat – Präpositionalgefüge' },
+          // 2022, Aufgabe 17.3
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«In der Ferne reagierte ein Hund.»', loesung: 'Präpositionalgefüge – Prädikat – Subjekt' },
+          // 2022, Aufgabe 17.4
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Er spürte eine Welle von Zorn in sich aufsteigen.»', loesung: 'Subjekt – Prädikat – Akkusativobjekt – Präpositionalgefüge' },
+          // 2023, Aufgabe 10
+          { text: 'Schreibe alle Subjekte der Reihe nach heraus:\n\n«Anders konnte er sich nicht erklären, dass der Wald noch immer so weit entfernt war, als die ersten Tropfen vom Himmel fielen und die drückende Hitze sich in einem heftigen Regenschauer entlud.»', loesung: 'er, der Wald, die ersten Tropfen, die drückende Hitze' },
+          // 2024, Aufgabe 16
+          { text: 'Bestimme die Fälle:\n\n«Man hatte meinem Bruder gegenüber mehreren Mitbewerbern den Vorzug gegeben, als der Mietvertrag im vergangenen Jahr erneut ausgeschrieben worden war.»\n\nMan / meinem Bruder / den Vorzug / der Mietvertrag', loesung: 'Man: Nominativ.\nmeinem Bruder: Dativ.\nden Vorzug: Akkusativ.\nder Mietvertrag: Nominativ.' },
+          // 2025, Aufgabe 7
+          { text: 'Bestimme die Fälle:\n\n«Auch beim Abendbrot kam kein Gespräch in Gang. Die Stimmung war angespannt, und Carl begann, das Ganze für das Ergebnis einer unguten Hypnose zu halten.»\n\nAbendbrot / Stimmung / Ganze / Ergebnis / Hypnose', loesung: 'Abendbrot: Dativ.\nStimmung: Nominativ.\nGanze: Akkusativ.\nErgebnis: Akkusativ.\nHypnose: Genitiv.' },
+          // 2025, Aufgabe 16
+          { text: 'Bestimme die Satzglieder:\n\n«Wie zwei Kinder fuhren sie dann den kleinen Wagen zusammen durch den Flur in die Küche.»\n\nsie / den kleinen Wagen / durch den Flur / in die Küche', loesung: 'sie: Subjekt.\nden kleinen Wagen: Akkusativobjekt.\ndurch den Flur und in die Küche: Präpositionalgefüge.' },
+          // 2025, Aufgabe 17
+          { text: 'Schreibe die Satzglieder heraus und bestimme sie:\n\n«Sie reflektierten das Licht der kleinen Neonröhre.»', loesung: 'Sie: Subjekt.\ndas Licht der kleinen Neonröhre: Akkusativobjekt.' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
