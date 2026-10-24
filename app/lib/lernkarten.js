@@ -2804,4 +2804,81 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Aktiv / Passiv ───────────────────────────────────────────────────────
+  'Aktiv / Passiv': {
+    titel: 'Aktiv / Passiv',
+    kacheln: [
+      {
+        id: 'aktivpassiv-umwandeln',
+        emoji: '🔄',
+        titel: 'Aktiv und Passiv umwandeln',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• [[akt|Aktiv]]: Das Subjekt handelt selbst.\n• [[pas|Passiv]]: Es zählt, was geschieht; wer es tut, ist nebensächlich.\n• Täter: die handelnde Person, im Passiv mit von … genannt.' },
+          { text: 'So erkennst du das [[pas|Passiv]]:\n\n[[aen|werden]] + Partizip II\n\n«Ich [[pas|wurde]] von vier Millionen Dollar [[pas|erwartet]].»\n\nFehlt diese Verbindung, ist der Satz [[akt|Aktiv]].' },
+          { text: 'Vom [[akt|Aktiv]] zum [[pas|Passiv]]:\n\n1. Akkusativobjekt wird Subjekt\n2. Altes Subjekt wird «von …» oder fällt weg\n3. werden + Partizip II' },
+          { text: 'Beispiel:\n\n[[akt|«Zwei Wochen zuvor hatte ich Ludwig zum ersten Mal gesehen.»]]\n\n→ [[pas|«Zwei Wochen zuvor war Ludwig von mir zum ersten Mal gesehen worden.»]]' },
+          { text: 'Vom [[pas|Passiv]] zum [[akt|Aktiv]]:\n\n«Ich wurde von vier Millionen Dollar erwartet.»\n\n→ [[akt|«Vier Millionen Dollar erwarteten mich.»]]\n\nDer Täter wird zum Subjekt und steht am Anfang.' },
+          { text: '💡 Merksatz:\n\nIm Passiv heisst es worden, nicht geworden:\n«… war gesehen [[aen|worden]]».\n\nDie Zeitform bleibt beim Umwandeln gleich.' },
+        ],
+        check: [
+          { frage: 'Welcher Satz steht im Passiv?', optionen: ['Der Wagen wurde getragen.', 'Sein Vater trug den Wagen.', 'Er sprang auf und half.'], richtig: 0, erklaerung: 'wurde + Partizip II getragen ist Passiv.' },
+          { frage: 'Was wird beim Umwandeln ins Passiv zum Subjekt?', optionen: ['Das Akkusativobjekt', 'Das Präpositionalgefüge', 'Das Prädikat'], richtig: 0, erklaerung: 'Aus «ich sah Ludwig» wird «Ludwig wurde gesehen».' },
+          { frage: 'In welcher Zeitform steht «Eine Möwe war von mir ins Auge gefasst worden»?', optionen: ['Plusquamperfekt', 'Perfekt', 'Präteritum'], richtig: 0, erklaerung: 'war + Partizip II + worden ist das Plusquamperfekt im Passiv.' },
+        ],
+      },
+      {
+        id: 'aktivpassiv-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ Jedes «werden» ist ein Passiv.\n✅ Nur werden + Partizip II. «Er wird kommen» ist Futur I und Aktiv.' },
+          { text: '❌ «geworden» statt «worden» schreiben.\n✅ Im Passiv heisst es: war gesehen worden.' },
+          { text: '❌ Beim Umwandeln die Zeitform verändern.\n✅ Aus einem Plusquamperfekt wird wieder ein Plusquamperfekt.' },
+          { text: '❌ Den Täter vergessen, obwohl er verlangt ist.\n✅ Steht «mit Nennung des Täters», gehört «von mir», «von ihnen» dazu.' },
+          { text: '❌ Im Aktivsatz das alte Subjekt stehen lassen.\n✅ «Vier Millionen Dollar erwarteten mich»: aus «ich» wird «mich».' },
+          { text: '❌ Aktiv annehmen, nur weil kein Täter genannt ist.\n✅ «Zuerst musste gegessen werden» hat keinen Täter und ist trotzdem Passiv.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'aktivpassiv-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 7,
+        karten: [
+          // 2016, Aufgabe 14
+          { text: 'Setze ins Passiv (mit Nennung des Täters):\n\n«Sie würden ihn für einen dieser amerikanisierten Deutschen halten …»', loesung: 'Er würde von ihnen für einen dieser amerikanisierten Deutschen gehalten werden.' },
+          // 2017, Aufgabe 6
+          { text: 'Aktiv oder Passiv? Und welche Zeitform?\n\n«Eine bestimmte Möwe war von mir ins Auge gefasst worden.»', loesung: 'Passiv, Plusquamperfekt.' },
+          // 2018, Aufgabe 8
+          { text: 'Setze ins Passiv:\n\n«Zwei Wochen zuvor hatte ich Ludwig zum ersten Mal gesehen.»', loesung: 'Zwei Wochen zuvor war Ludwig (von mir) zum ersten Mal gesehen worden.' },
+          // 2019, Aufgabe 10
+          { text: 'Was trifft zu?\n\n«Ich wurde von vier Millionen Dollar erwartet.»\n\nIndikativ / Imperativ / Konjunktiv / Aktiv / Passiv', loesung: 'Indikativ und Passiv.' },
+          // 2019, Aufgabe 13
+          { text: 'Wandle ins Aktiv um:\n\n«Ich wurde von vier Millionen Dollar erwartet.»', loesung: 'Vier Millionen Dollar erwarteten mich.' },
+          // 2022, Aufgabe 13
+          { text: 'Was trifft auf den verbalen Teil zu?\n\n«Das laute Krachen brachte die Ochsenfrösche in der Nähe zum Schweigen.»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          // 2024, Aufgabe 14.1
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«Ich war damit aufgewachsen …»', loesung: 'Aktiv, Indikativ, Plusquamperfekt.' },
+          // 2024, Aufgabe 14.2
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… wie zuerst unser Vater sie ironisch nannte …»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          // 2024, Aufgabe 14.3
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… wie sie dann aber von allen ernsthaft tituliert wurde …»', loesung: 'Passiv, Indikativ, Präteritum.' },
+          // 2025, Aufgabe 10.1
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«Über die Schwelle in den Korridor wurde der Wagen getragen …»', loesung: 'Passiv, Indikativ, Präteritum.' },
+          // 2025, Aufgabe 10.2
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… das machte sein Vater …»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          // 2025, Aufgabe 10.3
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… aber jetzt sprang Carl auf und half …»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          // 2025, Aufgabe 10.4
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… damit nichts verrutschte.»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
