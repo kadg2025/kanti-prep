@@ -2471,4 +2471,109 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Nomen & Adjektive ────────────────────────────────────────────────────
+  'Nomen & Adjektive': {
+    titel: 'Nomen & Adjektive',
+    kacheln: [
+      {
+        id: 'nomenadj-faelle',
+        emoji: '🎲',
+        titel: 'Fälle bestimmen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Fall: die Form, in der ein Nomen steht.\n• Es gibt vier: [[nom|Nominativ]], [[gen|Genitiv]], [[dat|Dativ]], [[akk|Akkusativ]].' },
+          { text: 'Die vier Fragen:\n\n[[nom|Nominativ]] → Wer oder was?\n[[gen|Genitiv]] → Wessen?\n[[dat|Dativ]] → Wem?\n[[akk|Akkusativ]] → Wen oder was?' },
+          { text: 'Beispiel:\n\n«[[nom|Man]] hatte [[dat|meinem Bruder]] … [[akk|den Vorzug]] gegeben, als [[nom|der Mietvertrag]] erneut ausgeschrieben worden war.»' },
+          { text: 'Beispiel mit Genitiv:\n\n«Carl begann, [[akk|das Ganze]] für [[akk|das Ergebnis]] [[gen|einer unguten Hypnose]] zu halten.»\n\n→ Wessen Ergebnis? Der Hypnose. Das ist der Genitiv.' },
+          { text: '💡 Die Präposition verrät oft den Fall:\n\nmit, von, bei, zu, aus → [[dat|Dativ]]\nfür, durch, ohne, gegen → [[akk|Akkusativ]]\n\n«beim Abendbrot» → Dativ.' },
+          { text: '💡 Merksatz:\n\nFrag mit dem Verb: Wer oder was? Wen oder was? Wem? Wessen?\n\nDie Frage, die eine sinnvolle Antwort gibt, nennt dir den Fall.' },
+        ],
+        check: [
+          { frage: 'In welchem Fall steht «der Stimmung» in «wegen der Stimmung»?', optionen: ['Genitiv', 'Dativ', 'Nominativ'], richtig: 0, erklaerung: 'wegen verlangt den Genitiv: Wessen wegen?' },
+          { frage: 'In welchem Fall steht «meinem Bruder»?', optionen: ['Dativ', 'Akkusativ', 'Genitiv'], richtig: 0, erklaerung: 'Wem hatte man den Vorzug gegeben? meinem Bruder.' },
+          { frage: 'Welche Frage führt zum Akkusativ?', optionen: ['Wen oder was?', 'Wem?', 'Wessen?'], richtig: 0, erklaerung: '«Wen oder was?» fragt nach dem Akkusativ.' },
+        ],
+      },
+      {
+        id: 'nomenadj-plural',
+        emoji: '📚',
+        titel: 'Plural bilden',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Singular: Einzahl (das Hemd).\n• Plural: Mehrzahl (die Hemden).\n• Umlaut: a wird ä, o wird ö, u wird ü.\n• Im Plural heisst der Artikel immer die.' },
+          { text: 'Die häufigsten Endungen:\n\n-e: Korridor → die Korridore\n-en: Hemd → die Hemden\n-er: Land → die Länder\nkeine Endung: Nachfolger → die Nachfolger' },
+          { text: 'Mit [[aen|Umlaut]]:\n\nFluss → die Fl[[aen|ü]]sse\nBraut → die Br[[aen|äu]]te\nAnkunft → die Ank[[aen|ü]]nfte\nSchloss → die Schl[[aen|ö]]sser' },
+          { text: '⚠️ Verkleinerungen auf -chen und -lein bleiben gleich:\n\nWägelchen → die Wägelchen\n\nNur der Artikel ändert sich: das Wägelchen, die Wägelchen.' },
+          { text: '💡 Nomen auf -nis verdoppeln das s:\n\nErgebnis → die Ergebnisse\nBegräbnis → die Begräbnisse\n\nMerksatz: Sprich den Plural laut, dann hörst du Umlaut und Endung.' },
+        ],
+        check: [
+          { frage: 'Wie lautet der Plural von «Schloss»?', optionen: ['die Schlösser', 'die Schlosse', 'die Schlössern'], richtig: 0, erklaerung: 'Umlaut und Endung -er.' },
+          { frage: 'Wie lautet der Plural von «Wägelchen»?', optionen: ['die Wägelchen', 'die Wägelchens', 'die Wägelchene'], richtig: 0, erklaerung: 'Verkleinerungen auf -chen bleiben im Plural gleich.' },
+          { frage: 'Wie lautet der Plural von «Ergebnis»?', optionen: ['die Ergebnisse', 'die Ergebnise', 'die Ergebnissen'], richtig: 0, erklaerung: 'Nomen auf -nis bekommen -nisse.' },
+        ],
+      },
+      {
+        id: 'nomenadj-steigern',
+        emoji: '📈',
+        titel: 'Steigern und nominalisieren',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Grundform (Positiv): schnell\n• Komparativ: schneller\n• Superlativ: am schnellsten\n• Nominalisierung: aus einem Adjektiv oder Verb wird ein Nomen.' },
+          { text: 'Regelmässig steigern:\n\nüblich → üblicher → am üblichsten\nbezaubernd → bezaubernder → am bezauberndsten\n\n→ Endung -er, dann -sten.' },
+          { text: '⚠️ Diese musst du auswendig können:\n\ngut → besser → am besten\ngern → lieber → am liebsten\nviel → mehr → am meisten' },
+          { text: 'Vergleichsformen erkennen:\n\n«Je [[aen|näher]] wir an das Dorf herankamen, desto [[aen|grösser]] wurden die Häuser …»\n\n→ näher und grösser stehen im Komparativ.' },
+          { text: 'Nominalisieren: Adjektiv → [[nn|Nomen]] mit Artikel.\n\nsauber → die Sauberkeit, das Saubere\ndunkel → die Dunkelheit, das Dunkle' },
+          { text: 'Auch Verben werden zu Nomen:\n\ngehen → das Gehen\nlindern → das Lindern, die Linderung\n\n💡 Merksatz: Gross schreiben und immer den Artikel im [[nom|Nominativ]] dazusetzen.' },
+        ],
+        check: [
+          { frage: 'Wie heisst der Komparativ von «gern»?', optionen: ['lieber', 'gerner', 'mehr gern'], richtig: 0, erklaerung: 'gern – lieber – am liebsten ist unregelmässig.' },
+          { frage: 'Was ist die Grundform zu «bester»?', optionen: ['gut', 'bester', 'besser'], richtig: 0, erklaerung: 'gut – besser – am besten.' },
+          { frage: 'Welche Nominalisierung von «glatt» ist richtig?', optionen: ['die Glätte', 'der Glätte', 'glattheit'], richtig: 0, erklaerung: 'Nomen werden grossgeschrieben, der Artikel steht im Nominativ.' },
+        ],
+      },
+      {
+        id: 'nomenadj-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ Den Fall ohne Frage raten.\n✅ Immer mit dem Verb fragen: Wer oder was? Wen oder was? Wem? Wessen?' },
+          { text: '❌ Nach «beim» den Akkusativ setzen.\n✅ bei, mit, von, zu verlangen den Dativ: beim Abendbrot.' },
+          { text: '❌ Verkleinerungen im Plural verändern.\n✅ das Wägelchen → die Wägelchen, ohne Endung.' },
+          { text: '❌ «die Ergebnise» mit einem s.\n✅ Nomen auf -nis verdoppeln es: die Ergebnisse.' },
+          { text: '❌ Mit «mehr» steigern.\n✅ Im Deutschen heisst es üblicher, nicht mehr üblich.' },
+          { text: '❌ Beim Nominalisieren den Artikel vergessen.\n✅ Verlangt ist das Nomen mit Artikel: die Sauberkeit, das Gehen.' },
+          { text: '❌ Die Steigerungsform für die Grundform halten.\n✅ «bester» ist schon ein Superlativ, die Grundform ist gut.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'nomenadj-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 4,
+        karten: [
+          // 2016, Aufgabe 20
+          { text: 'Ordne die Nomen ein (Lebewesen, Sachen, Gedachtes):\n\n«Er hätte mit ihr fliegen sollen; mit dem Flugzeug gelangte man binnen einer Stunde von Zürich nach London, es hätte für Thérèse ausgesehen wie nichts.»', loesung: 'Lebewesen: Thérèse.\nSachen: Flugzeug, Zürich, London.\nGedachtes: Stunde.' },
+          // 2020, Aufgabe 8
+          { text: 'Welche Adjektive stehen in einer Vergleichsform?\n\n«Je näher wir auf einer langen, geraden Betonpiste an das Dorf herankamen, desto grösser wurden die Häuser …»', loesung: 'näher und grösser' },
+          // 2024, Aufgabe 4 (1. Hälfte)
+          { text: 'Setze in den Plural:\n\nBraut / Kegelbahn / Nachfolger', loesung: 'die Bräute, die Kegelbahnen, die Nachfolger (gleiche Form)' },
+          // 2024, Aufgabe 4 (2. Hälfte)
+          { text: 'Setze in den Plural:\n\nBegräbnis / Schloss / Ruf', loesung: 'die Begräbnisse, die Schlösser, die Rufe' },
+          // 2025, Aufgabe 6 (1. Hälfte)
+          { text: 'Setze in den Plural:\n\nFluss / Hemd / Land / Ergebnis', loesung: 'die Flüsse, die Hemden, die Länder, die Ergebnisse' },
+          // 2025, Aufgabe 6 (2. Hälfte)
+          { text: 'Setze in den Plural:\n\nWägelchen / Korridor / Ankunft / Flucht', loesung: 'die Wägelchen (gleiche Form), die Korridore, die Ankünfte, die Fluchten' },
+          // 2025, Aufgabe 14 (1. Hälfte)
+          { text: 'Nominalisiere und setze den bestimmten Artikel dazu:\n\nsauber / gewissenhaft', loesung: 'die Sauberkeit oder das Saubere; die Gewissenhaftigkeit oder das Gewissenhafte' },
+          // 2025, Aufgabe 14 (2. Hälfte)
+          { text: 'Nominalisiere und setze den bestimmten Artikel dazu:\n\nglatt / dunkel', loesung: 'die Glätte, die Glattheit oder das Glatte; die Dunkelheit, das Dunkle oder das Dunkel' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
