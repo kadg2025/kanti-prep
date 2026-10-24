@@ -2576,4 +2576,71 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Präpositionen ────────────────────────────────────────────────────────
+  'Präpositionen': {
+    titel: 'Präpositionen',
+    kacheln: [
+      {
+        id: 'praepositionen-gefuege',
+        emoji: '🔗',
+        titel: 'Präpositionalgefüge und Verbzusatz',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Präposition: ein kleines Wort wie auf, in, mit, von, über.\n• [[pg|Präpositionalgefüge]] {Präpositionalgruppe}: die Präposition mit allem, was dazugehört.\n• [[aen|Verbzusatz]]: ein Wortteil, der zum Verb gehört (an in «er fängt an»).' },
+          { text: 'Eine Präposition steht nie allein:\n\n[[pg|auf der weiten Wiese]]\n[[pg|über eine Wurzel]]\n\n→ Das ganze Gefüge ist ein Satzglied, nicht nur das erste Wort.' },
+          { text: 'Beispiel zum Herausschreiben:\n\n«Henry sah [[pg|aus den Augenwinkeln]], wie der Schäferhund losrannte. Panisch lief er davon, doch [[pg|auf der weiten Wiese]] gab es keinen Baum.»' },
+          { text: '💡 Verschmelzungen sind Präposition + Artikel:\n\nim = in dem\nzum = zu dem\nam = an dem\nbeim = bei dem\nvom = von dem\n\n«[[pg|im Gras]]» zählt also als Präpositionalgefüge.' },
+          { text: '⚠️ Verbzusatz oder Präposition?\n\n«Ich fing links [[aen|an]], mein Blick wanderte von Pfeiler zu Pfeiler.»\n\nan → Verbzusatz, denn der Infinitiv heisst anfangen.\nvon, zu → Präpositionen.' },
+          { text: '💡 Merksatz:\n\nLies die Aufgabe genau: Gefragt sind entweder nur die Präpositionen (auf, in, mit) oder die ganzen Gefüge (auf der weiten Wiese).\n\nTest für den Verbzusatz: Bilde den Infinitiv.' },
+        ],
+        check: [
+          { frage: 'Was ist «im Gras» in «Er schlug hart im Gras auf»?', optionen: ['Ein Präpositionalgefüge', 'Ein Akkusativobjekt', 'Ein Verbzusatz'], richtig: 0, erklaerung: 'im ist die Verschmelzung von in dem, also eine Präposition mit Nominalgruppe.' },
+          { frage: 'Was ist «auf» in «Er schlug hart im Gras auf»?', optionen: ['Verbzusatz von aufschlagen', 'Präposition', 'Konjunktion'], richtig: 0, erklaerung: 'Der Infinitiv heisst aufschlagen, also gehört auf zum Verb.' },
+          { frage: 'Wie schreibst du das Gefüge heraus?', optionen: ['Mit allem, was dazugehört: von unserem Vater', 'Nur die Präposition: von', 'Nur das Nomen: Vater'], richtig: 0, erklaerung: 'Ein Präpositionalgefüge umfasst die ganze Gruppe.' },
+        ],
+      },
+      {
+        id: 'praepositionen-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ Nur die Präposition herausschreiben, obwohl das Gefüge gefragt ist.\n✅ «aus den umliegenden Dörfern» gehört ganz dazu.' },
+          { text: '❌ Verschmelzungen übersehen.\n✅ im, zum, am, beim, vom enthalten eine Präposition und zählen mit.' },
+          { text: '❌ Den Verbzusatz als Präposition zählen.\n✅ In «er stellt den Koffer ab» gehört ab zum Verb abstellen.' },
+          { text: '❌ Die Reihenfolge durcheinanderbringen.\n✅ Schreib die Gefüge so heraus, wie sie im Satz vorkommen.' },
+          { text: '❌ Ein Präpositionalgefüge für ein Objekt halten.\n✅ Objekte stehen ohne Präposition: «seine Hand» ist ein Objekt, «auf ihren Kopf» nicht.' },
+          { text: '❌ Den Fall vergessen, wenn er verlangt ist.\n✅ Nach aus, mit, bei, von, zu steht der Dativ: «aus Sparsamkeit», «mit dem gleichen Zug».' },
+        ],
+        check: [],
+      },
+      {
+        id: 'praepositionen-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 4,
+        karten: [
+          // 2016, Aufgabe 5
+          { text: 'Schreibe die Präpositionalgefüge heraus und gib den Fall an:\n\n«Aus Sparsamkeit, aus erzieherischen Gründen und weil Thérèse in den Weihnachtsferien mit dem gleichen Zug und in der gleichen Klasse reisen sollte, hatte Dr. Wenger kein Schlafwagenabteil erster Klasse bestellt.»', loesung: 'aus Sparsamkeit, aus erzieherischen Gründen, in den Weihnachtsferien, mit dem gleichen Zug, in der gleichen Klasse — alle im Dativ.' },
+          // 2017, Aufgabe 16
+          { text: 'Schreibe alle Präpositionalgefüge heraus:\n\n«Das Gesetz wurde vorgestern durch alle Lautsprecher und in allen Zeitungen verkündet. Diesen wurde es durch Flugblätter bekanntgegeben. Über allen Strassen des Reiches wurden diese abgeworfen.»', loesung: 'durch alle Lautsprecher, in allen Zeitungen, durch Flugblätter, über allen Strassen des Reiches' },
+          // 2019, Aufgabe 17
+          { text: 'Schreibe alle Präpositionen heraus:\n\n«Über den Türflügeln, die eine Herde indischer Elefanten durchgelassen hätten, war auf einem breiten bunten Glasfenster ein Ritter in dunklem Harnisch bei der Errettung einer Dame zu sehen.»', loesung: 'über, auf, in, bei' },
+          // 2019, Aufgabe 18
+          { text: 'Schreibe die Präpositionalgefüge heraus:\n\n«Sie kam auf mich zu und lächelte mit dem Mund und hatte kleine scharfe Raubtierzähne.»', loesung: 'auf mich, mit dem Mund' },
+          // 2022, Aufgabe 15
+          { text: 'Schreibe alle Präpositionalgefüge der Reihe nach heraus:\n\n«Sie trieben im Boot von Ambers Stiefvater mitten auf einem ansonsten leeren künstlichen See, der von grossen Reihenhaussiedlungen umgeben war.»', loesung: 'im Boot von Ambers Stiefvater; (mitten) auf einem ansonsten leeren künstlichen See; von grossen Reihenhaussiedlungen' },
+          // 2023, Aufgabe 15
+          { text: 'Schreibe alle Präpositionalgefüge der Reihe nach heraus:\n\n«Henry drehte sich um und sah aus den Augenwinkeln, wie der Schäferhund losrannte. Panisch lief er davon, doch auf der weiten Wiese gab es keinen Baum. Er stolperte über eine Wurzel und schlug hart im Gras auf.»', loesung: 'aus den Augenwinkeln, auf der weiten Wiese, über eine Wurzel, im Gras' },
+          // 2024, Aufgabe 15
+          { text: 'Schreibe alle Präpositionalgefüge der Reihe nach heraus:\n\n«Kaum jemand aus den umliegenden Dörfern schlug sein Angebot aus, aber die Leute kamen auch aus der Stadt, entschieden sich für eine der drei Möglichkeiten und liessen sich von unserem Vater beraten.»', loesung: 'aus den umliegenden Dörfern, aus der Stadt, für eine der drei Möglichkeiten, von unserem Vater' },
+          // 2025, Aufgabe 12
+          { text: 'Schreibe alle Präpositionen der Reihe nach heraus:\n\n«Carl begann, das Ganze für das Ergebnis einer unguten Hypnose zu halten, in die er nicht noch tiefer hineingezogen werden wollte. Dann wurde abgeräumt und alles mit dem Servierwagen zurück in die Küche gefahren.»', loesung: 'für, in, mit, in' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
