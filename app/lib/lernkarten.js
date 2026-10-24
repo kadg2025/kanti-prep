@@ -1883,4 +1883,48 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Textverständnis ──────────────────────────────────────────────────────
+  'Textverständnis': {
+    titel: 'Textverständnis',
+    kacheln: [
+      {
+        id: 'textverstaendnis-aussagen',
+        emoji: '✅',
+        titel: 'Aussagen im Text prüfen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Aussage: ein Satz, von dem du sagen musst, ob er stimmt.\n• Beleg: die Stelle im Text, die es beweist.\n• Detail: eine kleine Angabe wie eine Zahl, ein Ort, eine Person.' },
+          { text: 'So gehst du vor:\n\n1. Aussage lesen\n2. Die passende Stelle im Text suchen\n3. Wort für Wort vergleichen\n\n💡 Nie nach Gefühl entscheiden. Was du nicht belegen kannst, stimmt nicht.' },
+          { text: 'Falle 1: Ein [[aen|Detail]] ist verdreht.\n\nAussage: «Vater und Tochter haben ein Privatabteil.»\nIm Text: Sie liegen in einem Liegewagenabteil, und ein anderer Fahrgast steigt zu.\n\n→ stimmt nicht' },
+          { text: 'Falle 2: Ein [[aen|Vergleich]] ist keine Aussage über die Wirklichkeit.\n\nIm Text: «… ein paar Bäume, sauber gestutzt wie Pudelhunde.»\n\n→ Es gibt dort keine Pudelhunde. Eine Aussage über Hunde stimmt nicht.' },
+          { text: 'Falle 3: Die [[aen|Richtung]] ist vertauscht.\n\nAussage: «Thérèse sagt ihrem Vater, er solle nicht so laut schreien.»\nIm Text: Der Vater sagt es ihr.\n\n→ stimmt nicht' },
+          { text: '💡 Merksatz:\n\nKein Beleg im Text → die Aussage stimmt nicht.\n\nAchte besonders auf immer, alle, nie und auf Zahlen. Solche Wörter machen eine Aussage schnell zu stark.' },
+        ],
+        check: [
+          { frage: 'Im Text steht: «Hinter der Garage standen ein paar Bäume, sauber gestutzt wie Pudelhunde.» Stimmt die Aussage «Im Garten laufen Pudelhunde herum»?', optionen: ['Ja, sie werden erwähnt', 'Nein, das ist nur ein Vergleich'], richtig: 1, erklaerung: 'Der Vergleich beschreibt die Form der Bäume, keine echten Hunde.' },
+          { frage: 'Du findest zu einer Aussage keine Stelle im Text. Was kreuzt du an?', optionen: ['stimmt', 'stimmt nicht', 'Ich rate'], richtig: 1, erklaerung: 'Nur was im Text belegt ist, stimmt.' },
+          { frage: 'Welche Wörter machen eine Aussage besonders verdächtig?', optionen: ['immer, alle, nie', 'vielleicht, manchmal', 'und, oder'], richtig: 0, erklaerung: 'Solche Wörter sind oft zu stark für das, was im Text wirklich steht.' },
+        ],
+      },
+      {
+        id: 'textverstaendnis-reihenfolge',
+        emoji: '🔢',
+        titel: 'Ereignisse in die richtige Reihenfolge bringen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Reihenfolge: in welcher Zeit die Ereignisse wirklich passieren.\n• Rückblende: der Text erzählt etwas, das vorher geschehen ist.\n• Zeitwörter: zuerst, dann, später, am nächsten Tag.' },
+          { text: 'So gehst du vor:\n\n1. Jedes Ereignis im Text suchen und markieren\n2. Auf die [[aen|Zeitwörter]] achten\n3. Nummern 1 bis 5 vergeben' },
+          { text: '⚠️ Die Erzählreihenfolge ist nicht immer die Zeitreihenfolge.\n\nEine [[aen|Rückblende]] erzählt mitten in der Geschichte etwas, das schon vorbei ist. Die Zeitform hilft: Plusquamperfekt zeigt, dass etwas vorher war.' },
+          { text: 'Beispiel. Bringe diese Ereignisse in die richtige Reihenfolge:\n\n• Fahrt durch ein Moorgebiet\n• Mittagessen mit dem Lieblingsgericht\n• Bierflasche fliegt aus dem Zug\n• Ein Taxi wird überholt\n• Abschiedskuss für den Vater' },
+          { text: 'Die Lösung dazu:\n\n1. Mittagessen\n2. Abschiedskuss\n3. Moorgebiet\n4. Bierflasche\n5. Taxi\n\n💡 Setze zuerst das Erste und das Letzte. Die Mitte ergibt sich dann fast von allein.' },
+        ],
+        check: [
+          { frage: 'Woran erkennst du im Text eine Rückblende?', optionen: ['Am Plusquamperfekt', 'Am Präsens', 'An der Länge des Satzes'], richtig: 0, erklaerung: 'Das Plusquamperfekt zeigt, dass etwas vor dem Erzählten passiert ist.' },
+          { frage: 'Welche Wörter helfen dir beim Ordnen am meisten?', optionen: ['zuerst, dann, später', 'schön, gross, laut', 'der, die, das'], richtig: 0, erklaerung: 'Das sind Zeitwörter, sie zeigen die Abfolge.' },
+          { frage: 'Womit beginnst du am besten?', optionen: ['Mit dem ersten und dem letzten Ereignis', 'Mit dem mittleren Ereignis', 'Mit dem längsten Satz'], richtig: 0, erklaerung: 'Anfang und Ende sind meist am klarsten, der Rest ordnet sich dazwischen.' },
+        ],
+      },
+    ],
+  },
 };
