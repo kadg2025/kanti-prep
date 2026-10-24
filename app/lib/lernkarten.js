@@ -2597,7 +2597,9 @@ export const lernkarten = {
         id: 'praepositionen-gefuege',
         emoji: '🔗',
         titel: 'Präpositionalgefüge und Verbzusatz',
-        videos: [],
+        videos: [
+          { titel: 'Präpositionen erklärt (Studyflix)', youtubeId: 'KT7kz-gMfxE' },
+        ],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Präposition: ein kleines Wort wie auf, in, mit, von, über.\n• [[pg|Präpositionalgefüge]] {Präpositionalgruppe}: die Präposition mit allem, was dazugehört.\n• [[aen|Verbzusatz]]: ein Wortteil, der zum Verb gehört (an in «er fängt an»).' },
           { text: 'Eine Präposition steht nie allein:\n\n[[pg|auf der weiten Wiese]]\n[[pg|über eine Wurzel]]\n\n→ Das ganze Gefüge ist ein Satzglied, nicht nur das erste Wort.' },
