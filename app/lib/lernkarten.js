@@ -2643,4 +2643,165 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Satzbau & Konjunktionen ──────────────────────────────────────────────
+  'Satzbau & Konjunktionen': {
+    titel: 'Satzbau & Konjunktionen',
+    kacheln: [
+      {
+        id: 'satzbau-hs-ns',
+        emoji: '🏠',
+        titel: 'Hauptsatz und Nebensatz erkennen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Teilsatz: ein Stück Satz mit eigener Personalform.\n• [[hs|Hauptsatz]]: kann allein stehen.\n• [[ns|Nebensatz]]: kann nicht allein stehen.\n• Personalform: das gebeugte Verb.' },
+          { text: 'Der Test steht beim Verb:\n\n[[hs|Hauptsatz]] → Personalform an zweiter Stelle\n[[ns|Nebensatz]] → Personalform ganz am Ende, meist mit Einleitewort' },
+          { text: 'Beispiel:\n\n«[[ns|Als ich an der Hafenmauer stand]], [[hs|fiel mein trauriges Gesicht einem Polizisten auf]], [[ns|der in diesem Viertel die Runde zu gehen hatte]].»' },
+          { text: 'Nebensätze herausschreiben:\n\n«Ängstlich wie eine Schwalbe, [[ns|die das Unwetter ahnt]], schwebte sie nahe der Oberfläche … [[ns|um ihre Bahn mit der der Genossen zu vereinen]].»' },
+          { text: 'Hauptsätze zählen:\n\n«Jetzt erst [[hs|spürte ich]] …, jetzt erst [[hs|kam mein Hunger hoch]] …, jetzt erst [[hs|begriff ich]] …»\n\n→ drei Hauptsätze.' },
+          { text: '💡 Merksatz:\n\nSo viele Personalformen, so viele Teilsätze.\n\nSteht das Verb am Ende, ist es ein [[ns|Nebensatz]].' },
+        ],
+        check: [
+          { frage: 'Was ist «weil nur er der Klinke einen solchen Hieb versetzte»?', optionen: ['Ein Nebensatz', 'Ein Hauptsatz', 'Kein Teilsatz'], richtig: 0, erklaerung: 'Einleitewort weil, Personalform versetzte am Ende.' },
+          { frage: 'Wie erkennst du einen Hauptsatz?', optionen: ['Die Personalform steht an zweiter Stelle', 'Er ist der längste Teil', 'Er steht immer vorn'], richtig: 0, erklaerung: 'Im Hauptsatz steht das gebeugte Verb an zweiter Stelle.' },
+          { frage: 'Wie viele Teilsätze hat ein Satz mit vier Personalformen?', optionen: ['Vier', 'Zwei', 'Das lässt sich nicht sagen'], richtig: 0, erklaerung: 'Jede Personalform gehört zu einem eigenen Teilsatz.' },
+        ],
+      },
+      {
+        id: 'satzbau-konjunktionen',
+        emoji: '🔌',
+        titel: 'Konjunktionen erkennen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• [[konj|Konjunktion]]: ein Wort, das Sätze oder Satzteile verbindet.\n• beiordnend: verbindet Gleichwertiges (und, oder, aber, denn).\n• unterordnend: leitet einen [[ns|Nebensatz]] ein (dass, weil, als, wenn, obwohl).' },
+          { text: 'Die Merkformel der Prüfung:\n\nUnterordnende [[konj|Konjunktionen]] leiten einen [[ns|Nebensatz]] ein.\n\n→ Und im Nebensatz steht die Personalform am Ende.' },
+          { text: 'Beispiel:\n\n«Die Klinke sprang nach unten, [[konj|und]] wir wussten sofort, [[konj|dass]] der Rektor kommt, [[konj|weil]] nur er der Klinke einen Hieb versetzte.»\n\nund: beiordnend\ndass, weil: unterordnend' },
+          { text: 'Alle Konjunktionen herausschreiben:\n\n«Ich stand da [[konj|und]] überlegte, [[konj|dass]] ich, [[konj|wenn]] ich in dem Haus wohnte, früher [[konj|oder]] später hinaufklettern [[konj|und]] ihm zur Hand gehen müsste, [[konj|denn]] …»' },
+          { text: '⚠️ Nicht jedes kleine Wort ist eine Konjunktion.\n\nan, nur, unten verbinden nichts: Sie sind Partikeln, aber keine [[konj|Konjunktionen]].\n\n💡 Test: Lässt sich das Wort weglassen, ohne dass zwei Teile auseinanderfallen? Dann ist es keine.' },
+        ],
+        check: [
+          { frage: 'Welche Konjunktion ist beiordnend?', optionen: ['denn', 'weil', 'obwohl'], richtig: 0, erklaerung: 'denn verbindet zwei Hauptsätze, weil und obwohl leiten Nebensätze ein.' },
+          { frage: 'Was leiten unterordnende Konjunktionen ein?', optionen: ['Einen Nebensatz', 'Einen Hauptsatz', 'Ein Satzglied'], richtig: 0, erklaerung: 'Genau das ist ihre Aufgabe.' },
+          { frage: 'Welches Wort ist KEINE Konjunktion?', optionen: ['nur', 'aber', 'dass'], richtig: 0, erklaerung: 'nur verbindet nichts, es ist eine Partikel.' },
+        ],
+      },
+      {
+        id: 'satzbau-muster',
+        emoji: '🧱',
+        titel: 'Satzbaumuster',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Satzbaumuster: die Abfolge der Teilsätze, zum Beispiel [[hs|HS]]-[[ns|NS]]-[[hs|HS]].\n• HS steht für [[hs|Hauptsatz]], NS für [[ns|Nebensatz]].' },
+          { text: 'So gehst du vor:\n\n1. Personalformen suchen\n2. An den Kommas und Konjunktionen trennen\n3. Jeden Teilsatz bestimmen\n4. In der Reihenfolge aufschreiben' },
+          { text: 'Beispiel:\n\n«[[hs|Sie hatte sich zur Wand hin gerollt]] und [[hs|er sah von ihr nur die Masse ihres Haars]], [[ns|das ihr Schwierigkeiten bereitete]], [[ns|mit dem sie Kämpfe ausfocht]].»\n\n→ HS-HS-NS-NS' },
+          { text: 'Beispiel mit fünf Teilsätzen:\n\n«[[hs|Die Klinke sprang nach unten]] und [[hs|wir wussten sofort]], [[ns|dass der Rektor kommt]], [[ns|weil nur er der Klinke einen Hieb versetzte]], [[ns|dass sie nach unten sprang]].»\n\n→ HS-HS-NS-NS-NS' },
+          { text: 'Beispiel mit Nebensatz in der Mitte:\n\n«[[hs|Sie steckten die Köpfe zusammen]] und [[ns|wenn sie die Köpfe wieder hoben]], [[hs|hatten alle einen lachend geöffneten Mund]].»\n\n💡 Merksatz: Erst zählen, dann bestimmen, dann aufschreiben.' },
+        ],
+        check: [
+          { frage: 'Welches Muster hat «Ich sah erst jetzt, dass Ludwig tropfte»?', optionen: ['HS-NS', 'HS-HS', 'NS-HS'], richtig: 0, erklaerung: 'Der zweite Teilsatz beginnt mit dass und hat das Verb am Ende.' },
+          { frage: 'Woran trennst du die Teilsätze?', optionen: ['An Kommas und Konjunktionen', 'An den Nomen', 'Nach jeweils fünf Wörtern'], richtig: 0, erklaerung: 'Dort beginnt meist ein neuer Teilsatz.' },
+          { frage: 'Wie viele Teilsätze hat das Muster HS-HS-NS-NS-NS?', optionen: ['Fünf', 'Drei', 'Zwei'], richtig: 0, erklaerung: 'Jedes Kürzel steht für einen Teilsatz.' },
+        ],
+      },
+      {
+        id: 'satzbau-verbinden',
+        emoji: '🪡',
+        titel: 'Sätze mit Konjunktionen verbinden',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du. Jede Konjunktion hat eine Bedeutung:\n\nweil → Grund\nobwohl → Gegensatz\nwährend → Gleichzeitigkeit\nals → einmaliger Zeitpunkt' },
+          { text: 'So verbindest du zwei Sätze:\n\n1. Passende [[konj|Konjunktion]] wählen\n2. Komma setzen\n3. Im [[ns|Nebensatz]] das Verb ans Ende stellen' },
+          { text: 'Beispiel:\n\n«Henry drehte sich um. Der Schäferhund rannte los.»\n\n→ Henry drehte sich um, [[konj|als]] der Schäferhund [[aen|losrannte]].' },
+          { text: 'Beispiel mit Grund:\n\n«Er lief panisch davon. Auf der Wiese gab es keinen Baum.»\n\n→ Er lief panisch davon, [[konj|weil]] es auf der Wiese keinen Baum [[aen|gab]].' },
+          { text: '⚠️ Achte auf zwei Dinge:\n\n1. Der Inhalt muss stimmen: weil nennt wirklich einen Grund.\n2. Jede Konjunktion darfst du nur einmal verwenden, wenn die Aufgabe das sagt.' },
+          { text: '💡 Merksatz:\n\nFrag dich zuerst: Grund, Gegensatz oder Zeit?\n\nDanach kontrollierst du nur noch: Komma gesetzt, Verb am Ende.' },
+        ],
+        check: [
+          { frage: 'Welche Konjunktion zeigt einen Gegensatz?', optionen: ['obwohl', 'weil', 'während'], richtig: 0, erklaerung: 'obwohl verbindet zwei Dinge, die nicht zusammenzupassen scheinen.' },
+          { frage: 'Wie lässt sich «Falls das Boot hinaustrieb» ersetzen?', optionen: ['Wenn', 'Weil', 'Obwohl'], richtig: 0, erklaerung: 'falls nennt eine Bedingung, ebenso wenn und sofern.' },
+          { frage: 'Wo steht das Verb im Nebensatz?', optionen: ['Am Ende', 'An zweiter Stelle', 'Ganz vorn'], richtig: 0, erklaerung: 'Im Nebensatz rutscht die Personalform ans Ende.' },
+        ],
+      },
+      {
+        id: 'satzbau-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ Jeden Teil zwischen zwei Kommas für einen Nebensatz halten.\n✅ Entscheidend ist die Personalform: steht sie am Ende, ist es ein Nebensatz.' },
+          { text: '❌ Den Hauptsatz mit dem ganzen Satz verwechseln.\n✅ Gefragt ist nur der Teil, der allein stehen kann: «fiel mein trauriges Gesicht einem Polizisten auf».' },
+          { text: '❌ «denn» für unterordnend halten.\n✅ denn verbindet zwei Hauptsätze, das Verb bleibt an zweiter Stelle.' },
+          { text: '❌ Partikeln wie nur oder unten als Konjunktion aufschreiben.\n✅ Eine Konjunktion verbindet immer zwei Teile.' },
+          { text: '❌ Beim Verbinden das Komma oder das Verb am Ende vergessen.\n✅ «… , weil er dann über sein Leben nachdenkt.»' },
+          { text: '❌ Eine Konjunktion zweimal verwenden, obwohl jede nur einmal erlaubt ist.\n✅ Zuerst alle Paare anschauen, dann verteilen.' },
+          { text: '❌ Beim Satzbaumuster die Teilsätze falsch zählen.\n✅ Zähl die Personalformen: So viele Teilsätze hat der Satz.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'satzbau-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 14,
+        karten: [
+          // 2016, Aufgabe 13
+          { text: 'Welches Satzbaumuster stimmt? (HS = Hauptsatz, NS = Nebensatz)\n\n«Sie hatte sich zur Wand hin gerollt und er sah von ihr nur die Masse ihres dunklen Haars, das ihr immer solche Schwierigkeiten bereitete, mit dem sie Kämpfe ausfocht.»', loesung: 'HS-HS-NS-NS' },
+          // 2017, Aufgabe 13
+          { text: 'Wandle in einen Fragesatz im Präsens um:\n\n«Viele Jahre schon war jede Verbindung nach aussen abgeschnitten.»', loesung: 'Ist jede Verbindung nach aussen (schon) viele Jahre abgeschnitten?' },
+          // 2017, Aufgabe 15
+          { text: 'Schreibe den Hauptsatz heraus:\n\n«Als ich an der Hafenmauer stand, um den Möwen zuzusehen, fiel mein trauriges Gesicht einem Polizisten auf, der in diesem Viertel die Runde zu gehen hatte.»', loesung: 'fiel mein trauriges Gesicht einem Polizisten auf' },
+          // 2017, Aufgabe 18
+          { text: 'Schreibe alle Nebensätze heraus:\n\n«Ängstlich wie eine Schwalbe, die das Unwetter ahnt, schwebte sie meist nahe der Oberfläche des Wassers, manchmal nur wagte sie kreischend den Sturz nach oben, um ihre Bahn mit der der Genossen zu vereinen.»', loesung: '1. die das Unwetter ahnt.\n2. um ihre Bahn mit der der Genossen zu vereinen.' },
+          // 2017, Aufgabe 19
+          { text: 'Wie viele Hauptsätze stecken darin?\n\n«Jetzt erst spürte ich, dass es kalt war und ich keinen Mantel hatte, jetzt erst kam mein Hunger richtig hoch und knurrte vor der Pforte des Magens, jetzt erst begriff ich, dass ich auch schmutzig war.»', loesung: 'Drei Hauptsätze.' },
+          // 2017, Aufgabe 20
+          { text: 'Vervollständige:\n\n«Unterordnende Konjunktionen leiten ______ ein.»', loesung: 'einen Nebensatz (Nebensätze)' },
+          // 2018, Aufgabe 10
+          { text: 'Welches Satzbaumuster stimmt?\n\n«Die Klinke an der Tür sprang nach unten und wir wussten sofort, dass der Rektor kommt, weil nur er der Klinke einen solchen Hieb versetzte, dass sie wie erschrocken nach unten sprang.»', loesung: 'HS-HS-NS-NS-NS' },
+          // 2018, Aufgabe 11
+          { text: 'Welcher dieser Sätze ist ein einfacher Satz (nur ein Teilsatz)?\n\n«Er stand ein wenig schief, wie alle, die der Rektor zu uns brachte.»\n«Seine Hand musste ganz schön schwer auf Ludwigs Schulter liegen.»\n«Ich sah erst jetzt, dass Ludwig tropfte.»', loesung: '«Seine Hand musste ganz schön schwer auf Ludwigs Schulter liegen.»' },
+          // 2018, Aufgabe 12
+          { text: 'Ordne zu (beiordnende Konjunktion, unterordnende Konjunktion, keine Konjunktion):\n\nund / dass / weil / an / nur / unten', loesung: 'Beiordnend: und.\nUnterordnend: dass, weil.\nKeine Konjunktionen: an, nur, unten.' },
+          // 2019, Aufgabe 14
+          { text: 'Schreibe alle Konjunktionen der Reihe nach heraus:\n\n«Ich stand da und überlegte, dass ich, wenn ich in dem Haus wohnte, früher oder später mal hinaufklettern und ihm zur Hand gehen müsste, denn so richtig Mühe schien er sich nicht zu geben.»', loesung: 'und, dass, wenn, oder, und, denn' },
+          // 2020, Aufgabe 10
+          { text: 'Welches Satzbaumuster stimmt?\n\n«Sie steckten die Köpfe zusammen und wenn sie die Köpfe wieder hoben, hatten alle einen lachend geöffneten Mund …»', loesung: 'Hauptsatz – Nebensatz – Hauptsatz' },
+          // 2020, Aufgabe 15
+          { text: 'Schreibe den Hauptsatz heraus:\n\n«Nur die Frau Luthiger, die einmal in der Woche zum Bügeln kam, begann über die Katholischen zu schimpfen.»', loesung: 'Nur die Frau Luthiger begann über die Katholischen zu schimpfen.' },
+          // 2021, Aufgabe 17
+          { text: 'Hier sind zwei Nebensätze zusammengezogen. Schreibe sie vollständig auf:\n\n«… als könnte er sich jeden Augenblick von seinen Nägeln losreissen und vom Kreuz springen.»', loesung: '1. als könnte er sich jeden Augenblick von seinen Nägeln losreissen.\n2. als könnte er (jeden Augenblick) vom Kreuz springen.' },
+          // 2022, Aufgabe 4
+          { text: 'Wie lässt sich «Falls» ersetzen?\n\n«Falls das Boot wieder aufs Wasser hinaustrieb, wäre das ihre Schuld.»\n\nWeil / Obwohl / Wenn / Sofern', loesung: 'Wenn und Sofern' },
+          // 2023, Aufgabe 17.1
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Ein kühler Luftzug wehte über den Hang.»', loesung: 'Subjekt – Prädikat – Präpositionalgefüge' },
+          // 2023, Aufgabe 17.3
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Mitten auf der Wiese stand ein grosser Schäferhund.»', loesung: 'Präpositionalgefüge – Prädikat – Subjekt' },
+          // 2023, Aufgabe 17.4
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«In der Ferne spaltete ein mächtiger Blitz den schieferfarbenen Horizont.»', loesung: 'Präpositionalgefüge – Prädikat – Subjekt – Akkusativobjekt' },
+          // 2023, Aufgabe 17.5
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«In diesem Augenblick entdeckte er ihn.»', loesung: 'Präpositionalgefüge – Prädikat – Subjekt – Akkusativobjekt' },
+          // 2024, Aufgabe 5
+          { text: 'Wie lässt sich «auch wenn» ersetzen?\n\n«Man heiratete im Schloss, auch wenn es in Wirklichkeit keines war und nur so hiess.»\n\nanstatt dass / weil / obschon / wenngleich', loesung: 'obschon und wenngleich' },
+          // 2024, Aufgabe 17.1
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Das bisschen Knipserei würde ich zustande bringen.»', loesung: 'Akkusativobjekt – Prädikat – Subjekt' },
+          // 2024, Aufgabe 17.2
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Kaum jemand aus den umliegenden Dörfern schlug sein Angebot aus.»', loesung: 'Subjekt – Prädikat – Akkusativobjekt' },
+          // 2024, Aufgabe 17.3
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Er hatte das Restaurant in kürzester Zeit zu seinem früheren Ruf geführt.»', loesung: 'Subjekt – Prädikat – Akkusativobjekt – Präpositionalgefüge – Präpositionalgefüge' },
+          // 2024, Aufgabe 17.4
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Das Hotel blieb im Sommer geschlossen.»', loesung: 'Subjekt – Prädikat – Präpositionalgefüge' },
+          // 2025, Aufgabe 18.1
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Am Abend übermannte ihn das Heimweh.»', loesung: 'Präpositionalgefüge – Prädikat – Akkusativobjekt – Subjekt' },
+          // 2025, Aufgabe 18.3
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Sein Vater hielt ihn am Arm.»', loesung: 'Subjekt – Prädikat – Akkusativobjekt – Präpositionalgefüge' },
+          // 2025, Aufgabe 18.4
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Beim Abendbrot kam zwischen dem Vater und dem Sohn kein Gespräch auf.»', loesung: 'Präpositionalgefüge – Prädikat – Präpositionalgefüge – Subjekt' },
+          // 2025, Aufgabe 18.5
+          { text: 'Welches Satzgliedschema hat dieser Satz?\n\n«Über die Schwelle in den Korridor wurde der Wagen getragen.»', loesung: 'Präpositionalgefüge – Prädikat – Subjekt' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
