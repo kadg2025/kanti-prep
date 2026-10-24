@@ -1927,4 +1927,154 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Wortschatz ───────────────────────────────────────────────────────────
+  'Wortschatz': {
+    titel: 'Wortschatz',
+    kacheln: [
+      {
+        id: 'wortschatz-synonyme',
+        emoji: '🔁',
+        titel: 'Synonyme finden',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• [[syn|Synonym]]: ein Wort mit gleicher oder sehr ähnlicher Bedeutung (gross – riesig).\n• Kontext: der Satz, in dem das Wort steht.\n• Einsetzprobe: Du setzt dein Wort in den Satz ein und liest ihn ganz durch.' },
+          { text: 'So gehst du vor:\n\n1. Was heisst das Wort hier? Sag es in eigenen Worten.\n2. Ein Wort dazu suchen.\n3. [[aen|Einsetzprobe]]: in den Satz einsetzen und laut lesen.' },
+          { text: 'Beispiel:\n\n«… der Hafen war verödet …»\n\nverödet = da ist niemand mehr\n→ [[syn|verlassen]], [[syn|verwaist]], [[syn|unbelebt]]' },
+          { text: 'Beispiel:\n\n«Nach dem Essen kramte sie unter ihren Schürzen.»\n\nkramen = ungeordnet suchen\n→ [[syn|suchte]], [[syn|stöberte]], [[syn|wühlte]]' },
+          { text: '⚠️ Dein Wort muss auch grammatikalisch passen.\n\n«Von Böen getrieben, prasselte der Regen gegen die Fensterscheiben.»\n→ [[syn|trommelte]], [[syn|peitschte]], [[syn|klopfte]]\n\nNicht «Trommeln»: Im Satz steht eine Verbform.' },
+          { text: '💡 Merksatz:\n\nEin Synonym muss in DIESEN Satz passen, nicht nur ungefähr dasselbe heissen.\n\nDie Einsetzprobe entlarvt jedes Wort, das nur fast passt.' },
+        ],
+        check: [
+          { frage: 'Welches Wort passt für «ratsam» in «… ob es ratsam sei, den Grossvater mitzunehmen»?', optionen: ['empfehlenswert', 'ratlos', 'rätselhaft'], richtig: 0, erklaerung: 'ratsam heisst: es ist sinnvoll, empfehlenswert.' },
+          { frage: 'Welches Wort passt für «gestutzt» in «… ein paar Bäume, sauber gestutzt wie Pudelhunde»?', optionen: ['beschnitten', 'gestützt', 'gewachsen'], richtig: 0, erklaerung: 'stutzen heisst hier schneiden. «gestützt» ist ein anderes Wort.' },
+          { frage: 'Was prüfst du zum Schluss immer?', optionen: ['Ob das Wort im Satz grammatikalisch passt', 'Ob das Wort kürzer ist', 'Ob das Wort moderner klingt'], richtig: 0, erklaerung: 'Die Einsetzprobe: Satz mit deinem Wort ganz durchlesen.' },
+        ],
+      },
+      {
+        id: 'wortschatz-gegenteile',
+        emoji: '↔️',
+        titel: 'Gegenteile finden',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• [[geg|Antonym]]: ein Wort mit gegenteiliger Bedeutung (hell – dunkel).\n• Vorsilbe: ein Wortteil vorne, zum Beispiel un- in unklar.' },
+          { text: 'So gehst du vor:\n\n1. Bedeutung in eigenen Worten sagen\n2. Das Gegenteil davon denken\n3. Einsetzprobe im Satz\n\n→ Ein ähnliches Wort ist noch kein Gegenteil.' },
+          { text: 'Beispiel:\n\n«… hier blickte er mich verächtlich an …»\n\nverächtlich = von oben herab\n→ [[geg|bewundernd]], [[geg|respektvoll]]' },
+          { text: 'Beispiel:\n\n«Franz tat einen zögerlichen Schritt …»\n\nzögerlich = unsicher, langsam\n→ [[geg|raschen]], [[geg|entschiedenen]], [[geg|sicheren]]\n\nAchtung: Die Endung muss zum Satz passen.' },
+          { text: '⚠️ Oft ist die Vorsilbe un- verboten.\n\n«… beobachtete ihn jedoch aufmerksam.»\nNicht erlaubt: unaufmerksam\n→ [[geg|achtlos]], [[geg|zerstreut]], [[geg|nachlässig]]' },
+          { text: '💡 Merksatz:\n\nLies die Aufgabe genau: Steht dort «nicht mit un-», brauchst du ein eigenes Wort.\n\nSuch dann ein Wort, das die Sache von der anderen Seite beschreibt.' },
+        ],
+        check: [
+          { frage: 'Welches Wort ist das Gegenteil von «mühsam»?', optionen: ['mühelos', 'mühevoll', 'müde'], richtig: 0, erklaerung: 'mühelos heisst: ohne Anstrengung.' },
+          { frage: 'Gesucht ist das Gegenteil von «gesenktem» in «… mit gesenktem Kopf».', optionen: ['erhobenem', 'geneigtem', 'gebeugtem'], richtig: 0, erklaerung: 'erhoben ist das Gegenteil von gesenkt, die anderen bedeuten dasselbe.' },
+          { frage: 'Die Aufgabe verbietet die Vorsilbe un-. Was tust du?', optionen: ['Ein eigenes Wort suchen', 'Trotzdem un- benutzen', 'Das Wort weglassen'], richtig: 0, erklaerung: 'Gesucht ist ein anderes Wort, etwa achtlos statt unaufmerksam.' },
+        ],
+      },
+      {
+        id: 'wortschatz-wendungen',
+        emoji: '💬',
+        titel: 'Wendungen ersetzen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Wendung: mehrere Wörter, die zusammen eine eigene Bedeutung haben (ins Wasser fallen = nicht stattfinden).\n• Sinngemäss ersetzen: etwas sagen, das dasselbe bedeutet, mit anderen Worten.' },
+          { text: 'Wichtig: Eine Wendung darfst du nicht wörtlich nehmen.\n\n«Aber er kam nicht zu Rande.»\n\nNicht: er erreichte den Rand nicht\n→ Er konnte es nicht tun, er kam nicht zu einem Ende.' },
+          { text: 'Beispiel:\n\n«… um uns kleinen Geistern auf die Sprünge zu helfen.»\n\n→ [[syn|nachzuhelfen]]; zu zeigen, wie man es macht\n\nEs geht ums Helfen, nicht ums Springen.' },
+          { text: 'Beispiel:\n\n«Alles in allem bist du ein guter Bub gewesen.»\n\n→ [[syn|Insgesamt]]\n\nDie Wendung fasst zusammen. Sie sagt nichts darüber, wie oft etwas passiert.' },
+          { text: 'Beispiel mit beiden Richtungen:\n\n«Die singende Gruppe liess uns passieren.»\n\n→ gleich: [[syn|machte uns Platz]]\n→ gegenteilig: [[geg|versperrte uns den Weg]]' },
+          { text: '💡 Merksatz:\n\nFrag dich: Was tut die Person hier wirklich?\n\nDiese Antwort in einfachen Worten ist fast immer die gesuchte Ersetzung.' },
+        ],
+        check: [
+          { frage: 'Was bedeutet «jemandem zur Hand gehen»?', optionen: ['helfen', 'die Hand geben', 'weggehen'], richtig: 0, erklaerung: 'zur Hand gehen heisst helfen, beistehen, unterstützen.' },
+          { frage: 'Wie lässt sich «alles in allem» ersetzen?', optionen: ['Insgesamt', 'Immer', 'Selten'], richtig: 0, erklaerung: 'Die Wendung fasst zusammen: insgesamt.' },
+          { frage: 'Was ist bei Wendungen der häufigste Fehler?', optionen: ['Man nimmt sie wörtlich', 'Man schreibt sie gross', 'Man kürzt sie ab'], richtig: 0, erklaerung: 'Die Bedeutung der ganzen Wendung zählt, nicht die der einzelnen Wörter.' },
+        ],
+      },
+      {
+        id: 'wortschatz-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ Ein ähnliches Wort genügt.\n✅ Es muss in DIESEN Satz passen. Mach immer die Einsetzprobe.' },
+          { text: '❌ Gegenteil mit un-, obwohl die Aufgabe das verbietet.\n✅ Ein eigenes Wort suchen: achtlos statt unaufmerksam, mühelos statt unmühsam.' },
+          { text: '❌ Die Wendung wörtlich nehmen.\n✅ «nicht zu Rande kommen» hat nichts mit einem Rand zu tun: Es heisst, etwas nicht zu schaffen.' },
+          { text: '❌ Die Wortform vergessen.\n✅ Steht im Satz ein Verb in der Vergangenheit, muss auch dein Wort passen: trommelte, nicht trommeln.' },
+          { text: '❌ Nur ein Wort nennen, obwohl mehrere gesucht sind.\n✅ Lies, wie viele Wörter verlangt sind, und streiche beim Ankreuzen wirklich alle, die nicht passen.' },
+          { text: '❌ Synonym und Gegenteil verwechseln.\n✅ Unterstreiche in der Aufgabe das Wort «entsprechend» oder «gegensätzlich», bevor du schreibst.' },
+          { text: '❌ Raten, wenn du das Wort nicht kennst.\n✅ Lies den ganzen Satz: Oft verrät der Zusammenhang die Bedeutung.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'wortschatz-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 15,
+        karten: [
+          // 2016, Aufgabe 2
+          { text: 'Was bedeutet die Wendung sinngemäss?\n\n«Sie unterbrach sich höchstens eine Sekunde.»', loesung: 'Sie redete praktisch pausenlos weiter, also ohne Unterbrechung.' },
+          // 2016, Aufgabe 3a
+          { text: 'Welche Wörter entsprechen «abgeliefert»?\n\n«… wenn er Thérèse in Oxford abgeliefert hatte …»\n\nabgeholt / abgesetzt / abgemahnt / vermittelt / ausgesetzt / übergeben', loesung: 'abgesetzt und übergeben. «abgeholt» ist das Gegenteil.' },
+          // 2016, Aufgabe 3b
+          { text: 'Welche Wörter entsprechen hier «Publikum»?\n\n«… unter einem Publikum aus reisenden Engländern …»\n\nZuschauer / Zuhörer / Fans / Öffentlichkeit', loesung: 'Zuschauer, Zuhörer und Öffentlichkeit. «Fans» passt nicht.' },
+          // 2016, Aufgabe 4a
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «peinlich»:\n\n«… es war Wenger peinlich, dass Thérèse ihn so laut mit Daddy anredete.»', loesung: 'unangenehm, genierlich' },
+          // 2016, Aufgabe 4b
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «überhaupt»:\n\n«Mammi und du, ihr seid überhaupt keine Spiesser.»', loesung: 'wirklich, gar, wahrhaftig' },
+          // 2016, Aufgabe 22b
+          { text: 'Finde eine Wendung mit gegenteiliger Bedeutung für «überwiegend»:\n\n«Die Leute … schienen überwiegend Engländer zu sein.»', loesung: 'zum geringeren Teil, nur teilweise, nicht alle' },
+          // 2017, Aufgabe 3
+          { text: 'Welche Ersetzungen passen für «Ehe ich mich versehen hatte»?\n\n«Ehe ich mich versehen hatte, war mein linkes Handgelenk mit einer dünnen Kette umschlossen.»\n\nUnerwartet schnell / Aus Versehen / Bevor ich es realisierte / Ehe ich mich umgesehen hatte', loesung: '«Unerwartet schnell» und «Bevor ich es realisierte».' },
+          // 2017, Aufgabe 5a
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «verödet»:\n\n«… der Hafen war verödet …»', loesung: 'verlassen, verwaist, unbelebt' },
+          // 2017, Aufgabe 5b
+          { text: 'Finde ein Wort mit gegenteiliger Bedeutung für «verächtlich»:\n\n«… hier blickte er mich verächtlich an …»', loesung: 'bewundernd, respektvoll, hochachtungsvoll' },
+          // 2017, Aufgabe 21a
+          { text: 'Was bedeutet «Durchbrenner»?\n\nBrandstifter / Ausreisser / Feuerwehrmann / Panzerknacker', loesung: 'Ausreisser' },
+          // 2017, Aufgabe 21c
+          { text: 'Was bedeutet «entweichen»?\n\nFliehen / Rennen / Abtreten / Entrinnen', loesung: 'Fliehen und Entrinnen' },
+          // 2018, Aufgabe 3a
+          { text: 'Welches Wort entspricht «rührten»?\n\n«Wir rührten uns nicht.»', loesung: 'bewegten' },
+          // 2018, Aufgabe 3b
+          { text: 'Welches Wort entspricht «scheitern»?\n\n«Alle, die da gescheitert waren.»', loesung: 'versagen, fehlschlagen' },
+          // 2018, Aufgabe 4a
+          { text: 'Finde ein Wort oder eine Wendung für «konzentriert»:\n\n«Ich war nicht konzentriert.»', loesung: 'bei der Sache, aufmerksam, fokussiert' },
+          // 2018, Aufgabe 16
+          { text: 'Was haben diese Wörter gemeinsam?\n\na) Brücke, Wolkenkratzer, Stauwehr, Schiff\nb) Himmel, Mount Everest, Regen, Wind', loesung: 'a: alles von Menschen gemacht.\nb: alles Natur, nicht von Menschen gemacht.' },
+          // 2018, Aufgabe 17
+          { text: 'Wie lässt sich die Wendung ersetzen?\n\n«… um uns kleinen Geistern auf die Sprünge zu helfen.»', loesung: 'nachzuhelfen; zu zeigen, wie man es macht' },
+          // 2019, Aufgabe 2a
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «gestutzt»:\n\n«Hinter der Garage standen dekorativ ein paar Bäume umher, sauber gestutzt wie Pudelhunde.»', loesung: 'beschnitten, geschnitten, geschoren' },
+          // 2019, Aufgabe 2b
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «verkraften»:\n\n«Sie sah aber ganz so aus, als ob sie einiges verkraften könnte.»', loesung: 'bewältigen, aushalten, ertragen' },
+          // 2019, Aufgabe 3
+          { text: 'Finde für «schimmernd» ein Wort mit gleicher und eines mit gegenteiliger Bedeutung:\n\n«… weiss wie frisches Orangenmark und schimmernd wie Porzellan.»', loesung: 'Gleich: glänzend, leuchtend, blank.\nGegenteil: matt, stumpf, glanzlos.' },
+          // 2019, Aufgabe 4
+          { text: 'Was heisst «nicht zu Rande kommen»?\n\n«Aber er kam nicht zu Rande.»\n\nden Rand nicht erreichen / etwas nicht umranden / etwas nicht tun können / nicht zu einem Ende kommen', loesung: '«etwas nicht tun können» und «nicht zu einem Ende kommen können».' },
+          // 2019, Aufgabe 12b
+          { text: 'Welches Wort entspricht der Wendung «zur Hand gehen»?', loesung: 'helfen, beistehen, unterstützen' },
+          // 2020, Aufgabe 2a
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «ratsam»:\n\n«Lange hatten die Eltern überlegt, ob es ratsam sei, den Grossvater mitzunehmen.»', loesung: 'empfehlenswert, vorteilhaft, sinnvoll' },
+          // 2020, Aufgabe 2b
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «Windungen»:\n\n«… auf der anderen Seite des Flusses, dessen Windungen sie geschwind entlangschlängelte …»', loesung: 'Biegungen, Kehren, Kurven' },
+          // 2020, Aufgabe 5
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «kramte»:\n\n«Nach dem Essen kramte sie unter ihren Schürzen; sie fand einen Fünfliber, den sie mir zuschob.»', loesung: 'suchte, stöberte, wühlte, fischte' },
+          // 2020, Aufgabe 6
+          { text: 'Ersetze «liess uns passieren» einmal mit gleicher, einmal mit gegenteiliger Bedeutung:\n\n«Die singende Gruppe … liess uns passieren.»', loesung: 'Gleich: machte uns Platz, ging zur Seite, trat aus dem Weg.\nGegenteil: versperrte uns den Weg.' },
+          // 2020, Aufgabe 7
+          { text: 'Wie lässt sich «alles in allem» ersetzen?\n\n«Alles in allem, sagte die Frau Luthiger, bist du ein guter Bub gewesen.»\n\nImmer / Nie / Insgesamt / Selten', loesung: 'Insgesamt' },
+          // 2021, Aufgabe 2a
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «prasselte»:\n\n«Von Böen getrieben, prasselte der Regen gegen die Fensterscheiben.»', loesung: 'peitschte, trommelte, klopfte, dröhnte' },
+          // 2021, Aufgabe 3b
+          { text: 'Finde ein Wort mit gegenteiliger Bedeutung für «zögerlichen»:\n\n«Franz tat einen zögerlichen Schritt, legte seine Hand auf ihren Kopf …»', loesung: 'raschen, entschiedenen, sicheren, zielgerichteten' },
+          // 2022, Aufgabe 2c
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «weitschweifigen»:\n\n«Er hoffte, Amber war vor seinem weitschweifigen Gefühlsbekenntnis ins Wasser gesprungen.»', loesung: 'ausführlichen, umfangreichen, langfädigen, ausufernden' },
+          // 2023, Aufgabe 2b
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «wähnte»:\n\n«Er wähnte sich bereits in Sicherheit …»', loesung: 'glaubte, vermutete, dachte' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
