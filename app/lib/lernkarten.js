@@ -2235,4 +2235,149 @@ export const lernkarten = {
       },
     ],
   },
+
+  // ─── Wortarten ────────────────────────────────────────────────────────────
+  'Wortarten': {
+    titel: 'Wortarten',
+    kacheln: [
+      {
+        id: 'wortarten-fuenf',
+        emoji: '🖐️',
+        titel: 'Die fünf Wortarten erkennen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du. Es gibt fünf Wortarten:\n\n[[nn|Nomen]] (Haus)\n[[vb|Verb]] (gehen)\n[[adj|Adjektiv]] (schnell)\n[[pro|Pronomen]] (er, der, mein)\n[[pa|Partikel]] (und, auf, nicht)' },
+          { text: 'Der Test: Kannst du das Wort verändern?\n\n[[nn|Nomen]], [[vb|Verb]], [[adj|Adjektiv]] und [[pro|Pronomen]] lassen sich beugen: Haus – Häuser, geht – ging.\n\n[[pa|Partikel]] bleiben immer gleich: und, auf, nicht.' },
+          { text: '⚠️ Merk dir diese zwei Zuordnungen:\n\nArtikel (der, die, das, ein) → [[pro|Pronomen]]\nPräpositionen und Konjunktionen (auf, und, weil) → [[pa|Partikel]]' },
+          { text: 'Beispiel:\n\n«[[pro|Ihr]] [[nn|Gesicht]] [[vb|war]] [[adj|fahl]] [[pa|und]] [[vb|wirkte]] [[pa|nicht]] [[pa|sehr]] [[adj|gesund]].»' },
+          { text: 'Beispiel:\n\n«[[pa|Wie]] [[pro|zwei]] [[nn|Kinder]] [[vb|fuhren]] sie [[pa|dann]] den [[adj|kleinen]] Wagen …»\n\n→ Zahlwörter wie zwei zählen zu den [[pro|Pronomen]].' },
+          { text: '💡 Merksatz:\n\nUnveränderlich? → [[pa|Partikel]].\nBegleitet es ein Nomen? → [[pro|Pronomen]].\n\nAlles andere erkennst du an der Bedeutung: Ding, Tätigkeit oder Eigenschaft.' },
+        ],
+        check: [
+          { frage: 'Welche Wortart ist «der» in «der Hafenmauer»?', optionen: ['Pronomen', 'Partikel', 'Nomen'], richtig: 0, erklaerung: 'Artikel gehören bei den fünf Wortarten zu den Pronomen.' },
+          { frage: 'Welche Wortart ist «während»?', optionen: ['Partikel', 'Pronomen', 'Verb'], richtig: 0, erklaerung: 'Präpositionen und Konjunktionen sind Partikeln, sie bleiben unverändert.' },
+          { frage: 'Welche Wortart ist «einziger» in «nur ein einziger Fahrgast»?', optionen: ['Adjektiv', 'Pronomen', 'Nomen'], richtig: 0, erklaerung: 'Es beschreibt den Fahrgast näher und ist gebeugt: ein Adjektiv.' },
+        ],
+      },
+      {
+        id: 'wortarten-zaehlen',
+        emoji: '🔢',
+        titel: 'Wortarten zählen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• Verschiedene Wortarten zählen heisst: Jede Art zählt nur einmal, egal wie oft sie vorkommt.\n• Mehr als fünf geht nie.' },
+          { text: 'So gehst du vor:\n\n1. Über jedes Wort die Wortart schreiben\n2. Die verschiedenen Arten zusammenzählen\n\nNicht die Wörter zählen, sondern die Arten.' },
+          { text: 'Beispiel:\n\n«[[adj|Stumm]] [[vb|sahen]] [[pro|wir]] hinaus.»\n\n→ nur 3 Wortarten. «hinaus» ist ein [[aen|Verbzusatz]] und gehört zum Verb hinaussehen.' },
+          { text: 'Beispiel mit allen fünf:\n\n«[[pa|Neben]] [[pro|einem]] [[adj|grauen]] [[nn|Fluss]] [[vb|hatte]] die Strasse [[pa|kaum]] Platz.»\n\n→ 5 Wortarten.' },
+          { text: '💡 Merksatz:\n\nZähl zuletzt ab: Nomen? Verb? Adjektiv? Pronomen? Partikel?\n\nFünf Haken, fünf Fragen. Fehlt eine Art, zählst du sie nicht mit.' },
+        ],
+        check: [
+          { frage: 'Wie viele verschiedene Wortarten hat «Er sagte ihren Namen»?', optionen: ['3', '4', '5'], richtig: 0, erklaerung: 'Pronomen (Er, ihren), Verb (sagte), Nomen (Namen).' },
+          { frage: 'Wie viele verschiedene Wortarten hat «Die Hütte war stehen geblieben»?', optionen: ['3', '4', '2'], richtig: 0, erklaerung: 'Pronomen (Die), Nomen (Hütte), Verb (war stehen geblieben).' },
+          { frage: 'Was zählst du bei dieser Aufgabe?', optionen: ['Die verschiedenen Wortarten', 'Alle Wörter', 'Die Silben'], richtig: 0, erklaerung: 'Jede Wortart zählt nur einmal.' },
+        ],
+      },
+      {
+        id: 'wortarten-partikeln',
+        emoji: '🧷',
+        titel: 'Partikeln erkennen',
+        videos: [],
+        karten: [
+          { text: 'Diese Wörter brauchst du:\n\n• [[pa|Partikel]]: unveränderliches Wort.\n• Präposition: steht vor einer Nominalgruppe (auf dem Tisch).\n• [[konj|Konjunktion]]: verbindet Sätze oder Satzteile (und, weil).' },
+          { text: 'Partikeln lassen sich in drei Gruppen ordnen:\n\n1. Präpositionen: durch, nach, mit\n2. [[konj|Konjunktionen]]: und, obwohl, dass, denn\n3. Sonstige, etwa Adverbien: nicht, bald, sehr' },
+          { text: 'Beispiel:\n\ndurch, nach → Präpositionen\n[[konj|und]], [[konj|obwohl]], [[konj|dass]], [[konj|denn]] → Konjunktionen\nnicht, bald → Sonstige\n\nAlle zusammen sind [[pa|Partikeln]].' },
+          { text: '⚠️ Ein [[aen|Verbzusatz]] ist keine Präposition.\n\n«Ich fing links an, mein Blick wanderte von Pfeiler zu Pfeiler.»\n\n→ an gehört zu anfangen.\n→ von, zu, bis sind Präpositionen.' },
+          { text: 'Beispiel zum Herausschreiben:\n\n«Aber früher war er mal von einem Nachbarshund gebissen worden, und selbst die Welpen bellten sofort, wenn sie ihn sahen.»\n\nPartikeln: aber, früher, mal, von, und, selbst, sofort, wenn' },
+          { text: '💡 Merksatz:\n\nJede Konjunktion ist auch eine Partikel, aber nicht jede Partikel ist eine Konjunktion.\n\nFrag bei jedem Wort: Verbindet es etwas? Dann ist es eine Konjunktion.' },
+        ],
+        check: [
+          { frage: 'Welche Gruppe gehört NICHT zu den Partikeln?', optionen: ['Pronomen', 'Präpositionen', 'Konjunktionen'], richtig: 0, erklaerung: 'Pronomen sind eine eigene Wortart.' },
+          { frage: 'Was ist «an» in «Ich fing links an»?', optionen: ['Verbzusatz', 'Präposition', 'Konjunktion'], richtig: 0, erklaerung: 'Es gehört zum Verb anfangen.' },
+          { frage: 'Welche dieser Partikeln ist eine Konjunktion?', optionen: ['während', 'bald', 'sehr'], richtig: 0, erklaerung: '«während» verbindet zwei Teilsätze.' },
+        ],
+      },
+      {
+        id: 'wortarten-fehler',
+        emoji: '⚠️',
+        titel: 'Typische Fehler',
+        videos: [],
+        karten: [
+          { text: '❌ Artikel sind eine eigene Wortart.\n✅ Bei den fünf Wortarten gehören der, die, das, ein zu den Pronomen.' },
+          { text: '❌ Präpositionen und Konjunktionen sind keine Partikeln.\n✅ Doch: auf, und, weil, obwohl sind alle Partikeln.' },
+          { text: '❌ Den Verbzusatz als Präposition zählen.\n✅ In «Stumm sahen wir hinaus» gehört hinaus zum Verb hinaussehen.' },
+          { text: '❌ Beim Zählen die Wörter statt die Arten zählen.\n✅ Jede Wortart zählt nur einmal, höchstens fünf.' },
+          { text: '❌ Zahlwörter als eigene Wortart führen.\n✅ «zwei Kinder»: zwei gehört zu den Pronomen.' },
+          { text: '❌ Ein Partizip für ein Adjektiv halten.\n✅ In «Er hatte das Restaurant geführt» ist geführt ein Verb.' },
+          { text: '❌ Begriffe abkürzen oder falsch schreiben.\n✅ Schreib Nomen, Verb, Adjektiv, Pronomen, Partikel immer ganz aus.' },
+        ],
+        check: [],
+      },
+      {
+        id: 'wortarten-ueben',
+        emoji: '🥋',
+        titel: 'Dojo',
+        videos: [],
+        minLoesungen: 14,
+        karten: [
+          // 2016, Aufgabe 6
+          { text: 'Ordne die Partikeln zu (Präposition, Konjunktion, weder noch):\n\n«Er hatte sich, ohne das Licht anzuzünden und so leise wie möglich, auf eine der oberen Bänke gelegt und den Zug bereits zwei Stationen später wieder verlassen.»', loesung: 'Präposition: auf.\nKonjunktionen: ohne, und, [wie].\nWeder noch: so, [wie], bereits, wieder.' },
+          // 2016, Aufgabe 19
+          { text: 'Bestimme die Wortart (nur die 5 Wortarten):\n\n«Übrigens hatten sie Glück gehabt, nur ein einziger Fahrgast war während der Nacht zugestiegen.»\n\nÜbrigens / sie / Glück / einziger / war / während', loesung: 'Übrigens: Partikel. sie: Pronomen. Glück: Nomen. einziger: Adjektiv. war: Verb. während: Partikel.' },
+          // 2016, Aufgabe 21
+          { text: 'Welche Wörter sind konjugierbar, welche deklinierbar?\n\n«Sie brauchte auch diesen Morgen lange Zeit, um sich zu frisieren.»', loesung: 'Konjugierbar: brauchte, frisieren.\nDeklinierbar: Sie, diesen, Morgen, lange, Zeit, sich.' },
+          // 2017, Aufgabe 10
+          { text: 'Bestimme die Wortart (nur die 5 Wortarten):\n\n«Ehe ich mich versehen hatte, war mein linkes Handgelenk mit einer dünnen Kette umschlossen. Und in diesem Augenblick wusste ich, dass ich wieder verloren war.»\n\nEhe / versehen / Handgelenk / Und / in / diesem / ich / wieder', loesung: 'Ehe, Und, in, wieder: Partikel. versehen: Verb. Handgelenk: Nomen. diesem, ich: Pronomen.' },
+          // 2017, Aufgabe 11
+          { text: 'Ordne die Partikeln zu (Präposition, Konjunktion, Sonstige):\n\ndurch / nach / und / obwohl / dass / denn / nicht / bald', loesung: 'Präpositionen: durch, nach.\nKonjunktionen: und, obwohl, dass, denn.\nSonstige: nicht, bald.' },
+          // 2018, Aufgabe 6
+          { text: 'Verbzusatz oder Präposition?\n\n«Ich fing links an, mein Blick wanderte von Pfeiler zu Pfeiler, und ich zählte zügig bis sechs.»\n\nan / von / zu / bis', loesung: 'Verbzusatz: an (von «anfangen»).\nPräpositionen: von, zu, bis.' },
+          // 2018, Aufgabe 13
+          { text: 'Bestimme die Wortarten:\n\n«Ludwig war so gross wie ich.»\n\nLudwig / war / so / gross / wie / ich', loesung: 'Ludwig: Nomen. war: Verb. so und wie: Partikel. gross: Adjektiv. ich: Pronomen.' },
+          // 2018, Aufgabe 14
+          { text: 'Wie viele verschiedene Wortarten kommen vor?\n\nA: «Ich weiss nicht, ob das stimmt.»\nB: «Hoch ist die Brücke, sehr hoch.»', loesung: 'A: 3 Wortarten.\nB: 5 Wortarten.' },
+          // 2019, Aufgabe 6
+          { text: 'Wie viele verschiedene Wortarten kommen vor?\n\nA: «Sie blitzten zwischen dünnen, gestrafften Lippen.»\nB: «Es war eine Frau.»\nC: «Sie sahen nicht so aus, als ob schon je einer drauf gesessen hätte.»', loesung: 'A: 5. B: 3. C: 3.' },
+          // 2019, Aufgabe 8
+          { text: 'Bestimme die Wortarten:\n\n«Ihr Gesicht war fahl und wirkte nicht sehr gesund.»', loesung: 'Ihr: Pronomen. Gesicht: Nomen. war und wirkte: Verb. fahl und gesund: Adjektiv. und, nicht, sehr: Partikel.' },
+          // 2020, Aufgabe 13
+          { text: 'Nenne Wortart und nähere Bestimmung:\n\n«Und plötzlich standen wir vor der langen Front des Klosters.»\n\nUnd / plötzlich / wir / vor / der / Klosters', loesung: 'Und: Partikel, Konjunktion. plötzlich: Adjektiv. wir: Pronomen, Personalpronomen. vor: Partikel, Präposition. der: Pronomen, Artikel. Klosters: Nomen.' },
+          // 2020, Aufgabe 14
+          { text: 'Wie viele verschiedene Wortarten kommen vor?\n\nA: «Stumm sahen wir hinaus.»\nB: «Neben einem grauen Fluss hatte die Strasse kaum Platz.»\nC: «Einige gingen auf den Trottoirs in Gruppen.»', loesung: 'A: 3. B: 5. C: 4.' },
+          // 2020, Aufgabe 21
+          { text: 'Schreibe die Konjunktionen und die Präpositionen heraus:\n\n«Die Scheibenwischer schlugen Wasser weg, und aus den Hangwäldern zu beiden Seiten des Moorgebiets wuchsen schiefe Nebelsäulen.»', loesung: 'Konjunktion: und.\nPräpositionen: aus, zu.' },
+          // 2021, Aufgabe 5
+          { text: 'Schreibe alle Konjunktionen und alle Präpositionen heraus:\n\n«Als sich das Gewitter endlich ausgetobt hatte und sich ein erster zaghafter Sonnenstrahl über die ausgetretenen Dielen an sein Bett heranzitterte, rollte sich Franz in einem kleinen Wohligkeitsanfall zusammen, nur um gleich darauf seinen Kopf unter der Decke hervorzustrecken und sich umzuschauen.»', loesung: 'Konjunktionen: als, und, um, und.\nPräpositionen: über, an, in, unter.' },
+          // 2021, Aufgabe 7
+          { text: 'Wie viele verschiedene Wortarten kommen vor?\n\nA: «Die Hütte war stehen geblieben.»\nB: «Franz kroch aus dem Bett.»\nC: «Ihr Kopf fühlte sich zart an.»', loesung: 'A: 3. B: 4. C: 4.' },
+          // 2021, Aufgabe 8
+          { text: 'Nenne Wortart und nähere Bestimmung:\n\n«Für einen Moment schien sie sich suchend umzusehen.»\n\nFür / einen / Moment / schien / sie / sich', loesung: 'Für: Partikel, Präposition. einen: Pronomen, unbestimmter Artikel. Moment: Nomen. schien: Verb. sie: Pronomen, Personalpronomen. sich: Pronomen, Reflexivpronomen.' },
+          // 2022, Aufgabe 5
+          { text: 'Nenne Wortart und nähere Bestimmung:\n\n«Als er sich dem Land näherte, schaltete er den Motor aus, doch es gelang ihm nicht, parallel zum Bootssteg anzulegen.»\n\nAls / sich / dem / Motor / nicht / parallel', loesung: 'Als: Partikel, Konjunktion. sich: Pronomen, Reflexivpronomen. dem: Pronomen, bestimmter Artikel. Motor: Nomen. nicht: Partikel. parallel: Adjektiv.' },
+          // 2022, Aufgabe 6
+          { text: 'Wie viele verschiedene Wortarten kommen vor?\n\nA: «Wie der Aussenbordmotor im Mondlicht glänzte.»\nB: «Er redete schon eine ganze Weile.»\nC: «Er sagte ihren Namen.»', loesung: 'A: 4. B: 5. C: 3.' },
+          // 2022, Aufgabe 9
+          { text: 'Schreibe alle Partikeln heraus und sag, welche davon Konjunktionen sind:\n\n«Alle, sogar die anderen Kids der Schule, zeigten eine für den Mittelwesten typische technische Grundkompetenz und konnten einen Ölwechsel selbst machen oder ein Gewehr reinigen, während er nicht einmal mit Schaltgetriebe fahren konnte.»', loesung: 'Partikeln: sogar, für, und, (selbst), oder, während, nicht, einmal, mit.\nKonjunktionen davon: und, oder, während.' },
+          // 2023, Aufgabe 5
+          { text: 'Bestimme die Wortart:\n\n«Panisch lief er davon, doch auf der weiten Wiese gab es keinen Baum, auf den er sich retten konnte.»\n\nweiten / keinen / auf / den / sich / konnte', loesung: 'weiten: Adjektiv. keinen, den, sich: Pronomen. auf: Partikel. konnte: Verb.' },
+          // 2023, Aufgabe 6
+          { text: 'Wie viele verschiedene Wortarten kommen vor?\n\n1. «Mit dem Regen kam die Kälte.»\n2. «Dann entdeckte er ihn.»\n3. «Dann wurde das Display schwarz.»', loesung: '1: 4. 2: 3. 3: 5.' },
+          // 2023, Aufgabe 7
+          { text: 'Schreibe alle Partikeln und alle Konjunktionen heraus:\n\n«Aber früher war er mal von einem Nachbarshund gebissen worden, und selbst die Welpen seiner Freunde bellten sofort, wenn sie ihn sahen.»', loesung: 'Partikeln: aber, früher, mal, von, und, selbst, sofort, wenn.\nKonjunktionen: aber, und, wenn.' },
+          // 2024, Aufgabe 6
+          { text: 'Bestimme die Wortart:\n\n«Er hatte das Restaurant in kürzester Zeit zu seinem früheren Ruf geführt.»\n\nEr / in / zu / früheren / Ruf / geführt', loesung: 'Er: Pronomen. in und zu: Partikel. früheren: Adjektiv. Ruf: Nomen. geführt: Verb.' },
+          // 2024, Aufgabe 7
+          { text: 'Wie viele verschiedene Wortarten kommen vor?\n\nA: «Zuerst wehrte ich mich.»\nB: «Und dann begann es auch schon mit den Hochzeiten.»', loesung: 'A: 3. B: 4.' },
+          // 2024, Aufgabe 8
+          { text: 'Schreibe alle Partikeln heraus:\n\n«Ich war fünfzehn, Internatsschüler, und hatte noch kein Mädchen geküsst, als ich bei den Feiern zu fotografieren begann.»', loesung: 'und, noch, als, bei, zu' },
+          // 2025, Aufgabe 4
+          { text: 'Wie viele verschiedene Wortarten kommen vor?\n\nA: «Sein Vater blieb stehen und drehte sich um.»\nB: «Carl wusste nicht mehr, wer den Vorschlag gemacht hatte.»', loesung: 'A: 4. B: 4.' },
+          // 2025, Aufgabe 5
+          { text: 'Bestimme die Wortart:\n\n«Wie zwei Kinder fuhren sie dann den kleinen Wagen zusammen durch den Flur in die Küche.»\n\nWie / zwei / Kinder / fuhren / dann / kleinen', loesung: 'Wie und dann: Partikel. zwei: Pronomen. Kinder: Nomen. fuhren: Verb. kleinen: Adjektiv.' },
+          // 2025, Aufgabe 13
+          { text: 'Schreibe alle Partikeln der Reihe nach heraus:\n\n«Zuerst musste gegessen werden, dann wurde abgeräumt und alles mit dem Servierwagen zurück in die Küche gefahren.»', loesung: 'zuerst, dann, und, mit, in' },
+        ],
+        check: [],
+      },
+    ],
+  },
 };
