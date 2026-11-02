@@ -1439,14 +1439,23 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
 // gruppiert nach Fach — mit Direktsprung zurück zur Aufgabe. Verschwindet
 // eine Aufgabe von hier nur automatisch, wenn sie beim nächsten Besuch im
 // allerersten Versuch richtig gelöst wird.
+// Dojo-Fehler haben die ID dojo:<Thema>:<Kachel>:<Karte> (siehe Lernkarte.js).
+function dojoFehlerItem(id) {
+  const [prefix, topic, kachelId, karteIdx] = id.split(':');
+  if (prefix !== 'dojo') return null;
+  const karte = lernkarten[topic]?.kacheln.find(k => k.id === kachelId)?.karten[Number(karteIdx)];
+  if (!karte) return null;
+  return { id, dojoTopic: topic, topic: `Dojo: ${topic}`, year: karte.text.replace(/\s+/g, ' ').slice(0, 70) };
+}
+
 function FehlerKistePage({ fehlerIds, dm, onBack, onRemove, onClearAll, onJump }) {
   const isMobile = useIsMobile();
-  const items = fehlerIds.map(id => questions.find(q => q.id === id)).filter(Boolean);
+  const items = fehlerIds.map(id => questions.find(q => q.id === id) || dojoFehlerItem(id)).filter(Boolean);
   const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309' };
   const subjectEmojis = { 'Mathe ohne TR': '📐', 'Mathe mit TR': '🔢', 'Deutsch': '📝', 'Deutsch GMS2': '📝' };
   const grouped = {};
   items.forEach(q => {
-    const key = subjectKeyOf(q) || 'Sonstiges';
+    const key = q.dojoTopic ? (DEUTSCH_THEMEN.includes(q.dojoTopic) ? 'Deutsch' : 'Mathe ohne TR') : (subjectKeyOf(q) || 'Sonstiges');
     (grouped[key] = grouped[key] || []).push(q);
   });
 
@@ -1985,7 +1994,10 @@ export default function Home() {
       onBack={() => setShowFehlerKiste(false)}
       onRemove={removeFehler}
       onClearAll={clearFehler}
-      onJump={(q) => { setSubject(subjectKeyOf(q)); setSelectedId(q.id); setLernkarteTopic(null); setShowFehlerKiste(false); }}
+      onJump={(q) => {
+        if (q.dojoTopic) { setSubject(DEUTSCH_THEMEN.includes(q.dojoTopic) ? 'Deutsch' : 'Mathe ohne TR'); setSelectedId(null); setLernkarteTopic(q.dojoTopic); setShowFehlerKiste(false); return; }
+        setSubject(subjectKeyOf(q)); setSelectedId(q.id); setLernkarteTopic(null); setShowFehlerKiste(false);
+      }}
     />
   );
   if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setLernkarteTopic(null); setAufsatzSeite(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} dark={dark} toggleDark={toggleDark} />;
@@ -2049,6 +2061,8 @@ export default function Home() {
           dark={dark}
           isMobile={isMobile}
           onClose={() => setLernkarteTopic(null)}
+          onFehler={addFehler}
+          onRemoveFehler={removeFehler}
         />
       ) : (
         <QuestionDisplay question={selectedQuestion} subject={subject} onSolved={handleSolved} onFehler={addFehler} onRemoveFehler={removeFehler} solved={solved} fehler={fehler} dark={dark} dm={dm} onKonfetti={() => setKonfetti(true)} buildTree={buildTree} />

@@ -223,8 +223,8 @@ export const lernkarten = {
         videos: [],
         minLoesungen: 8,
         karten: [
-          { text: 'Ist 512 durch 4 teilbar?', loesung: 'Ja. Die letzten zwei Ziffern 12 sind durch 4 teilbar.' },
-          { text: 'Primfaktorzerlegung von 30.', loesung: '30 = 2 · 15 = 2 · 3 · 5' },
+          { text: 'Ist 512 durch 4 teilbar?', options: [{ text: 'Ja, weil 12 durch 4 teilbar ist', correct: true }, { text: 'Nein, weil 512 nicht auf 0 oder 5 endet', correct: false }, { text: 'Nein, weil die letzte Ziffer 2 nicht durch 4 teilbar ist', correct: false }], loesung: 'Ja. Die letzten zwei Ziffern 12 sind durch 4 teilbar.' },
+          { text: 'Primfaktorzerlegung von 30.', options: [{ text: '30 = 2 · 3 · 5', correct: true }, { text: '30 = 2 · 15', correct: false }, { text: '30 = 5 · 6', correct: false }], loesung: '30 = 2 · 15 = 2 · 3 · 5' },
           { text: 'Eine Glocke läutet alle 15 Minuten, eine andere alle 20. Wann läuten beide wieder gemeinsam?', loesung: 'kgV von 15 = 3 · 5 und 20 = 2² · 5: 2² · 3 · 5 = 4 · 15 = 60. Nach 60 Minuten.' },
           { text: 'ggT und kgV von 18 und 24.', loesung: '18 = 2 · 3², 24 = 2³ · 3. ggT = 2 · 3 = 6. kgV = 2³ · 3² = 72.' },
           { text: 'Welche Zahlen zwischen 20 und 30 sind Primzahlen?', loesung: '23 und 29. Alle anderen haben mehr als zwei Teiler (z. B. 21 = 3 · 7, 27 = 3 · 9).' },
