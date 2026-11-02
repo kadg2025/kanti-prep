@@ -2872,31 +2872,31 @@ export const lernkarten = {
         minLoesungen: 7,
         karten: [
           // 2016, Aufgabe 14
-          { text: 'Setze ins Passiv (mit Nennung des Täters):\n\n«Sie würden ihn für einen dieser amerikanisierten Deutschen halten …»', loesung: 'Er würde von ihnen für einen dieser amerikanisierten Deutschen gehalten werden.' },
+          { text: 'Setze ins Passiv (mit Nennung des Täters):\n\n«Sie würden ihn für einen dieser amerikanisierten Deutschen halten …»', options: [{ text: 'Er würde von ihnen für einen dieser amerikanisierten Deutschen gehalten werden.', correct: true }, { text: 'Er wurde von ihnen für einen dieser amerikanisierten Deutschen gehalten.', correct: false }, { text: 'Sie würden von ihm für einen dieser amerikanisierten Deutschen gehalten werden.', correct: false }], loesung: 'Er würde von ihnen für einen dieser amerikanisierten Deutschen gehalten werden.' },
           // 2017, Aufgabe 6
-          { text: 'Aktiv oder Passiv? Und welche Zeitform?\n\n«Eine bestimmte Möwe war von mir ins Auge gefasst worden.»', loesung: 'Passiv, Plusquamperfekt.' },
+          { text: 'Aktiv oder Passiv? Und welche Zeitform?\n\n«Eine bestimmte Möwe war von mir ins Auge gefasst worden.»', options: [{ text: 'Passiv, Plusquamperfekt', correct: true }, { text: 'Passiv, Perfekt', correct: false }, { text: 'Aktiv, Plusquamperfekt', correct: false }], loesung: 'Passiv, Plusquamperfekt.' },
           // 2018, Aufgabe 8
-          { text: 'Setze ins Passiv:\n\n«Zwei Wochen zuvor hatte ich Ludwig zum ersten Mal gesehen.»', loesung: 'Zwei Wochen zuvor war Ludwig (von mir) zum ersten Mal gesehen worden.' },
+          { text: 'Setze ins Passiv:\n\n«Zwei Wochen zuvor hatte ich Ludwig zum ersten Mal gesehen.»', options: [{ text: 'Zwei Wochen zuvor war Ludwig von mir zum ersten Mal gesehen worden.', correct: true }, { text: 'Zwei Wochen zuvor wurde Ludwig von mir zum ersten Mal gesehen.', correct: false }, { text: 'Zwei Wochen zuvor war ich von Ludwig zum ersten Mal gesehen worden.', correct: false }], loesung: 'Zwei Wochen zuvor war Ludwig (von mir) zum ersten Mal gesehen worden.' },
           // 2019, Aufgabe 10
-          { text: 'Was trifft zu?\n\n«Ich wurde von vier Millionen Dollar erwartet.»\n\nIndikativ / Imperativ / Konjunktiv / Aktiv / Passiv', loesung: 'Indikativ und Passiv.' },
+          { text: 'Was trifft zu?\n\n«Ich wurde von vier Millionen Dollar erwartet.»\n\nIndikativ / Imperativ / Konjunktiv / Aktiv / Passiv', options: [{ text: 'Indikativ und Passiv', correct: true }, { text: 'Indikativ und Aktiv', correct: false }, { text: 'Konjunktiv und Passiv', correct: false }], loesung: 'Indikativ und Passiv.' },
           // 2019, Aufgabe 13
-          { text: 'Wandle ins Aktiv um:\n\n«Ich wurde von vier Millionen Dollar erwartet.»', loesung: 'Vier Millionen Dollar erwarteten mich.' },
+          { text: 'Wandle ins Aktiv um:\n\n«Ich wurde von vier Millionen Dollar erwartet.»', options: [{ text: 'Vier Millionen Dollar erwarteten mich.', correct: true }, { text: 'Vier Millionen Dollar erwarten mich.', correct: false }, { text: 'Ich erwartete vier Millionen Dollar.', correct: false }], loesung: 'Vier Millionen Dollar erwarteten mich.' },
           // 2022, Aufgabe 13
-          { text: 'Was trifft auf den verbalen Teil zu?\n\n«Das laute Krachen brachte die Ochsenfrösche in der Nähe zum Schweigen.»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          { text: 'Was trifft auf den verbalen Teil zu?\n\n«Das laute Krachen brachte die Ochsenfrösche in der Nähe zum Schweigen.»', options: [{ text: 'Aktiv, Indikativ, Präteritum', correct: true }, { text: 'Passiv, Indikativ, Präteritum', correct: false }, { text: 'Aktiv, Indikativ, Perfekt', correct: false }], loesung: 'Aktiv, Indikativ, Präteritum.' },
           // 2024, Aufgabe 14.1
-          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«Ich war damit aufgewachsen …»', loesung: 'Aktiv, Indikativ, Plusquamperfekt.' },
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«Ich war damit aufgewachsen …»', options: [{ text: 'Aktiv, Indikativ, Plusquamperfekt', correct: true }, { text: 'Aktiv, Indikativ, Perfekt', correct: false }, { text: 'Passiv, Indikativ, Plusquamperfekt', correct: false }], loesung: 'Aktiv, Indikativ, Plusquamperfekt.' },
           // 2024, Aufgabe 14.2
-          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… wie zuerst unser Vater sie ironisch nannte …»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… wie zuerst unser Vater sie ironisch nannte …»', options: [{ text: 'Aktiv, Indikativ, Präteritum', correct: true }, { text: 'Aktiv, Indikativ, Plusquamperfekt', correct: false }, { text: 'Passiv, Indikativ, Präteritum', correct: false }], loesung: 'Aktiv, Indikativ, Präteritum.' },
           // 2024, Aufgabe 14.3
-          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… wie sie dann aber von allen ernsthaft tituliert wurde …»', loesung: 'Passiv, Indikativ, Präteritum.' },
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… wie sie dann aber von allen ernsthaft tituliert wurde …»', options: [{ text: 'Passiv, Indikativ, Präteritum', correct: true }, { text: 'Aktiv, Indikativ, Präteritum', correct: false }, { text: 'Passiv, Indikativ, Perfekt', correct: false }], loesung: 'Passiv, Indikativ, Präteritum.' },
           // 2025, Aufgabe 10.1
-          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«Über die Schwelle in den Korridor wurde der Wagen getragen …»', loesung: 'Passiv, Indikativ, Präteritum.' },
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«Über die Schwelle in den Korridor wurde der Wagen getragen …»', options: [{ text: 'Passiv, Indikativ, Präteritum', correct: true }, { text: 'Passiv, Konjunktiv, Präteritum', correct: false }, { text: 'Aktiv, Indikativ, Präteritum', correct: false }], loesung: 'Passiv, Indikativ, Präteritum.' },
           // 2025, Aufgabe 10.2
-          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… das machte sein Vater …»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… das machte sein Vater …»', options: [{ text: 'Aktiv, Indikativ, Präteritum', correct: true }, { text: 'Aktiv, Indikativ, Präsens', correct: false }, { text: 'Passiv, Indikativ, Präteritum', correct: false }], loesung: 'Aktiv, Indikativ, Präteritum.' },
           // 2025, Aufgabe 10.3
-          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… aber jetzt sprang Carl auf und half …»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… aber jetzt sprang Carl auf und half …»', options: [{ text: 'Aktiv, Indikativ, Präteritum', correct: true }, { text: 'Aktiv, Indikativ, Perfekt', correct: false }, { text: 'Passiv, Indikativ, Präteritum', correct: false }], loesung: 'Aktiv, Indikativ, Präteritum.' },
           // 2025, Aufgabe 10.4
-          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… damit nichts verrutschte.»', loesung: 'Aktiv, Indikativ, Präteritum.' },
+          { text: 'Was trifft auf diesen Teilsatz zu?\n\n«… damit nichts verrutschte.»', options: [{ text: 'Aktiv, Indikativ, Präteritum', correct: true }, { text: 'Aktiv, Konjunktiv, Präteritum', correct: false }, { text: 'Passiv, Indikativ, Präteritum', correct: false }], loesung: 'Aktiv, Indikativ, Präteritum.' },
         ],
         check: [],
       },
