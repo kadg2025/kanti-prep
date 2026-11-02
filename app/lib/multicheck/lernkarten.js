@@ -496,15 +496,18 @@ export const multicheckLernkarten = {
         ],
       },
       {
-        id: 'mc_ma_einheiten', emoji: '📏', titel: 'Einheiten', videos: [{ titel: 'Raummasse und Liter umrechnen (Lehrerschmidt)', youtubeId: 'NItq_I7Yz9M' }],
+        id: 'mc_ma_einheiten', emoji: '📏', titel: 'Einheiten', videos: [{ titel: 'Flächenmasse umrechnen (Lehrerschmidt)', youtubeId: 'bEgBxIdZZLs' }],
         karten: [
           { text: 'Diese Umrechnungen musst du kennen:\n\n[[mcmerk|Volumen]]: 1 l = 10 dl = 100 cl = 1’000 ml\n[[mcmerk|Masse]]: 1 kg = 1’000 g, 1 g = 1’000 mg\n[[mcmerk|Länge]]: 1 m = 100 cm, 1 cm = 10 mm, 1 m = 1’000 mm\n[[mcmerk|Zeit]]: 1 h = 60 min' },
           { text: '5 dl = 0.5 l, denn 10 dl sind 1 l.\n750 g = 0.75 kg.' },
+          { text: '[[mcmerk|Flächen]] springen nicht in Zehner-, sondern in Hunderterschritten:\n\n1 m² = 100 dm²\n1 dm² = 100 cm²\n1 cm² = 100 mm²\n\nDarum ist 1 m² = 100 · 100 = 10’000 cm².' },
+          { text: 'Für grosse Flächen gibt es zwei Extra-Einheiten:\n\n1 a = 100 m²\n1 ha = 100 a = 10’000 m²\n1 km² = 100 ha\n\nBeispiel: 3 m² = 300 dm².' },
           { text: 'So gehst du vor: Lies, in welcher Einheit das Resultat sein muss. Rechne jede Grösse in diese Einheit um. Zähle erst dann zusammen.\n\nGrössere Einheit, kleinere Zahl (g → kg: durch 1’000). Kleinere Einheit, grössere Zahl (kg → g: mal 1’000).' },
         ],
         check: [
           c('3 dl in l:', ['0.3 l', '30 l', '3 l', '0.03 l'], '10 dl sind 1 l, also 3 dl = 0.3 l.'),
           c('2 kg + 500 g in g:', ['2’500 g', '502 g', '2’050 g', '25’000 g'], '2 kg = 2’000 g. 2’000 + 500 = 2’500.'),
+          c('2 m² in cm²:', ['20’000 cm²', '200 cm²', '2’000 cm²', '200’000 cm²'], '1 m² = 10’000 cm². Also 2 m² = 20’000 cm².'),
           c('1.5 h in Minuten:', ['90 min', '150 min', '105 min', '60 min'], '1 h = 60 min, 0.5 h = 30 min. Zusammen 90 min.'),
         ],
       },
