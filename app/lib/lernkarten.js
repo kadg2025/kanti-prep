@@ -391,7 +391,7 @@ export const lernkarten = {
     titel: 'Gleichungen',
     kacheln: [
       {
-        id: 'grundidee', emoji: '🎯', titel: 'Grundidee', videos: [],
+        id: 'grundidee', emoji: '🎯', titel: 'Grundidee', videos: [{ titel: 'Gleichungen lösen – Grundlagen (Mathe mit Peitzi)', youtubeId: 'q-kW8G6-_5k' }],
         karten: [
           { text: 'Eine Gleichung ist wie eine Waage im Gleichgewicht. Beide Seiten müssen gleich schwer bleiben: Tust du auf der einen Seite etwas (z. B. 3 wegnehmen), musst du dasselbe auf der anderen Seite tun, sonst kippt die Waage.' },
           {
@@ -415,7 +415,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'klammern', emoji: '➖', titel: 'Klammern auflösen', videos: [],
+        id: 'klammern', emoji: '➖', titel: 'Klammern auflösen', videos: [{ titel: 'Gleichungen mit Klammern (Lehrerschmidt)', youtubeId: 'H8kah0htP2Q' }],
         karten: [
           { text: 'Stell dir vor, du verteilst Süssigkeiten an 3 Gruppen mit je (x + 2) Stück. Das sind 3 · (x + 2) Stück insgesamt - die 3 muss an jeden Teil in der Klammer verteilt werden, nicht nur an den ersten.' },
           {
@@ -440,7 +440,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'xverschieben', emoji: '🔀', titel: 'x verschieben', videos: [],
+        id: 'xverschieben', emoji: '🔀', titel: 'x verschieben', videos: [{ titel: 'Gleichung mit x auf beiden Seiten (MathemaTrick)', youtubeId: 'khJ3uO7dv5w' }],
         karten: [
           { text: 'x sammeln ist wie Freunde zu einer Gruppe einladen: Du willst alle x-Freunde auf eine Seite der Waage holen, und alle Zahlen auf die andere.' },
           {
@@ -465,7 +465,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'brueche', emoji: '🍰', titel: 'Brüche vor x', videos: [],
+        id: 'brueche', emoji: '🍰', titel: 'Brüche vor x', videos: [{ titel: 'Terme mit Brüchen (Lehrerschmidt)', youtubeId: 'G5iqv_QkBvw' }],
         karten: [
           { text: 'Stell dir vor, x ist eine Pizza. 1/2 x und 1/4 x sind Stücke mit x als Grösse - um sie zusammenzuzählen, brauchen die Brüche vor dem x denselben Nenner, genau wie bei normaler Bruchrechnung.' },
           {
@@ -513,7 +513,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'text', emoji: '📝', titel: 'Textaufgaben', videos: [],
+        id: 'text', emoji: '📝', titel: 'Textaufgaben', videos: [{ titel: 'Textaufgabe: Gleichung aufstellen (MathemaTrick)', youtubeId: 'LTPbEF-PvXU' }],
         karten: [
           { text: 'Bei Textaufgaben steckt die Gleichung im Satz versteckt. Nenn die gesuchte Zahl x und übersetze den Satz Stück für Stück in Rechenzeichen.' },
           {
@@ -537,7 +537,7 @@ export const lernkarten = {
         ],
       },
       {
-        id: 'formelumstellung', emoji: '🔧', titel: 'Formeln umstellen', videos: [],
+        id: 'formelumstellung', emoji: '🔧', titel: 'Formeln umstellen', videos: [{ titel: 'Formeln umstellen (umatic)', youtubeId: 'Z3u4fyK4z3o' }],
         karten: [
           { text: 'Manchmal sollst du eine Formel nicht nach x, sondern nach einem anderen Buchstaben auflösen - zum Beispiel nach b, v oder d. Das funktioniert genau gleich wie bei einer normalen Gleichung: Du behandelst alle anderen Buchstaben wie ganz normale Zahlen und wendest dieselben Waage-Regeln an (+, −, ·, :). Profi-Tipp: Markiere dir zuerst, nach welchem Buchstaben du auflösen sollst, und rechne Schritt für Schritt, bis genau dieser Buchstabe allein auf einer Seite steht.' },
           {
