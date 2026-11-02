@@ -345,6 +345,21 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
     return () => clearInterval(id);
   }, [tm]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Abwicklungen: Buchstabe A bis E (gross oder klein) wählt die Figur, Enter prüft (der Knopf bleibt).
+  useEffect(() => {
+    if (q.type !== 'net' || done) return;
+    const h = (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const tag = e.target && e.target.tagName;
+      if (e.key === 'Enter') { if (tag !== 'BUTTON') pruefen(false); return; }
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+      const i = e.key.length === 1 ? 'ABCDE'.indexOf(e.key.toUpperCase()) : -1;
+      if (i >= 0) up({ sel: i });
+    };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [q.type, done]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const t = q.type;
   const konz = thema.konzepte[q.ck];
 
