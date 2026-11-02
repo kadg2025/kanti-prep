@@ -728,10 +728,10 @@ export default function LernkartePage({ topic, dm, dark, isMobile, onClose, onFe
   const color = KACHEL_COLORS[kachelIdx >= 0 ? kachelIdx % KACHEL_COLORS.length : 0];
 
   function dojoAntwort(karteIdx, richtig) {
-    const res = verbucheAntwort(dojo, richtig);
+    const fehlerId = `dojo:${topic}:${openKachelId}:${karteIdx}`;
+    const res = verbucheAntwort(dojo, richtig, fehlerId);
     setDojo(res.state);
     speichereDojo(res.state);
-    const fehlerId = `dojo:${topic}:${openKachelId}:${karteIdx}`;
     if (richtig) onRemoveFehler(fehlerId); else onFehler(fehlerId);
     return { aufstieg: res.aufstieg ? guertelIndex(res.state.xp) : null };
   }

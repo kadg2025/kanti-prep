@@ -16,7 +16,7 @@ export const XP_RICHTIG = 10;
 export const XP_STREAK_BONUS = 5;
 
 const KEY = 'kp_dojo';
-const LEER = { xp: 0, streak: 0, tag: null, bonusTag: null };
+const LEER = { xp: 0, streak: 0, tag: null, bonusTag: null, geloest: [] };
 
 export function ladeDojo() {
   try {
@@ -49,8 +49,9 @@ function gestern(d) {
 
 // Verbucht eine MC-Antwort. Der Streak zählt jeden Tag mit mindestens einer
 // Antwort; der Bonus gibt es einmal pro Tag mit der ersten richtigen Antwort.
+// XP gibt es pro Frage (id) nur beim ersten Mal richtig.
 // Gibt { state, gewonnen, aufstieg } zurück.
-export function verbucheAntwort(state, richtig, jetzt = new Date()) {
+export function verbucheAntwort(state, richtig, id, jetzt = new Date()) {
   const heute = tagString(jetzt);
   const next = { ...state };
   if (next.tag !== heute) {
@@ -58,7 +59,8 @@ export function verbucheAntwort(state, richtig, jetzt = new Date()) {
     next.tag = heute;
   }
   let gewonnen = 0;
-  if (richtig) {
+  if (richtig && !state.geloest.includes(id)) {
+    next.geloest = [...state.geloest, id];
     gewonnen = XP_RICHTIG;
     if (next.bonusTag !== heute) {
       gewonnen += XP_STREAK_BONUS;
