@@ -21,6 +21,8 @@ import MF from './app/lib/multicheck/merk_fragen.mjs';
 import MD from './app/lib/multicheck/merk_daten.mjs';
 import * as SD from './app/lib/multicheck/schreib_daten.mjs';
 import * as SL from './app/lib/multicheck/schreib_logik.mjs';
+import * as PC from './app/lib/multicheck/probe_config.mjs';
+import * as PG from './app/lib/multicheck/probe_logik.mjs';
 import { SYMBOLE } from './app/lib/multicheck/vernetzt_symbole.mjs';
 
 const DIR = 'app/lib/multicheck/';
@@ -513,6 +515,129 @@ for (const [id, t] of Object.entries(themen)) {
   if (/\bbald\('/.test(idx.replace(/^const bald = .*$/m, ''))) bad('Übersicht: es gibt noch Themen auf «Bald»');
   if ((idx.match(/aktiv\(/g) || []).length !== 12) bad('Übersicht: nicht 12 aktive Themen');
   console.log('Schreiben: 3 Runden mit je 4 Themen, Sperre bei 20 Zeichen, Speichern und Laden geprüft, keine Netzwerkaufrufe, alle 12 Themen aktiv');
+}
+
+// ─── Probeprüfung ────────────────────────────────────────────────────────
+{
+  const mitUnter = Object.fromEntries(Object.entries(themen).map(([id, t]) => [id, UT.mitUnterthemen(t)]));
+  const PRF = new Function('planCheck', 'PFEIL_TEXT', fs.readFileSync(DIR + 'pruefen.js', 'utf8').replace(/^import .*$/gm, '').replace(/^export /gm, '') + '\nreturn { neuerStand, istLeer, auswerten, erwartetAntwort };')(PL.check, R.PFEIL_TEXT);
+  const fn = { istLeer: PRF.istLeer, auswerten: PRF.auswerten, erwartetAntwort: PRF.erwartetAntwort };
+  const sollReihe = ['merklern', 'deutsch', 'englisch', 'kurz', 'it', 'org', 'mathe', 'logik', 'konz', 'vorst', 'vernetzt', 'merkantwort', 'schreiben'];
+  if (JSON.stringify(PC.STATIONEN.map(x => x.id)) !== JSON.stringify(sollReihe)) bad('Probe: Reihenfolge der Stationen stimmt nicht');
+  if (PC.PAUSE.nach !== 'mathe' || PC.PAUSE.minuten < 10) bad('Probe: Pause nach Mathematik mit mindestens 10 Minuten fehlt');
+  // Prüfungsmodus im Code der Aufgabenkomponente
+  const mc = fs.readFileSync('app/components/Multicheck.js', 'utf8');
+  for (const teil of ['if (pruefung) return;', '!done && !pruefung', 'if (pruefung && onU) onU(U);']) if (!mc.includes(teil)) bad('Probe: Prüfungsmodus fehlt in Multicheck.js («' + teil + '»)');
+  const kurzDauer = PC.STATIONEN.filter(x => x.zeit).reduce((n, x) => n + x.zeit.kurz, 0) + PC.PAUSE.minuten * 0;
+  if (kurzDauer < 70 || kurzDauer > 80) bad('Probe: Kurzversion dauert ' + kurzDauer + ' Minuten (ca. 75 erwartet)');
+  const eigene = new Set();
+  const antwortRichtig = (q) => {
+    const t = q.type;
+    if (['mc', 'vmc', 'memchoice', 'figmc', 'spatial', 'net'].includes(t)) return { sel: q.correct };
+    if (t === 'numproc') return { sel: q.answer };
+    if (t === 'multi') return { set: Object.fromEntries(q.correct.map(i => [i, true])) };
+    if (t === 'input') return { val: String(q.accept[0]) };
+    if (t === 'gap') return q.accept === null ? { korr: true } : { val: q.accept[0] };
+    if (t === 'spell') return q.wrong < 0 ? { korr: true } : { w: q.wrong, val: q.fix };
+    if (t === 'memcolor') return { cols: q.seq.map(c => c + 1) };
+    if (t === 'plan') return { asg: q.sol };
+    return { rows: q.items.map(it => PRF.erwartetAntwort(q, it)) };
+  };
+  const antwortFalsch = (q) => {
+    const t = q.type;
+    if (['mc', 'vmc', 'memchoice', 'figmc'].includes(t)) return { sel: (q.correct + 1) % q.options.length };
+    if (t === 'spatial') return { sel: q.correct === 'N' ? 'S' : 'N' };
+    if (t === 'net') return { sel: (q.correct + 1) % q.options.length };
+    if (t === 'numproc') return { sel: q.answer % 9 + 1 };
+    if (t === 'multi') return { set: { [q.options.findIndex((o, i) => !q.correct.includes(i))]: true } };
+    if (t === 'input') return { val: 'x' };
+    if (t === 'gap') return { val: 'zzz' };
+    if (t === 'spell') return { w: 0, val: 'zzz' };
+    if (t === 'memcolor') return { cols: [3, 3, 3, 3, 3, 3, 3, 3] };
+    if (t === 'plan') return {};
+    if (t === 'numcmp') return { rows: q.items.map(it => (it.gleich ? 'n' : 'g')) };
+    if (t === 'coord') return { rows: q.items.map(() => 'xx') };
+    if (t === 'pikto') return { rows: q.items.map(it => (it.alt ? 'nein' : 'ja')) };
+    return { rows: q.items.map(it => (it.correct + 1) % 4) };
+  };
+  const summe = { kurz: 0, voll: 0 };
+  for (const version of ['kurz', 'voll']) {
+    const sts = PC.baueVersion(version, mitUnter);
+    const ids = [];
+    for (const st of sts) {
+      if (st.art !== 'merklern' && st.art !== 'schreiben' && !st.fragen.length) bad(version + '/' + st.id + ': keine Aufgaben');
+      if (st.art !== 'merklern' && !(st.minuten > 0)) bad(version + '/' + st.id + ': Zeit nicht gesetzt');
+      if (st.zeit && st.id !== 'schreiben' && version === 'voll' && st.zeit.voll !== 3 * st.zeit.kurz) bad(version + '/' + st.id + ': Vollversion nicht dreifache Zeit');
+      if (st.id === 'schreiben' && st.minuten !== 15) bad('Probe: Textschreiben nicht 15 Minuten');
+      for (const q of st.fragen) {
+        if (!themen[st.thema].qs.includes(q)) bad(version + '/' + q.id + ': Aufgabe nicht in den vorhandenen Dateien');
+        if (!PC.PRUEFUNGS_TYPEN.includes(q.type)) bad(version + '/' + q.id + ': Typ ' + q.type + ' hat keinen Prüfungsmodus');
+        eigene.add(q.type);
+        ids.push(q.id);
+      }
+      // Auswertung testen
+      if (st.art === 'aufgaben' || st.art === 'merkantwort') {
+        const gesamt = PG.bewerte(st.fragen, {}, fn);
+        const voll = (q, teil) => ({ ...PRF.neuerStand(q), ...teil });
+        const A = Object.fromEntries(st.fragen.map(q => [q.id, voll(q, antwortRichtig(q))]));
+        const F = Object.fromEntries(st.fragen.map(q => [q.id, voll(q, antwortFalsch(q))]));
+        const alle = PG.bewerte(st.fragen, A, fn);
+        if (alle.richtig !== gesamt.total || alle.falsch !== 0 || alle.offen !== 0) bad(version + '/' + st.id + ': «alles richtig» wird nicht als 100 % gewertet (' + JSON.stringify({ r: alle.richtig, f: alle.falsch, o: alle.offen, t: gesamt.total }) + ')');
+        if (gesamt.offen !== gesamt.total || gesamt.richtig !== 0) bad(version + '/' + st.id + ': ohne Antworten muss alles «nicht bearbeitet» sein');
+        const falsch = PG.bewerte(st.fragen, F, fn);
+        if (falsch.richtig !== 0 || falsch.richtig + falsch.falsch + falsch.offen !== falsch.total) bad(version + '/' + st.id + ': «alles falsch» rechnet nicht richtig');
+        const haelfte = Math.ceil(st.fragen.length / 2);
+        const Hh = Object.fromEntries(st.fragen.slice(0, haelfte).map(q => [q.id, voll(q, antwortRichtig(q))]));
+        const hr = PG.bewerte(st.fragen, Hh, fn);
+        const einheitenErste = PG.bewerte(st.fragen.slice(0, haelfte), {}, fn).total;
+        if (hr.richtig !== einheitenErste || hr.offen !== gesamt.total - einheitenErste || hr.falsch !== 0) bad(version + '/' + st.id + ': «Hälfte nicht bearbeitet» rechnet nicht richtig');
+        summe[version] += gesamt.total;
+      }
+    }
+    if (new Set(ids).size !== ids.length) bad('Probe ' + version + ': doppelte Aufgaben');
+    // Merk: Lernphase und Antwortteil nutzen dieselben Piktogramme und Texte
+    const ml = sts.find(x => x.id === 'merklern'), ma = sts.find(x => x.id === 'merkantwort');
+    const qp = themen.merk.qs.find(q => q.id === ml.lernIds.pikto), qt = themen.merk.qs.find(q => q.id === ml.lernIds.text);
+    if (ma.fragen[0] !== qp || ma.fragen[1] !== qt) bad('Probe ' + version + ': Merk-Lernphase und Antwortteil nutzen nicht dieselben Aufgaben');
+    if (JSON.stringify([...qp.lernen].sort()) !== JSON.stringify(qp.items.filter(i => i.alt).map(i => i.sym).sort())) bad('Probe: Lern-Piktogramme passen nicht zu den alten Symbolen');
+    if (version === 'voll') for (const st of sts.filter(x => x.auswahl && x.auswahl.voll.art === 'alle')) if (st.fragen.length !== themen[st.thema].qs.length) bad('Probe voll/' + st.id + ': nicht alle Aufgaben');
+    if (version === 'kurz') {
+      const n = (id) => sts.find(x => x.id === id).fragen.length;
+      if (JSON.stringify(sts.find(x => x.id === 'konz').fragen.map(q => q.id)) !== '["konz-1","konz-11"]') bad('Probe kurz: Konzentration nicht 1 Zahlenblock und 5 Koordinaten-Felder');
+      if (n('vorst') !== 6 || n('vernetzt') !== 5 || n('logik') !== 9) bad('Probe kurz: Anzahl Vorstellungsvermögen/Vernetzt/Logik stimmt nicht');
+      for (const id of ['deutsch', 'englisch', 'kurz', 'it', 'org', 'mathe']) if (n(id) < 8 || n(id) > 12) bad('Probe kurz/' + id + ': ' + n(id) + ' Aufgaben (8 bis 12 erwartet)');
+      // aus allen Unterthemen gemischt
+      for (const id of ['deutsch', 'englisch', 'it', 'org', 'mathe']) {
+        const st = sts.find(x => x.id === id);
+        const unter = mitUnter[id].unter.filter(u => u.qs.some(q => st.fragen.includes(q))).length;
+        if (unter < mitUnter[id].unter.length) bad('Probe kurz/' + id + ': nicht aus allen Unterthemen');
+      }
+      // leicht nach schwer: Reihenfolge der Dateien
+      for (const st of sts.filter(x => x.fragen.length > 1)) { const pos = st.fragen.map(q => themen[st.thema].qs.indexOf(q)); if (pos.some((v, i) => i && v < pos[i - 1])) bad('Probe kurz/' + st.id + ': nicht in Dateireihenfolge'); }
+      console.log('Probe kurz: ' + sts.filter(x => x.art === 'aufgaben' || x.art === 'merkantwort').map(x => x.id + ' ' + x.fragen.length).join(', ') + ' · Zeit ' + kurzDauer + ' Min.');
+    }
+  }
+  // Selbsteinschätzung in 10er-Schritten und Vergleich
+  if (JSON.stringify(PG.SELBST_SCHRITTE) !== JSON.stringify([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])) bad('Probe: Selbsteinschätzung nicht in Zehnerschritten von 0 bis 100');
+  const eq = [[50, 50, 'realistisch'], [60, 50, 'realistisch'], [40, 50, 'realistisch'], [70, 50, 'überschätzt'], [30, 50, 'unterschätzt'], [0, 100, 'unterschätzt'], [100, 0, 'überschätzt']];
+  for (const [a, b, soll] of eq) if (PG.einschaetzung(a, b).art !== soll) bad('Probe: Einschätzung ' + a + '/' + b + ' ist nicht ' + soll);
+  if (PG.prozent({ richtig: 1, total: 3 }) !== 33 || PG.prozent({ richtig: 0, total: 0 }) !== 0 || PG.prozent({ richtig: 5, total: 5 }) !== 100) bad('Probe: Prozentrechnung stimmt nicht');
+  // Springen nur bei Typen ohne Ablauf
+  const fr = [{ type: 'mc' }, { type: 'input' }, { type: 'numproc' }, { type: 'mc' }];
+  if (!PG.darfSpringen(fr, 0, 1) || PG.darfSpringen(fr, 1, 3) || PG.darfSpringen(fr, 2, 3) || PG.darfSpringen(fr, 3, 2)) bad('Probe: Springen zwischen Aufgaben falsch geregelt');
+  // Speichern: Stand und die letzten drei Versuche (lokal)
+  const mem = {}; const sp = { getItem: (k) => (k in mem ? mem[k] : null), setItem: (k, v) => { mem[k] = String(v); } };
+  PG.speichereLauf(sp, { version: 'kurz', si: 3, antworten: { 'deutsch-1': { sel: 2 } }, restMs: 12345 });
+  const lauf = PG.ladeLauf(sp);
+  if (!lauf || lauf.si !== 3 || lauf.restMs !== 12345 || lauf.antworten['deutsch-1'].sel !== 2) bad('Probe: Stand wird nicht wiederhergestellt');
+  PG.loescheLauf(sp);
+  if (PG.ladeLauf(sp)) bad('Probe: Abbrechen löscht den Stand nicht');
+  for (let i = 1; i <= 4; i++) PG.verlaufHinzu(sp, { datum: '2026-01-0' + i, version: 'kurz', richtig: i, total: 10 });
+  const vl = PG.ladeVerlauf(sp);
+  if (vl.length !== 3 || vl[0].richtig !== 2 || vl[2].richtig !== 4) bad('Probe: nur die letzten drei Versuche sollen bleiben');
+  // keine Netzwerkaufrufe
+  for (const f of ['app/components/MulticheckProbe.js', 'app/lib/multicheck/probe_config.mjs', 'app/lib/multicheck/probe_logik.mjs']) if (/fetch\(|XMLHttpRequest|WebSocket|sendBeacon|axios|supabase|https?:[/][/]/i.test(fs.readFileSync(f, 'utf8'))) bad(f + ': enthält einen Netzwerkaufruf');
+  console.log('Probe: Typen ' + [...eigene].sort().join(', ') + ' · Einheiten kurz ' + summe.kurz + ', voll ' + summe.voll);
 }
 
 // ─── Startseite: Reihenfolge der Kacheln ─────────────────────────────────

@@ -14,6 +14,7 @@ import { SYMBOLE } from '../lib/multicheck/vernetzt_symbole.mjs';
 import { SYMBOLE as MSYM } from '../lib/multicheck/merk_symbole.mjs';
 import { LERNZEIT } from '../lib/multicheck/merk_konfig.mjs';
 import { SchreibTeil, SchreibDojo, anzahlTexte } from './MulticheckSchreiben';
+import { ProbeBereich, ProbePruefung } from './MulticheckProbe';
 import kdaten from '../lib/multicheck/konzentration_daten';
 import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse, erwartetAntwort } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
@@ -570,8 +571,8 @@ function Konzept({ c, offen }) {
 
 // ─── Eine Frage (alle Fragetypen) ──────────────────────────────────────────
 // onFertig(ok, q) wird einmal beim Prüfen aufgerufen. onWeiter() beim Klick auf den Weiter-Knopf.
-function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
-  const [U, setU] = useState(() => neuerStand(q));
+function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText, pruefung = false, initialU = null, onU = null, demo = false }) {
+  const [U, setU] = useState(() => initialU || neuerStand(q));
   const [phase, setPhase] = useState(q.type === 'memcolor' || q.type === 'memchoice' || q.type === 'numproc' || ((q.type === 'pikto' || q.type === 'merktext') && q.showSec) ? 'ready' : 'answer');
   const [fb, setFb] = useState(null);
   const [msg, setMsg] = useState('');
@@ -595,8 +596,12 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
   }, [phase, q]);
   const done = !!fb;
   const up = (p) => setU(u => ({ ...u, ...p }));
+  const [zeigeLoesung, setZeigeLoesung] = useState(false);
+  // Prüfungsmodus: Antwort wird nur gespeichert, es gibt keine Rückmeldung
+  useEffect(() => { if (pruefung && onU) onU(U); }, [U]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function pruefen(timeout) {
+    if (pruefung) return;
     const { U: u, fb: f, q: qq } = ref.current;
     if (f) return;
     if (!timeout && istLeer(qq, u)) { setMsg('Bitte beantworte die Frage zuerst vollständig.'); return; }
@@ -822,9 +827,10 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
             })}
           </>
         )}
-        {fb && <Rueckmeldung q={q} fb={fb} U={U} />}
-        {fb && konz && <Konzept c={konz} offen={!fb.ok} />}
-        {!done && <div className="btnrow"><button className="btn" onClick={() => pruefen(false)}>Prüfen</button></div>}
+        {fb && demo && !fb.ok && !zeigeLoesung && <div className="fbk bad"><h4>Leider nicht richtig.</h4><button className="btn sec" onClick={() => setZeigeLoesung(true)}>Lösung zeigen</button></div>}
+        {fb && (!demo || fb.ok || zeigeLoesung) && <Rueckmeldung q={q} fb={fb} U={U} />}
+        {fb && (!demo || fb.ok || zeigeLoesung) && konz && <Konzept c={konz} offen={!fb.ok} />}
+        {!done && !pruefung && <div className="btnrow"><button className="btn" onClick={() => pruefen(false)}>Prüfen</button></div>}
         {!done && msg && <div className="txt" style={{ color: 'var(--bad)', textAlign: 'center', marginTop: 8 }}>{msg}</div>}
         {done && <div className="btnrow"><button className="btn" onClick={onWeiter}>{weiterText}</button></div>}
       </>
@@ -1177,6 +1183,7 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
   const [themaId, setThemaId] = useState(startThema);
   const [teil, setTeil] = useState(null);
   const [unterId, setUnterId] = useState(null);
+  const [probe, setProbe] = useState(null);
   const thema = themaId ? multicheckThema(themaId) : null;
   const dj = dojoPalette(dark);
 
@@ -1193,7 +1200,14 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
   );
 
   let inhalt;
-  if (!thema) {
+  if (!thema && probe) {
+    const kit = { Frage, PiktoAntwort, TextAntwort, PiktoLern, Countdown, H, HB, NumCmpBlock, CoordBlock };
+    inhalt = (
+      <div className={'mcq' + (dark ? ' dk' : '')}>
+        <ProbePruefung kit={kit} version={probe} dm={dm} dark={dark} isMobile={isMobile} onBack={() => setProbe(null)} onFehler={onFehler} />
+      </div>
+    );
+  } else if (!thema) {
     inhalt = (
       <>
         {zurueck('← Startseite', onBack)}
@@ -1202,6 +1216,7 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 12 }}>
           {MULTICHECK_THEMEN.map(t => <ThemaKachel key={t.id} t={t} dm={dm} isMobile={isMobile} onOpen={setThemaId} />)}
         </div>
+        <ProbeBereich dm={dm} onStart={setProbe} />
       </>
     );
   } else if (!teil) {
