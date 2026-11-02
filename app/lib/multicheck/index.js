@@ -8,10 +8,12 @@ import kurzzeit from './kurzzeitgedaechtnis';
 import it from './it_grundwissen';
 import organisation from './organisation';
 import mathematik from './mathematik';
+import logik from './logik';
+import { mitUnterthemen } from './unterthemen';
 import { multicheckLernkarten } from './lernkarten';
 
 const bald = (id, name, emoji) => ({ id, name, emoji, bald: true });
-const aktiv = (thema, emoji) => ({ ...thema, emoji, bald: false });
+const aktiv = (thema, emoji) => ({ ...mitUnterthemen(thema), emoji, bald: false });
 
 // Reihenfolge wie im echten Multicheck.
 export const MULTICHECK_THEMEN = [
@@ -22,7 +24,7 @@ export const MULTICHECK_THEMEN = [
   aktiv(it, '💻'),
   aktiv(organisation, '🗓️'),
   aktiv(mathematik, '🔢'),
-  bald('logik', 'Logik', '🧩'),
+  aktiv(logik, '🧩'),
   bald('konzentration', 'Konzentration', '🎯'),
   bald('vorstellung', 'Vorstellungsvermögen', '🧊'),
   bald('vernetzt', 'Vernetztes Denken', '🕸️'),

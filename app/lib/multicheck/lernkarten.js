@@ -594,4 +594,56 @@ export const multicheckLernkarten = {
       ]),
     ],
   },
+
+  // ─── Logik ───────────────────────────────────────────────────────────────
+  logik: {
+    titel: 'Logik',
+    kacheln: [
+      {
+        id: 'mc_lo_verbal', emoji: '🔗', titel: 'Verbale Analogien', videos: [],
+        karten: [
+          { text: 'Eine [[mcmerk|Analogie]] sind zwei Wortpaare mit derselben Beziehung. «Hand zu Finger wie Fuss zu ?» fragt: Was ist für den Fuss das, was der Finger für die Hand ist? Die Antwort ist die Zehe.' },
+          { text: 'Typische Beziehungen:\n\n[[mcmerk|Gegensatz]]: Sommer und Winter\n[[mcmerk|Teil von]]: Finger und Hand\n[[mcmerk|Werkzeug und Zweck]]: Messer und schneiden\n[[mcmerk|Ursache und Wirkung]]: Regen und nass\n[[mcmerk|Oberbegriff]]: Hund und Tier' },
+          { text: 'Vorgehen:\n\n1. Sage die Beziehung der ersten zwei Wörter in einem Satz.\n2. Übertrage den Satz auf das dritte Wort.\n3. Prüfe jede Antwort mit diesem Satz.\n\nBeispiel: «Ein Messer dient zum Schneiden.» Also: «Ein Stift dient zum [[mcok|Schreiben]].»' },
+          { text: 'Vorsicht vor Wörtern, die nur zum selben Thema gehören. Bei «Stift» passen Papier und Tinte zum Thema, aber nicht in den Satz «dient zum …». Das ist eine [[mcfalle|Falle]].' },
+        ],
+        check: [
+          c('Welche Beziehung steht bei «Hund zu Tier»?', ['Oberbegriff', 'Gegensatz', 'Werkzeug und Zweck', 'Ursache und Wirkung'], 'Ein Hund ist ein Tier. Tier ist der Oberbegriff.'),
+          c('Was machst du zuerst?', ['Die Beziehung der ersten zwei Wörter in einem Satz sagen', 'Das längste Wort wählen', 'Das dritte Wort streichen', 'Die Antwort raten'], 'Erst wenn du die Beziehung kennst, kannst du sie auf das dritte Wort übertragen.'),
+          c('Sommer zu Winter wie Tag zu ?', ['Nacht', 'Sonne', 'Woche', 'Licht'], 'Sommer und Winter sind Gegensätze, ebenso Tag und Nacht.'),
+        ],
+      },
+      {
+        id: 'mc_lo_zahlen', emoji: '🔢', titel: 'Zahlen im Kopf behalten', videos: [],
+        karten: [
+          { text: 'Zwei Reihen laufen gleichzeitig: eine oben, eine unten. Jede hat eine Startzahl und Rechenschritte mit + oder –. Am Ende wird nach einer Zahl gefragt.' },
+          { text: 'Musterbeispiel:\n\nOben: 1, dann +2, dann –1. Das gibt [[mcok|2]].\nUnten: 5, dann –1, dann –2. Das gibt [[mcok|2]].' },
+          { text: 'Halte die Reihen [[mcmerk|getrennt]]. Bei jedem Schritt ändert sich nur die Zahl der Reihe, die gerade dran ist. Wiederhole danach das neue Zwischenergebnis leise. Mit ihm rechnest du weiter.' },
+          { text: 'Beispiel: oben 3, unten 8. Dann kommt «+4» oben: du denkst «oben 7, unten 8». Dann «–5» unten: «oben 7, unten 3». Du wiederholst immer beide Zahlen.' },
+        ],
+        check: [
+          c('Oben 4, dann +3. Unten 6, dann –2. Wie heisst die untere Zahl am Ende?', ['4', '7', '3', '8'], '6 – 2 = 4. Die obere Reihe (4 + 3 = 7) ist nicht gefragt.'),
+          c('Was machst du nach jedem Rechenschritt?', ['Das neue Zwischenergebnis der Reihe leise wiederholen', 'Die beiden Reihen mischen', 'Die Startzahl vergessen', 'Beide Zahlen zusammenzählen'], 'So behältst du beide Zwischenergebnisse getrennt im Kopf.'),
+        ],
+      },
+      { id: 'mc_lo_bilder', emoji: '🖼️', titel: 'Bilder vergleichen', videos: [], bald: true, karten: [], check: [] },
+      fehler('mc_lo_fehler', [
+        ['Ich wähle ein Wort, das nur zum Thema passt.', 'Das Wort muss in den Satz mit der Beziehung passen.'],
+        ['Ich drehe die Reihenfolge um.', 'Frage zu Antwort ist nicht Antwort zu Frage. Behalte die Richtung des ersten Paars.'],
+        ['Ich mische die obere und die untere Reihe.', 'Halte beide Reihen getrennt. Ändere nur die Reihe, die dran ist.'],
+        ['Ich vergesse die Startzahl der anderen Reihe.', 'Sage nach jeder Anzeige beide Zahlen leise: «oben 3, unten 5».'],
+        ['Ich lese –2 als +2.', 'Plus macht die Zahl grösser, minus kleiner. Schau aufs Vorzeichen.'],
+      ]),
+      dojo('mc_lo_dojo', [
+        d('Auto zu Strasse wie Zug zu ?', 'Schiene', ['Bahnhof', 'Lokführer'], 'Das Auto fährt auf der Strasse, der Zug auf der Schiene.'),
+        d('heiss zu kalt wie hell zu ?', 'dunkel', ['Lampe', 'Licht'], 'Beides sind Gegensätze.'),
+        d('Seite zu Buch wie Zimmer zu ?', 'Haus', ['Tür', 'Möbel'], 'Eine Seite ist ein Teil des Buchs, ein Zimmer ein Teil des Hauses.'),
+        d('Säge zu sägen wie Pinsel zu ?', 'malen', ['Farbe', 'Wand'], 'Werkzeug und Zweck: Man sägt mit der Säge und malt mit dem Pinsel.'),
+        d('Hund zu Tier wie Rose zu ?', 'Blume', ['Dorn', 'Garten'], 'Tier ist der Oberbegriff für Hund, Blume der Oberbegriff für Rose.'),
+        d('Sonne zu warm wie Eis zu ?', 'kalt', ['Wasser', 'Winter'], 'Die Sonne macht warm, Eis macht kalt.'),
+        d('Oben 3, dann +4. Unten 8, dann –5. Wie heisst die obere Zahl?', '7', ['3', '4'], '3 + 4 = 7. Die untere Reihe ist jetzt 3, aber gefragt ist oben.'),
+        d('Oben 6, –2, +3. Unten 2, +5, –1. Wie heisst die untere Zahl am Ende?', '6', ['7', '5'], 'Unten: 2 + 5 = 7, dann 7 – 1 = 6. Oben wäre 6 – 2 + 3 = 7.'),
+      ]),
+    ],
+  },
 };

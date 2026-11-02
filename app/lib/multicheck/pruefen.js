@@ -30,10 +30,26 @@ function diffTxt(a, b) {
   return (s === t ? 'Dieselben Zeichen, aber in anderer Reihenfolge: ' : 'Ein Zeichen ist anders: ') + 'Unterschiede an Position ' + pos.join(', ') + ' (deine Wahl «' + a + '», richtig «' + b + '»).';
 }
 
+// Numerische Verarbeitungskapazität: Anzeigedauer pro Schritt (ähnlich wie bei den
+// Farbkombinationen, dort knapp eine Sekunde pro Kreis) und kurze Pause dazwischen.
+export const NUMPROC = { SICHTBAR: 800, LUECKE: 300 };
+
+// Reihenfolge der Anzeige: Startzahl oben, Startzahl unten, dann abwechselnd oben und unten ein Rechenschritt.
+export function numprocEreignisse(q) {
+  const ev = [{ reihe: 'top', text: String(q.top.start) }, { reihe: 'bottom', text: String(q.bottom.start) }];
+  const schritt = (s) => (s > 0 ? '+' : '–') + Math.abs(s);
+  const n = Math.max(q.top.steps.length, q.bottom.steps.length);
+  for (let i = 0; i < n; i++) {
+    if (i < q.top.steps.length) ev.push({ reihe: 'top', text: schritt(q.top.steps[i]) });
+    if (i < q.bottom.steps.length) ev.push({ reihe: 'bottom', text: schritt(q.bottom.steps[i]) });
+  }
+  return ev;
+}
+
 // true, wenn noch nichts (vollständig) beantwortet ist.
 export function istLeer(q, U) {
   const t = q.type;
-  if ((t === 'mc' || t === 'memchoice') && U.sel == null) return true;
+  if ((t === 'mc' || t === 'memchoice' || t === 'numproc') && U.sel == null) return true;
   if (t === 'multi' && !Object.keys(U.set).some(k => U.set[k])) return true;
   if (t === 'input' && !U.val.trim()) return true;
   if (t === 'gap' && !U.korr && !U.val.trim()) return true;
@@ -58,6 +74,9 @@ export function auswerten(q, U, timeout) {
       else if (t === 'memchoice') extra = diffTxt(o.t, q.options[q.correct].t);
       else if (o.why) extra = o.why;
     }
+  } else if (t === 'numproc') {
+    ok = U.sel === q.answer;
+    user = String(U.sel);
   } else if (t === 'multi') {
     const ch = Object.keys(U.set).filter(k => U.set[k]).map(Number).sort();
     ok = JSON.stringify(ch) === JSON.stringify(q.correct);

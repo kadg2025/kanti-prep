@@ -690,7 +690,7 @@ function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen
     <div>
       <button onClick={onClose} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 14px', background: 'none', border: `1px solid ${dm.border}`, borderRadius: '9px', fontSize: '13px', fontWeight: '600', color: dm.text2, cursor: 'pointer', marginBottom: '18px' }}>← Zurück</button>
       <h1 style={{ fontSize: isMobile ? '22px' : '26px', fontWeight: '700', color: dm.text, margin: '0 0 12px' }}>🥋 Frag Sensei: {karte.titel}</h1>
-      <BeltBar count={done.size} total={karte.kacheln.length} pop={beltPop} dm={dm} />
+      <BeltBar count={done.size} total={karte.kacheln.filter(k => !k.bald).length} pop={beltPop} dm={dm} />
       <p style={{ fontSize: '14px', color: dm.text2, margin: '0 0 20px' }}>Was willst du trainieren?</p>
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)', gap: '12px' }}>
         {karte.kacheln.map((k, i) => {
@@ -701,9 +701,11 @@ function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen
             <button
               key={k.id}
               className="kp-tile"
+              disabled={!!k.bald}
               onClick={() => onOpen(k.id)}
-              style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', padding: isMobile ? '20px 10px' : '24px 14px', borderRadius: '16px', border: `2px solid ${isDone ? '#22c55e' : dm.border}`, background: dm.card, cursor: 'pointer' }}
+              style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', padding: isMobile ? '20px 10px' : '24px 14px', borderRadius: '16px', border: `2px solid ${isDone ? '#22c55e' : dm.border}`, background: dm.card, cursor: k.bald ? 'default' : 'pointer', opacity: k.bald ? 0.6 : 1 }}
             >
+              {k.bald && <span style={{ position: 'absolute', top: '8px', right: '10px', fontSize: '10px', fontWeight: '700', color: dm.text3, background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: '20px', padding: '1px 8px' }}>🔒 Bald</span>}
               {isDone && <span style={{ position: 'absolute', top: '8px', right: '10px', fontSize: '16px', color: '#22c55e', animation: pop ? 'pop 400ms ease' : 'none' }}>✓</span>}
               {k.videos && k.videos.length > 0 && <span style={{ position: 'absolute', top: '8px', left: '10px', fontSize: '14px' }}>🎬</span>}
               {k.titel === 'Dojo'

@@ -5,7 +5,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { MULTICHECK_THEMEN, multicheckThema, multicheckLernkarten } from '../lib/multicheck';
 import { DAYS, slotsOf } from '../lib/multicheck/plan';
-import { neuerStand, istLeer, auswerten } from '../lib/multicheck/pruefen';
+import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
 import { ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
 import { SENSEI_SPRUECHE } from '../lib/sensei_sprueche';
@@ -95,6 +95,14 @@ const CSS = `
 .mcq .daytab{margin:0 auto;border-collapse:collapse;font-size:13px}.mcq .daytab th{background:#0a35b0;color:#fff;padding:5px}.mcq .daytab td{border:1px solid #ccc;padding:3px 10px;min-width:70px}.mcq .daytab td.fx{background:#f9b04a}
 .mcq .res{max-width:560px;margin:0 auto}.mcq .res .score{font-size:44px;color:var(--a);font-weight:bold;text-align:center}
 .mcq .res table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}.mcq .res td{border-bottom:1px solid var(--bd);padding:5px 4px}
+.mcq .npw{display:flex;flex-direction:column;align-items:center;gap:16px;margin:14px 0}
+.mcq .npg{display:grid;grid-template-columns:repeat(3,54px);grid-template-rows:repeat(3,54px);gap:4px;background:var(--bd);padding:4px;border-radius:8px}
+.mcq .npg i{background:#b9bccb;border-radius:4px;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:24px;font-weight:bold;color:#222}
+.mcq .npg i.wf{background:#fff;border:2px solid var(--a)}
+.mcq .nums{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.mcq .nums button{width:46px;height:46px;font-size:20px;font-weight:bold;border-radius:10px;border:1.5px solid var(--bd);background:var(--bg);color:var(--tx);cursor:pointer}
+.mcq .nums button.sel{border-color:var(--a);background:var(--soft)}
+.mcq .nums button.right{border-color:var(--ok);background:var(--okbg)}.mcq .nums button.wrong{border-color:var(--bad);background:var(--badbg)}
 @media(max-width:640px){.mcq .opts.g2{grid-template-columns:1fr}.mcq .opts.g4{grid-template-columns:repeat(2,1fr)}.mcq .show{font-size:30px}}
 `;
 
@@ -141,6 +149,20 @@ function PlanGrid({ q, asg }) {
   );
 }
 
+// Zwei 3×3-Raster. Weisses Feld oben: links oben. Weisses Feld unten: rechts unten.
+function NumRaster({ wert }) {
+  const weiss = { top: 0, bottom: 8 };
+  return (
+    <div className="npw">
+      {['top', 'bottom'].map(r => (
+        <div className="npg" key={r}>
+          {Array.from({ length: 9 }, (_, i) => <i key={i} className={i === weiss[r] ? 'wf' : ''}>{i === weiss[r] ? (wert[r] || '') : ''}</i>)}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Konzept({ c, offen }) {
   const inner = (
     <>
@@ -168,14 +190,27 @@ function Konzept({ c, offen }) {
 // onFertig(ok, q) wird einmal beim Prüfen aufgerufen. onWeiter() beim Klick auf den Weiter-Knopf.
 function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
   const [U, setU] = useState(() => neuerStand(q));
-  const [phase, setPhase] = useState(q.type === 'memcolor' || q.type === 'memchoice' ? 'ready' : 'answer');
+  const [phase, setPhase] = useState(q.type === 'memcolor' || q.type === 'memchoice' || q.type === 'numproc' ? 'ready' : 'answer');
   const [fb, setFb] = useState(null);
   const [msg, setMsg] = useState('');
   const startTimer = q.time && zeitlimit && q.type !== 'memcolor';
   const [tm, setTm] = useState(() => (startTimer ? { kind: 'answer', sec: q.time, t0: Date.now() } : null));
   const [left, setLeft] = useState(startTimer ? q.time * 1000 : 0);
   const ref = useRef({});
+  const [ev, setEv] = useState(-1);
   useEffect(() => { ref.current = { U, fb, q }; });
+  useEffect(() => {
+    if (q.type !== 'numproc' || phase !== 'show') return;
+    const liste = numprocEreignisse(q);
+    const takt = NUMPROC.SICHTBAR + NUMPROC.LUECKE;
+    const timer = [];
+    liste.forEach((_, i) => {
+      timer.push(setTimeout(() => setEv(i), 400 + i * takt));
+      timer.push(setTimeout(() => setEv(-1), 400 + i * takt + NUMPROC.SICHTBAR));
+    });
+    timer.push(setTimeout(() => setPhase('answer'), 400 + liste.length * takt));
+    return () => timer.forEach(clearTimeout);
+  }, [phase, q]);
   const done = !!fb;
   const up = (p) => setU(u => ({ ...u, ...p }));
 
@@ -217,15 +252,19 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
   if (phase === 'ready') {
     inhalt = (
       <>
-        <div className="txt" style={{ textAlign: 'center', marginTop: 30 }}>Gleich wird etwas gezeigt, das nur <b>{q.showSec} Sekunden</b> sichtbar ist. Merke es dir gut. Danach musst du es wiedergeben.</div>
-        <div className="btnrow"><button className="btn" onClick={() => { setPhase('show'); setLeft(q.showSec * 1000); setTm({ kind: 'show', sec: q.showSec, t0: Date.now() }); }}>Anzeige starten</button></div>
+        {t === 'numproc'
+          ? <div className="txt" style={{ textAlign: 'center', marginTop: 30 }}>Gleich erscheinen nacheinander Zahlen und Rechenschritte in den beiden weissen Feldern. Jede Anzeige verschwindet wieder. Halte beide Zwischenergebnisse getrennt im Kopf.</div>
+          : <div className="txt" style={{ textAlign: 'center', marginTop: 30 }}>Gleich wird etwas gezeigt, das nur <b>{q.showSec} Sekunden</b> sichtbar ist. Merke es dir gut. Danach musst du es wiedergeben.</div>}
+        <div className="btnrow"><button className="btn" onClick={() => { setPhase('show'); if (t !== 'numproc') { setLeft(q.showSec * 1000); setTm({ kind: 'show', sec: q.showSec, t0: Date.now() }); } }}>Anzeige starten</button></div>
       </>
     );
   } else if (phase === 'show') {
     inhalt = (
       <>
         {zeitBalken}
-        {t === 'memcolor'
+        {t === 'numproc'
+          ? <NumRaster wert={ev >= 0 ? { [numprocEreignisse(q)[ev].reihe]: numprocEreignisse(q)[ev].text } : {}} />
+          : t === 'memcolor'
           ? <div className="circ">{q.seq.map((c, i) => <i key={i} className={'c' + (c + 1)} />)}</div>
           : <div className="show">{q.show}</div>}
       </>
@@ -252,6 +291,19 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
               );
             })}
           </div>
+        )}
+        {t === 'numproc' && (
+          <>
+            <NumRaster wert={{ [q.ask]: '?' }} />
+            <div className="txt" style={{ textAlign: 'center' }}>Welche Zahl gehört an die Stelle des «?» ({q.ask === 'top' ? 'oberes' : 'unteres'} Raster)?</div>
+            <div className="nums">
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => {
+                let c = U.sel === n ? 'sel' : '';
+                if (done) { if (n === q.answer) c = 'right'; else if (U.sel === n) c = 'wrong'; }
+                return <button key={n} className={c} onClick={() => { if (!done) up({ sel: n }); }}>{n}</button>;
+              })}
+            </div>
+          </>
         )}
         {t === 'multi' && (
           <div className="opts">
@@ -384,7 +436,7 @@ const KEY_ERGEBNIS = 'kp_multicheck';
 function ladeErgebnis() { try { return JSON.parse(localStorage.getItem(KEY_ERGEBNIS) || '{}'); } catch { return {}; } }
 function speichereErgebnis(o) { try { localStorage.setItem(KEY_ERGEBNIS, JSON.stringify(o)); } catch {} }
 
-function Ueben({ thema, dm, dark, onBack }) {
+function Ueben({ thema, demo, dm, dark, onBack, onFehler = () => {}, onRemoveFehler = () => {} }) {
   const [saved, setSaved] = useState(ladeErgebnis);
   const [ansicht, setAnsicht] = useState('intro');
   const [fragen, setFragen] = useState([]);
@@ -403,6 +455,7 @@ function Ueben({ thema, dm, dark, onBack }) {
 
   function fertig(richtig, q) {
     setRes(x => ({ ...x, [q.id]: richtig ? 1 : 0 }));
+    if (richtig) onRemoveFehler('mc:' + q.id); else onFehler('mc:' + q.id);
     setSaved(s => {
       const next = { ...s, [thema.id]: { ...(s[thema.id] || {}), [q.id]: richtig ? 1 : 0 } };
       speichereErgebnis(next);
@@ -422,12 +475,22 @@ function Ueben({ thema, dm, dark, onBack }) {
         <div style={{ color: 'var(--a)', fontWeight: 'bold', textAlign: 'center', marginBottom: 20 }}>{thema.sub}</div>
         <div className="txt"><H t={thema.intro} /></div>
         <div className="txt"><b>{thema.qs.length} Fragen.</b> Du siehst zuerst die Aufgabe. Danach drückst du auf «Prüfen». Bei einer falschen Antwort erklärt dir dieser Test das Thema Schritt für Schritt.</div>
-        {thema.id === 'mathe' && <div className="txt"><label><input type="checkbox" checked={zeit} onChange={e => setZeit(e.target.checked)} /> Mit Zeitlimit üben (30 Sekunden bei Schätzaufgaben)</label></div>}
+        {thema.id === 'mathe' && thema.qs.some(q => q.time) && <div className="txt"><label><input type="checkbox" checked={zeit} onChange={e => setZeit(e.target.checked)} /> Mit Zeitlimit üben (30 Sekunden bei Schätzaufgaben)</label></div>}
         {n > 0 && <div className="txt" style={{ textAlign: 'center', color: 'var(--mut)' }}>Letztes Resultat: {ok} von {n} richtig</div>}
         <div className="btnrow">
+          {demo && <button className="btn sec" onClick={() => setAnsicht('demo')}>Demo ansehen</button>}
           <button className="btn" onClick={() => start(false)}>Start</button>
           {n > 0 && <button className="btn sec" onClick={() => start(true)}>Nur falsche Fragen üben</button>}
         </div>
+      </div>
+    );
+  }
+
+  if (ansicht === 'demo') {
+    return (
+      <div>
+        {kopf}
+        <Frage key="demo" q={demo} thema={thema} zeitlimit={false} weiterText="Zurück" onWeiter={() => setAnsicht('intro')} />
       </div>
     );
   }
@@ -520,6 +583,7 @@ function ThemaKachel({ t, dm, onOpen, isMobile }) {
 export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = () => {}, onRemoveFehler = () => {}, startThema = null }) {
   const [themaId, setThemaId] = useState(startThema);
   const [teil, setTeil] = useState(null);
+  const [unterId, setUnterId] = useState(null);
   const thema = themaId ? multicheckThema(themaId) : null;
   const dj = dojoPalette(dark);
 
@@ -562,7 +626,25 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
         {zurueck('← Alle Themen', () => setThemaId(null))}
         <h1 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 800, color: dm.text, margin: '0 0 4px' }}>{thema.emoji} {thema.name}</h1>
         <p style={{ fontSize: 14, color: dm.text3, margin: '0 0 22px' }}>{thema.sub}</p>
-        {knopf('ueben', <span style={{ fontSize: 28 }}>📋</span>, 'Üben', `Die Übungsprüfung mit allen ${thema.qs.length} Fragen und automatischer Prüfung.`, MC_BLAU)}
+        <h2 style={{ fontSize: 16, fontWeight: 800, color: dm.text, margin: '0 0 4px' }}>📋 Üben</h2>
+        <p style={{ fontSize: 13, color: dm.text2, margin: '0 0 12px', lineHeight: 1.5 }}>Wähle ein Unterthema. Du kannst jedes Unterthema beliebig oft wiederholen. Falsche Fragen kommen in die Fehler-Kiste.</p>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 12, marginBottom: 22 }}>
+          {thema.unter.map(x => {
+            const r = ladeErgebnis()[thema.id] || {};
+            const n = x.qs.filter(q => r[q.id] != null).length;
+            const richtig = x.qs.filter(q => r[q.id]).length;
+            const erledigt = !x.bald && x.qs.length > 0 && n === x.qs.length;
+            return (
+              <button key={x.id} disabled={!!x.bald} onClick={() => { setUnterId(x.id); setTeil('ueben'); }} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: isMobile ? '18px 8px' : '20px 10px', borderRadius: 16, border: `2px solid ${x.bald ? dm.border : erledigt ? '#22c55e' : MC_BLAU}`, background: dm.card, cursor: x.bald ? 'default' : 'pointer', opacity: x.bald ? 0.6 : 1 }}>
+                {x.bald && <span style={{ position: 'absolute', top: 8, right: 10, fontSize: 10, fontWeight: 700, color: dm.text3, background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: 20, padding: '1px 8px' }}>🔒 Bald</span>}
+                {erledigt && <span style={{ position: 'absolute', top: 6, right: 10, fontSize: 16, color: '#22c55e' }}>✓</span>}
+                <span style={{ fontSize: 28, filter: x.bald ? 'grayscale(1)' : 'none' }}>{x.emoji}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: x.bald ? dm.text3 : dm.text, textAlign: 'center' }}>{x.name}</span>
+                {!x.bald && <span style={{ fontSize: 11, color: dm.text3 }}>{n > 0 ? `${richtig} von ${x.qs.length}` : `${x.qs.length} Fragen`}</span>}
+              </button>
+            );
+          })}
+        </div>
         {knopf('dojo', <Hanko size={40} dark={dark} />, 'Dojo', 'Zufallsfragen aus diesem Thema. Du sammelst XP und steigst im Gürtel auf.', DOJO_ROT)}
         {knopf('sensei', <span style={{ fontSize: 28 }}>🥋</span>, 'Frag Sensei', 'Kurz erklärt, mit Tipps für den Multicheck.', '#f59e0b')}
       </>
@@ -571,7 +653,10 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
     const zu = () => setTeil(null);
     inhalt = (
       <div className={'mcq' + (dark ? ' dk' : '')}>
-        {teil === 'ueben' && <Ueben thema={thema} dm={dm} dark={dark} onBack={zu} />}
+        {teil === 'ueben' && (() => {
+          const x = thema.unter.find(y => y.id === unterId);
+          return <Ueben thema={{ ...thema, qs: x.qs, name: x.name, sub: thema.name, intro: x.intro || thema.intro }} demo={x.demo} dm={dm} dark={dark} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
+        })()}
         {teil === 'dojo' && <MulticheckDojo thema={thema} dm={dm} dark={dark} isMobile={isMobile} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />}
       </div>
     );
