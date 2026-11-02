@@ -49,6 +49,10 @@ export const UNTERTHEMEN = {
     u('raum', 'Räumliches Sehen', '🧭', [1, 10]),
     u('netz', 'Abwicklungen', '📦', [11, 20]),
   ],
+  vernetzt: [
+    u('a', 'Informationen verbinden, Teil 1', '🕸️', [1, 5]),
+    u('b', 'Informationen verbinden, Teil 2', '🕸️', [6, 10]),
+  ],
   logik: [
     u('verbal', 'Verbale Analogien', '🔗', [1, 10]),
     u('figural', 'Figurale Analogien', '🔷', [21, 30]),

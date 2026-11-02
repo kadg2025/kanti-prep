@@ -9,6 +9,8 @@ import { renderFigur } from '../lib/multicheck/figur';
 import { renderRaster } from '../lib/multicheck/raster';
 import { renderSeite, renderOben } from '../lib/multicheck/raeumlich.mjs';
 import { renderNetz, renderWuerfel } from '../lib/multicheck/netz.mjs';
+import { SZENARIEN, detailsText } from '../lib/multicheck/vernetzt_fragen.mjs';
+import { SYMBOLE } from '../lib/multicheck/vernetzt_symbole.mjs';
 import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse, erwartetAntwort } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
 import { ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
@@ -138,6 +140,22 @@ const CSS = `
 .mcq .vno{display:flex;flex-direction:column;align-items:center;gap:2px;padding:3px;border:2px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);cursor:pointer;font-size:14px}
 .mcq .vno span{display:block;width:84px;border:1px solid #bbb;background:#fff}
 .mcq .vno.sel{border-color:var(--a);background:var(--soft)}.mcq .vno.right{border-color:var(--ok);background:var(--okbg)}.mcq .vno.wrong{border-color:var(--bad);background:var(--badbg)}
+.mcq .vzw{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.mcq .vzt{flex:1 1 320px;font-size:14px;line-height:1.55;background:var(--soft);border-radius:12px;padding:10px 14px}
+.mcq .vzb{display:flex;flex-direction:column;gap:6px}
+.mcq .vzb button{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:10px;border:1.5px solid var(--a);background:var(--bg);color:var(--tx);font-size:13.5px;font-weight:bold;cursor:pointer;text-align:left}
+.mcq .vzm{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:60;display:flex;align-items:center;justify-content:center;padding:14px}
+.mcq .vzf{background:var(--bg);color:var(--tx);border:2px solid var(--a);border-radius:14px;max-width:680px;width:100%;max-height:86vh;overflow:auto;padding:14px 16px}
+.mcq .vzf h3{margin:0 0 10px;color:var(--a);font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mcq .vzs{border:1px solid var(--bd);border-radius:10px;padding:8px 10px;margin-bottom:8px;background:var(--bg2)}
+.mcq .vzchips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.mcq .vzchip{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--bd);border-radius:8px;padding:2px 8px 2px 2px;background:var(--bg);font-size:13px}
+.mcq .vzsym{display:inline-block;width:30px;height:30px;background:#fff;border-radius:6px}
+.mcq .vzsym svg{display:block;width:100%;height:100%}
+.mcq .vzg{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px}
+.mcq .vzc{border:1px solid var(--bd);border-radius:10px;padding:6px;text-align:center;font-size:13px;background:var(--bg2)}
+.mcq .vzc .vzsym{width:44px;height:44px;margin:0 auto 2px;display:block}
+.mcq table.vzp{border-collapse:collapse;width:100%;font-size:13px}.mcq .vzp th,.mcq .vzp td{border:1px solid var(--bd);padding:5px 7px;text-align:left;vertical-align:top}.mcq .vzp th{background:var(--soft);color:var(--a)}
 @media(max-width:640px){.mcq .opts.g2{grid-template-columns:1fr}.mcq .opts.g4{grid-template-columns:repeat(2,1fr)}.mcq .show{font-size:30px}}
 `;
 
@@ -264,6 +282,72 @@ function CoordBlock({ q, rows, setRows, locked, zeige }) {
           if (v.length === 2) { setTxt(''); setRows(rows.map((x, j) => (j === cur ? v : x))); } else setTxt(v);
         }} />
     </div>
+  );
+}
+
+// Szenario mit den drei Dokumenten (Fenster), jederzeit abrufbar.
+function VzSymbol({ name }) {
+  return <span className="vzsym" dangerouslySetInnerHTML={{ __html: SYMBOLE[name] }} />;
+}
+function Szenario({ sz }) {
+  const [offen, setOffen] = useState(null);
+  useEffect(() => {
+    if (!offen) return;
+    const h = (e) => { if (e.key === 'Escape') setOffen(null); };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [offen]);
+  const t = (nr) => sz.teile.find(x => x.nr === nr);
+  const knopf = (key, symbol, text) => <button onClick={() => setOffen(key)}><span style={{ fontSize: 20 }}>{symbol}</span>{text}</button>;
+  let fenster = null;
+  if (offen === 'anleitung') {
+    fenster = (
+      <>
+        <h3>Montageanleitung</h3>
+        {sz.schritte.map((s, i) => (
+          <div className="vzs" key={i}>
+            <b>Schritt {i + 1}</b>
+            <div className="vzchips">{s.teile.map(([nr, menge]) => <span className="vzchip" key={nr}><VzSymbol name={t(nr).symbol} /><b>{nr} · {menge}x</b></span>)}</div>
+            <div>{s.satz}</div>
+          </div>
+        ))}
+      </>
+    );
+  } else if (offen === 'teile') {
+    fenster = (
+      <>
+        <h3>Teileliste</h3>
+        <div className="vzg">{sz.teile.map(p => <div className="vzc" key={p.nr}><VzSymbol name={p.symbol} /><b>{p.nr}</b><div>{p.gesamt}x</div></div>)}</div>
+      </>
+    );
+  } else if (offen === 'produkt') {
+    fenster = (
+      <>
+        <h3>Produktbeschreibung</h3>
+        <table className="vzp"><thead><tr><th>Nr.</th><th>Name</th><th>Details</th></tr></thead>
+          <tbody>{sz.teile.map(p => <tr key={p.nr}><td>{p.nr}</td><td>{p.name}</td><td>{detailsText(p)}</td></tr>)}</tbody></table>
+      </>
+    );
+  }
+  return (
+    <>
+      <div className="vzw">
+        <div className="vzt">{sz.text}</div>
+        <div className="vzb">
+          {knopf('anleitung', '🛠️', 'Montageanleitung')}
+          {knopf('teile', '📋', 'Teileliste')}
+          {knopf('produkt', '📄', 'Produktbeschreibung')}
+        </div>
+      </div>
+      {offen && (
+        <div className="vzm" onClick={() => setOffen(null)}>
+          <div className="vzf" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
+            <div style={{ textAlign: 'right' }}><button className="btn sec" style={{ padding: '4px 12px' }} onClick={() => setOffen(null)}>Schliessen</button></div>
+            {fenster}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -396,7 +480,13 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
         {t === 'plan' && (
           <details className="rules"><summary>i – Planungsvorgaben</summary><ul><li>Termine beginnen immer zur vollen Stunde.</li><li>Termine dürfen sich nicht überschneiden.</li><li>Die Mittagspause (12.00–13.00) muss frei bleiben.</li><li>Nur Termine, die länger als 4 Stunden dauern, dürfen über 2 Tage gehen (Nachmittag + nächster Vormittag).</li></ul></details>
         )}
-        {(t === 'mc' || t === 'memchoice') && (
+        {t === 'vmc' && (
+          <>
+            <Szenario sz={SZENARIEN[q.szenario]} />
+            <div className="txt" style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 17 }}><H t={q.frage} /></div>
+          </>
+        )}
+        {(t === 'mc' || t === 'vmc' || t === 'memchoice') && (
           <div className={'opts' + (t === 'memchoice' ? ' g4' : q.scriptOpts ? ' g2' : '')}>
             {q.options.map((o, i) => {
               let c = 'opt';

@@ -787,4 +787,72 @@ export const multicheckLernkarten = {
       ]),
     ],
   },
+  // ─── Vernetztes Denken ───────────────────────────────────────────────────
+  vernetzt: {
+    titel: 'Vernetztes Denken',
+    kacheln: [
+      {
+        id: 'mc_vn_dokumente', emoji: '📑', titel: 'Dokumente verbinden', videos: [],
+        karten: [
+          { text: 'Du hast drei Dokumente. Die [[mcmerk|Produktbeschreibung]] nennt die Namen der Teile. Die [[mcmerk|Montageanleitung]] und die [[mcmerk|Teileliste]] zeigen nur Nummern. Darum musst du Name und Nummer verbinden.' },
+          { text: '[[mcmerk|Schritt 1:]] Suche den Namen in der Produktbeschreibung und merke dir die Nummer.\n[[mcmerk|Schritt 2:]] Suche die Nummer in der Montageanleitung oder in der Teileliste.\n[[mcmerk|Schritt 3:]] Prüfe, ob deine Antwort zur Frage passt.' },
+          { text: 'Lies nicht alles. Du suchst nur die Zeile, die du brauchst.' },
+          {
+            text: 'Beispiel: In welchem Schritt wird der Holzleim gebraucht? Der Holzleim hat die Nummer 08. Die Nummer 08 steht in Schritt 3.',
+            tabellen: [
+              { titel: 'Produktbeschreibung', kopf: ['Nr.', 'Name'], zeilen: [['08', 'Holzleim']] },
+              { titel: 'Montageanleitung', kopf: ['Schritt', 'Teile'], zeilen: [['3', '05 · 2x, 08 · 1x']] },
+              { titel: 'Teileliste', kopf: ['Nr.', 'Menge'], zeilen: [['08', '1x']] },
+            ],
+          },
+        ],
+        check: [
+          c('Wo steht der Name eines Teils?', ['In der Produktbeschreibung', 'In der Teileliste', 'In der Montageanleitung', 'Nirgends'], 'Nur die Produktbeschreibung nennt die Namen. Die anderen zeigen Nummern.'),
+          c('Du kennst die Nummer eines Teils. Wo siehst du, in welchem Schritt es gebraucht wird?', ['In der Montageanleitung', 'In der Teileliste', 'In der Produktbeschreibung', 'Gar nicht'], 'Die Montageanleitung ordnet die Nummern den Schritten zu.'),
+        ],
+      },
+      {
+        id: 'mc_vn_mengen', emoji: '🧮', titel: 'Mengen und Masse', videos: [],
+        karten: [
+          { text: 'Eine [[mcmerk|Menge]] sagt, wie viele Teile du brauchst, zum Beispiel 10x. Ein [[mcmerk|Mass]] sagt, wie lang, breit oder hoch etwas ist, zum Beispiel 25 cm.' },
+          { text: 'Mengen zusammenzählen: Schritt 1 braucht 6 Schrauben, Schritt 2 braucht 4. Zusammen sind das 10. Vergleiche mit der Teileliste: Dort steht 10x.' },
+          { text: 'Masse addieren: Ein Brett ist 2 cm dick, die Seitenwand darauf ist 25 cm hoch. Zusammen sind es 27 cm. Achte immer auf die [[mcmerk|Einheit]] (cm, mm, Liter).' },
+          { text: 'Rechne nur mit gleichen Teilen und gleichen Einheiten. [[mcfalle|Falle:]] Schrauben und Bretter darfst du nicht zusammenzählen, ebenso nicht cm und mm.' },
+        ],
+        check: [
+          c('Schritt 1 braucht 6 Schrauben, Schritt 2 braucht 4. Wie viele sind es zusammen?', ['10', '6', '4', '24'], '6 + 4 = 10. Die Teileliste zeigt dieselbe Gesamtmenge.'),
+          c('Ein Brett ist 2 cm dick und eine Wand darauf ist 25 cm hoch. Wie hoch sind beide zusammen?', ['27 cm', '23 cm', '50 cm', '25 cm'], '2 + 25 = 27 cm.'),
+        ],
+      },
+      {
+        id: 'mc_vn_aussagen', emoji: '✅', titel: 'Aussagen prüfen', videos: [],
+        karten: [
+          { text: 'Bei «Welche Aussage ist korrekt?» ist genau eine Aussage richtig. Prüfe jede Aussage einzeln mit den Dokumenten.' },
+          { text: 'Bei «Welche Aussage ist falsch?» sind drei Aussagen richtig. Schliesse sie nacheinander aus. Die übrige Aussage ist falsch.' },
+          { text: 'Vergleiche die Zahlen in der Aussage mit den Dokumenten: Schritt, Menge, Mass. Oft ist nur eine Zahl verändert. [[mcfalle|Achtung:]] Die Aussage klingt richtig, nur die Zahl stimmt nicht.' },
+        ],
+        check: [
+          c('Bei «Welche Aussage ist falsch?»: Wie viele Aussagen sind richtig?', ['Drei', 'Eine', 'Alle vier', 'Keine'], 'Drei Aussagen stimmen, eine ist falsch.'),
+          c('Was prüfst du bei jeder Aussage?', ['Die Zahlen und Namen mit den Dokumenten', 'Nur die erste Aussage', 'Nur die längste Aussage', 'Nichts, du rätst'], 'Jede Aussage wird einzeln mit den Dokumenten verglichen.'),
+        ],
+      },
+      fehler('mc_vn_fehler', [
+        ['Ich suche den Namen in der Montageanleitung.', 'Dort stehen nur Nummern. Den Namen findest du in der Produktbeschreibung.'],
+        ['Ich nehme die Menge eines einzelnen Schritts.', 'Gefragt ist oft die Gesamtmenge. Zähle alle Schritte zusammen oder lies die Teileliste.'],
+        ['Ich nehme bei «falsch» die erste passende Aussage.', 'Prüfe alle vier Aussagen. Nur eine ist falsch.'],
+        ['Ich rechne cm und mm zusammen.', 'Achte auf die Einheit und rechne nur gleiche Einheiten zusammen.'],
+        ['Ich verwechsle Teile mit ähnlichem Namen.', 'Prüfe die Nummer. Holzschrauben mit verschiedenen Massen sind verschiedene Teile.'],
+      ]),
+      dojo('mc_vn_dojo', [
+        d('Wo findest du den Namen eines Teils?', 'In der Produktbeschreibung', ['In der Teileliste', 'In der Montageanleitung'], 'Nur die Produktbeschreibung nennt die Namen.'),
+        d('Wo steht, in welchem Schritt ein Teil gebraucht wird?', 'In der Montageanleitung', ['In der Teileliste', 'In der Produktbeschreibung'], 'Die Montageanleitung ordnet die Teile den Schritten zu.'),
+        d('Wo steht die Gesamtmenge eines Teils?', 'In der Teileliste', ['In der Montageanleitung', 'Nur in der Frage'], 'Die Teileliste zeigt die Gesamtmenge. Die Montageanleitung zeigt die Menge pro Schritt.'),
+        d('Schritt 1 braucht 6 Schrauben, Schritt 2 braucht 4. Gesamtmenge?', '10', ['6', '24'], '6 + 4 = 10.'),
+        d('Ein Brett ist 2 cm dick, ein Brett darauf 25 cm hoch. Wie hoch sind beide zusammen?', '27 cm', ['23 cm', '50 cm'], '2 + 25 = 27 cm.'),
+        d('In einer Frage steht «Welche Aussage ist falsch?». Wie viele Aussagen sind richtig?', 'Drei', ['Eine', 'Alle vier'], 'Drei Aussagen stimmen, nur eine ist falsch.'),
+        d('In einer Frage steht «Welche Aussage ist korrekt?». Wie viele Aussagen sind richtig?', 'Eine', ['Drei', 'Keine'], 'Genau eine Aussage stimmt.'),
+        d('Du hast bei «Holzleim» die Nummer 08 gefunden. Was tust du als Nächstes?', 'Ich suche 08 in der Montageanleitung oder der Teileliste', ['Ich lese alle Dokumente von Anfang an', 'Ich suche «Holzleim» in der Teileliste'], 'In Anleitung und Teileliste stehen nur Nummern.'),
+      ]),
+    ],
+  },
 };
