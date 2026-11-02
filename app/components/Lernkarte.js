@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { lernkarten } from '../lib/lernkarten';
+import { SENSEI_SPRUECHE } from '../lib/sensei_sprueche';
+import { DOJO_GUERTEL, ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
 
 const KACHEL_COLORS = ['#534AB7', '#0f766e', '#f59e0b', '#ef4444', '#3b82f6', '#ec4899', '#14b8a6', '#8b5cf6'];
 
@@ -337,16 +339,106 @@ function VisualBlock({ type, chips, diagram, dm, dark }) {
   return null;
 }
 
-function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung }) {
+// ─── DOJO: japanischer Look + Gürtel ──────────────────────────────────────
+const DOJO_ROT = '#B3202A';
+
+function dojoPalette(dark) {
+  return {
+    rot: DOJO_ROT,
+    rotText: dark ? '#f0727a' : DOJO_ROT,
+    cremeKarte: dark ? '#26211f' : '#fbf5e6',
+    rand: dark ? '#4a3a3a' : '#e4d4b4',
+    tinte: dark ? '#f3ece0' : '#24232a',
+    tinte2: dark ? '#cbbfae' : '#4a4750',
+  };
+}
+
+// Hanko-Stempel: rote Fläche, Zeichen in Creme, leicht gedreht.
+function Hanko({ zeichen = '道', size = 34, dark }) {
+  const dj = dojoPalette(dark);
   return (
-    <div style={{ background: dm.card, border: `1px solid ${dm.border}`, borderRadius: '16px', padding: isMobile ? '22px 18px' : '30px', minHeight: '240px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '14px' }}>
+    <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: `${size}px`, height: `${size}px`, borderRadius: '8px', background: dj.rot, color: '#fbf5e6', fontSize: `${Math.round(size * 0.62)}px`, fontWeight: '800', lineHeight: 1, transform: 'rotate(-4deg)', boxShadow: 'inset 0 0 0 2px rgba(251,245,230,0.35)', flexShrink: 0 }}>{zeichen}</span>
+  );
+}
+
+function DojoKopf({ state, aufstieg, spruch, dark, isMobile }) {
+  const dj = dojoPalette(dark);
+  const idx = guertelIndex(state.xp);
+  const g = DOJO_GUERTEL[idx];
+  const naechster = DOJO_GUERTEL[idx + 1];
+  const pct = naechster ? Math.round(((state.xp - g.xp) / (naechster.xp - g.xp)) * 100) : 100;
+  return (
+    <div style={{ background: dj.cremeKarte, border: `1px solid ${dj.rand}`, borderRadius: '14px', padding: isMobile ? '12px 14px' : '14px 18px', marginBottom: '14px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', animation: aufstieg ? 'pop 500ms ease' : 'none' }}>
+          <span style={{ width: '38px', height: '12px', borderRadius: '6px', background: g.fill, border: `2px solid ${g.border}`, boxSizing: 'border-box' }} />
+          <span style={{ fontSize: '14px', fontWeight: '800', color: dj.tinte }}>{g.name}er Gürtel</span>
+        </span>
+        <span style={{ marginLeft: 'auto', fontSize: '13px', fontWeight: '800', color: dj.rotText }} title="Tage in Folge">🔥 {state.streak}</span>
+      </div>
+      <div style={{ height: '8px', borderRadius: '6px', background: dark ? '#3a3230' : '#eadfc6', margin: '10px 0 4px', overflow: 'hidden' }}>
+        <div style={{ height: '100%', width: `${pct}%`, minWidth: pct > 0 ? '8px' : 0, background: dj.rot, borderRadius: '6px', transition: 'width 0.4s ease' }} />
+      </div>
+      <p style={{ margin: 0, fontSize: '11px', fontWeight: '700', color: dj.tinte2 }}>
+        {naechster ? `${state.xp} / ${naechster.xp} XP bis ${naechster.name}` : `${state.xp} XP · höchster Gürtel erreicht`}
+      </p>
+      {spruch && <p style={{ margin: '8px 0 0', fontSize: '13px', fontStyle: 'italic', color: dj.tinte2 }}>«{spruch}»</p>}
+    </div>
+  );
+}
+
+function AufstiegMeldung({ index, spruch, onClose, dark }) {
+  const g = DOJO_GUERTEL[index];
+  return (
+    <div role="status" style={{ background: DOJO_ROT, color: '#fbf5e6', borderRadius: '14px', padding: '14px 16px', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '12px', animation: 'pop 500ms ease' }}>
+      <Hanko zeichen="昇" size={40} dark={dark} />
+      <div style={{ flex: 1 }}>
+        <p style={{ margin: 0, fontSize: '15px', fontWeight: '800' }}>Neuer Gürtel: {g.name}</p>
+        <p style={{ margin: '2px 0 0', fontSize: '13px' }}>«{spruch}»</p>
+      </div>
+      <button onClick={onClose} aria-label="Meldung schliessen" style={{ background: 'none', border: 'none', color: '#fbf5e6', fontSize: '20px', cursor: 'pointer' }}>✕</button>
+    </div>
+  );
+}
+
+function DojoOptionen({ karte, selected, onAnswer, dm, dark }) {
+  const answered = selected !== undefined;
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      {karte.mcOptionen.map((opt, i) => {
+        const isSel = i === selected;
+        let bg = dm.card, border = dm.border, color = dm.text, anim = 'none';
+        if (answered) {
+          if (opt.correct) { bg = dm.okTint; border = '#22c55e'; color = dm.okText; if (isSel) anim = 'pop 350ms ease'; }
+          else if (isSel) { bg = dark ? '#2a1515' : '#fef2f2'; border = '#ef4444'; color = '#ef4444'; anim = 'shake 350ms ease'; }
+        }
+        return (
+          <button key={i} disabled={answered} onClick={() => onAnswer(i)}
+            style={{ textAlign: 'left', padding: '12px 16px', borderRadius: '12px', border: `2px solid ${border}`, background: bg, color, fontSize: '14px', lineHeight: '1.5', fontWeight: opt.correct && answered ? '700' : '500', cursor: answered ? 'default' : 'pointer', animation: anim }}>
+            {opt.correct && answered ? '✓ ' : isSel && !opt.correct ? '❌ ' : ''}{opt.text}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung, istDojo = false, mcSelected, onMcAnswer }) {
+  const dj = dojoPalette(dark);
+  const mc = istDojo && karte.mcOptionen;
+  return (
+    <div style={{ background: istDojo ? dj.cremeKarte : dm.card, border: `1px solid ${istDojo ? dj.rand : dm.border}`, borderLeft: istDojo ? `5px solid ${dj.rot}` : undefined, borderRadius: '16px', padding: isMobile ? '22px 18px' : '30px', minHeight: '240px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '14px' }}>
       <p style={{ margin: 0, fontSize: isMobile ? '17px' : '18px', lineHeight: '1.7', color: dm.text, whiteSpace: 'pre-wrap', fontWeight: karte.loesung ? '700' : '400' }}><Markiert text={karte.text} dark={dark} /></p>
       {karte.visual && <VisualBlock type={karte.visual} chips={karte.chips} diagram={karte.diagram} dm={dm} dark={dark} />}
-      {karte.loesung && (
+      {mc && <DojoOptionen karte={karte} selected={mcSelected} onAnswer={onMcAnswer} dm={dm} dark={dark} />}
+      {mc && karte.loesung && revealed && (
+        <p key="loesung" style={{ margin: '4px 0 0', fontSize: '15px', lineHeight: '1.6', color: dm.text, whiteSpace: 'pre-wrap', animation: 'fadeSlideIn 200ms ease' }}><Markiert text={karte.loesung} dark={dark} /></p>
+      )}
+      {!mc && karte.loesung && (
         <div>
           <button
             onClick={onToggleLoesung}
-            style={{ padding: '9px 16px', background: revealed ? dm.accentBg : dm.bg3, border: `1px solid ${revealed ? (dark ? '#4c3f8f' : '#c4b5fd') : dm.border}`, borderRadius: '9px', fontSize: '13px', fontWeight: '600', color: revealed ? (dark ? '#c4b5fd' : '#534AB7') : dm.text2, cursor: 'pointer' }}
+            style={istDojo ? { padding: '9px 16px', background: revealed ? dj.rot : 'none', border: `1px solid ${dj.rot}`, borderRadius: '9px', fontSize: '13px', fontWeight: '700', color: revealed ? '#fbf5e6' : dj.rotText, cursor: 'pointer' } : { padding: '9px 16px', background: revealed ? dm.accentBg : dm.bg3, border: `1px solid ${revealed ? (dark ? '#4c3f8f' : '#c4b5fd') : dm.border}`, borderRadius: '9px', fontSize: '13px', fontWeight: '600', color: revealed ? (dark ? '#c4b5fd' : '#534AB7') : dm.text2, cursor: 'pointer' }}
           >
             {revealed ? 'Lösung ausblenden' : 'Lösung zeigen'}
           </button>
@@ -465,6 +557,10 @@ function hasVideos(kachel) {
 }
 
 // Optionen wie 'Keine der obigen' bleiben beim Mischen am Ende.
+function zufall(liste) {
+  return liste[Math.floor(Math.random() * liste.length)];
+}
+
 const FESTE_OPTION = /^(keine|nichts).*(oben|obigen|genannt\w*|davon)/i;
 
 // Fisher-Yates. Gibt [{ text, correct }] zurueck; die Richtigkeit haengt an der
@@ -481,7 +577,10 @@ function mischeOptionen(optionen) {
 
 function buildSteps(kachel) {
   const steps = [];
-  kachel.karten.forEach((k, i) => steps.push({ type: 'karte', karteIdx: i, ...k }));
+  kachel.karten.forEach((k, i) => steps.push({
+    type: 'karte', karteIdx: i, ...k,
+    mcOptionen: Array.isArray(k.options) ? mischeOptionen(k.options.map(o => ({ text: o.text, correct: !!o.correct }))) : null,
+  }));
   if (hasVideos(kachel)) steps.push({ type: 'video' });
   kachel.check.forEach((c, i) => steps.push({
     type: 'check', checkIdx: i, ...c,
@@ -490,11 +589,24 @@ function buildSteps(kachel) {
   return steps;
 }
 
-function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
+function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish, dojo, onDojoAnswer }) {
+  const istDojo = kachel.titel === 'Dojo';
   const [steps] = useState(() => buildSteps(kachel));
   const [stepIdx, setStepIdx] = useState(0);
   const [answers, setAnswers] = useState({});
   const [revealed, setRevealed] = useState(() => new Set());
+  const [mcAnswers, setMcAnswers] = useState({});
+  const [meldung, setMeldung] = useState(() => ({ spruch: zufall(SENSEI_SPRUECHE.start), aufstieg: null }));
+
+  function answerMc(karteIdx, optIdx) {
+    if (mcAnswers[karteIdx] !== undefined) return;
+    const karte = steps.find(st => st.type === 'karte' && st.karteIdx === karteIdx);
+    const richtig = karte.mcOptionen[optIdx].correct;
+    setMcAnswers(prev => ({ ...prev, [karteIdx]: optIdx }));
+    setRevealed(prev => new Set(prev).add(karteIdx));
+    const { aufstieg } = onDojoAnswer(karteIdx, richtig);
+    setMeldung({ spruch: zufall(SENSEI_SPRUECHE[aufstieg !== null ? 'aufstieg' : richtig ? 'richtig' : 'falsch']), aufstieg });
+  }
 
   const step = steps[stepIdx];
   const isLast = stepIdx === steps.length - 1;
@@ -534,18 +646,24 @@ function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
   }
   function back() { setStepIdx(i => Math.max(0, i - 1)); }
 
-  const weiterDisabled = step.type === 'check' && answers[stepIdx] === undefined;
+  const weiterDisabled = (step.type === 'check' && answers[stepIdx] === undefined) || (istDojo && step.type === 'karte' && !!step.mcOptionen && mcAnswers[step.karteIdx] === undefined);
 
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-        <p style={{ margin: 0, fontSize: isMobile ? '17px' : '19px', fontWeight: '700', color: dm.text }}>{kachel.emoji} {kachel.titel}</p>
+        {istDojo ? (
+          <p style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '10px', fontSize: isMobile ? '17px' : '19px', fontWeight: '800', color: dojoPalette(dark).tinte }}><Hanko size={32} dark={dark} /> {kachel.titel}</p>
+        ) : (
+          <p style={{ margin: 0, fontSize: isMobile ? '17px' : '19px', fontWeight: '700', color: dm.text }}>{kachel.emoji} {kachel.titel}</p>
+        )}
         <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '22px', color: dm.text3, padding: '4px' }}>✕</button>
       </div>
-      <ProgressDots total={steps.length} current={stepIdx} color={color} dm={dm} />
+      {istDojo && meldung.aufstieg !== null && <AufstiegMeldung index={meldung.aufstieg} spruch={meldung.spruch} onClose={() => setMeldung(m => ({ ...m, aufstieg: null }))} dark={dark} />}
+      {istDojo && <DojoKopf state={dojo} aufstieg={meldung.aufstieg !== null} spruch={meldung.aufstieg !== null ? null : meldung.spruch} dark={dark} isMobile={isMobile} />}
+      <ProgressDots total={steps.length} current={stepIdx} color={istDojo ? DOJO_ROT : color} dm={dm} />
       <div key={stepIdx} style={{ animation: 'cardEnter 220ms ease' }}>
         {step.type === 'karte' ? (
-          <KarteView karte={step} dm={dm} dark={dark} isMobile={isMobile} revealed={revealed.has(step.karteIdx)} onToggleLoesung={() => toggleLoesung(step.karteIdx)} />
+          <KarteView karte={step} dm={dm} dark={dark} isMobile={isMobile} revealed={revealed.has(step.karteIdx)} onToggleLoesung={() => toggleLoesung(step.karteIdx)} istDojo={istDojo} mcSelected={mcAnswers[step.karteIdx]} onMcAnswer={(i) => answerMc(step.karteIdx, i)} />
         ) : step.type === 'check' ? (
           <CheckView step={step} dm={dm} dark={dark} isMobile={isMobile} selected={answers[stepIdx]} onAnswer={answerCheck} />
         ) : (
@@ -554,7 +672,7 @@ function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
       </div>
       <div style={{ display: 'flex', gap: '10px', marginTop: '18px' }}>
         <button onClick={back} disabled={stepIdx === 0} style={{ flex: 1, padding: '12px', borderRadius: '10px', border: `1px solid ${dm.border}`, background: 'none', color: stepIdx === 0 ? dm.text3 : dm.text2, fontSize: '14px', fontWeight: '600', cursor: stepIdx === 0 ? 'default' : 'pointer' }}>← Zurück</button>
-        <button onClick={next} disabled={weiterDisabled} style={{ flex: 1, padding: '12px', borderRadius: '10px', border: 'none', background: weiterDisabled ? dm.bg3 : color, color: weiterDisabled ? dm.text3 : '#fff', fontSize: '14px', fontWeight: '700', cursor: weiterDisabled ? 'default' : 'pointer' }}>
+        <button onClick={next} disabled={weiterDisabled} style={{ flex: 1, padding: '12px', borderRadius: '10px', border: 'none', background: weiterDisabled ? dm.bg3 : (istDojo ? DOJO_ROT : color), color: weiterDisabled ? dm.text3 : '#fff', fontSize: '14px', fontWeight: '700', cursor: weiterDisabled ? 'default' : 'pointer' }}>
           {isLast ? 'Fertig ✓' : 'Weiter →'}
         </button>
       </div>
@@ -583,7 +701,9 @@ function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen
             >
               {isDone && <span style={{ position: 'absolute', top: '8px', right: '10px', fontSize: '16px', color: '#22c55e', animation: pop ? 'pop 400ms ease' : 'none' }}>✓</span>}
               {k.videos && k.videos.length > 0 && <span style={{ position: 'absolute', top: '8px', left: '10px', fontSize: '14px' }}>🎬</span>}
-              <span style={{ width: '54px', height: '54px', borderRadius: '50%', background: color + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px' }}>{k.emoji}</span>
+              {k.titel === 'Dojo'
+                ? <Hanko size={54} dark={dark} />
+                : <span style={{ width: '54px', height: '54px', borderRadius: '50%', background: color + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px' }}>{k.emoji}</span>}
               <span style={{ fontSize: '13px', fontWeight: '700', color: dm.text, textAlign: 'center' }}>{k.titel}</span>
             </button>
           );
@@ -593,9 +713,10 @@ function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen
   );
 }
 
-export default function LernkartePage({ topic, dm, dark, isMobile, onClose }) {
+export default function LernkartePage({ topic, dm, dark, isMobile, onClose, onFehler = () => {}, onRemoveFehler = () => {} }) {
   const karte = lernkarten[topic];
   const { done, markDone } = useLernkarteDone();
+  const [dojo, setDojo] = useState(ladeDojo);
   const [openKachelId, setOpenKachelId] = useState(null);
   const [justDone, setJustDone] = useState(null);
   const [beltPop, setBeltPop] = useState(false);
@@ -605,6 +726,15 @@ export default function LernkartePage({ topic, dm, dark, isMobile, onClose }) {
   const kachelIdx = karte.kacheln.findIndex(k => k.id === openKachelId);
   const kachel = kachelIdx >= 0 ? karte.kacheln[kachelIdx] : null;
   const color = KACHEL_COLORS[kachelIdx >= 0 ? kachelIdx % KACHEL_COLORS.length : 0];
+
+  function dojoAntwort(karteIdx, richtig) {
+    const res = verbucheAntwort(dojo, richtig);
+    setDojo(res.state);
+    speichereDojo(res.state);
+    const fehlerId = `dojo:${topic}:${openKachelId}:${karteIdx}`;
+    if (richtig) onRemoveFehler(fehlerId); else onFehler(fehlerId);
+    return { aufstieg: res.aufstieg ? guertelIndex(res.state.xp) : null };
+  }
 
   function finishKachel(id) {
     const alreadyDone = done.has(id);
@@ -623,7 +753,7 @@ export default function LernkartePage({ topic, dm, dark, isMobile, onClose }) {
     <main style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '64px 16px 40px' : '40px', background: dm.bg }}>
       <div style={{ maxWidth: '700px', margin: '0 auto' }}>
         {kachel ? (
-          <MiniLektion kachel={kachel} color={color} dm={dm} dark={dark} isMobile={isMobile} onClose={() => setOpenKachelId(null)} onFinish={() => finishKachel(kachel.id)} />
+          <MiniLektion kachel={kachel} color={color} dm={dm} dark={dark} isMobile={isMobile} onClose={() => setOpenKachelId(null)} onFinish={() => finishKachel(kachel.id)} dojo={dojo} onDojoAnswer={dojoAntwort} />
         ) : (
           <KachelGrid karte={karte} dm={dm} dark={dark} isMobile={isMobile} done={done} justDone={justDone} beltPop={beltPop} onOpen={setOpenKachelId} onClose={onClose} />
         )}
