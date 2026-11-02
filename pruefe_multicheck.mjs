@@ -1,7 +1,7 @@
 // Qualitätskontrolle für Multicheck IMS (app/lib/multicheck/)
 // Aufruf: node pruefe_multicheck.mjs
 //
-// Prüft: 190 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
+// Prüft: 210 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
 // Wochenplan-Musterlösungen gültig, jedes aktive Thema hat Üben, Dojo und
 // Lernkarten (mit «Typische Fehler» und «Dojo»), Check-Fragen und Dojo-Karten
 // wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, Videos (höchstens eines pro Kachel, gültige ID),
@@ -15,15 +15,17 @@ const bad = (m) => { fehler++; console.log('FEHLER: ' + m); };
 
 // Die Dateien sind ES-Module ohne Dateiendung in den Imports. Sie werden
 // hier als Text gelesen und mit new Function ausgewertet.
-function laden(datei, export_) {
+function laden(datei, export_, params = {}) {
   let s = fs.readFileSync(DIR + datei, 'utf8');
   s = s.replace(/^import .*$/gm, '').replace(/^export default (\w+);$/m, 'return $1;');
   if (export_) s = s.replace(/^export const (\w+) =/m, 'const $1 =') + `\nreturn ${export_};`;
-  return new Function(s)();
+  return new Function(...Object.keys(params), s)(...Object.values(params));
 }
 
-const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js' };
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f)]));
+const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js' };
+const numerisch = laden('logik_numerisch.js');
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch })]));
+const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
 const lk = laden('lernkarten.js', 'multicheckLernkarten');
 
 // Wochenplan-Logik
@@ -32,7 +34,7 @@ const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 190) bad(`Fragen: ${alle.length} statt 190`);
+if (alle.length !== 210) bad(`Fragen: ${alle.length} statt 210`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -46,14 +48,70 @@ for (const [id, t] of Object.entries(themen)) {
       if (!r.ok) bad(`${q.id}: Musterlösung des Wochenplans ungültig`);
     }
     if ((q.type === 'mc' || q.type === 'memchoice') && !(q.correct >= 0 && q.correct < q.options.length)) bad(`${q.id}: correct ausserhalb`);
+    if (id === 'logik' && q.type === 'mc' && q.options[q.correct].t !== q.answerText) bad(`${q.id}: answerText passt nicht zur richtigen Option`);
   }
 }
 console.log('Fragen:', Object.entries(themen).map(([id, t]) => `${id} ${t.qs.length}`).join(', '), '→', alle.length);
 
+// ─── Unterthemen ─────────────────────────────────────────────────────────
+for (const [id, t] of Object.entries(themen)) {
+  const m = UT.mitUnterthemen(t);
+  const gesehen = new Map();
+  const uids = m.unter.map(x => x.id);
+  if (new Set(uids).size !== uids.length) bad(`${id}: doppelte Unterthema-IDs`);
+  for (const x of m.unter) {
+    if (x.bald) { if (x.qs.length) bad(`${id}/${x.id}: gesperrtes Unterthema mit Fragen`); continue; }
+    if (x.qs.length > 10) bad(`${id}/${x.id}: ${x.qs.length} Fragen (höchstens 10)`);
+    if (!x.qs.length) bad(`${id}/${x.id}: leer`);
+    for (const q of x.qs) { if (gesehen.has(q.id)) bad(`${q.id} in zwei Unterthemen (${gesehen.get(q.id)}, ${x.id})`); gesehen.set(q.id, x.id); }
+  }
+  for (const q of t.qs) if (!gesehen.has(q.id)) bad(`${q.id}: keinem Unterthema zugeordnet`);
+  console.log(`  ${id}: ` + m.unter.map(x => `${x.name} ${x.bald ? 'Bald' : x.qs.length}`).join(' | '));
+}
+
+// ─── Logik ───────────────────────────────────────────────────────────────
+{
+  const lg = themen.logik;
+  const verbal = lg.qs.filter(q => q.type === 'mc');
+  const num = lg.qs.filter(q => q.type === 'numproc');
+  if (verbal.length !== 10 || num.length !== 10) bad(`Logik: ${verbal.length} verbale, ${num.length} numerische Fragen`);
+  const soll = ['Zehe', 'Luft', 'schreiben', 'trinken', 'Nacht', 'Baum', 'Schüler', 'heiss', 'Wasser', 'Antwort'];
+  verbal.forEach((q, i) => {
+    if (q.options.length !== 5 || new Set(q.options.map(o => o.t)).size !== 5) bad(`${q.id}: 5 verschiedene Optionen nötig`);
+    if (q.options[q.correct].t !== soll[i]) bad(`${q.id}: richtige Antwort ist «${q.options[q.correct].t}», erwartet «${soll[i]}»`);
+    if (!/ zu .+ wie .+ zu \?/.test(q.body.replace(/<[^>]+>/g, ''))) bad(`${q.id}: Fragetext «A zu B wie C zu ?» fehlt`);
+    if (!q.why) bad(`${q.id}: Erklärung fehlt`);
+  });
+  const lage = verbal.map(q => q.correct);
+  if (new Set(lage).size < 3) bad('Logik: richtige Antwort steht zu oft an derselben Stelle ' + lage.join(','));
+  const schritte = [2, 2, 2, 2, 3, 3, 3];
+  let gleich = 0, oben = 0;
+  num.forEach((q, i) => {
+    const lauf = (r) => { let z = r.start; if (z < 1 || z > 9) bad(`${q.id}: Startzahl ${z}`); for (const st of r.steps) { if (!st) bad(`${q.id}: Schritt 0`); z += st; if (z < 1 || z > 9) bad(`${q.id}: Zwischenwert ${z} ausserhalb 1 bis 9`); } return z; };
+    const eo = lauf(q.top), eu = lauf(q.bottom);
+    const soll_ = q.ask === 'top' ? eo : eu;
+    if (q.answer !== soll_ || q.answerText !== String(soll_)) bad(`${q.id}: Antwort ${q.answer}, gerechnet ${soll_}`);
+    if (q.top.steps.length !== q.bottom.steps.length) bad(`${q.id}: ungleich viele Schritte`);
+    const n = q.top.steps.length;
+    if (i < 4 && n !== 2) bad(`${q.id}: ${n} Schritte (erwartet 2)`);
+    else if (i >= 4 && i < 7 && n !== 3) bad(`${q.id}: ${n} Schritte (erwartet 3)`);
+    else if (i >= 7 && (n < 3 || n > 4)) bad(`${q.id}: ${n} Schritte (erwartet 3 bis 4)`);
+    if (eo === eu) gleich++;
+    if (q.ask === 'top') oben++;
+    if (!q.why.includes(String(soll_))) bad(`${q.id}: Erklärung nennt das Ergebnis nicht`);
+  });
+  if (gleich === 0 || gleich === 10) bad('Logik: Ergebnis oben und unten muss mal gleich, mal verschieden sein');
+  if (oben === 0 || oben === 10) bad('Logik: gefragt wird nur ein Feld');
+  const demo = lg.unterInfo.numerisch.demo;
+  const dl = (r) => r.steps.reduce((z, s) => z + s, r.start);
+  if (dl(demo.top) !== 2 || dl(demo.bottom) !== 2 || demo.answer !== 2) bad('Logik: Demo rechnet nicht auf 2 und 2');
+  console.log(`Logik: ${verbal.length} verbal, ${num.length} numerisch, gleiches Ergebnis in ${gleich}, Frage oben ${oben}`);
+}
+
 // ─── Startseite: Reihenfolge der Kacheln ─────────────────────────────────
 const index = fs.readFileSync(DIR + 'index.js', 'utf8');
 const kacheln = [...index.matchAll(/(?:bald\('[a-z]+', '([^']+)'|aktiv\((\w+),)/g)].map(m => m[1] || m[2]);
-const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'Logik', 'Konzentration', 'Vorstellungsvermögen', 'Vernetztes Denken', 'Textschreiben'];
+const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'Konzentration', 'Vorstellungsvermögen', 'Vernetztes Denken', 'Textschreiben'];
 if (JSON.stringify(kacheln) !== JSON.stringify(sollKacheln)) bad('Kachel-Reihenfolge in index.js: ' + kacheln.join(', '));
 console.log('Kacheln:', kacheln.length);
 
@@ -117,6 +175,7 @@ const rechnungen = [
   ['4*4', 16], ['2*(5+2)', 14], ['5*2', 10], ['6*4/2', 12], ['8*5', 40], ['2*(8+5)', 26], ['10*6/2', 30], ['4*4', 16],
   ['4*20', 80], ['5*10', 50], ['3*20', 60], ['2*30', 60],
   ['2+3*4', 14], ['8-3', 5], ['8-(2+1)', 5], ['4+2', 6], ['2+1+4+4+4', 15],
+  ['3+4', 7], ['8-5', 3], ['6-2+3', 7], ['2+5-1', 6], ['6-2', 4], ['4+3', 7], ['1+2-1', 2], ['5-1-2', 2],
   ['3*2*2', 12], ['4-3', 1], ['100*100', 10000], ['3*100', 300], ['2*10000', 20000], ['100*100', 10000],
 ];
 for (const [ausdruck, soll] of rechnungen) {
