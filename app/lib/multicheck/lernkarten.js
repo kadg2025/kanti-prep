@@ -1,3 +1,5 @@
+import { fig } from './figur';
+
 // Frag Sensei für Multicheck IMS: pro Thema Kacheln, gleiche Form wie
 // app/lib/lernkarten.js (Kacheln mit karten/check, dazu «Typische Fehler» und «Dojo»).
 // Der Schlüssel ist die Themen-ID aus index.js. Kachel-IDs sind über alle Themen
@@ -626,12 +628,33 @@ export const multicheckLernkarten = {
           c('Was machst du nach jedem Rechenschritt?', ['Das neue Zwischenergebnis der Reihe leise wiederholen', 'Die beiden Reihen mischen', 'Die Startzahl vergessen', 'Beide Zahlen zusammenzählen'], 'So behältst du beide Zwischenergebnisse getrennt im Kopf.'),
         ],
       },
-      { id: 'mc_lo_bilder', emoji: '🖼️', titel: 'Bilder vergleichen', videos: [], bald: true, karten: [], check: [] },
+      {
+        id: 'mc_lo_bilder', emoji: '🖼️', titel: 'Bilder vergleichen', videos: [],
+        karten: [
+          { text: 'Eine Bildanalogie hat zwei Bildpaare. Das erste Paar zeigt eine [[mcmerk|Regel]]: A wird zu B. Du wendest dieselbe Regel auf das dritte Bild C an und suchst das passende Bild D.' },
+          { text: '[[mcmerk|Schritt 1:]] Was ändert sich von A zu B?\n\nPrüfe der Reihe nach: Grösse, Farbe, Muster, Richtung, Spiegelung, Form, innen und aussen, Anzahl.' },
+          { text: '[[mcmerk|Schritt 2:]] Mache dasselbe mit C. Ändere nur das, was sich von A zu B geändert hat. Alles andere bleibt gleich.' },
+          { text: '[[mcmerk|Schritt 3:]] Prüfe alle sechs Bilder einzeln. [[mcfalle|Falsche Bilder]] machen oft nur die Hälfte richtig, zum Beispiel die richtige Grösse, aber die falsche Farbe.' },
+          { text: '[[mcmerk|Grösse:]] Das Bild wird grösser oder kleiner. Form und Füllung bleiben.', bilder: [[fig('circle', 'g', 'w'), fig('circle', 'k', 'w')]] },
+          { text: '[[mcmerk|Füllung:]] Eine Form wird weiss, schwarz oder gepunktet. Die Form selbst bleibt.', bilder: [[fig('triangle', 'g', 'w'), fig('triangle', 'g', 'b')]] },
+          { text: '[[mcmerk|Muster:]] Eine Schraffur (Streifen) kippt in die andere Richtung.', bilder: [[fig('square', 'g', '/'), fig('square', 'g', '\\')]] },
+          { text: '[[mcmerk|Richtung:]] Ein Bild dreht sich, zum Beispiel um 90 Grad im Uhrzeigersinn. Das ist ein Viertel einer ganzen Drehung.', bilder: [[fig('arrow', 'g', 'w', { rot: 0 }), fig('arrow', 'g', 'w', { rot: 90 })]] },
+          { text: '[[mcmerk|Spiegelung:]] Ein Teil wechselt auf die andere Seite, wie im Spiegel.', bilder: [[fig('square', 'g', 'w', { attach: { side: 'l', shape: 'triangle' } }), fig('square', 'g', 'w', { attach: { side: 'r', shape: 'triangle' } })]] },
+          { text: '[[mcmerk|Form:]] Aus einer Form wird eine andere. Farbe und Grösse bleiben.', bilder: [[fig('square', 'g', 'w'), fig('circle', 'g', 'w')]] },
+          { text: '[[mcmerk|Innen und aussen:]] Die innere und die äussere Form tauschen die Plätze.', bilder: [[fig('circle', 'g', 'w', { inner: { shape: 'square' } }), fig('square', 'g', 'w', { inner: { shape: 'circle' } })]] },
+          { text: '[[mcmerk|Anzahl:]] Aus einer Form werden zwei oder mehr gleiche Formen.', bilder: [[fig('circle', 'g', 'w'), fig('circle', 'g', 'w', { count: 2 })]] },
+        ],
+        check: [
+          c('Ein grosser Kreis wird zu einem kleinen Kreis. Was ändert sich?', ['Die Grösse', 'Die Form', 'Die Füllung', 'Die Richtung'], 'Nur die Grösse ändert sich. Form und Füllung bleiben gleich.'),
+          c('Warum prüfst du alle sechs Bilder?', ['Falsche Bilder machen oft nur einen Teil der Regel richtig', 'Das erste Bild ist immer falsch', 'Alle Bilder sind gleich', 'Das letzte Bild ist immer richtig'], 'Ein falsches Bild kann zum Beispiel die richtige Grösse, aber die falsche Farbe haben.'),
+        ],
+      },
       fehler('mc_lo_fehler', [
         ['Ich wähle ein Wort, das nur zum Thema passt.', 'Das Wort muss in den Satz mit der Beziehung passen.'],
         ['Ich drehe die Reihenfolge um.', 'Frage zu Antwort ist nicht Antwort zu Frage. Behalte die Richtung des ersten Paars.'],
         ['Ich mische die obere und die untere Reihe.', 'Halte beide Reihen getrennt. Ändere nur die Reihe, die dran ist.'],
         ['Ich vergesse die Startzahl der anderen Reihe.', 'Sage nach jeder Anzeige beide Zahlen leise: «oben 3, unten 5».'],
+        ['Ich prüfe bei Bildern nur die Form.', 'Prüfe Grösse, Füllung, Richtung und Anzahl einzeln.'],
         ['Ich lese –2 als +2.', 'Plus macht die Zahl grösser, minus kleiner. Schau aufs Vorzeichen.'],
       ]),
       dojo('mc_lo_dojo', [

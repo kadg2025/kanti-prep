@@ -1,7 +1,7 @@
 // Qualitätskontrolle für Multicheck IMS (app/lib/multicheck/)
 // Aufruf: node pruefe_multicheck.mjs
 //
-// Prüft: 210 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
+// Prüft: 220 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
 // Wochenplan-Musterlösungen gültig, jedes aktive Thema hat Üben, Dojo und
 // Lernkarten (mit «Typische Fehler» und «Dojo»), Check-Fragen und Dojo-Karten
 // wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, Videos (höchstens eines pro Kachel, gültige ID),
@@ -24,9 +24,11 @@ function laden(datei, export_, params = {}) {
 
 const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js' };
 const numerisch = laden('logik_numerisch.js');
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch })]));
+const FG = new Function(fs.readFileSync(DIR + 'figur.js', 'utf8').replace(/^export /gm, '') + '\nreturn { fig, normalisiere, unterschiede, wendeRegel, renderFigur };')();
+const figural = laden('logik_figural.js', null, { fig: FG.fig });
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural })]));
 const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
-const lk = laden('lernkarten.js', 'multicheckLernkarten');
+const lk = laden('lernkarten.js', 'multicheckLernkarten', { fig: FG.fig });
 
 // Wochenplan-Logik
 const planSrc = fs.readFileSync(DIR + 'plan.js', 'utf8').replace(/^export \{.*\};$/m, '') + '\nreturn { check, solve, DAYS, slotsOf };';
@@ -34,7 +36,7 @@ const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 210) bad(`Fragen: ${alle.length} statt 210`);
+if (alle.length !== 220) bad(`Fragen: ${alle.length} statt 220`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -102,6 +104,39 @@ for (const [id, t] of Object.entries(themen)) {
   });
   if (gleich === 0 || gleich === 10) bad('Logik: Ergebnis oben und unten muss mal gleich, mal verschieden sein');
   if (oben === 0 || oben === 10) bad('Logik: gefragt wird nur ein Feld');
+  // Figurale Analogien
+  const figq = lg.qs.filter(q => q.type === 'figmc');
+  if (figq.length !== 10) bad('Logik: ' + figq.length + ' figurale Fragen statt 10');
+  const lagen = new Set();
+  const mehrfach = [];
+  figq.forEach((q) => {
+    lagen.add(q.correct);
+    if (q.options.length !== 6) bad(q.id + ': ' + q.options.length + ' Optionen statt 6');
+    const kan = q.options.map(o => JSON.stringify(FG.normalisiere(o.spec)));
+    if (new Set(kan).size !== 6) bad(q.id + ': Optionen nicht paarweise verschieden');
+    const svgs = q.options.map((o, i) => FG.renderFigur(o.spec, 'x' + i));
+    if (new Set(svgs.map(v => v.replace(/x\d/g, 'x'))).size !== 6) bad(q.id + ': zwei Optionen sehen gleich aus');
+    const regelA = JSON.stringify(FG.wendeRegel(q.a, q.regel)), regelC = JSON.stringify(FG.normalisiere(q.options[q.correct].spec));
+    if (regelA !== JSON.stringify(FG.normalisiere(q.b))) bad(q.id + ': Regel macht aus A nicht B');
+    if (JSON.stringify(FG.wendeRegel(q.c, q.regel)) !== regelC) bad(q.id + ': Regel macht aus C nicht die richtige Option');
+    const richtig = q.options[q.correct].spec;
+    q.options.forEach((o, i) => {
+      if (i === q.correct) return;
+      const u = FG.unterschiede(o.spec, richtig);
+      if (u.length === 0) bad(q.id + ': Option ' + (i + 1) + ' gleicht der richtigen');
+      if (u.length > 1) mehrfach.push(q.id + '/' + (i + 1) + ' (' + u.join('+') + ')');
+    });
+    if (q.answerText !== 'Bild ' + (q.correct + 1)) bad(q.id + ': answerText');
+    for (const [k, sp] of [['A', q.a], ['B', q.b], ['C', q.c], ...q.options.map((o, i) => ['Option ' + (i + 1), o.spec])]) {
+      const svg = FG.renderFigur(sp, 'p');
+      if (!/^<svg [^>]*viewBox="0 0 100 100"[^>]*>.*<\/svg>$/.test(svg)) bad(q.id + ' ' + k + ': SVG nicht geschlossen');
+      const offen = (svg.match(/<(g|defs|pattern)[ >]/g) || []).length, zu = (svg.match(/<\/(g|defs|pattern)>/g) || []).length;
+      if (offen !== zu) bad(q.id + ' ' + k + ': SVG-Tags nicht ausgeglichen');
+      if (/NaN|undefined/.test(svg)) bad(q.id + ' ' + k + ': ungültiger Wert im SVG');
+    }
+  });
+  if (lagen.size < 5) bad('Logik: richtige Bildoption steht zu oft an derselben Stelle');
+  console.log('Figural: 10 Fragen, richtige Position', figq.map(q => q.correct + 1).join(','), '| Falschoptionen mit mehreren Unterschieden:', mehrfach.join(', ') || 'keine');
   const demo = lg.unterInfo.numerisch.demo;
   const dl = (r) => r.steps.reduce((z, s) => z + s, r.start);
   if (dl(demo.top) !== 2 || dl(demo.bottom) !== 2 || demo.answer !== 2) bad('Logik: Demo rechnet nicht auf 2 und 2');

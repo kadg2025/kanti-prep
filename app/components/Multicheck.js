@@ -5,6 +5,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { MULTICHECK_THEMEN, multicheckThema, multicheckLernkarten } from '../lib/multicheck';
 import { DAYS, slotsOf } from '../lib/multicheck/plan';
+import { renderFigur } from '../lib/multicheck/figur';
 import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
 import { ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
@@ -103,6 +104,15 @@ const CSS = `
 .mcq .nums button{width:46px;height:46px;font-size:20px;font-weight:bold;border-radius:10px;border:1.5px solid var(--bd);background:var(--bg);color:var(--tx);cursor:pointer}
 .mcq .nums button.sel{border-color:var(--a);background:var(--soft)}
 .mcq .nums button.right{border-color:var(--ok);background:var(--okbg)}.mcq .nums button.wrong{border-color:var(--bad);background:var(--badbg)}
+.mcq .figw{display:flex;flex-wrap:wrap;gap:24px 36px;justify-content:center;align-items:center;margin:10px 0}
+.mcq .figq{display:flex;align-items:center;gap:6px;font-size:22px;font-weight:bold}
+.mcq .fgs{display:block;width:76px;height:76px;border:1.5px solid #111;background:#fff;border-radius:6px;overflow:hidden}
+.mcq .fgs svg{width:100%;height:100%;display:block}
+.mcq .fgs.fq{display:flex;align-items:center;justify-content:center;font-size:34px;color:#111;border-style:dashed}
+.mcq .figo{display:grid;grid-template-columns:repeat(3,84px);gap:10px}
+.mcq .fo{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px;border:2px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);cursor:pointer;font-size:12px}
+.mcq .fo .fgs{width:68px;height:68px}
+.mcq .fo.sel{border-color:var(--a);background:var(--soft)}.mcq .fo.right{border-color:var(--ok);background:var(--okbg)}.mcq .fo.wrong{border-color:var(--bad);background:var(--badbg)}
 @media(max-width:640px){.mcq .opts.g2{grid-template-columns:1fr}.mcq .opts.g4{grid-template-columns:repeat(2,1fr)}.mcq .show{font-size:30px}}
 `;
 
@@ -161,6 +171,10 @@ function NumRaster({ wert }) {
       ))}
     </div>
   );
+}
+
+function FigSvg({ spec, uid }) {
+  return <span className="fgs" dangerouslySetInnerHTML={{ __html: renderFigur(spec, uid) }} />;
 }
 
 function Konzept({ c, offen }) {
@@ -290,6 +304,25 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
                 </label>
               );
             })}
+          </div>
+        )}
+        {t === 'figmc' && (
+          <div className="figw">
+            <div className="figq">
+              <FigSvg spec={q.a} uid={q.id + '-a'} /><span>:</span><FigSvg spec={q.b} uid={q.id + '-b'} /><span>=</span><FigSvg spec={q.c} uid={q.id + '-c'} /><span>:</span><span className="fgs fq">?</span>
+            </div>
+            <div className="figo">
+              {q.options.map((o, i) => {
+                let c = 'fo';
+                if (U.sel === i) c += ' sel';
+                if (done) { if (i === q.correct) c += ' right'; else if (U.sel === i) c += ' wrong'; }
+                return (
+                  <button key={i} className={c} aria-label={'Bild ' + (i + 1)} onClick={() => { if (!done) up({ sel: i }); }}>
+                    <FigSvg spec={o.spec} uid={q.id + '-o' + i} /><span>{i + 1}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         )}
         {t === 'numproc' && (
