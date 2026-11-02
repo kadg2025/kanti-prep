@@ -1,5 +1,21 @@
 import { fig } from './figur';
 
+const S1 = [
+  { art: 'quader', x: -2, y: 0, w: 1.5, d: 1.5, rot: 0, h: 3, farbe: 'rot' },
+  { art: 'zylinder', x: 2, y: 1.5, w: 1.5, d: 1.5, rot: 0, h: 2, farbe: 'blau' },
+  { art: 'quader', x: 0, y: -2.5, w: 2, d: 1, rot: 0, h: 1, farbe: 'gelb' },
+];
+const S2 = [
+  { art: 'quader', x: 0, y: -1.5, w: 2, d: 2, rot: 0, h: 2, farbe: 'rot' },
+  { art: 'zylinder', x: 0.5, y: 1.5, w: 1.5, d: 1.5, rot: 0, h: 3, farbe: 'blau' },
+];
+const S3 = [{ art: 'quader', x: 0, y: 0, w: 2, d: 2, rot: 0, h: 2, farbe: 'rot' }];
+const NETZ1 = [
+  { c: 0, z: 1, p: 'punkt', rot: 0 }, { c: 1, z: 1, p: 'kreuz', rot: 0 }, { c: 2, z: 1, p: 'diag', rot: 0 },
+  { c: 3, z: 1, p: 'leer', rot: 0 }, { c: 1, z: 0, p: 'streifen', rot: 0 }, { c: 1, z: 2, p: 'dreieck', rot: 0 },
+];
+
+
 // Frag Sensei für Multicheck IMS: pro Thema Kacheln, gleiche Form wie
 // app/lib/lernkarten.js (Kacheln mit karten/check, dazu «Typische Fehler» und «Dojo»).
 // Der Schlüssel ist die Themen-ID aus index.js. Kachel-IDs sind über alle Themen
@@ -716,6 +732,58 @@ export const multicheckLernkarten = {
         d('Das rote Feld ist ganz rechts oben. Koordinaten?', '33', ['31', '13'], 'Rechts ist X = 3, oben ist Y = 3.'),
         d('Das rote Feld ist in der Mitte oben. Koordinaten?', '23', ['32', '13'], 'Mitte ist X = 2, oben ist Y = 3. Zuerst X, dann Y.'),
         d('Die Koordinaten sind 31. Wo liegt das Feld?', 'Rechts unten', ['Links oben', 'Rechts oben'], 'X = 3 ist ganz rechts, Y = 1 ist ganz unten.'),
+      ]),
+    ],
+  },
+  // ─── Vorstellungsvermögen ────────────────────────────────────────────────
+  vorst: {
+    titel: 'Vorstellungsvermögen',
+    kacheln: [
+      {
+        id: 'mc_vo_raum', emoji: '🧭', titel: 'Räumliches Sehen', videos: [],
+        karten: [
+          { text: 'Du siehst ein Brett mit Formen von oben und darüber dieselbe Anordnung von der Seite. Der [[mcmerk|Pfeil]] zeigt, wo der Betrachter steht. Er schaut von dort zur Mitte.', svgs: [{ typ: 'oben', szene: S1, sel: 'S', cap: 'Betrachter unten' }] },
+          { text: 'Suche zuerst die [[mcmerk|auffälligste Form]]: den höchsten Körper, den einzigen Zylinder oder die seltene Farbe. Sie hilft dir, die Richtung zu finden.' },
+          { text: 'Gleiche links und rechts ab. Wer [[mcok|unten]] steht, behält links links. Wer auf der gegenüberliegenden Seite steht, sieht links und rechts vertauscht.', svgs: [{ typ: 'seite', szene: S1, richtung: 'S', cap: 'Von unten' }, { typ: 'seite', szene: S1, richtung: 'N', cap: 'Von oben' }] },
+          { text: 'Vorne und hinten: Was näher beim Betrachter steht, verdeckt das, was dahinter steht. Hier verdeckt der rote Würfel einen Teil des Zylinders.', svgs: [{ typ: 'seite', szene: S2, richtung: 'S', cap: 'Von unten' }] },
+          { text: 'Diagonal: Von einer Ecke aus wirkt ein Quadrat [[mcmerk|breiter]], etwa 1,4-mal so breit wie von der Seite.', svgs: [{ typ: 'seite', szene: S3, richtung: 'S', cap: 'Von der Seite' }, { typ: 'seite', szene: S3, richtung: 'SO', cap: 'Von der Ecke' }] },
+        ],
+        check: [
+          c('Der Pfeil unten zeigt nach oben. Wo steht der Betrachter?', ['Unten', 'Oben', 'Links', 'Rechts'], 'Der Betrachter steht auf der Seite des Pfeils und schaut zur Mitte.'),
+          c('Der Betrachter wechselt auf die gegenüberliegende Seite. Was geschieht mit links und rechts?', ['Sie werden vertauscht', 'Sie bleiben gleich', 'Nur oben und unten wechseln', 'Es ändert sich nichts'], 'Wer gegenüber steht, sieht alles andersherum: Links wird rechts.'),
+        ],
+      },
+      {
+        id: 'mc_vo_netz', emoji: '📦', titel: 'Abwicklungen', videos: [],
+        karten: [
+          { text: 'Eine [[mcmerk|Abwicklung]] ist ein aufgeklappter Würfel, flach hingelegt. Er hat 6 Flächen.', svgs: [{ typ: 'netz', zellen: NETZ1, cap: 'Abwicklung' }, { typ: 'wuerfel', zellen: NETZ1, ecke: [1, 1, 1], cap: 'Würfel von einer Ecke' }] },
+          { text: 'Gegenüberliegende Flächen: In einer Reihe von vier Feldern liegen das [[mcmerk|1. und 3.]] Feld gegenüber, ebenso das [[mcmerk|2. und 4.]] Feld.' },
+          { text: 'Gegenüberliegende Flächen sieht man nie gleichzeitig. Zeigt eine Figur zwei solche Muster nebeneinander, ist sie [[mcfalle|falsch]].' },
+          { text: 'Wähle eine [[mcmerk|Ecke]] und vergleiche die drei Flächen, die dort zusammenstossen. Prüfe, welches Muster neben welchem liegt.' },
+          { text: 'Prüfe die Richtung der Muster. Diagonale, Streifen, Punkt und Dreieck zeigen eine Drehung. Ein gedrehtes Muster ist ein Fehler.' },
+          { text: 'Schliesse Falschfiguren aus. Typische Fehler sind ein gedrehtes, ein vertauschtes oder ein ersetztes Muster oder ein Spiegelbild.' },
+        ],
+        check: [
+          c('Welche Felder liegen in einer Reihe von vier Feldern gegenüber?', ['1. und 3.', '1. und 2.', '1. und 4.', '3. und 4.'], 'Jedes zweite Feld liegt gegenüber: das 1. und 3., das 2. und 4.'),
+          c('Kann man zwei gegenüberliegende Flächen gleichzeitig sehen?', ['Nein', 'Ja, von einer Ecke', 'Ja, von der Seite', 'Ja, von oben'], 'Von einer Ecke sieht man drei Flächen, die nebeneinander liegen. Gegenüberliegende sind nie dabei.'),
+        ],
+      },
+      fehler('mc_vo_fehler', [
+        ['Ich suche die Richtung nur nach der Form.', 'Gleiche auch links und rechts ab.'],
+        ['Ich vergesse, dass links und rechts auf der Gegenseite vertauscht sind.', 'Wer gegenüber steht, sieht alles andersherum.'],
+        ['Ich übersehe, was verdeckt ist.', 'Was näher beim Betrachter steht, verdeckt das Hintere.'],
+        ['Ich achte nur auf das Muster, nicht auf die Richtung.', 'Prüfe, ob Diagonale, Streifen, Punkt und Dreieck gleich gedreht sind.'],
+        ['Ich wähle eine Figur mit zwei gegenüberliegenden Mustern.', 'Gegenüberliegende Flächen sieht man nie zusammen.'],
+      ]),
+      dojo('mc_vo_dojo', [
+        d('Der Pfeil unten zeigt nach oben. Wo steht der Betrachter?', 'Unten', ['Oben', 'In der Mitte'], 'Der Betrachter steht auf der Seite des Pfeils und schaut zur Mitte.'),
+        d('Ein Körper steht links vom Betrachter. Der Betrachter geht auf die gegenüberliegende Seite. Wo steht der Körper jetzt?', 'Rechts', ['Links', 'Hinten'], 'Auf der Gegenseite werden links und rechts vertauscht.'),
+        d('Welche Form verdeckt die andere?', 'Die Form, die näher beim Betrachter steht', ['Die höhere Form', 'Die rote Form'], 'Was näher steht, verdeckt das, was dahinter steht.'),
+        d('Ein Würfel wird von einer Ecke aus betrachtet. Wie wirkt er?', 'Breiter als von der Seite', ['Schmaler als von der Seite', 'Gleich breit'], 'Von der Ecke sieht man die Diagonale, sie ist etwa 1,4-mal so breit.'),
+        d('Welche Felder liegen in einer Reihe von vier Feldern gegenüber?', '1. und 3.', ['1. und 2.', '1. und 4.'], 'Jedes zweite Feld liegt gegenüber.'),
+        d('Wie viele Flächen eines Würfels sieht man höchstens gleichzeitig?', '3', ['4', '6'], 'Von einer Ecke aus sieht man drei Flächen.'),
+        d('Kann man zwei gegenüberliegende Flächen gleichzeitig sehen?', 'Nein', ['Ja, von einer Ecke', 'Ja, von der Seite'], 'Gegenüberliegende Flächen sind nie gleichzeitig sichtbar.'),
+        d('Auf einer Figur ist die Diagonale gedreht, auf der Abwicklung nicht. Was heisst das?', 'Die Figur ist falsch', ['Die Figur ist richtig', 'Das spielt keine Rolle'], 'Die Richtung der Muster muss stimmen.'),
       ]),
     ],
   },

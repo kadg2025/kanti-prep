@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { lernkarten } from '../lib/lernkarten';
 import { renderFigur } from '../lib/multicheck/figur';
 import { renderRaster } from '../lib/multicheck/raster';
+import { renderBild } from '../lib/multicheck/vorstellung_bilder.mjs';
 import { SENSEI_SPRUECHE } from '../lib/sensei_sprueche';
 import { DOJO_GUERTEL, ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
 
@@ -443,6 +444,16 @@ function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung, istDo
               <span style={{ display: 'block', width: '84px', height: '84px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff' }} dangerouslySetInnerHTML={{ __html: renderFigur(x, 'k' + i + 'a') }} />
               <span>→</span>
               <span style={{ display: 'block', width: '84px', height: '84px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff' }} dangerouslySetInnerHTML={{ __html: renderFigur(y, 'k' + i + 'b') }} />
+            </div>
+          ))}
+        </div>
+      )}
+      {karte.svgs && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center' }}>
+          {karte.svgs.map((b, i) => (
+            <div key={i} style={{ textAlign: 'center', color: dm.text, fontWeight: '700', fontSize: '13px' }}>
+              <span style={{ display: 'block', width: b.typ === 'seite' ? '220px' : '130px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff', lineHeight: 0 }} dangerouslySetInnerHTML={{ __html: renderBild(b) }} />
+              {b.cap && <span>{b.cap}</span>}
             </div>
           ))}
         </div>

@@ -3,6 +3,7 @@
 // Der Antwortstand «U» hat die Form:
 // { sel, set, val, korr, w, cols, asg }
 import { check as planCheck } from './plan';
+import { PFEIL_TEXT } from './raeumlich.mjs';
 
 export function neuerStand(q) {
   return { sel: null, set: {}, val: q.prefix || '', korr: false, w: -1, cols: [0, 0, 0, 0, 0, 0, 0, 0], asg: {}, rows: q.items ? q.items.map(() => null) : [] };
@@ -54,7 +55,7 @@ export function erwartetAntwort(q, item) {
 // true, wenn noch nichts (vollständig) beantwortet ist.
 export function istLeer(q, U) {
   const t = q.type;
-  if ((t === 'mc' || t === 'memchoice' || t === 'numproc' || t === 'figmc') && U.sel == null) return true;
+  if ((t === 'mc' || t === 'memchoice' || t === 'numproc' || t === 'figmc' || t === 'spatial' || t === 'net') && U.sel == null) return true;
   if ((t === 'numcmp' || t === 'coord') && U.rows.some(x => x == null)) return true;
   if (t === 'multi' && !Object.keys(U.set).some(k => U.set[k])) return true;
   if (t === 'input' && !U.val.trim()) return true;
@@ -84,6 +85,13 @@ export function auswerten(q, U, timeout) {
     const falsch = q.items.map((it, i) => (U.rows[i] === erwartetAntwort(q, it) ? 0 : i + 1)).filter(Boolean);
     ok = falsch.length === 0;
     if (!ok) extra = (t === 'numcmp' ? 'Falsch in Zeile ' : 'Falsch bei Feld ') + falsch.join(', ') + '.';
+  } else if (t === 'spatial') {
+    ok = U.sel === q.correct;
+    user = PFEIL_TEXT[U.sel];
+  } else if (t === 'net') {
+    ok = U.sel === q.correct;
+    user = 'Figur ' + 'ABCDE'[U.sel];
+    if (!ok) extra = q.options[U.sel].why;
   } else if (t === 'figmc') {
     ok = U.sel === q.correct;
     user = 'Bild ' + (U.sel + 1);
