@@ -55,7 +55,7 @@ export function erwartetAntwort(q, item) {
 // true, wenn noch nichts (vollständig) beantwortet ist.
 export function istLeer(q, U) {
   const t = q.type;
-  if ((t === 'mc' || t === 'memchoice' || t === 'numproc' || t === 'figmc' || t === 'spatial' || t === 'net') && U.sel == null) return true;
+  if ((t === 'mc' || t === 'vmc' || t === 'memchoice' || t === 'numproc' || t === 'figmc' || t === 'spatial' || t === 'net') && U.sel == null) return true;
   if ((t === 'numcmp' || t === 'coord') && U.rows.some(x => x == null)) return true;
   if (t === 'multi' && !Object.keys(U.set).some(k => U.set[k])) return true;
   if (t === 'input' && !U.val.trim()) return true;
@@ -72,7 +72,7 @@ export function auswerten(q, U, timeout) {
   let ok = false, user = '', extra = '', planRes = null;
   if (timeout && t !== 'plan') {
     user = 'keine Antwort (Zeit abgelaufen)';
-  } else if (t === 'mc' || t === 'memchoice') {
+  } else if (t === 'mc' || t === 'vmc' || t === 'memchoice') {
     ok = U.sel === q.correct;
     user = q.options[U.sel].t.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
     const o = q.options[U.sel];

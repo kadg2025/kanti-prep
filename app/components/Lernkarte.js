@@ -448,6 +448,19 @@ function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung, istDo
           ))}
         </div>
       )}
+      {karte.tabellen && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center' }}>
+          {karte.tabellen.map((tb, i) => (
+            <div key={i} style={{ fontSize: '13px', color: dm.text }}>
+              <div style={{ fontWeight: '700', marginBottom: '3px' }}>{tb.titel}</div>
+              <table style={{ borderCollapse: 'collapse' }}>
+                <thead><tr>{tb.kopf.map((k, j) => <th key={j} style={{ border: '1px solid ' + dm.border, padding: '3px 8px', textAlign: 'left' }}>{k}</th>)}</tr></thead>
+                <tbody>{tb.zeilen.map((z, j) => <tr key={j}>{z.map((v, k) => <td key={k} style={{ border: '1px solid ' + dm.border, padding: '3px 8px' }}>{v}</td>)}</tr>)}</tbody>
+              </table>
+            </div>
+          ))}
+        </div>
+      )}
       {karte.svgs && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center' }}>
           {karte.svgs.map((b, i) => (

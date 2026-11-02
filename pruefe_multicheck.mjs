@@ -1,7 +1,7 @@
 // Qualitätskontrolle für Multicheck IMS (app/lib/multicheck/)
 // Aufruf: node pruefe_multicheck.mjs
 //
-// Prüft: 254 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
+// Prüft: 264 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
 // Wochenplan-Musterlösungen gültig, jedes aktive Thema hat Üben, Dojo und
 // Lernkarten (mit «Typische Fehler» und «Dojo»), Check-Fragen und Dojo-Karten
 // wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, Videos (höchstens eines pro Kachel, gültige ID),
@@ -11,6 +11,8 @@ import fs from 'node:fs';
 import * as R from './app/lib/multicheck/raeumlich.mjs';
 import * as N from './app/lib/multicheck/netz.mjs';
 import { renderBild } from './app/lib/multicheck/vorstellung_bilder.mjs';
+import * as VF from './app/lib/multicheck/vernetzt_fragen.mjs';
+import { SYMBOLE } from './app/lib/multicheck/vernetzt_symbole.mjs';
 
 const DIR = 'app/lib/multicheck/';
 let fehler = 0;
@@ -25,13 +27,13 @@ function laden(datei, export_, params = {}) {
   return new Function(...Object.keys(params), s)(...Object.values(params));
 }
 
-const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js', vorst: 'vorstellung.js' };
+const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js', vorst: 'vorstellung.js', vernetzt: 'vernetzt.js' };
 const numerisch = laden('logik_numerisch.js');
 const FG = new Function(fs.readFileSync(DIR + 'figur.js', 'utf8').replace(/^export /gm, '') + '\nreturn { fig, normalisiere, unterschiede, wendeRegel, renderFigur };')();
 const daten = laden('konzentration_daten.js');
 const vdaten = laden('vorstellung_daten.js');
 const figural = laden('logik_figural.js', null, { fig: FG.fig });
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten })]));
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten, vn: VF.default })]));
 const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
 const lk = laden('lernkarten.js', 'multicheckLernkarten', { fig: FG.fig });
 
@@ -41,7 +43,7 @@ const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 254) bad(`Fragen: ${alle.length} statt 254`);
+if (alle.length !== 264) bad(`Fragen: ${alle.length} statt 264`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -296,10 +298,89 @@ for (const [id, t] of Object.entries(themen)) {
   console.log('Vorstellung: ' + rq.length + ' räumliche Szenen (Richtungen ' + rq.map(q => q.correct).join(' ') + '), ' + nq.length + ' Abwicklungen (Position ' + nq.map(q => 'ABCDE'[q.correct]).join('') + '), 11 Würfelnetze, ' + bilder + ' Lernkarten-Bilder');
 }
 
+// ─── Vernetztes Denken ───────────────────────────────────────────────────
+{
+  const vt = themen.vernetzt;
+  const SZ = VF.SZENARIEN;
+  if (vt.qs.length !== 10) bad('Vernetzt: ' + vt.qs.length + ' Fragen statt 10');
+  let rechenangabe = false;
+  for (const sz of Object.values(SZ)) {
+    const nrs = sz.teile.map(t => t.nr), namen = sz.teile.map(t => t.name);
+    if (new Set(nrs).size !== nrs.length || new Set(namen).size !== namen.length) bad(sz.id + ': doppelte Nummern oder Namen');
+    if (sz.teile.length < 9 || sz.teile.length > 10) bad(sz.id + ': ' + sz.teile.length + ' Teile');
+    if (sz.schritte.length !== 4) bad(sz.id + ': ' + sz.schritte.length + ' Schritte statt 4');
+    for (const t of sz.teile) {
+      if (!SYMBOLE[t.symbol]) bad(sz.id + ' ' + t.nr + ': Symbol fehlt');
+      const summe = sz.schritte.reduce((n, st) => n + st.teile.filter(([x]) => x === t.nr).reduce((m, [, k]) => m + k, 0), 0);
+      const vorkommen = sz.schritte.filter(st => st.teile.some(([x]) => x === t.nr)).length;
+      if (!vorkommen) bad(sz.id + ' ' + t.nr + ': kommt in keinem Schritt vor');
+      if (t.werkzeug) { if (t.gesamt !== 1) bad(sz.id + ' ' + t.nr + ': Werkzeug braucht Gesamtmenge 1'); }
+      else if (summe !== t.gesamt) bad(sz.id + ' ' + t.nr + ' ' + t.name + ': Teileliste ' + t.gesamt + ', Summe der Schritte ' + summe);
+      if (t.verwendung && !/^(zur|zum|für) /.test(t.verwendung)) bad(sz.id + ' ' + t.nr + ': Verwendung beginnt nicht mit zur/zum/für');
+    }
+    sz.schritte.forEach((st, i) => {
+      for (const [nr, m] of st.teile) if (!nrs.includes(nr) || !(m >= 1)) bad(sz.id + ' Schritt ' + (i + 1) + ': Nummer ' + nr + ' oder Menge ungültig');
+      for (const t of sz.teile) if (st.satz.includes(t.name) || st.satz.includes(t.plural) || st.satz.toLowerCase().includes(t.name.split(' ')[0].toLowerCase())) bad(sz.id + ' Schritt ' + (i + 1) + ': Satz nennt den Namen «' + t.name + '»');
+      for (const m of st.satz.matchAll(/Teil (\d\d)/g)) if (!st.teile.some(([n]) => n === m[1])) bad(sz.id + ' Schritt ' + (i + 1) + ': Satz nennt Teil ' + m[1] + ', der nicht im Schritt steht');
+    });
+    if (/ß/.test(JSON.stringify(sz))) bad(sz.id + ': ß im Szenario');
+  }
+  // Unabhängige Wahrheitsprüfung einer Aussage (ohne die Hilfsfunktion aus dem Fragenmodul)
+  const wahr = (sz, st) => {
+    const t = sz.teile.find(x => x.nr === st.nr);
+    if (st.typ === 'schritt') return sz.schritte[st.wert - 1].teile.some(([n]) => n === st.nr);
+    if (st.typ === 'menge') return (t.werkzeug ? 1 : sz.schritte.flatMap(x => x.teile).filter(([n]) => n === st.nr).reduce((m, [, k]) => m + k, 0)) === st.wert;
+    if (st.typ === 'mass') return t.masse[st.key] === st.wert;
+    if (st.typ === 'verwendung') return st.wert === st.nr;
+    if (st.typ === 'inhalt') return sz.schritte.flatMap(x => x.teile).filter(([n]) => n === st.nr).reduce((m, [, k]) => m + k, 0) * t.inhalt.wert === st.wert;
+    return null;
+  };
+  const alleFragen = [...vt.qs, vt.unterInfo.a.demo];
+  const gesehen = new Set();
+  for (const q of alleFragen) {
+    const sz = SZ[q.szenario], pr = q.pruef;
+    const texte = q.options.map(o => o.t);
+    if (texte.length !== 4 || new Set(texte).size !== 4) bad(q.id + ': keine 4 verschiedenen Antworten');
+    if (!(q.correct >= 0 && q.correct < 4) || q.answerText !== texte[q.correct]) bad(q.id + ': richtige Antwort ungültig');
+    const schluessel = q.frage + '|' + texte.join('|');
+    if (gesehen.has(schluessel)) bad(q.id + ': doppelte Frage'); gesehen.add(schluessel);
+    if (pr.art === 'schritt') {
+      const t = sz.teile.find(x => x.nr === pr.nr);
+      const wo = sz.schritte.map((st, i) => (st.teile.some(([n]) => n === pr.nr) ? i + 1 : 0)).filter(Boolean);
+      if (wo.length !== 1) bad(q.id + ': ' + t.name + ' kommt in ' + wo.length + ' Schritten vor');
+      if (texte.some((x, k) => x !== 'Montageschritt ' + (k + 1)) || q.correct !== wo[0] - 1) bad(q.id + ': Schritt-Antworten falsch');
+      if (!q.frage.includes(t.name)) bad(q.id + ': Frage nennt den Namen nicht');
+    } else if (pr.art === 'menge') {
+      const t = sz.teile.find(x => x.nr === pr.nr);
+      const summe = sz.schritte.flatMap(x => x.teile).filter(([n]) => n === pr.nr).reduce((m, [, k]) => m + k, 0);
+      if (summe !== t.gesamt) bad(q.id + ': Summe der Schritte ' + summe + ' ≠ Teileliste ' + t.gesamt);
+      texte.forEach((x, k) => { if ((Number(x) === summe) !== (k === q.correct)) bad(q.id + ': Antwort ' + x + ' falsch eingeordnet'); });
+    } else if (pr.art === 'rechnen') {
+      const wert = (a) => a.reduce((m, x) => m + sz.teile.find(t => t.nr === x.nr).masse[x.key] * x.mal, 0);
+      if (pr.ausdruck.some(a => a.mal > 1)) rechenangabe = true;
+      texte.forEach((x, k) => { if ((parseFloat(x) === wert(pr.ausdruck)) !== (k === q.correct)) bad(q.id + ': Antwort ' + x + ' falsch eingeordnet'); });
+      if (!/ cm$/.test(q.answerText)) bad(q.id + ': Einheit fehlt');
+    } else if (pr.art === 'korrekt' || pr.art === 'falsch') {
+      const soll = pr.art === 'korrekt';
+      const w = pr.stmts.map(st => wahr(sz, st));
+      if (pr.stmts.length !== 4 || w.filter(x => x === soll).length !== 1) bad(q.id + ': nicht genau eine ' + (soll ? 'korrekte' : 'falsche') + ' Aussage (' + w.join(',') + ')');
+      if (w.indexOf(soll) !== q.correct) bad(q.id + ': richtige Antwort steht an der falschen Stelle');
+      texte.forEach((x, k) => { if (x !== VF.aussage(sz, pr.stmts[k])) bad(q.id + ': Aussage ' + (k + 1) + ' passt nicht zu den Daten'); });
+      if (!q.frage.includes(soll ? '<u>korrekt</u>' : '<u>falsch</u>')) bad(q.id + ': Unterstreichung fehlt');
+      if (pr.stmts.some(st => st.typ === 'inhalt')) rechenangabe = true;
+    } else bad(q.id + ': unbekannte Art ' + pr.art);
+    if (!q.why || /ß/.test(JSON.stringify(q))) bad(q.id + ': Erklärung fehlt oder ß');
+  }
+  if (!rechenangabe) bad('Vernetzt: keine Rechenangabe in den Fragen');
+  if (new Set(vt.qs.map(q => q.correct)).size !== 4) bad('Vernetzt: richtige Antwort nicht über alle 4 Positionen verteilt');
+  if (vt.unterInfo.a.demo.answerText !== 'Montageschritt 3' || !/Holzleim/.test(vt.unterInfo.a.demo.frage)) bad('Vernetzt: Beispiel mit Holzleim ist nicht Schritt 3');
+  console.log('Vernetzt: 10 Fragen (Positionen ' + vt.qs.map(q => q.correct + 1).join('') + '), Mengen in beiden Szenarien stimmig, ' + Object.values(SZ).map(z => z.teile.length + ' Teile').join(' und '));
+}
+
 // ─── Startseite: Reihenfolge der Kacheln ─────────────────────────────────
 const index = fs.readFileSync(DIR + 'index.js', 'utf8');
 const kacheln = [...index.matchAll(/(?:bald\('[a-z]+', '([^']+)'|aktiv\((\w+),)/g)].map(m => m[1] || m[2]);
-const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'vorstellung', 'Vernetztes Denken', 'Textschreiben'];
+const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'vorstellung', 'vernetzt', 'Textschreiben'];
 if (JSON.stringify(kacheln) !== JSON.stringify(sollKacheln)) bad('Kachel-Reihenfolge in index.js: ' + kacheln.join(', '));
 console.log('Kacheln:', kacheln.length);
 
