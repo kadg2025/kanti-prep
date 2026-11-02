@@ -754,7 +754,7 @@ export const multicheckLernkarten = {
         ],
       },
       {
-        id: 'mc_vo_netz', emoji: '📦', titel: 'Abwicklungen', videos: [],
+        id: 'mc_vo_netz', emoji: '📦', titel: 'Abwicklungen', videos: [{ titel: '11 Würfelnetze und gegenüberliegende Seiten (Mathe Chemie Klinik)', youtubeId: '1b56XxfEr3c' }],
         karten: [
           { text: 'Eine [[mcmerk|Abwicklung]] ist ein aufgeklappter Würfel, flach hingelegt. Er hat 6 Flächen.', svgs: [{ typ: 'netz', zellen: NETZ1, cap: 'Abwicklung' }, { typ: 'wuerfel', zellen: NETZ1, ecke: [1, 1, 1], cap: 'Würfel von einer Ecke' }] },
           { text: 'Gegenüberliegende Flächen: In einer Reihe von vier Feldern liegen das [[mcmerk|1. und 3.]] Feld gegenüber, ebenso das [[mcmerk|2. und 4.]] Feld.' },
@@ -860,7 +860,7 @@ export const multicheckLernkarten = {
     titel: 'Merkfähigkeit',
     kacheln: [
       {
-        id: 'mc_me_pikto', emoji: '🖼️', titel: 'Piktogramme merken', videos: [],
+        id: 'mc_me_pikto', emoji: '🖼️', titel: 'Piktogramme merken', videos: [{ titel: 'Loci Lerntechnik: So merkst du dir fast alles (lernfoerderung)', youtubeId: 'nCvl2FCiJqI' }],
         karten: [
           { text: 'Ein [[mcmerk|Piktogramm]] ist ein einfaches Bild, das für etwas steht. In der Lernphase siehst du mehrere. Später entscheidest du bei jedem Bild: schon gesehen oder neu?', symbole: ['schiff', 'hund', 'burg'] },
           { text: '[[mcmerk|Tipp 1:]] Nenne jedes Bild in einem Wort, zum Beispiel Schiff, Hund, Burg. Mit Wörtern merkt man sich Bilder leichter.' },
