@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { lernkarten } from '../lib/lernkarten';
+import { renderFigur } from '../lib/multicheck/figur';
 import { SENSEI_SPRUECHE } from '../lib/sensei_sprueche';
 import { DOJO_GUERTEL, ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
 
@@ -434,6 +435,17 @@ function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung, istDo
   return (
     <div style={{ background: istDojo ? dj.cremeKarte : dm.card, border: `1px solid ${istDojo ? dj.rand : dm.border}`, borderLeft: istDojo ? `5px solid ${dj.rot}` : undefined, borderRadius: '16px', padding: isMobile ? '22px 18px' : '30px', minHeight: '240px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '14px' }}>
       <p style={{ margin: 0, fontSize: isMobile ? '17px' : '18px', lineHeight: '1.7', color: dm.text, whiteSpace: 'pre-wrap', fontWeight: karte.loesung ? '700' : '400' }}><Markiert text={karte.text} dark={dark} /></p>
+      {karte.bilder && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
+          {karte.bilder.map(([x, y], i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '24px', fontWeight: '700', color: dm.text }}>
+              <span style={{ display: 'block', width: '84px', height: '84px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff' }} dangerouslySetInnerHTML={{ __html: renderFigur(x, 'k' + i + 'a') }} />
+              <span>→</span>
+              <span style={{ display: 'block', width: '84px', height: '84px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff' }} dangerouslySetInnerHTML={{ __html: renderFigur(y, 'k' + i + 'b') }} />
+            </div>
+          ))}
+        </div>
+      )}
       {karte.visual && <VisualBlock type={karte.visual} chips={karte.chips} diagram={karte.diagram} dm={dm} dark={dark} />}
       {mc && <DojoOptionen karte={karte} selected={mcSelected} onAnswer={onMcAnswer} dm={dm} dark={dark} />}
       {mc && karte.loesung && revealed && (

@@ -41,7 +41,7 @@ export const UNTERTHEMEN = {
   ],
   logik: [
     u('verbal', 'Verbale Analogien', '🔗', [1, 10]),
-    { id: 'figural', name: 'Figurale Analogien', emoji: '🔷', bereiche: [], bald: true },
+    u('figural', 'Figurale Analogien', '🔷', [21, 30]),
     u('numerisch', 'Numerische Verarbeitungskapazität', '🔢', [11, 20]),
   ],
 };

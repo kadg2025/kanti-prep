@@ -49,7 +49,7 @@ export function numprocEreignisse(q) {
 // true, wenn noch nichts (vollständig) beantwortet ist.
 export function istLeer(q, U) {
   const t = q.type;
-  if ((t === 'mc' || t === 'memchoice' || t === 'numproc') && U.sel == null) return true;
+  if ((t === 'mc' || t === 'memchoice' || t === 'numproc' || t === 'figmc') && U.sel == null) return true;
   if (t === 'multi' && !Object.keys(U.set).some(k => U.set[k])) return true;
   if (t === 'input' && !U.val.trim()) return true;
   if (t === 'gap' && !U.korr && !U.val.trim()) return true;
@@ -74,6 +74,9 @@ export function auswerten(q, U, timeout) {
       else if (t === 'memchoice') extra = diffTxt(o.t, q.options[q.correct].t);
       else if (o.why) extra = o.why;
     }
+  } else if (t === 'figmc') {
+    ok = U.sel === q.correct;
+    user = 'Bild ' + (U.sel + 1);
   } else if (t === 'numproc') {
     ok = U.sel === q.answer;
     user = String(U.sel);
