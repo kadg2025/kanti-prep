@@ -2951,15 +2951,15 @@ export const lernkarten = {
         minLoesungen: 3,
         karten: [
           // 2016, Aufgabe 8 (Frage)
-          { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', loesung: 'Ob sie ihr Haus blöd finde (fände), fragte Wenger. Auch möglich: Wenger fragte, ob sie ihr Haus blöd finde.' },
+          { text: 'Setze in die indirekte Rede:\n\n«Findest du unser Haus blöd?», fragte Wenger.', options: [{ text: 'Ob sie ihr Haus blöd finde, fragte Wenger.', correct: true }, { text: 'Ob sie ihr Haus blöd findet, fragte Wenger.', correct: false }, { text: 'Dass sie ihr Haus blöd finde, fragte Wenger.', correct: false }], loesung: 'Ob sie ihr Haus blöd finde (fände), fragte Wenger. Auch möglich: Wenger fragte, ob sie ihr Haus blöd finde.' },
           // 2016, Aufgabe 8 (Aussage)
-          { text: 'Setze in die indirekte Rede:\n\n«Es ist doch auch ein Chalet.»', loesung: 'Es sei (wäre) doch auch ein Chalet.' },
+          { text: 'Setze in die indirekte Rede:\n\n«Es ist doch auch ein Chalet.»', options: [{ text: 'Es sei doch auch ein Chalet.', correct: true }, { text: 'Es ist doch auch ein Chalet.', correct: false }, { text: 'Es war doch auch ein Chalet.', correct: false }], loesung: 'Es sei (wäre) doch auch ein Chalet.' },
           // 2017, Aufgabe 9
-          { text: 'Setze in die indirekte Rede mit Konjunktiv I:\n\n«Es gibt keine Herren», rief er zornig. «Wir sind alle Kameraden.»', loesung: 'Er rief zornig, es gebe keine Herren, wir (sie) seien alle Kameraden.' },
+          { text: 'Setze in die indirekte Rede mit Konjunktiv I:\n\n«Es gibt keine Herren», rief er zornig. «Wir sind alle Kameraden.»', options: [{ text: 'Er rief zornig, es gebe keine Herren, sie seien alle Kameraden.', correct: true }, { text: 'Er rief zornig, es gibt keine Herren, wir sind alle Kameraden.', correct: false }, { text: 'Er rief zornig, es gäbe keine Herren, sie waren alle Kameraden.', correct: false }], loesung: 'Er rief zornig, es gebe keine Herren, wir (sie) seien alle Kameraden.' },
           // 2020, Aufgabe 12
-          { text: 'Ersetze die indirekte Rede durch direkte Rede:\n\n«Der Grossvater, sagte die Mutter, hole sich eine Erkältung.»', loesung: 'Die Mutter sagte: «Der Grossvater holt sich eine Erkältung.»' },
+          { text: 'Ersetze die indirekte Rede durch direkte Rede:\n\n«Der Grossvater, sagte die Mutter, hole sich eine Erkältung.»', options: [{ text: 'Die Mutter sagte: «Der Grossvater holt sich eine Erkältung.»', correct: true }, { text: 'Die Mutter sagte: «Der Grossvater hole sich eine Erkältung.»', correct: false }, { text: 'Die Mutter sagte: «Der Grossvater holte sich eine Erkältung.»', correct: false }], loesung: 'Die Mutter sagte: «Der Grossvater holt sich eine Erkältung.»' },
           // 2021, Aufgabe 12
-          { text: 'Setze die direkte Rede in indirekte Rede:\n\n«Er ist ertrunken», sagte sie leise.', loesung: 'Sie sagte leise, er sei ertrunken.' },
+          { text: 'Setze die direkte Rede in indirekte Rede:\n\n«Er ist ertrunken», sagte sie leise.', options: [{ text: 'Sie sagte leise, er sei ertrunken.', correct: true }, { text: 'Sie sagte leise, er ist ertrunken.', correct: false }, { text: 'Sie sagte leise, sie sei ertrunken.', correct: false }], loesung: 'Sie sagte leise, er sei ertrunken.' },
         ],
         check: [],
       },
