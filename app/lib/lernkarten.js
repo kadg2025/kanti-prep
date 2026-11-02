@@ -1796,6 +1796,7 @@ export const lernkarten = {
         id: 'konjunktiv',
         emoji: '💭',
         titel: 'Konjunktiv erkennen und bilden',
+        videos: [{ titel: 'Konjunktiv einfach erklärt (musstewissen Deutsch)', youtubeId: 'N_faVcrB5zw' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Modus: die Aussageart des Verbs.\n• Indikativ: die Wirklichkeitsform (er geht).\n• Konjunktiv: die Möglichkeitsform (er gehe, er ginge).\n• Indirekte Rede: Du gibst wieder, was jemand gesagt hat, ohne Anführungszeichen.' },
           { text: '[[k1|Konjunktiv I]]: Er gehört zur indirekten Rede.\n\nStamm + -e:\ner [[k1|gehe]], sie [[k1|habe]], er [[k1|sei]], sie [[k1|könne]]\n\n«Sie sagte, er [[k1|sei]] müde.»' },
@@ -1938,7 +1939,7 @@ export const lernkarten = {
         id: 'wortschatz-synonyme',
         emoji: '🔁',
         titel: 'Synonyme finden',
-        videos: [],
+        videos: [{ titel: 'Synonym, Homonym und Antonym (mein-lernen.at)', youtubeId: 'Rx4KDtFm-Ig' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[syn|Synonym]]: ein Wort mit gleicher oder sehr ähnlicher Bedeutung (gross – riesig).\n• Kontext: der Satz, in dem das Wort steht.\n• Einsetzprobe: Du setzt dein Wort in den Satz ein und liest ihn laut.' },
           { text: 'So gehst du vor:\n\n1. Was heisst das Wort hier? Sag es in eigenen Worten.\n2. Ein Wort dazu suchen.\n3. [[aen|Einsetzprobe]]: in den Satz einsetzen und laut lesen.' },
@@ -1957,7 +1958,7 @@ export const lernkarten = {
         id: 'wortschatz-gegenteile',
         emoji: '↔️',
         titel: 'Gegenteile finden',
-        videos: [],
+        videos: [{ titel: 'Das Antonym – das Oppositionswort (mein-lernen.at)', youtubeId: 'iSS_DHX8Q3s' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[geg|Antonym]]: ein Wort mit gegenteiliger Bedeutung (hell – dunkel).\n• Vorsilbe: ein Wortteil vorne, zum Beispiel un- in unklar.' },
           { text: 'So gehst du vor:\n\n1. Bedeutung in eigenen Worten sagen\n2. Das Gegenteil davon denken\n3. Einsetzprobe im Satz\n\n→ Ein ähnliches Wort ist noch kein Gegenteil.' },
@@ -2088,7 +2089,7 @@ export const lernkarten = {
         id: 'satzglieder-subjekt',
         emoji: '🎯',
         titel: 'Subjekt finden',
-        videos: [],
+        videos: [{ titel: 'Satzglieder: Subjekt, Prädikat, Objekt (Unterricht mal anders)', youtubeId: '1KARV1i-Uzs' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Satzglied: ein Baustein des Satzes, der zusammen verschoben werden kann.\n• [[prd|Prädikat]]: der verbale Teil des Satzes.\n• [[su|Subjekt]]: wer oder was etwas tut. Es ist eine Nominalgruppe im [[nom|Nominativ]].' },
           { text: 'Der Fragetest:\n\n1. Zuerst das [[prd|Prädikat]] suchen\n2. Dann fragen: [[aen|Wer oder was]] + Prädikat?\n\n«Der Vater trug den Koffer.»\n→ Wer oder was trug? → [[su|der Vater]]' },
@@ -2107,7 +2108,7 @@ export const lernkarten = {
         id: 'satzglieder-objekte',
         emoji: '🎒',
         titel: 'Objekte finden',
-        videos: [],
+        videos: [{ titel: 'Das Objekt erkennen und erfragen (Diego Hagen)', youtubeId: 'Fq3JM06SfoE' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Objekt: die Ergänzung zum Verb, meist eine Nominalgruppe.\n• [[ao|Akkusativobjekt]], [[do|Dativobjekt]], [[go|Genitivobjekt]]: benannt nach ihrem Fall.' },
           { text: 'Die drei Fragetests:\n\n[[ao|Akkusativobjekt]] → Wen oder was?\n[[do|Dativobjekt]] → Wem?\n[[go|Genitivobjekt]] → Wessen?\n\nImmer zusammen mit dem Prädikat fragen.' },
@@ -2269,7 +2270,7 @@ export const lernkarten = {
         id: 'wortarten-zaehlen',
         emoji: '🔢',
         titel: 'Wortarten zählen',
-        videos: [],
+        videos: [{ titel: 'Wortarten erkennen (Learnhard)', youtubeId: 'KKkORI0CQqo' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Verschiedene Wortarten zählen heisst: Jede Art zählt nur einmal, egal wie oft sie vorkommt.\n• Mehr als fünf geht nie.' },
           { text: 'So gehst du vor:\n\n1. Über jedes Wort die Wortart schreiben\n2. Die verschiedenen Arten zusammenzählen\n\nNicht die Wörter zählen, sondern die Arten.' },
@@ -2287,7 +2288,7 @@ export const lernkarten = {
         id: 'wortarten-partikeln',
         emoji: '🧷',
         titel: 'Partikeln erkennen',
-        videos: [],
+        videos: [{ titel: 'Partikel (Lernvideos für die Oberstufe)', youtubeId: '_w4oJzsKlfU' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[pa|Partikel]]: unveränderliches Wort.\n• Präposition: steht vor einer Nominalgruppe (auf dem Tisch).\n• [[konj|Konjunktion]]: verbindet Sätze oder Satzteile (und, weil).' },
           { text: 'Partikeln lassen sich in drei Gruppen ordnen:\n\n1. Präpositionen: durch, nach, mit\n2. [[konj|Konjunktionen]]: und, obwohl, dass, denn\n3. Sonstige, etwa Adverbien: nicht, bald, sehr' },
@@ -2416,7 +2417,7 @@ export const lernkarten = {
         id: 'pronomen-artikel',
         emoji: '🔍',
         titel: 'Artikel oder Pronomen?',
-        videos: [],
+        videos: [{ titel: 'Pronomen und Artikel (Schoolmate)', youtubeId: '1MwtMCsHtFQ' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Artikel: der, die, das, ein, eine. Er begleitet ein Nomen.\n• Bei den fünf Wortarten gehört der Artikel zu den [[pro|Pronomen]]. Gefragt ist aber oft die Unterkategorie.' },
           { text: 'Der Test bei «der, die, das»:\n\nFolgt direkt ein Nomen (auch mit Adjektiv dazwischen)?\n→ [[aen|Artikel]]\n\nLeitet es einen Nebensatz ein, Verb am Ende?\n→ Relativpronomen' },
@@ -2509,7 +2510,7 @@ export const lernkarten = {
         id: 'nomenadj-plural',
         emoji: '📚',
         titel: 'Plural bilden',
-        videos: [],
+        videos: [{ titel: 'Deutscher Plural: die 5 Pluralendungen (EasyDeutsch)', youtubeId: 'oFfYYYUYMSE' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Singular: Einzahl (das Hemd).\n• Plural: Mehrzahl (die Hemden).\n• Umlaut: a wird ä, o wird ö, u wird ü.\n• Im Plural heisst der Artikel immer die.' },
           { text: 'Die häufigsten Endungen:\n\n-e: Korridor → die Korridore\n-en: Hemd → die Hemden\n-er: Land → die Länder\nkeine Endung: Nachfolger → die Nachfolger' },
@@ -2707,7 +2708,7 @@ export const lernkarten = {
         id: 'satzbau-muster',
         emoji: '🧱',
         titel: 'Satzbaumuster',
-        videos: [],
+        videos: [{ titel: 'Hauptsätze, Nebensätze, Satzreihen, Satzgefüge (Learnhard)', youtubeId: 'IPeUwMbwfVM' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Satzbaumuster: die Abfolge der Teilsätze, zum Beispiel [[hs|HS]]-[[ns|NS]]-[[hs|HS]].\n• HS steht für [[hs|Hauptsatz]], NS für [[ns|Nebensatz]].' },
           { text: 'So gehst du vor:\n\n1. Personalformen suchen\n2. An den Kommas und Konjunktionen trennen\n3. Jeden Teilsatz bestimmen\n4. In der Reihenfolge aufschreiben' },
@@ -2725,7 +2726,7 @@ export const lernkarten = {
         id: 'satzbau-verbinden',
         emoji: '🪡',
         titel: 'Sätze mit Konjunktionen verbinden',
-        videos: [],
+        videos: [{ titel: 'Satzreihe und Satzgefüge (EinfachSchule)', youtubeId: 'ux8k5E2Inpo' }],
         karten: [
           { text: 'Diese Wörter brauchst du. Jede Konjunktion hat eine Bedeutung:\n\nweil → Grund\nobwohl → Gegensatz\nwährend → Gleichzeitigkeit\nals → einmaliger Zeitpunkt' },
           { text: 'So verbindest du zwei Sätze:\n\n1. Passende [[konj|Konjunktion]] wählen\n2. Komma setzen\n3. Im [[ns|Nebensatz]] das Verb ans Ende stellen' },
