@@ -4,7 +4,7 @@
 // Prüft: 190 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
 // Wochenplan-Musterlösungen gültig, jedes aktive Thema hat Üben, Dojo und
 // Lernkarten (mit «Typische Fehler» und «Dojo»), Check-Fragen und Dojo-Karten
-// wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, leere Video-Felder,
+// wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, Videos (höchstens eines pro Kachel, gültige ID),
 // dazu die Zahlenbeispiele der Lernkarten nachgerechnet.
 
 import fs from 'node:fs';
@@ -73,7 +73,8 @@ for (const id of Object.keys(themen)) {
   for (const x of k.kacheln) {
     kachelIds.push(x.id);
     if (!/^mc_/.test(x.id)) bad(`${x.id}: Präfix mc_ fehlt`);
-    if (!Array.isArray(x.videos) || x.videos.length) bad(`${x.id}: videos muss ein leeres Feld sein`);
+    if (!Array.isArray(x.videos) || x.videos.length > 1) bad(`${x.id}: videos muss eine Liste mit höchstens einem Video sein`);
+    for (const v of x.videos || []) if (!v.titel || !/^[A-Za-z0-9_-]{11}$/.test(v.youtubeId)) bad(`${x.id}: Video ohne Titel oder mit ungültiger ID`);
     if (x.titel.length > 26 || /[()]/.test(x.titel) || /\d{4}/.test(x.titel)) bad(`${x.id}: Kachelname «${x.titel}»`);
     const texte = [];
     for (const kk of x.karten) {

@@ -2,7 +2,7 @@
 // app/lib/lernkarten.js (Kacheln mit karten/check, dazu «Typische Fehler» und «Dojo»).
 // Der Schlüssel ist die Themen-ID aus index.js. Kachel-IDs sind über alle Themen
 // eindeutig (Präfix mc_), weil der Lernfortschritt pro Kachel-ID gespeichert wird.
-// Videos: Das Feld «videos» bleibt leer, bis ein Video ausgesucht ist.
+// Videos: Das Feld «videos» ist leer, wenn noch kein passendes Video gefunden ist.
 // Farben im Text: [[mcok|…]] richtig/Regel, [[mcfalle|…]] Falle, [[mcmerk|…]] Merkhilfe.
 
 // Frage mit vier Antworten; die erste Antwort ist die richtige (gemischt wird beim Anzeigen).
@@ -44,7 +44,7 @@ export const multicheckLernkarten = {
         ],
       },
       {
-        id: 'mc_de_das_dass', emoji: '🔀', titel: 'das oder dass', videos: [],
+        id: 'mc_de_das_dass', emoji: '🔀', titel: 'das oder dass', videos: [{ titel: 'Das oder dass (Studyflix)', youtubeId: 'G0Xils-p2wA' }],
         karten: [
           { text: 'Ein Nebensatz kann nicht allein stehen. Er hängt an einem anderen Satz, getrennt durch ein Komma.\n\n[[mcok|dass]] leitet einen Nebensatz ein, zum Beispiel nach «ich weiss», «ich glaube», «ich hoffe».\n\nIch weiss, [[mcok|dass]] du kommst.' },
           { text: 'Probe: Kannst du «dieses» oder «welches» einsetzen? Dann schreibst du [[mcok|das]] mit einem s.\n\nDas Auto, [[mcok|das]] dort steht. (= welches dort steht)\n\nPasst «dieses» oder «welches» nicht, schreibst du [[mcok|dass]].' },
@@ -321,7 +321,7 @@ export const multicheckLernkarten = {
         ],
       },
       {
-        id: 'mc_it_fluss', emoji: '🔀', titel: 'Flussdiagramm', videos: [],
+        id: 'mc_it_fluss', emoji: '🔀', titel: 'Flussdiagramm', videos: [{ titel: 'Flussdiagramm (Eduty)', youtubeId: 'coylYRocCvA' }],
         karten: [
           { text: 'Die Formen haben feste Bedeutungen:\n\n[[mcmerk|Oval]] = Start oder Ende\n[[mcmerk|Parallelogramm]] = Eingabe: Die Variablen bekommen ihre ersten Werte\n[[mcmerk|Rechteck]] = Hier wird gerechnet (zum Beispiel A = A + B)\n[[mcmerk|Raute]] = Entscheidung: Bedingung wahr, dann «Ja», sonst «Nein»\n[[mcmerk|Welle]] = Ausgabe des Ergebnisses' },
           { text: 'Beispiel: A = 2, B = 3.\n\nA = A + 2 ergibt A = 4.\nIst A > B? 4 > 3, also «Ja».\nA = A − B ergibt 4 − 3 = [[mcok|1]].' },
@@ -446,7 +446,7 @@ export const multicheckLernkarten = {
     titel: 'Mathematik',
     kacheln: [
       {
-        id: 'mc_ma_schaetzen_mal', emoji: '✖️', titel: 'Schätzen: Mal', videos: [],
+        id: 'mc_ma_schaetzen_mal', emoji: '✖️', titel: 'Schätzen: Mal', videos: [{ titel: 'Überschlagsrechnung, Schätzen (Lehrerschmidt)', youtubeId: '226hdyYW7sg' }],
         karten: [
           { text: 'Bei Schätzaufgaben rechnest du nicht genau, sondern geschickt. Bei Zahlen mit Endnullen geht das so:\n\n1. Streiche die Endnullen und zähle sie.\n2. Rechne die Kernzahlen mal. Kernzahl ist die Zahl ohne die Nullen am Ende.\n3. Hänge alle gezählten Nullen hinten an.' },
           { text: '80 · 60: Kernzahlen 8 · 6 = 48. Nullen: 1 + 1 = 2. Resultat: [[mcok|4’800]].\n\n500 · 20: Kernzahlen 5 · 2 = 10. Nullen: 2 + 1 = 3. Resultat: [[mcok|10’000]].' },
@@ -458,7 +458,7 @@ export const multicheckLernkarten = {
         ],
       },
       {
-        id: 'mc_ma_schaetzen_plus', emoji: '➕', titel: 'Schätzen: Plus und Minus', videos: [],
+        id: 'mc_ma_schaetzen_plus', emoji: '➕', titel: 'Schätzen: Plus und Minus', videos: [{ titel: 'Überschlagsrechnung, Schätzen (Lehrerschmidt)', youtubeId: '226hdyYW7sg' }],
         karten: [
           { text: 'Plus: Runde beide Zahlen und addiere sie. Das gibt die Grössenordnung. Dann addierst du nur die Einerziffern (die letzten Ziffern). Die letzte Ziffer des Resultats muss dazu passen.\n\n38’902 + 4’115 ≈ 39’000 + 4’000 = 43’000. Einerziffern: 2 + 5 = 7. Resultat: [[mcok|43’017]].' },
           { text: 'Minus: Runde die Zahl, die abgezogen wird.\n\n41’206 − 3’999 ≈ 41’206 − 4’000 = 37’206. Es wurde 1 zu viel abgezogen, also kommt 1 dazu: [[mcok|37’207]].' },
@@ -470,7 +470,7 @@ export const multicheckLernkarten = {
         ],
       },
       {
-        id: 'mc_ma_schaetzen_geteilt', emoji: '➗', titel: 'Schätzen: Geteilt', videos: [],
+        id: 'mc_ma_schaetzen_geteilt', emoji: '➗', titel: 'Schätzen: Geteilt', videos: [{ titel: 'Überschlagsrechnung, Schätzen (Lehrerschmidt)', youtubeId: '226hdyYW7sg' }],
         karten: [
           { text: 'Bei Zahlen mit Endnullen streichst du unten alle Endnullen und oben gleich viele. Dann rechnest du die übrig gebliebene Aufgabe.' },
           { text: '900’000 : 300 → zwei Nullen streichen → 9’000 : 3 = [[mcok|3’000]].\n\n4’800’000 : 600 → zwei Nullen streichen → 48’000 : 6 = [[mcok|8’000]].' },
@@ -496,7 +496,7 @@ export const multicheckLernkarten = {
         ],
       },
       {
-        id: 'mc_ma_einheiten', emoji: '📏', titel: 'Einheiten', videos: [],
+        id: 'mc_ma_einheiten', emoji: '📏', titel: 'Einheiten', videos: [{ titel: 'Raummasse und Liter umrechnen (Lehrerschmidt)', youtubeId: 'NItq_I7Yz9M' }],
         karten: [
           { text: 'Diese Umrechnungen musst du kennen:\n\n[[mcmerk|Volumen]]: 1 l = 10 dl = 100 cl = 1’000 ml\n[[mcmerk|Masse]]: 1 kg = 1’000 g, 1 g = 1’000 mg\n[[mcmerk|Länge]]: 1 m = 100 cm, 1 cm = 10 mm, 1 m = 1’000 mm\n[[mcmerk|Zeit]]: 1 h = 60 min' },
           { text: '5 dl = 0.5 l, denn 10 dl sind 1 l.\n750 g = 0.75 kg.' },
