@@ -1,13 +1,16 @@
 // Qualitätskontrolle für Multicheck IMS (app/lib/multicheck/)
 // Aufruf: node pruefe_multicheck.mjs
 //
-// Prüft: 234 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
+// Prüft: 254 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
 // Wochenplan-Musterlösungen gültig, jedes aktive Thema hat Üben, Dojo und
 // Lernkarten (mit «Typische Fehler» und «Dojo»), Check-Fragen und Dojo-Karten
 // wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, Videos (höchstens eines pro Kachel, gültige ID),
 // dazu die Zahlenbeispiele der Lernkarten nachgerechnet.
 
 import fs from 'node:fs';
+import * as R from './app/lib/multicheck/raeumlich.mjs';
+import * as N from './app/lib/multicheck/netz.mjs';
+import { renderBild } from './app/lib/multicheck/vorstellung_bilder.mjs';
 
 const DIR = 'app/lib/multicheck/';
 let fehler = 0;
@@ -22,12 +25,13 @@ function laden(datei, export_, params = {}) {
   return new Function(...Object.keys(params), s)(...Object.values(params));
 }
 
-const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js' };
+const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js', vorst: 'vorstellung.js' };
 const numerisch = laden('logik_numerisch.js');
 const FG = new Function(fs.readFileSync(DIR + 'figur.js', 'utf8').replace(/^export /gm, '') + '\nreturn { fig, normalisiere, unterschiede, wendeRegel, renderFigur };')();
 const daten = laden('konzentration_daten.js');
+const vdaten = laden('vorstellung_daten.js');
 const figural = laden('logik_figural.js', null, { fig: FG.fig });
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten })]));
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten })]));
 const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
 const lk = laden('lernkarten.js', 'multicheckLernkarten', { fig: FG.fig });
 
@@ -37,7 +41,7 @@ const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 234) bad(`Fragen: ${alle.length} statt 234`);
+if (alle.length !== 254) bad(`Fragen: ${alle.length} statt 254`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -196,10 +200,106 @@ for (const [id, t] of Object.entries(themen)) {
   console.log('Konzentration: ' + zq.length + ' Zahlenblöcke (gleich ' + gleichTeil.join(' und ') + ' von je 30), ' + cq.length + ' Koordinatenblöcke');
 }
 
+// ─── Vorstellungsvermögen ────────────────────────────────────────────────
+{
+  const vq = themen.vorst;
+  const rq = vq.qs.filter(q => q.type === 'spatial'), nq = vq.qs.filter(q => q.type === 'net');
+  if (rq.length !== 10 || nq.length !== 10) bad('Vorstellung: ' + rq.length + ' räumliche, ' + nq.length + ' Abwicklungen');
+  // SVG wohlgeformt: Anfang und Ende, Tags ausgeglichen, keine ungültigen Zahlen
+  const wohlgeformt = (svg, wo) => {
+    if (!svg.startsWith('<svg ') || !svg.endsWith('</svg>')) bad(wo + ': SVG beginnt oder endet falsch');
+    if (/NaN|undefined|Infinity/.test(svg)) bad(wo + ': ungültiger Wert im SVG');
+    const stack = [];
+    for (const m of svg.matchAll(/<([/]?)([a-z]+)([^>]*?)([/]?)>/g)) {
+      if (m[4]) continue;
+      if (m[1]) { if (stack.pop() !== m[2]) { bad(wo + ': Tags nicht ausgeglichen bei ' + m[2]); return; } } else stack.push(m[2]);
+    }
+    if (stack.length) bad(wo + ': offene Tags ' + stack.join(','));
+  };
+  // Räumliches Sehen
+  const rb = (g) => (g.art === 'zylinder' ? g.w / 2 : Math.hypot(g.w, g.d) / 2);
+  const szenen = [...rq.map((q, i) => [q, q.id, i]), [vq.unterInfo.raum.demo, 'Beispiel', -1]];
+  for (const [q, wo, i] of szenen) {
+    const sz = q.szene;
+    const soll = i < 0 ? [3, 6] : i < 3 ? [4, 4] : i < 7 ? [5, 5] : [6, 6];
+    if (sz.length < soll[0] || sz.length > soll[1]) bad(wo + ': ' + sz.length + ' Formen');
+    const farben = new Set(sz.map(f => f.farbe));
+    if (farben.size < 2 || farben.size > 3) bad(wo + ': ' + farben.size + ' Farben');
+    sz.forEach((f, a) => {
+      if (!R.FARBEN[f.farbe] || !['quader', 'zylinder'].includes(f.art)) bad(wo + ': unbekannte Form oder Farbe');
+      if (Math.hypot(f.x, f.y) + rb(f) > 4.6) bad(wo + ': Form liegt nicht auf dem Brett');
+      sz.slice(a + 1).forEach(g => { if (Math.hypot(f.x - g.x, f.y - g.y) < rb(f) + rb(g) + 0.25) bad(wo + ': Formen überlappen'); });
+    });
+    const sigs = R.RICHTUNGEN.map(d => R.signatur(sz, d));
+    if (new Set(sigs).size !== 8) bad(wo + ': nicht alle 8 Ansichten verschieden');
+    for (let a = 0; a < 8; a++) for (let b = a + 1; b < 8; b++) if (R.abstand(sz, R.RICHTUNGEN[a], R.RICHTUNGEN[b]) < 0.6) bad(wo + ': Ansichten ' + R.RICHTUNGEN[a] + ' und ' + R.RICHTUNGEN[b] + ' zu ähnlich');
+    if (!R.RICHTUNGEN.includes(q.correct)) bad(wo + ': unbekannte Richtung');
+    if (!/von links nach rechts/.test(q.why) || !/Auffällig/.test(q.why)) bad(wo + ': Erklärung unvollständig');
+    R.RICHTUNGEN.forEach(d => wohlgeformt(R.renderSeite(sz, d), wo + ' Seite ' + d));
+    const oben = R.renderOben(sz, 'N', q.correct);
+    wohlgeformt(oben, wo + ' oben');
+    if ((oben.match(/data-dir=/g) || []).length !== 8) bad(wo + ': keine 8 Pfeile');
+  }
+  const verteilung = new Set(rq.map(q => q.correct));
+  if (verteilung.size !== 8) bad('Vorstellung: nicht jede der 8 Richtungen kommt vor (' + [...verteilung].join(',') + ')');
+  // Probe der Rechnung: Körper rechts (x = 3) erscheint von Süden rechts, von Norden links; 45 Grad gedreht ist ein Würfel breiter; Zylinder immer gleich breit
+  const probe = { art: 'quader', x: 3, y: 0, w: 1, d: 1, rot: 0, h: 2, farbe: 'rot' };
+  if (R.ansicht([probe], 'S')[0].mitte !== 3 || R.ansicht([probe], 'N')[0].mitte !== -3) bad('Vorstellung: Probe links/rechts');
+  if (Math.abs(R.ansicht([{ ...probe, rot: 45 }], 'S')[0].breite - Math.SQRT2) > 1e-9 || Math.abs(R.ansicht([probe], 'S')[0].breite - 1) > 1e-9) bad('Vorstellung: Probe Breite');
+  if (Math.abs(R.ansicht([{ art: 'zylinder', x: 1, y: 2, w: 1.5, d: 1.5, rot: 20, h: 2, farbe: 'rot' }], 'NO')[0].breite - 1.5) > 1e-9) bad('Vorstellung: Probe Zylinder');
+  const ost = { art: 'quader', x: 0, y: 3, w: 1, d: 1, rot: 0, h: 2, farbe: 'rot' };   // Körper im Norden
+  const tn = R.ansicht([ost, { ...probe, x: 0, y: -3, farbe: 'blau' }], 'S');          // von Süden: Nord-Körper hinten
+  if (tn[0].farbe !== 'rot' || tn[1].farbe !== 'blau') bad('Vorstellung: Probe vorne/hinten');
+
+  // Abwicklungen
+  const netze = N.wuerfelnetze();
+  if (N.sechserPolyominos().length !== 35) bad('Netze: nicht 35 Sechser-Polyominos');
+  if (netze.length !== 11) bad('Netze: ' + netze.length + ' gültige Würfelnetze statt 11');
+  const nk = (zellen) => zellen.map(z => z.c + ',' + z.z).sort().join(';');
+  const erlaubt = new Set(netze.flatMap(n => [0, 1, 2, 3, 4, 5, 6, 7].map(k => nk(N.symmetrie(n, k)))));
+  const KANTE = { '1,0': [[[1, -1], [1, 1]], [[-1, -1], [-1, 1]]], '-1,0': [[[-1, -1], [-1, 1]], [[1, -1], [1, 1]]], '0,1': [[[-1, 1], [1, 1]], [[-1, -1], [1, -1]]], '0,-1': [[[-1, -1], [1, -1]], [[-1, 1], [1, 1]]] };
+  const punkt3 = (f, [px, py]) => [0, 1, 2].map(k => f.n[k] + px * f.ex[k] + py * f.ey[k]);
+  const aufgaben = [...nq.map((q, i) => [q, q.id, i]), [vq.unterInfo.netz.demo, 'Beispiel', -1]];
+  for (const [q, wo, i] of aufgaben) {
+    const z = q.zellen;
+    if (z.length !== 6 || !erlaubt.has(nk(N.symmetrie(z, 0)))) bad(wo + ': kein gültiges Würfelnetz');
+    const wahr = N.falten(z);
+    if (!wahr) { bad(wo + ': Netz lässt sich nicht falten'); continue; }
+    z.forEach((a, ia) => z.forEach((b, ib) => {
+      const k = (b.c - a.c) + ',' + (b.z - a.z);
+      if (!KANTE[k]) return;
+      const [pa, pb] = KANTE[k];
+      for (let m = 0; m < 2; m++) { const u = punkt3(wahr[ia], pa[m]), v = punkt3(wahr[ib], pb[m]); if (u.some((x, t) => Math.abs(x - v[t]) > 1e-9)) bad(wo + ': Kanten beim Falten passen nicht'); }
+    }));
+    const muster = new Set(z.map(c => c.p));
+    const kSoll = i < 0 ? 3 : i < 3 ? 3 : i < 7 ? 4 : 5;
+    if (muster.size !== kSoll) bad(wo + ': ' + muster.size + ' Muster statt ' + kSoll);
+    if (i >= 7 && [...muster].filter(m => N.RICHTUNGSABHAENGIG.includes(m)).length < 4) bad(wo + ': zu wenige richtungsabhängige Muster');
+    if (q.options.length !== 5) bad(wo + ': ' + q.options.length + ' Optionen statt 5');
+    const treffer = q.options.map(o => {
+      if (o.flaechen.length !== 3 || !N.ECKEN.some(e => e.join() === o.ecke.join()) || N.sichtbar(o.flaechen, o.ecke).length !== 3) bad(wo + ': Figur ist keine Ansicht aus einer Ecke');
+      return N.passt(wahr, o.flaechen, o.ecke);
+    });
+    if (treffer.filter(Boolean).length !== 1 || !treffer[q.correct]) bad(wo + ': nicht genau eine passende Figur (' + treffer.join(',') + ', richtig ' + q.correct + ')');
+    const sichtbar = q.options.map(o => N.ansichtSchluessel(o.flaechen, o.ecke));
+    if (new Set(sichtbar).size !== 5) bad(wo + ': zwei Figuren sehen gleich aus');
+    const arten = q.options.filter((o, k) => k !== q.correct).map(o => (o.why.match(/gedreht|vertauscht|ersetzt|Spiegelbild/) || ['?'])[0]);
+    if (new Set(arten).size !== 4) bad(wo + ': Falschfiguren nicht alle verschieden (' + arten.join(',') + ')');
+    if (!q.why || !/Fläche/.test(q.why)) bad(wo + ': Erklärung fehlt');
+    wohlgeformt(N.renderNetz(z), wo + ' Netz');
+    q.options.forEach((o, k) => wohlgeformt(N.renderWuerfel(o.flaechen, o.ecke), wo + ' Figur ' + 'ABCDE'[k]));
+  }
+  if (new Set(nq.map(q => q.correct)).size !== 5) bad('Vorstellung: richtige Figur steht nicht an allen fünf Positionen');
+  // Bilder der Lernkarten
+  let bilder = 0;
+  for (const k of lk.vorst.kacheln) for (const kk of k.karten) for (const b of kk.svgs || []) { bilder++; wohlgeformt(renderBild(b), k.id + ' Bild ' + b.typ); }
+  console.log('Vorstellung: ' + rq.length + ' räumliche Szenen (Richtungen ' + rq.map(q => q.correct).join(' ') + '), ' + nq.length + ' Abwicklungen (Position ' + nq.map(q => 'ABCDE'[q.correct]).join('') + '), 11 Würfelnetze, ' + bilder + ' Lernkarten-Bilder');
+}
+
 // ─── Startseite: Reihenfolge der Kacheln ─────────────────────────────────
 const index = fs.readFileSync(DIR + 'index.js', 'utf8');
 const kacheln = [...index.matchAll(/(?:bald\('[a-z]+', '([^']+)'|aktiv\((\w+),)/g)].map(m => m[1] || m[2]);
-const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'Vorstellungsvermögen', 'Vernetztes Denken', 'Textschreiben'];
+const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'vorstellung', 'Vernetztes Denken', 'Textschreiben'];
 if (JSON.stringify(kacheln) !== JSON.stringify(sollKacheln)) bad('Kachel-Reihenfolge in index.js: ' + kacheln.join(', '));
 console.log('Kacheln:', kacheln.length);
 

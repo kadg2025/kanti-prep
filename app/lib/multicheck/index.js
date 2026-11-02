@@ -10,6 +10,7 @@ import organisation from './organisation';
 import mathematik from './mathematik';
 import logik from './logik';
 import konzentration from './konzentration';
+import vorstellung from './vorstellung';
 import { mitUnterthemen } from './unterthemen';
 import { multicheckLernkarten } from './lernkarten';
 
@@ -27,7 +28,7 @@ export const MULTICHECK_THEMEN = [
   aktiv(mathematik, '🔢'),
   aktiv(logik, '🧩'),
   aktiv(konzentration, '🎯'),
-  bald('vorstellung', 'Vorstellungsvermögen', '🧊'),
+  aktiv(vorstellung, '🧊'),
   bald('vernetzt', 'Vernetztes Denken', '🕸️'),
   bald('textschreiben', 'Textschreiben', '✍️'),
 ];

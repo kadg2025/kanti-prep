@@ -45,6 +45,10 @@ export const UNTERTHEMEN = {
     u('koord1', 'Koordinaten, Teil 1', '📍', [11, 12]),
     u('koord2', 'Koordinaten, Teil 2', '📍', [13, 14]),
   ],
+  vorst: [
+    u('raum', 'Räumliches Sehen', '🧭', [1, 10]),
+    u('netz', 'Abwicklungen', '📦', [11, 20]),
+  ],
   logik: [
     u('verbal', 'Verbale Analogien', '🔗', [1, 10]),
     u('figural', 'Figurale Analogien', '🔷', [21, 30]),

@@ -7,6 +7,8 @@ import { MULTICHECK_THEMEN, multicheckThema, multicheckLernkarten } from '../lib
 import { DAYS, slotsOf } from '../lib/multicheck/plan';
 import { renderFigur } from '../lib/multicheck/figur';
 import { renderRaster } from '../lib/multicheck/raster';
+import { renderSeite, renderOben } from '../lib/multicheck/raeumlich.mjs';
+import { renderNetz, renderWuerfel } from '../lib/multicheck/netz.mjs';
 import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse, erwartetAntwort } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
 import { ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
@@ -126,6 +128,16 @@ const CSS = `
 .mcq .cor{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:3px 8px;border-radius:8px}
 .mcq .cor.ok{background:var(--okbg)}.mcq .cor.bad{background:var(--badbg)}
 .mcq .fgs.cos{width:52px;height:50px}
+.mcq .vsw{display:flex;flex-direction:column;align-items:center;gap:14px;margin:10px 0}
+.mcq .vsseite{width:100%;max-width:420px;border:2px solid #111;background:#fff;border-radius:8px;overflow:hidden}
+.mcq .vsoben{width:100%;max-width:300px;border-radius:8px;overflow:hidden}
+.mcq .vsseite svg,.mcq .vsoben svg,.mcq .vnnetz svg,.mcq .vno svg{display:block;width:100%;height:auto}
+.mcq .vnw{display:flex;flex-wrap:wrap;gap:18px 30px;justify-content:center;align-items:center;margin:10px 0}
+.mcq .vnnetz{width:210px;border:1.5px solid #111;background:#fff;border-radius:6px;overflow:hidden}
+.mcq .vnopts{display:grid;grid-template-columns:repeat(3,96px);gap:10px}
+.mcq .vno{display:flex;flex-direction:column;align-items:center;gap:2px;padding:3px;border:2px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);cursor:pointer;font-size:14px}
+.mcq .vno span{display:block;width:84px;border:1px solid #bbb;background:#fff}
+.mcq .vno.sel{border-color:var(--a);background:var(--soft)}.mcq .vno.right{border-color:var(--ok);background:var(--okbg)}.mcq .vno.wrong{border-color:var(--bad);background:var(--badbg)}
 @media(max-width:640px){.mcq .opts.g2{grid-template-columns:1fr}.mcq .opts.g4{grid-template-columns:repeat(2,1fr)}.mcq .show{font-size:30px}}
 `;
 
@@ -382,6 +394,26 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
                 </label>
               );
             })}
+          </div>
+        )}
+        {t === 'spatial' && (
+          <div className="vsw">
+            <div className="vsseite" dangerouslySetInnerHTML={{ __html: renderSeite(q.szene, q.correct) }} />
+            <div className="vsoben" onClick={e => { if (done) return; const g = e.target.closest && e.target.closest('[data-dir]'); if (g) up({ sel: g.getAttribute('data-dir') }); }} dangerouslySetInnerHTML={{ __html: renderOben(q.szene, U.sel, done ? q.correct : null) }} />
+          </div>
+        )}
+        {t === 'net' && (
+          <div className="vnw">
+            <div className="vnnetz" dangerouslySetInnerHTML={{ __html: renderNetz(q.zellen) }} />
+            <div className="vnopts">
+              {q.options.map((o, i) => {
+                let c = 'vno';
+                if (U.sel === i) c += ' sel';
+                if (done) { if (i === q.correct) c += ' right'; else if (U.sel === i) c += ' wrong'; }
+                return <button key={i} className={c} aria-label={'Figur ' + 'ABCDE'[i]} onClick={() => { if (!done) up({ sel: i }); }}><span dangerouslySetInnerHTML={{ __html: renderWuerfel(o.flaechen, o.ecke) }} /><b>{'ABCDE'[i]}</b></button>;
+              })}
+            </div>
+            <label className="kor">Lösung: <input className="in" style={{ width: 56, textAlign: 'center', fontSize: 18 }} maxLength={1} autoComplete="off" disabled={done} value={U.sel != null ? 'ABCDE'[U.sel] : ''} onChange={e => { const i = 'ABCDE'.indexOf(e.target.value.toUpperCase().slice(-1)); up({ sel: i >= 0 ? i : null }); }} /></label>
           </div>
         )}
         {t === 'numcmp' && <NumCmpBlock q={q} rows={U.rows} setRows={rows => up({ rows })} locked={done} zeige={done} />}
