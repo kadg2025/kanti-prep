@@ -6,6 +6,7 @@ import { facts } from './lib/facts';
 import { lernkarten } from './lib/lernkarten';
 import LernkartePage from './components/Lernkarte';
 import MulticheckPage from './components/Multicheck';
+import { MonitorCheck } from 'lucide-react';
 import { multicheckFehlerItem } from './lib/multicheck';
 import { pruefungenModusA, pruefungenModusB } from './lib/gms3/mathe_otr/pruefung';
 import LinksPage from './LinksPage';
@@ -1371,7 +1372,7 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateX(4px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateX(0)'; }}
             >
-              <span style={{ fontSize: '16px' }}>🧠</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center' }}><MonitorCheck size={18} color="#0a35b0" strokeWidth={2} aria-hidden="true" /></span>
               <span style={{ fontSize: '13px', fontWeight: '600', color: '#0a35b0' }}>Alle Themen</span>
               <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#0a35b0', fontWeight: '700' }}>12 Themen</span>
             </button>
