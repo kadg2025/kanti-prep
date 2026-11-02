@@ -49,6 +49,8 @@ export function numprocEreignisse(q) {
 
 // Erwartete Antwort einer Einzelaufgabe in einem Block: 'g' (gleich) oder 'n' (nicht gleich) bzw. «XY».
 export function erwartetAntwort(q, item) {
+  if (q.type === 'pikto') return item.alt ? 'ja' : 'nein';
+  if (q.type === 'merktext') return item.correct;
   return q.type === 'numcmp' ? (item.gleich ? 'g' : 'n') : item.a;
 }
 
@@ -56,7 +58,7 @@ export function erwartetAntwort(q, item) {
 export function istLeer(q, U) {
   const t = q.type;
   if ((t === 'mc' || t === 'vmc' || t === 'memchoice' || t === 'numproc' || t === 'figmc' || t === 'spatial' || t === 'net') && U.sel == null) return true;
-  if ((t === 'numcmp' || t === 'coord') && U.rows.some(x => x == null)) return true;
+  if ((t === 'numcmp' || t === 'coord' || t === 'pikto' || t === 'merktext') && U.rows.some(x => x == null)) return true;
   if (t === 'multi' && !Object.keys(U.set).some(k => U.set[k])) return true;
   if (t === 'input' && !U.val.trim()) return true;
   if (t === 'gap' && !U.korr && !U.val.trim()) return true;
@@ -81,10 +83,10 @@ export function auswerten(q, U, timeout) {
       else if (t === 'memchoice') extra = diffTxt(o.t, q.options[q.correct].t);
       else if (o.why) extra = o.why;
     }
-  } else if (t === 'numcmp' || t === 'coord') {
+  } else if (t === 'numcmp' || t === 'coord' || t === 'pikto' || t === 'merktext') {
     const falsch = q.items.map((it, i) => (U.rows[i] === erwartetAntwort(q, it) ? 0 : i + 1)).filter(Boolean);
     ok = falsch.length === 0;
-    if (!ok) extra = (t === 'numcmp' ? 'Falsch in Zeile ' : 'Falsch bei Feld ') + falsch.join(', ') + '.';
+    if (!ok) extra = (t === 'numcmp' ? 'Falsch in Zeile ' : t === 'merktext' ? 'Falsch bei Frage ' : t === 'pikto' ? 'Falsch bei Bild ' : 'Falsch bei Feld ') + falsch.join(', ') + '.';
   } else if (t === 'spatial') {
     ok = U.sel === q.correct;
     user = PFEIL_TEXT[U.sel];

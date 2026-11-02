@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { lernkarten } from '../lib/lernkarten';
 import { renderFigur } from '../lib/multicheck/figur';
 import { renderRaster } from '../lib/multicheck/raster';
+import { SYMBOLE as MSYM } from '../lib/multicheck/merk_symbole.mjs';
 import { renderBild } from '../lib/multicheck/vorstellung_bilder.mjs';
 import { SENSEI_SPRUECHE } from '../lib/sensei_sprueche';
 import { DOJO_GUERTEL, ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
@@ -446,6 +447,19 @@ function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung, istDo
               <span style={{ display: 'block', width: '84px', height: '84px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff' }} dangerouslySetInnerHTML={{ __html: renderFigur(y, 'k' + i + 'b') }} />
             </div>
           ))}
+        </div>
+      )}
+      {karte.symbole && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center' }}>
+          {karte.symbole.map(k => {
+            const { Icon, name } = MSYM[k];
+            return (
+              <div key={k} style={{ textAlign: 'center', color: dm.text, fontWeight: '700', fontSize: '13px' }}>
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '72px', height: '72px', background: '#fff', border: '2px solid #111', borderRadius: '14px' }}><Icon size={46} strokeWidth={1.8} color="#111" /></span>
+                <span>{name}</span>
+              </div>
+            );
+          })}
         </div>
       )}
       {karte.tabellen && (

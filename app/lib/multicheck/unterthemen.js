@@ -53,6 +53,10 @@ export const UNTERTHEMEN = {
     u('a', 'Informationen verbinden, Teil 1', '🕸️', [1, 5]),
     u('b', 'Informationen verbinden, Teil 2', '🕸️', [6, 10]),
   ],
+  merk: [
+    u('pikto', 'Piktogramme', '🖼️', [1, 2]),
+    u('text', 'Text', '📄', [3, 4]),
+  ],
   logik: [
     u('verbal', 'Verbale Analogien', '🔗', [1, 10]),
     u('figural', 'Figurale Analogien', '🔷', [21, 30]),

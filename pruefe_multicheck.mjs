@@ -1,7 +1,7 @@
 // Qualitätskontrolle für Multicheck IMS (app/lib/multicheck/)
 // Aufruf: node pruefe_multicheck.mjs
 //
-// Prüft: 264 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
+// Prüft: 268 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
 // Wochenplan-Musterlösungen gültig, jedes aktive Thema hat Üben, Dojo und
 // Lernkarten (mit «Typische Fehler» und «Dojo»), Check-Fragen und Dojo-Karten
 // wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, Videos (höchstens eines pro Kachel, gültige ID),
@@ -12,6 +12,13 @@ import * as R from './app/lib/multicheck/raeumlich.mjs';
 import * as N from './app/lib/multicheck/netz.mjs';
 import { renderBild } from './app/lib/multicheck/vorstellung_bilder.mjs';
 import * as VF from './app/lib/multicheck/vernetzt_fragen.mjs';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { SYMBOLE as MS } from './app/lib/multicheck/merk_symbole.mjs';
+import * as MT from './app/lib/multicheck/merk_texte.mjs';
+import { LERNZEIT } from './app/lib/multicheck/merk_konfig.mjs';
+import MF from './app/lib/multicheck/merk_fragen.mjs';
+import MD from './app/lib/multicheck/merk_daten.mjs';
 import { SYMBOLE } from './app/lib/multicheck/vernetzt_symbole.mjs';
 
 const DIR = 'app/lib/multicheck/';
@@ -27,13 +34,13 @@ function laden(datei, export_, params = {}) {
   return new Function(...Object.keys(params), s)(...Object.values(params));
 }
 
-const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js', vorst: 'vorstellung.js', vernetzt: 'vernetzt.js' };
+const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js', vorst: 'vorstellung.js', vernetzt: 'vernetzt.js', merk: 'merkfaehigkeit.js' };
 const numerisch = laden('logik_numerisch.js');
 const FG = new Function(fs.readFileSync(DIR + 'figur.js', 'utf8').replace(/^export /gm, '') + '\nreturn { fig, normalisiere, unterschiede, wendeRegel, renderFigur };')();
 const daten = laden('konzentration_daten.js');
 const vdaten = laden('vorstellung_daten.js');
 const figural = laden('logik_figural.js', null, { fig: FG.fig });
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten, vn: VF.default })]));
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten, vn: VF.default, mf: MF })]));
 const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
 const lk = laden('lernkarten.js', 'multicheckLernkarten', { fig: FG.fig });
 
@@ -43,7 +50,7 @@ const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 264) bad(`Fragen: ${alle.length} statt 264`);
+if (alle.length !== 268) bad(`Fragen: ${alle.length} statt 268`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -377,10 +384,91 @@ for (const [id, t] of Object.entries(themen)) {
   console.log('Vernetzt: 10 Fragen (Positionen ' + vt.qs.map(q => q.correct + 1).join('') + '), Mengen in beiden Szenarien stimmig, ' + Object.values(SZ).map(z => z.teile.length + ' Teile').join(' und '));
 }
 
+// ─── Merkfähigkeit ───────────────────────────────────────────────────────
+{
+  const mt = themen.merk;
+  const wf = (svg, wo) => {
+    if (!svg.startsWith('<svg') || !svg.endsWith('</svg>') || /NaN|undefined/.test(svg)) bad(wo + ': SVG fehlerhaft');
+    const stack = [];
+    for (const m of svg.matchAll(/<([/]?)([a-zA-Z]+)([^>]*?)([/]?)>/g)) {
+      if (m[4]) continue;
+      if (m[1]) { if (stack.pop() !== m[2]) { bad(wo + ': Tags nicht ausgeglichen'); return; } } else stack.push(m[2]);
+    }
+    if (stack.length) bad(wo + ': offene Tags');
+  };
+  // Symbole
+  const keys = Object.keys(MS);
+  if (keys.length < 48) bad('Merk: nur ' + keys.length + ' Symbole (mindestens 48)');
+  if (new Set(keys.map(k => MS[k].name)).size !== keys.length) bad('Merk: doppelte Symbolnamen');
+  const svgs = {};
+  for (const k of keys) {
+    if (!MS[k].Icon) { bad('Merk: Symbol ' + k + ' fehlt in der Bibliothek'); continue; }
+    svgs[k] = renderToStaticMarkup(createElement(MS[k].Icon, { size: 44, strokeWidth: 1.8, color: '#111' }));
+    wf(svgs[k], 'Symbol ' + k);
+  }
+  if (new Set(Object.values(svgs)).size !== keys.length) bad('Merk: zwei Symbole sehen genau gleich aus');
+  // Piktogramm-Runden
+  const runden = MD.runden;
+  if (runden.length !== 2 || mt.qs.filter(q => q.type === 'pikto').length !== 2) bad('Merk: nicht 2 Piktogramm-Runden');
+  const gesehen = [];
+  runden.forEach((rd, i) => {
+    const wo = 'Runde ' + (i + 1);
+    const syms = rd.items.map(x => x.sym);
+    if (rd.items.length !== 12 || new Set(syms).size !== 12) bad(wo + ': nicht 12 verschiedene Symbole');
+    const alt = rd.items.filter(x => x.alt).map(x => x.sym), neu = rd.items.filter(x => !x.alt).map(x => x.sym);
+    if (alt.length !== 6 || neu.length !== 6) bad(wo + ': nicht 6 alte und 6 neue');
+    if (JSON.stringify([...rd.lernen].sort()) !== JSON.stringify([...alt].sort())) bad(wo + ': Lernbilder sind nicht die alten Symbole');
+    if (syms.some(k => !MS[k])) bad(wo + ': unbekanntes Symbol');
+    const gruppen = (l) => l.map(k => MS[k].gruppe);
+    if (i === 0 && new Set(gruppen(syms)).size !== 12) bad(wo + ': ähnliche Symbole in einer Runde');
+    if (i === 1) { const nah = neu.filter(k => gruppen(alt).includes(MS[k].gruppe)).length; if (nah < 3) bad(wo + ': nur ' + nah + ' neue Symbole aus der Gruppe alter Symbole'); }
+    if (!rd.items.slice(0, 6).some(x => x.alt) || rd.items.slice(0, 6).every(x => x.alt)) bad(wo + ': Reihenfolge nicht gemischt');
+    gesehen.push(...syms);
+  });
+  if (new Set(gesehen).size !== 24) bad('Merk: ein Symbol kommt in beiden Runden vor');
+  if (MD.demo.items.length !== 2 || MD.demo.items.some(x => !MS[x.sym])) bad('Merk: Beispiel-Runde hat nicht 2 Piktogramme');
+  if (MD.dojo.length !== 8) bad('Merk: ' + MD.dojo.length + ' Dojo-Sets statt 8');
+  MD.dojo.forEach((d, i) => {
+    const syms = d.items.map(x => x.sym);
+    if (d.lernen.length !== 4 || d.items.length !== 8 || new Set(syms).size !== 8 || d.items.filter(x => x.alt).length !== 4) bad('Dojo-Set ' + (i + 1) + ': nicht 4 lernen und 8 verschiedene beurteilen');
+    if (new Set(syms.map(k => MS[k].gruppe)).size !== 8) bad('Dojo-Set ' + (i + 1) + ': ähnliche Symbole im Set');
+  });
+  // Texte
+  const woerter = (t) => t.join(' ').split(/\s+/).filter(Boolean).length;
+  const pruefeFragen = (t, wo, anzahl) => {
+    const T = t.text.join(' ');
+    if (t.fragen.length !== anzahl) bad(wo + ': ' + t.fragen.length + ' Fragen statt ' + anzahl);
+    t.fragen.forEach((q, i) => {
+      const w = wo + ' Frage ' + (i + 1);
+      if (q.optionen.length !== 4 || new Set(q.optionen).size !== 4) bad(w + ': keine 4 verschiedenen Antworten');
+      if (!(q.richtig >= 0 && q.richtig < 4)) { bad(w + ': richtig ungültig'); return; }
+      const richtig = q.optionen[q.richtig];
+      if (!T.includes(q.beleg)) bad(w + ': Beleg steht nicht wörtlich im Text');
+      if (!q.beleg.includes(q.schluessel) || !richtig.includes(q.schluessel)) bad(w + ': wichtigstes Wort «' + q.schluessel + '» fehlt im Beleg oder in der richtigen Antwort');
+      q.optionen.forEach((o, k) => { if (k !== q.richtig && (T.toLowerCase().includes(o.toLowerCase()) || o.includes(q.schluessel))) bad(w + ': Falschantwort «' + o + '» steht im Text'); });
+      if (/ß/.test(JSON.stringify(q))) bad(w + ': ß');
+    });
+  };
+  MT.TEXTE.forEach((t, i) => { const n = woerter(t.text); if (n < 130 || n > 170) bad('Text ' + (i + 1) + ': ' + n + ' Wörter'); pruefeFragen(t, 'Text ' + (i + 1), 5); });
+  pruefeFragen(MT.BEISPIEL_TEXT, 'Beispieltext', 1);
+  if (MT.DOJO_TEXTE.length !== 8) bad('Merk: ' + MT.DOJO_TEXTE.length + ' Dojo-Texte statt 8');
+  MT.DOJO_TEXTE.forEach((t, i) => { const n = woerter(t.text); if (n < 60 || n > 80) bad('Dojo-Text ' + (i + 1) + ': ' + n + ' Wörter'); pruefeFragen(t, 'Dojo-Text ' + (i + 1), 2); });
+  const hauptSaetze = new Set(MT.TEXTE.flatMap(t => t.text));
+  MT.DOJO_TEXTE.forEach((t, i) => { if (t.text.some(a => hauptSaetze.has(a))) bad('Dojo-Text ' + (i + 1) + ' stammt aus den Haupttexten'); });
+  if (new Set(MT.TEXTE.flatMap(t => t.fragen.map(q => q.richtig))).size < 3) bad('Merk: richtige Antwort steht zu oft an derselben Stelle');
+  // Thema
+  if (mt.qs.length !== 4 || mt.dojoQs.length !== 16) bad('Merk: ' + mt.qs.length + ' Runden, ' + mt.dojoQs.length + ' Dojo-Aufgaben');
+  const ids = [...mt.qs, ...mt.dojoQs].map(q => q.id);
+  if (new Set(ids).size !== ids.length) bad('Merk: doppelte IDs');
+  if (!(LERNZEIT.pikto > 0 && LERNZEIT.text > 0)) bad('Merk: Lernzeit fehlt');
+  for (const k of lk.merk.kacheln) for (const kk of k.karten) for (const sy of kk.symbole || []) if (!MS[sy]) bad(k.id + ': unbekanntes Symbol ' + sy);
+  console.log('Merk: ' + keys.length + ' Symbole (lucide-react), 2 Runden mit je 6 alten und 6 neuen, 2 Texte (' + MT.TEXTE.map(t => woerter(t.text)).join(' und ') + ' Wörter), 8 Dojo-Sets, 8 Dojo-Texte');
+}
+
 // ─── Startseite: Reihenfolge der Kacheln ─────────────────────────────────
 const index = fs.readFileSync(DIR + 'index.js', 'utf8');
 const kacheln = [...index.matchAll(/(?:bald\('[a-z]+', '([^']+)'|aktiv\((\w+),)/g)].map(m => m[1] || m[2]);
-const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'vorstellung', 'vernetzt', 'Textschreiben'];
+const sollKacheln = ['merkfaehigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'vorstellung', 'vernetzt', 'Textschreiben'];
 if (JSON.stringify(kacheln) !== JSON.stringify(sollKacheln)) bad('Kachel-Reihenfolge in index.js: ' + kacheln.join(', '));
 console.log('Kacheln:', kacheln.length);
 
