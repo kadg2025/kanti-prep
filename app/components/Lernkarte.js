@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { lernkarten } from '../lib/lernkarten';
 import { renderFigur } from '../lib/multicheck/figur';
+import { renderRaster } from '../lib/multicheck/raster';
 import { SENSEI_SPRUECHE } from '../lib/sensei_sprueche';
 import { DOJO_GUERTEL, ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
 
@@ -442,6 +443,16 @@ function KarteView({ karte, dm, dark, isMobile, revealed, onToggleLoesung, istDo
               <span style={{ display: 'block', width: '84px', height: '84px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff' }} dangerouslySetInnerHTML={{ __html: renderFigur(x, 'k' + i + 'a') }} />
               <span>→</span>
               <span style={{ display: 'block', width: '84px', height: '84px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff' }} dangerouslySetInnerHTML={{ __html: renderFigur(y, 'k' + i + 'b') }} />
+            </div>
+          ))}
+        </div>
+      )}
+      {karte.raster && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center' }}>
+          {karte.raster.map(([x, y], i) => (
+            <div key={i} style={{ textAlign: 'center', color: dm.text, fontWeight: '700' }}>
+              <span style={{ display: 'block', width: '130px', height: '124px', border: '1.5px solid #111', borderRadius: '6px', overflow: 'hidden', background: '#fff' }} dangerouslySetInnerHTML={{ __html: renderRaster(x - 1, 3 - y) }} />
+              <span>{String(x) + String(y)}</span>
             </div>
           ))}
         </div>

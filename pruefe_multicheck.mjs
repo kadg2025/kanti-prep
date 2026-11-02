@@ -1,7 +1,7 @@
 // Qualitätskontrolle für Multicheck IMS (app/lib/multicheck/)
 // Aufruf: node pruefe_multicheck.mjs
 //
-// Prüft: 220 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
+// Prüft: 234 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
 // Wochenplan-Musterlösungen gültig, jedes aktive Thema hat Üben, Dojo und
 // Lernkarten (mit «Typische Fehler» und «Dojo»), Check-Fragen und Dojo-Karten
 // wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, Videos (höchstens eines pro Kachel, gültige ID),
@@ -22,11 +22,12 @@ function laden(datei, export_, params = {}) {
   return new Function(...Object.keys(params), s)(...Object.values(params));
 }
 
-const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js' };
+const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js' };
 const numerisch = laden('logik_numerisch.js');
 const FG = new Function(fs.readFileSync(DIR + 'figur.js', 'utf8').replace(/^export /gm, '') + '\nreturn { fig, normalisiere, unterschiede, wendeRegel, renderFigur };')();
+const daten = laden('konzentration_daten.js');
 const figural = laden('logik_figural.js', null, { fig: FG.fig });
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural })]));
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten })]));
 const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
 const lk = laden('lernkarten.js', 'multicheckLernkarten', { fig: FG.fig });
 
@@ -36,7 +37,7 @@ const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 220) bad(`Fragen: ${alle.length} statt 220`);
+if (alle.length !== 234) bad(`Fragen: ${alle.length} statt 234`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -143,10 +144,62 @@ for (const [id, t] of Object.entries(themen)) {
   console.log(`Logik: ${verbal.length} verbal, ${num.length} numerisch, gleiches Ergebnis in ${gleich}, Frage oben ${oben}`);
 }
 
+// ─── Konzentration ───────────────────────────────────────────────────────
+{
+  const kz = themen.konz;
+  const zq = kz.qs.filter(q => q.type === 'numcmp'), cq = kz.qs.filter(q => q.type === 'coord');
+  if (zq.length !== 10 || cq.length !== 4) bad('Konzentration: ' + zq.length + ' Zahlenblöcke, ' + cq.length + ' Koordinatenblöcke');
+  const pruefeZeile = (z, wo) => {
+    if (!/^[1-9]\d{8}$/.test(z.a) || !/^[1-9]\d{8}$/.test(z.b)) bad(wo + ': keine 9 Ziffern oder führende Null (' + z.a + ', ' + z.b + ')');
+    const diff = [];
+    for (let i = 0; i < 9; i++) if (z.a[i] !== z.b[i]) diff.push(i);
+    if (z.gleich) { if (z.a !== z.b) bad(wo + ': als gleich markiert, aber verschieden'); return; }
+    if (diff.length === 1) { if (![1, 2].includes(Math.abs(z.a[diff[0]] - z.b[diff[0]]))) bad(wo + ': Ziffer ändert sich nicht um 1 oder 2'); }
+    else if (diff.length === 2 && diff[1] === diff[0] + 1) { if (z.a[diff[0]] !== z.b[diff[1]] || z.a[diff[1]] !== z.b[diff[0]]) bad(wo + ': keine Vertauschung'); }
+    else bad(wo + ': ' + diff.length + ' Stellen verschieden, erwartet 1 oder 2 benachbarte vertauscht');
+  };
+  let gleichTeil = [0, 0];
+  zq.forEach((q, bi) => {
+    if (q.items.length !== 6) bad(q.id + ': ' + q.items.length + ' Zeilen statt 6');
+    q.items.forEach((z, i) => { pruefeZeile(z, q.id + ' Zeile ' + (i + 1)); if (z.gleich) gleichTeil[bi < 5 ? 0 : 1]++; });
+  });
+  if (gleichTeil.some(n => n < 13 || n > 17)) bad('Konzentration: «gleich» nicht etwa die Hälfte: ' + gleichTeil.join(', '));
+  const demoZ = kz.unterInfo.zahlen1.demo.items;
+  if (demoZ.length !== 2) bad('Konzentration: Beispiel braucht 2 Zeilen');
+  demoZ.forEach((z, i) => pruefeZeile(z, 'Beispiel Zeile ' + (i + 1)));
+  if (demoZ[0].a !== '148394053' || demoZ[0].b !== '149394053' || demoZ[1].a !== '645394053' || demoZ[1].b !== '645394053') bad('Konzentration: Beispielzeilen weichen ab');
+  // Koordinaten: Spalte c von links, Zeile r von oben (0 bis 2); erwartet «XY» mit X = Spalte von links, Y = Zeile von unten.
+  const erwartet = (f) => String(f.c + 1) + String(3 - f.r);
+  for (const [teil, blocks] of [['Teil 1', cq.slice(0, 2)], ['Teil 2', cq.slice(2)]]) {
+    const felder = blocks.flatMap(q => q.items);
+    if (felder.length !== 10) bad('Koordinaten ' + teil + ': ' + felder.length + ' Felder statt 10');
+    felder.forEach((f, i) => {
+      if (!(f.c >= 0 && f.c <= 2 && f.r >= 0 && f.r <= 2)) bad('Koordinaten ' + teil + ' Feld ' + (i + 1) + ': ausserhalb');
+      if (f.a !== erwartet(f)) bad('Koordinaten ' + teil + ' Feld ' + (i + 1) + ': erwartet ' + erwartet(f) + ', gespeichert ' + f.a);
+      if (i > 0 && f.c === felder[i - 1].c && f.r === felder[i - 1].r) bad('Koordinaten ' + teil + ': Feld ' + (i + 1) + ' wiederholt das vorherige');
+    });
+    if (new Set(felder.map(f => f.c + '-' + f.r)).size !== 9) bad('Koordinaten ' + teil + ': nicht alle 9 Felder kommen vor');
+  }
+  cq.forEach(q => { if (q.items.length !== 5) bad(q.id + ': ' + q.items.length + ' Felder statt 5'); });
+  const demoK = kz.unterInfo.koord1.demo.items[0];
+  if (erwartet(demoK) !== '23' || demoK.a !== '23') bad('Konzentration: Beispiel «oben Mitte» ist nicht 23');
+  // Dojo-Karten der Lernkarten nachgerechnet
+  const dk = lk.konz.kacheln.find(x => x.id === 'mc_ko_dojo').karten;
+  const gleichKarte = (text, korrekt, falsch) => { const m = text.match(/gleich wie (\d{9})/); if (m) { if (korrekt !== m[1]) bad('Dojo: richtige Zahl ist nicht ' + m[1]); falsch.forEach(f => { if (f === m[1]) bad('Dojo: falsche Option gleich ' + m[1]); }); } };
+  dk.forEach(k => gleichKarte(k.text, k.options.find(o => o.correct).text, k.options.filter(o => !o.correct).map(o => o.text)));
+  const koordKarten = { 'ganz links unten': '11', 'ganz rechts oben': '33', 'in der Mitte oben': '23' };
+  dk.forEach(k => { for (const [w, a] of Object.entries(koordKarten)) if (k.text.includes(w) && k.options.find(o => o.correct).text !== a) bad('Dojo: «' + w + '» ist ' + a); });
+  const paare = [['639481275', '639481725', 'vertauscht'], ['481926375', '481926385', 'eine']];
+  const sw = (a, b) => { const d = []; for (let i = 0; i < 9; i++) if (a[i] !== b[i]) d.push(i); return d.length === 2 && d[1] === d[0] + 1 && a[d[0]] === b[d[1]] && a[d[1]] === b[d[0]] ? 'vertauscht' : d.length === 1 ? 'eine' : '?'; };
+  paare.forEach(([a, b, w]) => { if (sw(a, b) !== w) bad('Dojo: Paar ' + a + '/' + b + ' ist nicht ' + w); });
+  if (!dk.some(k => /Rechts unten/.test(k.options.find(o => o.correct).text) && /31/.test(k.text))) bad('Dojo: Karte 31 fehlt oder falsch');
+  console.log('Konzentration: ' + zq.length + ' Zahlenblöcke (gleich ' + gleichTeil.join(' und ') + ' von je 30), ' + cq.length + ' Koordinatenblöcke');
+}
+
 // ─── Startseite: Reihenfolge der Kacheln ─────────────────────────────────
 const index = fs.readFileSync(DIR + 'index.js', 'utf8');
 const kacheln = [...index.matchAll(/(?:bald\('[a-z]+', '([^']+)'|aktiv\((\w+),)/g)].map(m => m[1] || m[2]);
-const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'Konzentration', 'Vorstellungsvermögen', 'Vernetztes Denken', 'Textschreiben'];
+const sollKacheln = ['Merkfähigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'Vorstellungsvermögen', 'Vernetztes Denken', 'Textschreiben'];
 if (JSON.stringify(kacheln) !== JSON.stringify(sollKacheln)) bad('Kachel-Reihenfolge in index.js: ' + kacheln.join(', '));
 console.log('Kacheln:', kacheln.length);
 

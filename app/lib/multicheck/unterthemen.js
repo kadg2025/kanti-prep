@@ -39,6 +39,12 @@ export const UNTERTHEMEN = {
     u('einheiten', 'Einheiten', '📏', [19, 23]),
     u('prozent', 'Prozent und Textaufgaben', '％', [27, 34]),
   ],
+  konz: [
+    u('zahlen1', 'Zahlenreihen, Teil 1', '🔢', [1, 5]),
+    u('zahlen2', 'Zahlenreihen, Teil 2', '🔢', [6, 10]),
+    u('koord1', 'Koordinaten, Teil 1', '📍', [11, 12]),
+    u('koord2', 'Koordinaten, Teil 2', '📍', [13, 14]),
+  ],
   logik: [
     u('verbal', 'Verbale Analogien', '🔗', [1, 10]),
     u('figural', 'Figurale Analogien', '🔷', [21, 30]),
