@@ -1939,7 +1939,7 @@ export const lernkarten = {
         id: 'wortschatz-synonyme',
         emoji: '🔁',
         titel: 'Synonyme finden',
-        videos: [{ titel: 'Synonym, Homonym und Antonym (mein-lernen.at)', youtubeId: 'Rx4KDtFm-Ig' }],
+        videos: [{ titel: 'Synonyme leicht erklärt (lernfoerderung)', youtubeId: '_LJfBR6xmDg' }, { titel: 'Synonym, Homonym und Antonym (mein-lernen.at)', youtubeId: 'Rx4KDtFm-Ig' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[syn|Synonym]]: ein Wort mit gleicher oder sehr ähnlicher Bedeutung (gross – riesig).\n• Kontext: der Satz, in dem das Wort steht.\n• Einsetzprobe: Du setzt dein Wort in den Satz ein und liest ihn laut.' },
           { text: 'So gehst du vor:\n\n1. Was heisst das Wort hier? Sag es in eigenen Worten.\n2. Ein Wort dazu suchen.\n3. [[aen|Einsetzprobe]]: in den Satz einsetzen und laut lesen.' },
@@ -1958,7 +1958,7 @@ export const lernkarten = {
         id: 'wortschatz-gegenteile',
         emoji: '↔️',
         titel: 'Gegenteile finden',
-        videos: [{ titel: 'Das Antonym – das Oppositionswort (mein-lernen.at)', youtubeId: 'iSS_DHX8Q3s' }],
+        videos: [{ titel: 'Das Gegenteil Lied (Lichterkinder)', youtubeId: 'yAd8ypkGTwI' }, { titel: 'Das Antonym – das Oppositionswort (mein-lernen.at)', youtubeId: 'iSS_DHX8Q3s' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• [[geg|Antonym]]: ein Wort mit gegenteiliger Bedeutung (hell – dunkel).\n• Vorsilbe: ein Wortteil vorne, zum Beispiel un- in unklar.' },
           { text: 'So gehst du vor:\n\n1. Bedeutung in eigenen Worten sagen\n2. Das Gegenteil davon denken\n3. Einsetzprobe im Satz\n\n→ Ein ähnliches Wort ist noch kein Gegenteil.' },
@@ -2510,7 +2510,7 @@ export const lernkarten = {
         id: 'nomenadj-plural',
         emoji: '📚',
         titel: 'Plural bilden',
-        videos: [{ titel: 'Deutscher Plural: die 5 Pluralendungen (EasyDeutsch)', youtubeId: 'oFfYYYUYMSE' }],
+        videos: [{ titel: 'Pluralbildung – das musst du wissen (mein-deutschbuch.de)', youtubeId: 'iYS4M38Gvuc' }, { titel: 'Deutscher Plural: die 5 Pluralendungen (EasyDeutsch)', youtubeId: 'oFfYYYUYMSE' }],
         karten: [
           { text: 'Diese Wörter brauchst du:\n\n• Singular: Einzahl (das Hemd).\n• Plural: Mehrzahl (die Hemden).\n• Umlaut: a wird ä, o wird ö, u wird ü.\n• Im Plural heisst der Artikel immer die.' },
           { text: 'Die häufigsten Endungen:\n\n-e: Korridor → die Korridore\n-en: Hemd → die Hemden\n-er: Land → die Länder\nkeine Endung: Nachfolger → die Nachfolger' },
