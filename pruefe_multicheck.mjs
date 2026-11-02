@@ -1,7 +1,7 @@
 // Qualitätskontrolle für Multicheck IMS (app/lib/multicheck/)
 // Aufruf: node pruefe_multicheck.mjs
 //
-// Prüft: 268 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
+// Prüft: 271 Fragen, keine doppelten IDs, alle Konzept-Verweise vorhanden,
 // Wochenplan-Musterlösungen gültig, jedes aktive Thema hat Üben, Dojo und
 // Lernkarten (mit «Typische Fehler» und «Dojo»), Check-Fragen und Dojo-Karten
 // wohlgeformt, bekannte Farb-Tags, kein ß, keine Jahreszahl, Videos (höchstens eines pro Kachel, gültige ID),
@@ -19,6 +19,8 @@ import * as MT from './app/lib/multicheck/merk_texte.mjs';
 import { LERNZEIT } from './app/lib/multicheck/merk_konfig.mjs';
 import MF from './app/lib/multicheck/merk_fragen.mjs';
 import MD from './app/lib/multicheck/merk_daten.mjs';
+import * as SD from './app/lib/multicheck/schreib_daten.mjs';
+import * as SL from './app/lib/multicheck/schreib_logik.mjs';
 import { SYMBOLE } from './app/lib/multicheck/vernetzt_symbole.mjs';
 
 const DIR = 'app/lib/multicheck/';
@@ -34,13 +36,13 @@ function laden(datei, export_, params = {}) {
   return new Function(...Object.keys(params), s)(...Object.values(params));
 }
 
-const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js', vorst: 'vorstellung.js', vernetzt: 'vernetzt.js', merk: 'merkfaehigkeit.js' };
+const dateien = { deutsch: 'deutsch.js', englisch: 'englisch.js', kurz: 'kurzzeitgedaechtnis.js', it: 'it_grundwissen.js', org: 'organisation.js', mathe: 'mathematik.js', logik: 'logik.js', konz: 'konzentration.js', vorst: 'vorstellung.js', vernetzt: 'vernetzt.js', merk: 'merkfaehigkeit.js', schreiben: 'schreiben.js' };
 const numerisch = laden('logik_numerisch.js');
 const FG = new Function(fs.readFileSync(DIR + 'figur.js', 'utf8').replace(/^export /gm, '') + '\nreturn { fig, normalisiere, unterschiede, wendeRegel, renderFigur };')();
 const daten = laden('konzentration_daten.js');
 const vdaten = laden('vorstellung_daten.js');
 const figural = laden('logik_figural.js', null, { fig: FG.fig });
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten, vn: VF.default, mf: MF })]));
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten, vn: VF.default, mf: MF, ...(f === 'schreiben.js' ? SD : {}) })]));
 const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
 const lk = laden('lernkarten.js', 'multicheckLernkarten', { fig: FG.fig });
 
@@ -50,7 +52,7 @@ const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 268) bad(`Fragen: ${alle.length} statt 268`);
+if (alle.length !== 271) bad(`Fragen: ${alle.length} statt 271`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -465,10 +467,58 @@ for (const [id, t] of Object.entries(themen)) {
   console.log('Merk: ' + keys.length + ' Symbole (lucide-react), 2 Runden mit je 6 alten und 6 neuen, 2 Texte (' + MT.TEXTE.map(t => woerter(t.text)).join(' und ') + ' Wörter), 8 Dojo-Sets, 8 Dojo-Texte');
 }
 
+// ─── Textschreiben ───────────────────────────────────────────────────────
+{
+  const sc = themen.schreiben;
+  // 3 Runden mit je 4 verschiedenen Auswahlthemen, zusammen 12 Themen
+  if (SD.RUNDEN.length !== 3 || SD.RUNDEN.some(rd => rd.length !== 4 || new Set(rd).size !== 4 || rd.some(t => !t.trim()))) bad('Schreiben: nicht 3 Runden mit je 4 Themen');
+  if (new Set(SD.RUNDEN.flat()).size !== 12) bad('Schreiben: nicht 12 verschiedene Themen');
+  if (sc.qs.length !== 3 || sc.qs.some((q, i) => q.type !== 'freitext' || JSON.stringify(q.themen) !== JSON.stringify(SD.RUNDEN[i]))) bad('Schreiben: Runden im Thema stimmen nicht mit den Daten überein');
+  if (!sc.unterInfo.gedanken.intro.includes('weniger als 20 Zeichen')) bad('Schreiben: Intro-Text fehlt');
+  // Abschicken ist unter 20 Zeichen blockiert
+  const k = SL.kannAbschicken;
+  if (k('') || k('a'.repeat(19)) || k(' '.repeat(40)) || k('a'.repeat(19) + '   ') || !k('a'.repeat(20)) || SD.TEXT_MIN !== 20) bad('Schreiben: Abschicken-Sperre bei 20 Zeichen stimmt nicht');
+  // Speichern und Laden (lokaler Speicher, hier ein Ersatzobjekt)
+  const mem = {}; const sp = { getItem: (key) => (key in mem ? mem[key] : null), setItem: (key, v) => { mem[key] = String(v); } };
+  if (SL.SCHREIB_KEY !== 'kp_multicheck_text') bad('Schreiben: falscher Speicher-Schlüssel');
+  if (SL.abschicken(sp, { runde: 0, thema: 'Mein Lieblingsort', text: 'a'.repeat(19) }) !== null || SL.lade(sp).texte.length !== 0) bad('Schreiben: zu kurzer Text wurde gespeichert');
+  SL.entwurfSpeichern(sp, 1, 2, 'Entwurf');
+  const e = SL.lade(sp).entwuerfe[1];
+  if (!e || e.wahl !== 2 || e.text !== 'Entwurf') bad('Schreiben: Entwurf wird nicht gespeichert oder geladen');
+  const id = SL.abschicken(sp, { runde: 1, thema: 'Wie ich mit Stress umgehe', text: 'Das ist mein Text mit genug Zeichen.' });
+  let d = SL.lade(sp);
+  if (!id || d.texte.length !== 1 || d.texte[0].text !== 'Das ist mein Text mit genug Zeichen.' || d.texte[0].thema !== 'Wie ich mit Stress umgehe' || d.entwuerfe[1]) bad('Schreiben: abgeschickter Text wird nicht richtig gespeichert');
+  SL.abschicken(sp, { runde: 1, thema: 'Wie ich mit Stress umgehe', text: 'Überarbeiteter Text mit genug Zeichen.', id });
+  d = SL.lade(sp);
+  if (d.texte.length !== 1 || d.texte[0].text !== 'Überarbeiteter Text mit genug Zeichen.') bad('Schreiben: Überarbeiten ersetzt den Text nicht');
+  SL.loeschen(sp, id);
+  if (SL.lade(sp).texte.length !== 0) bad('Schreiben: Löschen funktioniert nicht');
+  // Keine Netzwerkaufrufe im Textschreiben-Code
+  for (const f of ['app/lib/multicheck/schreib_daten.mjs', 'app/lib/multicheck/schreib_logik.mjs', 'app/lib/multicheck/schreiben.js', 'app/components/MulticheckSchreiben.js']) {
+    const code = fs.readFileSync(f, 'utf8');
+    if (/fetch\(|XMLHttpRequest|WebSocket|sendBeacon|axios|supabase|https?:[/][/]/i.test(code)) bad(f + ': enthält einen Netzwerkaufruf');
+  }
+  const comp = fs.readFileSync('app/components/MulticheckSchreiben.js', 'utf8');
+  if (!comp.includes('disabled={!kannAbschicken(text)}') || !comp.includes("lang=\"de-CH\"") || !comp.includes('spellCheck')) bad('Schreiben: Oberfläche ohne Sperre, Sprache oder Rechtschreibprüfung');
+  // Beispiel, Checkliste, Dojo-Themen
+  const bw = SD.BEISPIEL.teile.map(t => t.t).join(' ').split(/\s+/).length;
+  if (bw < 80 || bw > 110) bad('Schreiben: Beispieltext hat ' + bw + ' Wörter');
+  if (new Set(SD.BEISPIEL.teile.map(t => t.art)).size !== 5 || SD.BEISPIEL.teile.some(t => !SD.BEISPIEL_ARTEN[t.art])) bad('Schreiben: Beispieltext markiert nicht alle 5 Teile');
+  if (SD.CHECKLISTE.length !== 5) bad('Schreiben: Checkliste hat nicht 5 Punkte');
+  if (SD.DOJO_THEMEN.length !== 12 || new Set(SD.DOJO_THEMEN.map(t => t.thema)).size !== 12 || SD.DOJO_THEMEN.some(t => SD.RUNDEN.flat().includes(t.thema) || !t.anfang.trim())) bad('Schreiben: Dojo-Themen (12, andere als im Üben) stimmen nicht');
+  if (SD.DOJO_MIN !== 60) bad('Schreiben: Dojo-Mindestlänge ist nicht 60 Zeichen');
+  if (/ß/.test(JSON.stringify(SD))) bad('Schreiben: ß in den Texten');
+  // Übersicht: keine Kachel mehr auf «Bald»
+  const idx = fs.readFileSync(DIR + 'index.js', 'utf8');
+  if (/\bbald\('/.test(idx.replace(/^const bald = .*$/m, ''))) bad('Übersicht: es gibt noch Themen auf «Bald»');
+  if ((idx.match(/aktiv\(/g) || []).length !== 12) bad('Übersicht: nicht 12 aktive Themen');
+  console.log('Schreiben: 3 Runden mit je 4 Themen, Sperre bei 20 Zeichen, Speichern und Laden geprüft, keine Netzwerkaufrufe, alle 12 Themen aktiv');
+}
+
 // ─── Startseite: Reihenfolge der Kacheln ─────────────────────────────────
 const index = fs.readFileSync(DIR + 'index.js', 'utf8');
 const kacheln = [...index.matchAll(/(?:bald\('[a-z]+', '([^']+)'|aktiv\((\w+),)/g)].map(m => m[1] || m[2]);
-const sollKacheln = ['merkfaehigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'vorstellung', 'vernetzt', 'Textschreiben'];
+const sollKacheln = ['merkfaehigkeit', 'deutsch', 'englisch', 'kurzzeit', 'it', 'organisation', 'mathematik', 'logik', 'konzentration', 'vorstellung', 'vernetzt', 'schreiben'];
 if (JSON.stringify(kacheln) !== JSON.stringify(sollKacheln)) bad('Kachel-Reihenfolge in index.js: ' + kacheln.join(', '));
 console.log('Kacheln:', kacheln.length);
 

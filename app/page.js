@@ -1365,7 +1365,7 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <div style={{ background: '#0a35b0', borderRadius: '8px', padding: '5px 12px', fontSize: '12px', fontWeight: '700', color: '#fff' }}>Multicheck IMS</div>
               <span style={{ fontSize: '12px', color: '#999' }}>Eignungstest</span>
-              <span style={{ marginLeft: 'auto', background: '#dcfce7', color: '#166534', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>✅ 6 von 12 Themen</span>
+              <span style={{ marginLeft: 'auto', background: '#dcfce7', color: '#166534', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>✅ 12 von 12 Themen</span>
             </div>
             <button onClick={() => onSelect('Multicheck')} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 14px', borderRadius: '10px', background: '#eef2ff', border: '1px solid #b8c5f2', marginBottom: '8px', cursor: 'pointer', transition: 'transform 0.15s', textAlign: 'left' }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateX(4px)'; }}
@@ -1373,9 +1373,9 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
             >
               <span style={{ fontSize: '16px' }}>🧠</span>
               <span style={{ fontSize: '13px', fontWeight: '600', color: '#0a35b0' }}>Alle Themen</span>
-              <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#0a35b0', fontWeight: '700' }}>190</span>
+              <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#0a35b0', fontWeight: '700' }}>12 Themen</span>
             </button>
-            <p style={{ margin: '4px 2px 0', fontSize: '12px', color: '#777', lineHeight: '1.5' }}>Üben, Dojo und Frag Sensei pro Thema.</p>
+            <p style={{ margin: '4px 2px 0', fontSize: '12px', color: '#777', lineHeight: '1.5' }}>12 Themen: Üben, Dojo und Frag Sensei pro Thema.</p>
           </div>
         </div>
 

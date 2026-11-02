@@ -57,6 +57,9 @@ export const UNTERTHEMEN = {
     u('pikto', 'Piktogramme', '🖼️', [1, 2]),
     u('text', 'Text', '📄', [3, 4]),
   ],
+  schreiben: [
+    u('gedanken', 'Gedanken formulieren', '✍️', [1, 3]),
+  ],
   logik: [
     u('verbal', 'Verbale Analogien', '🔗', [1, 10]),
     u('figural', 'Figurale Analogien', '🔷', [21, 30]),
