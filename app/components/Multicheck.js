@@ -6,7 +6,8 @@ import { useState, useEffect, useRef } from 'react';
 import { MULTICHECK_THEMEN, multicheckThema, multicheckLernkarten } from '../lib/multicheck';
 import { DAYS, slotsOf } from '../lib/multicheck/plan';
 import { renderFigur } from '../lib/multicheck/figur';
-import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse } from '../lib/multicheck/pruefen';
+import { renderRaster } from '../lib/multicheck/raster';
+import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse, erwartetAntwort } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
 import { ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
 import { SENSEI_SPRUECHE } from '../lib/sensei_sprueche';
@@ -113,6 +114,18 @@ const CSS = `
 .mcq .fo{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px;border:2px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);cursor:pointer;font-size:12px}
 .mcq .fo .fgs{width:68px;height:68px}
 .mcq .fo.sel{border-color:var(--a);background:var(--soft)}.mcq .fo.right{border-color:var(--ok);background:var(--okbg)}.mcq .fo.wrong{border-color:var(--bad);background:var(--badbg)}
+.mcq .ncw{display:flex;flex-direction:column;gap:8px;max-width:700px;margin:0 auto}
+.mcq .ncr{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:center;background:var(--soft);border-radius:10px;padding:8px 12px}
+.mcq .nz{font-family:"Courier New",monospace;font-size:19px;letter-spacing:2px;font-weight:bold}
+.mcq .nbs{display:flex;gap:6px}
+.mcq .nb{padding:7px 12px;font-size:13px;border-radius:8px;border:1.5px solid var(--bd);background:var(--bg);color:var(--tx);cursor:pointer}
+.mcq .nb.sel{background:var(--a);border-color:var(--a);color:#fff}
+.mcq .nb.right{outline:3px solid var(--ok)}.mcq .nb.wrong{outline:3px solid var(--bad)}
+.mcq .cow{display:flex;flex-direction:column;align-items:center;gap:10px;margin:10px 0}
+.mcq .fgs.cob{width:220px;height:210px;border:1.5px solid #111}
+.mcq .cor{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:3px 8px;border-radius:8px}
+.mcq .cor.ok{background:var(--okbg)}.mcq .cor.bad{background:var(--badbg)}
+.mcq .fgs.cos{width:52px;height:50px}
 @media(max-width:640px){.mcq .opts.g2{grid-template-columns:1fr}.mcq .opts.g4{grid-template-columns:repeat(2,1fr)}.mcq .show{font-size:30px}}
 `;
 
@@ -175,6 +188,71 @@ function NumRaster({ wert }) {
 
 function FigSvg({ spec, uid }) {
   return <span className="fgs" dangerouslySetInnerHTML={{ __html: renderFigur(spec, uid) }} />;
+}
+
+// ─── Konzentration: Zahlenreihen vergleichen und Koordinaten ───────────────
+// Eine Einheit ist eine Frage oder, bei Blöcken (items), eine Zeile bzw. ein Feld.
+const einheiten = (q) => (q.items ? q.items.map((_, i) => q.id + '.' + i) : [q.id]);
+function statistik(qs, r) {
+  let total = 0, n = 0, richtig = 0;
+  qs.forEach(q => einheiten(q).forEach(id => { total++; if (r[id] != null) { n++; if (r[id]) richtig++; } }));
+  return { total, n, richtig };
+}
+const zeitText = (sec) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')} Min.`;
+
+// Ein Block mit sechs Zeilen. rows[i] ist null, 'g' (gleich) oder 'n' (nicht gleich).
+function NumCmpBlock({ q, rows, setRows, locked, zeige }) {
+  return (
+    <div className="ncw">
+      {q.items.map((z, i) => {
+        const soll = erwartetAntwort(q, z);
+        const knopf = (wert, text) => {
+          let c = 'nb';
+          if (rows[i] === wert) c += ' sel';
+          if (zeige) { if (soll === wert) c += ' right'; else if (rows[i] === wert) c += ' wrong'; }
+          return <button className={c} disabled={locked} onClick={() => setRows(rows.map((x, j) => (j === i ? wert : x)))}>{text}</button>;
+        };
+        return (
+          <div className="ncr" key={i}>
+            <span className="nz">{z.a}</span><span className="nz">{z.b}</span>
+            <span className="nbs">{knopf('g', 'Gleich')}{knopf('n', 'Nicht gleich')}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// Koordinaten: zeigt ein Feld nach dem anderen. Nach der zweiten Ziffer geht es automatisch weiter.
+function CoordBlock({ q, rows, setRows, locked, zeige }) {
+  const [txt, setTxt] = useState('');
+  const cur = rows.findIndex(x => x == null);
+  if (!zeige && cur < 0) return <div className="txt" style={{ textAlign: 'center' }}>Alle Felder sind eingegeben. Klicke auf «Prüfen».</div>;
+  if (zeige) {
+    return (
+      <div className="cow">
+        {q.items.map((f, i) => (
+          <div className={'cor ' + (rows[i] === f.a ? 'ok' : 'bad')} key={i}>
+            <span className="fgs cos" dangerouslySetInnerHTML={{ __html: renderRaster(f.c, f.r) }} />
+            <span>Feld {i + 1}: {rows[i] === f.a ? <b>{f.a}</b> : <>deine Eingabe <b>{rows[i] || '–'}</b>, richtig <b>{f.a}</b></>}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  const f = q.items[cur];
+  return (
+    <div className="cow">
+      <div className="txt" style={{ textAlign: 'center' }}>Feld {cur + 1} von {q.items.length}</div>
+      <span className="fgs cob" dangerouslySetInnerHTML={{ __html: renderRaster(f.c, f.r) }} />
+      <label className="txt" style={{ textAlign: 'center' }} htmlFor={'co-' + q.id}>Gib hier die Koordinaten ohne Leerschlag oder Komma ein (1. Ziffer X-Achse, 2. Ziffer Y-Achse):</label>
+      <input id={'co-' + q.id} key={cur} className="in" style={{ width: 90, textAlign: 'center', fontSize: 22, letterSpacing: 4 }} autoFocus autoComplete="off" inputMode="numeric" disabled={locked} value={txt}
+        onChange={e => {
+          const v = e.target.value.replace(/[^1-3]/g, '').slice(0, 2);
+          if (v.length === 2) { setTxt(''); setRows(rows.map((x, j) => (j === cur ? v : x))); } else setTxt(v);
+        }} />
+    </div>
+  );
 }
 
 function Konzept({ c, offen }) {
@@ -306,6 +384,8 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
             })}
           </div>
         )}
+        {t === 'numcmp' && <NumCmpBlock q={q} rows={U.rows} setRows={rows => up({ rows })} locked={done} zeige={done} />}
+        {t === 'coord' && <CoordBlock q={q} rows={U.rows} setRows={rows => up({ rows })} locked={done} zeige={done} />}
         {t === 'figmc' && (
           <div className="figw">
             <div className="figq">
@@ -469,6 +549,149 @@ const KEY_ERGEBNIS = 'kp_multicheck';
 function ladeErgebnis() { try { return JSON.parse(localStorage.getItem(KEY_ERGEBNIS) || '{}'); } catch { return {}; } }
 function speichereErgebnis(o) { try { localStorage.setItem(KEY_ERGEBNIS, JSON.stringify(o)); } catch {} }
 
+// ─── Tempo-Teil: Zahlenreihen und Koordinaten mit Zeit und Resultat ─────────
+// Es gibt kein Zeitlimit. Die Zeit läuft ab dem ersten angezeigten Block bzw. Feld.
+function TempoTeil({ thema, unter, onBack, onFehler, onRemoveFehler }) {
+  const qs = unter.qs;
+  const art = qs[0].type;
+  const [ansicht, setAnsicht] = useState('intro');
+  const [idx, setIdx] = useState(0);
+  const [rows, setRows] = useState([]);
+  const [alle, setAlle] = useState({});
+  const [t0, setT0] = useState(0);
+  const [res, setRes] = useState(null);
+  const saved = ladeErgebnis()[thema.id] || {};
+  const letzte = saved['t:' + unter.id];
+  const koordAlle = { type: 'coord', id: 'tempo-' + unter.id, items: qs.flatMap(q => q.items) };
+
+  function start() {
+    setIdx(0); setAlle({});
+    setRows(art === 'coord' ? koordAlle.items.map(() => null) : qs[0].items.map(() => null));
+    setT0(Date.now()); setAnsicht('lauf');
+  }
+
+  function fertig(proBlock) {
+    const sec = Math.max(1, Math.round((Date.now() - t0) / 1000));
+    const gespeichert = ladeErgebnis();
+    const r = { ...(gespeichert[thema.id] || {}) };
+    let ok = 0, total = 0;
+    const falsch = [];
+    qs.forEach((q, bi) => {
+      let blockOk = true;
+      q.items.forEach((it, i) => {
+        const richtig = proBlock[q.id][i] === erwartetAntwort(q, it);
+        r[q.id + '.' + i] = richtig ? 1 : 0;
+        total++;
+        if (richtig) ok++; else { blockOk = false; falsch.push({ q, it, gegeben: proBlock[q.id][i], nr: i + 1, block: bi + 1 }); }
+      });
+      r[q.id] = blockOk ? 1 : 0;
+      if (blockOk) onRemoveFehler('mc:' + q.id); else onFehler('mc:' + q.id);
+    });
+    r['t:' + unter.id] = { ok, total, sec };
+    speichereErgebnis({ ...gespeichert, [thema.id]: r });
+    setRes({ ok, total, sec, falsch });
+    setAnsicht('res');
+  }
+
+  function koordFertig(neu) {
+    setRows(neu);
+    if (neu.every(x => x != null)) {
+      const proBlock = {};
+      let pos = 0;
+      qs.forEach(q => { proBlock[q.id] = neu.slice(pos, pos + q.items.length); pos += q.items.length; });
+      fertig(proBlock);
+    }
+  }
+
+  function weiter() {
+    const neu = { ...alle, [qs[idx].id]: rows };
+    if (idx + 1 < qs.length) { setAlle(neu); setIdx(idx + 1); setRows(qs[idx + 1].items.map(() => null)); } else fertig(neu);
+  }
+
+  const kopf = (
+    <div className="qhead"><span>{ansicht === 'lauf' ? `${unter.name} · ${art === 'coord' ? 'Koordinaten' : `Block ${idx + 1} von ${qs.length}`}` : unter.name}</span><a onClick={ansicht === 'intro' ? onBack : () => setAnsicht('intro')}>{ansicht === 'intro' ? '← Zurück' : 'Beenden'}</a></div>
+  );
+
+  if (ansicht === 'intro') {
+    const demo = unter.demo;
+    return (
+      <div>
+        {kopf}
+        <h1 style={{ color: 'var(--a)', fontSize: 26, textAlign: 'center', margin: '14px 0 4px' }}>{unter.name}</h1>
+        <div style={{ color: 'var(--a)', fontWeight: 'bold', textAlign: 'center', marginBottom: 20 }}>{thema.name}</div>
+        <div className="txt"><H t={unter.intro || thema.intro} /></div>
+        <div className="txt"><b>{statistik(qs, {}).total} Aufgaben.</b> Es gibt kein Zeitlimit. Am Ende siehst du deine Zeit und wie viele Antworten richtig waren. Die Zeit läuft ab der ersten Anzeige.</div>
+        {letzte && <div className="txt" style={{ textAlign: 'center', color: 'var(--mut)' }}>Letztes Resultat: {letzte.ok} von {letzte.total} richtig, {zeitText(letzte.sec)}</div>}
+        <div className="btnrow">
+          {demo && <button className="btn sec" onClick={() => setAnsicht('demo')}>Beispiel ansehen</button>}
+          <button className="btn" onClick={start}>Start</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (ansicht === 'demo') {
+    const demo = unter.demo;
+    return (
+      <div>
+        {kopf}
+        <h2 className="qt">Beispiel</h2>
+        {art === 'numcmp'
+          ? <>
+            <div className="txt">Zeile 1 ist <b>nicht gleich</b>: Die dritte Stelle ist verschieden (8 und 9). Zeile 2 ist <b>gleich</b>. Dieses Beispiel zählt nicht.</div>
+            <NumCmpBlock q={demo} rows={demo.items.map(z => (z.gleich ? 'g' : 'n'))} setRows={() => {}} locked zeige={false} />
+          </>
+          : <>
+            <div className="txt" style={{ textAlign: 'center' }}>Das rote Feld liegt oben in der Mitte. Es hat die Koordinaten <b>23</b>: X = 2 (zweite Spalte von links), Y = 3 (oberste Reihe). Dieses Beispiel zählt nicht.</div>
+            <div style={{ textAlign: 'center' }}><span className="fgs cob" dangerouslySetInnerHTML={{ __html: renderRaster(demo.items[0].c, demo.items[0].r) }} /></div>
+          </>}
+        <div className="btnrow"><button className="btn" onClick={() => setAnsicht('intro')}>Zurück</button></div>
+      </div>
+    );
+  }
+
+  if (ansicht === 'res') {
+    return (
+      <div className="res">
+        {kopf}
+        <div style={{ textAlign: 'center', color: 'var(--a)', fontWeight: 'bold', marginBottom: 6 }}>Auswertung: {unter.name}</div>
+        <div className="score">{res.ok} von {res.total} richtig</div>
+        <div style={{ textAlign: 'center', color: 'var(--mut)', fontSize: 15, marginTop: 4 }}>Zeit: {zeitText(res.sec)}</div>
+        {res.falsch.length > 0 && (
+          <div className="fbk bad" style={{ marginTop: 16 }}>
+            <b>Das war falsch:</b>
+            <ul style={{ margin: '6px 0 0 18px', padding: 0 }}>
+              {res.falsch.slice(0, 12).map((f, i) => (
+                <li key={i}>
+                  {art === 'numcmp'
+                    ? <>Block {f.block}, Zeile {f.nr}: {f.it.a} und {f.it.b} sind <b>{f.it.gleich ? 'gleich' : 'nicht gleich'}</b>.</>
+                    : <>Feld {f.block === 1 ? f.nr : f.nr + qs[0].items.length * (f.block - 1)}: richtig <b>{f.it.a}</b>, deine Eingabe <b>{f.gegeben}</b>.</>}
+                </li>
+              ))}
+            </ul>
+            {res.falsch.length > 12 && <div style={{ marginTop: 4 }}>… und {res.falsch.length - 12} weitere.</div>}
+          </div>
+        )}
+        <div className="btnrow"><button className="btn" onClick={start}>Nochmals</button><button className="btn sec" onClick={onBack}>Zurück zur Übersicht</button></div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      {kopf}
+      <h2 className="qt">{qs[0].title}</h2>
+      <HB className="instr" t={art === 'coord' ? qs[0].instr : 'Klicke bei jeder Zeile «Gleich» oder «Nicht gleich». Du kannst eine Antwort ändern, bevor du auf «Weiter» klickst.'} />
+      {art === 'numcmp'
+        ? <>
+          <NumCmpBlock key={idx} q={qs[idx]} rows={rows} setRows={setRows} />
+          <div className="btnrow"><button className="btn" disabled={rows.some(x => x == null)} onClick={weiter}>{idx + 1 < qs.length ? 'Weiter' : 'Fertig'}</button></div>
+        </>
+        : <CoordBlock q={koordAlle} rows={rows} setRows={koordFertig} />}
+    </div>
+  );
+}
+
 function Ueben({ thema, demo, dm, dark, onBack, onFehler = () => {}, onRemoveFehler = () => {} }) {
   const [saved, setSaved] = useState(ladeErgebnis);
   const [ansicht, setAnsicht] = useState('intro');
@@ -608,7 +831,7 @@ function ThemaKachel({ t, dm, onOpen, isMobile }) {
       {lock && <span style={{ position: 'absolute', top: 8, right: 10, fontSize: 10, fontWeight: 700, color: dm.text3, background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: 20, padding: '1px 8px' }}>🔒 Bald</span>}
       <span style={{ fontSize: 30, filter: lock ? 'grayscale(1)' : 'none' }}>{t.emoji}</span>
       <span style={{ fontSize: 13, fontWeight: 700, color: lock ? dm.text3 : dm.text, textAlign: 'center' }}>{t.name}</span>
-      {!lock && <span style={{ fontSize: 11, color: dm.text3, textAlign: 'center' }}>{t.qs.length} Fragen</span>}
+      {!lock && <span style={{ fontSize: 11, color: dm.text3, textAlign: 'center' }}>{t.qs.some(q => q.items) ? `${statistik(t.qs, {}).total} Aufgaben` : `${t.qs.length} Fragen`}</span>}
     </button>
   );
 }
@@ -664,16 +887,15 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 12, marginBottom: 22 }}>
           {thema.unter.map(x => {
             const r = ladeErgebnis()[thema.id] || {};
-            const n = x.qs.filter(q => r[q.id] != null).length;
-            const richtig = x.qs.filter(q => r[q.id]).length;
-            const erledigt = !x.bald && x.qs.length > 0 && n === x.qs.length;
+            const { total, n, richtig } = statistik(x.qs, r);
+            const erledigt = !x.bald && total > 0 && n === total;
             return (
               <button key={x.id} disabled={!!x.bald} onClick={() => { setUnterId(x.id); setTeil('ueben'); }} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: isMobile ? '18px 8px' : '20px 10px', borderRadius: 16, border: `2px solid ${x.bald ? dm.border : erledigt ? '#22c55e' : MC_BLAU}`, background: dm.card, cursor: x.bald ? 'default' : 'pointer', opacity: x.bald ? 0.6 : 1 }}>
                 {x.bald && <span style={{ position: 'absolute', top: 8, right: 10, fontSize: 10, fontWeight: 700, color: dm.text3, background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: 20, padding: '1px 8px' }}>🔒 Bald</span>}
                 {erledigt && <span style={{ position: 'absolute', top: 6, right: 10, fontSize: 16, color: '#22c55e' }}>✓</span>}
                 <span style={{ fontSize: 28, filter: x.bald ? 'grayscale(1)' : 'none' }}>{x.emoji}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: x.bald ? dm.text3 : dm.text, textAlign: 'center' }}>{x.name}</span>
-                {!x.bald && <span style={{ fontSize: 11, color: dm.text3 }}>{n > 0 ? `${richtig} von ${x.qs.length}` : `${x.qs.length} Fragen`}</span>}
+                {!x.bald && <span style={{ fontSize: 11, color: dm.text3 }}>{n > 0 ? `${richtig} von ${total}` : `${total} ${x.qs[0].items ? 'Aufgaben' : 'Fragen'}`}</span>}
               </button>
             );
           })}
@@ -688,6 +910,7 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
       <div className={'mcq' + (dark ? ' dk' : '')}>
         {teil === 'ueben' && (() => {
           const x = thema.unter.find(y => y.id === unterId);
+          if (x.qs[0] && x.qs[0].items) return <TempoTeil thema={thema} unter={x} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
           return <Ueben thema={{ ...thema, qs: x.qs, name: x.name, sub: thema.name, intro: x.intro || thema.intro }} demo={x.demo} dm={dm} dark={dark} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
         })()}
         {teil === 'dojo' && <MulticheckDojo thema={thema} dm={dm} dark={dark} isMobile={isMobile} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />}

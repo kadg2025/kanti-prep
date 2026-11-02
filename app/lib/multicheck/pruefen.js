@@ -5,7 +5,7 @@
 import { check as planCheck } from './plan';
 
 export function neuerStand(q) {
-  return { sel: null, set: {}, val: q.prefix || '', korr: false, w: -1, cols: [0, 0, 0, 0, 0, 0, 0, 0], asg: {} };
+  return { sel: null, set: {}, val: q.prefix || '', korr: false, w: -1, cols: [0, 0, 0, 0, 0, 0, 0, 0], asg: {}, rows: q.items ? q.items.map(() => null) : [] };
 }
 
 function norm(s, q) {
@@ -46,10 +46,16 @@ export function numprocEreignisse(q) {
   return ev;
 }
 
+// Erwartete Antwort einer Einzelaufgabe in einem Block: 'g' (gleich) oder 'n' (nicht gleich) bzw. «XY».
+export function erwartetAntwort(q, item) {
+  return q.type === 'numcmp' ? (item.gleich ? 'g' : 'n') : item.a;
+}
+
 // true, wenn noch nichts (vollständig) beantwortet ist.
 export function istLeer(q, U) {
   const t = q.type;
   if ((t === 'mc' || t === 'memchoice' || t === 'numproc' || t === 'figmc') && U.sel == null) return true;
+  if ((t === 'numcmp' || t === 'coord') && U.rows.some(x => x == null)) return true;
   if (t === 'multi' && !Object.keys(U.set).some(k => U.set[k])) return true;
   if (t === 'input' && !U.val.trim()) return true;
   if (t === 'gap' && !U.korr && !U.val.trim()) return true;
@@ -74,6 +80,10 @@ export function auswerten(q, U, timeout) {
       else if (t === 'memchoice') extra = diffTxt(o.t, q.options[q.correct].t);
       else if (o.why) extra = o.why;
     }
+  } else if (t === 'numcmp' || t === 'coord') {
+    const falsch = q.items.map((it, i) => (U.rows[i] === erwartetAntwort(q, it) ? 0 : i + 1)).filter(Boolean);
+    ok = falsch.length === 0;
+    if (!ok) extra = (t === 'numcmp' ? 'Falsch in Zeile ' : 'Falsch bei Feld ') + falsch.join(', ') + '.';
   } else if (t === 'figmc') {
     ok = U.sel === q.correct;
     user = 'Bild ' + (U.sel + 1);

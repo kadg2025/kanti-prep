@@ -669,4 +669,54 @@ export const multicheckLernkarten = {
       ]),
     ],
   },
+
+  // ─── Konzentration ───────────────────────────────────────────────────────
+  konz: {
+    titel: 'Konzentration',
+    kacheln: [
+      {
+        id: 'mc_ko_zahlen', emoji: '🔢', titel: 'Zahlenreihen vergleichen', videos: [],
+        karten: [
+          { text: 'Du vergleichst zwei Zahlenreihen und entscheidest: gleich oder nicht gleich. Zuerst zwei Begriffe: Eine [[mcmerk|Ziffer]] ist ein einzelnes Zeichen (0 bis 9). Eine [[mcmerk|Stelle]] ist der Platz einer Ziffer in der Zahl.' },
+          { text: 'Lies nicht Ziffer für Ziffer. Teile die Zahl in [[mcmerk|Dreiergruppen]]:\n\n482 615 937\n482 615 397\n\nVergleiche Gruppe mit Gruppe von links nach rechts. Die letzte Gruppe ist anders, also [[mcok|nicht gleich]].' },
+          { text: 'Manche Ziffern verwechselt man leicht: 5 und 6, 6 und 8, 8 und 9, 3 und 8. Schau an diesen Stellen zweimal hin.\n\nAuch [[mcfalle|vertauschte Ziffern]] fallen schnell durch: 586 und 568.' },
+          { text: 'Nicht raten. Wenn du unsicher bist, schau die Gruppe nochmals an. Arbeite schnell, aber ruhig. [[mcmerk|Genauigkeit vor Tempo]]: Eine schnelle falsche Antwort bringt dir nichts.' },
+          { text: 'Zwei Beispiele:\n\n735 190 284 und 735 190 284: [[mcok|gleich]].\n735 190 284 und 735 109 284: [[mcfalle|nicht gleich]], die Ziffern 9 und 0 sind vertauscht.' },
+        ],
+        check: [
+          c('Wie vergleichst du die Zahlenreihen am besten?', ['In Dreiergruppen von links nach rechts', 'Nur die erste Ziffer', 'Die Ziffern raten', 'Nur die letzte Ziffer'], 'Gruppen sind schneller zu überblicken und du übersiehst weniger.'),
+          c('Sind 482615937 und 482615397 gleich?', ['Nicht gleich', 'Gleich'], 'Die letzte Dreiergruppe ist anders: 937 und 397.'),
+        ],
+      },
+      {
+        id: 'mc_ko_koord', emoji: '📍', titel: 'Koordinaten', videos: [],
+        karten: [
+          { text: 'Koordinaten sagen dir, wo ein Feld im Raster liegt. Sie bestehen aus zwei Ziffern. Die [[mcmerk|X-Achse]] ist waagrecht und wird von links nach rechts gezählt: 1, 2, 3.' },
+          { text: 'Die [[mcmerk|Y-Achse]] ist senkrecht und beginnt [[mcfalle|unten]]: 1 ist die unterste Reihe, 3 die oberste.\n\nDie Reihenfolge ist immer gleich: zuerst X, dann Y.' },
+          { text: 'Beispiele: 23 ist Mitte oben, 32 ist rechts in der Mitte, 11 ist links unten, 31 ist rechts unten.', raster: [[2, 3], [3, 2], [1, 1], [3, 1]] },
+          { text: 'Merkhilfe: Starte unten links. [[mcmerk|Zuerst nach rechts, dann nach oben.]] Der erste Wert sagt, wie weit du nach rechts gehst, der zweite, wie weit nach oben.' },
+        ],
+        check: [
+          c('Welche Koordinaten hat das Feld ganz links unten?', ['11', '13', '31', '33'], 'Ganz links ist X = 1, ganz unten ist Y = 1.'),
+          c('Das rote Feld ist rechts in der Mitte. Welche Koordinaten hat es?', ['32', '23', '31', '12'], 'Rechts ist X = 3, die Mitte ist Y = 2. Zuerst X, dann Y.'),
+        ],
+      },
+      fehler('mc_ko_fehler', [
+        ['Ich lese die Zahlen Ziffer für Ziffer.', 'Vergleiche in Dreiergruppen.'],
+        ['Ich prüfe nur Anfang und Ende der Zahl.', 'Prüfe alle drei Gruppen, auch die mittlere.'],
+        ['Ich nenne zuerst Y und dann X.', 'Immer zuerst X (waagrecht), dann Y (senkrecht).'],
+        ['Ich zähle Y von oben.', 'Y beginnt unten: 1 ist die unterste Reihe.'],
+      ]),
+      dojo('mc_ko_dojo', [
+        d('Welche Zahl ist gleich wie 574382916?', '574382916', ['574383916', '574328916'], 'Nur die erste Zahl stimmt in allen drei Gruppen: 574 382 916.'),
+        d('Welche Zahl ist gleich wie 902716485?', '902716485', ['902716845', '902761485'], 'In Dreiergruppen: 902 716 485. Bei den anderen sind Ziffern vertauscht.'),
+        d('Wie unterscheiden sich 639481275 und 639481725?', 'Zwei Ziffern sind vertauscht', ['Sie sind gleich', 'Die erste Ziffer ist anders'], 'Die letzte Gruppe: 275 und 725. Die Ziffern 2 und 7 sind vertauscht.'),
+        d('Sind 481926375 und 481926385 gleich?', 'Nicht gleich: eine Ziffer ist anders', ['Gleich', 'Nicht gleich: die erste Ziffer ist anders'], 'Die letzte Gruppe: 375 und 385. Die 7 ist zur 8 geworden.'),
+        d('Das rote Feld ist ganz links unten. Koordinaten?', '11', ['13', '31'], 'Ganz links ist X = 1, ganz unten ist Y = 1.'),
+        d('Das rote Feld ist ganz rechts oben. Koordinaten?', '33', ['31', '13'], 'Rechts ist X = 3, oben ist Y = 3.'),
+        d('Das rote Feld ist in der Mitte oben. Koordinaten?', '23', ['32', '13'], 'Mitte ist X = 2, oben ist Y = 3. Zuerst X, dann Y.'),
+        d('Die Koordinaten sind 31. Wo liegt das Feld?', 'Rechts unten', ['Links oben', 'Rechts oben'], 'X = 3 ist ganz rechts, Y = 1 ist ganz unten.'),
+      ]),
+    ],
+  },
 };
