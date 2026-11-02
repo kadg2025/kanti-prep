@@ -42,6 +42,7 @@ export function SchreibTeil({ thema, unter, onBack }) {
   const [haken, setHaken] = useState([]);
   const [offenId, setOffenId] = useState(null);
   const [loeschId, setLoeschId] = useState(null);
+  const [kopiertId, setKopiertId] = useState(null);
   const [version, setVersion] = useState(0);
   const daten = lade(speicher());
   void version;
@@ -57,6 +58,21 @@ export function SchreibTeil({ thema, unter, onBack }) {
     const id = abschicken(speicher(), { runde, thema: qs[runde].themen[wahl], text, id: sendId });
     if (!id) return;
     setSendId(id); setAnsicht('gesendet'); setVersion(v => v + 1);
+  }
+  // Thema und Text in die Zwischenablage kopieren (nur lokal, nichts wird gesendet)
+  async function kopieren(t) {
+    const inhalt = t.thema + '\n\n' + t.text;
+    try {
+      await navigator.clipboard.writeText(inhalt);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = inhalt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch { /* nicht möglich */ }
+      document.body.removeChild(ta);
+    }
+    setKopiertId(t.id);
+    setTimeout(() => setKopiertId(cur => (cur === t.id ? null : cur)), 2000);
   }
   function ueberarbeiten() { entwurfSpeichern(speicher(), runde, wahl, text); setAnsicht('schreiben'); }
   function naechste() { if (runde + 1 < qs.length) oeffne(runde + 1); else setAnsicht('menu'); }
@@ -113,6 +129,7 @@ export function SchreibTeil({ thema, unter, onBack }) {
               <a style={{ cursor: 'pointer', flex: 1, minWidth: 200 }} onClick={() => setOffenId(offenId === t.id ? null : t.id)}>
                 <b>{datumText(t.datum)} · {t.thema}</b><br /><span style={{ color: 'var(--mut)', fontSize: 13 }}>{ersteZeile(t.text)}</span>
               </a>
+              <button className="btn sec" style={{ padding: '4px 10px' }} onClick={() => kopieren(t)}>{kopiertId === t.id ? 'Kopiert ✓' : 'Text kopieren'}</button>
               {loeschId === t.id
                 ? <span style={{ display: 'flex', gap: 6 }}><button className="btn sec" style={{ padding: '4px 10px' }} onClick={() => { loeschen(speicher(), t.id); setLoeschId(null); setOffenId(null); setVersion(v => v + 1); }}>Wirklich löschen</button><button className="btn sec" style={{ padding: '4px 10px' }} onClick={() => setLoeschId(null)}>Abbrechen</button></span>
                 : <button className="btn sec" style={{ padding: '4px 10px' }} onClick={() => setLoeschId(t.id)}>Löschen</button>}
