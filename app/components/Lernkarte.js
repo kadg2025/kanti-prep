@@ -57,6 +57,11 @@ const KARTEN_FARBEN = {
   dr: { light: '#1d4ed8', dark: '#93c5fd' },  // direkte Rede
   ir: { light: '#a16207', dark: '#fcd34d' },  // indirekte Rede
 
+  // Multicheck: gruen = richtig/Regel, rot = Falle/Fehler, blau = Merkhilfe/Schluesselwort
+  mcok:    { light: '#15803d', dark: '#4ade80' },
+  mcfalle: { light: '#be123c', dark: '#fda4af' },
+  mcmerk:  { light: '#1d4ed8', dark: '#93c5fd' },
+
   // Wortschatz
   syn: { light: '#15803d', dark: '#4ade80' },  // gleiche Bedeutung
   geg: { light: '#be123c', dark: '#fda4af' },  // gegenteilige Bedeutung
@@ -109,7 +114,7 @@ function beltFor(count) {
   return BELT_LEVELS.find(b => count >= b.min && count <= b.max) || BELT_LEVELS[BELT_LEVELS.length - 1];
 }
 
-const GLOBAL_KEYFRAMES = `
+export const GLOBAL_KEYFRAMES = `
 @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes cardEnter { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes pop { 0% { transform: scale(0.6); opacity: 0; } 60% { transform: scale(1.18); opacity: 1; } 100% { transform: scale(1); } }
@@ -340,9 +345,9 @@ function VisualBlock({ type, chips, diagram, dm, dark }) {
 }
 
 // ─── DOJO: japanischer Look + Gürtel ──────────────────────────────────────
-const DOJO_ROT = '#B3202A';
+export const DOJO_ROT = '#B3202A';
 
-function dojoPalette(dark) {
+export function dojoPalette(dark) {
   return {
     rot: DOJO_ROT,
     rotText: dark ? '#f0727a' : DOJO_ROT,
@@ -354,14 +359,14 @@ function dojoPalette(dark) {
 }
 
 // Hanko-Stempel: rote Fläche, Zeichen in Creme, leicht gedreht.
-function Hanko({ zeichen = '道', size = 34, dark }) {
+export function Hanko({ zeichen = '道', size = 34, dark }) {
   const dj = dojoPalette(dark);
   return (
     <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: `${size}px`, height: `${size}px`, borderRadius: '8px', background: dj.rot, color: '#fbf5e6', fontSize: `${Math.round(size * 0.62)}px`, fontWeight: '800', lineHeight: 1, transform: 'rotate(-4deg)', boxShadow: 'inset 0 0 0 2px rgba(251,245,230,0.35)', flexShrink: 0 }}>{zeichen}</span>
   );
 }
 
-function DojoKopf({ state, aufstieg, spruch, dark, isMobile }) {
+export function DojoKopf({ state, aufstieg, spruch, dark, isMobile }) {
   const dj = dojoPalette(dark);
   const idx = guertelIndex(state.xp);
   const g = DOJO_GUERTEL[idx];
@@ -387,7 +392,7 @@ function DojoKopf({ state, aufstieg, spruch, dark, isMobile }) {
   );
 }
 
-function AufstiegMeldung({ index, spruch, onClose, dark }) {
+export function AufstiegMeldung({ index, spruch, onClose, dark }) {
   const g = DOJO_GUERTEL[index];
   return (
     <div role="status" style={{ background: DOJO_ROT, color: '#fbf5e6', borderRadius: '14px', padding: '14px 16px', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '12px', animation: 'pop 500ms ease' }}>
@@ -557,7 +562,7 @@ function hasVideos(kachel) {
 }
 
 // Optionen wie 'Keine der obigen' bleiben beim Mischen am Ende.
-function zufall(liste) {
+export function zufall(liste) {
   return liste[Math.floor(Math.random() * liste.length)];
 }
 
@@ -713,8 +718,9 @@ function KachelGrid({ karte, dm, dark, isMobile, done, justDone, beltPop, onOpen
   );
 }
 
-export default function LernkartePage({ topic, dm, dark, isMobile, onClose, onFehler = () => {}, onRemoveFehler = () => {} }) {
-  const karte = lernkarten[topic];
+// daten/fehlerPrefix: andere Lernkarten-Sammlung (z. B. Multicheck) mit eigenem Fehler-Präfix.
+export default function LernkartePage({ topic, dm, dark, isMobile, onClose, onFehler = () => {}, onRemoveFehler = () => {}, daten = lernkarten, fehlerPrefix = 'dojo' }) {
+  const karte = daten[topic];
   const { done, markDone } = useLernkarteDone();
   const [dojo, setDojo] = useState(ladeDojo);
   const [openKachelId, setOpenKachelId] = useState(null);
@@ -728,7 +734,7 @@ export default function LernkartePage({ topic, dm, dark, isMobile, onClose, onFe
   const color = KACHEL_COLORS[kachelIdx >= 0 ? kachelIdx % KACHEL_COLORS.length : 0];
 
   function dojoAntwort(karteIdx, richtig) {
-    const fehlerId = `dojo:${topic}:${openKachelId}:${karteIdx}`;
+    const fehlerId = `${fehlerPrefix}:${topic}:${openKachelId}:${karteIdx}`;
     const res = verbucheAntwort(dojo, richtig, fehlerId);
     setDojo(res.state);
     speichereDojo(res.state);

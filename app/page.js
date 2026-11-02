@@ -5,6 +5,8 @@ import { questions } from './lib/questions';
 import { facts } from './lib/facts';
 import { lernkarten } from './lib/lernkarten';
 import LernkartePage from './components/Lernkarte';
+import MulticheckPage from './components/Multicheck';
+import { multicheckFehlerItem } from './lib/multicheck';
 import { pruefungenModusA, pruefungenModusB } from './lib/gms3/mathe_otr/pruefung';
 import LinksPage from './LinksPage';
 import AufsatzPage from './components/AufsatzPage';
@@ -1299,7 +1301,7 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
   return (
     <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #f8f7ff 0%, #fff 100%)', padding: isMobile ? '24px 16px 32px' : '40px 20px', fontFamily: "'Nunito', 'Segoe UI', sans-serif" }}>
       <button onClick={toggleDark} title="Hell-/Dunkelmodus wechseln" aria-label="Hell-/Dunkelmodus wechseln" style={{ position: 'fixed', top: '16px', left: '16px', zIndex: 1000, background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', padding: '6px' }}>{dark ? '☀️' : '🌙'}</button>
-      <div style={{ textAlign: 'center', maxWidth: '800px', width: '100%' }}>
+      <div style={{ textAlign: 'center', maxWidth: '1040px', width: '100%' }}>
 
         {/* Header */}
         <div onClick={() => setLogoClicks(c => c + 1)} style={{ fontSize: '52px', marginBottom: '8px', cursor: 'default', userSelect: 'none' }}>🎓</div>
@@ -1309,10 +1311,10 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
           </div>
         )}
         <h1 style={{ fontSize: isMobile ? '28px' : '34px', fontWeight: '800', color: '#1a1a2e', margin: '0 0 6px' }}>KantiPrep Thurgau</h1>
-        <p style={{ fontSize: '15px', color: '#999', margin: '0 0 28px' }}>Aufnahmeprüfung Thurgau · GMS 2 & GMS 3</p>
+        <p style={{ fontSize: '15px', color: '#999', margin: '0 0 28px' }}>Aufnahmeprüfung Thurgau · GMS 2, GMS 3 & Multicheck IMS</p>
 
-        {/* GMS 2 & GMS 3 — ZUERST */}
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '20px', marginBottom: '24px' }}>
+        {/* GMS 2, GMS 3 & Multicheck — ZUERST */}
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1fr', gap: '20px', marginBottom: '24px' }}>
 
           {/* GMS 2 */}
           <div style={{ background: '#fff', border: '2px solid #b45309', borderRadius: '18px', padding: '22px', textAlign: 'left', boxShadow: '0 4px 20px rgba(180,83,9,0.10)' }}>
@@ -1356,6 +1358,24 @@ function LandingPage({ onSelect, streak = 0, fehlerCount = 0, dark = false, togg
                 <span style={{ marginLeft: 'auto', fontSize: '11px', color: item.color, fontWeight: '700' }}>{item.count}</span>
               </button>
             ))}
+          </div>
+
+          {/* Multicheck IMS */}
+          <div style={{ background: '#fff', border: '2px solid #0a35b0', borderRadius: '18px', padding: '22px', textAlign: 'left', boxShadow: '0 4px 20px rgba(10,53,176,0.10)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+              <div style={{ background: '#0a35b0', borderRadius: '8px', padding: '5px 12px', fontSize: '12px', fontWeight: '700', color: '#fff' }}>Multicheck IMS</div>
+              <span style={{ fontSize: '12px', color: '#999' }}>Eignungstest</span>
+              <span style={{ marginLeft: 'auto', background: '#dcfce7', color: '#166534', fontSize: '10px', padding: '2px 8px', borderRadius: '20px', fontWeight: '600' }}>✅ 6 von 12 Themen</span>
+            </div>
+            <button onClick={() => onSelect('Multicheck')} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 14px', borderRadius: '10px', background: '#eef2ff', border: '1px solid #b8c5f2', marginBottom: '8px', cursor: 'pointer', transition: 'transform 0.15s', textAlign: 'left' }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateX(4px)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateX(0)'; }}
+            >
+              <span style={{ fontSize: '16px' }}>🧠</span>
+              <span style={{ fontSize: '13px', fontWeight: '600', color: '#0a35b0' }}>Alle Themen</span>
+              <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#0a35b0', fontWeight: '700' }}>190</span>
+            </button>
+            <p style={{ margin: '4px 2px 0', fontSize: '12px', color: '#777', lineHeight: '1.5' }}>Üben, Dojo und Frag Sensei pro Thema.</p>
           </div>
         </div>
 
@@ -1450,12 +1470,12 @@ function dojoFehlerItem(id) {
 
 function FehlerKistePage({ fehlerIds, dm, onBack, onRemove, onClearAll, onJump }) {
   const isMobile = useIsMobile();
-  const items = fehlerIds.map(id => questions.find(q => q.id === id) || dojoFehlerItem(id)).filter(Boolean);
-  const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309' };
-  const subjectEmojis = { 'Mathe ohne TR': '📐', 'Mathe mit TR': '🔢', 'Deutsch': '📝', 'Deutsch GMS2': '📝' };
+  const items = fehlerIds.map(id => questions.find(q => q.id === id) || dojoFehlerItem(id) || multicheckFehlerItem(id)).filter(Boolean);
+  const subjectColors = { 'Mathe ohne TR': '#534AB7', 'Mathe mit TR': '#0f766e', 'Deutsch': '#b45309', 'Deutsch GMS2': '#b45309', 'Multicheck IMS': '#0a35b0' };
+  const subjectEmojis = { 'Mathe ohne TR': '📐', 'Mathe mit TR': '🔢', 'Deutsch': '📝', 'Deutsch GMS2': '📝', 'Multicheck IMS': '🧠' };
   const grouped = {};
   items.forEach(q => {
-    const key = q.dojoTopic ? (DEUTSCH_THEMEN.includes(q.dojoTopic) ? 'Deutsch' : 'Mathe ohne TR') : (subjectKeyOf(q) || 'Sonstiges');
+    const key = q.mcTopic ? 'Multicheck IMS' : q.dojoTopic ? (DEUTSCH_THEMEN.includes(q.dojoTopic) ? 'Deutsch' : 'Mathe ohne TR') : (subjectKeyOf(q) || 'Sonstiges');
     (grouped[key] = grouped[key] || []).push(q);
   });
 
@@ -1912,6 +1932,7 @@ export default function Home() {
   const [subject, setSubject] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [lernkarteTopic, setLernkarteTopic] = useState(null);
+  const [mcStart, setMcStart] = useState(null);
   const [aufsatzSeite, setAufsatzSeite] = useState(null);
   const [showLinks, setShowLinks] = useState(false);
   const [showFehlerKiste, setShowFehlerKiste] = useState(false);
@@ -1995,12 +2016,26 @@ export default function Home() {
       onRemove={removeFehler}
       onClearAll={clearFehler}
       onJump={(q) => {
+        if (q.mcTopic) { setMcStart(q.mcTopic); setSubject('Multicheck'); setSelectedId(null); setLernkarteTopic(null); setShowFehlerKiste(false); return; }
         if (q.dojoTopic) { setSubject(DEUTSCH_THEMEN.includes(q.dojoTopic) ? 'Deutsch' : 'Mathe ohne TR'); setSelectedId(null); setLernkarteTopic(q.dojoTopic); setShowFehlerKiste(false); return; }
         setSubject(subjectKeyOf(q)); setSelectedId(q.id); setLernkarteTopic(null); setShowFehlerKiste(false);
       }}
     />
   );
   if (!subject) return <LandingPage onSelect={s => { if (s === 'links') { setShowLinks(true); return; } if (s === 'fehlerkiste') { setShowFehlerKiste(true); return; } if (s === 'heuteueben') { setShowHeuteUeben(true); return; } if (s === 'probepruefung') { setShowProbepruefung(true); return; } setSubject(s); setSelectedId(null); setLernkarteTopic(null); setAufsatzSeite(null); setSidebarOpen(true); }} streak={streak} fehlerCount={fehler.length} dark={dark} toggleDark={toggleDark} />;
+
+  if (subject === 'Multicheck') return (
+    <MulticheckPage
+      key={mcStart || 'start'}
+      dm={dm}
+      dark={dark}
+      isMobile={isMobile}
+      startThema={mcStart}
+      onBack={() => { setSubject(null); setMcStart(null); }}
+      onFehler={addFehler}
+      onRemoveFehler={removeFehler}
+    />
+  );
 
   const selectedQuestion = questions.find(q => q.id === selectedId) || null;
   return (
