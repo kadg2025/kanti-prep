@@ -12,6 +12,7 @@ import logik from './logik';
 import konzentration from './konzentration';
 import vorstellung from './vorstellung';
 import vernetzt from './vernetzt';
+import merkfaehigkeit from './merkfaehigkeit';
 import { mitUnterthemen } from './unterthemen';
 import { multicheckLernkarten } from './lernkarten';
 
@@ -20,7 +21,7 @@ const aktiv = (thema, emoji) => ({ ...mitUnterthemen(thema), emoji, bald: false 
 
 // Reihenfolge wie im echten Multicheck.
 export const MULTICHECK_THEMEN = [
-  bald('merk', 'Merkfähigkeit', '🧠'),
+  aktiv(merkfaehigkeit, '🧠'),
   aktiv(deutsch, '📝'),
   aktiv(englisch, '🇬🇧'),
   aktiv(kurzzeit, '👁️'),
@@ -46,9 +47,9 @@ export { multicheckLernkarten };
 export function multicheckFehlerItem(id) {
   const [prefix, a, b, c] = id.split(':');
   if (prefix === 'mc') {
-    const thema = MULTICHECK_THEMEN.find(t => !t.bald && t.qs.some(q => q.id === a));
+    const thema = MULTICHECK_THEMEN.find(t => !t.bald && [...t.qs, ...(t.dojoQs || [])].some(q => q.id === a));
     if (!thema) return null;
-    const q = thema.qs.find(x => x.id === a);
+    const q = [...thema.qs, ...(thema.dojoQs || [])].find(x => x.id === a);
     return { id, mcTopic: thema.id, topic: `Multicheck: ${thema.name}`, year: q.title };
   }
   if (prefix === 'mcdojo') {

@@ -11,6 +11,9 @@ import { renderSeite, renderOben } from '../lib/multicheck/raeumlich.mjs';
 import { renderNetz, renderWuerfel } from '../lib/multicheck/netz.mjs';
 import { SZENARIEN, detailsText } from '../lib/multicheck/vernetzt_fragen.mjs';
 import { SYMBOLE } from '../lib/multicheck/vernetzt_symbole.mjs';
+import { SYMBOLE as MSYM } from '../lib/multicheck/merk_symbole.mjs';
+import { LERNZEIT } from '../lib/multicheck/merk_konfig.mjs';
+import kdaten from '../lib/multicheck/konzentration_daten';
 import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse, erwartetAntwort } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
 import { ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
@@ -156,7 +159,17 @@ const CSS = `
 .mcq .vzc{border:1px solid var(--bd);border-radius:10px;padding:6px;text-align:center;font-size:13px;background:var(--bg2)}
 .mcq .vzc .vzsym{width:44px;height:44px;margin:0 auto 2px;display:block}
 .mcq table.vzp{border-collapse:collapse;width:100%;font-size:13px}.mcq .vzp th,.mcq .vzp td{border:1px solid var(--bd);padding:5px 7px;text-align:left;vertical-align:top}.mcq .vzp th{background:var(--soft);color:var(--a)}
-@media(max-width:640px){.mcq .opts.g2{grid-template-columns:1fr}.mcq .opts.g4{grid-template-columns:repeat(2,1fr)}.mcq .show{font-size:30px}}
+.mcq .pkb{display:flex;align-items:center;justify-content:center;width:72px;height:72px;background:#fff;border:2px solid #111;border-radius:14px}
+.mcq .pkg{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:18px 0}
+.mcq .pka{display:grid;gap:10px;margin:10px 0}
+.mcq .pkz{display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px;border:2px solid transparent;border-radius:12px}
+.mcq .pkz.ok{border-color:var(--ok);background:var(--okbg)}.mcq .pkz.bad{border-color:var(--bad);background:var(--badbg)}
+.mcq .pkn{display:flex;gap:4px}
+.mcq .mtx{background:#fff;color:#222;border:1.5px solid #111;border-radius:12px;padding:14px 18px;max-width:700px;margin:10px auto}
+.mcq .mtx p{margin:0 0 10px;line-height:1.7;font-size:15.5px}.mcq .mtx p:last-child{margin:0}
+.mcq .mtf{margin:14px 0}
+.mcq .mfs{display:flex;flex-direction:column;gap:6px;max-width:640px}
+@media(max-width:640px){.mcq .pka{grid-template-columns:repeat(3,minmax(0,1fr))!important}.mcq .opts.g2{grid-template-columns:1fr}.mcq .opts.g4{grid-template-columns:repeat(2,1fr)}.mcq .show{font-size:30px}}
 `;
 
 function H({ t }) { return <span dangerouslySetInnerHTML={{ __html: t }} />; }
@@ -351,6 +364,185 @@ function Szenario({ sz }) {
   );
 }
 
+// ─── Merkfähigkeit: Piktogramme und Text ───────────────────────────────────
+function PiktoBild({ sym }) {
+  const { Icon } = MSYM[sym];
+  return <span className="pkb"><Icon size={46} strokeWidth={1.8} color="#111" /></span>;
+}
+function PiktoLern({ keys }) {
+  return <div className="pkg">{keys.map(k => <PiktoBild key={k} sym={k} />)}</div>;
+}
+function PiktoAntwort({ q, rows, setRows, locked, zeige }) {
+  const spalten = q.items.length >= 12 ? 6 : q.items.length >= 8 ? 4 : q.items.length;
+  return (
+    <div className="pka" style={{ gridTemplateColumns: 'repeat(' + spalten + ', minmax(0, 1fr))' }}>
+      {q.items.map((it, i) => {
+        const soll = erwartetAntwort(q, it);
+        return (
+          <div key={i} className={'pkz' + (zeige ? (rows[i] === soll ? ' ok' : ' bad') : '')}>
+            <PiktoBild sym={it.sym} />
+            <div className="pkn">
+              {['ja', 'nein'].map(w => <button key={w} className={'nb' + (rows[i] === w ? ' sel' : '') + (zeige && soll === w ? ' right' : '')} disabled={locked} onClick={() => setRows(rows.map((x, j) => (j === i ? w : x)))}>{w === 'ja' ? 'JA' : 'NEIN'}</button>)}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+function TextAntwort({ q, rows, setRows, locked, zeige }) {
+  return (
+    <div>
+      {q.items.map((it, i) => (
+        <div className="mtf" key={i}>
+          <b>{i + 1}. {it.frage}</b>
+          <div className="mfs" style={{ marginTop: 6 }}>
+            {it.optionen.map((o, k) => {
+              let c = 'opt';
+              if (rows[i] === k) c += ' sel';
+              if (zeige) { if (k === it.correct) c += ' right'; else if (rows[i] === k) c += ' wrong'; }
+              return <label key={k} className={c} onClick={() => { if (!locked) setRows(rows.map((x, j) => (j === i ? k : x))); }}><span className="rad" /><span>{o}</span></label>;
+            })}
+          </div>
+          {zeige && <div className="why" style={{ marginTop: 4 }}>{it.why}</div>}
+        </div>
+      ))}
+    </div>
+  );
+}
+function Countdown({ sek, onEnde }) {
+  const [rest, setRest] = useState(sek);
+  const fn = useRef(onEnde);
+  useEffect(() => { fn.current = onEnde; });
+  useEffect(() => {
+    const t0 = Date.now();
+    const id = setInterval(() => {
+      const r = Math.max(0, sek - (Date.now() - t0) / 1000);
+      setRest(r);
+      if (r <= 0) { clearInterval(id); if (fn.current) fn.current(); }
+    }, 250);
+    return () => clearInterval(id);
+  }, [sek]);
+  return <div className="tbox"><div className="tbar"><b style={{ width: (rest / sek * 100) + '%' }} /></div><div className="tl">Noch {Math.ceil(rest)} Sekunden</div></div>;
+}
+
+// Eine Merk-Runde: Lernphase, Ablenkung (Koordinaten, zählt nicht), Antwortphase. Verlässt man die Seite, beginnt die Runde von vorn.
+function MerkTeil({ thema, unter, onBack, onFehler, onRemoveFehler }) {
+  const qs = unter.qs;
+  const art = qs[0].type;
+  const [wahl, setWahl] = useState(null);
+  const [phase, setPhase] = useState('menu');
+  const [rows, setRows] = useState([]);
+  const [ablRows, setAblRows] = useState([]);
+  const [zeitUm, setZeitUm] = useState(false);
+  const [res, setRes] = useState(null);
+  const demo = wahl === 'demo';
+  const q = wahl == null ? null : demo ? unter.demo : qs[wahl];
+  const ablItems = kdaten.koord[((typeof wahl === 'number' ? wahl : 0) + (art === 'pikto' ? 0 : 2)) % kdaten.koord.length];
+  const sekunden = demo ? LERNZEIT.beispiel : LERNZEIT[art === 'pikto' ? 'pikto' : 'text'];
+  const rundenName = (i) => (art === 'pikto' ? 'Runde ' : 'Text ') + (i + 1);
+
+  function waehle(w) { setWahl(w); setPhase('intro'); }
+  function start() { setRows(q.items.map(() => null)); setZeitUm(false); setPhase('lern'); }
+  function zuAblenkung() {
+    if (demo) { setPhase('ant'); return; }
+    setAblRows(ablItems.map(() => null)); setPhase('abl');
+  }
+  function pruefen() {
+    let ok = 0;
+    q.items.forEach((it, i) => { if (rows[i] === erwartetAntwort(q, it)) ok++; });
+    if (!demo) {
+      const gespeichert = ladeErgebnis();
+      const r = { ...(gespeichert[thema.id] || {}) };
+      q.items.forEach((it, i) => { r[q.id + '.' + i] = rows[i] === erwartetAntwort(q, it) ? 1 : 0; });
+      const alle = ok === q.items.length;
+      r[q.id] = alle ? 1 : 0;
+      speichereErgebnis({ ...gespeichert, [thema.id]: r });
+      if (alle) onRemoveFehler('mc:' + q.id); else onFehler('mc:' + q.id);
+    }
+    setRes({ ok, total: q.items.length });
+    setPhase('res');
+  }
+
+  const zurMenue = () => { setPhase('menu'); setWahl(null); };
+  const kopf = (
+    <div className="qhead"><span>{unter.name}{q ? ' · ' + (demo ? 'Beispiel' : rundenName(wahl)) : ''}</span><a onClick={phase === 'menu' ? onBack : zurMenue}>{phase === 'menu' ? '← Zurück' : 'Beenden'}</a></div>
+  );
+  const antwortUi = (zeige) => (art === 'pikto'
+    ? <PiktoAntwort q={q} rows={rows} setRows={setRows} locked={zeige} zeige={zeige} />
+    : <TextAntwort q={q} rows={rows} setRows={setRows} locked={zeige} zeige={zeige} />);
+
+  if (phase === 'menu') {
+    const r = ladeErgebnis()[thema.id] || {};
+    return (
+      <div>
+        {kopf}
+        <h1 style={{ color: 'var(--a)', fontSize: 26, textAlign: 'center', margin: '14px 0 4px' }}>{unter.name}</h1>
+        <div style={{ color: 'var(--a)', fontWeight: 'bold', textAlign: 'center', marginBottom: 20 }}>{thema.name}</div>
+        <div className="txt"><H t={unter.intro} /></div>
+        <div className="txt">Jede Runde hat eine Lernphase, eine kurze Ablenkung mit Koordinaten (zählt nicht) und eine Antwortphase. Es gibt kein Zeitlimit bei den Antworten. Wenn du die Runde verlässt, beginnt sie wieder von vorn.</div>
+        <div className="btnrow" style={{ flexDirection: 'column', alignItems: 'center' }}>
+          {qs.map((x, i) => { const st = statistik([x], r); return <button key={x.id} className="btn" onClick={() => waehle(i)}>{rundenName(i)}{st.n > 0 ? ' · ' + st.richtig + ' von ' + st.total + (st.n === st.total ? ' ✓' : '') : ''}</button>; })}
+          <button className="btn sec" onClick={() => waehle('demo')}>Beispiel ansehen</button>
+        </div>
+      </div>
+    );
+  }
+  if (phase === 'intro') {
+    return (
+      <div>
+        {kopf}
+        <div className="txt" style={{ marginTop: 24 }}><H t={unter.intro} /></div>
+        <div className="txt">{art === 'pikto' ? 'Die Bilder bleiben' : 'Der Text bleibt'} <b>{sekunden} Sekunden</b> sichtbar. Dann folgt eine kurze Ablenkung{demo ? ' (im Beispiel entfällt sie)' : ''} und danach die Fragen.</div>
+        <div className="btnrow"><button className="btn" onClick={start}>Start</button></div>
+      </div>
+    );
+  }
+  if (phase === 'lern') {
+    return (
+      <div>
+        {kopf}
+        <Countdown sek={sekunden} onEnde={art === 'pikto' ? zuAblenkung : () => setZeitUm(true)} />
+        {art === 'pikto'
+          ? <PiktoLern keys={q.lernen} />
+          : (zeitUm ? <div className="txt" style={{ textAlign: 'center', marginTop: 30 }}>Die Zeit ist um. Klicke auf «Weiter».</div> : <div className="mtx">{q.text.map((a, i) => <p key={i}>{a}</p>)}</div>)}
+        {art === 'merktext' && <div className="btnrow"><button className="btn" onClick={zuAblenkung}>Weiter</button></div>}
+      </div>
+    );
+  }
+  if (phase === 'abl') {
+    return (
+      <div>
+        {kopf}
+        <div className="txt" style={{ textAlign: 'center' }}><b>Kurze Pause:</b> Tippe die Koordinaten ein. Das zählt nicht für dein Resultat.</div>
+        <CoordBlock q={{ id: 'abl-' + q.id, items: ablItems }} rows={ablRows} setRows={nr => { setAblRows(nr); if (nr.every(x => x != null)) setPhase('ant'); }} />
+        <div className="btnrow"><button className="btn sec" onClick={() => setPhase('ant')}>Überspringen</button></div>
+      </div>
+    );
+  }
+  if (phase === 'ant') {
+    return (
+      <div>
+        {kopf}
+        <div className="txt"><H t={unter.antwortIntro} /></div>
+        <HB className="instr" t={q.instr} />
+        {antwortUi(false)}
+        <div className="btnrow"><button className="btn" disabled={rows.some(x => x == null)} onClick={pruefen}>Prüfen</button></div>
+        {rows.some(x => x == null) && <div className="txt" style={{ textAlign: 'center', color: 'var(--mut)' }}>Beantworte zuerst alle {q.items.length} Aufgaben.</div>}
+      </div>
+    );
+  }
+  return (
+    <div className="res">
+      {kopf}
+      <div style={{ textAlign: 'center', color: 'var(--a)', fontWeight: 'bold', marginBottom: 6 }}>Auswertung{demo ? ' (Beispiel)' : ''}</div>
+      <div className="score">{res.ok} von {res.total} richtig</div>
+      {antwortUi(true)}
+      <div className="btnrow"><button className="btn" onClick={start}>Nochmals</button><button className="btn sec" onClick={zurMenue}>Zurück zur Auswahl</button></div>
+    </div>
+  );
+}
+
 function Konzept({ c, offen }) {
   const inner = (
     <>
@@ -378,7 +570,7 @@ function Konzept({ c, offen }) {
 // onFertig(ok, q) wird einmal beim Prüfen aufgerufen. onWeiter() beim Klick auf den Weiter-Knopf.
 function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
   const [U, setU] = useState(() => neuerStand(q));
-  const [phase, setPhase] = useState(q.type === 'memcolor' || q.type === 'memchoice' || q.type === 'numproc' ? 'ready' : 'answer');
+  const [phase, setPhase] = useState(q.type === 'memcolor' || q.type === 'memchoice' || q.type === 'numproc' || ((q.type === 'pikto' || q.type === 'merktext') && q.showSec) ? 'ready' : 'answer');
   const [fb, setFb] = useState(null);
   const [msg, setMsg] = useState('');
   const startTimer = q.time && zeitlimit && q.type !== 'memcolor';
@@ -469,6 +661,8 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
           ? <NumRaster wert={ev >= 0 ? { [numprocEreignisse(q)[ev].reihe]: numprocEreignisse(q)[ev].text } : {}} />
           : t === 'memcolor'
           ? <div className="circ">{q.seq.map((c, i) => <i key={i} className={'c' + (c + 1)} />)}</div>
+          : t === 'pikto' ? <PiktoLern keys={q.lernen} />
+          : t === 'merktext' ? <div className="mtx">{q.text.map((a, i) => <p key={i}>{a}</p>)}</div>
           : <div className="show">{q.show}</div>}
       </>
     );
@@ -521,6 +715,8 @@ function Frage({ q, thema, zeitlimit, onFertig, onWeiter, weiterText }) {
             <label className="kor">Lösung: <input className="in" style={{ width: 56, textAlign: 'center', fontSize: 18 }} maxLength={1} autoComplete="off" disabled={done} value={U.sel != null ? 'ABCDE'[U.sel] : ''} onChange={e => { const i = 'ABCDE'.indexOf(e.target.value.toUpperCase().slice(-1)); up({ sel: i >= 0 ? i : null }); }} /></label>
           </div>
         )}
+        {t === 'pikto' && <PiktoAntwort q={q} rows={U.rows} setRows={rows => up({ rows })} locked={done} zeige={done} />}
+        {t === 'merktext' && <TextAntwort q={q} rows={U.rows} setRows={rows => up({ rows })} locked={done} zeige={done} />}
         {t === 'numcmp' && <NumCmpBlock q={q} rows={U.rows} setRows={rows => up({ rows })} locked={done} zeige={done} />}
         {t === 'coord' && <CoordBlock q={q} rows={U.rows} setRows={rows => up({ rows })} locked={done} zeige={done} />}
         {t === 'figmc' && (
@@ -920,8 +1116,9 @@ function Ueben({ thema, demo, dm, dark, onBack, onFehler = () => {}, onRemoveFeh
 
 // ─── Dojo: Zufallsfragen mit Gürtel und XP ─────────────────────────────────
 function waehleFrage(thema, dojo, letzteId) {
-  const offen = thema.qs.filter(q => !dojo.geloest.includes('mc:' + q.id));
-  let pool = offen.length ? offen : thema.qs;
+  const alle = thema.dojoQs || thema.qs;
+  const offen = alle.filter(q => !dojo.geloest.includes('mc:' + q.id));
+  let pool = offen.length ? offen : alle;
   if (pool.length > 1) pool = pool.filter(q => q.id !== letzteId);
   return zufall(pool);
 }
@@ -932,7 +1129,8 @@ function MulticheckDojo({ thema, dm, dark, isMobile, onBack, onFehler, onRemoveF
   const [meldung, setMeldung] = useState(() => ({ spruch: zufall(SENSEI_SPRUECHE.start), aufstieg: null }));
   const [runde, setRunde] = useState(0);
   const [q, setQ] = useState(() => waehleFrage(thema, ladeDojo(), null));
-  const geloest = thema.qs.filter(x => dojo.geloest.includes('mc:' + x.id)).length;
+  const dojoFragen = thema.dojoQs || thema.qs;
+  const geloest = dojoFragen.filter(x => dojo.geloest.includes('mc:' + x.id)).length;
 
   function fertig(richtig, frage) {
     const id = 'mc:' + frage.id;
@@ -952,7 +1150,7 @@ function MulticheckDojo({ thema, dm, dark, isMobile, onBack, onFehler, onRemoveF
       </div>
       {meldung.aufstieg !== null && <AufstiegMeldung index={meldung.aufstieg} spruch={meldung.spruch} onClose={() => setMeldung(m => ({ ...m, aufstieg: null }))} dark={dark} />}
       <DojoKopf state={dojo} aufstieg={meldung.aufstieg !== null} spruch={meldung.aufstieg !== null ? null : meldung.spruch} dark={dark} isMobile={isMobile} />
-      <p style={{ margin: '0 0 12px', fontSize: 12, fontWeight: 700, color: dj.tinte2 }}>Gelöst in diesem Thema: {geloest} von {thema.qs.length} · XP gibt es nur beim ersten richtigen Lösen.</p>
+      <p style={{ margin: '0 0 12px', fontSize: 12, fontWeight: 700, color: dj.tinte2 }}>Gelöst in diesem Thema: {geloest} von {dojoFragen.length} · XP gibt es nur beim ersten richtigen Lösen.</p>
       <div style={{ background: dj.cremeKarte, border: `1px solid ${dj.rand}`, borderLeft: `5px solid ${dj.rot}`, borderRadius: 16, padding: isMobile ? '18px 14px' : '24px 26px' }}>
         <Frage key={runde} q={q} thema={thema} zeitlimit={false} onFertig={fertig} weiterText="Nächste Frage" onWeiter={() => { setQ(waehleFrage(thema, dojo, q.id)); setRunde(r => r + 1); }} />
       </div>
@@ -1047,6 +1245,7 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
       <div className={'mcq' + (dark ? ' dk' : '')}>
         {teil === 'ueben' && (() => {
           const x = thema.unter.find(y => y.id === unterId);
+          if (x.qs[0] && (x.qs[0].type === 'pikto' || x.qs[0].type === 'merktext')) return <MerkTeil thema={thema} unter={x} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
           if (x.qs[0] && x.qs[0].items) return <TempoTeil thema={thema} unter={x} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
           return <Ueben thema={{ ...thema, qs: x.qs, name: x.name, sub: thema.name, intro: x.intro || thema.intro }} demo={x.demo} dm={dm} dark={dark} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
         })()}

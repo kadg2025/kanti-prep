@@ -855,4 +855,55 @@ export const multicheckLernkarten = {
       ]),
     ],
   },
+  // ─── Merkfähigkeit ───────────────────────────────────────────────────────
+  merk: {
+    titel: 'Merkfähigkeit',
+    kacheln: [
+      {
+        id: 'mc_me_pikto', emoji: '🖼️', titel: 'Piktogramme merken', videos: [],
+        karten: [
+          { text: 'Ein [[mcmerk|Piktogramm]] ist ein einfaches Bild, das für etwas steht. In der Lernphase siehst du mehrere. Später entscheidest du bei jedem Bild: schon gesehen oder neu?', symbole: ['schiff', 'hund', 'burg'] },
+          { text: '[[mcmerk|Tipp 1:]] Nenne jedes Bild in einem Wort, zum Beispiel Schiff, Hund, Burg. Mit Wörtern merkt man sich Bilder leichter.' },
+          { text: '[[mcmerk|Tipp 2:]] Verbinde die Bilder zu einer kurzen Geschichte: Der Hund fährt mit dem Schiff zur Burg.' },
+          { text: '[[mcmerk|Tipp 3:]] Achte bei jedem Bild auf ein Detail, das es besonders macht.' },
+          { text: '[[mcfalle|Achtung:]] Neue Bilder können alten ähnlich sehen. Auto und Lastwagen sind zwei verschiedene Bilder. Prüfe genau.', symbole: ['auto', 'lastwagen'] },
+          { text: 'Wenn du bei einem Bild unsicher bist, grüble nicht zu lange. Entscheide nach deinem ersten Gefühl und gehe weiter.' },
+        ],
+        check: [
+          c('Welcher Tipp hilft beim Merken von Bildern?', ['Jedes Bild in einem Wort benennen', 'Nur die Farbe merken', 'Die Bilder nicht anschauen', 'Alle Bilder gleich nennen'], 'Ein Wort pro Bild gibt dem Bild einen Anker im Kopf.'),
+          c('In der Lernphase kam ein Auto vor. Jetzt siehst du einen Lastwagen. Was ist richtig?', ['Der Lastwagen ist neu', 'Der Lastwagen war schon dabei', 'Auto und Lastwagen sind dasselbe Bild', 'Das kann man nicht entscheiden'], 'Auto und Lastwagen sehen ähnlich aus, sind aber zwei verschiedene Bilder.'),
+        ],
+      },
+      {
+        id: 'mc_me_text', emoji: '📄', titel: 'Text merken', videos: [],
+        karten: [
+          { text: 'Zu [[mcmerk|Zahlen, Namen und Orten]] kann man gut Fragen stellen. Merke sie dir beim Lesen gezielt.' },
+          { text: 'Bilde pro Absatz einen [[mcmerk|Kernsatz]]. Das ist ein kurzer Satz, der den Absatz zusammenfasst.' },
+          { text: 'Stell dir ein Raster im Kopf vor: [[mcmerk|Wer? Was? Wann? Wo? Warum?]] Fülle es beim Lesen mit Stichwörtern.' },
+          { text: 'Lies nicht zu hastig. Wer zu schnell liest, überliest Zahlen und Namen. [[mcfalle|Falle:]] Falsche Antworten klingen möglich, stehen aber nicht im Text.' },
+        ],
+        check: [
+          c('Was ist ein Kernsatz?', ['Ein kurzer Satz, der einen Absatz zusammenfasst', 'Der erste Satz des Textes', 'Ein Satz mit vielen Zahlen', 'Der längste Satz'], 'Ein Kernsatz fasst den Inhalt eines Absatzes kurz zusammen.'),
+          c('Eine Antwort klingt gut, steht aber nicht im Text. Was tust du?', ['Ich wähle sie nicht', 'Ich wähle sie trotzdem', 'Ich rate', 'Ich wähle die längste Antwort'], 'Die richtige Antwort lässt sich im Text belegen.'),
+        ],
+      },
+      fehler('mc_me_fehler', [
+        ['Ich schaue die Bilder nur kurz an.', 'Nenne jedes Bild in einem Wort.'],
+        ['Ich halte ähnliche Bilder für dasselbe.', 'Auto und Lastwagen sind verschieden. Prüfe genau.'],
+        ['Ich lese den Text hastig.', 'Lies ruhig und merke dir Zahlen, Namen und Orte.'],
+        ['Ich wähle die Antwort, die gut klingt.', 'Die richtige Antwort steht im Text.'],
+        ['Ich grüble zu lange bei einem Bild.', 'Entscheide nach dem ersten Gefühl und gehe weiter.'],
+      ]),
+      dojo('mc_me_dojo', [
+        d('Du hast ein Bild in der Lernphase nicht gesehen. Was wählst du?', 'NEIN', ['JA', 'Weder noch'], 'Ein Bild, das nicht gezeigt wurde, ist neu: NEIN.'),
+        d('Welcher Tipp hilft beim Merken von Bildern?', 'Jedes Bild in einem Wort benennen', ['Die Bilder schnell ansehen', 'Nur die Farbe merken'], 'Wörter und Geschichten helfen dem Gedächtnis.'),
+        d('In der Lernphase kam ein Auto vor. Jetzt siehst du einen Lastwagen. Was ist richtig?', 'Der Lastwagen ist neu', ['Der Lastwagen war dabei', 'Auto und Lastwagen sind gleich'], 'Es sind zwei verschiedene Bilder.'),
+        d('Was ist ein Kernsatz?', 'Ein kurzer Satz, der einen Absatz zusammenfasst', ['Der erste Satz des Textes', 'Ein Satz mit Zahlen'], 'Der Kernsatz fasst den Absatz kurz zusammen.'),
+        d('Welche Angaben merkst du dir gezielt?', 'Zahlen, Namen und Orte', ['Nur das Ende', 'Nur die Überschrift'], 'Dazu lassen sich gut Fragen stellen.'),
+        d('Eine Antwort klingt gut, steht aber nicht im Text. Was tust du?', 'Ich wähle sie nicht', ['Ich wähle sie trotzdem', 'Ich rate'], 'Die richtige Antwort steht im Text.'),
+        d('Was ist das Raster «Wer? Was? Wann? Wo? Warum?»?', 'Fragen, die man sich beim Lesen stellt', ['Eine Liste von Namen', 'Eine Rechenhilfe'], 'Mit den Fragen ordnest du den Inhalt im Kopf.'),
+        d('Du bist bei einem Bild unsicher. Was tust du?', 'Ich entscheide nach dem ersten Gefühl', ['Ich grüble mehrere Minuten', 'Ich lasse es leer'], 'Nicht zu lange grübeln, sondern weitergehen.'),
+      ]),
+    ],
+  },
 };
