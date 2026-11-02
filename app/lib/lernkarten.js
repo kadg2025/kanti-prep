@@ -2568,21 +2568,21 @@ export const lernkarten = {
         minLoesungen: 4,
         karten: [
           // 2016, Aufgabe 20
-          { text: 'Ordne die Nomen ein (Lebewesen, Sachen, Gedachtes):\n\n«Er hätte mit ihr fliegen sollen; mit dem Flugzeug gelangte man binnen einer Stunde von Zürich nach London, es hätte für Thérèse ausgesehen wie nichts.»', loesung: 'Lebewesen: Thérèse.\nSachen: Flugzeug, Zürich, London.\nGedachtes: Stunde.' },
+          { text: 'Ordne die Nomen ein (Lebewesen, Sachen, Gedachtes):\n\n«Er hätte mit ihr fliegen sollen; mit dem Flugzeug gelangte man binnen einer Stunde von Zürich nach London, es hätte für Thérèse ausgesehen wie nichts.»', options: [{ text: 'Lebewesen: Thérèse; Sachen: Flugzeug, Zürich, London; Gedachtes: Stunde', correct: true }, { text: 'Lebewesen: Thérèse; Sachen: Flugzeug, Stunde; Gedachtes: Zürich, London', correct: false }, { text: 'Lebewesen: Thérèse; Sachen: Flugzeug, Zürich, London, Stunde; Gedachtes: keines', correct: false }], loesung: 'Lebewesen: Thérèse.\nSachen: Flugzeug, Zürich, London.\nGedachtes: Stunde.' },
           // 2020, Aufgabe 8
-          { text: 'Welche Adjektive stehen in einer Vergleichsform?\n\n«Je näher wir auf einer langen, geraden Betonpiste an das Dorf herankamen, desto grösser wurden die Häuser …»', loesung: 'näher und grösser' },
+          { text: 'Welche Adjektive stehen in einer Vergleichsform?\n\n«Je näher wir auf einer langen, geraden Betonpiste an das Dorf herankamen, desto grösser wurden die Häuser …»', options: [{ text: 'näher und grösser', correct: true }, { text: 'näher, grösser und langen', correct: false }, { text: 'langen und geraden', correct: false }], loesung: 'näher und grösser' },
           // 2024, Aufgabe 4 (1. Hälfte)
-          { text: 'Setze in den Plural:\n\nBraut / Kegelbahn / Nachfolger', loesung: 'die Bräute, die Kegelbahnen, die Nachfolger (gleiche Form)' },
+          { text: 'Setze in den Plural:\n\nBraut / Kegelbahn / Nachfolger', options: [{ text: 'die Bräute, die Kegelbahnen, die Nachfolger', correct: true }, { text: 'die Braute, die Kegelbahnen, die Nachfolger', correct: false }, { text: 'die Bräute, die Kegelbahnen, die Nachfolgern', correct: false }], loesung: 'die Bräute, die Kegelbahnen, die Nachfolger (gleiche Form)' },
           // 2024, Aufgabe 4 (2. Hälfte)
-          { text: 'Setze in den Plural:\n\nBegräbnis / Schloss / Ruf', loesung: 'die Begräbnisse, die Schlösser, die Rufe' },
+          { text: 'Setze in den Plural:\n\nBegräbnis / Schloss / Ruf', options: [{ text: 'die Begräbnisse, die Schlösser, die Rufe', correct: true }, { text: 'die Begräbnisse, die Schlosse, die Rufe', correct: false }, { text: 'die Begräbnisse, die Schlösser, die Rüfe', correct: false }], loesung: 'die Begräbnisse, die Schlösser, die Rufe' },
           // 2025, Aufgabe 6 (1. Hälfte)
-          { text: 'Setze in den Plural:\n\nFluss / Hemd / Land / Ergebnis', loesung: 'die Flüsse, die Hemden, die Länder, die Ergebnisse' },
+          { text: 'Setze in den Plural:\n\nFluss / Hemd / Land / Ergebnis', options: [{ text: 'die Flüsse, die Hemden, die Länder, die Ergebnisse', correct: true }, { text: 'die Flusse, die Hemden, die Länder, die Ergebnisse', correct: false }, { text: 'die Flüsse, die Hemden, die Lande, die Ergebnis', correct: false }], loesung: 'die Flüsse, die Hemden, die Länder, die Ergebnisse' },
           // 2025, Aufgabe 6 (2. Hälfte)
-          { text: 'Setze in den Plural:\n\nWägelchen / Korridor / Ankunft / Flucht', loesung: 'die Wägelchen (gleiche Form), die Korridore, die Ankünfte, die Fluchten' },
+          { text: 'Setze in den Plural:\n\nWägelchen / Korridor / Ankunft / Flucht', options: [{ text: 'die Wägelchen, die Korridore, die Ankünfte, die Fluchten', correct: true }, { text: 'die Wägelchen, die Korridoren, die Ankunfte, die Fluchten', correct: false }, { text: 'die Wägelchens, die Korridore, die Ankünfte, die Flüchte', correct: false }], loesung: 'die Wägelchen (gleiche Form), die Korridore, die Ankünfte, die Fluchten' },
           // 2025, Aufgabe 14 (1. Hälfte)
-          { text: 'Nominalisiere und setze den bestimmten Artikel dazu:\n\nsauber / gewissenhaft', loesung: 'die Sauberkeit oder das Saubere; die Gewissenhaftigkeit oder das Gewissenhafte' },
+          { text: 'Nominalisiere und setze den bestimmten Artikel dazu:\n\nsauber / gewissenhaft', options: [{ text: 'die Sauberkeit, die Gewissenhaftigkeit', correct: true }, { text: 'der Sauberkeit, die Gewissenhaftigkeit', correct: false }, { text: 'die Sauberheit, die Gewissenhaftheit', correct: false }], loesung: 'die Sauberkeit oder das Saubere; die Gewissenhaftigkeit oder das Gewissenhafte' },
           // 2025, Aufgabe 14 (2. Hälfte)
-          { text: 'Nominalisiere und setze den bestimmten Artikel dazu:\n\nglatt / dunkel', loesung: 'die Glätte, die Glattheit oder das Glatte; die Dunkelheit, das Dunkle oder das Dunkel' },
+          { text: 'Nominalisiere und setze den bestimmten Artikel dazu:\n\nglatt / dunkel', options: [{ text: 'die Glätte, die Dunkelheit', correct: true }, { text: 'das Glätte, die Dunkelheit', correct: false }, { text: 'die Glattkeit, die Dunkelkeit', correct: false }], loesung: 'die Glätte, die Glattheit oder das Glatte; die Dunkelheit, das Dunkle oder das Dunkel' },
         ],
         check: [],
       },
