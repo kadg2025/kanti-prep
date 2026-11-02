@@ -13,6 +13,7 @@ import konzentration from './konzentration';
 import vorstellung from './vorstellung';
 import vernetzt from './vernetzt';
 import merkfaehigkeit from './merkfaehigkeit';
+import schreiben from './schreiben';
 import { mitUnterthemen } from './unterthemen';
 import { multicheckLernkarten } from './lernkarten';
 
@@ -32,7 +33,7 @@ export const MULTICHECK_THEMEN = [
   aktiv(konzentration, '🎯'),
   aktiv(vorstellung, '🧊'),
   aktiv(vernetzt, '🕸️'),
-  bald('textschreiben', 'Textschreiben', '✍️'),
+  aktiv(schreiben, '✍️'),
 ];
 
 export function multicheckThema(id) {

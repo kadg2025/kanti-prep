@@ -13,6 +13,7 @@ import { SZENARIEN, detailsText } from '../lib/multicheck/vernetzt_fragen.mjs';
 import { SYMBOLE } from '../lib/multicheck/vernetzt_symbole.mjs';
 import { SYMBOLE as MSYM } from '../lib/multicheck/merk_symbole.mjs';
 import { LERNZEIT } from '../lib/multicheck/merk_konfig.mjs';
+import { SchreibTeil, SchreibDojo, anzahlTexte } from './MulticheckSchreiben';
 import kdaten from '../lib/multicheck/konzentration_daten';
 import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse, erwartetAntwort } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
@@ -169,6 +170,7 @@ const CSS = `
 .mcq .mtx p{margin:0 0 10px;line-height:1.7;font-size:15.5px}.mcq .mtx p:last-child{margin:0}
 .mcq .mtf{margin:14px 0}
 .mcq .mfs{display:flex;flex-direction:column;gap:6px;max-width:640px}
+.mcq .stx{display:block;width:100%;min-height:230px;box-sizing:border-box;padding:12px 14px;font-size:16px;line-height:1.6;font-family:inherit;border:1.5px solid var(--a);border-radius:12px;background:var(--bg);color:var(--tx);resize:vertical}
 @media(max-width:640px){.mcq .pka{grid-template-columns:repeat(3,minmax(0,1fr))!important}.mcq .opts.g2{grid-template-columns:1fr}.mcq .opts.g4{grid-template-columns:repeat(2,1fr)}.mcq .show{font-size:30px}}
 `;
 
@@ -1166,7 +1168,7 @@ function ThemaKachel({ t, dm, onOpen, isMobile }) {
       {lock && <span style={{ position: 'absolute', top: 8, right: 10, fontSize: 10, fontWeight: 700, color: dm.text3, background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: 20, padding: '1px 8px' }}>🔒 Bald</span>}
       <span style={{ fontSize: 30, filter: lock ? 'grayscale(1)' : 'none' }}>{t.emoji}</span>
       <span style={{ fontSize: 13, fontWeight: 700, color: lock ? dm.text3 : dm.text, textAlign: 'center' }}>{t.name}</span>
-      {!lock && <span style={{ fontSize: 11, color: dm.text3, textAlign: 'center' }}>{t.qs.some(q => q.items) ? `${statistik(t.qs, {}).total} Aufgaben` : `${t.qs.length} Fragen`}</span>}
+      {!lock && <span style={{ fontSize: 11, color: dm.text3, textAlign: 'center' }}>{t.qs.some(q => q.items) ? `${statistik(t.qs, {}).total} Aufgaben` : t.qs[0].type === 'freitext' ? `${t.qs.length} Runden` : `${t.qs.length} Fragen`}</span>}
     </button>
   );
 }
@@ -1223,14 +1225,15 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
           {thema.unter.map(x => {
             const r = ladeErgebnis()[thema.id] || {};
             const { total, n, richtig } = statistik(x.qs, r);
-            const erledigt = !x.bald && total > 0 && n === total;
+            const texte = x.qs[0] && x.qs[0].type === 'freitext' ? anzahlTexte() : null;
+            const erledigt = texte != null ? texte > 0 : !x.bald && total > 0 && n === total;
             return (
               <button key={x.id} disabled={!!x.bald} onClick={() => { setUnterId(x.id); setTeil('ueben'); }} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: isMobile ? '18px 8px' : '20px 10px', borderRadius: 16, border: `2px solid ${x.bald ? dm.border : erledigt ? '#22c55e' : MC_BLAU}`, background: dm.card, cursor: x.bald ? 'default' : 'pointer', opacity: x.bald ? 0.6 : 1 }}>
                 {x.bald && <span style={{ position: 'absolute', top: 8, right: 10, fontSize: 10, fontWeight: 700, color: dm.text3, background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: 20, padding: '1px 8px' }}>🔒 Bald</span>}
                 {erledigt && <span style={{ position: 'absolute', top: 6, right: 10, fontSize: 16, color: '#22c55e' }}>✓</span>}
                 <span style={{ fontSize: 28, filter: x.bald ? 'grayscale(1)' : 'none' }}>{x.emoji}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: x.bald ? dm.text3 : dm.text, textAlign: 'center' }}>{x.name}</span>
-                {!x.bald && <span style={{ fontSize: 11, color: dm.text3 }}>{n > 0 ? `${richtig} von ${total}` : `${total} ${x.qs[0].items ? 'Aufgaben' : 'Fragen'}`}</span>}
+                {!x.bald && <span style={{ fontSize: 11, color: dm.text3 }}>{texte != null ? (texte > 0 ? `${texte} ${texte === 1 ? 'Text' : 'Texte'} geschrieben` : `${x.qs.length} Runden`) : n > 0 ? `${richtig} von ${total}` : `${total} ${x.qs[0].items ? 'Aufgaben' : 'Fragen'}`}</span>}
               </button>
             );
           })}
@@ -1245,11 +1248,14 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
       <div className={'mcq' + (dark ? ' dk' : '')}>
         {teil === 'ueben' && (() => {
           const x = thema.unter.find(y => y.id === unterId);
+          if (x.qs[0] && x.qs[0].type === 'freitext') return <SchreibTeil thema={thema} unter={x} onBack={zu} />;
           if (x.qs[0] && (x.qs[0].type === 'pikto' || x.qs[0].type === 'merktext')) return <MerkTeil thema={thema} unter={x} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
           if (x.qs[0] && x.qs[0].items) return <TempoTeil thema={thema} unter={x} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
           return <Ueben thema={{ ...thema, qs: x.qs, name: x.name, sub: thema.name, intro: x.intro || thema.intro }} demo={x.demo} dm={dm} dark={dark} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />;
         })()}
-        {teil === 'dojo' && <MulticheckDojo thema={thema} dm={dm} dark={dark} isMobile={isMobile} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />}
+        {teil === 'dojo' && (thema.id === 'schreiben'
+          ? <SchreibDojo thema={thema} dm={dm} dark={dark} isMobile={isMobile} onBack={zu} />
+          : <MulticheckDojo thema={thema} dm={dm} dark={dark} isMobile={isMobile} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />)}
       </div>
     );
   }

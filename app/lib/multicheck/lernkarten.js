@@ -906,4 +906,71 @@ export const multicheckLernkarten = {
       ]),
     ],
   },
+  // ─── Textschreiben ───────────────────────────────────────────────────────
+  schreiben: {
+    titel: 'Textschreiben',
+    kacheln: [
+      {
+        id: 'mc_sc_ordnen', emoji: '🧭', titel: 'Gedanken ordnen', videos: [],
+        karten: [
+          { text: 'Wähle das Thema, zu dem dir am meisten einfällt. Das ist oft nicht das schwierigste, sondern das, bei dem du gleich ein Beispiel findest.' },
+          { text: 'Sammle vor dem Schreiben [[mcmerk|3 Stichwörter]]. Sie sind dein Gerüst und verhindern, dass du mitten im Text nicht mehr weiterweisst.' },
+          { text: 'Baue den Text in drei Teilen auf:\n\n[[mcmerk|Einleitung]]: Worum geht es?\n[[mcmerk|Hauptteil]]: Deine Gedanken.\n[[mcmerk|Schluss]]: Ein kurzes Fazit.' },
+          { text: 'Gib ein [[mcmerk|Beispiel]]. Ein kleines Erlebnis macht deine Aussage anschaulich.' },
+          { text: 'Begründe mit «[[mcmerk|weil]]»: Ich mag den Fluss, weil es dort ruhig ist.' },
+          { text: 'Mini-Beispiel:\n\nStichwörter: ruhig, Fluss, nachdenken.\nSätze: [[mcok|Ich mag den Fluss, weil es dort ruhig ist. Dort kann ich gut nachdenken.]]' },
+        ],
+        check: [
+          c('Was machst du vor dem Schreiben?', ['3 Stichwörter sammeln', 'Sofort den Schluss schreiben', 'Alles auswendig lernen', 'Das Thema nicht wählen'], 'Stichwörter geben dir ein Gerüst für den Text.'),
+          c('Welches Wort hilft beim Begründen?', ['weil', 'und dann', 'aber', 'oder'], 'Mit «weil» zeigst du den Grund für deine Meinung.'),
+        ],
+      },
+      {
+        id: 'mc_sc_formulieren', emoji: '💬', titel: 'Gut formulieren', videos: [],
+        karten: [
+          { text: 'Schreibe [[mcmerk|kurze, klare Sätze]]. Ein Gedanke pro Satz ist leichter zu lesen.' },
+          { text: 'Vermeide Wiederholungen. Statt dreimal «sehr gut» kannst du schreiben: toll, hilfreich, angenehm.' },
+          { text: '[[mcmerk|Verbindungswörter]] verbinden Sätze: denn, deshalb, ausserdem, trotzdem.' },
+          { text: 'Beginne nicht alle Sätze gleich. Statt immer mit «Ich» kannst du mit einem Ort oder einer Zeit anfangen.' },
+          { text: 'Vorher:\n❌ Ich gehe gern an den Fluss. Ich gehe gern dorthin, weil es schön ist. Ich bin dort oft.\n\nNachher:\n✅ Am Fluss fühle ich mich wohl, denn es ist dort ruhig. Deshalb bin ich oft dort.' },
+          { text: 'Vorher:\n❌ Ich lese. Ich schreibe. Ich zeichne.\n\nNachher:\n✅ Nach der Schule lese ich gern. Am Abend schreibe ich oder zeichne.' },
+        ],
+        check: [
+          c('Welches Wort ist ein Verbindungswort?', ['deshalb', 'Fluss', 'schnell', 'gestern'], 'Verbindungswörter wie «deshalb» verknüpfen zwei Sätze.'),
+          c('Wie vermeidest du Wiederholungen?', ['Andere Wörter verwenden', 'Den Satz zweimal schreiben', 'Weniger denken', 'Keine Sätze schreiben'], 'Mit anderen Wörtern klingt der Text abwechslungsreicher.'),
+        ],
+      },
+      {
+        id: 'mc_sc_fehler_vermeiden', emoji: '🔎', titel: 'Fehler vermeiden', videos: [],
+        karten: [
+          { text: 'Lies deinen Text zum Schluss [[mcmerk|noch einmal]], am besten laut. So hörst du Fehler, die du beim Schreiben überliest.' },
+          { text: '[[mcmerk|Gross- und Kleinschreibung]]: Nomen und Satzanfänge schreibst du gross.' },
+          { text: '[[mcmerk|das oder dass]]: «das» kannst du oft durch «dieses» ersetzen. «dass» leitet einen Nebensatz ein: Ich weiss, [[mcok|dass]] es regnet.' },
+          { text: '[[mcmerk|Satzzeichen]]: Am Satzende steht ein Punkt. Vor «weil» und «dass» steht ein Komma.' },
+          { text: '[[mcmerk|Zahlen]]: Schreibe Zahlen einheitlich. Kleine Zahlen oft als Wort (drei), grosse als Ziffern (1500).' },
+        ],
+        check: [
+          c('Welcher Satz ist richtig geschrieben?', ['Ich weiss, dass du kommst.', 'Ich weiss, das du kommst.', 'Ich weiss dass, du kommst.', 'ich weiss, dass du kommst.'], 'Nach «weiss» folgt ein Komma und «dass» leitet den Nebensatz ein. Der Satz beginnt gross.'),
+          c('Wie liest du deinen Text am besten zum Schluss?', ['Laut und noch einmal', 'Gar nicht', 'Nur den Anfang', 'Nur die Überschrift'], 'Beim lauten Lesen fallen Fehler auf.'),
+        ],
+      },
+      fehler('mc_sc_fehler', [
+        ['Ich fange gleich an und denke nicht nach.', 'Sammle zuerst 3 Stichwörter.'],
+        ['Ich schreibe «weil» ohne Komma.', 'Vor «weil» steht ein Komma.'],
+        ['Ich schreibe «dass» immer mit einem s.', 'Kann ich «dieses» einsetzen? Dann «das». Sonst «dass».'],
+        ['Ich lese meinen Text nicht mehr.', 'Lies ihn zum Schluss laut.'],
+        ['Ich beginne jeden Satz mit «Ich».', 'Wechsle die Satzanfänge.'],
+      ]),
+      dojo('mc_sc_dojo', [
+        d('Welches Wort verwendest du zum Begründen?', 'weil', ['dann', 'oder'], 'Mit «weil» nennst du den Grund.'),
+        d('Was gehört in den Schluss?', 'Ein kurzes Fazit', ['Eine neue Geschichte', 'Eine Zahlenliste'], 'Der Schluss fasst kurz zusammen.'),
+        d('Welcher Satz ist richtig?', 'Ich weiss, dass es regnet.', ['Ich weiss, das es regnet.', 'Ich weiss dass, es regnet.'], 'Nach dem Komma leitet «dass» den Nebensatz ein.'),
+        d('Wie viele Stichwörter sammelst du vor dem Schreiben?', 'Drei', ['Keine', 'Hundert'], 'Drei Stichwörter geben ein gutes Gerüst.'),
+        d('Welches Wort ist ein Verbindungswort?', 'deshalb', ['gestern', 'Fluss'], '«deshalb» verbindet zwei Sätze.'),
+        d('Was machst du am Schluss mit deinem Text?', 'Ich lese ihn nochmals laut', ['Ich schicke ihn sofort ab', 'Ich lösche ihn'], 'Beim lauten Lesen findest du Fehler.'),
+        d('Was macht ein Beispiel im Text?', 'Es macht deine Aussage anschaulich', ['Es macht den Text kürzer', 'Es ersetzt den Schluss'], 'Ein Beispiel zeigt, was du meinst.'),
+        d('Womit beginnst du einen Text am besten?', 'Mit einer Einleitung, worum es geht', ['Mit dem Schluss', 'Mit einer Liste'], 'Die Einleitung sagt, worum es geht.'),
+      ]),
+    ],
+  },
 };
