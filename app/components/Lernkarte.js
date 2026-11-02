@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { lernkarten } from '../lib/lernkarten';
 
 const KACHEL_COLORS = ['#534AB7', '#0f766e', '#f59e0b', '#ef4444', '#3b82f6', '#ec4899', '#14b8a6', '#8b5cf6'];
@@ -367,7 +367,7 @@ function CheckView({ step, dm, dark, isMobile, selected, onAnswer }) {
       <p style={{ margin: '0 0 16px', fontSize: isMobile ? '16px' : '17px', fontWeight: '700', color: dm.text, lineHeight: '1.6' }}><Markiert text={step.frage} dark={dark} /></p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {step.optionen.map((opt, i) => {
-          const isRichtig = i === step.richtig;
+          const isRichtig = opt.correct;
           const isSel = i === selected;
           let bg = dm.card, border = dm.border, textColor = dm.text, anim = 'none';
           if (answered) {
@@ -381,7 +381,7 @@ function CheckView({ step, dm, dark, isMobile, selected, onAnswer }) {
               onClick={() => onAnswer(i)}
               style={{ textAlign: 'left', padding: '13px 16px', borderRadius: '10px', border: `2px solid ${border}`, background: bg, color: textColor, fontSize: '14px', lineHeight: '1.5', fontWeight: isRichtig && answered ? '700' : '500', cursor: answered ? 'default' : 'pointer', animation: anim }}
             >
-              {isRichtig && answered ? '✓ ' : isSel && !isRichtig ? '❌ ' : ''}{opt}{isSel && isRichtig ? ' 🎉' : ''}
+              {isRichtig && answered ? '✓ ' : isSel && !isRichtig ? '❌ ' : ''}{opt.text}{isSel && isRichtig ? ' 🎉' : ''}
             </button>
           );
         })}
@@ -464,16 +464,34 @@ function hasVideos(kachel) {
   return Array.isArray(kachel.videos) && kachel.videos.length > 0;
 }
 
+// Optionen wie 'Keine der obigen' bleiben beim Mischen am Ende.
+const FESTE_OPTION = /^(keine|nichts).*(oben|obigen|genannt\w*|davon)/i;
+
+// Fisher-Yates. Gibt [{ text, correct }] zurueck; die Richtigkeit haengt an der
+// Option selbst, nicht am Index.
+function mischeOptionen(optionen) {
+  const frei = optionen.filter(o => !FESTE_OPTION.test(o.text));
+  const fest = optionen.filter(o => FESTE_OPTION.test(o.text));
+  for (let i = frei.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [frei[i], frei[j]] = [frei[j], frei[i]];
+  }
+  return [...frei, ...fest];
+}
+
 function buildSteps(kachel) {
   const steps = [];
   kachel.karten.forEach((k, i) => steps.push({ type: 'karte', karteIdx: i, ...k }));
   if (hasVideos(kachel)) steps.push({ type: 'video' });
-  kachel.check.forEach((c, i) => steps.push({ type: 'check', checkIdx: i, ...c }));
+  kachel.check.forEach((c, i) => steps.push({
+    type: 'check', checkIdx: i, ...c,
+    optionen: mischeOptionen(c.optionen.map((text, j) => ({ text, correct: j === c.richtig }))),
+  }));
   return steps;
 }
 
 function MiniLektion({ kachel, color, dm, dark, isMobile, onClose, onFinish }) {
-  const steps = useMemo(() => buildSteps(kachel), [kachel.id]);
+  const [steps] = useState(() => buildSteps(kachel));
   const [stepIdx, setStepIdx] = useState(0);
   const [answers, setAnswers] = useState({});
   const [revealed, setRevealed] = useState(() => new Set());
