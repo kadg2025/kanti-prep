@@ -32,7 +32,7 @@ function diffTxt(a, b) {
 
 // Numerische Verarbeitungskapazität: Anzeigedauer pro Schritt (ähnlich wie bei den
 // Farbkombinationen, dort knapp eine Sekunde pro Kreis) und kurze Pause dazwischen.
-export const NUMPROC = { SICHTBAR: 800, LUECKE: 300 };
+export const NUMPROC = { SICHTBAR: 1200, LUECKE: 400 };
 
 // Reihenfolge der Anzeige: Startzahl oben, Startzahl unten, dann abwechselnd oben und unten ein Rechenschritt.
 export function numprocEreignisse(q) {
