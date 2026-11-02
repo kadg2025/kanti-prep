@@ -2015,65 +2015,65 @@ export const lernkarten = {
         minLoesungen: 15,
         karten: [
           // 2016, Aufgabe 2
-          { text: 'Was bedeutet die Wendung sinngemäss?\n\n«Sie unterbrach sich höchstens eine Sekunde.»', loesung: 'Sie redete praktisch pausenlos weiter, also ohne Unterbrechung.' },
+          { text: 'Was bedeutet die Wendung sinngemäss?\n\n«Sie unterbrach sich höchstens eine Sekunde.»', options: [{ text: 'Sie redete fast ohne Pause weiter', correct: true }, { text: 'Sie hörte nach einer Sekunde auf zu reden', correct: false }, { text: 'Sie unterbrach andere Leute nur kurz', correct: false }], loesung: 'Sie redete praktisch pausenlos weiter, also ohne Unterbrechung.' },
           // 2016, Aufgabe 3a
-          { text: 'Welche Wörter entsprechen «abgeliefert»?\n\n«… wenn er Thérèse in Oxford abgeliefert hatte …»\n\nabgeholt / abgesetzt / abgemahnt / vermittelt / ausgesetzt / übergeben', loesung: 'abgesetzt und übergeben. «abgeholt» ist das Gegenteil.' },
+          { text: 'Welche Wörter entsprechen «abgeliefert»?\n\n«… wenn er Thérèse in Oxford abgeliefert hatte …»\n\nabgeholt / abgesetzt / abgemahnt / vermittelt / ausgesetzt / übergeben', options: [{ text: 'abgesetzt und übergeben', correct: true }, { text: 'abgeholt und abgesetzt', correct: false }, { text: 'vermittelt und ausgesetzt', correct: false }], loesung: 'abgesetzt und übergeben. «abgeholt» ist das Gegenteil.' },
           // 2016, Aufgabe 3b
-          { text: 'Welche Wörter entsprechen hier «Publikum»?\n\n«… unter einem Publikum aus reisenden Engländern …»\n\nZuschauer / Zuhörer / Fans / Öffentlichkeit', loesung: 'Zuschauer, Zuhörer und Öffentlichkeit. «Fans» passt nicht.' },
+          { text: 'Welche Wörter entsprechen hier «Publikum»?\n\n«… unter einem Publikum aus reisenden Engländern …»\n\nZuschauer / Zuhörer / Fans / Öffentlichkeit', options: [{ text: 'Zuschauer, Zuhörer und Öffentlichkeit', correct: true }, { text: 'Zuschauer, Fans und Öffentlichkeit', correct: false }, { text: 'Zuhörer, Fans und Zuschauer', correct: false }], loesung: 'Zuschauer, Zuhörer und Öffentlichkeit. «Fans» passt nicht.' },
           // 2016, Aufgabe 4a
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «peinlich»:\n\n«… es war Wenger peinlich, dass Thérèse ihn so laut … mit Daddy anredete.»', loesung: 'unangenehm, genierlich' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «peinlich»:\n\n«… es war Wenger peinlich, dass Thérèse ihn so laut … mit Daddy anredete.»', options: [{ text: 'unangenehm', correct: true }, { text: 'sehr genau', correct: false }, { text: 'schmerzhaft', correct: false }], loesung: 'unangenehm, genierlich' },
           // 2016, Aufgabe 4b
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «überhaupt»:\n\n«Mammi und du, ihr seid überhaupt keine Spiesser.»', loesung: 'wirklich, gar, wahrhaftig' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «überhaupt»:\n\n«Mammi und du, ihr seid überhaupt keine Spiesser.»', options: [{ text: 'wirklich', correct: true }, { text: 'ausserdem', correct: false }, { text: 'vorwiegend', correct: false }], loesung: 'wirklich, gar, wahrhaftig' },
           // 2016, Aufgabe 22b
-          { text: 'Finde eine Wendung mit gegenteiliger Bedeutung für «überwiegend»:\n\n«Die Leute … schienen überwiegend Engländer zu sein.»', loesung: 'zum geringeren Teil, nur teilweise, nicht alle' },
+          { text: 'Finde eine Wendung mit gegenteiliger Bedeutung für «überwiegend»:\n\n«Die Leute … schienen überwiegend Engländer zu sein.»', options: [{ text: 'nur teilweise', correct: true }, { text: 'hauptsächlich', correct: false }, { text: 'vor allem', correct: false }], loesung: 'zum geringeren Teil, nur teilweise, nicht alle' },
           // 2017, Aufgabe 3
-          { text: 'Welche Ersetzungen passen für «Ehe ich mich versehen hatte»?\n\n«Ehe ich mich versehen hatte, war mein linkes Handgelenk mit einer dünnen Kette umschlossen.»\n\nUnerwartet schnell / Aus Versehen / Bevor ich es realisierte / Ehe ich mich umgesehen hatte', loesung: '«Unerwartet schnell» und «Bevor ich es realisierte».' },
+          { text: 'Welche Ersetzungen passen für «Ehe ich mich versehen hatte»?\n\n«Ehe ich mich versehen hatte, war mein linkes Handgelenk mit einer dünnen Kette umschlossen.»\n\nUnerwartet schnell / Aus Versehen / Bevor ich es realisierte / Ehe ich mich umgesehen hatte', options: [{ text: 'Unerwartet schnell und Bevor ich es realisierte', correct: true }, { text: 'Aus Versehen und Bevor ich es realisierte', correct: false }, { text: 'Unerwartet schnell und Ehe ich mich umgesehen hatte', correct: false }], loesung: '«Unerwartet schnell» und «Bevor ich es realisierte».' },
           // 2017, Aufgabe 5a
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «verödet»:\n\n«… der Hafen war verödet …»', loesung: 'verlassen, verwaist, unbelebt' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «verödet»:\n\n«… der Hafen war verödet …»', options: [{ text: 'verlassen', correct: true }, { text: 'überfüllt', correct: false }, { text: 'verwittert', correct: false }], loesung: 'verlassen, verwaist, unbelebt' },
           // 2017, Aufgabe 5b
-          { text: 'Finde ein Wort mit gegenteiliger Bedeutung für «verächtlich»:\n\n«… hier blickte er mich verächtlich an …»', loesung: 'bewundernd, respektvoll, hochachtungsvoll' },
+          { text: 'Finde ein Wort mit gegenteiliger Bedeutung für «verächtlich»:\n\n«… hier blickte er mich verächtlich an …»', options: [{ text: 'respektvoll', correct: true }, { text: 'abschätzig', correct: false }, { text: 'spöttisch', correct: false }], loesung: 'bewundernd, respektvoll, hochachtungsvoll' },
           // 2017, Aufgabe 21a
-          { text: 'Was bedeutet «Durchbrenner»?\n\nBrandstifter / Ausreisser / Feuerwehrmann / Panzerknacker', loesung: 'Ausreisser' },
+          { text: 'Was bedeutet «Durchbrenner»?\n\nBrandstifter / Ausreisser / Feuerwehrmann / Panzerknacker', options: [{ text: 'Ausreisser', correct: true }, { text: 'Brandstifter', correct: false }, { text: 'Panzerknacker', correct: false }], loesung: 'Ausreisser' },
           // 2017, Aufgabe 21c
-          { text: 'Was bedeutet «entweichen»?\n\nFliehen / Rennen / Abtreten / Entrinnen', loesung: 'Fliehen und Entrinnen' },
+          { text: 'Was bedeutet «entweichen»?\n\nFliehen / Rennen / Abtreten / Entrinnen', options: [{ text: 'Fliehen und Entrinnen', correct: true }, { text: 'Rennen und Fliehen', correct: false }, { text: 'Abtreten und Entrinnen', correct: false }], loesung: 'Fliehen und Entrinnen' },
           // 2018, Aufgabe 3a
-          { text: 'Welches Wort entspricht «rührten»?\n\n«Wir rührten uns nicht.»', loesung: 'bewegten' },
+          { text: 'Welches Wort entspricht «rührten»?\n\n«Wir rührten uns nicht.»', options: [{ text: 'bewegten', correct: true }, { text: 'berührten', correct: false }, { text: 'beeilten', correct: false }], loesung: 'bewegten' },
           // 2018, Aufgabe 3b
-          { text: 'Welches Wort entspricht «scheitern»?\n\n«Alle, die da gescheitert waren.»', loesung: 'versagen, fehlschlagen' },
+          { text: 'Welches Wort entspricht «scheitern»?\n\n«Alle, die da gescheitert waren.»', options: [{ text: 'versagen', correct: true }, { text: 'ausrutschen', correct: false }, { text: 'sich verlaufen', correct: false }], loesung: 'versagen, fehlschlagen' },
           // 2018, Aufgabe 4a
-          { text: 'Finde ein Wort oder eine Wendung für «konzentriert»:\n\n«Ich war nicht konzentriert.»', loesung: 'bei der Sache, aufmerksam, fokussiert' },
+          { text: 'Finde ein Wort oder eine Wendung für «konzentriert»:\n\n«Ich war nicht konzentriert.»', options: [{ text: 'aufmerksam', correct: true }, { text: 'verdichtet', correct: false }, { text: 'still', correct: false }], loesung: 'bei der Sache, aufmerksam, fokussiert' },
           // 2018, Aufgabe 16
-          { text: 'Was haben diese Wörter gemeinsam?\n\na) Brücke, Wolkenkratzer, Stauwehr, Schiff\nb) Himmel, Mount Everest, Regen, Wind', loesung: 'a: alles von Menschen gemacht.\nb: alles Natur, nicht von Menschen gemacht.' },
+          { text: 'Was haben diese Wörter gemeinsam?\n\na) Brücke, Wolkenkratzer, Stauwehr, Schiff\nb) Himmel, Mount Everest, Regen, Wind', options: [{ text: 'a: alles von Menschen gemacht; b: alles Natur', correct: true }, { text: 'a: alles Verkehrswege; b: alles Wetterphänomene', correct: false }, { text: 'a: alles hoch; b: alles gefährlich', correct: false }], loesung: 'a: alles von Menschen gemacht.\nb: alles Natur, nicht von Menschen gemacht.' },
           // 2018, Aufgabe 17
-          { text: 'Wie lässt sich die Wendung ersetzen?\n\n«… um uns kleinen Geistern auf die Sprünge zu helfen.»', loesung: 'nachzuhelfen; zu zeigen, wie man es macht' },
+          { text: 'Wie lässt sich die Wendung ersetzen?\n\n«… um uns kleinen Geistern auf die Sprünge zu helfen.»', options: [{ text: 'nachzuhelfen', correct: true }, { text: 'zum Springen zu bringen', correct: false }, { text: 'zu verspotten', correct: false }], loesung: 'nachzuhelfen; zu zeigen, wie man es macht' },
           // 2019, Aufgabe 2a
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «gestutzt»:\n\n«Hinter der Garage standen dekorativ ein paar Bäume umher, sauber gestutzt wie Pudelhunde.»', loesung: 'beschnitten, geschnitten, geschoren' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «gestutzt»:\n\n«Hinter der Garage standen dekorativ ein paar Bäume umher, sauber gestutzt wie Pudelhunde.»', options: [{ text: 'beschnitten', correct: true }, { text: 'gefällt', correct: false }, { text: 'gegossen', correct: false }], loesung: 'beschnitten, geschnitten, geschoren' },
           // 2019, Aufgabe 2b
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «verkraften»:\n\n«Sie […] sah aber ganz so aus, als ob sie einiges verkraften könnte.»', loesung: 'bewältigen, aushalten, ertragen' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «verkraften»:\n\n«Sie […] sah aber ganz so aus, als ob sie einiges verkraften könnte.»', options: [{ text: 'aushalten', correct: true }, { text: 'kräftigen', correct: false }, { text: 'verbrauchen', correct: false }], loesung: 'bewältigen, aushalten, ertragen' },
           // 2019, Aufgabe 3
-          { text: 'Finde für «schimmernd» ein Wort mit gleicher und eines mit gegenteiliger Bedeutung:\n\n«… weiss wie frisches Orangenmark und schimmernd wie Porzellan.»', loesung: 'Gleich: glänzend, leuchtend, blank.\nGegenteil: matt, stumpf, glanzlos.' },
+          { text: 'Finde für «schimmernd» ein Wort mit gleicher und eines mit gegenteiliger Bedeutung:\n\n«… weiss wie frisches Orangenmark und schimmernd wie Porzellan.»', options: [{ text: 'Gleich: glänzend; Gegenteil: matt', correct: true }, { text: 'Gleich: matt; Gegenteil: glänzend', correct: false }, { text: 'Gleich: zitternd; Gegenteil: glänzend', correct: false }], loesung: 'Gleich: glänzend, leuchtend, blank.\nGegenteil: matt, stumpf, glanzlos.' },
           // 2019, Aufgabe 4
-          { text: 'Was heisst «nicht zu Rande kommen»?\n\n«Aber er kam nicht zu Rande.»\n\nden Rand nicht erreichen / etwas nicht umranden / etwas nicht tun können / nicht zu einem Ende kommen', loesung: '«etwas nicht tun können» und «nicht zu einem Ende kommen können».' },
+          { text: 'Was heisst «nicht zu Rande kommen»?\n\n«Aber er kam nicht zu Rande.»\n\nden Rand nicht erreichen / etwas nicht umranden / etwas nicht tun können / nicht zu einem Ende kommen', options: [{ text: 'etwas nicht tun können und nicht zu einem Ende kommen', correct: true }, { text: 'den Rand nicht erreichen und etwas nicht umranden', correct: false }, { text: 'den Rand nicht erreichen und nicht zu einem Ende kommen', correct: false }], loesung: '«etwas nicht tun können» und «nicht zu einem Ende kommen können».' },
           // 2019, Aufgabe 12b
-          { text: 'Welches Wort entspricht der Wendung «zur Hand gehen»?', loesung: 'helfen, beistehen, unterstützen' },
+          { text: 'Welches Wort entspricht der Wendung «zur Hand gehen»?', options: [{ text: 'helfen', correct: true }, { text: 'festhalten', correct: false }, { text: 'übergeben', correct: false }], loesung: 'helfen, beistehen, unterstützen' },
           // 2020, Aufgabe 2a
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «ratsam»:\n\n«Lange hatten die Eltern überlegt, ob es ratsam sei, den Grossvater mitzunehmen.»', loesung: 'empfehlenswert, vorteilhaft, sinnvoll' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «ratsam»:\n\n«Lange hatten die Eltern überlegt, ob es ratsam sei, den Grossvater mitzunehmen.»', options: [{ text: 'sinnvoll', correct: true }, { text: 'ratlos', correct: false }, { text: 'unnötig', correct: false }], loesung: 'empfehlenswert, vorteilhaft, sinnvoll' },
           // 2020, Aufgabe 2b
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «Windungen»:\n\n«… auf der anderen Seite des Flusses, dessen Windungen sie geschwind entlangschlängelte …»', loesung: 'Biegungen, Kehren, Kurven' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «Windungen»:\n\n«… auf der anderen Seite des Flusses, dessen Windungen sie geschwind entlangschlängelte …»', options: [{ text: 'Kurven', correct: true }, { text: 'Strömungen', correct: false }, { text: 'Stromschnellen', correct: false }], loesung: 'Biegungen, Kehren, Kurven' },
           // 2020, Aufgabe 5
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «kramte»:\n\n«Nach dem Essen kramte sie unter ihren Schürzen; sie fand einen Fünfliber, den sie mir zuschob.»', loesung: 'suchte, stöberte, wühlte, fischte' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «kramte»:\n\n«Nach dem Essen kramte sie unter ihren Schürzen; sie fand einen Fünfliber, den sie mir zuschob.»', options: [{ text: 'wühlte', correct: true }, { text: 'putzte', correct: false }, { text: 'zählte', correct: false }], loesung: 'suchte, stöberte, wühlte, fischte' },
           // 2020, Aufgabe 6
-          { text: 'Ersetze «liess uns passieren» einmal mit gleicher, einmal mit gegenteiliger Bedeutung:\n\n«Die singende Gruppe … liess uns passieren.»', loesung: 'Gleich: machte uns Platz, ging zur Seite, trat aus dem Weg.\nGegenteil: versperrte uns den Weg.' },
+          { text: 'Ersetze «liess uns passieren» einmal mit gleicher, einmal mit gegenteiliger Bedeutung:\n\n«Die singende Gruppe … liess uns passieren.»', options: [{ text: 'Gleich: machte uns Platz; Gegenteil: versperrte uns den Weg', correct: true }, { text: 'Gleich: versperrte uns den Weg; Gegenteil: machte uns Platz', correct: false }, { text: 'Gleich: machte uns Platz; Gegenteil: begleitete uns', correct: false }], loesung: 'Gleich: machte uns Platz, ging zur Seite, trat aus dem Weg.\nGegenteil: versperrte uns den Weg.' },
           // 2020, Aufgabe 7
-          { text: 'Wie lässt sich «alles in allem» ersetzen?\n\n«Alles in allem, sagte die Frau Luthiger, bist du ein guter Bub gewesen.»\n\nImmer / Nie / Insgesamt / Selten', loesung: 'Insgesamt' },
+          { text: 'Wie lässt sich «alles in allem» ersetzen?\n\n«Alles in allem, sagte die Frau Luthiger, bist du ein guter Bub gewesen.»\n\nImmer / Nie / Insgesamt / Selten', options: [{ text: 'Insgesamt', correct: true }, { text: 'Immer', correct: false }, { text: 'Selten', correct: false }], loesung: 'Insgesamt' },
           // 2021, Aufgabe 2a
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «prasselte»:\n\n«Von Böen getrieben, prasselte der Regen gegen die Fensterscheiben.»', loesung: 'peitschte, trommelte, klopfte, dröhnte' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «prasselte»:\n\n«Von Böen getrieben, prasselte der Regen gegen die Fensterscheiben.»', options: [{ text: 'trommelte', correct: true }, { text: 'tröpfelte', correct: false }, { text: 'schwebte', correct: false }], loesung: 'peitschte, trommelte, klopfte, dröhnte' },
           // 2021, Aufgabe 3b
-          { text: 'Finde ein Wort mit gegenteiliger Bedeutung für «zögerlichen»:\n\n«Franz tat einen zögerlichen Schritt, legte seine Hand auf ihren Kopf …»', loesung: 'raschen, entschiedenen, sicheren, zielgerichteten' },
+          { text: 'Finde ein Wort mit gegenteiliger Bedeutung für «zögerlichen»:\n\n«Franz tat einen zögerlichen Schritt, legte seine Hand auf ihren Kopf …»', options: [{ text: 'entschiedenen', correct: true }, { text: 'langsamen', correct: false }, { text: 'vorsichtigen', correct: false }], loesung: 'raschen, entschiedenen, sicheren, zielgerichteten' },
           // 2022, Aufgabe 2c
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «weitschweifigen»:\n\n«Er hoffte, Amber war vor seinem weitschweifigen Gefühlsbekenntnis ins Wasser gesprungen.»', loesung: 'ausführlichen, umfangreichen, langfädigen, ausufernden' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «weitschweifigen»:\n\n«Er hoffte, Amber war vor seinem weitschweifigen Gefühlsbekenntnis ins Wasser gesprungen.»', options: [{ text: 'ausführlichen', correct: true }, { text: 'knappen', correct: false }, { text: 'weitreichenden', correct: false }], loesung: 'ausführlichen, umfangreichen, langfädigen, ausufernden' },
           // 2023, Aufgabe 2b
-          { text: 'Finde ein Wort mit gleicher Bedeutung für «wähnte»:\n\n«Er wähnte sich bereits in Sicherheit …»', loesung: 'glaubte, vermutete, dachte' },
+          { text: 'Finde ein Wort mit gleicher Bedeutung für «wähnte»:\n\n«Er wähnte sich bereits in Sicherheit …»', options: [{ text: 'glaubte', correct: true }, { text: 'wünschte', correct: false }, { text: 'wusste', correct: false }], loesung: 'glaubte, vermutete, dachte' },
         ],
         check: [],
       },
