@@ -1,0 +1,87 @@
+// Antworten prüfen für alle Multicheck-Fragetypen. Die Regeln (norm, numWhy,
+// diffTxt und die Prüfung pro Typ) stammen unverändert aus der Übungsprüfung.
+// Der Antwortstand «U» hat die Form:
+// { sel, set, val, korr, w, cols, asg }
+import { check as planCheck } from './plan';
+
+export function neuerStand(q) {
+  return { sel: null, set: {}, val: q.prefix || '', korr: false, w: -1, cols: [0, 0, 0, 0, 0, 0, 0, 0], asg: {} };
+}
+
+function norm(s, q) {
+  s = String(s).trim().toLowerCase().replace(/\s+/g, '');
+  if (q.letters) return s.replace(/[^a-z]/g, '');
+  return s.replace(/\*/g, '').replace(/,/g, '.').replace(/'/g, '');
+}
+
+function numWhy(a, b) {
+  a = a.replace(/'/g, ''); b = b.replace(/'/g, '');
+  if (a.length > b.length) return 'Diese Antwort hat zu viele Stellen (' + a.length + ' statt ' + b.length + ').';
+  if (a.length < b.length) return 'Diese Antwort hat zu wenige Stellen (' + a.length + ' statt ' + b.length + ').';
+  if (a.slice(-1) !== b.slice(-1)) return 'Die letzte Ziffer stimmt nicht (…' + a.slice(-1) + ' statt …' + b.slice(-1) + ').';
+  return 'Die Grössenordnung passt, aber die vorderen Ziffern sind anders.';
+}
+
+function diffTxt(a, b) {
+  if (a.length !== b.length) return '';
+  const s = a.split('').sort().join(''), t = b.split('').sort().join('');
+  const pos = [];
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) pos.push(i + 1);
+  return (s === t ? 'Dieselben Zeichen, aber in anderer Reihenfolge: ' : 'Ein Zeichen ist anders: ') + 'Unterschiede an Position ' + pos.join(', ') + ' (deine Wahl «' + a + '», richtig «' + b + '»).';
+}
+
+// true, wenn noch nichts (vollständig) beantwortet ist.
+export function istLeer(q, U) {
+  const t = q.type;
+  if ((t === 'mc' || t === 'memchoice') && U.sel == null) return true;
+  if (t === 'multi' && !Object.keys(U.set).some(k => U.set[k])) return true;
+  if (t === 'input' && !U.val.trim()) return true;
+  if (t === 'gap' && !U.korr && !U.val.trim()) return true;
+  if (t === 'spell' && !U.korr && (U.w < 0 || !U.val.trim())) return true;
+  if (t === 'memcolor' && U.cols.every(c => !c)) return true;
+  if (t === 'plan' && q.plan.mov.some(m => { const a = U.asg[m.n]; return !a || a.d == null || (!(m.c && m.c.two) && a.s == null); })) return true;
+  return false;
+}
+
+// Gibt { ok, user, extra, planRes } zurück.
+export function auswerten(q, U, timeout) {
+  const t = q.type;
+  let ok = false, user = '', extra = '', planRes = null;
+  if (timeout && t !== 'plan') {
+    user = 'keine Antwort (Zeit abgelaufen)';
+  } else if (t === 'mc' || t === 'memchoice') {
+    ok = U.sel === q.correct;
+    user = q.options[U.sel].t.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const o = q.options[U.sel];
+    if (!ok) {
+      if (q.numeric) extra = numWhy(o.t, q.options[q.correct].t);
+      else if (t === 'memchoice') extra = diffTxt(o.t, q.options[q.correct].t);
+      else if (o.why) extra = o.why;
+    }
+  } else if (t === 'multi') {
+    const ch = Object.keys(U.set).filter(k => U.set[k]).map(Number).sort();
+    ok = JSON.stringify(ch) === JSON.stringify(q.correct);
+    user = ch.map(i => q.options[i].t).join(' / ');
+  } else if (t === 'input') {
+    const v = norm(U.val, q);
+    user = U.val.trim();
+    if (q.num) {
+      const n = parseFloat(v);
+      ok = q.accept.some(a => Math.abs(parseFloat(a) - n) < 1e-9);
+    } else ok = q.accept.some(a => norm(a, q) === v);
+  } else if (t === 'gap') {
+    if (U.korr) { ok = q.accept === null; user = 'korrekt'; }
+    else { user = U.val.trim(); ok = !!q.accept && q.accept.some(a => a.toLowerCase() === user.toLowerCase()); }
+  } else if (t === 'spell') {
+    if (U.korr) { ok = q.wrong < 0; user = 'korrekt'; }
+    else { user = '«' + q.words[U.w].replace(/[.,]$/, '') + '» → ' + U.val.trim(); ok = U.w === q.wrong && U.val.trim() === q.fix; }
+  } else if (t === 'memcolor') {
+    ok = q.seq.every((c, i) => U.cols[i] === c + 1);
+    const nm = ['–', 'rot', 'blau', 'schwarz'];
+    user = U.cols.map(c => nm[c]).join(', ');
+  } else if (t === 'plan') {
+    planRes = planCheck(q.plan, U.asg);
+    ok = planRes.ok;
+  }
+  return { ok, user, extra, planRes };
+}
