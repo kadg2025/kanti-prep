@@ -44,8 +44,21 @@ const FG = new Function(fs.readFileSync(DIR + 'figur.js', 'utf8').replace(/^expo
 const daten = laden('konzentration_daten.js');
 const vdaten = laden('vorstellung_daten.js');
 const figural = laden('logik_figural.js', null, { fig: FG.fig });
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten, vn: VF.default, mf: MF, ...(f === 'schreiben.js' ? SD : {}) })]));
-const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
+const DOJO_DATEIEN = { deutsch: 'dojo_deutsch', englisch: 'dojo_englisch', kurz: 'dojo_kurz', it: 'dojo_it', org: 'dojo_org', mathe: 'dojo_mathe', logik: 'dojo_logik', konz: 'dojo_konz', vorst: 'dojo_vorst', vernetzt: 'dojo_vernetzt' };
+const DOJO = Object.fromEntries(await Promise.all(Object.entries(DOJO_DATEIEN).map(async ([id, f]) => [id, (await import('./app/lib/multicheck/' + f + '.mjs')).default])));
+const SCHWER_ORG = (await import('./app/lib/multicheck/organisation_schwer.mjs')).default;
+const SCHWER_KONZ = (await import('./app/lib/multicheck/konzentration_schwer.mjs')).default;
+const LOGIK_SCHWER = (await import('./app/lib/multicheck/logik_schwer.mjs')).default;
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { dojoQs: DOJO[id], numerisch, figural, daten, vdaten, vn: VF.default, mf: MF, logikSchwer: LOGIK_SCHWER, schwer: f === 'organisation.js' ? SCHWER_ORG : f === 'konzentration.js' ? SCHWER_KONZ : [], ...(f === 'schreiben.js' ? SD : {}) })]));
+import { SCHWIERIGKEIT, STUFEN } from './app/lib/multicheck/schwierigkeit.mjs';
+const UT = new Function('SCHWIERIGKEIT', fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^import .*$/gm, '').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')(SCHWIERIGKEIT);
+// Schwierigkeit: jede Frage (Themenfragen und Dojo-Pool) muss difficulty einfach/mittel/schwer tragen (direkt oder aus schwierigkeit.mjs).
+for (const [tid, t] of Object.entries(themen)) {
+  const mit = UT.mitUnterthemen({ ...t, id: t.id || tid });
+  for (const q of [...mit.qs, ...(mit.dojoQs || [])]) {
+    if (!STUFEN.includes(q.difficulty)) bad(`difficulty fehlt oder ungültig: ${q.id} (${q.difficulty})`);
+  }
+}
 const lk = laden('lernkarten.js', 'multicheckLernkarten', { fig: FG.fig });
 
 // Wochenplan-Logik
@@ -53,8 +66,9 @@ const planSrc = fs.readFileSync(DIR + 'plan.js', 'utf8').replace(/^export \{.*\}
 const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
+const PRUEFUNGS_TYPEN_ALLE = ['mc', 'vmc', 'memchoice', 'memcolor', 'multi', 'input', 'gap', 'spell', 'plan', 'numproc', 'figmc', 'spatial', 'net', 'numcmp', 'coord'];
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 271) bad(`Fragen: ${alle.length} statt 271`);
+if (alle.length < 301) bad(`Fragen: nur ${alle.length}`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -70,6 +84,32 @@ for (const [id, t] of Object.entries(themen)) {
     if ((q.type === 'mc' || q.type === 'memchoice') && !(q.correct >= 0 && q.correct < q.options.length)) bad(`${q.id}: correct ausserhalb`);
     if (id === 'logik' && q.type === 'mc' && q.options[q.correct].t !== q.answerText) bad(`${q.id}: answerText passt nicht zur richtigen Option`);
   }
+}
+// Dojo-Pools (eigene Fragen pro Thema): eindeutige IDs, Konzept vorhanden, mindestens 10 Fragen
+{
+  const alleDojo = [];
+  for (const [id, pool] of Object.entries(DOJO)) {
+    const t = themen[id];
+    if (!Array.isArray(t.dojoQs) || t.dojoQs !== pool) { bad(`Dojo ${id}: Thema reicht dojoQs nicht durch`); continue; }
+    if (pool.length < 10) bad(`Dojo ${id}: nur ${pool.length} Fragen (mindestens 10)`);
+    pool.forEach((q, i) => {
+      alleDojo.push(q.id);
+      if (!new RegExp('^' + t.id + '-d[0-9]+$').test(q.id)) bad(`Dojo ${q.id}: ID passt nicht zum Format ${t.id}-dN`);
+      if (!t.konzepte[q.ck]) bad(`${q.id}: Konzept ${q.ck} fehlt`);
+      if (q.topic !== id) bad(`${q.id}: topic ${q.topic}`);
+      if (!q.why || !q.answerText) bad(`${q.id}: Erklärung oder Lösungstext fehlt`);
+      if (!PRUEFUNGS_TYPEN_ALLE.includes(q.type)) bad(`${q.id}: unbekannter Typ ${q.type}`);
+      if ((q.type === 'mc' || q.type === 'vmc' || q.type === 'memchoice') && !(q.correct >= 0 && q.correct < q.options.length)) bad(`${q.id}: correct ausserhalb`);
+      if ((q.type === 'mc' || q.type === 'vmc' || q.type === 'memchoice') && new Set(q.options.map(o => o.t)).size !== q.options.length) bad(`${q.id}: doppelte Optionen`);
+      if ((q.type === 'mc' || q.type === 'vmc') && !q.scriptOpts && q.options[q.correct].t !== q.answerText) bad(`${q.id}: answerText passt nicht zur richtigen Option`);
+      if (q.type === 'multi' && (!q.correct.length || q.correct.length > 2 || q.correct.some(k => !q.options[k].ok) || q.options.filter(o => o.ok).length !== q.correct.length)) bad(`${q.id}: multi-Lösung stimmt nicht`);
+      if (q.type === 'gap' && q.accept && !q.accept.includes(q.answerText)) bad(`${q.id}: answerText nicht in accept`);
+      if (q.type === 'input' && !q.accept.length) bad(`${q.id}: accept fehlt`);
+    });
+  }
+  if (new Set(alleDojo).size !== alleDojo.length) bad('Dojo: doppelte IDs');
+  if (alleDojo.some(i => ids.includes(i))) bad('Dojo: ID kollidiert mit einer Themenfrage');
+  console.log('Dojo:', Object.entries(DOJO).map(([id, p]) => id + ' ' + p.length).join(', '));
 }
 console.log('Fragen:', Object.entries(themen).map(([id, t]) => `${id} ${t.qs.length}`).join(', '), '→', alle.length);
 
@@ -92,8 +132,9 @@ for (const [id, t] of Object.entries(themen)) {
 // ─── Logik ───────────────────────────────────────────────────────────────
 {
   const lg = themen.logik;
-  const verbal = lg.qs.filter(q => q.type === 'mc');
-  const num = lg.qs.filter(q => q.type === 'numproc');
+  const basis = lg.qs.filter(q => Number(q.id.split('-')[1]) <= 30); // logik-31 bis 40 sind die schweren Aufgaben (eigener Block unten)
+  const verbal = basis.filter(q => q.type === 'mc');
+  const num = basis.filter(q => q.type === 'numproc');
   if (verbal.length !== 10 || num.length !== 10) bad(`Logik: ${verbal.length} verbale, ${num.length} numerische Fragen`);
   const soll = ['Zehe', 'Luft', 'schreiben', 'trinken', 'Nacht', 'Baum', 'Schüler', 'heiss', 'Wasser', 'Antwort'];
   verbal.forEach((q, i) => {
@@ -102,6 +143,17 @@ for (const [id, t] of Object.entries(themen)) {
     if (!/ zu .+ wie .+ zu \?/.test(q.body.replace(/<[^>]+>/g, ''))) bad(`${q.id}: Fragetext «A zu B wie C zu ?» fehlt`);
     if (!q.why) bad(`${q.id}: Erklärung fehlt`);
   });
+  // Schwere Logik-Aufgaben (31 bis 40): 5 verbale, 5 numerische, Antworten nachgerechnet.
+  const schw = lg.qs.filter(q => Number(q.id.split('-')[1]) > 30);
+  if (schw.length !== 10) bad('Logik schwer: ' + schw.length + ' statt 10 Fragen');
+  for (const q of schw) {
+    if (q.type === 'mc') { if (q.options.length !== 5 || new Set(q.options.map(o => o.t)).size !== 5 || !q.why) bad(q.id + ': 5 verschiedene Optionen und Erklärung nötig'); }
+    else if (q.type === 'numproc') {
+      const lauf = (r) => { let z = r.start; for (const st of r.steps) { z += st; if (z < 1 || z > 9) bad(q.id + ': Zwischenwert ' + z + ' ausserhalb 1 bis 9'); } return z; };
+      const e = q.ask === 'top' ? lauf(q.top) : lauf(q.bottom);
+      if (q.answer !== e || q.answerText !== String(e)) bad(q.id + ': Antwort ' + q.answer + ', gerechnet ' + e);
+    } else bad(q.id + ': unerwarteter Typ ' + q.type);
+  }
   const lage = verbal.map(q => q.correct);
   if (new Set(lage).size < 3) bad('Logik: richtige Antwort steht zu oft an derselben Stelle ' + lage.join(','));
   const schritte = [2, 2, 2, 2, 3, 3, 3];
@@ -164,7 +216,8 @@ for (const [id, t] of Object.entries(themen)) {
 // ─── Konzentration ───────────────────────────────────────────────────────
 {
   const kz = themen.konz;
-  const zq = kz.qs.filter(q => q.type === 'numcmp'), cq = kz.qs.filter(q => q.type === 'coord');
+  const nrK = (q) => Number(q.id.split('-')[1]);
+  const zq = kz.qs.filter(q => q.type === 'numcmp' && nrK(q) <= 14), cq = kz.qs.filter(q => q.type === 'coord');
   if (zq.length !== 10 || cq.length !== 4) bad('Konzentration: ' + zq.length + ' Zahlenblöcke, ' + cq.length + ' Koordinatenblöcke');
   const pruefeZeile = (z, wo) => {
     if (!/^[1-9]\d{8}$/.test(z.a) || !/^[1-9]\d{8}$/.test(z.b)) bad(wo + ': keine 9 Ziffern oder führende Null (' + z.a + ', ' + z.b + ')');
@@ -175,6 +228,16 @@ for (const [id, t] of Object.entries(themen)) {
     else if (diff.length === 2 && diff[1] === diff[0] + 1) { if (z.a[diff[0]] !== z.b[diff[1]] || z.a[diff[1]] !== z.b[diff[0]]) bad(wo + ': keine Vertauschung'); }
     else bad(wo + ': ' + diff.length + ' Stellen verschieden, erwartet 1 oder 2 benachbarte vertauscht');
   };
+  // Schwere Zahlenreihen (konz-15 bis 24): 8 Zeilen, 11 oder 12 Ziffern, genau die als «gleich» markierten Zeilen sind gleich.
+  const sq = kz.qs.filter(q => q.type === 'numcmp' && nrK(q) >= 15);
+  if (sq.length !== 10) bad('Konzentration schwer: ' + sq.length + ' Blöcke statt 10');
+  for (const q of [...sq, ...(kz.dojoQs || []).filter(q => q.type === 'numcmp' && /konz-d(1[2-9]|[2-9]\d)/.test(q.id))]) {
+    if (q.items.length !== 8) bad(q.id + ': ' + q.items.length + ' Zeilen statt 8');
+    q.items.forEach((z, i) => {
+      if (!/^[1-9]\d{10,11}$/.test(z.a) || z.a.length !== z.b.length) bad(q.id + ' Zeile ' + (i + 1) + ': Länge oder führende Null');
+      if ((z.a === z.b) !== z.gleich) bad(q.id + ' Zeile ' + (i + 1) + ': gleich-Markierung falsch');
+    });
+  }
   let gleichTeil = [0, 0];
   zq.forEach((q, bi) => {
     if (q.items.length !== 6) bad(q.id + ': ' + q.items.length + ' Zeilen statt 6');
@@ -604,7 +667,7 @@ for (const [id, t] of Object.entries(themen)) {
     if (version === 'kurz') {
       const n = (id) => sts.find(x => x.id === id).fragen.length;
       if (JSON.stringify(sts.find(x => x.id === 'konz').fragen.map(q => q.id)) !== '["konz-1","konz-11"]') bad('Probe kurz: Konzentration nicht 1 Zahlenblock und 5 Koordinaten-Felder');
-      if (n('vorst') !== 6 || n('vernetzt') !== 5 || n('logik') !== 9) bad('Probe kurz: Anzahl Vorstellungsvermögen/Vernetzt/Logik stimmt nicht');
+      if (n('vorst') !== 6 || n('vernetzt') !== 5 || n('logik') !== 12) bad('Probe kurz: Anzahl Vorstellungsvermögen/Vernetzt/Logik stimmt nicht');
       for (const id of ['deutsch', 'englisch', 'kurz', 'it', 'org', 'mathe']) if (n(id) < 8 || n(id) > 12) bad('Probe kurz/' + id + ': ' + n(id) + ' Aufgaben (8 bis 12 erwartet)');
       // aus allen Unterthemen gemischt
       for (const id of ['deutsch', 'englisch', 'it', 'org', 'mathe']) {
@@ -726,5 +789,12 @@ if ([...'ZQUPMA'].sort().join('') !== [...'ZUPQMA'].sort().join('') || [...'ZQUP
 if ([...'7270207'].sort().join('') !== [...'7207207'].sort().join('') || [...'7270207'].sort().join('') !== [...'7270720'].sort().join('')) bad('Umstellungen 7270207');
 console.log('Rechnungen geprüft:', rechnungen.length);
 
+// Verteilung der Schwierigkeit (Themenfragen | Dojo-Pool): einfach/mittel/schwer
+console.log('\nSchwierigkeit (Thema: Themenfragen e/m/s | Dojo e/m/s)');
+for (const [tid, t] of Object.entries(themen)) {
+  const mit = UT.mitUnterthemen({ ...t, id: t.id || tid });
+  const z = (qs) => STUFEN.map(st => qs.filter(q => q.difficulty === st).length).join('/');
+  console.log(`  ${tid}: ${mit.qs.length} Fragen ${z(mit.qs)} | Dojo ${(mit.dojoQs || []).length} ${z(mit.dojoQs || [])}`);
+}
 console.log(fehler ? `\n${fehler} Fehler` : '\nAlles in Ordnung');
 process.exit(fehler ? 1 : 0);

@@ -2,6 +2,8 @@
 // Figurale Analogien folgen später mit Bildern; dafür gibt es noch keine Fragen.
 import numerisch from './logik_numerisch';
 import figural from './logik_figural';
+import logikSchwer from './logik_schwer.mjs';
+import dojoQs from './dojo_logik.mjs';
 
 // Feste Reihenfolge der Antworten: Die richtige Antwort steht im Rohdatensatz zuerst
 // und wird mit einer festen Umordnung (pro Frage verschieden) an eine andere Stelle gesetzt.
@@ -56,7 +58,9 @@ const thema = {
     analogie(9, 'Problem', 'Lösung', 'Frage', ['Antwort', 'Sorge', 'Rätsel', 'Hilfe', 'Lösung'], 'Ein Problem wird gelöst, eine Frage beantwortet. Das Gegenstück zur Frage ist die Antwort.'),
     ...numerisch,
     ...figural,
+    ...logikSchwer,
   ],
+  dojoQs,
   konzepte: {
     "l_verbal": {"n":"Verbale Analogien","b":[["Analogie","Zwei Wortpaare haben dieselbe Beziehung: A zu B wie C zu D."],["Beziehung","Wie hängen die ersten zwei Wörter zusammen? Zum Beispiel Gegensatz, Teil von, Werkzeug und Zweck, Ursache und Wirkung, Oberbegriff."]],"bsp":["Sommer zu Winter wie Tag zu Nacht: Gegensatz.","Messer zu schneiden wie Stift zu schreiben: Werkzeug und Zweck.","Orchester zu Musiker wie Wald zu Baum: das Ganze und seine Teile."],"z":["Das erste Wortpaar","Das dritte Wort"],"s":["Sage die Beziehung in einem Satz: «Ein Messer ist zum Schneiden da.»","Setze das dritte Wort in denselben Satz: «Ein Stift ist zum … da.»","Prüfe jede Antwort mit diesem Satz.","Streiche Wörter, die nur zum Thema passen, aber nicht in den Satz."],"t":"Achte auf die Richtung. «Frage zu Antwort» ist etwas anderes als «Antwort zu Frage». Prüfe die Reihenfolge im Satz."},
     "l_fig": {"n":"Figurale Analogien","b":[["Bildpaar","Zwei Bilder, die eine Regel zeigen: A wird zu B."],["Regel","Das, was sich von A zu B ändert: Grösse, Füllung, Muster, Richtung, Spiegelung, Form, innen und aussen oder Anzahl."]],"bsp":["Grosser Kreis wird kleiner Kreis: Die Regel ist «kleiner».","Pfeil nach oben wird Pfeil nach rechts: Die Regel ist «90 Grad im Uhrzeigersinn drehen»."],"z":["Das Bildpaar A und B","Das dritte Bild C"],"s":["Was ändert sich von A zu B? Prüfe Grösse, Füllung, Muster, Richtung, Spiegelung, Form, innen und aussen, Anzahl.","Mache dasselbe mit C. Alles andere bleibt gleich.","Prüfe alle sechs Bilder einzeln.","Streiche Bilder, bei denen etwas nicht stimmt, bis eines übrig bleibt."],"t":"Falsche Bilder machen oft nur einen Teil der Regel richtig. Prüfe darum jede Eigenschaft einzeln."},

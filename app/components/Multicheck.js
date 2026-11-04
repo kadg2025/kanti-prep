@@ -244,6 +244,19 @@ function statistik(qs, r) {
   qs.forEach(q => einheiten(q).forEach(id => { total++; if (r[id] != null) { n++; if (r[id]) richtig++; } }));
   return { total, n, richtig };
 }
+// Reset: löscht nur den Multicheck-Fortschritt (Antworten, Ergebnis, Haken) der übergebenen Fragen.
+// Fehler-Kiste, Dojo-XP, GMS-Fortschritt und geschriebene Texte bleiben unberührt.
+function loescheFortschritt(themaId, qs, unterId) {
+  try {
+    const alle = ladeErgebnis();
+    const r = { ...(alle[themaId] || {}) };
+    Object.keys(r).forEach(k => {
+      if (qs.some(q => k === q.id || k.startsWith(q.id + '.')) || (unterId && k === 't:' + unterId)) delete r[k];
+    });
+    speichereErgebnis({ ...alle, [themaId]: r });
+  } catch {}
+}
+const bestaetige = (text) => typeof window === 'undefined' || window.confirm(text);
 const zeitText = (sec) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')} Min.`;
 
 // Ein Block mit sechs Zeilen. rows[i] ist null, 'g' (gleich) oder 'n' (nicht gleich).
@@ -1078,6 +1091,10 @@ function Ueben({ thema, demo, dm, dark, onBack, onFehler = () => {}, onRemoveFeh
           {demo && <button className="btn sec" onClick={() => setAnsicht('demo')}>Demo ansehen</button>}
           <button className="btn" onClick={() => start(false)}>Start</button>
           {n > 0 && <button className="btn sec" onClick={() => start(true)}>Nur falsche Fragen üben</button>}
+          {n > 0 && <button className="btn sec" onClick={() => {
+            if (!bestaetige(`«${thema.name}» von vorne beginnen? Dein Ergebnis und die Haken in diesem Unterthema werden gelöscht. Die Fehler-Kiste bleibt, wie sie ist.`)) return;
+            loescheFortschritt(thema.id, thema.qs, null); setSaved(ladeErgebnis());
+          }}>↺ Nochmal von vorne</button>}
         </div>
       </div>
     );
@@ -1123,8 +1140,10 @@ function Ueben({ thema, demo, dm, dark, onBack, onFehler = () => {}, onRemoveFeh
 }
 
 // ─── Dojo: Zufallsfragen mit Gürtel und XP ─────────────────────────────────
-function waehleFrage(thema, dojo, letzteId) {
-  const alle = thema.dojoQs || thema.qs;
+const STUFEN_ANZEIGE = [['alle', 'Alle'], ['einfach', 'Einfach'], ['mittel', 'Mittel'], ['schwer', 'Schwer']];
+function waehleFrage(thema, dojo, letzteId, stufe = 'alle') {
+  const gesamt = thema.dojoQs || thema.qs;
+  const alle = stufe === 'alle' ? gesamt : gesamt.filter(q => q.difficulty === stufe);
   const offen = alle.filter(q => !dojo.geloest.includes('mc:' + q.id));
   let pool = offen.length ? offen : alle;
   if (pool.length > 1) pool = pool.filter(q => q.id !== letzteId);
@@ -1137,7 +1156,10 @@ function MulticheckDojo({ thema, dm, dark, isMobile, onBack, onFehler, onRemoveF
   const [meldung, setMeldung] = useState(() => ({ spruch: zufall(SENSEI_SPRUECHE.start), aufstieg: null }));
   const [runde, setRunde] = useState(0);
   const [q, setQ] = useState(() => waehleFrage(thema, ladeDojo(), null));
-  const dojoFragen = thema.dojoQs || thema.qs;
+  const [stufe, setStufe] = useState('alle');
+  const gesamtPool = thema.dojoQs || thema.qs;
+  const vorhandeneStufen = new Set(gesamtPool.map(x => x.difficulty).filter(Boolean));
+  const dojoFragen = stufe === 'alle' ? gesamtPool : gesamtPool.filter(x => x.difficulty === stufe);
   const geloest = dojoFragen.filter(x => dojo.geloest.includes('mc:' + x.id)).length;
 
   function fertig(richtig, frage) {
@@ -1158,9 +1180,17 @@ function MulticheckDojo({ thema, dm, dark, isMobile, onBack, onFehler, onRemoveF
       </div>
       {meldung.aufstieg !== null && <AufstiegMeldung index={meldung.aufstieg} spruch={meldung.spruch} onClose={() => setMeldung(m => ({ ...m, aufstieg: null }))} dark={dark} />}
       <DojoKopf state={dojo} aufstieg={meldung.aufstieg !== null} spruch={meldung.aufstieg !== null ? null : meldung.spruch} dark={dark} isMobile={isMobile} />
+      {vorhandeneStufen.size >= 2 && (
+        <div role="group" aria-label="Schwierigkeit" style={{ display: 'flex', gap: 6, flexWrap: 'wrap', margin: '0 0 10px' }}>
+          {STUFEN_ANZEIGE.filter(([k]) => k === 'alle' || vorhandeneStufen.has(k)).map(([k, name]) => (
+            <button key={k} aria-pressed={stufe === k} onClick={() => { if (k === stufe) return; setStufe(k); setQ(waehleFrage(thema, dojo, null, k)); setRunde(r => r + 1); }}
+              style={{ cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 700, padding: '4px 12px', borderRadius: 20, border: `1.5px solid ${stufe === k ? dj.rot : dj.rand}`, background: stufe === k ? dj.rot : 'transparent', color: stufe === k ? '#fff' : dj.tinte2 }}>{name}</button>
+          ))}
+        </div>
+      )}
       <p style={{ margin: '0 0 12px', fontSize: 12, fontWeight: 700, color: dj.tinte2 }}>Gelöst in diesem Thema: {geloest} von {dojoFragen.length} · XP gibt es nur beim ersten richtigen Lösen.</p>
       <div style={{ background: dj.cremeKarte, border: `1px solid ${dj.rand}`, borderLeft: `5px solid ${dj.rot}`, borderRadius: 16, padding: isMobile ? '18px 14px' : '24px 26px' }}>
-        <Frage key={runde} q={q} thema={thema} zeitlimit={false} onFertig={fertig} weiterText="Nächste Frage" onWeiter={() => { setQ(waehleFrage(thema, dojo, q.id)); setRunde(r => r + 1); }} />
+        <Frage key={runde} q={q} thema={thema} zeitlimit={false} onFertig={fertig} weiterText="Nächste Frage" onWeiter={() => { setQ(waehleFrage(thema, dojo, q.id, stufe)); setRunde(r => r + 1); }} />
       </div>
     </div>
   );
@@ -1184,6 +1214,7 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
   const [teil, setTeil] = useState(null);
   const [unterId, setUnterId] = useState(null);
   const [probe, setProbe] = useState(null);
+  const [, setTick] = useState(0);
   const thema = themaId ? multicheckThema(themaId) : null;
   const dj = dojoPalette(dark);
 
@@ -1242,17 +1273,32 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
             const { total, n, richtig } = statistik(x.qs, r);
             const texte = x.qs[0] && x.qs[0].type === 'freitext' ? anzahlTexte() : null;
             const erledigt = texte != null ? texte > 0 : !x.bald && total > 0 && n === total;
+            const hatFortschritt = texte == null && !x.bald && (n > 0 || r['t:' + x.id] != null);
             return (
-              <button key={x.id} disabled={!!x.bald} onClick={() => { setUnterId(x.id); setTeil('ueben'); }} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: isMobile ? '18px 8px' : '20px 10px', borderRadius: 16, border: `2px solid ${x.bald ? dm.border : erledigt ? '#22c55e' : MC_BLAU}`, background: dm.card, cursor: x.bald ? 'default' : 'pointer', opacity: x.bald ? 0.6 : 1 }}>
+              <div key={x.id} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <button disabled={!!x.bald} onClick={() => { setUnterId(x.id); setTeil('ueben'); }} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: isMobile ? '18px 8px' : '20px 10px', borderRadius: 16, border: `2px solid ${x.bald ? dm.border : erledigt ? '#22c55e' : MC_BLAU}`, background: dm.card, cursor: x.bald ? 'default' : 'pointer', opacity: x.bald ? 0.6 : 1 }}>
                 {x.bald && <span style={{ position: 'absolute', top: 8, right: 10, fontSize: 10, fontWeight: 700, color: dm.text3, background: dm.bg, border: `1px solid ${dm.border}`, borderRadius: 20, padding: '1px 8px' }}>🔒 Bald</span>}
                 {erledigt && <span style={{ position: 'absolute', top: 6, right: 10, fontSize: 16, color: '#22c55e' }}>✓</span>}
                 <span style={{ fontSize: 28, filter: x.bald ? 'grayscale(1)' : 'none' }}>{x.emoji}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: x.bald ? dm.text3 : dm.text, textAlign: 'center' }}>{x.name}</span>
                 {!x.bald && <span style={{ fontSize: 11, color: dm.text3 }}>{texte != null ? (texte > 0 ? `${texte} ${texte === 1 ? 'Text' : 'Texte'} geschrieben` : `${x.qs.length} Runden`) : n > 0 ? `${richtig} von ${total}` : `${total} ${x.qs[0].items ? 'Aufgaben' : 'Fragen'}`}</span>}
               </button>
+              {hatFortschritt && <button onClick={() => {
+                if (!bestaetige(`«${x.name}» von vorne beginnen? Dein Ergebnis und die Haken in diesem Unterthema werden gelöscht. Die Fehler-Kiste bleibt, wie sie ist.`)) return;
+                loescheFortschritt(thema.id, x.qs, x.id); setTick(t => t + 1);
+              }} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 700, color: dm.text3, padding: '2px 4px', fontFamily: 'inherit' }}>↺ Nochmal von vorne</button>}
+              </div>
             );
           })}
         </div>
+        {thema.unter.some(x => { const r0 = ladeErgebnis()[thema.id] || {}; return x.qs[0]?.type !== 'freitext' && !x.bald && (statistik(x.qs, r0).n > 0 || r0['t:' + x.id] != null); }) && (
+          <div style={{ textAlign: 'center', margin: '-8px 0 22px' }}>
+            <button onClick={() => {
+              if (!bestaetige(`Alle Unterthemen von «${thema.name}» zurücksetzen? Ergebnisse und Haken in diesem Thema werden gelöscht. Fehler-Kiste, Dojo, andere Themen und geschriebene Texte bleiben unberührt.`)) return;
+              thema.unter.filter(x => x.qs[0]?.type !== 'freitext').forEach(x => loescheFortschritt(thema.id, x.qs, x.id)); setTick(t => t + 1);
+            }} style={{ background: 'none', border: `1.5px solid ${dm.border}`, borderRadius: 20, cursor: 'pointer', fontSize: 12, fontWeight: 700, color: dm.text3, padding: '6px 14px', fontFamily: 'inherit' }}>↺ Alles in diesem Thema zurücksetzen</button>
+          </div>
+        )}
         {knopf('dojo', <Hanko size={40} dark={dark} />, 'Dojo', 'Zufallsfragen aus diesem Thema. Du sammelst XP und steigst im Gürtel auf.', DOJO_ROT)}
         {knopf('sensei', <span style={{ fontSize: 28 }}>🥋</span>, 'Frag Sensei', 'Kurz erklärt, mit Tipps für den Multicheck.', '#f59e0b')}
       </>

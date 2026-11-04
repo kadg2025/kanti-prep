@@ -85,7 +85,7 @@ export function frageSchritt(sz, nr, teilNr, kurz) {
 }
 
 // Frage 2: Anzahl
-function frageMenge(sz, nr, cfg) {
+export function frageMenge(sz, nr, cfg) {
   const t = teil(sz, cfg.nr);
   const i = sz.teile.indexOf(t);
   const nach = sz.teile[(i + 1) % sz.teile.length];
@@ -98,7 +98,7 @@ function frageMenge(sz, nr, cfg) {
 }
 
 // Frage 3: Rechnen mit Massen
-function frageRechnen(sz, nr, cfg) {
+export function frageRechnen(sz, nr, cfg) {
   const richtig = wertAusdruck(sz, cfg.ausdruck);
   const falsche = cfg.falsch.map(a => wertAusdruck(sz, a));
   const quellen = cfg.ausdruck.map(a => `${teil(sz, a.nr).name} (${a.key} ${teil(sz, a.nr).masse[a.key]} cm)`).join(', ');
@@ -107,7 +107,7 @@ function frageRechnen(sz, nr, cfg) {
 }
 
 // Frage 4: Welche Aussage ist korrekt?
-function frageKorrekt(sz, nr, cfg) {
+export function frageKorrekt(sz, nr, cfg) {
   const stmts = [...cfg.falsch];
   stmts.splice(cfg.pos, 0, cfg.wahr);
   const why = `Richtig ist: ${aussage(sz, cfg.wahr)} Die anderen drei Aussagen sind falsch. Richtig wäre: ${cfg.falsch.map(s => korrigiert(sz, s)).join(' ')}`;
@@ -115,7 +115,7 @@ function frageKorrekt(sz, nr, cfg) {
 }
 
 // Frage 5: Welche Aussage ist falsch?
-function frageFalsch(sz, nr, cfg) {
+export function frageFalsch(sz, nr, cfg) {
   const stmts = [...cfg.wahr];
   stmts.splice(cfg.pos, 0, cfg.falsch);
   const why = `Falsch ist: ${aussage(sz, cfg.falsch)} Richtig wäre: ${korrigiert(sz, cfg.falsch)} Die anderen drei Aussagen stimmen.`;

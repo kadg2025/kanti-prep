@@ -20,13 +20,13 @@ export const TEXT_MINUTEN = 15;
 // auswahl: gemischt (reihum aus allen Unterthemen), proUnter (je n pro Unterthema), alle, ids (feste Liste)
 export const STATIONEN = [
   { id: 'merklern', art: 'merklern', name: 'Merkfähigkeit', thema: 'merk', lernIds: { pikto: 'merk-1', text: 'merk-3' } },
-  { id: 'deutsch', art: 'aufgaben', name: 'Deutsch', thema: 'deutsch', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'alle' } } },
-  { id: 'englisch', art: 'aufgaben', name: 'Englisch', thema: 'englisch', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'alle' } } },
+  { id: 'deutsch', art: 'aufgaben', name: 'Deutsch', thema: 'deutsch', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'gemischt', anzahl: 30 } } },
+  { id: 'englisch', art: 'aufgaben', name: 'Englisch', thema: 'englisch', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'gemischt', anzahl: 30 } } },
   { id: 'kurz', art: 'aufgaben', name: 'Kurzzeitgedächtnis', thema: 'kurz', zeit: { kurz: 4, voll: 12 }, auswahl: { kurz: { art: 'gemischt', anzahl: 8 }, voll: { art: 'alle' } } },
   { id: 'it', art: 'aufgaben', name: 'IT-Grundwissen', thema: 'it', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 8 }, voll: { art: 'alle' } } },
-  { id: 'org', art: 'aufgaben', name: 'Organisationsfähigkeit', thema: 'org', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 8 }, voll: { art: 'alle' } } },
-  { id: 'mathe', art: 'aufgaben', name: 'Mathematik', thema: 'mathe', zeit: { kurz: 8, voll: 24 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'alle' } } },
-  { id: 'logik', art: 'aufgaben', name: 'Logik', thema: 'logik', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'proUnter', anzahl: 3 }, voll: { art: 'alle' } } },
+  { id: 'org', art: 'aufgaben', name: 'Organisationsfähigkeit', thema: 'org', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 8 }, voll: { art: 'gemischt', anzahl: 30 } } },
+  { id: 'mathe', art: 'aufgaben', name: 'Mathematik', thema: 'mathe', zeit: { kurz: 8, voll: 24 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'gemischt', anzahl: 40 } } },
+  { id: 'logik', art: 'aufgaben', name: 'Logik', thema: 'logik', zeit: { kurz: 8, voll: 24 }, auswahl: { kurz: { art: 'proUnter', anzahl: 3 }, voll: { art: 'gemischt', anzahl: 30 } } },
   { id: 'konz', art: 'aufgaben', name: 'Konzentration', thema: 'konz', zeit: { kurz: 2, voll: 6 }, auswahl: { kurz: { art: 'ids', ids: ['konz-1', 'konz-11'] }, voll: { art: 'alle' } } },
   { id: 'vorst', art: 'aufgaben', name: 'Vorstellungsvermögen', thema: 'vorst', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'proUnter', anzahl: 3 }, voll: { art: 'alle' } } },
   { id: 'vernetzt', art: 'aufgaben', name: 'Vernetztes Denken', thema: 'vernetzt', zeit: { kurz: 5, voll: 15 }, auswahl: { kurz: { art: 'ids', ids: ['vern-1', 'vern-2', 'vern-3', 'vern-4', 'vern-5'] }, voll: { art: 'alle' } } },

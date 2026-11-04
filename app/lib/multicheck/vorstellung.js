@@ -1,6 +1,7 @@
 // Multicheck IMS: Thema «Vorstellungsvermögen». Räumliches Sehen (spatial) und Abwicklungen (net).
 // Die Bilder werden aus Beschreibungen gezeichnet (raeumlich.mjs, netz.mjs). Aufgaben: vorstellung_daten.js.
 import vdaten from './vorstellung_daten';
+import dojoQs from './dojo_vorst.mjs';
 
 const PFEIL = { N: 'Pfeil oben', NO: 'Pfeil oben rechts', O: 'Pfeil rechts', SO: 'Pfeil unten rechts', S: 'Pfeil unten', SW: 'Pfeil unten links', W: 'Pfeil links', NW: 'Pfeil oben links' };
 const BUCHSTABEN = 'ABCDE';
@@ -48,6 +49,7 @@ const thema = {
     ...vdaten.raeumlich.map((a, i) => raum(`vorst-${i + 1}`, a)),
     ...vdaten.netze.map((a, i) => netz(`vorst-${11 + i}`, a)),
   ],
+  dojoQs,
   konzepte: {
     "v_raum": {"n":"Räumliches Sehen","b":[["Vogelperspektive","Der Blick von oben auf das Brett."],["Seitenansicht","Das Bild, das man sieht, wenn man vom Rand aus zur Mitte schaut."],["Standort","Die Seite des Bretts, auf der der Betrachter steht. Der Pfeil zeigt dorthin."]],"bsp":["Der Pfeil unten heisst: Der Betrachter steht unten und schaut nach oben. Links bleibt links.","Wer auf der gegenüberliegenden Seite steht, sieht links und rechts vertauscht."],"z":["Das Bild von oben","Die Seitenansicht"],"s":["Suche die auffälligste Form oder Farbe, zum Beispiel den höchsten Körper oder den einzigen Zylinder.","Wo steht sie in der Seitenansicht: links, in der Mitte oder rechts?","Gehe auf dem Brett von jedem Pfeil aus zur Mitte und prüfe, ob die Form dann dort steht.","Prüfe vorne und hinten: Was näher beim Betrachter steht, verdeckt das andere.","Prüfe zuletzt die Breite: Von einer Ecke aus wirkt ein Quadrat breiter."],"t":"Streiche zuerst alle Pfeile, bei denen links und rechts nicht stimmen."},
     "v_netz": {"n":"Abwicklungen","b":[["Abwicklung","Ein aufgeklappter Würfel, flach hingelegt. Er hat sechs Flächen."],["Gegenüberliegende Flächen","Flächen, die am Würfel ganz auseinanderliegen. Man sieht sie nie gleichzeitig."],["Ecke","Dort stossen drei Flächen zusammen. Von einer Ecke aus sieht man genau diese drei."]],"bsp":["In einer Reihe von vier Feldern liegen das 1. und das 3. Feld gegenüber, ebenso das 2. und das 4.","Ein Muster wie die Diagonale zeigt, ob eine Fläche gedreht ist."],"z":["Die Abwicklung","Die fünf Figuren"],"s":["Suche in der Abwicklung zwei Flächen, die nebeneinander liegen.","Prüfe bei den Figuren, ob diese Flächen auch dort nebeneinander liegen.","Prüfe die Richtung der Muster (Diagonale, Streifen, Punkt, Dreieck).","Streiche Figuren mit zwei gegenüberliegenden Mustern nebeneinander."],"t":"Wähle eine Ecke und vergleiche die drei Flächen. Falsche Figuren haben meist ein gedrehtes, vertauschtes oder ersetztes Muster."}
