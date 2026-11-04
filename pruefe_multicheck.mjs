@@ -44,7 +44,9 @@ const FG = new Function(fs.readFileSync(DIR + 'figur.js', 'utf8').replace(/^expo
 const daten = laden('konzentration_daten.js');
 const vdaten = laden('vorstellung_daten.js');
 const figural = laden('logik_figural.js', null, { fig: FG.fig });
-const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { numerisch, figural, daten, vdaten, vn: VF.default, mf: MF, ...(f === 'schreiben.js' ? SD : {}) })]));
+const DOJO_DATEIEN = { deutsch: 'dojo_deutsch', englisch: 'dojo_englisch', kurz: 'dojo_kurz', it: 'dojo_it', org: 'dojo_org', mathe: 'dojo_mathe', logik: 'dojo_logik', konz: 'dojo_konz', vorst: 'dojo_vorst', vernetzt: 'dojo_vernetzt' };
+const DOJO = Object.fromEntries(await Promise.all(Object.entries(DOJO_DATEIEN).map(async ([id, f]) => [id, (await import('./app/lib/multicheck/' + f + '.mjs')).default])));
+const themen = Object.fromEntries(Object.entries(dateien).map(([id, f]) => [id, laden(f, null, { dojoQs: DOJO[id], numerisch, figural, daten, vdaten, vn: VF.default, mf: MF, ...(f === 'schreiben.js' ? SD : {}) })]));
 const UT = new Function(fs.readFileSync(DIR + 'unterthemen.js', 'utf8').replace(/^export /gm, '') + '\nreturn { UNTERTHEMEN, mitUnterthemen };')();
 const lk = laden('lernkarten.js', 'multicheckLernkarten', { fig: FG.fig });
 
@@ -53,8 +55,9 @@ const planSrc = fs.readFileSync(DIR + 'plan.js', 'utf8').replace(/^export \{.*\}
 const PL = new Function(planSrc)();
 
 // ─── Fragen ──────────────────────────────────────────────────────────────
+const PRUEFUNGS_TYPEN_ALLE = ['mc', 'vmc', 'memchoice', 'memcolor', 'multi', 'input', 'gap', 'spell', 'plan', 'numproc', 'figmc', 'spatial', 'net', 'numcmp', 'coord'];
 const alle = Object.values(themen).flatMap(t => t.qs);
-if (alle.length !== 271) bad(`Fragen: ${alle.length} statt 271`);
+if (alle.length !== 301) bad(`Fragen: ${alle.length} statt 301`);
 const ids = alle.map(q => q.id);
 if (new Set(ids).size !== ids.length) bad('doppelte Frage-IDs');
 for (const [id, t] of Object.entries(themen)) {
@@ -70,6 +73,32 @@ for (const [id, t] of Object.entries(themen)) {
     if ((q.type === 'mc' || q.type === 'memchoice') && !(q.correct >= 0 && q.correct < q.options.length)) bad(`${q.id}: correct ausserhalb`);
     if (id === 'logik' && q.type === 'mc' && q.options[q.correct].t !== q.answerText) bad(`${q.id}: answerText passt nicht zur richtigen Option`);
   }
+}
+// Dojo-Pools (eigene Fragen pro Thema): eindeutige IDs, Konzept vorhanden, mindestens 10 Fragen
+{
+  const alleDojo = [];
+  for (const [id, pool] of Object.entries(DOJO)) {
+    const t = themen[id];
+    if (!Array.isArray(t.dojoQs) || t.dojoQs !== pool) { bad(`Dojo ${id}: Thema reicht dojoQs nicht durch`); continue; }
+    if (pool.length < 10) bad(`Dojo ${id}: nur ${pool.length} Fragen (mindestens 10)`);
+    pool.forEach((q, i) => {
+      alleDojo.push(q.id);
+      if (!new RegExp('^' + t.id + '-d[0-9]+$').test(q.id)) bad(`Dojo ${q.id}: ID passt nicht zum Format ${t.id}-dN`);
+      if (!t.konzepte[q.ck]) bad(`${q.id}: Konzept ${q.ck} fehlt`);
+      if (q.topic !== id) bad(`${q.id}: topic ${q.topic}`);
+      if (!q.why || !q.answerText) bad(`${q.id}: Erklärung oder Lösungstext fehlt`);
+      if (!PRUEFUNGS_TYPEN_ALLE.includes(q.type)) bad(`${q.id}: unbekannter Typ ${q.type}`);
+      if ((q.type === 'mc' || q.type === 'vmc' || q.type === 'memchoice') && !(q.correct >= 0 && q.correct < q.options.length)) bad(`${q.id}: correct ausserhalb`);
+      if ((q.type === 'mc' || q.type === 'vmc' || q.type === 'memchoice') && new Set(q.options.map(o => o.t)).size !== q.options.length) bad(`${q.id}: doppelte Optionen`);
+      if ((q.type === 'mc' || q.type === 'vmc') && !q.scriptOpts && q.options[q.correct].t !== q.answerText) bad(`${q.id}: answerText passt nicht zur richtigen Option`);
+      if (q.type === 'multi' && (!q.correct.length || q.correct.length > 2 || q.correct.some(k => !q.options[k].ok) || q.options.filter(o => o.ok).length !== q.correct.length)) bad(`${q.id}: multi-Lösung stimmt nicht`);
+      if (q.type === 'gap' && q.accept && !q.accept.includes(q.answerText)) bad(`${q.id}: answerText nicht in accept`);
+      if (q.type === 'input' && !q.accept.length) bad(`${q.id}: accept fehlt`);
+    });
+  }
+  if (new Set(alleDojo).size !== alleDojo.length) bad('Dojo: doppelte IDs');
+  if (alleDojo.some(i => ids.includes(i))) bad('Dojo: ID kollidiert mit einer Themenfrage');
+  console.log('Dojo:', Object.entries(DOJO).map(([id, p]) => id + ' ' + p.length).join(', '));
 }
 console.log('Fragen:', Object.entries(themen).map(([id, t]) => `${id} ${t.qs.length}`).join(', '), '→', alle.length);
 

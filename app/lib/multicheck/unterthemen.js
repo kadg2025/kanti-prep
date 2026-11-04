@@ -13,6 +13,9 @@ export const UNTERTHEMEN = {
     u('grammar', 'Grammar', '🔤', [1, 10]),
     u('wortschatz', 'Wortschatz', '📚', [21, 30]),
     u('gespraeche', 'Gesprächssituationen', '💬', [11, 20]),
+    u('grammar2', 'Grammar, schwer', '🔤', [31, 40]),
+    u('wortschatz2', 'Wortschatz, schwer', '📚', [41, 50]),
+    u('gespraeche2', 'Gesprächssituationen, schwer', '💬', [51, 60]),
   ],
   kurz: [
     u('zeichen1', 'Zeichen behalten, Teil 1', '🔤', [11, 20]),

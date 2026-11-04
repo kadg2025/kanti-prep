@@ -21,7 +21,7 @@ export const TEXT_MINUTEN = 15;
 export const STATIONEN = [
   { id: 'merklern', art: 'merklern', name: 'Merkfähigkeit', thema: 'merk', lernIds: { pikto: 'merk-1', text: 'merk-3' } },
   { id: 'deutsch', art: 'aufgaben', name: 'Deutsch', thema: 'deutsch', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'alle' } } },
-  { id: 'englisch', art: 'aufgaben', name: 'Englisch', thema: 'englisch', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'alle' } } },
+  { id: 'englisch', art: 'aufgaben', name: 'Englisch', thema: 'englisch', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 10 }, voll: { art: 'gemischt', anzahl: 30 } } },
   { id: 'kurz', art: 'aufgaben', name: 'Kurzzeitgedächtnis', thema: 'kurz', zeit: { kurz: 4, voll: 12 }, auswahl: { kurz: { art: 'gemischt', anzahl: 8 }, voll: { art: 'alle' } } },
   { id: 'it', art: 'aufgaben', name: 'IT-Grundwissen', thema: 'it', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 8 }, voll: { art: 'alle' } } },
   { id: 'org', art: 'aufgaben', name: 'Organisationsfähigkeit', thema: 'org', zeit: { kurz: 6, voll: 18 }, auswahl: { kurz: { art: 'gemischt', anzahl: 8 }, voll: { art: 'alle' } } },

@@ -1,6 +1,7 @@
 // Multicheck IMS: Thema «Konzentration». Zahlenreihen vergleichen (numcmp) und Koordinaten (coord).
 // Beide Typen sind auf Tempo und Genauigkeit ausgelegt: Ein «Fragen»-Eintrag ist ein Block mit mehreren Aufgaben (items).
 import daten from './konzentration_daten';
+import dojoQs from './dojo_konz.mjs';
 
 const INTRO_ZAHLEN = "In einer Zeile stehen zwei Zahlenreihen, die du miteinander vergleichen sollst. Klicke «Gleich» an, wenn die beiden Zahlenreihen gleich sind. Klicke «Nicht gleich» an, wenn die Zahlenreihen nicht gleich sind. Arbeite so schnell wie möglich, ohne Fehler zu machen.";
 const INTRO_KOORD = "Bei der folgenden Aufgabe erscheint ein Raster mit neun Feldern. Eines der neun Felder erscheint rot. Es hat genau definierte Koordinaten. Tippe die Koordinaten in das vorgesehene Feld ein. Arbeite so sorgfältig und schnell wie möglich.<br><br><b>Hinweis:</b> Sobald du die Koordinaten eingegeben hast, erscheint automatisch das nächste rote Feld.";
@@ -46,6 +47,7 @@ const thema = {
     ...daten.zahlen.map((items, i) => zahlenBlock(i + 1, items)),
     ...daten.koord.map((items, i) => koordBlock(11 + i, items)),
   ],
+  dojoQs,
   konzepte: {
     "k_cmp": {"n":"Zahlenreihen vergleichen","b":[["Ziffer","Ein einzelnes Zeichen einer Zahl (0 bis 9)."],["Stelle","Der Platz einer Ziffer in der Zahl."],["Dreiergruppe","Drei Ziffern, die du zusammen anschaust."]],"bsp":["482 615 937 gegen 482 615 397: Die letzte Gruppe ist anders, also nicht gleich.","586 gegen 568: Die letzten zwei Ziffern sind vertauscht."],"z":["Ruhe und einen systematischen Blick"],"s":["Teile jede Zahl im Kopf in drei Gruppen.","Vergleiche Gruppe mit Gruppe von links nach rechts.","Hör bei der ersten Abweichung auf: nicht gleich.","Sind alle drei Gruppen gleich, klicke «Gleich»."],"t":"Schau bei Ziffern, die man leicht verwechselt (5 und 6, 6 und 8, 8 und 9, 3 und 8), zweimal hin."},
     "k_coord": {"n":"Koordinaten","b":[["X-Achse","Die waagrechte Achse. Sie wird von links nach rechts gezählt."],["Y-Achse","Die senkrechte Achse. Sie beginnt unten."],["Koordinaten","Zwei Ziffern: zuerst X, dann Y."]],"bsp":["Mitte oben hat die Koordinaten 23.","Links unten hat die Koordinaten 11."],"z":["Das Raster mit den Beschriftungen"],"s":["Lies die Spalte von links: Das ist X.","Lies die Reihe von unten: Das ist Y.","Schreibe zuerst X, dann Y."],"t":"Y beginnt unten, nicht oben. Das ist die häufigste Falle."}
