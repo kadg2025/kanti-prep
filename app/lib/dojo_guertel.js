@@ -51,7 +51,8 @@ function gestern(d) {
 // Antwort; der Bonus gibt es einmal pro Tag mit der ersten richtigen Antwort.
 // XP gibt es pro Frage (id) nur beim ersten Mal richtig.
 // Gibt { state, gewonnen, aufstieg } zurück.
-export function verbucheAntwort(state, richtig, id, jetzt = new Date()) {
+// xpRichtig: XP für diese Frage (Standard XP_RICHTIG; Multicheck übergibt den Wert nach Schwierigkeit).
+export function verbucheAntwort(state, richtig, id, jetzt = new Date(), xpRichtig = XP_RICHTIG) {
   const heute = tagString(jetzt);
   const next = { ...state };
   if (next.tag !== heute) {
@@ -61,7 +62,7 @@ export function verbucheAntwort(state, richtig, id, jetzt = new Date()) {
   let gewonnen = 0;
   if (richtig && !state.geloest.includes(id)) {
     next.geloest = [...state.geloest, id];
-    gewonnen = XP_RICHTIG;
+    gewonnen = xpRichtig;
     if (next.bonusTag !== heute) {
       gewonnen += XP_STREAK_BONUS;
       next.bonusTag = heute;

@@ -18,6 +18,7 @@ import { ProbeBereich, ProbePruefung } from './MulticheckProbe';
 import kdaten from '../lib/multicheck/konzentration_daten';
 import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse, erwartetAntwort } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
+import { waehleGewichtet, xpFuerFrage } from '../lib/multicheck/dojo_gewichtung.mjs';
 import { ladeDojo, speichereDojo, guertelIndex, verbucheAntwort } from '../lib/dojo_guertel';
 import { SENSEI_SPRUECHE } from '../lib/sensei_sprueche';
 
@@ -1141,21 +1142,18 @@ function Ueben({ thema, demo, dm, dark, onBack, onFehler = () => {}, onRemoveFeh
 
 // ─── Dojo: Zufallsfragen mit Gürtel und XP ─────────────────────────────────
 const STUFEN_ANZEIGE = [['alle', 'Alle'], ['einfach', 'Einfach'], ['mittel', 'Mittel'], ['schwer', 'Schwer']];
-function waehleFrage(thema, dojo, letzteId, stufe = 'alle') {
-  const gesamt = thema.dojoQs || thema.qs;
-  const alle = stufe === 'alle' ? gesamt : gesamt.filter(q => q.difficulty === stufe);
-  const offen = alle.filter(q => !dojo.geloest.includes('mc:' + q.id));
-  let pool = offen.length ? offen : alle;
-  if (pool.length > 1) pool = pool.filter(q => q.id !== letzteId);
-  return zufall(pool);
-}
-
 function MulticheckDojo({ thema, dm, dark, isMobile, onBack, onFehler, onRemoveFehler }) {
   const dj = dojoPalette(dark);
   const [dojo, setDojo] = useState(ladeDojo);
   const [meldung, setMeldung] = useState(() => ({ spruch: zufall(SENSEI_SPRUECHE.start), aufstieg: null }));
   const [runde, setRunde] = useState(0);
-  const [q, setQ] = useState(() => waehleFrage(thema, ladeDojo(), null));
+  const gezeigt = useRef([]);
+  const zieh = (d, letzteId, st) => {
+    const r = waehleGewichtet({ pool: thema.dojoQs || thema.qs, geloest: d.geloest, gezeigt: gezeigt.current, letzteId, stufe: st, guertel: guertelIndex(d.xp) });
+    gezeigt.current = r.gezeigt;
+    return r.q;
+  };
+  const [q, setQ] = useState(() => zieh(ladeDojo(), null, 'alle'));
   const [stufe, setStufe] = useState('alle');
   const gesamtPool = thema.dojoQs || thema.qs;
   const vorhandeneStufen = new Set(gesamtPool.map(x => x.difficulty).filter(Boolean));
@@ -1164,7 +1162,7 @@ function MulticheckDojo({ thema, dm, dark, isMobile, onBack, onFehler, onRemoveF
 
   function fertig(richtig, frage) {
     const id = 'mc:' + frage.id;
-    const res = verbucheAntwort(dojo, richtig, id);
+    const res = verbucheAntwort(dojo, richtig, id, undefined, xpFuerFrage(frage));
     setDojo(res.state);
     speichereDojo(res.state);
     if (richtig) onRemoveFehler(id); else onFehler(id);
@@ -1183,14 +1181,14 @@ function MulticheckDojo({ thema, dm, dark, isMobile, onBack, onFehler, onRemoveF
       {vorhandeneStufen.size >= 2 && (
         <div role="group" aria-label="Schwierigkeit" style={{ display: 'flex', gap: 6, flexWrap: 'wrap', margin: '0 0 10px' }}>
           {STUFEN_ANZEIGE.filter(([k]) => k === 'alle' || vorhandeneStufen.has(k)).map(([k, name]) => (
-            <button key={k} aria-pressed={stufe === k} onClick={() => { if (k === stufe) return; setStufe(k); setQ(waehleFrage(thema, dojo, null, k)); setRunde(r => r + 1); }}
+            <button key={k} aria-pressed={stufe === k} onClick={() => { if (k === stufe) return; setStufe(k); gezeigt.current = []; setQ(zieh(dojo, null, k)); setRunde(r => r + 1); }}
               style={{ cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 700, padding: '4px 12px', borderRadius: 20, border: `1.5px solid ${stufe === k ? dj.rot : dj.rand}`, background: stufe === k ? dj.rot : 'transparent', color: stufe === k ? '#fff' : dj.tinte2 }}>{name}</button>
           ))}
         </div>
       )}
       <p style={{ margin: '0 0 12px', fontSize: 12, fontWeight: 700, color: dj.tinte2 }}>Gelöst in diesem Thema: {geloest} von {dojoFragen.length} · XP gibt es nur beim ersten richtigen Lösen.</p>
       <div style={{ background: dj.cremeKarte, border: `1px solid ${dj.rand}`, borderLeft: `5px solid ${dj.rot}`, borderRadius: 16, padding: isMobile ? '18px 14px' : '24px 26px' }}>
-        <Frage key={runde} q={q} thema={thema} zeitlimit={false} onFertig={fertig} weiterText="Nächste Frage" onWeiter={() => { setQ(waehleFrage(thema, dojo, q.id, stufe)); setRunde(r => r + 1); }} />
+        <Frage key={runde} q={q} thema={thema} zeitlimit={false} onFertig={fertig} weiterText="Nächste Frage" onWeiter={() => { setQ(zieh(dojo, q.id, stufe)); setRunde(r => r + 1); }} />
       </div>
     </div>
   );
