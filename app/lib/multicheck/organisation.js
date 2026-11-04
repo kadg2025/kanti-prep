@@ -1,6 +1,7 @@
 // Multicheck IMS: Thema «Organisationsfähigkeit». Daten unverändert aus der Übungsprüfung übernommen.
 // Ein Thema = eine Datei. Neue Themen werden in index.js eingetragen.
 import dojoQs from './dojo_org.mjs';
+import schwer from './organisation_schwer.mjs';
 const thema = {
   id: "org",
   name: "Organisationsfähigkeit",
@@ -37,6 +38,7 @@ const thema = {
     {"type":"mc","title":"Bedingungen beachten","instr":"Nur eine Antwort ist richtig.","body":"<div class=\"big\" style=\"font-size:17px\">Ein Meeting dauert 8 Stunden und geht über zwei Tage (inkl. Übernachtung). Welche Platzierung ist richtig?</div>","options":[{"t":"Montag 8–12 und Dienstag 13–17","why":"Falsch: Der erste Tag muss der Nachmittag sein, der zweite der Vormittag."},{"t":"Montag 13–17 und Dienstag 8–12","why":null},{"t":"Montag 8–17 durchgehend","why":"Falsch: Die Mittagspause bleibt frei."},{"t":"Donnerstag 13–17 und Freitag 13–17","why":"Falsch: Am zweiten Tag muss es der Vormittag sein."}],"correct":1,"answerText":"Montag 13–17 und Dienstag 8–12","why":"8 h = 4 h + 4 h: Nachmittag (13–17) am ersten Tag, Vormittag (8–12) am Folgetag.","ck":"o_cond","topic":"org","id":"org-28"},
     {"type":"mc","title":"Bedingungen beachten","instr":"Nur eine Antwort ist richtig.","body":"<div class=\"big\" style=\"font-size:17px\">Die Steuererklärung (3 h) muss zwingend am Mittwoch sein. Am Mittwoch sind fix: 8.00–9.00 Mails und 15.00–17.00 Sitzung. Wo passt sie?</div>","options":[{"t":"Mittwoch 10.00–13.00","why":"Falsch: Das reicht in die Mittagspause."},{"t":"Mittwoch 9.00–12.00","why":null},{"t":"Mittwoch 13.00–16.00","why":"Falsch: Das überschneidet sich mit der Sitzung (15–17)."},{"t":"Donnerstag 9.00–12.00","why":"Falsch: Das ist nicht Mittwoch (zwingend!)."}],"correct":1,"answerText":"Mittwoch 9.00–12.00","why":"Mittwoch 9–12 ist die freie Lücke am Vormittag und endet vor der Mittagspause.","ck":"o_cond","topic":"org","id":"org-29"},
     {"type":"mc","title":"Bedingungen beachten","instr":"Nur eine Antwort ist richtig.","body":"<div class=\"big\" style=\"font-size:17px\">Drei Termine: A muss vor B sein, und B muss vor C sein. Welche Reihenfolge stimmt?</div>","options":[{"t":"B Montag, A Dienstag, C Mittwoch","why":"Falsch: B kommt vor A."},{"t":"A Dienstag, B Montag, C Mittwoch","why":"Falsch: B kommt vor A."},{"t":"A Montag, B Dienstag, C Mittwoch","why":null},{"t":"A Montag, C Dienstag, B Mittwoch","why":"Falsch: C kommt vor B."}],"correct":2,"answerText":"A Montag, B Dienstag, C Mittwoch","why":"A (Mo) → B (Di) → C (Mi): beide Bedingungen sind erfüllt.","ck":"o_cond","topic":"org","id":"org-30"},
+    ...schwer,
   ],
   dojoQs,
   konzepte: {

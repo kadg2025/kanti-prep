@@ -1,13 +1,15 @@
 // Multicheck IMS, Deutsch: eigener Fragenpool für das Dojo (neue Aufgaben, etwas schwieriger als die Themenfragen).
 const B = { topic: 'deutsch' };
+// Einstufung pro Aufgabe (Nummer → Stufe).
+const D = { 1: 'mittel', 2: 'mittel', 3: 'mittel', 4: 'mittel', 5: 'mittel', 6: 'mittel', 7: 'mittel', 8: 'mittel', 9: 'mittel', 10: 'schwer', 11: 'schwer', 12: 'mittel', 13: 'mittel', 14: 'schwer', 15: 'schwer', 16: 'schwer', 17: 'schwer', 18: 'schwer', 19: 'mittel', 20: 'schwer' };
 const SP = 'In der Zeile steckt höchstens ein Fehler. Klicke das falsche Wort an und schreibe es richtig ins Kästchen. Gibt es keinen Fehler, wähle «korrekt».';
 const spell = (n, words, wrong, fix, why) => ({
   type: 'spell', title: 'Rechtschreibung', instr: SP, words, wrong, fix: fix || '',
-  answerText: fix ? `«${words[wrong].replace(/[.,!?]$/, '')}» → ${fix}` : 'korrekt', why, ck: 'd_spell', ...B, id: `deutsch-d${n}`,
+  answerText: fix ? `«${words[wrong].replace(/[.,!?]$/, '')}» → ${fix}` : 'korrekt', why, ck: 'd_spell', ...B, id: `deutsch-d${n}`, difficulty: D[n],
 });
 const GI = 'Ergänze das Wort. Stimmt der Satz schon, wähle «korrekt». Höchstens ein Wort.';
 const gap = (n, before, after, accept, why) => ({
-  type: 'gap', title: 'Grammatik', instr: GI, before, prefix: '', after, accept, answerText: accept ? accept[0] : 'korrekt', why, ck: 'd_gram', ...B, id: `deutsch-d${n}`,
+  type: 'gap', title: 'Grammatik', instr: GI, before, prefix: '', after, accept, answerText: accept ? accept[0] : 'korrekt', why, ck: 'd_gram', ...B, id: `deutsch-d${n}`, difficulty: D[n],
 });
 const MI = 'Lies den Text. Eine oder maximal zwei Aussagen sind richtig. Klicke alle richtigen Aussagen an.';
 const multi = (n, titel, text, opts, why) => ({
@@ -15,7 +17,7 @@ const multi = (n, titel, text, opts, why) => ({
   options: opts.map(([t, ok, w]) => ({ t, ok, why: w })),
   correct: opts.map((o, i) => (o[1] ? i : -1)).filter(i => i >= 0),
   answerText: opts.filter(o => o[1]).map(o => o[0]).join(' / '),
-  why: why || 'Prüfe jede Aussage am Text. Unten siehst du bei jeder Aussage die Begründung.', ck: 'd_text', ...B, id: `deutsch-d${n}`,
+  why: why || 'Prüfe jede Aussage am Text. Unten siehst du bei jeder Aussage die Begründung.', ck: 'd_text', ...B, id: `deutsch-d${n}`, difficulty: D[n],
 });
 
 export default [
@@ -48,4 +50,15 @@ export default [
      ['Der Eisvogel brütet in einer Röhre in der Uferwand.', true, 'Stimmt: «gräbt das Paar eine Brutröhre in eine steile Uferwand».'],
      ['Er jagt vor allem Insekten in der Luft.', false, 'Falsch: Seine Beute sind kleine Fische.'],
      ['Er ist selten, weil die Bäche kein Wasser mehr führen.', false, 'Falsch: Der Grund sind begradigte Bäche ohne geeignete Uferwände.']]),
+  spell(15, ['Das', 'Ergebniss', 'der', 'Wahl', 'wird', 'morgen', 'bekannt', 'gegeben.'], 1, 'Ergebnis', 'Nomen auf «-nis» haben im Singular nur ein s: das Ergebnis. Erst im Plural verdoppelt sich das s: die Ergebnisse.'),
+  spell(16, ['Er', 'hat', 'mir', 'ein', 'Wörterbuch', 'geschenkt,', 'dass', 'ich', 'sehr', 'gut', 'gebrauchen', 'kann.'], 6, 'das', 'Das Wort bezieht sich auf «Wörterbuch» und lässt sich durch «welches» ersetzen: ein Wörterbuch, das (welches) ich gut gebrauchen kann. Deshalb «das» mit einem s.'),
+  gap(17, 'Ich wünschte, er', ' mir die Wahrheit gesagt.', ['hätte'], 'Ein Wunsch, der sich auf die Vergangenheit bezieht und nicht mehr erfüllt werden kann, steht im Konjunktiv II der Vergangenheit: er hätte gesagt.'),
+  gap(18, 'Die Mitarbeiter,', ' der Chef gelobt hat, bekamen einen Bonus.', ['die', 'welche'], 'Das Relativpronomen bezieht sich auf «die Mitarbeiter» (Plural). Im Nebensatz ist es das Objekt (Wen hat der Chef gelobt? Die Mitarbeiter), also Akkusativ Plural: «die».'),
+  gap(19, 'Gestern hat der Hund', ' Briefträger gebissen.', ['den'], 'Wen hat der Hund gebissen? Den Briefträger. «Briefträger» ist männlich und steht im Akkusativ, deshalb «den».'),
+  multi(20, 'Die Projektwoche',
+    'Die Schule plant eine Projektwoche für die 120 Schülerinnen und Schüler der dritten Klassen. 48 von ihnen wählen das Thema «Robotik», doppelt so viele wie das Thema «Theater». Der Rest verteilt sich gleichmässig auf «Kochen» und «Velo-Werkstatt». Für Robotik braucht es pro Gruppe von höchstens 15 Personen eine Lehrperson. Die Projektwoche findet statt, sobald sich pro Thema mindestens 20 Personen angemeldet haben.',
+    [['Für das Thema Robotik braucht es vier Lehrpersonen.', true, 'Stimmt: 48 Personen geteilt durch 15 ergibt 3.2. Es braucht also vier Gruppen und damit vier Lehrpersonen.'],
+     ['Für das Thema Robotik reichen drei Lehrpersonen.', false, 'Falsch: Drei Gruppen zu höchstens 15 Personen fassen nur 45 Personen, es sind aber 48.'],
+     ['Kochen und Velo-Werkstatt haben zusammen 48 Anmeldungen.', true, 'Stimmt: 120 − 48 (Robotik) − 24 (Theater) = 48, und diese 48 verteilen sich gleichmässig (je 24).'],
+     ['Die Projektwoche findet nicht statt, weil ein Thema zu wenig Anmeldungen hat.', false, 'Falsch: Jedes Thema hat 24 oder 48 Anmeldungen, also mindestens 20.']]),
 ];

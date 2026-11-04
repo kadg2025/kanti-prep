@@ -2,6 +2,7 @@
 // Beide Typen sind auf Tempo und Genauigkeit ausgelegt: Ein «Fragen»-Eintrag ist ein Block mit mehreren Aufgaben (items).
 import daten from './konzentration_daten';
 import dojoQs from './dojo_konz.mjs';
+import schwer from './konzentration_schwer.mjs';
 
 const INTRO_ZAHLEN = "In einer Zeile stehen zwei Zahlenreihen, die du miteinander vergleichen sollst. Klicke «Gleich» an, wenn die beiden Zahlenreihen gleich sind. Klicke «Nicht gleich» an, wenn die Zahlenreihen nicht gleich sind. Arbeite so schnell wie möglich, ohne Fehler zu machen.";
 const INTRO_KOORD = "Bei der folgenden Aufgabe erscheint ein Raster mit neun Feldern. Eines der neun Felder erscheint rot. Es hat genau definierte Koordinaten. Tippe die Koordinaten in das vorgesehene Feld ein. Arbeite so sorgfältig und schnell wie möglich.<br><br><b>Hinweis:</b> Sobald du die Koordinaten eingegeben hast, erscheint automatisch das nächste rote Feld.";
@@ -40,12 +41,14 @@ const thema = {
   unterInfo: {
     zahlen1: { intro: INTRO_ZAHLEN, demo: { type: 'numcmp', items: [{ a: '148394053', b: '149394053', gleich: false }, { a: '645394053', b: '645394053', gleich: true }] } },
     zahlen2: { intro: INTRO_ZAHLEN, demo: { type: 'numcmp', items: [{ a: '148394053', b: '149394053', gleich: false }, { a: '645394053', b: '645394053', gleich: true }] } },
+    zahlen3: { intro: INTRO_ZAHLEN, demo: { type: 'numcmp', items: [{ a: '148394053', b: '149394053', gleich: false }, { a: '645394053', b: '645394053', gleich: true }] } },
     koord1: { intro: INTRO_KOORD, demo: { type: 'coord', items: [{ c: 1, r: 0, a: '23' }] } },
     koord2: { intro: INTRO_KOORD, demo: { type: 'coord', items: [{ c: 1, r: 0, a: '23' }] } },
   },
   qs: [
     ...daten.zahlen.map((items, i) => zahlenBlock(i + 1, items)),
     ...daten.koord.map((items, i) => koordBlock(11 + i, items)),
+    ...schwer,
   ],
   dojoQs,
   konzepte: {

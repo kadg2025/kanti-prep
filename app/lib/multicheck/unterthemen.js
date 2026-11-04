@@ -1,6 +1,7 @@
 // Unterthemen pro Multicheck-Thema: Gruppen von Fragen (höchstens 10).
 // Die Fragen stehen in den Themen-Dateien; hier steht nur, welche Frage in welches Unterthema gehört.
 // von/bis sind Nummern der Frage-IDs («mathe-27» = 27). Mehrere Bereiche sind erlaubt.
+import { SCHWIERIGKEIT } from './schwierigkeit.mjs';
 const u = (id, name, emoji, ...bereiche) => ({ id, name, emoji, bereiche });
 
 export const UNTERTHEMEN = {
@@ -8,6 +9,7 @@ export const UNTERTHEMEN = {
     u('rechtschreibung', 'Rechtschreibung', '✍️', [1, 10]),
     u('grammatik', 'Grammatik', '🧩', [11, 20]),
     u('textverstaendnis', 'Textverständnis', '📖', [21, 30]),
+    u('schwer', 'Deutsch, schwer', '🧗', [31, 40]),
   ],
   englisch: [
     u('grammar', 'Grammar', '🔤', [1, 10]),
@@ -32,6 +34,7 @@ export const UNTERTHEMEN = {
     u('freiezeit', 'Freie Zeit berechnen', '⏱️', [9, 14]),
     u('termin', 'Termin einordnen', '🧱', [15, 20]),
     u('regeln', 'Planungsregeln und Bedingungen', '📏', [21, 30]),
+    u('schwer', 'Organisation, schwer', '🧗', [31, 40]),
     u('wochenplan', 'Wochenplan bauen', '🗓️', [1, 8]),
   ],
   mathe: [
@@ -41,12 +44,14 @@ export const UNTERTHEMEN = {
     u('geometrie', 'Geometrie', '📐', [35, 40]),
     u('einheiten', 'Einheiten', '📏', [19, 23]),
     u('prozent', 'Prozent und Textaufgaben', '％', [27, 34]),
+    u('schwer', 'Mathematik, schwer', '🧗', [41, 50]),
   ],
   konz: [
     u('zahlen1', 'Zahlenreihen, Teil 1', '🔢', [1, 5]),
     u('zahlen2', 'Zahlenreihen, Teil 2', '🔢', [6, 10]),
     u('koord1', 'Koordinaten, Teil 1', '📍', [11, 12]),
     u('koord2', 'Koordinaten, Teil 2', '📍', [13, 14]),
+    u('zahlen3', 'Zahlenreihen, schwer', '🔢', [15, 24]),
   ],
   vorst: [
     u('raum', 'Räumliches Sehen', '🧭', [1, 10]),
@@ -67,11 +72,15 @@ export const UNTERTHEMEN = {
     u('verbal', 'Verbale Analogien', '🔗', [1, 10]),
     u('figural', 'Figurale Analogien', '🔷', [21, 30]),
     u('numerisch', 'Numerische Verarbeitungskapazität', '🔢', [11, 20]),
+    u('schwer', 'Logik, schwer', '🧗', [31, 40]),
   ],
 };
 
 // Fragen eines Themas den Unterthemen zuordnen.
-export function mitUnterthemen(thema) {
+export function mitUnterthemen(thema0) {
+  // difficulty: direkt an der Frage, sonst aus der Tabelle schwierigkeit.mjs.
+  const mitStufe = (q) => { if (!q.difficulty && SCHWIERIGKEIT[q.id]) q.difficulty = SCHWIERIGKEIT[q.id]; return q; };
+  const thema = { ...thema0, qs: thema0.qs.map(mitStufe), ...(thema0.dojoQs ? { dojoQs: thema0.dojoQs.map(mitStufe) } : {}) };
   const nr = (q) => Number(q.id.split('-')[1]);
   const unter = (UNTERTHEMEN[thema.id] || []).map(x => ({
     ...x,

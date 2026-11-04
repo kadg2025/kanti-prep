@@ -1,9 +1,9 @@
 // Multicheck IMS, Organisationsfähigkeit: eigener Fragenpool für das Dojo (neue Aufgaben, etwas schwieriger als die Themenfragen).
 // Die Tagestabellen und Lösungen werden aus den Terminen berechnet. Tag: 08.00 bis 17.00, Mittagspause 12.00 bis 13.00.
 const B = { topic: 'org' };
-const std = (h) => String(h).padStart(2, '0') + '.00';
+export const std = (h) => String(h).padStart(2, '0') + '.00';
 
-function tabelle(tag, termine) {
+export function tabelle(tag, termine) {
   let t = `<table class="daytab"><tr><th colspan="2">${tag}</th></tr>`;
   for (let h = 8; h <= 16; h++) {
     const x = termine.find(a => h >= a.s && h < a.e);
@@ -13,7 +13,7 @@ function tabelle(tag, termine) {
   return t + '</table>';
 }
 // Verletzung für einen Starttermin: null = möglich, sonst die Begründung.
-function problem(termine, start, dauer) {
+export function problem(termine, start, dauer) {
   const ende = start + dauer;
   if (ende > 17) return `Der Termin würde bis ${std(ende)} dauern, der Tag endet aber um 17.00 Uhr.`;
   if (start < 12 && ende > 12) return 'Der Termin überschneidet sich mit der Mittagspause (12.00–13.00).';
@@ -49,7 +49,8 @@ const mc = (n, titel, instr, frage, opts, c, why, ck) => ({
   options: opts.map(([t, w], i) => ({ t, why: i === c ? null : w })), correct: c, answerText: opts[c][0], why, ck, ...B, id: `org-d${n}`,
 });
 
-export default [
+const STUFE = { 1: 'einfach', 2: 'einfach', 3: 'einfach', 4: 'mittel', 5: 'mittel', 6: 'mittel', 7: 'einfach', 8: 'einfach', 9: 'mittel', 10: 'schwer', 11: 'mittel', 12: 'mittel', 13: 'mittel', 14: 'mittel', 15: 'schwer', 16: 'schwer', 17: 'schwer' };
+const alle = [
   frei(1, 'Dienstag', [{ n: 'Mathe', s: 8, e: 10 }, { n: 'Arzt', s: 10, e: 11 }, { n: 'Training', s: 14, e: 16 }]),
   frei(2, 'Mittwoch', [{ n: 'Nachhilfe', s: 9, e: 11 }, { n: 'Besuch', s: 13, e: 16 }, { n: 'Termin', s: 16, e: 17 }]),
   frei(3, 'Donnerstag', [{ n: 'Schule', s: 8, e: 12 }, { n: 'Probe', s: 13, e: 15 }, { n: 'Zahnarzt', s: 16, e: 17 }]),
@@ -76,4 +77,20 @@ export default [
     'Der Vortrag (1 h) muss am Tag vor dem Abgabetermin stattfinden. Die Abgabe ist am Freitag um 10.00 Uhr. Die Mittagspause bleibt frei. Welche Platzierung stimmt?',
     [['Donnerstag 12.00–13.00', 'Falsch: Das ist die Mittagspause.'], ['Freitag 8.00–9.00', 'Falsch: Das ist am Tag der Abgabe, nicht am Tag davor.'], ['Mittwoch 9.00–10.00', 'Falsch: Das ist zwei Tage vor der Abgabe.'], ['Donnerstag 9.00–10.00', '']], 3,
     'Der Tag vor Freitag ist Donnerstag. Um 9.00 Uhr liegt der Vortrag nicht in der Mittagspause.', 'o_cond'),
+  frei(12, 'Montag', [{ n: 'Sitzung', s: 8, e: 9 }, { n: 'Besuch', s: 9, e: 11 }, { n: 'Arzt', s: 13, e: 14 }, { n: 'Kurs', s: 14, e: 16 }, { n: 'Zahnarzt', s: 16, e: 17 }]),
+  passt(13, 'Montag', [{ n: 'Probe', s: 9, e: 10 }, { n: 'Arzt', s: 13, e: 14 }], 3, [8, 10, 11, 14], 14),
+  passt(14, 'Freitag', [{ n: 'Zahnarzt', s: 14, e: 15 }], 4, [8, 10, 13, 14], 8),
+  mc(15, 'Planungsregeln', 'Beachte die Planungsvorgaben. Nur eine Antwort ist richtig.',
+    'Termine beginnen zur vollen Stunde, dauern 1 bis 3 Stunden, enden spätestens um 17.00 Uhr und dürfen die Mittagspause (12.00–13.00) nicht belegen. Welcher Termin ist erlaubt?',
+    [['Start 11.00 Uhr, Dauer 2 Stunden', 'Falsch: Der Termin reicht von 11.00 bis 13.00 und damit in die Mittagspause.'], ['Start 8.00 Uhr, Dauer 4 Stunden', 'Falsch: Mit 4 Stunden ist der Termin länger als erlaubt.'], ['Start 16.00 Uhr, Dauer 2 Stunden', 'Falsch: Der Termin würde bis 18.00 Uhr dauern.'], ['Start 13.00 Uhr, Dauer 3 Stunden', '']], 3,
+    'Der Termin von 13.00 bis 16.00 Uhr beginnt nach der Mittagspause, dauert höchstens 3 Stunden und endet vor 17.00 Uhr.', 'o_rules'),
+  mc(16, 'Bedingungen beachten', 'Nur eine Antwort ist richtig.',
+    'Der Zahnarzt ist fix am Dienstag von 13.00 bis 14.00 Uhr. Das Training (2 h) soll am selben Tag danach stattfinden. Dazwischen muss mindestens 1 Stunde Pause liegen. Der Tag endet um 17.00 Uhr. Welche Platzierung stimmt?',
+    [['Dienstag 14.00–16.00', 'Falsch: Zwischen Zahnarzt und Training liegt keine Pause.'], ['Dienstag 15.00–17.00', ''], ['Montag 15.00–17.00', 'Falsch: Das ist nicht am selben Tag.'], ['Dienstag 8.00–10.00', 'Falsch: Das liegt vor dem Zahnarzt.']], 1,
+    'Der Zahnarzt endet um 14.00 Uhr. Mit einer Stunde Pause beginnt das Training frühestens um 15.00 Uhr und endet um 17.00 Uhr.', 'o_cond'),
+  mc(17, 'Bedingungen beachten', 'Nur eine Antwort ist richtig.',
+    'Die Prüfung ist fix am Donnerstag. Die Vorbereitung (3 h) muss genau zwei Tage vor der Prüfung stattfinden. Die Mittagspause bleibt frei. Welche Platzierung stimmt?',
+    [['Montag 9.00–12.00', 'Falsch: Das ist drei Tage vor der Prüfung.'], ['Dienstag 10.00–13.00', 'Falsch: Der Tag stimmt, aber der Termin reicht in die Mittagspause.'], ['Mittwoch 9.00–12.00', 'Falsch: Das ist nur einen Tag vor der Prüfung.'], ['Dienstag 9.00–12.00', '']], 3,
+    'Zwei Tage vor Donnerstag ist Dienstag. Von 9.00 bis 12.00 Uhr endet die Vorbereitung vor der Mittagspause.', 'o_cond'),
 ];
+export default alle.map(q => ({ ...q, difficulty: STUFE[q.id.split('-d')[1]] }));

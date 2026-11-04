@@ -22,7 +22,8 @@ const flow = (n, titel, zeilen, opts, c) => ({
   options: opts.map(([t, w]) => ({ t, why: w })), correct: c, answerText: opts[c][0], why: 'Gesucht ist die Aussage, die <b>nicht</b> zum Flussdiagramm passt.', ck: 'it_flow_stmt', ...B, id: `it-d${n}`,
 });
 
-export default [
+const STUFE = { 1: 'einfach', 2: 'mittel', 3: 'mittel', 4: 'mittel', 5: 'mittel', 6: 'einfach', 7: 'einfach', 8: 'mittel', 9: 'einfach', 10: 'einfach', 11: 'mittel', 12: 'schwer', 13: 'mittel', 14: 'schwer', 15: 'mittel', 16: 'schwer' };
+const alle = [
   zahl(1, 'Scratch: Variable',
     sk('Start', 'setze Zahl auf 2', 'wiederhole 5 mal {', sp + 'setze Zahl auf Zahl * 2', '}', 'sage Zahl'), ['64'],
     'Verdoppeln, 5 Durchgänge: 2 → 4 → 8 → 16 → 32 → 64. Am Ende steht <b>64</b> in der Variablen.'),
@@ -74,4 +75,23 @@ export default [
      ['Bei einem richtigen Passwort wird der Zugang erlaubt.', 'Stimmt: Ja → Zugang erlaubt.'],
      ['Nach dem dritten falschen Versuch wird das Konto gesperrt.', 'Stimmt: Bei «Schon 3 Versuche? Ja» wird das Konto gesperrt.'],
      ['Nach einem falschen Passwort darf man das Passwort nochmals eingeben, sofern es nicht schon 3 Versuche waren.', 'Stimmt: Nein → zurück zu «Passwort eingeben».']], 0),
+  zahl(12, 'Scratch: Variablen tauschen',
+    sk('Start', 'setze A auf 1', 'setze B auf 1', 'wiederhole 6 mal {', sp + 'setze C auf A + B', sp + 'setze A auf B', sp + 'setze B auf C', '}', 'sage B'), ['21'],
+    'Durchgang 1: C = 2, A = 1, B = 2. Durchgang 2: C = 3, A = 2, B = 3. Durchgang 3: C = 5, A = 3, B = 5. Durchgang 4: C = 8, A = 5, B = 8. Durchgang 5: C = 13, A = 8, B = 13. Durchgang 6: C = 21, A = 13, B = 21. Ausgegeben wird B = <b>21</b>.'),
+  zahl(13, 'Scratch: Verschachtelte Schleifen',
+    sk('Start', 'setze Summe auf 0', 'wiederhole 3 mal {', sp + 'wiederhole 4 mal {', sp + sp + 'addiere 2 zu Summe', sp + '}', sp + 'addiere 1 zu Summe', '}', 'sage Summe'), ['27'],
+    'Die innere Schleife addiert 4 * 2 = 8. Danach kommt +1, pro Durchgang der äusseren Schleife also 9. Bei 3 Durchgängen: 3 * 9 = <b>27</b>.'),
+  zahl(14, 'Scratch: Bedingung mit «oder»',
+    sk('Start', 'setze Zahl auf 0', 'für Z von 1 bis 10 {', sp + 'falls Z &gt; 7 oder Z &lt; 3 dann', sp + sp + 'setze Zahl auf Zahl + Z', '}', 'sage Zahl'), ['30'],
+    'Die Bedingung gilt für Z = 1, 2 (kleiner als 3) und Z = 8, 9, 10 (grösser als 7). Summe: 1 + 2 + 8 + 9 + 10 = <b>30</b>.'),
+  zahl(15, 'Scratch: Wiederholen bis',
+    sk('Start', 'setze N auf 1', 'setze Schritte auf 0', 'wiederhole bis N &gt; 50 {', sp + 'setze N auf N * 3', sp + 'addiere 1 zu Schritte', '}', 'sage Schritte'), ['4'],
+    'N wird verdreifacht: 1 → 3 → 9 → 27 → 81. Nach 4 Durchgängen ist N = 81 und damit grösser als 50. Ausgegeben wird die Anzahl der Schritte: <b>4</b> (nicht N).'),
+  stmt(16, 'Scratch: Aussage zum Skript',
+    sk('Start', 'setze X auf 10', 'falls X &gt; 5 dann', sp + 'setze X auf X − 4', 'falls X &gt; 5 dann', sp + 'setze X auf X − 4', 'sage X'),
+    [['Die Figur sagt am Ende 2.', 'Stimmt: 10 → 6 (6 &gt; 5) → 2.'],
+     ['Die zweite Bedingung wird mit dem veränderten Wert von X geprüft.', 'Stimmt: Die beiden «falls» stehen nacheinander, X ist nach dem ersten schon 6.'],
+     ['Bei X = 8 am Anfang sagt die Figur 4.', 'Stimmt: 8 → 4, und 4 ist nicht grösser als 5.'],
+     ['Bei X = 9 am Anfang sagt die Figur 1.', 'Stimmt nicht: 9 → 5, und 5 ist nicht grösser als 5. Die Figur sagt 5.']], 3),
 ];
+export default alle.map(q => ({ ...q, difficulty: STUFE[q.id.split('-d')[1]] }));

@@ -1,17 +1,19 @@
 // Multicheck IMS, Englisch: eigener Fragenpool für das Dojo (neue Aufgaben, etwas schwieriger als die Themenfragen).
 const B = { topic: 'englisch' };
+// Einstufung pro Aufgabe (Nummer → Stufe).
+const D = { 1: 'mittel', 2: 'mittel', 3: 'schwer', 4: 'mittel', 5: 'schwer', 6: 'schwer', 7: 'mittel', 8: 'schwer', 9: 'mittel', 10: 'mittel', 11: 'mittel', 12: 'mittel', 13: 'mittel', 14: 'mittel', 15: 'mittel', 16: 'schwer', 17: 'schwer', 18: 'schwer' };
 const gap = (n, before, after, a, why) => ({
   type: 'gap', title: 'Grammar', instr: 'Fill in the gap. Stimmt der Satz schon, wähle «korrekt». Höchstens ein Wort.',
-  before, prefix: '', after, accept: [a], answerText: a, why, ck: 'e_gram', ...B, id: `englisch-d${n}`,
+  before, prefix: '', after, accept: [a], answerText: a, why, ck: 'e_gram', ...B, id: `englisch-d${n}`, difficulty: D[n],
 });
 const voc = (n, body, opts, c, why, wrong) => ({
   type: 'mc', title: 'Wortschatz', instr: 'Klicke das Wort an, das am besten passt.', body: `<div class="big" style="font-size:17px">${body}</div>`,
-  options: opts.map((t, i) => (i === c ? { t } : { t, why: wrong[i] })), correct: c, answerText: opts[c], why, ck: 'e_voc', ...B, id: `englisch-d${n}`,
+  options: opts.map((t, i) => (i === c ? { t } : { t, why: wrong[i] })), correct: c, answerText: opts[c], why, ck: 'e_voc', ...B, id: `englisch-d${n}`, difficulty: D[n],
 });
 const dia = (n, titel, sit, bubbles, opts, c, why, wrong) => ({
   type: 'mc', title: 'Gesprächssituation: ' + titel, instr: 'Wähle die Frage oder Antwort, die zum Gespräch passt.',
   body: (sit ? `<div style="margin-bottom:6px">${sit}</div>` : '') + `<div class="chat">${bubbles.map(b => `<div class="bubble">${b}</div>`).join('')}<div class="bubble you">You: <i>(wähle unten)</i></div></div>`,
-  options: opts.map((t, i) => ({ t, why: i === c ? null : wrong[i] })), correct: c, answerText: opts[c], why, ck: 'e_dial', ...B, id: `englisch-d${n}`,
+  options: opts.map((t, i) => ({ t, why: i === c ? null : wrong[i] })), correct: c, answerText: opts[c], why, ck: 'e_dial', ...B, id: `englisch-d${n}`, difficulty: D[n],
 });
 
 export default [
@@ -50,4 +52,16 @@ export default [
     ['Yes, we shall.', 'Seven suits me better. I have football training until half past six.', 'We met at six last week.', "I'm meeting nobody at six or seven."], 1,
     '«Shall we … or …?» verlangt eine Wahl. Eine passende Antwort nennt die Wahl und einen Grund.',
     { 0: 'Falsch: «Yes» passt nicht zu einer Frage mit «or».', 2: 'Falsch: Die Zeit stimmt nicht, denn es geht um das nächste Treffen.', 3: 'Falsch: Klingt abweisend und beantwortet die Frage nicht.' }),
+  gap(14, 'By the time we arrived, the film', ' already started.', 'had', 'Das Past Perfect («had» + Partizip) zeigt, dass etwas schon vor einem anderen Zeitpunkt in der Vergangenheit geschehen war: the film had already started.'),
+  gap(15, 'He apologised', ' being late.', 'for', 'Nach «apologise» steht «for» und dann die -ing-Form: He apologised for being late.'),
+  voc(16, 'She was ______ to the idea of moving abroad because she did not want to leave her friends.', ['opposed', 'opposite', 'opposing', 'opponent', 'oppose', 'opposition'], 0,
+    '«to be opposed to something» = gegen etwas sein. Danach folgt «to» und ein Nomen oder eine -ing-Form.',
+    { 1: 'Falsch: «opposite» heisst «gegenüber» oder «Gegenteil».', 2: 'Falsch: «opposing» heisst «gegnerisch» und passt nicht zu «was … to».', 3: 'Falsch: «opponent» ist ein Nomen (Gegner).', 4: 'Falsch: «oppose» ist ein Verb ohne «was» und ohne «to».', 5: 'Falsch: «opposition» ist ein Nomen und passt nicht nach «was».' }),
+  dia(17, 'A polite request', '', ['Colleague: «Would you mind closing the window?»'],
+    ["Yes, of course. I'll do it now.", "Not at all. I'll do it now.", 'Yes, the window is open.', 'I mind the window.'], 1,
+    '«Would you mind …?» fragt, ob es stört. «Not at all» heisst «überhaupt nicht» und ist damit eine Zusage. «Yes» würde bedeuten, dass es dich stört.',
+    { 0: 'Falsch: «Yes» auf «Would you mind …?» bedeutet «Ja, es stört mich». Der Satz klingt widersprüchlich.', 2: 'Falsch: Das beantwortet die Bitte nicht.', 3: 'Falsch: Das ergibt keinen Sinn als Antwort.' }),
+  voc(18, 'He has ______ his mind about studying medicine, so he will apply for IT instead.', ['changed', 'made', 'taken', 'turned', 'moved', 'switched'], 0,
+    '«change one’s mind» = es sich anders überlegen. Das passt zu «instead».',
+    { 1: 'Falsch: «make up one’s mind» heisst «sich entscheiden» und passt nicht zu «instead».', 2: 'Falsch: «take one’s mind» ist keine feste Wendung.', 3: 'Falsch: «turn one’s mind» ist keine übliche Wendung.', 4: 'Falsch: «move one’s mind» ist keine übliche Wendung.', 5: 'Falsch: «switch one’s mind» ist keine übliche Wendung.' }),
 ];

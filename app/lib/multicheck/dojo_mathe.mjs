@@ -3,6 +3,8 @@ const B = { topic: 'mathe' };
 const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'");
 let nr = 0;
 const id = () => `mathe-d${++nr}`;
+// Einstufung pro Aufgabe (Nummer → Stufe).
+const D = { 1: 'mittel', 2: 'mittel', 3: 'mittel', 4: 'mittel', 5: 'mittel', 6: 'mittel', 7: 'mittel', 8: 'mittel', 9: 'mittel', 10: 'schwer', 11: 'schwer', 12: 'mittel', 13: 'mittel', 14: 'mittel', 15: 'mittel', 16: 'einfach', 17: 'mittel', 18: 'mittel' };
 
 // Schätzaufgabe: richtiger Wert und fünf falsche Werte; die richtige Stelle wechselt.
 const schaetz = (ck, text, richtig, falsch, why) => {
@@ -10,29 +12,29 @@ const schaetz = (ck, text, richtig, falsch, why) => {
   const opts = falsch.map(fmt); opts.splice(k, 0, fmt(richtig));
   return {
     type: 'mc', numeric: true, title: 'Schätzaufgabe', instr: 'Schätze die Lösung durch mathematische Überlegungen. Du musst nicht genau ausrechnen.',
-    body: `<div class="big">${text}</div>`, options: opts.map(t => ({ t })), correct: k, time: 30, answerText: fmt(richtig), why, ck, ...B, id: id(),
+    body: `<div class="big">${text}</div>`, options: opts.map(t => ({ t })), correct: k, time: 30, answerText: fmt(richtig), why, ck, ...B, id: id(), difficulty: D[nr],
   };
 };
 const rechne = (ck, titel, instr, text, accept, answerText, why, extra = {}) => ({
-  type: 'input', ...extra, title: titel, instr, body: `<div class="big" style="font-size:17px;line-height:1.7">${text}</div>`, accept, answerText, why, ck, ...B, id: id(),
+  type: 'input', ...extra, title: titel, instr, body: `<div class="big" style="font-size:17px;line-height:1.7">${text}</div>`, accept, answerText, why, ck, ...B, id: id(), difficulty: D[nr],
 });
 const RI = 'Gib das Resultat ohne Leerschläge und ohne Klammern ein.';
 const TR = 'Der Taschenrechner ist erlaubt. Gib nur die Zahl ein.';
 const gm = (ck, frage, opts, c, why) => ({
   type: 'mc', title: 'Geometrie', instr: 'Klicke die richtige Antwort an.', body: `<div class="big" style="font-size:17px">${frage}</div>`,
-  options: opts.map(([t, w], i) => (i === c ? { t } : { t, why: w })), correct: c, answerText: opts[c][0], why, ck, ...B, id: id(),
+  options: opts.map(([t, w], i) => (i === c ? { t } : { t, why: w })), correct: c, answerText: opts[c][0], why, ck, ...B, id: id(), difficulty: D[nr],
 });
 
 export default [
-  schaetz('est_mul', '480 * 520 =', 249600, [24960, 2496000, 249060, 259600, 246900],
+  schaetz('est_mul', '480 * 520 =', 249600, [24960, 2496000, 249060, 294600, 246900],
     'Kernzahlen: 48 * 52 = 2496 (48 * 50 = 2400, dazu 48 * 2 = 96). Endnullen: 1 + 1 = 2. Resultat: <b>249\'600</b>.'),
-  schaetz('est_mul', '1\'200 * 450 =', 540000, [54000, 5400000, 504000, 450000, 550000],
+  schaetz('est_mul', '1\'200 * 450 =', 540000, [54000, 5400000, 504000, 450000, 560000],
     'Kernzahlen: 12 * 45 = 540. Endnullen: 2 + 1 = 3. Also 540 mit 3 Nullen. Resultat: <b>540\'000</b>.'),
-  schaetz('est_add', '58\'764 + 3\'997 =', 62761, [62751, 61761, 627610, 6276, 72761],
+  schaetz('est_add', '58\'764 + 3\'997 =', 62761, [62764, 61761, 627610, 6276, 72761],
     'Gerundet: 58\'764 + 4\'000 = 62\'764. Es wurde 3 zu viel addiert, also − 3 = 62\'761. Einerziffer: 4 + 7 = 11, also endet das Resultat auf 1. Resultat: <b>62\'761</b>.'),
-  schaetz('est_sub', '81\'206 − 7\'995 =', 73211, [73201, 73216, 72211, 732110, 7321],
+  schaetz('est_sub', '81\'206 − 7\'995 =', 73211, [73206, 73216, 72211, 732110, 7321],
     'Gerundet: 81\'206 − 8\'000 = 73\'206. Es wurde 5 zu viel abgezogen, also + 5 = 73\'211. Resultat: <b>73\'211</b>.'),
-  schaetz('est_div', '4\'320\'000 / 600 =', 7200, [720, 72000, 7020, 6200, 8200],
+  schaetz('est_div', '4\'320\'000 / 600 =', 7200, [720, 72000, 5400, 6200, 8200],
     'Streiche zwei Nullen: 43\'200 / 6 = 7\'200. Resultat: <b>7\'200</b>.'),
   rechne('calc', 'Rechnen', RI, 'Berechne: 7 * 8 + 6 * (9 − 4) =', ['86'], '86', 'Punkt vor Strich, Klammer zuerst: 9 − 4 = 5. Dann 7 * 8 = 56 und 6 * 5 = 30. Zusammen: 56 + 30 = 86.', { num: true }),
   rechne('calc', 'Rechnen', RI, 'Berechne: 120 − 4 * 15 + 18 / 3 =', ['66'], '66', 'Punkt vor Strich: 4 * 15 = 60 und 18 / 3 = 6. Dann von links: 120 − 60 = 60, 60 + 6 = 66.', { num: true }),

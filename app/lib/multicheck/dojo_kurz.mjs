@@ -10,13 +10,16 @@ const rnd = () => {
 const zahl = (a, b) => a + Math.floor(rnd() * (b - a + 1));
 const mischen = (l) => { const a = l.slice(); for (let i = a.length - 1; i > 0; i--) { const j = zahl(0, i); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
+// Einstufung pro Aufgabe (Nummer → Stufe).
+const D = { 1: 'mittel', 2: 'mittel', 3: 'mittel', 4: 'mittel', 5: 'schwer', 6: 'mittel', 7: 'mittel', 8: 'schwer', 9: 'schwer', 10: 'mittel', 11: 'schwer', 12: 'schwer', 13: 'schwer', 14: 'schwer', 15: 'schwer', 16: 'schwer' };
+
 const FARBE = ['rot', 'blau', 'schwarz'];
 const farbAufgabe = (n, seq, showSec) => ({
   type: 'memcolor', title: 'Farbkombinationen behalten',
   instr: `Kurz wird eine Reihe mit ${seq.length} Kreisen gezeigt. Danach siehst du leere Kreise. Baue die Farbkombination nach: 1× klicken = rot, 2× = blau, 3× = schwarz.`,
   seq, showSec, answerText: seq.map(v => FARBE[v]).join(', '),
   why: 'Du hast die Reihe von links nach rechts nachgebaut. Unten siehst du richtige Reihe und deine Reihe untereinander.',
-  ck: 'k_color', topic: 'kurz', id: `kurz-d${n}`,
+  ck: 'k_color', topic: 'kurz', id: `kurz-d${n}`, difficulty: D[n],
 });
 
 // Falsche Varianten: eine Stelle ändern, zwei Nachbarn tauschen, Ende abschneiden und anhängen u. a.
@@ -44,7 +47,7 @@ const zeichenAufgabe = (n, show, showSec, ziffern) => {
     type: 'memchoice', title: 'Kombination aus Zeichen behalten',
     instr: `Kurz wird eine ${ziffern ? 'Zahlenkombination' : 'Zeichenkombination'} gezeigt. Danach klickst du die Kombination an, die du gesehen hast.`,
     show, showSec, options: opts.map(t => ({ t })), correct: pos, answerText: show, why: `Gezeigt wurde <b>${show}</b>.`,
-    ck: ziffern ? 'k_digits' : 'k_letters', mono: true, topic: 'kurz', id: `kurz-d${n}`,
+    ck: ziffern ? 'k_digits' : 'k_letters', mono: true, topic: 'kurz', id: `kurz-d${n}`, difficulty: D[n],
   };
 };
 const buchstaben = (len) => mischen('BCDFGHKLMNPRSTWXZ'.split('')).slice(0, len).join('');
@@ -64,4 +67,8 @@ export default [
   zeichenAufgabe(10, ziffernfolge(7), 5, true),
   zeichenAufgabe(11, ziffernfolge(8), 4, true),
   zeichenAufgabe(12, ziffernfolge(8), 4, true),
+  farbAufgabe(13, farbfolge(10), 4),
+  farbAufgabe(14, farbfolge(10), 5),
+  zeichenAufgabe(15, buchstaben(9), 4, false),
+  zeichenAufgabe(16, ziffernfolge(9), 4, true),
 ];

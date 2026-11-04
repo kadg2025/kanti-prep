@@ -1,5 +1,6 @@
 // Multicheck IMS, Konzentration: eigener Fragenpool für das Dojo (neue Aufgaben, mit festem Startwert berechnet).
 // Gleiche Regeln wie erzeuge_konzentration.mjs: Zahlenreihen mit 9 Ziffern, Koordinaten auf dem 3×3-Raster.
+import { schwerBlock, prng } from './konzentration_schwer.mjs';
 let seed = 20261109;
 const rnd = () => {
   seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
@@ -46,7 +47,7 @@ function zahlenBlock(nr, g) {
     instr: 'Vergleiche in jeder Zeile die beiden Zahlenreihen. Klicke «Gleich» oder «Nicht gleich».',
     items, answerText: zeilenText(items),
     why: 'Vergleiche die Zahlen in Dreiergruppen von links nach rechts. Sobald eine Gruppe nicht passt, sind die Reihen nicht gleich.',
-    ck: 'k_cmp', topic: 'konz', id: `konz-d${nr}`,
+    ck: 'k_cmp', topic: 'konz', difficulty: 'mittel', id: `konz-d${nr}`,
   };
 }
 function koordBlock(nr) {
@@ -57,11 +58,12 @@ function koordBlock(nr) {
     instr: 'Ein Feld ist rot. Tippe seine Koordinaten ein: zuerst die Ziffer der X-Achse, dann die Ziffer der Y-Achse.',
     items, answerText: items.map((f, i) => `Feld ${i + 1}: ${f.a}`).join(', '),
     why: 'X liegt waagrecht und wird von links gezählt. Y liegt senkrecht und wird von unten gezählt. Immer zuerst X, dann Y.',
-    ck: 'k_coord', topic: 'konz', id: `konz-d${nr}`,
+    ck: 'k_coord', topic: 'konz', difficulty: 'einfach', id: `konz-d${nr}`,
   };
 }
 
 export default [
   zahlenBlock(1, 3), zahlenBlock(2, 2), zahlenBlock(3, 4), zahlenBlock(4, 3), zahlenBlock(5, 3), zahlenBlock(6, 2),
   koordBlock(7), koordBlock(8), koordBlock(9), koordBlock(10), koordBlock(11),
+  ...[[12, 11, 3], [13, 12, 4], [14, 11, 3], [15, 12, 2], [16, 12, 4]].map(([n, laenge, g]) => schwerBlock(prng(20261120 + n), { id: `konz-d${n}`, laenge, gleich: g })),
 ];

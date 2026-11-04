@@ -2,6 +2,9 @@
 // Verbale Analogien von Hand, numerische Aufgaben mit festem Startwert berechnet (gleiche Regeln wie erzeuge_numproc.mjs).
 const ORDNUNG = [[2, 0, 4, 1, 3], [3, 1, 0, 4, 2], [1, 4, 2, 0, 3], [4, 2, 1, 3, 0], [3, 0, 2, 4, 1]];
 
+// Einstufung pro Aufgabe (Nummer → Stufe).
+const D = { 1: 'mittel', 2: 'mittel', 3: 'mittel', 4: 'mittel', 5: 'mittel', 6: 'mittel', 7: 'schwer', 8: 'mittel', 9: 'mittel', 10: 'mittel', 11: 'mittel', 12: 'schwer', 13: 'schwer', 14: 'schwer', 15: 'mittel', 16: 'schwer', 17: 'schwer', 18: 'schwer' };
+
 function analogie(n, a, b, c, optionen, why) {
   const ord = ORDNUNG[n % ORDNUNG.length];
   return {
@@ -9,7 +12,7 @@ function analogie(n, a, b, c, optionen, why) {
     instr: 'Finde die Beziehung zwischen den ersten zwei Wörtern. Wende sie auf das dritte Wort an und klicke das passende Wort an.',
     body: `<div class="big" style="font-size:17px">${a} zu ${b} wie ${c} zu ?</div>`,
     options: ord.map(i => ({ t: optionen[i] })), correct: ord.indexOf(0), answerText: optionen[0], why,
-    ck: 'l_verbal', topic: 'logik', id: `logik-d${n}`,
+    ck: 'l_verbal', topic: 'logik', id: `logik-d${n}`, difficulty: D[n],
   };
 }
 
@@ -45,7 +48,7 @@ function numproc(n, schritte, gleichEnde) {
     instr: 'Zahlen und Rechenschritte erscheinen nacheinander in den beiden weissen Feldern und verschwinden wieder. Rechne beide Reihen getrennt im Kopf. Am Ende erscheint ein «?». Gib die Zahl ein, die dort stehen müsste (1 bis 9).',
     top: { start: o.start, steps: o.steps }, bottom: { start: u.start, steps: u.steps }, ask: frageOben ? 'top' : 'bottom', answer: antwort, answerText: String(antwort),
     why: `Oben: ${weg(o)}. Unten: ${weg(u)}. Gefragt war das ${frageOben ? 'obere' : 'untere'} Feld: ${antwort}.`,
-    ck: 'l_num', topic: 'logik', id: `logik-d${n}`,
+    ck: 'l_num', topic: 'logik', id: `logik-d${n}`, difficulty: D[n],
   };
 }
 
@@ -64,4 +67,8 @@ export default [
   numproc(12, 4, false),
   numproc(13, 4, false),
   numproc(14, 4, true),
+  analogie(15, 'Brille', 'Sehschwäche', 'Hörgerät', ['Schwerhörigkeit', 'Ohr', 'Lärm', 'Batterie', 'Musik'], 'Eine Brille gleicht eine Sehschwäche aus, ein Hörgerät eine Schwerhörigkeit. Gesucht ist die Beeinträchtigung, die das Hilfsmittel ausgleicht.'),
+  analogie(16, 'Gehalt', 'Arbeit', 'Busse', ['Verstoss', 'Polizei', 'Geld', 'Verkehr', 'Gesetz'], 'Das Gehalt ist die Gegenleistung für Arbeit, die Busse die Folge eines Verstosses. Geld, Polizei und Gesetz gehören zum Umfeld, sind aber nicht der Anlass.'),
+  analogie(17, 'Anker', 'Schiff', 'Bremse', ['Fahrzeug', 'Rad', 'Strasse', 'Fahrer', 'Tempo'], 'Der Anker hält ein Schiff fest, die Bremse bringt ein Fahrzeug zum Stehen. Gesucht ist das Ganze, auf das das Teil wirkt.'),
+  numproc(18, 4, false),
 ];

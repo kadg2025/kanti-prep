@@ -33,8 +33,8 @@ const qs = [
 ];
 // Dojo: Kurzform ohne Ablenkung
 const dojoQs = [
-  ...daten.dojo.map((r, i) => pikto(`merk-d${i + 1}`, r, { dojo: true, showSec: LERNZEIT.dojoPikto })),
-  ...DOJO_TEXTE.map((t, i) => textRunde(`merk-d${9 + i}`, t, { dojo: true, showSec: LERNZEIT.dojoText })),
+  ...daten.dojo.map((r, i) => pikto(`merk-d${i + 1}`, r, { dojo: true, difficulty: 'mittel', showSec: LERNZEIT.dojoPikto })),
+  ...DOJO_TEXTE.map((t, i) => textRunde(`merk-d${9 + i}`, t, { dojo: true, difficulty: 'schwer', showSec: LERNZEIT.dojoText })),
 ];
 const beispielPikto = pikto('merk-demo-1', daten.demo);
 const beispielText = textRunde('merk-demo-2', BEISPIEL_TEXT);

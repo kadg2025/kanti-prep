@@ -2,6 +2,7 @@
 // Figurale Analogien folgen später mit Bildern; dafür gibt es noch keine Fragen.
 import numerisch from './logik_numerisch';
 import figural from './logik_figural';
+import logikSchwer from './logik_schwer.mjs';
 import dojoQs from './dojo_logik.mjs';
 
 // Feste Reihenfolge der Antworten: Die richtige Antwort steht im Rohdatensatz zuerst
@@ -57,6 +58,7 @@ const thema = {
     analogie(9, 'Problem', 'Lösung', 'Frage', ['Antwort', 'Sorge', 'Rätsel', 'Hilfe', 'Lösung'], 'Ein Problem wird gelöst, eine Frage beantwortet. Das Gegenstück zur Frage ist die Antwort.'),
     ...numerisch,
     ...figural,
+    ...logikSchwer,
   ],
   dojoQs,
   konzepte: {

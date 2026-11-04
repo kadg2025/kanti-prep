@@ -45,4 +45,6 @@ const fragen = [
   }),
 ];
 
-export default fragen.map((q, i) => ({ ...q, id: `vernetzt-d${i + 1}` }));
+// Schwierigkeit nach Fragetyp: Nachschlagen (einfach), Mengen, Masse und «korrekt» (mittel), «falsch» mit vier zu prüfenden Aussagen (schwer).
+const STUFE = (i) => (i < 6 ? 'einfach' : i < 14 ? 'mittel' : 'schwer');
+export default fragen.map((q, i) => ({ ...q, difficulty: STUFE(i), id: `vernetzt-d${i + 1}` }));
