@@ -1958,7 +1958,9 @@ export default function Home() {
     try {
       const params = new URLSearchParams(window.location.search);
       const qid = params.get('id');
-      if (qid) {
+      if (params.get('mc') != null) {
+        setSubject('Multicheck');
+      } else if (qid) {
         const q = questions.find((x) => x.id === qid);
         if (q) { setSubject(subjectKeyOf(q)); setSelectedId(qid); }
       } else {
@@ -1975,7 +1977,7 @@ export default function Home() {
 
   // Zustand → URL spiegeln (ohne Reload), damit jede Aufgabe/Lernkarte einen eigenen Link hat
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || subject === 'Multicheck') return; // Multicheck pflegt seine URL (?mc=…) selbst
     try {
       const base = window.location.pathname;
       let url = base;

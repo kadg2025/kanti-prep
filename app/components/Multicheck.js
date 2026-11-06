@@ -15,6 +15,9 @@ import { SYMBOLE as MSYM } from '../lib/multicheck/merk_symbole.mjs';
 import { LERNZEIT } from '../lib/multicheck/merk_konfig.mjs';
 import { SchreibTeil, SchreibDojo, anzahlTexte } from './MulticheckSchreiben';
 import { ProbeBereich, ProbePruefung } from './MulticheckProbe';
+import MulticheckLink from './MulticheckLink';
+import { mcPfad, mcParse } from '../lib/multicheck/links.mjs';
+import { ladeLauf } from '../lib/multicheck/probe_logik.mjs';
 import kdaten from '../lib/multicheck/konzentration_daten';
 import { neuerStand, istLeer, auswerten, NUMPROC, numprocEreignisse, erwartetAntwort } from '../lib/multicheck/pruefen';
 import LernkartePage, { Hanko, DojoKopf, AufstiegMeldung, dojoPalette, DOJO_ROT, GLOBAL_KEYFRAMES, zufall } from './Lernkarte';
@@ -1207,12 +1210,39 @@ function ThemaKachel({ t, dm, onOpen, isMobile }) {
   );
 }
 
+function zustandAusUrl() {
+  const z = mcParse(new URLSearchParams(window.location.search).get('mc'), MULTICHECK_THEMEN);
+  // Läuft schon eine andere Probeprüfung, würde der Link sie überschreiben: dann Startseite mit «Fortsetzen».
+  if (z.probe) { const l = ladeLauf(window.localStorage); if (l && l.version && l.version !== z.probe && l.phase !== 'ende') return { themaId: null, teil: null, unterId: null, probe: null }; }
+  return z;
+}
+
 export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = () => {}, onRemoveFehler = () => {}, startThema = null }) {
-  const [themaId, setThemaId] = useState(startThema);
-  const [teil, setTeil] = useState(null);
-  const [unterId, setUnterId] = useState(null);
-  const [probe, setProbe] = useState(null);
+  // Startzustand aus ?mc=… (teilbarer Link); startThema (Fehler-Kiste) hat Vorrang.
+  const [init] = useState(() => (startThema ? { themaId: startThema, teil: null, unterId: null, probe: null } : zustandAusUrl()));
+  const [themaId, setThemaId] = useState(init.themaId);
+  const [teil, setTeil] = useState(init.teil);
+  const [unterId, setUnterId] = useState(init.unterId);
+  const [probe, setProbe] = useState(init.probe);
   const [, setTick] = useState(0);
+  const ersterLauf = useRef(true);
+
+  // Zustand → URL: erster Stand ersetzt die URL, jede weitere Ansicht ist ein neuer Verlaufseintrag (Zurück-Button).
+  useEffect(() => {
+    try {
+      const url = `${window.location.pathname}?mc=${mcPfad({ themaId, teil, unterId, probe })}`;
+      if (url === window.location.pathname + window.location.search) { ersterLauf.current = false; return; }
+      if (ersterLauf.current) window.history.replaceState(null, '', url); else window.history.pushState(null, '', url);
+      ersterLauf.current = false;
+    } catch {}
+  }, [themaId, teil, unterId, probe]);
+
+  // Zurück/Vor im Browser: Zustand aus der URL neu lesen
+  useEffect(() => {
+    const lies = () => { const z = zustandAusUrl(); setThemaId(z.themaId); setTeil(z.teil); setUnterId(z.unterId); setProbe(z.probe); };
+    window.addEventListener('popstate', lies);
+    return () => window.removeEventListener('popstate', lies);
+  }, []);
   const thema = themaId ? multicheckThema(themaId) : null;
   const dj = dojoPalette(dark);
 
@@ -1245,7 +1275,7 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 12 }}>
           {MULTICHECK_THEMEN.map(t => <ThemaKachel key={t.id} t={t} dm={dm} isMobile={isMobile} onOpen={setThemaId} />)}
         </div>
-        <ProbeBereich dm={dm} onStart={setProbe} />
+        <ProbeBereich dm={dm} dark={dark} onStart={setProbe} />
       </>
     );
   } else if (!teil) {
@@ -1262,7 +1292,8 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
       <>
         {zurueck('← Alle Themen', () => setThemaId(null))}
         <h1 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 800, color: dm.text, margin: '0 0 4px' }}>{thema.emoji} {thema.name}</h1>
-        <p style={{ fontSize: 14, color: dm.text3, margin: '0 0 22px' }}>{thema.sub}</p>
+        <p style={{ fontSize: 14, color: dm.text3, margin: '0 0 12px' }}>{thema.sub}</p>
+        <div style={{ margin: '0 0 22px' }}><MulticheckLink zustand={{ themaId: thema.id }} dm={dm} dark={dark} /></div>
         <h2 style={{ fontSize: 16, fontWeight: 800, color: dm.text, margin: '0 0 4px' }}>📋 Üben</h2>
         <p style={{ fontSize: 13, color: dm.text2, margin: '0 0 12px', lineHeight: 1.5 }}>Wähle ein Unterthema. Du kannst jedes Unterthema beliebig oft wiederholen. Falsche Fragen kommen in die Fehler-Kiste.</p>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 12, marginBottom: 22 }}>
@@ -1304,6 +1335,8 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
   } else {
     const zu = () => setTeil(null);
     inhalt = (
+      <>
+      {teil === 'ueben' && <div style={{ textAlign: 'right', marginBottom: 10 }}><MulticheckLink zustand={{ themaId: thema.id, teil: 'ueben', unterId }} dm={dm} dark={dark} /></div>}
       <div className={'mcq' + (dark ? ' dk' : '')}>
         {teil === 'ueben' && (() => {
           const x = thema.unter.find(y => y.id === unterId);
@@ -1316,6 +1349,7 @@ export default function MulticheckPage({ dm, dark, isMobile, onBack, onFehler = 
           ? <SchreibDojo thema={thema} dm={dm} dark={dark} isMobile={isMobile} onBack={zu} />
           : <MulticheckDojo thema={thema} dm={dm} dark={dark} isMobile={isMobile} onBack={zu} onFehler={onFehler} onRemoveFehler={onRemoveFehler} />)}
       </div>
+      </>
     );
   }
 
