@@ -4,7 +4,7 @@
 
 export const VERSIONEN = {
   kurz: { name: 'Kurzversion', titel: 'Kurzversion (ca. 75 Min.)' },
-  voll: { name: 'Vollversion', titel: 'Vollversion (ca. 3 Std.)' },
+  voll: { name: 'Vollversion', titel: 'Vollversion (ca. 3,5 Std.)' },
 };
 
 export const HINWEIS = 'Das ist eine Übung. Das Ergebnis ist kein offizielles Multicheck-Ergebnis.';
