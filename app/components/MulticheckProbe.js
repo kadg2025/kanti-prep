@@ -12,6 +12,7 @@ import { LERNZEIT } from '../lib/multicheck/merk_konfig.mjs';
 import { RUNDEN, TEXT_MIN } from '../lib/multicheck/schreib_daten.mjs';
 import { kannAbschicken, abschicken } from '../lib/multicheck/schreib_logik.mjs';
 import { renderRaster } from '../lib/multicheck/raster';
+import MulticheckLink from './MulticheckLink';
 
 const THEMEN = Object.fromEntries(MULTICHECK_THEMEN.filter(t => !t.bald).map(t => [t.id, t]));
 const PR = { istLeer, auswerten, erwartetAntwort };
@@ -24,7 +25,7 @@ const naechsteStation = (x, anzahl) => (x.si + 1 >= anzahl ? { phase: 'ende' } :
 const beantwortet = (q, U) => !!U && (q.items ? !!U.rows && U.rows.some(r => r != null) : !istLeer(q, U));
 
 // ─── Einstieg auf der Übersicht ─────────────────────────────────────────────
-export function ProbeBereich({ dm, onStart }) {
+export function ProbeBereich({ dm, dark, onStart }) {
   const [version, setVersion] = useState(0);
   const [abbr, setAbbr] = useState(false);
   const lauf = ladeLauf(speicher());
@@ -32,9 +33,12 @@ export function ProbeBereich({ dm, onStart }) {
   const verlauf = ladeVerlauf(speicher());
   void version;
   const karte = (key, aus) => (
-    <button key={key} disabled={aus} onClick={() => onStart(key)} style={{ flex: '1 1 220px', textAlign: 'left', padding: '16px 18px', borderRadius: 14, border: `2px solid ${aus ? dm.border : '#0a35b0'}`, background: dm.card, cursor: aus ? 'default' : 'pointer', opacity: aus ? 0.5 : 1 }}>
+    <div key={key} style={{ flex: '1 1 220px', display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-start' }}>
+    <button disabled={aus} onClick={() => onStart(key)} style={{ width: '100%', textAlign: 'left', padding: '16px 18px', borderRadius: 14, border: `2px solid ${aus ? dm.border : '#0a35b0'}`, background: dm.card, cursor: aus ? 'default' : 'pointer', opacity: aus ? 0.5 : 1 }}>
       <span style={{ display: 'block', fontSize: 16, fontWeight: 800, color: dm.text }}>{VERSIONEN[key].titel}</span>
     </button>
+    <MulticheckLink zustand={{ probe: key }} dm={dm} dark={dark} />
+    </div>
   );
   return (
     <div style={{ marginTop: 30 }}>
